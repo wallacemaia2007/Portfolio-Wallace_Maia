@@ -1,18 +1,18 @@
 {
   "personalInfo": {
     "id": 1,
-    "fullName": "João Silva",
-    "acronym": "JS",
+    "fullName": "Wallace Maia ",
+    "acronym": "WM",
     "role": "Desenvolvedor Full Stack",
-    "email": "joao@email.com",
-    "phone": "+55 (11) 99999-9999",
-    "location": "São Paulo, SP - Brasil",
-    "bio": "Desenvolvedor Full Stack apaixonado por criar experiências web incríveis e soluções inovadoras. Especializado em Angular, React e Node.js com mais de 5 anos de experiência no mercado.",
+    "email": "wallacemaia2007@email.com",
+    "phone": "+55 (35) 91003-6806",
+    "location": "Passos, MG - Brasil",
+    "bio": "Desenvolvedor Full Stack apaixonado por criar experiências web incríveis e soluções inovadoras. Especializado em Angular, Java e Spring Boot com mais de 1 anos de experiência no mercado.",
     "avatar": "assets/images/avatar.jpg",
     "cvUrl": "assets/cv.pdf",
-    "github": "https://github.com/seu-usuario",
-    "linkedin": "https://linkedin.com/in/seu-usuario",
-    "website": "https://seusite.com"
+    "github": "https://github.com/wallacemaia2007",
+    "linkedin": "https://www.linkedin.com/in/wallacemaia-dev/",
+    "website": "https://wallacemaia.com"
   },
 
   "projects": [
@@ -182,11 +182,11 @@
     },
     {
       "id": "2",
-      "name": "React",
-      "category": "frontend",
+      "name": "Java",
+      "category": "backend",
       "level": 4,
       "yearsOfExperience": 3,
-      "icon": "assets/icons/react.svg",
+      "icon": "assets/icons/java.svg",
       "color": "#61DAFB"
     },
     {
@@ -236,33 +236,15 @@
     },
     {
       "id": "8",
-      "name": "Node.js",
+      "name": "Spring Boot",
       "category": "backend",
       "level": 4,
       "yearsOfExperience": 3,
-      "icon": "assets/icons/nodejs.svg",
+      "icon": "assets/icons/spring.svg",
       "color": "#339933"
     },
     {
       "id": "9",
-      "name": "Express",
-      "category": "backend",
-      "level": 4,
-      "yearsOfExperience": 3,
-      "icon": "assets/icons/express.svg",
-      "color": "#000000"
-    },
-    {
-      "id": "10",
-      "name": "Python",
-      "category": "backend",
-      "level": 3,
-      "yearsOfExperience": 2,
-      "icon": "assets/icons/python.svg",
-      "color": "#3776AB"
-    },
-    {
-      "id": "11",
       "name": "MongoDB",
       "category": "database",
       "level": 4,
@@ -271,7 +253,7 @@
       "color": "#47A248"
     },
     {
-      "id": "12",
+      "id": "10",
       "name": "PostgreSQL",
       "category": "database",
       "level": 4,
@@ -280,16 +262,16 @@
       "color": "#4169E1"
     },
     {
-      "id": "13",
-      "name": "Firebase",
+      "id": "11",
+      "name": "MySQL",
       "category": "database",
       "level": 3,
       "yearsOfExperience": 2,
-      "icon": "assets/icons/firebase.svg",
+      "icon": "assets/icons/mysql.svg",
       "color": "#FFCA28"
     },
     {
-      "id": "14",
+      "id": "12",
       "name": "Git",
       "category": "tools",
       "level": 5,
@@ -298,7 +280,7 @@
       "color": "#F05032"
     },
     {
-      "id": "15",
+      "id": "13",
       "name": "Docker",
       "category": "tools",
       "level": 3,
@@ -307,7 +289,7 @@
       "color": "#2496ED"
     },
     {
-      "id": "16",
+      "id": "14",
       "name": "AWS",
       "category": "tools",
       "level": 3,
@@ -316,7 +298,7 @@
       "color": "#FF9900"
     },
     {
-      "id": "17",
+      "id": "15",
       "name": "Figma",
       "category": "tools",
       "level": 4,
@@ -329,116 +311,62 @@
   "experience": [
     {
       "id": "1",
-      "company": "Tech Solutions Inc.",
-      "position": "Senior Full Stack Developer",
-      "description": "Liderança técnica de equipe de 5 desenvolvedores. Responsável pela arquitetura e desenvolvimento de aplicações web enterprise usando Angular e Node.js. Implementação de CI/CD e boas práticas de desenvolvimento.",
-      "startDate": "2022-03-01",
-      "endDate": "",
+      "company": "CroSoften",
+      "position": "Desenvolvedor Frontend Angular",
+      "description": "Desenvolvimento e manutenção de aplicações web utilizando Angular. Colaboração com equipes de design e backend para criar interfaces de usuário responsivas e funcionais. Participação em reuniões de planejamento e revisão de código.",
+      "startDate": "2025-11-25",
+      "endDate": "momento",
       "current": true,
-      "location": "São Paulo, SP - Remote",
+      "location": "Remote",
       "type": "full-time",
-      "technologies": ["Angular", "Node.js", "PostgreSQL", "AWS", "Docker"],
-      "achievements": [
-        "Reduziu tempo de deploy em 60% com implementação de CI/CD",
-        "Liderou migração de sistema legado para arquitetura moderna",
-        "Implementou testes automatizados aumentando cobertura para 85%",
-        "Mentorou 3 desenvolvedores júnior"
+      "technologies": [
+        "Angular",
+        "TypeScript",
+        "RxJS",
+        "Angular Material",
+        "Tailwind CSS",
+        "Git",
+        "Figma"
       ],
-      "companyLogo": "assets/images/companies/tech-solutions.png",
-      "companyUrl": "https://techsolutions.com"
+      "achievements": [],
+      "companyLogo": "assets/images/companies/crosoften.png",
+      "companyUrl": "https://crosoften.com"
     },
     {
       "id": "2",
-      "company": "Digital Agency",
+      "company": "Freelancer",
       "position": "Full Stack Developer",
       "description": "Desenvolvimento de sites e aplicações web para diversos clientes. Trabalho direto com designers e clientes para entregar soluções de alta qualidade. Uso de metodologias ágeis.",
-      "startDate": "2020-01-15",
-      "endDate": "2022-02-28",
-      "current": false,
-      "location": "São Paulo, SP",
-      "type": "full-time",
-      "technologies": ["React", "Node.js", "MongoDB", "Tailwind CSS"],
-      "achievements": [
-        "Desenvolveu mais de 20 sites responsivos",
-        "Implementou sistema de gerenciamento de conteúdo customizado",
-        "Melhorou performance de sites em média 40%",
-        "Recebeu prêmio de 'Desenvolvedor do Ano' em 2021"
-      ],
-      "companyLogo": "assets/images/companies/digital-agency.png",
-      "companyUrl": "https://digitalagency.com"
-    },
-    {
-      "id": "3",
-      "company": "Freelancer",
-      "position": "Desenvolvedor Web Freelance",
-      "description": "Desenvolvimento de soluções web personalizadas para pequenas e médias empresas. Desde landing pages até sistemas completos de gestão.",
-      "startDate": "2019-06-01",
-      "endDate": "2019-12-31",
-      "current": false,
+      "startDate": "2025-11-15",
+      "endDate": "momento",
+      "current": true,
       "location": "Remote",
-      "type": "freelance",
-      "technologies": ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
-      "achievements": [
-        "Atendeu mais de 15 clientes satisfeitos",
-        "Desenvolveu 30+ projetos de diferentes complexidades",
-        "Manteve taxa de satisfação de 95%"
-      ],
-      "companyLogo": "",
-      "companyUrl": ""
-    },
-    {
-      "id": "4",
-      "company": "StartupXYZ",
-      "position": "Junior Web Developer",
-      "description": "Primeira experiência profissional. Desenvolvimento de features para aplicação web da startup. Aprendizado intensivo de tecnologias modernas e boas práticas.",
-      "startDate": "2018-03-01",
-      "endDate": "2019-05-31",
-      "current": false,
-      "location": "São Paulo, SP",
       "type": "full-time",
-      "technologies": ["Angular", "TypeScript", "Firebase"],
-      "achievements": [
-        "Desenvolveu 5+ features principais do produto",
-        "Participou ativamente de code reviews",
-        "Aprendeu metodologias ágeis (Scrum)"
+      "technologies": [
+        "Java",
+        "Angular",
+        "Spring Boot",
+        "TypeScript",
+        "Docker",
+        "Git",
+        "Angular Material",
+        "RxJS",
+        "Tailwind CSS",
+        "MongoDB",
+        "PostgreSQL",
+        "MySQL"
       ],
-      "companyLogo": "assets/images/companies/startupxyz.png",
-      "companyUrl": "https://startupxyz.com"
+      "achievements": [
+        "Dsenvolvi mais de 20 sites responsivos",
+        "Implementei sistema de gerenciamento de conteúdo customizado",
+        "Melhorei performance de sites em média 40%"
+      ],
+      "companyLogo": "assets/images/companies/freelancer.png",
+      "companyUrl": "https://freelancer.com"
     }
   ],
 
-  "testimonials": [
-    {
-      "id": "1",
-      "name": "Maria Santos",
-      "role": "CEO",
-      "company": "Tech Solutions Inc.",
-      "avatar": "assets/images/testimonials/maria.jpg",
-      "text": "João é um profissional excepcional. Sua capacidade técnica combinada com excelentes habilidades de comunicação fazem dele um líder nato. Recomendo fortemente!",
-      "rating": 5,
-      "date": "2024-01-15"
-    },
-    {
-      "id": "2",
-      "name": "Carlos Oliveira",
-      "role": "Product Manager",
-      "company": "Digital Agency",
-      "avatar": "assets/images/testimonials/carlos.jpg",
-      "text": "Trabalhar com o João foi uma experiência incrível. Sempre entrega além do esperado e com qualidade impecável. Um verdadeiro profissional!",
-      "rating": 5,
-      "date": "2023-11-20"
-    },
-    {
-      "id": "3",
-      "name": "Ana Paula",
-      "role": "Empreendedora",
-      "company": "E-commerce ABC",
-      "avatar": "assets/images/testimonials/ana.jpg",
-      "text": "João desenvolveu meu e-commerce do zero e superou todas as expectativas. Sistema rápido, bonito e funcional. Recomendo!",
-      "rating": 5,
-      "date": "2023-09-10"
-    }
-  ],
+  "testimonials": [],
 
   "blog": [
     {
@@ -474,10 +402,10 @@
   ],
 
   "statistics": {
-    "totalProjects": 50,
-    "completedProjects": 45,
-    "happyClients": 30,
-    "yearsExperience": 5,
+    "totalProjects": 4,
+    "completedProjects": 4,
+    "happyClients": 4,
+    "yearsExperience": 1,
     "technologies": 17,
     "coffeesCups": 9999
   },
@@ -485,25 +413,19 @@
   "socialLinks": [
     {
       "name": "GitHub",
-      "url": "https://github.com/seu-usuario",
+      "url": "https://github.com/wallacemaia2007",
       "icon": "code",
       "color": "#333"
     },
     {
       "name": "LinkedIn",
-      "url": "https://linkedin.com/in/seu-usuario",
+      "url": "https://www.linkedin.com/in/wallacemaia-dev/",
       "icon": "business",
       "color": "#0077B5"
     },
     {
-      "name": "Twitter",
-      "url": "https://twitter.com/seu-usuario",
-      "icon": "chat",
-      "color": "#1DA1F2"
-    },
-    {
       "name": "Email",
-      "url": "mailto:seu-email@email.com",
+      "url": "mailto:wallacemaia2007@email.com",
       "icon": "email",
       "color": "#EA4335"
     }
