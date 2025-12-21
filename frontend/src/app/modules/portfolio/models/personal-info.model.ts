@@ -1,10 +1,11 @@
 export interface PersonalInfo {
   id?: number;
-  name: string;
+  fullName: string;
+  acronym: string;
   role: string;
   email: string;
-  phone?: string;
-  location?: string;
+  phone: string;
+  location: string;
   bio: string;
   avatar: string;
   cvUrl?: string;

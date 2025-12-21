@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint --fix",
-    "server": "json-server --watch bd.json --port 3000"
+    "server": "json-server --watch db.json --port 3000"
   },
   "private": true,
   "dependencies": {

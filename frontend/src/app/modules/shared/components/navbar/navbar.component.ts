@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { ThemeService } from '../../../portfolio/services/theme.service';
+import { PortfolioService } from '../../../portfolio/services/portfolio.service';
 
 export interface NavbarTemplate {
   acronym: string;
@@ -28,8 +29,10 @@ export interface NavbarTemplate {
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
+  
   private themeService = inject(ThemeService);
+  private portfolioService = inject(PortfolioService);
 
   navbarData: NavbarTemplate = {
     acronym: '',
@@ -43,6 +46,13 @@ export class NavbarComponent {
       { label: 'Contato', route: '/contact', icon: 'email' },
     ],
   };
+
+  ngOnInit(): void {
+    this.portfolioService.getPersonalInfo().subscribe((data) => {
+      this.navbarData.acronym = data.acronym;
+      this.navbarData.fullName = data.fullName;
+    });
+  }
 
   public menuOpen = false;
 

@@ -9,15 +9,16 @@ import {
 } from '../models/project.model';
 import { Skill } from '../models/skill.model';
 import { Experience } from '../models/experience.model';
-import { environment } from '../../../../environments/environment';
 import { PersonalInfo } from '../models/personal-info.model';
+import { environment } from '../../../../environments/environment';
+import { SocialLink } from '../models/social-link.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PortfolioService {
   private http = inject(HttpClient);
-  private readonly apiUrl = environment.apiUrl || 'http://localhost:3000';
+  private readonly apiUrl = environment.apiUrl;
 
   // ============================================
   // PERSONAL INFO
@@ -28,6 +29,10 @@ export class PortfolioService {
    */
   getPersonalInfo(): Observable<PersonalInfo> {
     return this.http.get<PersonalInfo>(`${this.apiUrl}/personalInfo`);
+  }
+
+  getSocialLinks(): Observable<SocialLink[]> {
+    return this.http.get<SocialLink[]>(`${this.apiUrl}/socialLinks`);
   }
 
   /**

@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { SocialLinksComponent } from '../social-links/social-links.component';
+import { PortfolioService } from '../../../portfolio/services/portfolio.service';
 
 export interface footerTemplate {
   acronym: string;
   fullName: string;
-  description: string;
+  bio: string;
   quickLinks: { label: string; route: string }[];
   email: string;
   phone: string;
@@ -29,11 +30,12 @@ export interface footerTemplate {
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })
-export class FooterComponent {
+export class FooterComponent implements OnInit {
+  private portfolioService = inject(PortfolioService);
   footerData: footerTemplate = {
     acronym: '',
     fullName: '',
-    description: '',
+    bio: '',
     quickLinks: [
       { label: 'Início', route: '/home' },
       { label: 'Sobre', route: '/about' },
@@ -47,6 +49,17 @@ export class FooterComponent {
     location: '',
     currentYear: new Date().getFullYear(),
   };
+
+  ngOnInit(): void {
+    this.portfolioService.getPersonalInfo().subscribe((data) => {
+      this.footerData.acronym = data.acronym;
+      this.footerData.fullName = data.fullName;
+      this.footerData.bio = data.bio;
+      this.footerData.email = data.email;
+      this.footerData.phone = data.phone;
+      this.footerData.location = data.location;
+    });
+  }
 
   scrollToTop(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' });

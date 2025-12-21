@@ -1,7 +1,8 @@
 {
   "personalInfo": {
     "id": 1,
-    "name": "João Silva",
+    "fullName": "João Silva",
+    "acronym": "JS",
     "role": "Desenvolvedor Full Stack",
     "email": "joao@email.com",
     "phone": "+55 (11) 99999-9999",
@@ -27,7 +28,14 @@
         "assets/images/projects/ecommerce-2.jpg",
         "assets/images/projects/ecommerce-3.jpg"
       ],
-      "technologies": ["Angular", "TypeScript", "Node.js", "MongoDB", "Material Design", "Chart.js"],
+      "technologies": [
+        "Angular",
+        "TypeScript",
+        "Node.js",
+        "MongoDB",
+        "Material Design",
+        "Chart.js"
+      ],
       "category": "web",
       "featured": true,
       "githubUrl": "https://github.com/usuario/ecommerce-dashboard",
@@ -116,9 +124,7 @@
       "description": "Portfolio pessoal com elementos 3D interativos usando Three.js. Experiência imersiva com animações suaves e design moderno.",
       "shortDescription": "Portfolio com elementos 3D interativos e design moderno",
       "thumbnail": "assets/images/projects/portfolio-thumb.jpg",
-      "images": [
-        "assets/images/projects/portfolio-1.jpg"
-      ],
+      "images": ["assets/images/projects/portfolio-1.jpg"],
       "technologies": ["React", "Three.js", "GSAP", "Tailwind CSS"],
       "category": "web",
       "featured": true,
@@ -132,10 +138,7 @@
         "Performance de renderização 3D",
         "Responsividade com elementos 3D"
       ],
-      "learnings": [
-        "Three.js e WebGL",
-        "Otimização de performance gráfica"
-      ],
+      "learnings": ["Three.js e WebGL", "Otimização de performance gráfica"],
       "clientType": "pessoal"
     },
     {
@@ -477,5 +480,32 @@
     "yearsExperience": 5,
     "technologies": 17,
     "coffeesCups": 9999
-  }
+  },
+
+  "socialLinks": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/seu-usuario",
+      "icon": "code",
+      "color": "#333"
+    },
+    {
+      "name": "LinkedIn",
+      "url": "https://linkedin.com/in/seu-usuario",
+      "icon": "business",
+      "color": "#0077B5"
+    },
+    {
+      "name": "Twitter",
+      "url": "https://twitter.com/seu-usuario",
+      "icon": "chat",
+      "color": "#1DA1F2"
+    },
+    {
+      "name": "Email",
+      "url": "mailto:seu-email@email.com",
+      "icon": "email",
+      "color": "#EA4335"
+    }
+  ]
 }
