@@ -1,0 +1,50 @@
+<div 
+  class="mb-12"
+  [ngClass]="{
+    'text-left': align === 'left',
+    'text-center': align === 'center',
+    'text-right': align === 'right'
+  }"
+>
+  <!-- Icon (optional) -->
+  @if (icon) {
+    <div 
+      class="mb-4"
+      [ngClass]="{
+        'flex justify-start': align === 'left',
+        'flex justify-center': align === 'center',
+        'flex justify-end': align === 'right'
+      }"
+    >
+      <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
+        <mat-icon class="text-primary text-3xl">{{ icon }}</mat-icon>
+      </div>
+    </div>
+  }
+
+  <!-- Title -->
+  <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-3">
+    {{ title }}
+  </h2>
+
+  <!-- Subtitle (optional) -->
+  @if (subtitle) {
+    <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl" 
+       [ngClass]="{
+         'mx-auto': align === 'center',
+         'ml-auto': align === 'right'
+       }"
+    >
+      {{ subtitle }}
+    </p>
+  }
+
+  <!-- Decorative line -->
+  <div 
+    class="mt-6 h-1 w-20 bg-gradient-to-r from-primary to-primary/50"
+    [ngClass]="{
+      'mx-auto': align === 'center',
+      'ml-auto': align === 'right'
+    }"
+  ></div>
+</div>

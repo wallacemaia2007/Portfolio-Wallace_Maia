@@ -1,0 +1,9 @@
+:host {
+  display: block;
+}
+
+.social-link {
+  &:hover {
+    box-shadow: 0 4px 12px rgba(41, 65, 83, 0.15);
+  }
+}

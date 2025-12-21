@@ -1,0 +1,28 @@
+<header class="mb-8">
+  <div class="flex items-center justify-between">
+    <div class="flex items-center space-x-4">
+      @if (showBackButton) {
+        <button
+          (click)="goBack()"
+          class="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary transition-all"
+          aria-label="Voltar"
+        >
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      }
+      
+      <div>
+        @if (title) {
+          <p class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">
+            {{ title }}
+          </p>
+        }
+        @if (pageSession) {
+          <h1 class="text-3xl font-bold text-gray-800 dark:text-white">
+            {{ pageSession }}
+          </h1>
+        }
+      </div>
+    </div>
+  </div>
+</header>

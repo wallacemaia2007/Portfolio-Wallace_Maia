@@ -1,0 +1,481 @@
+{
+  "personalInfo": {
+    "id": 1,
+    "name": "João Silva",
+    "role": "Desenvolvedor Full Stack",
+    "email": "joao@email.com",
+    "phone": "+55 (11) 99999-9999",
+    "location": "São Paulo, SP - Brasil",
+    "bio": "Desenvolvedor Full Stack apaixonado por criar experiências web incríveis e soluções inovadoras. Especializado em Angular, React e Node.js com mais de 5 anos de experiência no mercado.",
+    "avatar": "assets/images/avatar.jpg",
+    "cvUrl": "assets/cv.pdf",
+    "github": "https://github.com/seu-usuario",
+    "linkedin": "https://linkedin.com/in/seu-usuario",
+    "website": "https://seusite.com"
+  },
+
+  "projects": [
+    {
+      "id": "1",
+      "title": "E-commerce Dashboard",
+      "slug": "ecommerce-dashboard",
+      "description": "Dashboard completo para gerenciamento de e-commerce com análise de vendas, gestão de produtos, controle de estoque e relatórios detalhados. Sistema desenvolvido com Angular e integrado com API REST.",
+      "shortDescription": "Dashboard para gerenciamento de e-commerce com análise de vendas e gestão de produtos",
+      "thumbnail": "assets/images/projects/ecommerce-thumb.jpg",
+      "images": [
+        "assets/images/projects/ecommerce-1.jpg",
+        "assets/images/projects/ecommerce-2.jpg",
+        "assets/images/projects/ecommerce-3.jpg"
+      ],
+      "technologies": ["Angular", "TypeScript", "Node.js", "MongoDB", "Material Design", "Chart.js"],
+      "category": "web",
+      "featured": true,
+      "githubUrl": "https://github.com/usuario/ecommerce-dashboard",
+      "liveUrl": "https://ecommerce-demo.com",
+      "startDate": "2023-01-15",
+      "endDate": "2023-06-30",
+      "status": "completed",
+      "tags": ["dashboard", "ecommerce", "analytics"],
+      "challenges": [
+        "Implementação de real-time updates com WebSockets",
+        "Otimização de queries complexas no MongoDB",
+        "Criação de gráficos interativos de alta performance"
+      ],
+      "learnings": [
+        "Aprofundei conhecimento em Angular Signals",
+        "Aprendi padrões de otimização de banco de dados",
+        "Melhorei skills em visualização de dados"
+      ],
+      "clientType": "freelance"
+    },
+    {
+      "id": "2",
+      "title": "App de Fitness",
+      "slug": "fitness-app",
+      "description": "Aplicativo mobile de fitness com tracking de exercícios, planos de treino personalizados, contador de calorias e integração com wearables. Interface intuitiva e gamificação para motivar usuários.",
+      "shortDescription": "App mobile para tracking de exercícios e planos de treino",
+      "thumbnail": "assets/images/projects/fitness-thumb.jpg",
+      "images": [
+        "assets/images/projects/fitness-1.jpg",
+        "assets/images/projects/fitness-2.jpg"
+      ],
+      "technologies": ["React Native", "Firebase", "Redux", "TypeScript"],
+      "category": "mobile",
+      "featured": true,
+      "githubUrl": "https://github.com/usuario/fitness-app",
+      "liveUrl": "",
+      "startDate": "2023-07-01",
+      "endDate": "2023-12-15",
+      "status": "completed",
+      "tags": ["mobile", "fitness", "health"],
+      "challenges": [
+        "Sincronização offline-first",
+        "Integração com APIs de wearables"
+      ],
+      "learnings": [
+        "Desenvolvimento mobile híbrido",
+        "Gestão de estado complexo com Redux"
+      ],
+      "clientType": "empresa"
+    },
+    {
+      "id": "3",
+      "title": "Sistema de Gestão Escolar",
+      "slug": "school-management",
+      "description": "Plataforma completa para gestão escolar incluindo controle de alunos, professores, notas, frequência, comunicação com pais e geração de relatórios. Sistema multi-tenant com diferentes níveis de acesso.",
+      "shortDescription": "Plataforma de gestão escolar com controle de alunos e notas",
+      "thumbnail": "assets/images/projects/school-thumb.jpg",
+      "images": [
+        "assets/images/projects/school-1.jpg",
+        "assets/images/projects/school-2.jpg",
+        "assets/images/projects/school-3.jpg"
+      ],
+      "technologies": ["Angular", "Node.js", "PostgreSQL", "Docker", "AWS"],
+      "category": "web",
+      "featured": false,
+      "githubUrl": "",
+      "liveUrl": "https://school-demo.com",
+      "startDate": "2022-03-01",
+      "endDate": "2023-02-28",
+      "status": "completed",
+      "tags": ["education", "saas", "management"],
+      "challenges": [
+        "Arquitetura multi-tenant escalável",
+        "Sistema de permissões granular"
+      ],
+      "learnings": [
+        "Arquitetura de microservices",
+        "Deploy e CI/CD com Docker e AWS"
+      ],
+      "clientType": "empresa"
+    },
+    {
+      "id": "4",
+      "title": "Portfolio Interativo 3D",
+      "slug": "portfolio-3d",
+      "description": "Portfolio pessoal com elementos 3D interativos usando Three.js. Experiência imersiva com animações suaves e design moderno.",
+      "shortDescription": "Portfolio com elementos 3D interativos e design moderno",
+      "thumbnail": "assets/images/projects/portfolio-thumb.jpg",
+      "images": [
+        "assets/images/projects/portfolio-1.jpg"
+      ],
+      "technologies": ["React", "Three.js", "GSAP", "Tailwind CSS"],
+      "category": "web",
+      "featured": true,
+      "githubUrl": "https://github.com/usuario/portfolio-3d",
+      "liveUrl": "https://portfolio-demo.com",
+      "startDate": "2024-01-01",
+      "endDate": "",
+      "status": "in-progress",
+      "tags": ["portfolio", "3d", "interactive"],
+      "challenges": [
+        "Performance de renderização 3D",
+        "Responsividade com elementos 3D"
+      ],
+      "learnings": [
+        "Three.js e WebGL",
+        "Otimização de performance gráfica"
+      ],
+      "clientType": "pessoal"
+    },
+    {
+      "id": "5",
+      "title": "API de Pagamentos",
+      "slug": "payment-api",
+      "description": "API REST para processamento de pagamentos com integração a múltiplos gateways (Stripe, PayPal, PagSeguro). Sistema seguro com autenticação JWT e webhooks.",
+      "shortDescription": "API REST para processamento de pagamentos multi-gateway",
+      "thumbnail": "assets/images/projects/payment-thumb.jpg",
+      "images": [],
+      "technologies": ["Node.js", "Express", "PostgreSQL", "Redis", "JWT"],
+      "category": "backend",
+      "featured": false,
+      "githubUrl": "https://github.com/usuario/payment-api",
+      "liveUrl": "",
+      "startDate": "2023-08-01",
+      "endDate": "2023-11-30",
+      "status": "completed",
+      "tags": ["api", "payments", "backend"],
+      "challenges": [
+        "Segurança PCI compliance",
+        "Gestão de transações e rollbacks"
+      ],
+      "learnings": [
+        "Segurança em APIs de pagamento",
+        "Padrões de design para APIs RESTful"
+      ],
+      "clientType": "freelance"
+    }
+  ],
+
+  "skills": [
+    {
+      "id": "1",
+      "name": "Angular",
+      "category": "frontend",
+      "level": 5,
+      "yearsOfExperience": 4,
+      "icon": "assets/icons/angular.svg",
+      "color": "#DD0031"
+    },
+    {
+      "id": "2",
+      "name": "React",
+      "category": "frontend",
+      "level": 4,
+      "yearsOfExperience": 3,
+      "icon": "assets/icons/react.svg",
+      "color": "#61DAFB"
+    },
+    {
+      "id": "3",
+      "name": "TypeScript",
+      "category": "frontend",
+      "level": 5,
+      "yearsOfExperience": 4,
+      "icon": "assets/icons/typescript.svg",
+      "color": "#3178C6"
+    },
+    {
+      "id": "4",
+      "name": "JavaScript",
+      "category": "frontend",
+      "level": 5,
+      "yearsOfExperience": 5,
+      "icon": "assets/icons/javascript.svg",
+      "color": "#F7DF1E"
+    },
+    {
+      "id": "5",
+      "name": "HTML5",
+      "category": "frontend",
+      "level": 5,
+      "yearsOfExperience": 5,
+      "icon": "assets/icons/html5.svg",
+      "color": "#E34F26"
+    },
+    {
+      "id": "6",
+      "name": "CSS3",
+      "category": "frontend",
+      "level": 5,
+      "yearsOfExperience": 5,
+      "icon": "assets/icons/css3.svg",
+      "color": "#1572B6"
+    },
+    {
+      "id": "7",
+      "name": "Tailwind CSS",
+      "category": "frontend",
+      "level": 4,
+      "yearsOfExperience": 2,
+      "icon": "assets/icons/tailwind.svg",
+      "color": "#06B6D4"
+    },
+    {
+      "id": "8",
+      "name": "Node.js",
+      "category": "backend",
+      "level": 4,
+      "yearsOfExperience": 3,
+      "icon": "assets/icons/nodejs.svg",
+      "color": "#339933"
+    },
+    {
+      "id": "9",
+      "name": "Express",
+      "category": "backend",
+      "level": 4,
+      "yearsOfExperience": 3,
+      "icon": "assets/icons/express.svg",
+      "color": "#000000"
+    },
+    {
+      "id": "10",
+      "name": "Python",
+      "category": "backend",
+      "level": 3,
+      "yearsOfExperience": 2,
+      "icon": "assets/icons/python.svg",
+      "color": "#3776AB"
+    },
+    {
+      "id": "11",
+      "name": "MongoDB",
+      "category": "database",
+      "level": 4,
+      "yearsOfExperience": 3,
+      "icon": "assets/icons/mongodb.svg",
+      "color": "#47A248"
+    },
+    {
+      "id": "12",
+      "name": "PostgreSQL",
+      "category": "database",
+      "level": 4,
+      "yearsOfExperience": 3,
+      "icon": "assets/icons/postgresql.svg",
+      "color": "#4169E1"
+    },
+    {
+      "id": "13",
+      "name": "Firebase",
+      "category": "database",
+      "level": 3,
+      "yearsOfExperience": 2,
+      "icon": "assets/icons/firebase.svg",
+      "color": "#FFCA28"
+    },
+    {
+      "id": "14",
+      "name": "Git",
+      "category": "tools",
+      "level": 5,
+      "yearsOfExperience": 5,
+      "icon": "assets/icons/git.svg",
+      "color": "#F05032"
+    },
+    {
+      "id": "15",
+      "name": "Docker",
+      "category": "tools",
+      "level": 3,
+      "yearsOfExperience": 2,
+      "icon": "assets/icons/docker.svg",
+      "color": "#2496ED"
+    },
+    {
+      "id": "16",
+      "name": "AWS",
+      "category": "tools",
+      "level": 3,
+      "yearsOfExperience": 2,
+      "icon": "assets/icons/aws.svg",
+      "color": "#FF9900"
+    },
+    {
+      "id": "17",
+      "name": "Figma",
+      "category": "tools",
+      "level": 4,
+      "yearsOfExperience": 3,
+      "icon": "assets/icons/figma.svg",
+      "color": "#F24E1E"
+    }
+  ],
+
+  "experience": [
+    {
+      "id": "1",
+      "company": "Tech Solutions Inc.",
+      "position": "Senior Full Stack Developer",
+      "description": "Liderança técnica de equipe de 5 desenvolvedores. Responsável pela arquitetura e desenvolvimento de aplicações web enterprise usando Angular e Node.js. Implementação de CI/CD e boas práticas de desenvolvimento.",
+      "startDate": "2022-03-01",
+      "endDate": "",
+      "current": true,
+      "location": "São Paulo, SP - Remote",
+      "type": "full-time",
+      "technologies": ["Angular", "Node.js", "PostgreSQL", "AWS", "Docker"],
+      "achievements": [
+        "Reduziu tempo de deploy em 60% com implementação de CI/CD",
+        "Liderou migração de sistema legado para arquitetura moderna",
+        "Implementou testes automatizados aumentando cobertura para 85%",
+        "Mentorou 3 desenvolvedores júnior"
+      ],
+      "companyLogo": "assets/images/companies/tech-solutions.png",
+      "companyUrl": "https://techsolutions.com"
+    },
+    {
+      "id": "2",
+      "company": "Digital Agency",
+      "position": "Full Stack Developer",
+      "description": "Desenvolvimento de sites e aplicações web para diversos clientes. Trabalho direto com designers e clientes para entregar soluções de alta qualidade. Uso de metodologias ágeis.",
+      "startDate": "2020-01-15",
+      "endDate": "2022-02-28",
+      "current": false,
+      "location": "São Paulo, SP",
+      "type": "full-time",
+      "technologies": ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+      "achievements": [
+        "Desenvolveu mais de 20 sites responsivos",
+        "Implementou sistema de gerenciamento de conteúdo customizado",
+        "Melhorou performance de sites em média 40%",
+        "Recebeu prêmio de 'Desenvolvedor do Ano' em 2021"
+      ],
+      "companyLogo": "assets/images/companies/digital-agency.png",
+      "companyUrl": "https://digitalagency.com"
+    },
+    {
+      "id": "3",
+      "company": "Freelancer",
+      "position": "Desenvolvedor Web Freelance",
+      "description": "Desenvolvimento de soluções web personalizadas para pequenas e médias empresas. Desde landing pages até sistemas completos de gestão.",
+      "startDate": "2019-06-01",
+      "endDate": "2019-12-31",
+      "current": false,
+      "location": "Remote",
+      "type": "freelance",
+      "technologies": ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+      "achievements": [
+        "Atendeu mais de 15 clientes satisfeitos",
+        "Desenvolveu 30+ projetos de diferentes complexidades",
+        "Manteve taxa de satisfação de 95%"
+      ],
+      "companyLogo": "",
+      "companyUrl": ""
+    },
+    {
+      "id": "4",
+      "company": "StartupXYZ",
+      "position": "Junior Web Developer",
+      "description": "Primeira experiência profissional. Desenvolvimento de features para aplicação web da startup. Aprendizado intensivo de tecnologias modernas e boas práticas.",
+      "startDate": "2018-03-01",
+      "endDate": "2019-05-31",
+      "current": false,
+      "location": "São Paulo, SP",
+      "type": "full-time",
+      "technologies": ["Angular", "TypeScript", "Firebase"],
+      "achievements": [
+        "Desenvolveu 5+ features principais do produto",
+        "Participou ativamente de code reviews",
+        "Aprendeu metodologias ágeis (Scrum)"
+      ],
+      "companyLogo": "assets/images/companies/startupxyz.png",
+      "companyUrl": "https://startupxyz.com"
+    }
+  ],
+
+  "testimonials": [
+    {
+      "id": "1",
+      "name": "Maria Santos",
+      "role": "CEO",
+      "company": "Tech Solutions Inc.",
+      "avatar": "assets/images/testimonials/maria.jpg",
+      "text": "João é um profissional excepcional. Sua capacidade técnica combinada com excelentes habilidades de comunicação fazem dele um líder nato. Recomendo fortemente!",
+      "rating": 5,
+      "date": "2024-01-15"
+    },
+    {
+      "id": "2",
+      "name": "Carlos Oliveira",
+      "role": "Product Manager",
+      "company": "Digital Agency",
+      "avatar": "assets/images/testimonials/carlos.jpg",
+      "text": "Trabalhar com o João foi uma experiência incrível. Sempre entrega além do esperado e com qualidade impecável. Um verdadeiro profissional!",
+      "rating": 5,
+      "date": "2023-11-20"
+    },
+    {
+      "id": "3",
+      "name": "Ana Paula",
+      "role": "Empreendedora",
+      "company": "E-commerce ABC",
+      "avatar": "assets/images/testimonials/ana.jpg",
+      "text": "João desenvolveu meu e-commerce do zero e superou todas as expectativas. Sistema rápido, bonito e funcional. Recomendo!",
+      "rating": 5,
+      "date": "2023-09-10"
+    }
+  ],
+
+  "blog": [
+    {
+      "id": "1",
+      "title": "Como Estruturar um Projeto Angular Escalável",
+      "slug": "estrutura-projeto-angular",
+      "excerpt": "Aprenda as melhores práticas para organizar um projeto Angular que pode crescer sem se tornar um caos...",
+      "content": "Conteúdo completo do post...",
+      "coverImage": "assets/images/blog/angular-structure.jpg",
+      "category": "Angular",
+      "tags": ["angular", "arquitetura", "boas-práticas"],
+      "publishedAt": "2024-01-15",
+      "readTime": 8,
+      "views": 1543,
+      "likes": 89,
+      "featured": true
+    },
+    {
+      "id": "2",
+      "title": "10 Dicas de Performance para React",
+      "slug": "performance-react",
+      "excerpt": "Descubra técnicas avançadas para otimizar a performance de suas aplicações React...",
+      "content": "Conteúdo completo do post...",
+      "coverImage": "assets/images/blog/react-performance.jpg",
+      "category": "React",
+      "tags": ["react", "performance", "otimização"],
+      "publishedAt": "2024-01-10",
+      "readTime": 6,
+      "views": 2156,
+      "likes": 142,
+      "featured": true
+    }
+  ],
+
+  "statistics": {
+    "totalProjects": 50,
+    "completedProjects": 45,
+    "happyClients": 30,
+    "yearsExperience": 5,
+    "technologies": 17,
+    "coffeesCups": 9999
+  }
+}

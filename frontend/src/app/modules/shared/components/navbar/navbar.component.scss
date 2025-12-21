@@ -1,0 +1,19 @@
+:host {
+  display: block;
+}
+
+// Smooth transitions
+nav {
+  transition: all 0.3s ease-in-out;
+}
+
+// Active link styling
+.router-link-active {
+  font-weight: 500;
+}
+
+// Logo animation
+.group:hover .w-10 {
+  transform: scale(1.1);
+  transition: transform 0.2s ease-in-out;
+}
