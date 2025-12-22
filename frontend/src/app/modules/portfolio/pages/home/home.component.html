@@ -1,9 +1,251 @@
-<main>
-    <section class="container mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold mb-4">Welcome to My Portfolio</h1>
-        <p class="text-gray-700 dark:text-gray-300">
-            This is the home page of my portfolio website. Here you can find information about me, my projects, and how
-            to contact me.
+<div class="min-h-screen bg-slate-950">
+  <!-- Hero Section -->
+  <app-hero-section></app-hero-section>
+
+  <!-- Featured Projects Section -->
+  <section class="py-20 bg-slate-900">
+    <div class="container mx-auto px-4">
+      <app-section-header
+        title="Projetos em Destaque"
+        subtitle="Confira alguns dos meus trabalhos mais recentes e impactantes"
+        icon="work"
+        align="center"
+      ></app-section-header>
+
+      @if (isLoadingProjects) {
+        <div class="flex justify-center py-12">
+          <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-500"></div>
+        </div>
+      } @else if (featuredProjects.length > 0) {
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          @for (project of featuredProjects; track project.id) {
+            <app-project-card [project]="project"></app-project-card>
+          }
+        </div>
+
+        <div class="flex justify-center mt-12">
+          <a
+            routerLink="/projects"
+            class="px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white rounded-lg shadow-glow-md hover:shadow-glow-lg transition-all font-medium inline-flex items-center space-x-2"
+          >
+            <span>Ver Todos os Projetos</span>
+            <mat-icon>arrow_forward</mat-icon>
+          </a>
+        </div>
+      } @else {
+        <div class="text-center py-12">
+          <mat-icon class="text-6xl text-slate-600 mb-4">folder_open</mat-icon>
+          <p class="text-slate-400">Nenhum projeto em destaque ainda</p>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Skills Overview Section -->
+  <section class="py-20 bg-slate-800">
+    <div class="container mx-auto px-4">
+      <app-section-header
+        title="Tecnologias & Habilidades"
+        subtitle="Ferramentas e tecnologias que domino para criar soluções incríveis"
+        icon="code"
+        align="center"
+      ></app-section-header>
+
+      @if (isLoadingSkills) {
+        <div class="flex justify-center py-12">
+          <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-500"></div>
+        </div>
+      } @else if (skillCategories.length > 0) {
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          @for (category of skillCategories; track category.category) {
+            <div class="bg-slate-900 rounded-xl p-6 shadow-lg hover:shadow-glow-md transition-all duration-300 border border-slate-700 hover:border-primary-500">
+              <div class="flex items-center space-x-3 mb-4">
+                <div class="w-12 h-12 bg-primary-500/10 rounded-lg flex items-center justify-center">
+                  <mat-icon class="text-primary-400">{{ category.icon || 'code' }}</mat-icon>
+                </div>
+                <h3 class="text-xl font-bold text-slate-100">
+                  {{ category.categoryName }}
+                </h3>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                @for (skill of category.skills.slice(0, 6); track skill.id) {
+                  <span class="px-3 py-1 bg-slate-800 text-slate-300 rounded-full text-sm border border-slate-700">
+                    {{ skill.name }}
+                  </span>
+                }
+                @if (category.skills.length > 6) {
+                  <span class="px-3 py-1 text-primary-400 font-medium text-sm">
+                    +{{ category.skills.length - 6 }} mais
+                  </span>
+                }
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="flex justify-center mt-12">
+          <a
+            routerLink="/skills"
+            class="px-8 py-4 bg-transparent border-2 border-primary-500 text-primary-400 hover:bg-primary-500 hover:text-white rounded-lg transition-all font-medium inline-flex items-center space-x-2"
+          >
+            <span>Ver Todas as Skills</span>
+            <mat-icon>arrow_forward</mat-icon>
+          </a>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Experience Timeline Section -->
+  <section class="py-20 bg-slate-900">
+    <div class="container mx-auto px-4">
+      <app-section-header
+        title="Trajetória Profissional"
+        subtitle="Minha jornada de crescimento e experiências ao longo dos anos"
+        icon="business_center"
+        align="center"
+      ></app-section-header>
+
+      @if (isLoadingExperience) {
+        <div class="flex justify-center py-12">
+          <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-500"></div>
+        </div>
+      } @else if (recentExperiences.length > 0) {
+        <div class="max-w-4xl mx-auto">
+          @for (experience of recentExperiences; track experience.id; let i = $index) {
+            <div class="relative pl-8 pb-12 last:pb-0">
+              <!-- Timeline line -->
+              @if (!$last) {
+                <div class="absolute left-[15px] top-8 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 to-primary-900"></div>
+              }
+
+              <!-- Timeline dot -->
+              <div class="absolute left-0 top-2 w-8 h-8 rounded-full flex items-center justify-center"
+                   [class]="experience.current 
+                     ? 'bg-primary-500 ring-4 ring-primary-500/20 shadow-glow-sm' 
+                     : 'bg-slate-800 border-2 border-primary-500'">
+                <mat-icon [class]="experience.current ? 'text-white text-lg' : 'text-primary-400 text-lg'">
+                  {{ experience.current ? 'work' : 'work_outline' }}
+                </mat-icon>
+              </div>
+
+              <!-- Content -->
+              <div class="bg-slate-800 rounded-xl p-6 shadow-lg border border-slate-700 hover:border-primary-500 hover:shadow-glow-md transition-all duration-300">
+                <div class="flex flex-wrap items-start justify-between gap-4 mb-3">
+                  <div>
+                    <h3 class="text-xl font-bold text-slate-100">
+                      {{ experience.position }}
+                    </h3>
+                    <p class="text-primary-400 font-semibold">{{ experience.company }}</p>
+                  </div>
+                  @if (experience.current) {
+                    <span class="px-3 py-1 bg-accent text-white rounded-full text-sm font-medium">
+                      Atual
+                    </span>
+                  }
+                </div>
+
+                <div class="flex flex-wrap gap-4 text-sm text-slate-400 mb-4">
+                  <span class="flex items-center space-x-1">
+                    <mat-icon class="text-lg">calendar_today</mat-icon>
+                    <span>{{ experience.startDate }} - {{ experience.endDate || 'Presente' }}</span>
+                  </span>
+                  <span class="flex items-center space-x-1">
+                    <mat-icon class="text-lg">location_on</mat-icon>
+                    <span>{{ experience.location }}</span>
+                  </span>
+                </div>
+
+                <p class="text-slate-300 mb-4">
+                  {{ experience.description }}
+                </p>
+
+                @if (experience.technologies.length > 0) {
+                  <div class="flex flex-wrap gap-2">
+                    @for (tech of experience.technologies.slice(0, 5); track tech) {
+                      <span class="px-2 py-1 bg-primary-500/10 text-primary-400 border border-primary-500/30 rounded text-xs font-medium">
+                        {{ tech }}
+                      </span>
+                    }
+                  </div>
+                }
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="flex justify-center mt-12">
+          <a
+            routerLink="/experience"
+            class="px-8 py-4 bg-transparent border-2 border-primary-500 text-primary-400 hover:bg-primary-500 hover:text-white rounded-lg transition-all font-medium inline-flex items-center space-x-2"
+          >
+            <span>Ver Experiência Completa</span>
+            <mat-icon>arrow_forward</mat-icon>
+          </a>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Statistics Section -->
+  <section class="py-20 bg-gradient-to-r from-primary-600 to-primary-800 relative overflow-hidden">
+    <!-- Elementos decorativos -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        @for (stat of statistics; track stat.label) {
+          <div class="text-center animate-fade-in">
+            <div class="text-5xl md:text-6xl font-bold text-white mb-2">
+              {{ stat.value }}{{ stat.suffix || '' }}
+            </div>
+            <div class="text-white/90 text-lg">
+              {{ stat.label }}
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="py-20 bg-slate-800">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-4xl font-bold text-slate-100 mb-6">
+          Vamos Trabalhar Juntos?
+        </h2>
+        <p class="text-xl text-slate-300 mb-8">
+          Estou sempre aberto a novos projetos e oportunidades interessantes. 
+          Entre em contato e vamos criar algo incrível!
         </p>
-    </section>
-</main>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            routerLink="/contact"
+            class="px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white rounded-lg shadow-glow-md hover:shadow-glow-lg transition-all font-medium inline-flex items-center justify-center space-x-2"
+          >
+            <mat-icon>email</mat-icon>
+            <span>Entrar em Contato</span>
+          </a>
+          <a
+            href="assets/cv.pdf"
+            download
+            class="px-8 py-4 bg-transparent border-2 border-primary-500 text-primary-400 hover:bg-primary-500 hover:text-white rounded-lg transition-all font-medium inline-flex items-center justify-center space-x-2"
+          >
+            <mat-icon>download</mat-icon>
+            <span>Download CV</span>
+          </a>
+        </div>
+
+        <!-- Social Links -->
+        <div class="mt-12 flex justify-center">
+          <app-social-links size="large"></app-social-links>
+        </div>
+        <p class="text-slate-400 mt-4">Me encontre nas redes sociais</p>
+      </div>
+    </div>
+  </section>
+</div>

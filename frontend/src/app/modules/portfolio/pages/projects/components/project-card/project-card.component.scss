@@ -1,0 +1,34 @@
+:host {
+  display: block;
+}
+
+// Line clamp utility
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Card hover effects
+article {
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  // Image zoom effect
+  img {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+}
