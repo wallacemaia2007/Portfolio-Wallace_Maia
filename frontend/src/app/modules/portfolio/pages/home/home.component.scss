@@ -16,7 +16,7 @@
 
 .animate-fade-in {
   animation: fade-in 0.8s ease-out forwards;
-  
+
   // Stagger effect for multiple elements
   @for $i from 1 through 4 {
     &:nth-child(#{$i}) {

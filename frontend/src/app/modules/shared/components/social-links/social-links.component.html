@@ -1,21 +1,12 @@
-<div 
-  class="flex gap-2"
-  [ngClass]="{
+<div class="flex gap-2" [ngClass]="{
     'flex-row': orientation === 'horizontal',
     'flex-col': orientation === 'vertical'
-  }"
->
+  }">
   @for (link of socialLinks; track link.name) {
-    <a
-      [href]="link.url"
-      target="_blank"
-      rel="noopener noreferrer"
-      [matTooltip]="link.name"
-      class="social-link flex items-center justify-center rounded-lg border-2 border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary transition-all duration-300 hover:scale-110"
-      [ngClass]="getSizeClass()"
-      [attr.aria-label]="link.name"
-    >
-      <mat-icon>{{ link.icon }}</mat-icon>
-    </a>
+  <a [href]="link.url" target="_blank" rel="noopener noreferrer" [matTooltip]="link.name"
+    class="social-link flex items-center justify-center rounded-lg border-2 border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary transition-all duration-300 hover:scale-110"
+    [ngClass]="getSizeClass()" [attr.aria-label]="link.name">
+    <mat-icon>{{ link.icon }}</mat-icon>
+  </a>
   }
 </div>

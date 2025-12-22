@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { ThemeService } from '../../../portfolio/services/theme.service';
 import { PortfolioService } from '../../../portfolio/services/portfolio.service';
+import { MatTooltip } from '@angular/material/tooltip';
 
 export interface NavbarTemplate {
   acronym: string;
@@ -25,6 +26,7 @@ export interface NavbarTemplate {
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+    MatTooltip
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',

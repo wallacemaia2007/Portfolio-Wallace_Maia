@@ -14,30 +14,19 @@ import { PortfolioService } from '../../../portfolio/services/portfolio.service'
 })
 export class HeroSectionComponent implements OnInit {
   private portfolioService = inject(PortfolioService);
-
+  theme: string | null = null;
   personalInfo: any = {
     name: '',
     role: '',
     description: '',
     avatar: '',
   };
-
-  stats: any = [
-    { value: '', label: '' },
-    { value: '', label: ' ' },
-    { value: '', label: ' ' },
-    { value: '', label: '' },
-    { value: '', label: ' ' },
-    { value: '', label: ' ' },
-  ];
-
   ngOnInit(): void {
     this.portfolioService.getPersonalInfo().subscribe((info) => {
       this.personalInfo = info;
     });
-    this.portfolioService.getStatistics().subscribe((stats) => {
-      this.stats = stats;
-    });
+
+    this.theme = localStorage.getItem('theme');
   }
 
   downloadCV(): void {

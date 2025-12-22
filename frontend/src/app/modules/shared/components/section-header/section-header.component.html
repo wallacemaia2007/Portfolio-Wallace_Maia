@@ -6,7 +6,6 @@
     'text-right': align === 'right'
   }"
 >
-  <!-- Icon (optional) -->
   @if (icon) {
     <div 
       class="mb-4"
@@ -22,12 +21,10 @@
     </div>
   }
 
-  <!-- Title -->
   <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-3">
     {{ title }}
   </h2>
 
-  <!-- Subtitle (optional) -->
   @if (subtitle) {
     <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl" 
        [ngClass]="{
@@ -39,7 +36,6 @@
     </p>
   }
 
-  <!-- Decorative line -->
   <div 
     class="mt-6 h-1 w-20 bg-gradient-to-r from-primary to-primary/50"
     [ngClass]="{

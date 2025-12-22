@@ -1,15 +1,15 @@
-<section class="min-h-[calc(100vh-4rem)] flex items-center py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
+<section
+  class="min-h-[calc(100vh-4rem)] flex items-center py-20 bg-gradient-to-br from-white to-beige-light dark:from-custom-black dark:to-custom-black-light transition-all duration-300">
   <div class="container mx-auto px-4">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      
-      <!-- Content -->
+
       <div class="space-y-6 animate-fade-in">
         <div class="space-y-2">
           <p class="text-primary font-semibold text-lg flex items-center space-x-2">
             <mat-icon class="animate-wave">waving_hand</mat-icon>
             <span>Olá, eu sou</span>
           </p>
-          <h1 class="text-5xl md:text-6xl font-bold text-gray-800 dark:text-white">
+          <h1 class="text-5xl md:text-6xl font-bold text-custom-black dark:text-white">
             {{ personalInfo.name }}
           </h1>
           <h2 class="text-3xl md:text-4xl font-semibold text-primary">
@@ -17,57 +17,33 @@
           </h2>
         </div>
 
-        <p class="text-lg text-gray-600 dark:text-gray-400 max-w-xl">
+        <p class="text-lg text-gray-700 dark:text-gray-400 max-w-xl">
           {{ personalInfo.description }}
         </p>
 
-        <!-- CTA Buttons -->
         <div class="flex flex-col sm:flex-row gap-4">
-          <a
-            routerLink="/projects"
-            mat-raised-button
-            color="primary"
-            class="flex items-center justify-center space-x-2 px-8 py-3"
-          >
+          <a routerLink="/projects" mat-raised-button color="beige"
+            class="flex items-center justify-center space-x-2 px-8 py-3">
             <mat-icon>work</mat-icon>
-            <span>Ver Projetos</span>
+            <span>Meus Projetos</span>
           </a>
-          <a
-            routerLink="/contact"
-            mat-stroked-button
-            color="primary"
-            class="flex items-center justify-center space-x-2 px-8 py-3  "
-          >
+          <a routerLink="/contact" mat-raised-button color="beige"
+            class="flex items-center justify-center space-x-2 px-8 py-3">
             <mat-icon>email</mat-icon>
-            <span>Entre em Contato</span>
+            <span>Contato</span>
           </a>
         </div>
 
-        <!-- Stats -->
-        <div class="grid grid-cols-3 gap-4 pt-8 border-t border-gray-200 dark:border-gray-700">
-          @for (stat of stats; track stat.label) {
-            <div class="text-center lg:text-left">
-              <p class="text-3xl font-bold text-primary">{{ stats.completedProjects.quantity }}</p>
-              <p class="text-sm text-gray-600 dark:text-gray-400">{{ stats.completedProjects.label }}</p>
-            </div>
-          }
-        </div>
       </div>
 
-      <!-- Image/Avatar -->
       <div class="relative lg:order-last order-first animate-float">
         <div class="relative z-10">
-          <div class="w-full max-w-md mx-auto aspect-square rounded-full overflow-hidden border-8 border-white dark:border-gray-800 shadow-2xl">
-            <img
-              [src]="personalInfo.avatar"
-              [alt]="personalInfo.name"
-              class="w-full h-full object-cover"
-              onerror="this.src='assets/images/default-avatar.png'"
-            >
+          <div
+            class="w-full max-w-md mx-auto aspect-square rounded-full overflow-hidden border-8 border-white dark:border-custom-black shadow-2xl">
+            <img [src]="personalInfo.avatar" [alt]="personalInfo.name" class="w-full h-full object-cover">
           </div>
         </div>
-        
-        <!-- Decorative Elements -->
+
         <div class="absolute top-0 right-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl -z-10"></div>
         <div class="absolute bottom-0 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl -z-10"></div>
       </div>

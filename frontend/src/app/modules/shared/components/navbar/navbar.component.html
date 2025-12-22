@@ -1,37 +1,36 @@
-<nav class="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 shadow-md transition-colors duration-300">
+<nav
+  class="fixed top-0 left-0 right-0 z-50 bg-beige-dark dark:bg-custom-black shadow-md transition-all duration-300 border-b border-gray-200 dark:border-gray-800">
   <div class="container mx-auto px-4">
     <div class="flex justify-between items-center h-16">
 
-      <!-- Logo -->
       <a routerLink="/home" class="flex items-center space-x-2 group">
-        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+        <div
+          class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center transition-transform group-hover:scale-110 shadow-lg dark:shadow-glow">
           <span class="text-white font-bold text-xl">{{ navbarData.acronym }}</span>
         </div>
-        <span class="text-xl font-bold text-gray-800 dark:text-white hidden md:block">
+        <span class="text-xl font-bold text-custom-black dark:text-white hidden md:block">
           {{ navbarData.fullName }}
         </span>
       </a>
 
-      <!-- Desktop Menu -->
       <div class="hidden md:flex items-center space-x-1">
         @for (item of navbarData.navItems; track item.route) {
-        <a [routerLink]="item.route" routerLinkActive="text-primary bg-gray-100 dark:bg-gray-800"
-          class="px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 flex items-center space-x-2">
+        <a [routerLink]="item.route" routerLinkActive="text-primary bg-beige-light dark:bg-custom-black-light"
+          class="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-primary hover:bg-beige-light dark:hover:bg-custom-black-light transition-all duration-200 flex items-center space-x-2">
           <mat-icon class="text-sm">{{ item.icon }}</mat-icon>
           <span>{{ item.label }}</span>
         </a>
         }
       </div>
 
-      <!-- Actions -->
       <div class="flex items-center space-x-2">
-        <!-- Theme Toggle -->
-        <button mat-icon-button (click)="toggleTheme()" class="text-gray-600 dark:text-gray-300"
-          [attr.aria-label]="isDarkMode ? 'Ativar modo claro' : 'Ativar modo escuro'">
+        <button mat-icon-button (click)="toggleTheme()"
+          class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors"
+          [attr.aria-label]="isDarkMode ? 'Ativar modo claro' : 'Ativar modo escuro'"
+          [matTooltip]="isDarkMode ? 'Ativar modo claro' : 'Ativar modo escuro'" matTooltipPosition="above">
           <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
         </button>
 
-        <!-- Download CV -->
         <a href="assets/cv.pdf" download mat-raised-button color="primary"
           class="hidden md:flex items-center space-x-2">
           <mat-icon>download</mat-icon>
@@ -39,8 +38,8 @@
         </a>
 
         <!-- Mobile Menu Toggle -->
-        <button mat-icon-button (click)="toggleMenu()" class="md:hidden text-gray-600 dark:text-gray-300"
-          aria-label="Menu">
+        <button mat-icon-button (click)="toggleMenu()"
+          class="md:hidden text-gray-700 dark:text-gray-300 hover:text-primary" aria-label="Menu">
           <mat-icon>{{ menuOpen ? 'close' : 'menu' }}</mat-icon>
         </button>
       </div>
@@ -48,17 +47,18 @@
 
     <!-- Mobile Menu -->
     @if (menuOpen) {
-    <div class="md:hidden py-4 border-t border-gray-200 dark:border-gray-700">
+    <div class="md:hidden py-4 border-t border-gray-200 dark:border-gray-800">
       @for (item of navbarData.navItems; track item.route) {
-      <a [routerLink]="item.route" routerLinkActive="text-primary bg-gray-100 dark:bg-gray-800" (click)="closeMenu()"
-        class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 transition-all">
+      <a [routerLink]="item.route" routerLinkActive="text-primary bg-beige-light dark:bg-custom-black-light"
+        (click)="closeMenu()"
+        class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:text-primary hover:bg-beige-light dark:hover:bg-custom-black-light transition-all">
         <mat-icon>{{ item.icon }}</mat-icon>
         <span>{{ item.label }}</span>
       </a>
       }
 
       <a href="assets/cv.pdf" download (click)="closeMenu()"
-        class="flex items-center space-x-3 px-4 py-3 mt-2 text-white bg-primary rounded-lg hover:bg-primary/90 transition-all">
+        class="flex items-center space-x-3 px-4 py-3 mt-2 text-white bg-primary rounded-lg hover:bg-primary-dark transition-all">
         <mat-icon>download</mat-icon>
         <span>Download CV</span>
       </a>

@@ -425,9 +425,15 @@
     },
     {
       "name": "Email",
-      "url": "mailto:wallacemaia2007@email.com",
+      "url": "mailto:wallacemaia2007@gmail.com",
       "icon": "email",
       "color": "#EA4335"
+    },
+    {
+      "name": "WhatsApp",
+      "url": "https://wa.me/35910036806",
+      "icon": "perm_phone_msg",
+      "color": "#25D366"
     }
   ]
 }

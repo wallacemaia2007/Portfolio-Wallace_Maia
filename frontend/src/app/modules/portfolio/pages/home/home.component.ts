@@ -36,19 +36,15 @@ import { Experience } from '../../models/experience.model';
 export class HomeComponent implements OnInit {
   private portfolioService = inject(PortfolioService);
 
-  // Featured Projects
   featuredProjects: Project[] = [];
   isLoadingProjects = true;
 
-  // Skills
   skillCategories: SkillGroup[] = [];
   isLoadingSkills = true;
 
-  // Experience
   recentExperiences: Experience[] = [];
   isLoadingExperience = true;
 
-  // Statistics
   statistics: Array<{ value: string; label: string; suffix?: string }> = [];
 
   ngOnInit(): void {
@@ -58,9 +54,6 @@ export class HomeComponent implements OnInit {
     this.loadStatistics();
   }
 
-  /**
-   * Carrega projetos em destaque (máximo 3)
-   */
   private loadFeaturedProjects(): void {
     this.isLoadingProjects = true;
     this.portfolioService.getFeaturedProjects().subscribe({
@@ -75,9 +68,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  /**
-   * Carrega overview de skills agrupadas por categoria
-   */
   private loadSkillsOverview(): void {
     this.isLoadingSkills = true;
     this.portfolioService.getSkillsByCategory().subscribe({
@@ -100,9 +90,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  /**
-   * Carrega experiências mais recentes (máximo 3)
-   */
   private loadRecentExperience(): void {
     this.isLoadingExperience = true;
     this.portfolioService.getExperience().subscribe({
@@ -117,9 +104,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  /**
-   * Carrega estatísticas do portfólio
-   */
   private loadStatistics(): void {
     this.portfolioService.getStatistics().subscribe({
       next: (stats) => {
@@ -147,7 +131,6 @@ export class HomeComponent implements OnInit {
       },
       error: (error) => {
         console.error('Erro ao carregar estatísticas:', error);
-        // Fallback com valores padrão
         this.statistics = [
           { value: '0', label: 'Projetos Concluídos' },
           { value: '0', label: 'Anos de Experiência', suffix: '+' },

@@ -1,67 +1,87 @@
 <footer
-  class="bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+  class="relative bg-beige-dark dark:bg-custom-black border-t-4 border-primary dark:border-primary-dark transition-all duration-300">
   <div class="container mx-auto px-4 py-12">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
       <div class="space-y-4">
         <div class="flex items-center space-x-2">
-          <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+          <div
+            class="w-10 h-10 bg-primary hover:bg-primary-dark rounded-lg flex items-center justify-center transition-colors shadow-lg dark:shadow-glow">
             <span class="text-white font-bold text-xl">{{ footerData.acronym }}</span>
           </div>
-          <span class="text-xl font-bold text-gray-800 dark:text-white">
+          <span class="text-xl font-bold text-custom-black dark:text-white">
             {{ footerData.fullName }}
           </span>
         </div>
-        <p class="text-gray-600 dark:text-gray-400 text-sm">
+        <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
           {{ footerData.bio }}
         </p>
         <app-social-links></app-social-links>
       </div>
 
       <div class="space-y-4">
-        <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
-          Links Rápidos
+        <h3 class="text-lg font-semibold text-custom-black dark:text-white flex items-center space-x-2">
+          <span class="w-1 h-6 bg-primary rounded"></span>
+          <span>Links Rápidos</span>
         </h3>
         <nav class="flex flex-col space-y-2">
           @for (link of footerData.quickLinks; track link.route) {
           <a [routerLink]="link.route"
-            class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors text-sm">
-            {{ link.label }}
+            class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light hover:translate-x-2 transition-all duration-200 text-sm flex items-center space-x-2">
+            <span class="text-primary">→</span>
+            <span>{{ link.label }}</span>
           </a>
           }
         </nav>
       </div>
 
       <div class="space-y-4">
-        <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
-          Contato
+        <h3 class="text-lg font-semibold text-custom-black dark:text-white flex items-center space-x-2">
+          <span class="w-1 h-6 bg-primary rounded"></span>
+          <span>Contato</span>
         </h3>
         <div class="space-y-3">
           <a [href]="'mailto:' + footerData.email"
-            class="flex items-center space-x-3 text-gray-600 dark:text-gray-400 hover:text-primary transition-colors text-sm">
-            <mat-icon class="text-primary">email</mat-icon>
+            class="flex items-center space-x-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors text-sm group">
+            <div
+              class="w-8 h-8 bg-beige dark:bg-custom-black rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+              <mat-icon
+                style="font-size: 1.5rem !important; height: 1.5rem; width: 1.5rem; display: flex; align-items: center; justify-content: center;">email</mat-icon>
+            </div>
             <span>{{ footerData.email }}</span>
           </a>
           <a [href]="'tel:' + footerData.phone"
-            class="flex items-center space-x-3 text-gray-600 dark:text-gray-400 hover:text-primary transition-colors text-sm">
-            <mat-icon class="text-primary">phone</mat-icon>
+            class="flex items-center space-x-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors text-sm group">
+            <div
+              class="w-8 h-8 bg-beige dark:bg-custom-black rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+              <mat-icon
+                style="font-size: 1.5rem !important; height: 1.5rem; width: 1.5rem; display: flex; align-items: center; justify-content: center;">phone</mat-icon>
+            </div>
             <span>{{ footerData.phone }}</span>
           </a>
-          <div class="flex items-center space-x-3 text-gray-600 dark:text-gray-400 text-sm">
-            <mat-icon class="text-primary">location_on</mat-icon>
+          <div class="flex items-center space-x-3 text-gray-700 dark:text-gray-300 text-sm group">
+            <div
+              class="w-8 h-8 bg-beige dark:bg-custom-black rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+              <mat-icon
+                style="font-size: 1.5rem !important; height: 1.5rem; width: 1.5rem; display: flex; align-items: center; justify-content: center;">location_on</mat-icon>
+            </div>
             <span>{{ footerData.location }}</span>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+    <div class="mt-12 pt-8 border-t-2 border-gray-300 dark:border-gray-700">
       <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-        <p class="text-gray-600 dark:text-gray-400 text-sm text-center md:text-left">
-          © {{ footerData.currentYear }} {{ footerData.fullName }}. Todos os direitos reservados.
+        <p class="text-gray-700 dark:text-gray-300 text-sm text-center md:text-left">
+          © {{ footerData.currentYear }} <span class="font-semibold text-primary">{{ footerData.fullName }}</span>.
+          Todos os direitos reservados.
         </p>
-        <button mat-mini-fab color="primary" (click)="scrollToTop()" class="shadow-lg" aria-label="Voltar ao topo">
-          <mat-icon>arrow_upward</mat-icon>
+
+        <button (click)="scrollToTop()" [matTooltip]="'Voltar ao topo'" matTooltipPosition="above"
+          class="w-12 h-12 rounded-full bg-primary-light hover:bg-primary-dark text-white shadow-lg hover:shadow-glow transition-all hover:scale-110 flex items-center justify-center"
+          aria-label="Voltar ao topo">
+          <mat-icon class="text-2xl flex items-center justify-center leading-none">arrow_upward</mat-icon>
         </button>
       </div>
     </div>

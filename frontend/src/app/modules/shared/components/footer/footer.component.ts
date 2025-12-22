@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { SocialLinksComponent } from '../social-links/social-links.component';
 import { PortfolioService } from '../../../portfolio/services/portfolio.service';
+import { MatTooltip } from '@angular/material/tooltip';
 
 export interface footerTemplate {
   acronym: string;
@@ -26,6 +27,7 @@ export interface footerTemplate {
     MatIconModule,
     MatButtonModule,
     SocialLinksComponent,
+    MatTooltip
   ],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',

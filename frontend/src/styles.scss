@@ -1,75 +1,289 @@
-/* You can add global styles to this file, and also import other style files */
-@use '@angular/material' as mat;
+/* ═══════════════════════════════════════════════════════════
+   🎨 ANGULAR MATERIAL + TAILWIND - PALETA VERMELHA/BEGE/PRETA
+   ═══════════════════════════════════════════════════════════ */
+
+@use "@angular/material" as mat;
 @include mat.core();
 
-$my-app-primary: (
-  50: #294053,
-  100: #294153,
-  200: #294153,
-  300: #294153,
-  400: #294153,
-  500: #294153,
-  600: #294153,
-  700: #294153,
-  800: #294153,
-  900: #294153,
+// ═══════════════════════════════════════
+// 🔴 PALETA PRINCIPAL - VERMELHO
+// ═══════════════════════════════════════
+$my-red-palette: (
+  50: #fde8e9,
+  100: #fac5c8,
+  200: #f69ea3,
+  300: #f2777e,
+  400: #ef5962,
+  500: #9b1b1f,
+  // Red Medium (COR PRINCIPAL)
+  600: #b51820,
+  700: #9b1b1f,
+  800: #6b0b0f,
+  // Red Dark
+  900: #6b0b0f,
   contrast: (
-    50: white,
-    100: white,
-    200: white,
-    300: white,
-    400: white,
-    500: white,
-    600: white,
-    700: white,
-    800: white,
-    900: white,
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+  ),
+);
+
+// ═══════════════════════════════════════
+// ✅ PALETA ACCENT - VERDE
+// ═══════════════════════════════════════
+$my-green-palette: (
+  50: #e8f5e9,
+  100: #c8e6c9,
+  200: #a5d6a7,
+  300: #81c784,
+  400: #66bb6a,
+  500: #4caf50,
+  // Verde
+  600: #43a047,
+  700: #388e3c,
+  800: #2e7d32,
+  900: #1b5e20,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+  ),
+);
+
+// ═══════════════════════════════════════
+// ⚠️ PALETA WARN - VERMELHO ESCURO
+// ═══════════════════════════════════════
+$my-red-dark-palette: (
+  50: #fbe9ea,
+  100: #f5c8ca,
+  200: #efa3a7,
+  300: #e87e84,
+  400: #e36269,
+  500: #6b0b0f,
+  // Red Dark
+  600: #c93d45,
+  700: #c1353c,
+  800: #b92d34,
+  900: #ab1f26,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+  ),
+);
+
+$my-app-primary: mat.define-palette($my-red-palette, 500);
+$my-app-accent: mat.define-palette($my-green-palette, 500);
+$my-app-warn: mat.define-palette($my-red-dark-palette, 500);
+
+// ═══════════════════════════════════════
+// ☀️ TEMA CLARO
+// ═══════════════════════════════════════
+$my-app-light-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $my-app-primary,
+      accent: $my-app-accent,
+      warn: $my-app-warn,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
   )
 );
 
-$my-app-accent: (
-  50: #399D30,
-  100: #399D30,
-  200: #399D30,
-  300: #399D30,
-  400: #399D30,
-  500: #399D30,
-  600: #399D30,
-  700: #399D30,
-  800: #399D30,
-  900: #399D30,
-  contrast: (
-    50: white,
-    100: white,
-    200: white,
-    300: white,
-    400: white,
-    500: white,
-    600: white,
-    700: white,
-    800: white,
-    900: white,
+@include mat.all-component-themes($my-app-light-theme);
+
+// ═══════════════════════════════════════
+// 🌙 TEMA ESCURO
+// ═══════════════════════════════════════
+$my-app-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $my-app-primary,
+      accent: $my-app-accent,
+      warn: $my-app-warn,
+    ),
   )
 );
 
-$my-app-primary: mat.define-palette($my-app-primary);
-$my-app-accent: mat.define-palette($my-app-accent);
-$my-app-theme: mat.define-light-theme((
-  color: (
-    primary: $my-app-primary,
-    accent: $my-app-accent,
-  )
-));
+.dark {
+  @include mat.all-component-colors($my-app-dark-theme);
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
 
-@include mat.all-component-themes($my-app-theme);
-
+// ═══════════════════════════════════════
+// 🎨 TAILWIND CSS
+// ═══════════════════════════════════════
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: "Poppins", sans-serif; }
+// ═══════════════════════════════════════
+// 🌐 ESTILOS GLOBAIS
+// ═══════════════════════════════════════
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #ffffff;
+  color: #2d2d2d;
+
+  &.dark {
+    background-color: #2d2d2d;
+    color: #ffffff;
+  }
+}
+
+// ═══════════════════════════════════════
+// 🔧 CUSTOMIZAÇÕES ANGULAR MATERIAL
+// ═══════════════════════════════════════
+
+.mat-mdc-raised-button,
+.mat-mdc-unelevated-button {
+  &.mat-primary {
+    background-color: #9b1b1f !important;
+    color: white !important;
+
+    &:hover {
+      background-color: #6b0b0f !important;
+    }
+  }
+}
+
+.mat-mdc-outlined-button {
+  &.mat-primary {
+    border-color: #9b1b1f !important;
+    color: #9b1b1f !important;
+
+    &:hover {
+      background-color: rgba(155, 27, 31, 0.04) !important;
+    }
+  }
+}
+
+.dark .mat-mdc-card {
+  background-color: #404040 !important;
+  color: #ffffff !important;
+}
+
+// ═══════════════════════════════════════
+// 📜 SCROLLBAR CUSTOMIZADA - LIGHT & DARK MODE
+// ═══════════════════════════════════════
+
+/* ───────────────────────────────────
+   🌞 SCROLLBAR LIGHT MODE (Vermelha em fundo claro)
+   ─────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9b1b1f;
+  border-radius: 10px;
+  border: 2px solid #f1f1f1;
+
+  &:hover {
+    background: #6b0b0f;
+  }
+
+  &:active {
+    background: #b52228;
+  }
+}
+
+/* ───────────────────────────────────
+   🌙 SCROLLBAR DARK MODE (Vermelha em fundo escuro)
+   ─────────────────────────────────── */
+.dark {
+  ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #9b1b1f;
+    border-radius: 10px;
+    border: 2px solid #1a1a1a;
+
+    &:hover {
+      background: #b52228;
+    }
+
+    &:active {
+      background: #6b0b0f;
+    }
+  }
+}
+
+/* ───────────────────────────────────
+   🦊 FIREFOX SUPPORT
+   ─────────────────────────────────── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #9b1b1f #f1f1f1;
+}
+
+.dark * {
+  scrollbar-color: #9b1b1f #1a1a1a;
+}
+
+// ═══════════════════════════════════════
+// ♿ ACESSIBILIDADE
+// ═══════════════════════════════════════
+*:focus-visible {
+  outline: 2px solid #9b1b1f;
+  outline-offset: 2px;
+}
 
 .mdc-notched-outline__notch {
   border-right: none;
+}
+
+// ═══════════════════════════════════════
+// ✨ ANIMAÇÕES ADICIONAIS
+// ═══════════════════════════════════════
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }
