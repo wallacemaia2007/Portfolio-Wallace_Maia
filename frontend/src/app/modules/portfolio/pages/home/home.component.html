@@ -49,7 +49,7 @@
           class="bg-white dark:bg-custom-black rounded-xl p-6 shadow-lg hover:shadow-glow transition-all duration-300 border border-gray-200 dark:border-gray-800 hover:border-primary">
           <div class="flex items-center space-x-3 mb-4">
             <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-              <mat-icon class="text-primary">{{ category.icon || 'code' }}</mat-icon>
+              <img [src]="category.icon" alt="{{ category.categoryName }} Icon" class="w-6 h-6" />
             </div>
             <h3 class="text-xl font-bold text-custom-black dark:text-white">
               {{ category.categoryName }}
@@ -100,11 +100,14 @@
           }
 
           <div class="absolute left-0 top-2 w-8 h-8 rounded-full flex items-center justify-center" [class]="experience.current 
-                     ? 'bg-primary ring-4 ring-primary/20 shadow-glow-sm' 
-                     : 'bg-beige dark:bg-custom-black-light border-2 border-primary'">
-            <mat-icon [class]="experience.current ? 'text-white text-lg' : 'text-primary text-lg'">
-              {{ experience.current ? 'work' : 'work_outline' }}
-            </mat-icon>
+                 ? 'bg-primary ring-4 ring-primary/20 shadow-glow-sm' 
+                 : 'bg-beige dark:bg-custom-black-light border-2 border-primary'">
+            <span class="flex items-center justify-center w-full h-full">
+              <mat-icon [class]="experience.current ? 'text-white text-lg' : 'text-primary text-lg'"
+                style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+                {{ experience.current ? 'work' : 'work_outline' }}
+              </mat-icon>
+            </span>
           </div>
           <div
             class="bg-white dark:bg-custom-black-light rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-800 hover:border-primary hover:shadow-glow transition-all duration-300">
@@ -140,7 +143,8 @@
             @if (experience.technologies.length > 0) {
             <div class="flex flex-wrap gap-2">
               @for (tech of experience.technologies.slice(0, 5); track tech) {
-              <span class="px-2 py-1 bg-primary/10 text-gray-300 border border-primary/30 rounded text-xs font-medium">
+              <span
+                class="px-2 py-1 bg-primary/10 text-gray-700 dark:text-gray-300 border border-primary/30 rounded text-xs font-medium">
                 {{ tech }}
               </span>
               }

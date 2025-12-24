@@ -2,7 +2,6 @@
   class="min-h-[calc(100vh-4rem)] flex items-center py-20 bg-gradient-to-br from-white to-beige-light dark:from-custom-black dark:to-custom-black-light transition-all duration-300">
   <div class="container mx-auto px-4">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
       <div class="space-y-6 animate-fade-in">
         <div class="space-y-2">
           <p class="text-primary font-semibold text-lg flex items-center space-x-2">
@@ -15,27 +14,26 @@
           <h2 class="text-3xl md:text-4xl font-semibold text-primary">
             {{ personalInfo.role }}
           </h2>
+          <p class="text-primary font-semibold text-lg flex items-center space-x-2">
+            <span>Java | Angular | Spring Boot</span>
+          </p>
         </div>
-
         <p class="text-lg text-gray-700 dark:text-gray-400 max-w-xl">
           {{ personalInfo.description }}
         </p>
-
         <div class="flex flex-col sm:flex-row gap-4">
-          <a routerLink="/projects" mat-raised-button color="beige"
+          <a routerLink="/projects" mat-stroked-button color="beige"
             class="flex items-center justify-center space-x-2 px-8 py-3">
             <mat-icon>work</mat-icon>
             <span>Meus Projetos</span>
           </a>
-          <a routerLink="/contact" mat-raised-button color="beige"
+          <a routerLink="/contact" mat-stroked-button color="beige"
             class="flex items-center justify-center space-x-2 px-8 py-3">
             <mat-icon>email</mat-icon>
             <span>Contato</span>
           </a>
         </div>
-
       </div>
-
       <div class="relative lg:order-last order-first animate-float">
         <div class="relative z-10">
           <div
@@ -43,7 +41,6 @@
             <img [src]="personalInfo.avatar" [alt]="personalInfo.name" class="w-full h-full object-cover">
           </div>
         </div>
-
         <div class="absolute top-0 right-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl -z-10"></div>
         <div class="absolute bottom-0 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl -z-10"></div>
       </div>

@@ -31,9 +31,9 @@ export const SKILL_CATEGORY_NAMES: Record<SkillCategoryType, string> = {
 };
 
 export const SKILL_CATEGORY_ICONS: Record<SkillCategoryType, string> = {
-  frontend: 'web',
-  backend: 'dns',
-  database: 'storage',
-  tools: 'build',
-  'soft-skills': 'people',
+  frontend: 'assets/icons/frontend.png',
+  backend: 'assets/icons/backend.png',
+  database: 'assets/icons/database.png',
+  tools: 'assets/icons/tools.png',
+  'soft-skills': 'assets/icons/soft-skills.png',
 };

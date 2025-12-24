@@ -1,0 +1,21 @@
+:host {
+  display: block;
+}
+
+.group {
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.bg-gradient-to-r {
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+mat-icon {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.2);
+  }
+}

@@ -1,12 +1,52 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { Skill, SKILL_CATEGORY_ICONS } from '../../../../models/skill.model';
+import { SkillCardComponent } from '../skill-card/skill-card.component';
 
 @Component({
   selector: 'app-skill-category',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, MatIconModule, MatButtonModule, SkillCardComponent],
   templateUrl: './skill-category.component.html',
-  styleUrl: './skill-category.component.scss'
+  styleUrl: './skill-category.component.scss',
 })
 export class SkillCategoryComponent {
+  @Input({ required: true }) categoryName!: string;
+  @Input({ required: true }) skills!: Skill[];
+  @Input() categoryIcon?: string;
+  @Input() maxVisible: number = 6; 
 
+  showAll = false;
+  displayedSkills: Skill[] = [];
+
+  ngOnInit(): void {
+    if (!this.categoryIcon && this.skills.length > 0) {
+      this.categoryIcon = SKILL_CATEGORY_ICONS[this.skills[0].category] || 'code';
+    }
+    this.updateDisplayedSkills();
+  }
+
+  toggleShowAll(): void {
+    this.showAll = !this.showAll;
+    this.updateDisplayedSkills();
+
+    if (!this.showAll) {
+      setTimeout(() => {
+        window.scrollTo({
+          top: window.scrollY - 100,
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
+  }
+
+  private updateDisplayedSkills(): void {
+    if (this.showAll) {
+      this.displayedSkills = this.skills;
+    } else {
+      this.displayedSkills = this.skills.slice(0, this.maxVisible);
+    }
+  }
 }

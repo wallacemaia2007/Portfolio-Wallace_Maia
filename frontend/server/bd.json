@@ -7,7 +7,7 @@
     "email": "wallacemaia2007@email.com",
     "phone": "+55 (35) 91003-6806",
     "location": "Passos, MG - Brasil",
-    "bio": "Desenvolvedor Full Stack apaixonado por criar experiências web incríveis e soluções inovadoras. Especializado em Angular, Java e Spring Boot com mais de 1 anos de experiência no mercado.",
+    "bio": "Desenvolvedor Full Stack apaixonado por criar experiências web incríveis e soluções inovadoras. Especializado em Angular, Java e Spring Boot com mais de 1 ano de experiência no mercado.",
     "avatar": "assets/images/avatar.jpg",
     "cvUrl": "assets/cv.pdf",
     "github": "https://github.com/wallacemaia2007",
@@ -22,11 +22,11 @@
       "slug": "digital-bank-api",
       "description": "API REST de um banco digital em Java com Spring Boot. O projeto evoluiu de uma aplicação de console para uma arquitetura em camadas (Controller, Service, Repository), expondo funcionalidades como criação de contas e transferências. Usa Spring Data JPA para persistência de dados em banco relacional.",
       "shortDescription": "API REST de banco digital em Java com Spring Boot",
-      "thumbnail": "assets/images/projects/digital-bank-api-thumb.jpg",
+      "thumbnail": "assets/images/projects/digital-bank/api.jpeg",
       "images": [
-        "assets/images/projects/digital-bank-api-1.jpg",
-        "assets/images/projects/digital-bank-api-2.jpg",
-        "assets/images/projects/digital-bank-api-3.jpg"
+        "assets/images/projects/digital-bank/api-1.jpg",
+        "assets/images/projects/digital-bank/api-2.jpg",
+        "assets/images/projects/digital-bank/api-3.jpg"
       ],
       "technologies": [
         "Java",
@@ -47,7 +47,7 @@
       "category": "backend",
       "featured": true,
       "githubUrl": "https://github.com/wallacemaia2007/Digital-bank-api",
-      "liveUrl": "https://ecommerce-demo.com",
+      "liveUrl": "https://www.linkedin.com/posts/wallacemaia-dev_java-springboot-springsecurity-activity-7376984431712083968-Hbt_?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE9zdVsB33_pruHbEok_UbWu8X2JwL1Nfhk",
       "startDate": "2025-08-13",
       "endDate": "2025-09-21",
       "status": "completed",
@@ -70,9 +70,9 @@
       "slug": "traveler-website",
       "description": "Um sistema web completo para organizar, categorizar e gerenciar seus lugares favoritos de viagem. Desenvolvido com Angular 19 e integração com Google OAuth para autenticação segura.",
       "shortDescription": "Sistema web para gerenciar lugares favoritos de viagem",
-      "thumbnail": "assets/images/projects/traveler-website-thumb.jpg",
+      "thumbnail": "assets/images/projects/traveler-website/site.jpg",
       "images": [
-        "assets/images/projects/traveler-website-1.jpg",
+        "assets/images/projects/traveler-website/site.jpg",
         "assets/images/projects/traveler-website-2.jpg"
       ],
       "technologies": [
@@ -87,7 +87,7 @@
       "category": "web",
       "featured": true,
       "githubUrl": "https://github.com/wallacemaia2007/traveler-website",
-      "liveUrl": "",
+      "liveUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7393610706035654656/",
       "startDate": "2025-10-20",
       "endDate": "2025-11-11",
       "status": "completed",
@@ -193,7 +193,7 @@
       "name": "Angular",
       "category": "frontend",
       "level": 5,
-      "yearsOfExperience": 4,
+      "yearsOfExperience": 1,
       "icon": "assets/icons/angular.svg",
       "color": "#DD0031"
     },
@@ -201,8 +201,8 @@
       "id": "2",
       "name": "Java",
       "category": "backend",
-      "level": 4,
-      "yearsOfExperience": 3,
+      "level": 5,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/java.svg",
       "color": "#61DAFB"
     },
@@ -211,7 +211,7 @@
       "name": "TypeScript",
       "category": "frontend",
       "level": 5,
-      "yearsOfExperience": 4,
+      "yearsOfExperience": 1,
       "icon": "assets/icons/typescript.svg",
       "color": "#3178C6"
     },
@@ -219,8 +219,8 @@
       "id": "4",
       "name": "JavaScript",
       "category": "frontend",
-      "level": 5,
-      "yearsOfExperience": 5,
+      "level": 4,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/javascript.svg",
       "color": "#F7DF1E"
     },
@@ -229,7 +229,7 @@
       "name": "HTML5",
       "category": "frontend",
       "level": 5,
-      "yearsOfExperience": 5,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/html5.svg",
       "color": "#E34F26"
     },
@@ -238,7 +238,7 @@
       "name": "CSS3",
       "category": "frontend",
       "level": 5,
-      "yearsOfExperience": 5,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/css3.svg",
       "color": "#1572B6"
     },
@@ -246,8 +246,8 @@
       "id": "7",
       "name": "Tailwind CSS",
       "category": "frontend",
-      "level": 4,
-      "yearsOfExperience": 2,
+      "level": 5,
+      "yearsOfExperience": 1,
       "icon": "assets/icons/tailwind.svg",
       "color": "#06B6D4"
     },
@@ -255,8 +255,8 @@
       "id": "8",
       "name": "Spring Boot",
       "category": "backend",
-      "level": 4,
-      "yearsOfExperience": 3,
+      "level": 5,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/spring.svg",
       "color": "#339933"
     },
@@ -265,7 +265,7 @@
       "name": "Spring Security",
       "category": "backend",
       "level": 4,
-      "yearsOfExperience": 3,
+      "yearsOfExperience": 1,
       "icon": "assets/icons/springSecurity.svg",
       "color": "#6DB33F"
     },
@@ -275,7 +275,7 @@
       "name": "MongoDB",
       "category": "database",
       "level": 4,
-      "yearsOfExperience": 3,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/mongodb.svg",
       "color": "#47A248"
     },
@@ -284,7 +284,7 @@
       "name": "PostgreSQL",
       "category": "database",
       "level": 4,
-      "yearsOfExperience": 3,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/postgresql.svg",
       "color": "#4169E1"
     },
@@ -292,7 +292,7 @@
       "id": "12",
       "name": "MySQL",
       "category": "database",
-      "level": 3,
+      "level": 5,
       "yearsOfExperience": 2,
       "icon": "assets/icons/mysql.svg",
       "color": "#FFCA28"
@@ -302,7 +302,7 @@
       "name": "Git",
       "category": "tools",
       "level": 5,
-      "yearsOfExperience": 5,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/git.svg",
       "color": "#F05032"
     },
@@ -311,7 +311,7 @@
       "name": "Docker",
       "category": "tools",
       "level": 3,
-      "yearsOfExperience": 2,
+      "yearsOfExperience": 1,
       "icon": "assets/icons/docker.svg",
       "color": "#2496ED"
     },
@@ -320,7 +320,7 @@
       "name": "AWS",
       "category": "tools",
       "level": 3,
-      "yearsOfExperience": 2,
+      "yearsOfExperience": 1,
       "icon": "assets/icons/aws.svg",
       "color": "#FF9900"
     },
@@ -329,7 +329,7 @@
       "name": "Figma",
       "category": "tools",
       "level": 4,
-      "yearsOfExperience": 2,
+      "yearsOfExperience": 1,
       "icon": "assets/icons/figma.svg",
       "color": "#F24E1E"
     },
@@ -354,17 +354,17 @@
     {
       "id": "19",
       "name": "JUnit",
-      "category": "tools",
-      "level": 4,
-      "yearsOfExperience": 3,
+      "category": "backend",
+      "level": 5,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/junit.svg",
       "color": "#25A162"
     },
     {
       "id": "20",
       "name": "Mockito",
-      "category": "tools",
-      "level": 4,
+      "category": "backend",
+      "level": 5,
       "yearsOfExperience": 2,
       "icon": "assets/icons/mockito.svg",
       "color": "#8A2BE2"
@@ -372,18 +372,18 @@
     {
       "id": "21",
       "name": "OAuth",
-      "category": "tools",
+      "category": "frontend",
       "level": 4,
-      "yearsOfExperience": 2,
+      "yearsOfExperience": 1,
       "icon": "assets/icons/oauth.svg",
       "color": "#8A2BE2"
     },
     {
       "id": "22",
       "name": "RxJS",
-      "category": "tools",
-      "level": 4,
-      "yearsOfExperience": 2,
+      "category": "frontend",
+      "level": 5,
+      "yearsOfExperience": 1,
       "icon": "assets/icons/rxjs.svg",
       "color": "#8A2BE2"
     },
@@ -391,8 +391,8 @@
       "id": "23",
       "name": "Node.js",
       "category": "backend",
-      "level": 4,
-      "yearsOfExperience": 2,
+      "level": 3,
+      "yearsOfExperience": 1,
       "icon": "assets/icons/nodejs.svg",
       "color": "#8A2BE2"
     },
@@ -400,8 +400,8 @@
       "id": "24",
       "name": "Express",
       "category": "backend",
-      "level": 4,
-      "yearsOfExperience": 2,
+      "level": 3,
+      "yearsOfExperience": 1,
       "icon": "assets/icons/express.svg",
       "color": "#8A2BE2"
     },
@@ -410,16 +410,16 @@
       "name": "Json-Server",
       "category": "tools",
       "level": 4,
-      "yearsOfExperience": 2,
-      "icon": "assets/icons/json-server.svg",
+      "yearsOfExperience": 1,
+      "icon": "assets/icons/json.svg",
       "color": "#8A2BE2"
     },
     {
       "id": "26",
       "name": "Spring Data JPA",
       "category": "backend",
-      "level": 4,
-      "yearsOfExperience": 3,
+      "level": 5,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/springDataJPA.svg",
       "color": "#8A2BE2"
     },
@@ -427,9 +427,36 @@
       "id": "27",
       "name": "GitHub",
       "category": "tools",
-      "level": 4,
-      "yearsOfExperience": 3,
+      "level": 5,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/github.svg",
+      "color": "#8A2BE2"
+    },
+    {
+      "id": "28",
+      "name": "Angular Material",
+      "category": "frontend",
+      "level": 5,
+      "yearsOfExperience": 2,
+      "icon": "assets/icons/angularMaterial.svg",
+      "color": "#8A2BE2"
+    },
+    {
+      "id": "29",
+      "name": "Linux",
+      "category": "tools",
+      "level": 5,
+      "yearsOfExperience": 2,
+      "icon": "assets/icons/linux.svg",
+      "color": "#8A2BE2"
+    },
+    {
+      "id": "30",
+      "name": "PrimeNG",
+      "category": "frontend",
+      "level": 5,
+      "yearsOfExperience": 2,
+      "icon": "assets/icons/primeng.svg",
       "color": "#8A2BE2"
     }
   ],
@@ -535,8 +562,8 @@
     "totalProjects": 4,
     "completedProjects": 4,
     "happyClients": 4,
-    "yearsExperience": 1,
-    "technologies": 17,
+    "yearsExperience": 2,
+    "technologies": 30,
     "coffeesCups": 9999
   },
 
@@ -544,25 +571,25 @@
     {
       "name": "GitHub",
       "url": "https://github.com/wallacemaia2007",
-      "icon": "code",
+      "icon": "assets/icons/github.svg",
       "color": "#333"
     },
     {
       "name": "LinkedIn",
       "url": "https://www.linkedin.com/in/wallacemaia-dev/",
-      "icon": "business",
+      "icon": "assets/icons/linkedin.svg",
       "color": "#0077B5"
     },
     {
       "name": "Email",
       "url": "mailto:wallacemaia2007@gmail.com",
-      "icon": "email",
+      "icon": "assets/icons/gmail.svg",
       "color": "#EA4335"
     },
     {
       "name": "WhatsApp",
       "url": "https://wa.me/35910036806",
-      "icon": "perm_phone_msg",
+      "icon": "assets/icons/whatsapp.svg",
       "color": "#25D366"
     }
   ]

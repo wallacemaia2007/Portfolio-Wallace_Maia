@@ -1,1 +1,37 @@
-<p>skill-category works!</p>
+<div class="space-y-6">
+  <div class="flex items-center justify-between pb-4 border-b-2 border-primary/20">
+    <div class="flex items-center space-x-4">
+      <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center">
+        <img [src]="categoryIcon" alt="{{ categoryName }} Icon" class="w-12 h-12" />
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold text-custom-black dark:text-white">
+          {{ categoryName }}
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400">
+          {{ skills.length }} {{ skills.length === 1 ? 'habilidade' : 'habilidades' }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    @for (skill of displayedSkills; track skill.id) {
+    <app-skill-card [skill]="skill" [class.animate-slide-in]="showAll"></app-skill-card>
+    }
+  </div>
+
+  @if (skills.length > maxVisible) {
+  <div class="flex justify-center pt-6">
+    <button (click)="toggleShowAll()" mat-raised-button color="primary" class="flex items-center space-x-2 px-6">
+      <span>
+        {{ showAll ? 'Ver Menos' : 'Ver Mais ' + (skills.length - maxVisible) }}
+      </span>
+      <mat-icon>
+        {{ showAll ? 'expand_less' : 'expand_more' }}
+      </mat-icon>
+    </button>
+  </div>
+  }
+</div>
