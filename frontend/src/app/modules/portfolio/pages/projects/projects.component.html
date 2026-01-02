@@ -1,1 +1,309 @@
-<p>projects works!</p>
+<div class="min-h-screen bg-gray-50 dark:bg-custom-black transition-colors duration-300">
+
+  <section
+    class="relative py-24 bg-gradient-to-br from-white via-beige-light to-beige dark:from-custom-black dark:via-custom-black-light dark:to-custom-black overflow-hidden border-b border-gray-200 dark:border-gray-800">
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <app-section-header title="Meus Projetos" subtitle="Uma coleção dos meus trabalhos mais recentes e impactantes."
+          align="center"></app-section-header>
+
+        <div class="grid grid-cols-3 gap-4 max-w-2xl mx-auto animate-fade-in" style="animation-delay: 0.4s;">
+          <div
+            class="bg-white/70 dark:bg-custom-black-light/70 backdrop-blur-sm rounded-xl p-4 border-2 border-gray-200 dark:border-gray-800 hover:scale-105 transition-all">
+            <div class="text-3xl font-bold text-primary">{{ totalProjects }}</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">Projetos</div>
+          </div>
+          <div
+            class="bg-white/70 dark:bg-custom-black-light/70 backdrop-blur-sm rounded-xl p-4 border-2 border-gray-200 dark:border-gray-800 hover:scale-105 transition-all">
+            <div class="text-3xl font-bold text-primary">{{ categories.length }}</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">Categorias</div>
+          </div>
+          <div
+            class="bg-white/70 dark:bg-custom-black-light/70 backdrop-blur-sm rounded-xl p-4 border-2 border-gray-200 dark:border-gray-800 hover:scale-105 transition-all">
+            <div class="text-3xl font-bold text-primary">{{ getTechnologiesCount() }}</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">Tecnologias</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  @if (latestCompletedProject) {
+  <section
+    class="py-12 bg-beige-dark dark:bg-custom-black hidden md:block border-b border-gray-200 dark:border-gray-800">
+    <div class="container mx-auto px-4">
+      <div
+        class="relative rounded-3xl overflow-hidden border-2 border-primary/20 hover:border-primary transition-all duration-500 group cursor-pointer"
+        (click)="openProjectModal(latestCompletedProject)">
+
+        <div class="relative h-[500px] md:h-[600px]">
+          <img [src]="latestCompletedProject.thumbnail" [alt]="latestCompletedProject.title"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+
+          <div class="absolute inset-0 
+            bg-gradient-to-r
+            from-custom-black-light/50 via-custom-black-light/40 to-custom-black-light/20
+            dark:from-custom-black/95 dark:via-custom-black/80 dark:to-custom-black/40">
+          </div>
+
+          <div class="absolute inset-0 flex items-center">
+            <div class="container mx-auto px-8 md:px-16">
+              <div class="max-w-3xl">
+                <div class="flex items-center gap-3 mb-6 animate-fade-in">
+                  <span
+                    class="px-4 py-2 bg-primary text-white rounded-full text-sm font-bold flex items-center gap-2 shadow-glow">
+                    <mat-icon class="text-lg">star</mat-icon>
+                    Projeto Mais Recente
+                  </span>
+                  @if (latestCompletedProject.status === 'completed') {
+                  <span class="px-4 py-2 bg-accent text-white rounded-full text-sm font-bold flex items-center gap-2">
+                    <mat-icon class="text-lg">check_circle</mat-icon>
+                    {{ getStatusLabel(latestCompletedProject.status) }}
+                  </span>
+                  }
+                  @if (latestCompletedProject.status === 'in-progress') {
+                  <span class="px-4 py-2 bg-blue-500 text-white rounded-full text-sm font-bold flex items-center gap-2">
+                    <mat-icon class="text-lg">hourglass_empty</mat-icon>
+                    {{ getStatusLabel(latestCompletedProject.status) }}
+                  </span>
+                  }
+                </div>
+
+                <div class="flex items-center gap-2 mb-4 animate-fade-in" style="animation-delay: 0.1s;">
+                  <mat-icon class="text-primary text-xl">{{ getCategoryIcon(latestCompletedProject.category)
+                    }}</mat-icon>
+                  <span class="text-lg font-semibold text-primary uppercase tracking-wide">
+                    {{ getCategoryLabel(latestCompletedProject.category) }}
+                  </span>
+                </div>
+
+                <h2 class="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in leading-tight"
+                  style="animation-delay: 0.2s;">
+                  {{ latestCompletedProject.title }}
+                </h2>
+
+                <p class="text-lg md:text-xl text-white mb-8 max-w-2xl animate-fade-in line-clamp-3 dark:text-gray-300"
+                  style="animation-delay: 0.3s;">
+                  {{ latestCompletedProject.description }}
+                </p>
+
+                <div class="flex flex-wrap gap-3 mb-8 animate-fade-in" style="animation-delay: 0.4s;">
+                  @for (tech of latestCompletedProject.technologies.slice(0, 5); track tech) {
+                  <span
+                    class="px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/30 text-white rounded-lg text-sm font-medium hover:bg-white/20 transition-colors">
+                    {{ tech }}
+                  </span>
+                  }
+                  @if (latestCompletedProject.technologies.length > 5) {
+                  <span
+                    class="px-4 py-2 bg-primary/20 backdrop-blur-sm border border-primary text-primary rounded-lg text-sm font-bold">
+                    +{{ latestCompletedProject.technologies.length - 5 }} mais
+                  </span>
+                  }
+                </div>
+
+                <div class="flex flex-wrap gap-4 animate-fade-in" style="animation-delay: 0.5s;">
+                  <button (click)="openProjectModal(latestCompletedProject); $event.stopPropagation()"
+                    class="px-8 py-4 bg-primary hover:bg-primary-dark text-white rounded-xl font-bold text-lg transition-all shadow-glow hover:shadow-glow-lg hover:scale-105 flex items-center gap-2">
+                    <span>Ver Detalhes Completos</span>
+                    <mat-icon class="group-hover:translate-x-1 transition-transform">arrow_forward</mat-icon>
+                  </button>
+
+                  @if (latestCompletedProject.liveUrl) {
+                  <a [href]="latestCompletedProject.liveUrl" target="_blank" rel="noopener noreferrer"
+                    (click)="$event.stopPropagation()"
+                    class="px-8 py-4 bg-white/10 backdrop-blur-sm hover:bg-white/20 border-2 border-white/30 hover:border-white text-white rounded-xl font-bold text-lg transition-all flex items-center gap-2">
+                    <mat-icon>launch</mat-icon>
+                    <span>Ver Projeto Live</span>
+                  </a>
+                  }
+                </div>
+
+                <div class="mt-8 flex items-center gap-2 text-gray-400 animate-fade-in" style="animation-delay: 0.6s;">
+                  <mat-icon class="text-lg">calendar_today</mat-icon>
+                  @if(latestCompletedProject.endDate) {
+                  <span class="text-sm">Concluído entre {{ formatDate(latestCompletedProject.startDate) }} e
+                    {{ formatDate(latestCompletedProject.endDate) }}</span>
+                  }
+                  @if(!latestCompletedProject.endDate) {
+                  <span class="text-sm">Iniciado em {{ formatDate(latestCompletedProject.startDate) }}</span>
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- FILTERS AND GALLERY SECTION -->
+  <section class="py-20 bg-beige-light dark:bg-custom-black-light">
+    <div class="container mx-auto px-4">
+
+      <!-- GALLERY HEADER -->
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold text-custom-black dark:text-white mb-4">
+          Todos os Projetos
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          Explore minha coleção completa de trabalhos organizados por categoria
+        </p>
+
+        <app-project-filter class="mb-16" (categorySelected)="onCategorySelected($event)"
+          (searchTermChanged)="onSearchTermChanged($event)" [totalProjects]="totalProjects" [categories]="categories">
+        </app-project-filter>
+      </div>
+
+      <!-- LOADING STATE -->
+      @if (isLoading) {
+      <div class="flex flex-col justify-center items-center py-20">
+        <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-primary mb-4"></div>
+        <p class="text-gray-600 dark:text-gray-400">Carregando projetos...</p>
+      </div>
+      }
+
+      <!-- PROJECTS GALLERY -->
+      @if (!isLoading && filteredProjects.length > 0) {
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        @for (project of filteredProjects; track project.id) {
+        <article (click)="openProjectModal(project)"
+          class="project-card group bg-white dark:bg-custom-black-light rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer border-2 border-gray-200 dark:border-gray-800 hover:border-primary">
+
+          <!-- IMAGE -->
+          <div
+            class="relative h-56 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-custom-black to-custom-black-light">
+            <img [src]="project.thumbnail" [alt]="project.title"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+
+            <!-- SUBTLE OVERLAY ON HOVER -->
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-custom-black/80 via-custom-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            </div>
+
+            <!-- BADGES -->
+            <div class="absolute top-4 left-4 right-4 flex justify-between items-start z-10">
+              @if (project.featured) {
+              <span
+                class="px-3 py-1.5 bg-primary text-white rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
+                <mat-icon class="text-sm">star</mat-icon>
+                Destaque
+              </span>
+              }
+              @if (!project.featured) {
+              <div></div>
+              }
+              <span class="px-3 py-1.5 rounded-full text-xs font-bold shadow-lg"
+                [ngClass]="getStatusClass(project.status)">
+                {{ getStatusLabel(project.status) }}
+              </span>
+            </div>
+
+          </div>
+
+          <!-- CONTENT -->
+          <div class="p-6">
+            <!-- CATEGORY -->
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-8 h-8 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center">
+                <mat-icon class="text-primary text-base">{{ getCategoryIcon(project.category) }}</mat-icon>
+              </div>
+              <span class="text-sm font-bold text-primary uppercase tracking-wide">
+                {{ getCategoryLabel(project.category) }}
+              </span>
+            </div>
+
+            <!-- TITLE -->
+            <h3 class="text-xl font-bold text-custom-black dark:text-white mb-3 line-clamp-2 leading-tight">
+              {{ project.title }}
+            </h3>
+
+            <!-- DESCRIPTION -->
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2 min-h-[2.5rem]">
+              {{ project.shortDescription }}
+            </p>
+
+            <!-- TECHNOLOGIES -->
+            <div class="flex flex-wrap gap-2 mb-5">
+              @for (tech of project.technologies.slice(0, 3); track tech) {
+              <span
+                class="px-3 py-1 bg-gray-100 dark:bg-custom-black text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 rounded-lg text-xs font-medium">
+                {{ tech }}
+              </span>
+              }
+              @if (project.technologies.length > 3) {
+              <span class="px-3 py-1 bg-primary/10 text-primary border border-primary/30 rounded-lg text-xs font-bold">
+                +{{ project.technologies.length - 3 }}
+              </span>
+              }
+            </div>
+
+            <!-- FOOTER -->
+            <div class="flex items-center justify-between pt-4 border-t-2 border-gray-200 dark:border-gray-700">
+              <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                <mat-icon class="text-base">calendar_today</mat-icon>
+                <span>{{ formatDate(project.startDate) }}</span>
+              </div>
+
+              <div class="flex items-center gap-1 text-primary font-bold text-sm group-hover:gap-2 transition-all">
+                <span>Abrir</span>
+                <mat-icon class="text-base">arrow_forward</mat-icon>
+              </div>
+            </div>
+          </div>
+        </article>
+        }
+      </div>
+      }
+
+      <!-- EMPTY STATE -->
+      @if (!isLoading && filteredProjects.length === 0) {
+      <div
+        class="text-center py-20 bg-white dark:bg-custom-black rounded-3xl border-2 border-dashed border-gray-300 dark:border-gray-700">
+        <div class="inline-block p-6 bg-gray-100 dark:bg-custom-black-light rounded-full mb-6">
+          <mat-icon class="text-6xl text-gray-400">search_off</mat-icon>
+        </div>
+        <h3 class="text-2xl font-bold text-custom-black dark:text-white mb-2">
+          Nenhum projeto encontrado
+        </h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">
+          Tente ajustar os filtros ou buscar por outro termo
+        </p>
+        <button (click)="clearFilters()" mat-raised-button color="primary" class="flex items-center space-x-2 mx-auto">
+          <mat-icon>refresh</mat-icon>
+          <span>Limpar Filtros</span>
+        </button>
+      </div>
+      }
+    </div>
+  </section>
+  <section class="py-20 bg-gradient-to-r from-primary to-primary-dark">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center text-white">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Gostou de algum projeto em espescífico?
+        </h2>
+        <p class="text-xl mb-8 text-white/90">
+          Entre em contato para trabalharmos juntos nele!
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a routerLink="/skills" mat-raised-button
+            class="border-2 border-white text-white hover:bg-white/10 transition-colors flex items-center justify-center space-x-2 px-8 py-3">
+            <mat-icon>work</mat-icon>
+            <span>Ver Habilidades</span>
+          </a>
+          <a routerLink="/contact" mat-raised-button
+            class="border-2 border-white text-white hover:bg-white/10 transition-colors flex items-center justify-center space-x-2 px-8 py-3">
+            <mat-icon>email</mat-icon>
+            <span>Entrar em Contato</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT MODAL -->
+  <app-project-modal [project]="selectedProject" (close)="closeProjectModal()">
+  </app-project-modal>
+</div>

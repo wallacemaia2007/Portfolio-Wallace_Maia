@@ -90,3 +90,10 @@ export interface Statistics {
   technologies: number;
   coffeesCups?: number;
 }
+
+export interface CategoryInfo {
+  value: ProjectCategory | 'all';
+  label: string;
+  icon: string;
+  count: number;
+}

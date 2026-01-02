@@ -1,0 +1,207 @@
+@if (project) {
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in"
+  (click)="onClose()">
+
+  <div
+    class="relative w-full max-w-6xl max-h-[90vh] bg-white dark:bg-custom-black-light rounded-2xl overflow-hidden shadow-2xl animate-slide-up"
+    (click)="$event.stopPropagation()">
+
+    <button (click)="onClose()"
+      class="absolute top-4 right-4 z-10 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all">
+      <mat-icon class="text-2xl">close</mat-icon>
+    </button>
+
+    <div class="overflow-y-auto max-h-[90vh] scrollbar-thin">
+      <div
+        class="relative h-96 bg-gradient-to-br from-beige to-beige-dark dark:from-custom-black to-custom-black-light">
+        @if (project.images && project.images.length > 0) {
+        @for (image of project.images; track image; let i = $index) {
+        <div class="absolute inset-0 transition-opacity duration-700" [class.opacity-100]="i === currentImageIndex"
+          [class.opacity-0]="i !== currentImageIndex">
+          <img [src]="image" [alt]="project.title + ' - Imagem ' + (i + 1)" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50"></div>
+        </div>
+        }
+
+        @if (project.images.length > 1) {
+        <button (click)="previousImage()"
+          class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all z-10">
+          <mat-icon class="text-2xl">chevron_left</mat-icon>
+        </button>
+
+        <button (click)="nextImage()"
+          class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all z-10">
+          <mat-icon class="text-2xl">chevron_right</mat-icon>
+        </button>
+
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+          @for (img of project.images; track img; let idx = $index) {
+          <button (click)="goToImage(idx)" class="transition-all rounded-full h-2" [ngClass]="{
+                      'w-8 bg-white': idx === currentImageIndex,
+                      'w-2 bg-white/40': idx !== currentImageIndex
+                    }">
+          </button>
+          }
+        </div>
+        }
+        }
+      </div>
+
+      <div class="p-8">
+        <div class="mb-6">
+          <div class="flex items-center gap-3 mb-4 flex-wrap">
+            <mat-icon class="text-primary text-2xl">{{ getCategoryIcon(project.category) }}</mat-icon>
+            <span class="text-lg font-medium text-primary">
+              {{ getCategoryLabel(project.category) }}
+            </span>
+            <span class="px-3 py-1 rounded-full text-xs font-semibold" [ngClass]="getStatusClass(project.status)">
+              {{ getStatusLabel(project.status) }}
+            </span>
+          </div>
+
+          <h2 class="text-4xl font-bold text-custom-black dark:text-white mb-4">
+            {{ project.title }}
+          </h2>
+
+          <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+            {{ project.description }}
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div class="bg-beige-light dark:bg-custom-black rounded-xl p-6 border-2 border-gray-200 dark:border-gray-800">
+            <h3 class="font-bold text-custom-black dark:text-white mb-3 flex items-center gap-2">
+              <mat-icon class="text-primary">calendar_today</mat-icon>
+              Período
+            </h3>
+            <p class="text-gray-700 dark:text-gray-300 mb-2">
+              <span class="font-semibold">Início:</span> {{ formatDate(project.startDate) }}
+            </p>
+            @if (project.endDate) {
+            <p class="text-gray-700 dark:text-gray-300">
+              <span class="font-semibold">Fim:</span> {{ formatDate(project.endDate) }}
+            </p>
+            } @else {
+            <p class="text-gray-700 dark:text-gray-300">
+              <span class="font-semibold">Status:</span> Em andamento
+            </p>
+            }
+          </div>
+
+          <div class="bg-beige-light dark:bg-custom-black rounded-xl p-6 border-2 border-gray-200 dark:border-gray-800">
+            <h3 class="font-bold text-custom-black dark:text-white mb-3 flex items-center gap-2">
+              <mat-icon class="text-primary">link</mat-icon>
+              Links do Projeto
+            </h3>
+            <div class="flex flex-wrap gap-3">
+              @if (project.githubUrl) {
+              <a [href]="project.githubUrl" target="_blank" rel="noopener noreferrer"
+                class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all hover:scale-105 flex items-center gap-2 shadow-md">
+                <img src="assets/icons/github.svg" alt="" class="w-5 h-5">
+                <span>GitHub</span>
+              </a>
+              }
+              @if (project.liveUrl) {
+              <a [href]="project.liveUrl" target="_blank" rel="noopener noreferrer"
+                class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all hover:scale-105 flex items-center gap-2 shadow-md">
+                <mat-icon>launch</mat-icon>
+                <span>Ver Live</span>
+              </a>
+              }
+              @if (!project.githubUrl && !project.liveUrl) {
+              <p class="text-sm text-gray-500 dark:text-gray-400 italic">
+                Links não disponíveis
+              </p>
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-8">
+          <h3 class="font-bold text-xl text-custom-black dark:text-white mb-4 flex items-center gap-2">
+            <mat-icon class="text-primary">code</mat-icon>
+            Tecnologias Utilizadas
+          </h3>
+          <div class="flex flex-wrap gap-3">
+            @for (tech of project.technologies; track tech) {
+            <span
+              class="px-4 py-2 bg-primary/10 dark:text-gray-300 text-primary border-2 border-primary/30 rounded-lg text-sm font-medium hover:bg-primary/20 hover:scale-105 transition-all">
+              {{ tech }}
+            </span>
+            }
+          </div>
+        </div>
+
+        @if (project.challenges && project.challenges.length > 0) {
+        <div class="mb-8 p-6 bg-gray-50 dark:bg-custom-black rounded-xl border-2 border-gray-200 dark:border-gray-800">
+          <h3 class="font-bold text-xl text-custom-black dark:text-white mb-4 flex items-center gap-2">
+            <mat-icon class="text-primary">psychology</mat-icon>
+            Desafios Enfrentados
+            <span class="text-sm font-normal text-gray-500 dark:text-gray-400">(Prévia)</span>
+          </h3>
+          <ul class="space-y-2">
+            @for (challenge of project.challenges.slice(0, 3); track challenge) {
+            <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+              <mat-icon class="text-primary text-xl mt-0.5">check_circle</mat-icon>
+              <span>{{ challenge }}</span>
+            </li>
+            }
+          </ul>
+          @if (project.challenges.length > 3) {
+          <p class="mt-3 text-sm text-gray-500 dark:text-gray-400 flex items-center gap-2">
+            <mat-icon class="text-base">info</mat-icon>
+            E mais {{ project.challenges.length - 3 }} desafio(s). Veja todos na página completa.
+          </p>
+          }
+        </div>
+        }
+
+        @if (project.learnings && project.learnings.length > 0) {
+        <div class="p-6 bg-gray-50 dark:bg-custom-black rounded-xl border-2 border-gray-200 dark:border-gray-800">
+          <h3 class="font-bold text-xl text-custom-black dark:text-white mb-4 flex items-center gap-2">
+            <mat-icon class="text-primary">lightbulb</mat-icon>
+            Aprendizados
+            <span class="text-sm font-normal text-gray-500 dark:text-gray-400">(Prévia)</span>
+          </h3>
+          <ul class="space-y-2">
+            @for (learning of project.learnings.slice(0, 3); track learning) {
+            <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+              <mat-icon class="text-accent text-xl mt-0.5">star</mat-icon>
+              <span>{{ learning }}</span>
+            </li>
+            }
+          </ul>
+          @if (project.learnings.length > 3) {
+          <p class="mt-3 text-sm text-gray-500 dark:text-gray-400 flex items-center gap-2">
+            <mat-icon class="text-base">info</mat-icon>
+            E mais {{ project.learnings.length - 3 }} aprendizado(s). Veja todos na página completa.
+          </p>
+          }
+        </div>
+        }
+
+        <div class="mt-10 p-4 bg-primary/5 dark:bg-primary/10 rounded-xl border-2 border-primary/20">
+          <div class="flex items-center justify-between gap-4 flex-wrap">
+            <div class="flex-1 min-w-[200px]">
+              <h4 class="font-bold text-custom-black dark:text-white mb-1 flex items-center gap-2">
+                <mat-icon class="text-primary">info</mat-icon>
+                Quer ver mais detalhes? Ficou interessado?
+              </h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                Entre em contato para saber mais detalhes sobre este projeto ou para discutir possíveis trabalhos!
+              </p>
+            </div>
+
+            <button routerLink="/contact"
+              class="px-6 py-3 bg-primary hover:bg-primary-dark text-white rounded-xl font-bold transition-all hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 whitespace-nowrap">
+              <span>Contato</span>
+              <mat-icon>open_in_new</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+}

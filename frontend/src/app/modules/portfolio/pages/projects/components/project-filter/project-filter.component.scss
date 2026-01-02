@@ -1,0 +1,70 @@
+:host {
+  display: block;
+}
+
+.sticky {
+  transition: all 0.3s ease-in-out;
+}
+
+button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+input {
+  transition: all 0.3s ease;
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(155, 27, 31, 0.1);
+    transform: scale(1.01);
+  }
+
+  &::placeholder {
+    transition: color 0.3s ease;
+  }
+
+  &:focus::placeholder {
+    color: #9ca3af;
+  }
+}
+
+.shadow-glow {
+  box-shadow: 0 0 20px rgba(155, 27, 31, 0.4);
+}
+
+@supports (backdrop-filter: blur(12px)) {
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
+  }
+}
+
+@media (max-width: 768px) {
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+
+    mat-icon {
+      font-size: 1rem;
+    }
+  }
+
+  input {
+    padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+  }
+
+  .absolute.left-4 {
+    left: 0.75rem;
+  }
+}
+
+*:focus-visible {
+  outline: 2px solid #9b1b1f;
+  outline-offset: 2px;
+}

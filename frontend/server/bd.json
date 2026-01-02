@@ -22,7 +22,7 @@
       "slug": "digital-bank-api",
       "description": "API REST de um banco digital em Java com Spring Boot. O projeto evoluiu de uma aplicação de console para uma arquitetura em camadas (Controller, Service, Repository), expondo funcionalidades como criação de contas e transferências. Usa Spring Data JPA para persistência de dados em banco relacional.",
       "shortDescription": "API REST de banco digital em Java com Spring Boot",
-      "thumbnail": "assets/images/projects/digital-bank/api.jpeg",
+      "thumbnail": "assets/images/projects/digital-bank/thumbnail.jpeg",
       "images": [
         "assets/images/projects/digital-bank/api-1.jpg",
         "assets/images/projects/digital-bank/api-2.jpg",
@@ -70,7 +70,7 @@
       "slug": "traveler-website",
       "description": "Um sistema web completo para organizar, categorizar e gerenciar seus lugares favoritos de viagem. Desenvolvido com Angular 19 e integração com Google OAuth para autenticação segura.",
       "shortDescription": "Sistema web para gerenciar lugares favoritos de viagem",
-      "thumbnail": "assets/images/projects/traveler-website/site.jpg",
+      "thumbnail": "assets/images/projects/traveler-website/thumbnail.jpg",
       "images": [
         "assets/images/projects/traveler-website/site.jpg",
         "assets/images/projects/traveler-website-2.jpg"
@@ -105,83 +105,41 @@
     },
     {
       "id": "3",
-      "title": "Sistema de Gestão Escolar",
-      "slug": "school-management",
-      "description": "Plataforma completa para gestão escolar incluindo controle de alunos, professores, notas, frequência, comunicação com pais e geração de relatórios. Sistema multi-tenant com diferentes níveis de acesso.",
-      "shortDescription": "Plataforma de gestão escolar com controle de alunos e notas",
-      "thumbnail": "assets/images/projects/school-thumb.jpg",
+      "title": "Portifólio Pessoal",
+      "slug": "personal-portfolio",
+      "description": "Portfólio pessoal desenvolvido para apresentar projetos, habilidades e experiência profissional. Construído com Angular e Tailwind CSS, o site é responsivo e otimizado para SEO.",
+      "shortDescription": "Portfólio pessoal responsivo com Angular e Tailwind CSS",
+      "thumbnail": "assets/images/projects/portfolio-pessoal/thumbnail.png",
       "images": [
-        "assets/images/projects/school-1.jpg",
-        "assets/images/projects/school-2.jpg",
-        "assets/images/projects/school-3.jpg"
+        "assets/images/projects/portfolio-pessoal/portfolio-pessoal-1.png",
+        "assets/images/projects/portfolio-pessoal/portfolio-pessoal-2.png",
+        "assets/images/projects/portfolio-pessoal/portfolio-pessoal-3.png"
       ],
-      "technologies": ["Angular", "Node.js", "PostgreSQL", "Docker", "AWS"],
-      "category": "web",
-      "featured": false,
-      "githubUrl": "",
-      "liveUrl": "https://school-demo.com",
-      "startDate": "2022-03-01",
-      "endDate": "2023-02-28",
-      "status": "completed",
-      "tags": ["education", "saas", "management"],
-      "challenges": [
-        "Arquitetura multi-tenant escalável",
-        "Sistema de permissões granular"
+      "technologies": [
+        "Angular",
+        "Tailwind CSS",
+        "Angular Material",
+        "RxJS",
+        "Express",
+        "Node.js"
       ],
-      "learnings": [
-        "Arquitetura de microservices",
-        "Deploy e CI/CD com Docker e AWS"
-      ],
-      "clientType": "empresa"
-    },
-    {
-      "id": "4",
-      "title": "Portfolio Interativo 3D",
-      "slug": "portfolio-3d",
-      "description": "Portfolio pessoal com elementos 3D interativos usando Three.js. Experiência imersiva com animações suaves e design moderno.",
-      "shortDescription": "Portfolio com elementos 3D interativos e design moderno",
-      "thumbnail": "assets/images/projects/portfolio-thumb.jpg",
-      "images": ["assets/images/projects/portfolio-1.jpg"],
-      "technologies": ["React", "Three.js", "GSAP", "Tailwind CSS"],
       "category": "web",
       "featured": true,
-      "githubUrl": "https://github.com/usuario/portfolio-3d",
-      "liveUrl": "https://portfolio-demo.com",
-      "startDate": "2024-01-01",
+      "githubUrl": "https://github.com/wallacemaia2007/Portfolio-Wallace_Maia",
+      "liveUrl": "https://wallacemaia.portfolio.com",
+      "startDate": "2025-12-20",
       "endDate": "",
       "status": "in-progress",
-      "tags": ["portfolio", "3d", "interactive"],
+      "tags": ["portfolio", "web", "angular"],
       "challenges": [
-        "Performance de renderização 3D",
-        "Responsividade com elementos 3D"
-      ],
-      "learnings": ["Three.js e WebGL", "Otimização de performance gráfica"],
-      "clientType": "pessoal"
-    },
-    {
-      "id": "5",
-      "title": "API de Pagamentos",
-      "slug": "payment-api",
-      "description": "API REST para processamento de pagamentos com integração a múltiplos gateways (Stripe, PayPal, PagSeguro). Sistema seguro com autenticação JWT e webhooks.",
-      "shortDescription": "API REST para processamento de pagamentos multi-gateway",
-      "thumbnail": "assets/images/projects/payment-thumb.jpg",
-      "images": [],
-      "technologies": ["Node.js", "Express", "PostgreSQL", "Redis", "JWT"],
-      "category": "backend",
-      "featured": false,
-      "githubUrl": "https://github.com/usuario/payment-api",
-      "liveUrl": "",
-      "startDate": "2023-08-01",
-      "endDate": "2023-11-30",
-      "status": "completed",
-      "tags": ["api", "payments", "backend"],
-      "challenges": [
-        "Segurança PCI compliance",
-        "Gestão de transações e rollbacks"
+        "Design responsivo para múltiplos dispositivos",
+        "Otimização de performance e SEO"
       ],
       "learnings": [
-        "Segurança em APIs de pagamento",
-        "Padrões de design para APIs RESTful"
+        "Melhores práticas de desenvolvimento web",
+        "Implementação de design responsivo com Tailwind CSS",
+        "Deploy de aplicações Angular",
+        "Boas práticas de UI/UX com Angular Material"
       ],
       "clientType": "freelance"
     }

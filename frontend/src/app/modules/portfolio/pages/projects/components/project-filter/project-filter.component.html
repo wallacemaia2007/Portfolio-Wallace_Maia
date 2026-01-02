@@ -1,1 +1,40 @@
-<p>project-filter works!</p>
+<section
+  class="sticky top-16 z-40 py-6 bg-beige-light/95 dark:bg-custom-black-light/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-sm">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-wrap gap-3 justify-center mb-4">
+      <button 
+        (click)="filterByCategory('all')"
+        [class]="selectedCategory === 'all' 
+          ? 'bg-primary text-white shadow-glow' 
+          : 'bg-white dark:bg-custom-black text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 hover:border-primary hover:text-primary'"
+        class="px-6 py-2.5 rounded-full font-semibold transition-all duration-300 flex items-center space-x-2">
+        <mat-icon class="text-xl">apps</mat-icon>
+        <span>Todos ({{ totalProjects }})</span>
+      </button>
+
+      @for (category of categories; track category.value) {
+        <button 
+          (click)="filterByCategory(category.value)"
+          [class]="selectedCategory === category.value 
+            ? 'bg-primary text-white shadow-glow' 
+            : 'bg-white dark:bg-custom-black text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 hover:border-primary hover:text-primary'"
+          class="px-6 py-2.5 rounded-full font-semibold transition-all duration-300 flex items-center space-x-2">
+          <mat-icon class="text-xl">{{ category.icon }}</mat-icon>
+          <span>{{ category.label }} ({{ category.count }})</span>
+        </button>
+      }
+    </div>
+
+    <div class="max-w-xl mx-auto">
+      <div class="relative">
+        <mat-icon class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">search</mat-icon>
+        <input 
+          type="text" 
+          [(ngModel)]="searchTerm" 
+          (input)="onSearchChange()"
+          placeholder="Buscar por nome, descrição ou tecnologia..."
+          class="w-full pl-12 pr-4 py-3 bg-white dark:bg-custom-black border-2 border-gray-300 dark:border-gray-700 rounded-xl focus:outline-none focus:border-primary text-custom-black dark:text-white placeholder-gray-400 transition-all">
+      </div>
+    </div>
+  </div>
+</section>
