@@ -13,6 +13,7 @@ import {
   PROJECT_CATEGORY_NAMES,
 } from '../../models/project.model';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
+import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
 
 interface CategoryInfo {
   value: ProjectCategory | 'all';
@@ -33,7 +34,8 @@ interface CategoryInfo {
     ProjectFilterComponent,
     SectionHeaderComponent,
     RouterLink,
-  ],
+    ScrollRevealDirective
+],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
 })

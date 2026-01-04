@@ -14,6 +14,7 @@ import {
   SKILL_CATEGORY_NAMES,
   SKILL_CATEGORY_ICONS,
 } from '../../models/skill.model';
+import { ScrollRevealDirective } from "../../../shared/directives/scroll-reveal.directive";
 
 interface CategoryInfo {
   type: SkillCategoryType | 'all';
@@ -33,7 +34,8 @@ interface CategoryInfo {
     MatButtonModule,
     SectionHeaderComponent,
     SkillCategoryComponent,
-  ],
+    ScrollRevealDirective
+],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss',
 })

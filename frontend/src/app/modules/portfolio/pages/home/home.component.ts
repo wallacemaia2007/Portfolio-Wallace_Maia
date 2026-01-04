@@ -16,6 +16,7 @@ import {
   SkillCategoryType,
 } from '../../models/skill.model';
 import { Experience } from '../../models/experience.model';
+import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-home',
@@ -29,7 +30,8 @@ import { Experience } from '../../models/experience.model';
     SectionHeaderComponent,
     SocialLinksComponent,
     ProjectCardComponent,
-  ],
+    ScrollRevealDirective
+],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

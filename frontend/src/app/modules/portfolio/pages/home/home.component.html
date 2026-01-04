@@ -1,6 +1,7 @@
 <div class="min-h-screen bg-white dark:bg-custom-black">
-  <app-hero-section></app-hero-section>
-  <section class="py-20 bg-beige-light dark:bg-custom-black">
+  <app-hero-section appScrollReveal revealFrom="bottom" [revealDelay]="100" [revealOnce]="false"></app-hero-section>
+  <section class="py-20 bg-beige-light dark:bg-custom-black" appScrollReveal revealFrom="bottom" [revealDelay]="100"
+    [revealOnce]="false">
     <div class="container mx-auto px-4">
       <app-section-header title="Projetos em Destaque"
         subtitle="Confira alguns dos meus trabalhos mais recentes e impactantes" align="center"></app-section-header>
@@ -32,7 +33,8 @@
       }
     </div>
   </section>
-  <section class="py-20 bg-white dark:bg-custom-black-light">
+  <section class="py-20 bg-white dark:bg-custom-black-light" appScrollReveal revealFrom="bottom" [revealDelay]="100"
+    [revealOnce]="false">
     <div class="container mx-auto px-4">
       <app-section-header title="Tecnologias & Habilidades"
         subtitle="Ferramentas e tecnologias que domino para criar soluções incríveis"
@@ -83,7 +85,8 @@
       }
     </div>
   </section>
-  <section class="py-20 bg-beige-light dark:bg-custom-black">
+  <section class="py-20 bg-beige-light dark:bg-custom-black" appScrollReveal revealFrom="bottom" [revealDelay]="100"
+    [revealOnce]="false">
     <div class="container mx-auto px-4">
       <app-section-header title="Trajetória Profissional"
         subtitle="Minha jornada de crescimento e experiências ao longo dos anos" align="center"></app-section-header>
@@ -167,7 +170,8 @@
     </div>
   </section>
 
-  <section class="py-20 bg-gradient-to-r from-primary to-primary-dark relative overflow-hidden">
+  <section class="py-20 bg-gradient-to-r from-primary to-primary-dark relative overflow-hidden" appScrollReveal
+    revealFrom="bottom" [revealDelay]="100" [revealOnce]="false">
     <div class="absolute inset-0 opacity-10">
       <div class="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
       <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
@@ -189,7 +193,8 @@
     </div>
   </section>
 
-  <section class="py-20 bg-beige-light dark:bg-custom-black-light">
+  <section class="py-20 bg-beige-light dark:bg-custom-black-light" appScrollReveal revealFrom="bottom"
+    [revealDelay]="100" [revealOnce]="false">
     <div class="container mx-auto px-4">
       <div class="max-w-3xl mx-auto text-center">
         <h2 class="text-4xl font-bold text-custom-black dark:text-white mb-6">
