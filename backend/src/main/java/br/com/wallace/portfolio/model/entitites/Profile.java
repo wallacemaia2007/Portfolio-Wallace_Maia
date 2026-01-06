@@ -2,12 +2,14 @@ package br.com.wallace.portfolio.model.entitites;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -39,15 +41,24 @@ public class Profile {
     private String linkedinUrl;
     private String websiteUrl;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "profile_id")
     private List<Project> projects;
-    @OneToMany
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "profile_id")
     private List<Experience> experiences;
-    @OneToMany
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "profile_id")
     private List<Skill> skills;
-    @OneToMany
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "profile_id")
     private List<SocialLink> socialLinks;
-    @OneToOne
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "statistic_id")
     private Statistic statistic;
 
 }

@@ -3,6 +3,7 @@ package br.com.wallace.portfolio.model.entitites;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,13 +25,19 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private String title;
     private String slug;
     private String description;
-    private String shorDescription;
+    private String shortDescription;
     private String thumbnail;
-    private List<String> imagems;
-    private List<String> techonologies;
+    
+    @ElementCollection
+    private List<String> images;
+    
+    @ElementCollection
+    private List<String> technologies;
+    
     private String category;
     private boolean featured;
     private String githubUrl;
@@ -38,9 +45,16 @@ public class Project {
     private LocalDate startDate;
     private LocalDate endDate;
     private String status;
+    
+    @ElementCollection
     private List<String> tags;
+    
+    @ElementCollection
     private List<String> challenges;
+    
+    @ElementCollection
     private List<String> learnings;
+    
     private String clientType;
 
 }

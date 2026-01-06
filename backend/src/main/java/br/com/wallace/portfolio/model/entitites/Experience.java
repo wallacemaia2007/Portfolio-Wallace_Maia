@@ -3,6 +3,7 @@ package br.com.wallace.portfolio.model.entitites;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,8 +34,13 @@ public class Experience {
     private boolean current;
     private String location;
     private String type;
-    private List<String> techonologies;
-    private List<String> achivements;
+    
+    @ElementCollection
+    private List<String> technologies;
+    
+    @ElementCollection
+    private List<String> achievements;
+    
     private String companyLogo;
     private String companyUrl;
 
