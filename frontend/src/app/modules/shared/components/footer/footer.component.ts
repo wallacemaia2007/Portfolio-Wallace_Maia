@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { SocialLinksComponent } from '../social-links/social-links.component';
 import { PortfolioService } from '../../../portfolio/services/portfolio.service';
 import { MatTooltip } from '@angular/material/tooltip';
+import { ScrollRevealDirective } from "../../directives/scroll-reveal.directive";
 
 export interface footerTemplate {
   acronym: string;
@@ -27,8 +28,9 @@ export interface footerTemplate {
     MatIconModule,
     MatButtonModule,
     SocialLinksComponent,
-    MatTooltip
-  ],
+    MatTooltip,
+    ScrollRevealDirective
+],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })

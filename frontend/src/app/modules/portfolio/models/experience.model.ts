@@ -9,7 +9,6 @@ export interface Experience {
   location: string;
   type: ExperienceType;
   technologies: string[];
-  achievements: string[];
   companyLogo?: string;
   companyUrl?: string;
 }

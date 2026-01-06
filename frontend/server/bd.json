@@ -443,7 +443,6 @@
         "Node.js",
         "Express"
       ],
-      "achievements": [],
       "companyLogo": "assets/images/companies/crosoften.png",
       "companyUrl": "https://crosoften.com"
     },
@@ -470,11 +469,6 @@
         "MongoDB",
         "PostgreSQL",
         "MySQL"
-      ],
-      "achievements": [
-        "Dsenvolvi mais de 20 sites responsivos",
-        "Implementei sistema de gerenciamento de conteúdo customizado",
-        "Melhorei performance de sites em média 40%"
       ],
       "companyLogo": "assets/images/companies/freelancer.png",
       "companyUrl": "https://freelancer.com"

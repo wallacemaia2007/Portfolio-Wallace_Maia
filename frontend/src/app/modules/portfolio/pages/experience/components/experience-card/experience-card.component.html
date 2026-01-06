@@ -1,1 +1,135 @@
-<p>experience-card works!</p>
+<article class="relative rounded-3xl p-10 border-2 transition-all duration-500 overflow-hidden group
+              bg-beige-dark dark:bg-custom-black 
+              border-gray-200 dark:border-gray-800
+              hover:border-primary dark:hover:border-primary-light
+              shadow-xl hover:shadow-3xl
+              hover:-translate-y-2">
+
+  <!-- Background Gradient Effect -->
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 dark:from-primary-light/10 dark:via-transparent dark:to-primary-light/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+  </div>
+
+  <!-- Content Container -->
+  <div class="relative z-10">
+
+    <!-- Header -->
+    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
+
+      <!-- Left: Title & Company -->
+      <div class="flex-1">
+        <h3
+          class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 leading-tight group-hover:text-primary dark:group-hover:text-primary-light transition-colors">
+          {{ experience.position }}
+        </h3>
+
+        @if (experience.companyUrl) {
+        <a [href]="experience.companyUrl" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 text-primary dark:text-primary-light hover:text-primary-dark dark:hover:text-primary font-bold text-xl transition-all group/link">
+          <span>{{ experience.company }}</span>
+        </a>
+        } @else {
+        <p class="text-primary dark:text-primary-light font-bold text-xl">{{ experience.company }}</p>
+        }
+      </div>
+
+      <!-- Right: Badge "Atual" or Date Range -->
+      <div class="shrink-0 lg:text-right">
+        @if (experience.current) {
+        <span
+          class="inline-flex items-center gap-3 px-6 py-3 bg-accent text-white rounded-2xl text-base font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+          </span>
+          Atual
+        </span>
+        } @else {
+        <div class="inline-block px-6 py-3 bg-gray-100 dark:bg-gray-800 rounded-2xl">
+          <p class="text-gray-600 dark:text-gray-400 text-base font-bold">
+            {{ formatDate(experience.startDate) }} — {{ formatDate(experience.endDate ?? 'Presente') }}
+          </p>
+        </div>
+        }
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-8">
+      <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+        {{ experience.description }}
+      </p>
+    </div>
+
+    <!-- Info Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+
+      <!-- Date -->
+      <div
+        class="flex items-center gap-3 p-4 bg-primary/10 dark:bg-primary-light/10 rounded-xl border border-primary/20 dark:border-primary-light/20 group/info hover:scale-105 transition-transform">
+        <div
+          class="w-12 h-12 bg-primary/20 dark:bg-primary-light/20 rounded-xl flex items-center justify-center shrink-0">
+          <mat-icon class="text-primary dark:text-primary-light text-2xl">calendar_today</mat-icon>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="text-xs font-semibold text-primary/70 dark:text-primary-light/70 uppercase tracking-wide mb-1">
+            Período</p>
+          <p class="text-sm font-bold text-gray-900 dark:text-white truncate">
+            {{ formatDate(experience.startDate) }} - {{ experience.endDate ? formatDate(experience.endDate) : 'Presente'
+            }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Duration -->
+      <div
+        class="flex items-center gap-3 p-4 bg-primary/10 dark:bg-primary-light/10 rounded-xl border border-primary/20 dark:border-primary-light/20 group/info hover:scale-105 transition-transform">
+        <div
+          class="w-12 h-12 bg-primary/20 dark:bg-primary-light/20 rounded-xl flex items-center justify-center shrink-0">
+          <mat-icon class="text-primary dark:text-primary-light text-2xl">schedule</mat-icon>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="text-xs font-semibold text-primary/70 dark:text-primary-light/70 uppercase tracking-wide mb-1">
+            Duração</p>
+          <p class="text-sm font-bold text-gray-900 dark:text-white truncate">{{ duration }}</p>
+        </div>
+      </div>
+
+      <!-- Location -->
+      <div
+        class="flex items-center gap-3 p-4 bg-primary/10 dark:bg-primary-light/10 rounded-xl border border-primary/20 dark:border-primary-light/20 group/info hover:scale-105 transition-transform">
+        <div
+          class="w-12 h-12 bg-primary/20 dark:bg-primary-light/20 rounded-xl flex items-center justify-center shrink-0">
+          <mat-icon class="text-primary dark:text-primary-light text-2xl">location_on</mat-icon>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="text-xs font-semibold text-primary/70 dark:text-primary-light/70 uppercase tracking-wide mb-1">
+            Local</p>
+          <p class="text-sm font-bold text-gray-900 dark:text-white truncate">{{ experience.location }}</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Technologies -->
+    @if (experience.technologies && experience.technologies.length > 0) {
+    <div>
+      <h4 class="text-lg font-bold text-gray-700 dark:text-gray-300 mb-4 flex items-center gap-3">
+        <span>Tecnologias Utilizadas</span>
+      </h4>
+      <div class="flex flex-wrap gap-3">
+        @for (tech of experience.technologies; track tech) {
+        <span class="px-5 py-2.5 rounded-xl text-sm font-bold transition-all
+                     bg-gray-100 dark:bg-custom-black
+                     text-gray-700 dark:text-gray-200
+                     border-2 border-gray-200 dark:border-gray-700">
+          {{ tech }}
+        </span>
+        }
+      </div>
+    </div>
+    }
+
+  </div>
+
+</article>

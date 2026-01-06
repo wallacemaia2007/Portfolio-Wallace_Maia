@@ -1,1 +1,105 @@
-<p>experience works!</p>
+<div class="min-h-screen bg-white dark:bg-custom-black transition-colors duration-300">
+
+  <!-- HEADER -->
+  <section class="py-20 bg-gradient-to-br from-beige-light to-white dark:from-custom-black dark:to-custom-black-light"
+    appScrollReveal revealFrom="bottom" [revealDelay]="100">
+    <div class="container mx-auto px-4">
+      <app-section-header title="Experiência Profissional" subtitle="Minha jornada no mundo do desenvolvimento"
+        description="Explore minha trajetória profissional, desde estágios até posições seniores, e veja como evoluí minhas habilidades ao longo do tempo."></app-section-header>
+    </div>
+  </section>
+
+  <!-- LOADING STATE -->
+  @if (isLoading) {
+  <section class="py-32" appScrollReveal revealFrom="bottom" [revealDelay]="0">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col justify-center items-center">
+        <div class="relative">
+          <div
+            class="animate-spin rounded-full h-20 w-20 border-t-4 border-b-4 border-primary dark:border-primary-light">
+          </div>
+          <div
+            class="absolute inset-0 animate-ping rounded-full h-20 w-20 border-4 border-primary dark:border-primary-light opacity-20">
+          </div>
+        </div>
+        <p class="text-gray-600 dark:text-gray-400 mt-8 text-xl font-medium">
+          Carregando experiências...
+        </p>
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- EXPERIENCES LIST -->
+  @if (!isLoading && experiences.length > 0) {
+  <section class="py-24 min-h-[300px] flex items-center justify-center bg-beige-light dark:bg-custom-black-light">
+    <div class="container mx-auto px-4 max-w-6xl">
+
+      <div class="space-y-10">
+        @for (experience of experiences; track experience.id; let i = $index) {
+        <div appScrollReveal revealFrom="bottom" [revealDelay]="i * 120">
+          <app-experience-card [experience]="experience">
+          </app-experience-card>
+        </div>
+        }
+      </div>
+
+    </div>
+  </section>
+  }
+
+  <!-- EMPTY STATE -->
+  @if (!isLoading && experiences.length === 0) {
+  <section class="py-32" appScrollReveal revealFrom="bottom" [revealDelay]="0">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-md mx-auto">
+        <div
+          class="inline-block p-10 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-custom-black-light dark:to-custom-black rounded-3xl mb-8 shadow-xl">
+          <mat-icon class="text-7xl text-gray-400 dark:text-gray-600">
+            work_off
+          </mat-icon>
+        </div>
+
+        <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          Nenhuma experiência encontrada
+        </h3>
+
+        <p class="text-lg text-gray-600 dark:text-gray-400">
+          Ainda não há experiências cadastradas.
+        </p>
+      </div>
+    </div>
+  </section>
+  }
+
+  <!-- CTA FINAL -->
+  <section class="py-20 bg-gradient-to-r from-primary to-primary-dark" appScrollReveal revealFrom="left"
+    [revealDelay]="300">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center text-white">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Gostou da minha trajetória?
+        </h2>
+
+        <p class="text-xl mb-8 text-white/90">
+          Vamos trabalhar juntos e criar algo incrível!
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a routerLink="/projects" mat-raised-button
+            class="border-2 border-white text-white hover:bg-white/10 transition-colors flex items-center justify-center space-x-2 px-8 py-3">
+            <mat-icon>work</mat-icon>
+            <span>Ver Projetos</span>
+          </a>
+
+          <a routerLink="/contact" mat-raised-button
+            class="border-2 border-white text-white hover:bg-white/10 transition-colors flex items-center justify-center space-x-2 px-8 py-3">
+            <mat-icon>email</mat-icon>
+            <span>Entrar em Contato</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>

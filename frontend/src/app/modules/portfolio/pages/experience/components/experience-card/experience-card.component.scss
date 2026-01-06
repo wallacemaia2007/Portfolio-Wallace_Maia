@@ -1,0 +1,420 @@
+:host {
+  display: block;
+}
+
+// ═══════════════════════════════════════
+// 💳 CARD - IMPROVED DESIGN
+// ═══════════════════════════════════════
+
+article {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// ═══════════════════════════════════════
+// ✨ HOVER EFFECTS
+// ═══════════════════════════════════════
+
+.group:hover {
+  h3 {
+    letter-spacing: 0.02em;
+  }
+}
+
+// ═══════════════════════════════════════
+// 🏷️ BADGE "ATUAL"
+// ═══════════════════════════════════════
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-ping {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+// ═══════════════════════════════════════
+// 📊 INFO GRID
+// ═══════════════════════════════════════
+
+.group\/info {
+  cursor: default;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    background-color: rgba(155, 27, 31, 0.05);
+  }
+}
+
+:host-context(.dark) .group\/info:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+// ═══════════════════════════════════════
+// 🏆 CONQUISTAS
+// ═══════════════════════════════════════
+
+.border-l-4 {
+  position: relative;
+  transition: all 0.3s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, #4caf50, #81c784);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.5s ease;
+  }
+
+  &:hover::before {
+    transform: scaleY(1);
+  }
+}
+
+.group\/achievement {
+  transition: all 0.3s ease;
+
+  &:hover {
+    .w-6.h-6 {
+      animation: check-bounce 0.6s ease;
+    }
+  }
+}
+
+@keyframes check-bounce {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.2) rotate(-10deg);
+  }
+  50% {
+    transform: scale(1.3) rotate(10deg);
+  }
+  75% {
+    transform: scale(1.2) rotate(-5deg);
+  }
+}
+
+// ═══════════════════════════════════════
+// 💻 TECH TAGS
+// ═══════════════════════════════════════
+
+span[class*="px-5"] {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(155, 27, 31, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+  }
+
+  &:hover::before {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+:host-context(.dark) span[class*="px-5"]:hover::before {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+// ═══════════════════════════════════════
+// 🎨 GRADIENTS
+// ═══════════════════════════════════════
+
+.bg-gradient-to-br {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 0%, rgba(155, 27, 31, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+}
+
+.group:hover .bg-gradient-to-br::after {
+  opacity: 1;
+}
+
+// ═══════════════════════════════════════
+// 📱 RESPONSIVE
+// ═══════════════════════════════════════
+
+@media (max-width: 1024px) {
+  article {
+    padding: 2.5rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  .text-4xl {
+    font-size: 2rem;
+  }
+
+  .text-3xl {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  article {
+    padding: 2rem;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+  }
+
+  .text-4xl {
+    font-size: 1.75rem;
+  }
+
+  .text-3xl {
+    font-size: 1.5rem;
+  }
+
+  .text-2xl {
+    font-size: 1.25rem;
+  }
+
+  .text-xl {
+    font-size: 1.125rem;
+  }
+
+  .grid-cols-3 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  article {
+    padding: 1.5rem;
+    border-width: 1px;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  .text-4xl {
+    font-size: 1.5rem;
+  }
+
+  .text-3xl {
+    font-size: 1.25rem;
+  }
+
+  .text-xl {
+    font-size: 1rem;
+  }
+
+  .text-lg {
+    font-size: 0.9375rem;
+  }
+
+  .p-10 {
+    padding: 1.5rem;
+  }
+
+  .w-12.h-12 {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  mat-icon {
+    font-size: 1.25rem !important;
+  }
+}
+
+// ═══════════════════════════════════════
+// 🎨 LIGHT/DARK MODE
+// ═══════════════════════════════════════
+
+:host-context(.light) {
+  article {
+    --card-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --card-hover-shadow: 0 35px 60px -15px rgba(155, 27, 31, 0.3);
+  }
+}
+
+:host-context(.dark) {
+  article {
+    --card-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+    --card-hover-shadow: 0 35px 60px -15px rgba(239, 68, 68, 0.4);
+  }
+
+  .shadow-xl {
+    box-shadow: var(--card-shadow);
+  }
+}
+
+.group:hover {
+  box-shadow: var(--card-hover-shadow);
+}
+
+// ═══════════════════════════════════════
+// 🎯 COMPANY LINK
+// ═══════════════════════════════════════
+
+.group\/link {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width 0.3s ease;
+  }
+
+  &:hover::after {
+    width: calc(100% - 2rem);
+  }
+}
+
+// ═══════════════════════════════════════
+// ⚡ PERFORMANCE
+// ═══════════════════════════════════════
+
+// GPU acceleration
+article,
+.group\/info,
+.group\/achievement,
+span[class*="px-5"] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+// Content visibility for better performance
+article {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}
+
+// ═══════════════════════════════════════
+// ♿ ACCESSIBILITY
+// ═══════════════════════════════════════
+
+*:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 0.75rem;
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  article {
+    border-width: 3px;
+  }
+
+  .border-2 {
+    border-width: 3px;
+  }
+}
+
+// ═══════════════════════════════════════
+// 🖨️ PRINT
+// ═══════════════════════════════════════
+
+@media print {
+  article {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border: 2px solid #000 !important;
+    box-shadow: none !important;
+    background: white !important;
+
+    &:hover {
+      transform: none;
+    }
+
+    * {
+      color: black !important;
+    }
+  }
+
+  .animate-ping {
+    animation: none !important;
+  }
+
+  // Hide hover effects
+  .absolute.inset-0 {
+    display: none;
+  }
+}
+
+// ═══════════════════════════════════════
+// ♿ REDUCED MOTION
+// ═══════════════════════════════════════
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  article:hover {
+    transform: none;
+  }
+
+  .group\/info:hover,
+  .group\/achievement:hover,
+  span:hover {
+    transform: none;
+  }
+}
+
+// ═══════════════════════════════════════
+// 🌐 RTL SUPPORT
+// ═══════════════════════════════════════
+
+[dir="rtl"] {
+  .border-l-4 {
+    border-left: none;
+    border-right: 4px solid var(--accent);
+  }
+
+  .group\/link::after {
+    left: auto;
+    right: 0;
+  }
+
+  .group-hover\/link\:translate-x-2:hover {
+    transform: translateX(-0.5rem);
+  }
+
+  .group\/achievement:hover {
+    transform: translateX(-0.5rem);
+  }
+}
