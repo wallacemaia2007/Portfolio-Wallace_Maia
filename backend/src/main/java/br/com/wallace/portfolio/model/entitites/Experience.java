@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -34,14 +36,18 @@ public class Experience {
     private boolean current;
     private String location;
     private String type;
-    
+
     @ElementCollection
     private List<String> technologies;
-    
+
     @ElementCollection
     private List<String> achievements;
-    
+
     private String companyLogo;
     private String companyUrl;
+
+    @ManyToOne
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
 
 }

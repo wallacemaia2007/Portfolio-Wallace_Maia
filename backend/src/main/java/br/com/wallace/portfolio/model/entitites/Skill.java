@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,7 +19,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 public class Skill {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,6 +27,10 @@ public class Skill {
     private String category;
     private int level;
     private int yearsOfExperience;
-    private String icon;    
+    private String icon;
+
+    @ManyToOne
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
 
 }

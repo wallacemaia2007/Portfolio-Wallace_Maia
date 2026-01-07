@@ -2,12 +2,10 @@ package br.com.wallace.portfolio.model.entitites;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
@@ -15,6 +13,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import jakarta.persistence.CascadeType;
 
 @Entity
 @Getter
@@ -41,24 +40,18 @@ public class Profile {
     private String linkedinUrl;
     private String websiteUrl;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "profile_id")
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Project> projects;
-    
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "profile_id")
-    private List<Experience> experiences;
-    
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "profile_id")
-    private List<Skill> skills;
-    
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "profile_id")
-    private List<SocialLink> socialLinks;
-    
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "statistic_id")
-    private Statistic statistic;
 
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Experience> experiences;
+
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Skill> skills;
+
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<SocialLink> socialLinks;
+
+    @OneToOne(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Statistic statistic;
 }
