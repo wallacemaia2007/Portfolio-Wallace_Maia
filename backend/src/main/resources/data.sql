@@ -1,3 +1,6 @@
+-- =========================
+-- PROFILE
+-- =========================
 INSERT INTO profile (
     id,
     full_name,
@@ -14,16 +17,16 @@ INSERT INTO profile (
     website_url
 ) VALUES (
     1,
-    'Wallace Candido Maia Sousa',
-    'WCM',
-    'Full Stack Developer',
+    'Wallace Maia',
+    'WM',
+    'Desenvolvedor Full Stack',
     'wallacemaia2007@email.com',
-    '+55 35 99999-9999',
-    'Passos - MG, Brazil',
-    'Desenvolvedor Full Stack focado em Java e Angular.',
-    '/assets/avatar.png',
-    '/assets/cv.pdf',
-    'https://github.com/wallace',
-    'https://linkedin.com/in/wallace',
-    'https://wallace.dev'
+    '+55 (35) 91003-6806',
+    'Passos, MG - Brasil',
+    'Desenvolvedor Full Stack apaixonado por criar experiências web incríveis e soluções inovadoras.',
+    'assets/images/avatar.jpg',
+    'assets/cv.pdf',
+    'https://github.com/wallacemaia2007',
+    'https://www.linkedin.com/in/wallacemaia-dev/',
+    'https://wallacemaia.com'
 );

@@ -8,7 +8,7 @@ import br.com.wallace.portfolio.model.entitites.Profile;
 @Component
 public class ProfileMapper {
 
-    public ProfileResponseDTO toResponse(Profile profile) {
+    public static ProfileResponseDTO toResponse(Profile profile) {
         return new ProfileResponseDTO(profile.getId(), profile.getFullName(), profile.getAcronym(), profile.getRole(),
                 profile.getEmail(), profile.getPhone(), profile.getLocation(), profile.getBio(), profile.getAvatar(),
                 profile.getCvUrl(), profile.getGithubUrl(), profile.getLinkedinUrl(), profile.getWebsiteUrl());
