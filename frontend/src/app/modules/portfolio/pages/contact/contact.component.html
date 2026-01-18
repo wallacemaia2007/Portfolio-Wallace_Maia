@@ -1,1 +1,233 @@
-<p>contact works!</p>
+<div class="min-h-screen bg-white dark:bg-custom-black transition-colors duration-300">
+  <section
+    class="py-20 bg-gradient-to-br from-beige-light to-white dark:from-custom-black dark:to-custom-black-light relative overflow-hidden"
+    appScrollReveal revealFrom="bottom" [revealDelay]="100">
+
+    <div class="container mx-auto px-4 relative z-10">
+      <app-section-header title="Entre em Contato" subtitle="Vamos trabalhar juntos e criar algo incrível!"
+        align="center"></app-section-header>
+
+      <p class="text-center text-gray-700 dark:text-gray-300 text-lg max-w-2xl mx-auto mt-6">
+        Estou sempre aberto a novos projetos, oportunidades e colaborações. <br />
+        Preencha o formulário abaixo ou entre em contato diretamente pelos canais disponíveis.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 bg-beige-light dark:bg-custom-black-light" appScrollReveal revealFrom="bottom"
+    [revealDelay]="200">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        @for (card of contactInfoCards; track card.title) {
+        <div
+          class="group bg-white dark:bg-custom-black rounded-2xl p-8 shadow-lg hover:shadow-glow transition-all duration-500 border border-beige dark:border-gray-800 hover:border-primary hover:-translate-y-2 cursor-pointer"
+          [class.pointer-events-none]="!card.link">
+          <a [href]="card.link" target="_blank" [class.pointer-events-none]="!card.link"
+            class="flex flex-col items-center text-center space-y-4 ">
+            <div
+              class="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110">
+              <img class="text-3xl transition-colors duration-300" [src]="card.icon">
+            </div>
+
+            <div>
+              <h3
+                class="text-xl font-bold text-custom-black dark:text-white mb-2 group-hover:text-primary transition-colors">
+                {{ card.title }}
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400 group-hover:text-primary transition-colors break-words">
+                {{ card.content }}
+              </p>
+            </div>
+          </a>
+        </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white dark:bg-custom-black">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div appScrollReveal revealFrom="left" [revealDelay]="300"
+          class="bg-beige-light dark:bg-custom-black-light rounded-3xl p-8 shadow-2xl border border-beige dark:border-gray-800">
+          <div class="mb-8">
+            <h2 class="text-3xl font-bold text-custom-black dark:text-white mb-2">
+              Envie sua Mensagem
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400">
+              Preencha o formulário abaixo e responderei o mais breve possível.
+            </p>
+          </div>
+
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-5">
+            <div class="relative">
+              <div
+                class="flex items-center gap-3 px-4 py-4 bg-white dark:bg-custom-black rounded-xl border-2 border-beige dark:border-gray-700 focus-within:border-primary transition-all duration-300 hover:border-primary/50 dark:hover:border-gray-600">
+                <mat-icon class="text-primary text-xl">person</mat-icon>
+                <input type="text" formControlName="name" placeholder="Nome Completo*"
+                  class="flex-1 bg-transparent text-custom-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 outline-none text-base" />
+              </div>
+              @if (isFieldInvalid('name')) {
+              <p class="text-red-500 text-sm mt-2 ml-4 flex items-center gap-1">
+                <mat-icon class="text-sm">error</mat-icon>
+                {{ getErrorMessage('name') }}
+              </p>
+              }
+            </div>
+
+            <div class="relative">
+              <div
+                class="flex items-center gap-3 px-4 py-4 bg-white dark:bg-custom-black rounded-xl border-2 border-beige dark:border-gray-700 focus-within:border-primary transition-all duration-300 hover:border-primary/50 dark:hover:border-gray-600">
+                <mat-icon class="text-primary text-xl">email</mat-icon>
+                <input type="email" formControlName="email" placeholder="Email*"
+                  class="flex-1 bg-transparent text-custom-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 outline-none text-base" />
+              </div>
+              @if (isFieldInvalid('email')) {
+              <p class="text-red-500 text-sm mt-2 ml-4 flex items-center gap-1">
+                <mat-icon class="text-sm">error</mat-icon>
+                {{ getErrorMessage('email') }}
+              </p>
+              }
+            </div>
+
+            <div class="relative">
+              <div
+                class="flex items-center gap-3 px-4 py-4 bg-white dark:bg-custom-black rounded-xl border-2 border-beige dark:border-gray-700 focus-within:border-primary transition-all duration-300 hover:border-primary/50 dark:hover:border-gray-600">
+                <mat-icon class="text-primary text-xl">phone</mat-icon>
+                <input type="tel" formControlName="phone" placeholder="Telefone (Opcional)"
+                  class="flex-1 bg-transparent text-custom-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 outline-none text-base" />
+              </div>
+            </div>
+
+            <div class="relative">
+              <div
+                class="flex items-center gap-3 px-4 py-4 bg-white dark:bg-custom-black rounded-xl border-2 border-beige dark:border-gray-700 focus-within:border-primary transition-all duration-300 hover:border-primary/50 dark:hover:border-gray-600">
+                <mat-icon class="text-primary text-xl">label</mat-icon>
+                <input type="text" formControlName="subject" placeholder="Assunto*"
+                  class="flex-1 bg-transparent text-custom-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 outline-none text-base" />
+              </div>
+              @if (isFieldInvalid('subject')) {
+              <p class="text-red-500 text-sm mt-2 ml-4 flex items-center gap-1">
+                <mat-icon class="text-sm">error</mat-icon>
+                {{ getErrorMessage('subject') }}
+              </p>
+              }
+            </div>
+
+            <div class="relative">
+              <div
+                class="flex items-start gap-3 px-4 py-4 bg-white dark:bg-custom-black rounded-xl border-2 border-beige dark:border-gray-700 focus-within:border-primary transition-all duration-300 hover:border-primary/50 dark:hover:border-gray-600">
+                <mat-icon class="text-primary text-xl mt-1">message</mat-icon>
+                <textarea formControlName="message" rows="6" placeholder="Mensagem*"
+                  class="flex-1 bg-transparent text-custom-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 outline-none text-base resize-none"></textarea>
+              </div>
+              @if (isFieldInvalid('message')) {
+              <p class="text-red-500 text-sm mt-2 ml-4 flex items-center gap-1">
+                <mat-icon class="text-sm">error</mat-icon>
+                {{ getErrorMessage('message') }}
+              </p>
+              }
+            </div>
+
+            <button type="submit" [disabled]="isSubmitting"
+              class="w-full py-4 bg-primary hover:bg-primary-dark disabled:bg-gray-600 text-white font-bold text-base rounded-xl transition-all duration-300 hover:shadow-glow hover:scale-[1.02] disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2">
+              @if (isSubmitting) {
+              <span class="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></span>
+              <span>Enviando...</span>
+              } @else {
+              <span>Enviar Mensagem</span>
+              }
+            </button>
+          </form>
+        </div>
+
+        <div class="space-y-8" appScrollReveal revealFrom="right" [revealDelay]="300">
+          <div
+            class="bg-gradient-to-br from-primary to-primary-dark rounded-3xl p-8 text-white shadow-2xl hover:shadow-glow-lg transition-all duration-300">
+            <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+              <span>Contato Rápido</span>
+            </h3>
+
+            <div class="space-y-4">
+              <button (click)="openEmail()"
+                class="w-full py-4 bg-white/10 hover:bg-white hover:text-primary border-2 border-white text-white transition-all rounded-xl flex items-center justify-center gap-2 text-base font-semibold backdrop-blur-sm">
+                <span>Enviar Email Diretamente</span>
+              </button>
+
+              <button (click)="openWhatsApp()"
+                class="w-full py-4 bg-white/10 hover:bg-white hover:text-accent border-2 border-white text-white transition-all rounded-xl flex items-center justify-center gap-2 text-base font-semibold backdrop-blur-sm">
+                <span>WhatsApp</span>
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="bg-beige-light dark:bg-custom-black-light rounded-3xl p-8 shadow-xl border border-beige dark:border-gray-800">
+            <h3 class="text-2xl font-bold text-custom-black dark:text-white mb-6 flex items-center gap-3">
+              <span>Redes Sociais</span>
+            </h3>
+
+            <p class="text-gray-600 dark:text-gray-400 mb-6">
+              Conecte-se comigo nas redes sociais para acompanhar meu trabalho e novidades:
+            </p>
+
+            <div class="flex justify-center">
+              <app-social-links size="large"></app-social-links>
+            </div>
+          </div>
+
+          <div class="bg-accent/10 dark:bg-accent/20 rounded-3xl p-8 border border-accent/40 dark:border-accent/30">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="relative flex h-4 w-4">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-4 w-4 bg-accent"></span>
+              </div>
+              <h3 class="text-xl font-bold text-custom-black dark:text-white">Disponível para Projetos</h3>
+            </div>
+
+            <p class="text-gray-700 dark:text-gray-300">
+              Atualmente aceitando novos projetos e oportunidades de colaboração. Respondo normalmente em até 24 horas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <app-faq title="Perguntas Frequentes" [showContactCta]="false" [delayAnimation]="400"></app-faq>
+
+  <section class="py-20 bg-gradient-to-r from-primary to-primary-dark relative overflow-hidden" appScrollReveal
+    revealFrom="bottom" [revealDelay]="500">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse"
+        style="animation-delay: 1.5s"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-3xl mx-auto text-center text-white">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Ainda não ficou convencido?
+        </h2>
+        <p class="text-xl mb-8 text-white/90">
+          Dê mais uma olhada em meus projetos ou então meu currículo!<br />
+          Tenho certeza que vai achar algo que te interesse!
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a routerLink="/projects" mat-raised-button
+            class="border-2 border-white text-white hover:bg-white/10 transition-colors flex items-center justify-center space-x-2 px-8 py-3">
+            <mat-icon>work</mat-icon>
+            <span>Ver Projetos</span>
+          </a>
+
+          <a href="assets/cv.pdf" download mat-raised-button
+            class="border-2 border-white text-white hover:bg-white/10 transition-colors flex items-center justify-center space-x-2 px-8 py-3">
+            <mat-icon>download</mat-icon>
+            <span>Download CV</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

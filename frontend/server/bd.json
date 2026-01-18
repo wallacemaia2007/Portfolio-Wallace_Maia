@@ -544,5 +544,87 @@
       "icon": "assets/icons/whatsapp.svg",
       "color": "#25D366"
     }
+  ],
+  "faqs": [
+    {
+      "id": "1",
+      "question": "Qual o prazo de resposta?",
+      "answer": "Normalmente respondo em até 24 horas durante dias úteis. Para assuntos urgentes, entre em contato via WhatsApp.",
+      "category": "geral",
+      "order": 1,
+      "icon": "schedule"
+    },
+    {
+      "id": "2",
+      "question": "Você trabalha com freelance?",
+      "answer": "Sim! Estou disponível para projetos freelance. Entre em contato para discutirmos seu projeto e verificar disponibilidade.",
+      "category": "freelance",
+      "order": 2,
+      "icon": "work_outline"
+    },
+    {
+      "id": "3",
+      "question": "Quais tecnologias você domina?",
+      "answer": "Trabalho principalmente com Angular, Java e Spring Boot. Confira minha página de <a href=\"#/skills\" class=\"text-primary hover:underline font-semibold\">Skills</a> para ver todas as tecnologias que domino.",
+      "category": "tecnologias",
+      "order": 3,
+      "icon": "code"
+    },
+    {
+      "id": "4",
+      "question": "Qual o valor dos seus serviços?",
+      "answer": "Os valores variam de acordo com a complexidade e escopo do projeto. Entre em contato para discutirmos seu projeto e receber um orçamento personalizado.",
+      "category": "freelance",
+      "order": 4,
+      "icon": "payments"
+    },
+    {
+      "id": "5",
+      "question": "Você aceita projetos internacionais?",
+      "answer": "Sim! Estou aberto a trabalhar com clientes de qualquer lugar do mundo. Tenho experiência com trabalho remoto e possuo inglês fluente para comunicação.",
+      "category": "freelance",
+      "order": 5,
+      "icon": "language"
+    },
+    {
+      "id": "6",
+      "question": "Como funciona o processo de contratação?",
+      "answer": "1) Primeiro, conversamos sobre seu projeto; 2) Elaboro uma proposta com escopo e valores; 3) Após aprovação, definimos cronograma e milestones; 4) Iniciamos o desenvolvimento com atualizações regulares.",
+      "category": "freelance",
+      "order": 6,
+      "icon": "checklist"
+    },
+    {
+      "id": "7",
+      "question": "Você fornece manutenção após a entrega?",
+      "answer": "Sim! Ofereço garantia de 30 dias para correção de bugs após a entrega. Para manutenção contínua, podemos estabelecer um contrato de suporte mensal.",
+      "category": "projetos",
+      "order": 7,
+      "icon": "build"
+    },
+    {
+      "id": "8",
+      "question": "Quais tipos de projetos você desenvolve?",
+      "answer": "Desenvolvo aplicações web completas (frontend + backend), APIs REST, sistemas administrativos, e-commerces, landing pages e mais. Confira meu <a href=\"#/projects\" class=\"text-primary hover:underline font-semibold\">portfólio</a> para ver exemplos.",
+      "category": "projetos",
+      "order": 8,
+      "icon": "apps"
+    },
+    {
+      "id": "9",
+      "question": "Você trabalha em equipe ou sozinho?",
+      "answer": "Posso trabalhar das duas formas. Para projetos maiores, tenho parceiros confiáveis que posso trazer para a equipe conforme necessário.",
+      "category": "geral",
+      "order": 9,
+      "icon": "groups"
+    },
+    {
+      "id": "10",
+      "question": "Está disponível para oportunidades full-time?",
+      "answer": "Sim! Estou aberto a oportunidades full-time, tanto remotas quanto presenciais (de acordo com a localização). Entre em contato para discutirmos.",
+      "category": "contratacao",
+      "order": 10,
+      "icon": "business_center"
+    }
   ]
 }
