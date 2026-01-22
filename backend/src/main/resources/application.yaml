@@ -1,31 +1,25 @@
 spring:
-  application:
-    name: portfolio-api
-
   datasource:
-    url: jdbc:h2:mem:portfolio-db
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
+    # Substitua 'nome_do_seu_banco' pelo nome que você criará no pgAdmin
+    url: jdbc:postgresql://localhost:5432/portfolio_db
+    username: postgres
+    password: "@Wall1327"
+    driver-class-name: org.postgresql.Driver
 
   jpa:
-    open-in-view: false
     hibernate:
+      # 'update' cria as tabelas automaticamente e as atualiza se você mudar suas classes @Entity
       ddl-auto: update
-    defer-datasource-initialization: true
     show-sql: true
     properties:
       hibernate:
+        # Melhora a visualização do SQL no console
         format_sql: true
-
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-
-server:
-  port: 8080
-
+        
 springdoc:
   swagger-ui:
-    path: /swagger
+    # Caminho personalizado para acessar a interface
+    path: /swagger-ui.html
+  api-docs:
+    # Caminho para o JSON da documentação
+    path: /v3/api-docs
