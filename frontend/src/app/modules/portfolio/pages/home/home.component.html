@@ -1,229 +1,313 @@
 <div class="min-h-screen bg-white dark:bg-custom-black">
-  <app-hero-section appScrollReveal revealFrom="bottom" [revealDelay]="100" [revealOnce]="false"></app-hero-section>
-  <section class="py-20 bg-beige-light dark:bg-custom-black" appScrollReveal revealFrom="bottom" [revealDelay]="100"
-    [revealOnce]="false">
-    <div class="container mx-auto px-4">
-      <app-section-header title="Projetos em Destaque"
-        subtitle="Confira alguns dos meus trabalhos mais recentes e impactantes" align="center"></app-section-header>
+  <app-hero-section
+    appScrollReveal
+    revealFrom="bottom"
+    [revealDelay]="100"
+    [revealOnce]="false"
+  ></app-hero-section>
 
-      @if (isLoadingProjects) {
-      <div class="flex justify-center py-12">
-        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-      </div>
-      } @else if (featuredProjects.length > 0) {
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        @for (project of featuredProjects; track project.id) {
-        <app-project-card [project]="project"></app-project-card>
-        }
-      </div>
-
-      <div class="flex justify-center mt-12">
-        <a routerLink="/projects" mat-raised-button color="primary" class="px-8 py-3">
-          <span class="flex items-center space-x-2">
-            <span>Ver Todos os Projetos</span>
-            <mat-icon>arrow_forward</mat-icon>
-          </span>
-        </a>
-      </div>
-      } @else {
-      <div class="text-center py-12">
-        <mat-icon class="text-6xl text-gray-400 mb-4">folder_open</mat-icon>
-        <p class="text-gray-600 dark:text-gray-400">Nenhum projeto em destaque ainda</p>
-      </div>
-      }
-    </div>
-  </section>
-  <section class="py-20 bg-white dark:bg-custom-black-light" appScrollReveal revealFrom="bottom" [revealDelay]="100"
-    [revealOnce]="false">
-    <div class="container mx-auto px-4">
-      <app-section-header title="Tecnologias & Habilidades"
-        subtitle="Ferramentas e tecnologias que domino para criar soluções incríveis"
-        align="center"></app-section-header>
-
-      @if (isLoadingSkills) {
-      <div class="flex justify-center py-12">
-        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-      </div>
-      } @else if (skillCategories.length > 0) {
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        @for (category of skillCategories; track category.category) {
-        <div
-          class="bg-white dark:bg-custom-black rounded-xl p-6 shadow-lg hover:shadow-glow transition-all duration-300 border border-gray-200 dark:border-gray-800 hover:border-primary">
-          <div class="flex items-center space-x-3 mb-4">
-            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-              <img [src]="category.icon" alt="{{ category.categoryName }} Icon" class="w-6 h-6" />
-            </div>
-            <h3 class="text-xl font-bold text-custom-black dark:text-white">
-              {{ category.categoryName }}
-            </h3>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            @for (skill of category.skills.slice(0, 6); track skill.id) {
-            <span
-              class="px-3 py-1 bg-beige dark:bg-custom-black-light text-custom-black dark:text-gray-300 rounded-full text-sm border border-gray-200 dark:border-gray-700">
-              {{ skill.name }}
-            </span>
-            }
-            @if (category.skills.length > 6) {
-            <span class="px-3 py-1 text-primary font-medium text-sm">
-              +{{ category.skills.length - 6 }} mais
-            </span>
-            }
-          </div>
-        </div>
-        }
-      </div>
-
-      <div class="flex justify-center mt-12">
-        <a routerLink="/skills" mat-raised-button color="primary" class="px-8 py-3">
-          <span class="flex items-center space-x-2">
-            <span>Ver Todas as Skills</span>
-            <mat-icon>arrow_forward</mat-icon>
-          </span>
-        </a>
-      </div>
-      }
-    </div>
-  </section>
-  <section class="py-20 bg-beige-light dark:bg-custom-black" appScrollReveal revealFrom="bottom" [revealDelay]="100"
-    [revealOnce]="false">
-    <div class="container mx-auto px-4">
-      <app-section-header title="Trajetória Profissional"
-        subtitle="Minha jornada de crescimento e experiências ao longo dos anos" align="center"></app-section-header>
-      @if (isLoadingExperience) {
-      <div class="flex justify-center py-12">
-        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-      </div>
-      } @else if (recentExperiences.length > 0) {
-      <div class="max-w-4xl mx-auto">
-        @for (experience of recentExperiences; track experience.id; let i = $index) {
-        <div class="relative pl-8 pb-12 last:pb-0">
-          @if (!$last) {
-          <div class="absolute left-[15px] top-8 bottom-0 w-0.5 bg-gradient-to-b from-primary to-primary-dark"></div>
-          }
-
-          <div class="absolute left-0 top-2 w-8 h-8 rounded-full flex items-center justify-center" [class]="experience.current 
-                 ? 'bg-primary ring-4 ring-primary/20 shadow-glow-sm' 
-                 : 'bg-beige dark:bg-custom-black-light border-2 border-primary'">
-            <span class="flex items-center justify-center w-full h-full">
-              <mat-icon [class]="experience.current ? 'text-white text-lg' : 'text-primary text-lg'"
-                style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
-                {{ experience.current ? 'work' : 'work_outline' }}
-              </mat-icon>
-            </span>
-          </div>
-          <div
-            class="bg-white dark:bg-custom-black-light rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-800 hover:border-primary hover:shadow-glow transition-all duration-300">
-            <div class="flex flex-wrap items-start justify-between gap-4 mb-3">
-              <div>
-                <h3 class="text-xl font-bold text-custom-black dark:text-white">
-                  {{ experience.position }}
-                </h3>
-                <p class="text-primary font-semibold">{{ experience.company }}</p>
-              </div>
-              @if (experience.current) {
-              <span class="px-3 py-1 bg-accent text-white rounded-full text-sm font-medium">
-                Atual
-              </span>
-              }
-            </div>
-
-            <div class="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
-              <span class="flex items-center space-x-1">
-                <mat-icon class="text-lg">calendar_today</mat-icon>
-                <span>{{ experience.startDate }} - {{ experience.endDate || 'Presente' }}</span>
-              </span>
-              <span class="flex items-center space-x-1">
-                <mat-icon class="text-lg">location_on</mat-icon>
-                <span>{{ experience.location }}</span>
-              </span>
-            </div>
-
-            <p class="text-gray-700 dark:text-gray-300 mb-4">
-              {{ experience.description }}
-            </p>
-
-            @if (experience.technologies.length > 0) {
-            <div class="flex flex-wrap gap-2">
-              @for (tech of experience.technologies.slice(0, 5); track tech) {
-              <span
-                class="px-2 py-1 bg-primary/10 text-gray-700 dark:text-gray-300 border border-primary/30 rounded text-xs font-medium">
-                {{ tech }}
-              </span>
-              }
-            </div>
-            }
-          </div>
-        </div>
-        }
-      </div>
-
-      <div class="flex justify-center mt-12">
-        <a routerLink="/experience" mat-raised-button color="primary" class="px-8 py-3">
-          <span class="flex items-center space-x-2">
-            <span>Ver Experiência Completa</span>
-            <mat-icon>arrow_forward</mat-icon>
-          </span>
-        </a>
-      </div>
-      }
-    </div>
-  </section>
-
-  <section class="py-20 bg-gradient-to-r from-primary to-primary-dark relative overflow-hidden" appScrollReveal
-    revealFrom="bottom" [revealDelay]="100" [revealOnce]="false">
+  <section
+    class="py-20 bg-gradient-to-r from-primary to-primary-dark relative overflow-hidden"
+    appScrollReveal
+    revealFrom="bottom"
+    [revealDelay]="100"
+    [revealOnce]="false"
+  >
     <div class="absolute inset-0 opacity-10">
-      <div class="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
-      <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+      <div
+        class="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl"
+      ></div>
+      <div
+        class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"
+      ></div>
     </div>
 
     <div class="container mx-auto px-4 relative z-10">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
         @for (stat of statistics; track stat.label) {
-        <div class="text-center animate-fade-in">
-          <div class="text-5xl md:text-6xl font-bold text-white mb-2">
-            {{ stat.value }}{{ stat.suffix || '' }}
+          <div class="text-center animate-fade-in">
+            <div class="text-5xl md:text-6xl font-bold text-white mb-2">
+              {{ stat.value }}{{ stat.suffix || "" }}
+            </div>
+            <div class="text-white/90 text-lg">
+              {{ stat.label }}
+            </div>
           </div>
-          <div class="text-white/90 text-lg">
-            {{ stat.label }}
-          </div>
-        </div>
         }
       </div>
     </div>
   </section>
-
-  <section class="py-20 bg-beige-light dark:bg-custom-black-light" appScrollReveal revealFrom="bottom"
-    [revealDelay]="100" [revealOnce]="false">
+  <section
+    class="py-20 bg-beige-light dark:bg-custom-black"
+    appScrollReveal
+    revealFrom="bottom"
+    [revealDelay]="100"
+    [revealOnce]="false"
+  >
     <div class="container mx-auto px-4">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-4xl font-bold text-custom-black dark:text-white mb-6">
-          Vamos Trabalhar Juntos?
-        </h2>
-        <p class="text-xl text-gray-700 dark:text-gray-300 mb-8">
-          Estou sempre aberto a novos projetos e oportunidades interessantes.
-          Entre em contato e vamos criar algo incrível!
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a routerLink="/contact" mat-raised-button color="primary" class="px-8 py-3">
-            <span class="flex items-center space-x-2">
-              <mat-icon>email</mat-icon>
-              <span>Entrar em Contato</span>
-            </span>
-          </a>
-          <a href="assets/cv.pdf" download mat-raised-button color="primary" class="px-8 py-3">
-            <span class="flex items-center space-x-2">
-              <mat-icon>download</mat-icon>
-              <span>Download CV</span>
-            </span>
-          </a>
+      <app-section-header
+        title="Projetos em Destaque"
+        subtitle="Confira alguns dos meus trabalhos mais recentes e impactantes"
+        align="center"
+      ></app-section-header>
+
+      @if (isLoadingProjects) {
+        <div class="flex justify-center py-12">
+          <div
+            class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"
+          ></div>
+        </div>
+      } @else if (featuredProjects.length > 0) {
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          @for (project of featuredProjects; track project.id) {
+            <app-project-card [project]="project"></app-project-card>
+          }
         </div>
 
-        <div class="mt-12 flex justify-center">
-          <app-social-links size="large"></app-social-links>
+        <div class="flex justify-center mt-12">
+          <a
+            routerLink="/projects"
+            mat-raised-button
+            color="primary"
+            class="px-8 py-3"
+          >
+            <span class="flex items-center space-x-2">
+              <span>Ver Todos os Projetos</span>
+              <mat-icon>arrow_forward</mat-icon>
+            </span>
+          </a>
         </div>
-        <p class="text-gray-600 dark:text-gray-400 mt-4">Me encontre nas redes sociais</p>
-      </div>
+      } @else {
+        <div class="text-center py-12">
+          <mat-icon class="text-6xl text-gray-400 mb-4">folder_open</mat-icon>
+          <p class="text-gray-600 dark:text-gray-400">
+            Nenhum projeto em destaque ainda
+          </p>
+        </div>
+      }
     </div>
+  </section>
+  <section
+    class="py-20 bg-white dark:bg-custom-black-light"
+    appScrollReveal
+    revealFrom="bottom"
+    [revealDelay]="100"
+    [revealOnce]="false"
+  >
+    <div class="container mx-auto px-4">
+      <app-section-header
+        title="Tecnologias & Habilidades"
+        subtitle="Ferramentas e tecnologias que domino para criar soluções incríveis"
+        align="center"
+      ></app-section-header>
+
+      @if (isLoadingSkills) {
+        <div class="flex justify-center py-12">
+          <div
+            class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"
+          ></div>
+        </div>
+      } @else if (skillCategories.length > 0) {
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          @for (category of skillCategories; track category.category) {
+            <div
+              class="bg-white dark:bg-custom-black rounded-xl p-6 shadow-lg hover:shadow-glow transition-all duration-300 border border-gray-200 dark:border-gray-800 hover:border-primary"
+            >
+              <div class="flex items-center space-x-3 mb-4">
+                <div
+                  class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center"
+                >
+                  <img
+                    [src]="category.icon"
+                    alt="{{ category.categoryName }} Icon"
+                    class="w-6 h-6"
+                  />
+                </div>
+                <h3 class="text-xl font-bold text-custom-black dark:text-white">
+                  {{ category.categoryName }}
+                </h3>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                @for (skill of category.skills.slice(0, 6); track skill.id) {
+                  <span
+                    class="px-3 py-1 bg-beige dark:bg-custom-black-light text-custom-black dark:text-gray-300 rounded-full text-sm border border-gray-200 dark:border-gray-700"
+                  >
+                    {{ skill.name }}
+                  </span>
+                }
+                @if (category.skills.length > 6) {
+                  <span class="px-3 py-1 text-primary font-medium text-sm">
+                    +{{ category.skills.length - 6 }} mais
+                  </span>
+                }
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="flex justify-center mt-12">
+          <a
+            routerLink="/skills"
+            mat-raised-button
+            color="primary"
+            class="px-8 py-3"
+          >
+            <span class="flex items-center space-x-2">
+              <span>Ver Todas as Skills</span>
+              <mat-icon>arrow_forward</mat-icon>
+            </span>
+          </a>
+        </div>
+      }
+    </div>
+  </section>
+  <section
+    class="py-20 bg-beige-light dark:bg-custom-black"
+    appScrollReveal
+    revealFrom="bottom"
+    [revealDelay]="100"
+    [revealOnce]="false"
+  >
+    <div class="container mx-auto px-4">
+      <app-section-header
+        title="Trajetória Profissional"
+        subtitle="Minha jornada de crescimento e experiências ao longo dos anos"
+        align="center"
+      ></app-section-header>
+      @if (isLoadingExperience) {
+        <div class="flex justify-center py-12">
+          <div
+            class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"
+          ></div>
+        </div>
+      } @else if (recentExperiences.length > 0) {
+        <div class="max-w-4xl mx-auto">
+          @for (
+            experience of recentExperiences;
+            track experience.id;
+            let i = $index
+          ) {
+            <div class="relative pl-8 pb-12 last:pb-0">
+              @if (!$last) {
+                <div
+                  class="absolute left-[15px] top-8 bottom-0 w-0.5 bg-gradient-to-b from-primary to-primary-dark"
+                ></div>
+              }
+
+              <div
+                class="absolute left-0 top-2 w-8 h-8 rounded-full flex items-center justify-center"
+                [class]="
+                  experience.current
+                    ? 'bg-primary ring-4 ring-primary/20 shadow-glow-sm'
+                    : 'bg-beige dark:bg-custom-black-light border-2 border-primary'
+                "
+              >
+                <span class="flex items-center justify-center w-full h-full">
+                  <mat-icon
+                    [class]="
+                      experience.current
+                        ? 'text-white text-lg'
+                        : 'text-primary text-lg'
+                    "
+                    style="
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      width: 100%;
+                      height: 100%;
+                    "
+                  >
+                    {{ experience.current ? "work" : "work_outline" }}
+                  </mat-icon>
+                </span>
+              </div>
+              <div
+                class="bg-white dark:bg-custom-black-light rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-800 hover:border-primary hover:shadow-glow transition-all duration-300"
+              >
+                <div
+                  class="flex flex-wrap items-start justify-between gap-4 mb-3"
+                >
+                  <div>
+                    <h3
+                      class="text-xl font-bold text-custom-black dark:text-white"
+                    >
+                      {{ experience.position }}
+                    </h3>
+                    <p class="text-primary font-semibold">
+                      {{ experience.company }}
+                    </p>
+                  </div>
+                  @if (experience.current) {
+                    <span
+                      class="px-3 py-1 bg-accent text-white rounded-full text-sm font-medium"
+                    >
+                      Atual
+                    </span>
+                  }
+                </div>
+
+                <div
+                  class="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4"
+                >
+                  <span class="flex items-center space-x-1">
+                    <mat-icon class="text-lg">calendar_today</mat-icon>
+                    <span
+                      >{{ experience.startDate }} -
+                      {{ experience.endDate || "Presente" }}</span
+                    >
+                  </span>
+                  <span class="flex items-center space-x-1">
+                    <mat-icon class="text-lg">location_on</mat-icon>
+                    <span>{{ experience.location }}</span>
+                  </span>
+                </div>
+
+                <p class="text-gray-700 dark:text-gray-300 mb-4">
+                  {{ experience.description }}
+                </p>
+
+                @if (experience.technologies.length > 0) {
+                  <div class="flex flex-wrap gap-2">
+                    @for (
+                      tech of experience.technologies.slice(0, 5);
+                      track tech
+                    ) {
+                      <span
+                        class="px-2 py-1 bg-primary/10 text-gray-700 dark:text-gray-300 border border-primary/30 rounded text-xs font-medium"
+                      >
+                        {{ tech }}
+                      </span>
+                    }
+                  </div>
+                }
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="flex justify-center mt-12">
+          <a
+            routerLink="/experience"
+            mat-raised-button
+            color="primary"
+            class="px-8 py-3"
+          >
+            <span class="flex items-center space-x-2">
+              <span>Ver Experiência Completa</span>
+              <mat-icon>arrow_forward</mat-icon>
+            </span>
+          </a>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section
+    class="py-20 bg-primary"
+    appScrollReveal
+    revealFrom="bottom"
+    [revealDelay]="100"
+  >
+    <app-information-bar [data]="ctaData"></app-information-bar>
   </section>
 </div>

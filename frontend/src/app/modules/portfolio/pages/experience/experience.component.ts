@@ -12,6 +12,7 @@ import {
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
 import { ExperienceCardComponent } from './components/experience-card/experience-card.component';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
+import { InformationBarComponent, InformationBarData } from '../../../shared/components/information-bar/information-bar.component';
 
 interface ExperienceTypeInfo {
   value: ExperienceType | 'all';
@@ -32,6 +33,7 @@ interface ExperienceTypeInfo {
     ExperienceCardComponent,
     SectionHeaderComponent,
     RouterLink,
+    InformationBarComponent,
   ],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.scss',
@@ -43,6 +45,25 @@ export class ExperienceComponent implements OnInit {
   experiences: Experience[] = [];
   selectedType: ExperienceType | 'all' = 'all';
   experienceTypes: ExperienceTypeInfo[] = [];
+
+  ctaData: InformationBarData = {
+    title: 'Gostou da minha trajetória?',
+    description: 'Vamos trabalhar juntos e criar algo incrível!',
+    buttons: [
+      {
+        text: 'Ver Projetos',
+        icon: 'work',
+        color: false,
+        link: '/projects',
+      },
+      {
+        text: 'Entrar em Contato',
+        icon: 'email',
+        color: true,
+        link: '/contact',
+      },
+    ],
+  };
 
   ngOnInit(): void {
     this.loadExperiences();

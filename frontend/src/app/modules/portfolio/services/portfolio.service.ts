@@ -10,6 +10,7 @@ import {
 import { Skill } from '../models/skill.model';
 import { Experience } from '../models/experience.model';
 import { PersonalInfo } from '../models/personal-info.model';
+import { AboutInfo } from '../models/about.model';
 import { environment } from '../../../../environments/environment';
 import { SocialLink } from '../models/social-link.model';
 
@@ -557,4 +558,9 @@ export class PortfolioService {
         })
       );
   }
+
+  getAboutInfo(): Observable<AboutInfo> {
+    return this.http.get<AboutInfo>(`${this.apiUrl}/about`)
+  }
+
 }

@@ -626,5 +626,178 @@
       "order": 10,
       "icon": "business_center"
     }
-  ]
+  ],
+
+  "about": {
+    "id": 1,
+    "introduction": "Oi! Sou o Wallace, um desenvolvedor full stack apaixonado por tecnologia e inovação. Aqui você descobrirá mais sobre minha jornada, valores e o que me motiva a criar soluções incríveis.",
+    "profileImage": "assets/images/avatar.jpg",
+    "backgroundImage": null,
+    "aboutTexts": [
+      "Comecei minha jornada na programação ainda no ensino médio, quando fiz meu primeiro curso de lógica de programação. Desde então, sou apaixonado por resolver problemas através do código.",
+      "Ao longo dos anos, desenvolvei expertise em diversas tecnologias, especialmente em Angular no frontend e Java/Spring Boot no backend. Cada projeto me ensina algo novo e me torna um desenvolvedor melhor.",
+      "Além de código, acredito na importância de criar experiências que façam diferença. Cada aplicação que desenvolvo é pensada não apenas em funcionalidade, mas em como impactará o usuário final.",
+      "Atualmente, estou cursando Sistemas de Informação na UEMG em Passos, MG (3º período), o que complementa minha experiência prática com conhecimento teórico sólido e visão mais ampla da computação."
+    ],
+    "journeyItems": [
+      {
+        "year": "2022",
+        "title": "Primeiro Contato com Programação",
+        "description": "Realizei meu primeiro curso de lógica de programação no ensino médio com C. Foi aqui que descobri minha paixão por resolver problemas com código.",
+        "type": "milestone",
+        "icon": "code"
+      },
+      {
+        "year": "2024",
+        "title": "Aprendizado Autodidata",
+        "description": "Teve um breve intervalo, mas depois comecei meus estudos com Python e JavaScript, realizando alguns projetos simples, sendo mais utéis para aprendizado",
+        "type": "learning",
+        "icon": "school"
+      },
+      {
+        "year": "2025",
+        "title": "Especialização em Angular e Spring Boot",
+        "description": "Aprofundei meus conhecimentos em Angular para frontend e Spring Boot para backend, consolidando minha atuação full stack.",
+        "type": "achievement",
+        "icon": "trending_up"
+      },
+      {
+        "year": "2025",
+        "title": "Ingresso na Faculdade",
+        "description": "Comecei o curso de Sistemas de Informação na UEMG, onde eu consigui conhecer profissionais e professores incríveis na área de programação que me ajudaram a crescer ainda mais.",
+        "type": "education",
+        "icon": "school"
+      },
+      {
+        "year": "2025",
+        "title": "1º Cargo Profissional",
+        "description": "Consegui meu primeiro emprego como Desenvolvedor Frontend Angular na CroSoften, onde aplico minhas habilidades e continuo aprendendo com os outros devs.",
+        "type": "achievement",
+        "icon": "rocket"
+      }
+    ],
+    "educationList": [
+      {
+        "id": "1",
+        "institution": "UEMG - Universidade Estadual de Minas Gerais",
+        "course": "Sistemas de Informação",
+        "startDate": "2025-03",
+        "current": true,
+        "description": "Cursando o 3º período. Aprendendo fundamentos sólidos de computação, algoritmos, arquitetura de sistemas e gestão de projetos.",
+        "location": "Passos, MG"
+      },
+      {
+        "id": "2",
+        "institution": "UDEMY",
+        "course": "Angular 19 - Curso Completo do Iniciante ao Avançado (2026)",
+        "certificateUrl": "https://www.udemy.com/certificate/UC-68ca9451-6d8b-4b8d-b9f6-7ca6e6b9ed34/",
+        "startDate": "2025-10",
+        "endDate": "2025-11",
+        "current": false,
+        "description": "Curso completo de Angular 19, cobrindo desde os fundamentos até tópicos avançados como RxJS, Angular Material e melhores práticas de desenvolvimento.",
+        "location": "Online"
+      },
+      {
+        "id": "3",
+        "institution": "UDEMY",
+        "course": "Java COMPLETO Programação Orientada a Objetos + Projetos + Spring Boot",
+        "certificateUrl": "https://www.udemy.com/certificate/UC-35fc7385-fc29-4e4b-a9ba-dfabbba7fbd3/",
+        "startDate": "2025-05",
+        "endDate": "2025-10",
+        "current": false,
+        "description": "Curso abrangente de Java, focando em programação orientada a objetos, desenvolvimento de projetos práticos e introdução ao Spring Boot para criação de aplicações web.",
+        "location": "Online"
+      },
+      {
+        "id": "4",
+        "institution": "DIO - Digital Innovation One",
+        "course": "Santander 2025 - Back-End com Java e Spring Boot",
+        "certificateUrl": "assets/docs/bootcamp_java_certificate.pdf",
+        "startDate": "2025-05",
+        "endDate": "2025-08",
+        "current": false,
+        "description": "Bootcamp intensivo focado em desenvolvimento backend utilizando Java e Spring Boot, com ênfase em boas práticas, arquitetura de software e desenvolvimento de APIs RESTful.",
+        "location": "Online"
+      }
+    ],
+    "values": [
+      {
+        "id": "1",
+        "title": "Qualidade",
+        "description": "Dedico-me a escrever código limpo, bem estruturado e mantível. Qualidade não é negociável."
+      },
+      {
+        "id": "2",
+        "title": "Inovação",
+        "description": "Estou sempre buscando novas formas de resolver problemas e explorar tecnologias emergentes."
+      },
+      {
+        "id": "3",
+        "title": "Aprendizado Contínuo",
+        "description": "O mundo da tech muda rapidamente. Acredito que aprender nunca para é a chave para crescer."
+      },
+      {
+        "id": "4",
+        "title": "Colaboração",
+        "description": "Acredito no poder do trabalho em equipe. Bons projetos são construídos por pessoas que se ouvem e trabalham juntas."
+      },
+      {
+        "id": "5",
+        "title": "Impacto",
+        "description": "Quero criar soluções que realmente façam diferença na vida das pessoas e resolvam problemas reais."
+      },
+      {
+        "id": "6",
+        "title": "Ética",
+        "description": "Mantenho altos padrões éticos em todos os aspectos do meu trabalho, desde a privacidade dos dados até a transparência com clientes."
+      }
+    ],
+    "hobbies": [
+      {
+        "id": "1",
+        "name": "Leitura",
+        "description": "Gosto de ler sobre tecnologia, ficção científica e algumas literaturas clássicas. Ler me ajuda a descansar e relaxar. Recentemente terminei 'Memórias Póstumas de Brás Cubas' de Machado de Assis, livro muito difícil de ler, mas também muito recompensador.",
+        "emoji": "📚"
+      },
+      {
+        "id": "2",
+        "name": "Jogos",
+        "description": "Amo jogos, grande parte de min se inspirou na área de tecnologia graças à eles. Habitualmente gosto de jogos de FPS táticos como Valorant e CS:Go, mas também curto alguns RPGs. ",
+        "emoji": "🎮"
+      },
+      {
+        "id": "3",
+        "name": "Viagens",
+        "description": "Sou alguém que adora explorar novos lugares, conhecer culturas diferentes e buscar inspiração. Cada viagem traz novas memórias e é sempre muito bom lembrar delas.",
+        "emoji": "✈️"
+      },
+      {
+        "id": "4",
+        "name": "Piano",
+        "description": "Toco piano desde os 7 anos de idade. A música é uma grande paixão minha e tocar piano me ajuda a relaxar e descansar das telas",
+        "emoji": "🎹"
+      },
+      {
+        "id": "5",
+        "name": "Redes Sociais",
+        "description": "Sou ativo em redes sociais, especialmente no LinkedIn e GitHub, onde compartilho meus projetos, aprendizados e me conecto com outros profissionais de tecnologia. Gosto de estar por dentro das novidades.",
+        "emoji": "🌐"
+      },
+      {
+        "id": "6",
+        "name": "Estudar",
+        "description": "Adoro aprender coisas novas, seja sobre tecnologia, ciência ou qualquer outro assunto interessante. Estou sempre buscando cursos online, tutoriais e artigos para expandir meu conhecimento.",
+        "emoji": "💻"
+      }
+    ],
+    "philosophyTitle": "Minha Filosofia de Desenvolvimento",
+    "philosophyText": "Acredito que desenvolver software é uma combinação de arte e ciência. A ciência nos dá as ferramentas, a arquitetura e as melhores práticas. A arte nos dá a criatividade para resolver problemas de forma elegante e criar experiências que fascinam os usuários. No fim, o código é apenas um meio - o objetivo é criar valor.",
+    "futureGoals": [
+      "Aprofundar conhecimentos em arquitetura de microsserviços e cloud computing",
+      "Conseguir uma oportunidade como desenvolvedor full stack em uma empresa",
+      "Completar minha formação acadêmica",
+      "Me conectar com novas pessoas na área de tecnologia",
+      "Aprender novas linguagens e frameworks - React e Node.js estão na minha lista"
+    ]
+  }
 }

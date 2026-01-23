@@ -17,6 +17,7 @@ import {
 } from '../../models/skill.model';
 import { Experience } from '../../models/experience.model';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
+import { InformationBarComponent, InformationBarData } from '../../../shared/components/information-bar/information-bar.component';
 
 @Component({
   selector: 'app-home',
@@ -30,7 +31,8 @@ import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.
     SectionHeaderComponent,
     SocialLinksComponent,
     ProjectCardComponent,
-    ScrollRevealDirective
+    ScrollRevealDirective,
+    InformationBarComponent
 ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -48,6 +50,26 @@ export class HomeComponent implements OnInit {
   isLoadingExperience = true;
 
   statistics: Array<{ value: string; label: string; suffix?: string }> = [];
+
+  ctaData: InformationBarData = {
+    title: 'Vamos Trabalhar Juntos?',
+    description:
+      'Estou sempre aberto a novos projetos e oportunidades interessantes. Entre em contato e vamos criar algo incrível!',
+    buttons: [
+      {
+        text: 'Entrar em Contato',
+        icon: 'email',
+        color: true,
+        link: '/contact',
+      },
+      {
+        text: 'Download CV',
+        icon: 'download',
+        color: false,
+        link: 'assets/cv.pdf',
+      },
+    ],
+  };
 
   ngOnInit(): void {
     this.loadFeaturedProjects();

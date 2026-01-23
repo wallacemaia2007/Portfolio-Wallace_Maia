@@ -14,9 +14,11 @@ import {
 export class ScrollRevealDirective implements OnInit, OnDestroy {
   @Input() revealFrom: "bottom" | "top" | "left" | "right" = "bottom";
   @Input() revealDelay = 0;
-  @Input() revealOnce = true;
+  @Input() revealOnce = false;
+  @Input() hideOnExit = true;
 
   private observer!: IntersectionObserver;
+  private initialTransform = "translateY(40px)";
 
   constructor(
     private el: ElementRef,
@@ -34,6 +36,8 @@ export class ScrollRevealDirective implements OnInit, OnDestroy {
             if (this.revealOnce) {
               this.observer.unobserve(this.el.nativeElement);
             }
+          } else if (this.hideOnExit && !this.revealOnce) {
+            this.hide();
           }
         });
       },
@@ -59,21 +63,19 @@ export class ScrollRevealDirective implements OnInit, OnDestroy {
       "opacity 0.6s ease, transform 0.6s ease"
     );
 
-    let transform = "translateY(40px)";
-
     switch (this.revealFrom) {
       case "top":
-        transform = "translateY(-40px)";
+        this.initialTransform = "translateY(-40px)";
         break;
       case "left":
-        transform = "translateX(-40px)";
+        this.initialTransform = "translateX(-40px)";
         break;
       case "right":
-        transform = "translateX(40px)";
+        this.initialTransform = "translateX(40px)";
         break;
     }
 
-    this.renderer.setStyle(this.el.nativeElement, "transform", transform);
+    this.renderer.setStyle(this.el.nativeElement, "transform", this.initialTransform);
   }
 
   private reveal(): void {
@@ -85,5 +87,10 @@ export class ScrollRevealDirective implements OnInit, OnDestroy {
         "translate(0)"
       );
     }, this.revealDelay);
+  }
+
+  private hide(): void {
+    this.renderer.setStyle(this.el.nativeElement, "opacity", "0");
+    this.renderer.setStyle(this.el.nativeElement, "transform", this.initialTransform);
   }
 }

@@ -14,13 +14,13 @@
     </div>
   </section>
 
-  <section class="py-16 bg-beige-light dark:bg-custom-black-light" appScrollReveal revealFrom="bottom"
+  <section class="py-16 bg-primary" appScrollReveal revealFrom="bottom"
     [revealDelay]="200">
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
         @for (card of contactInfoCards; track card.title) {
         <div
-          class="group bg-white dark:bg-custom-black rounded-2xl p-8 shadow-lg hover:shadow-glow transition-all duration-500 border border-beige dark:border-gray-800 hover:border-primary hover:-translate-y-2 cursor-pointer"
+          class="group bg-beige dark:bg-custom-black-lighter rounded-2xl p-8 shadow-lg hover:shadow-glow transition-all duration-500 hover:border-primary hover:-translate-y-2 cursor-pointer"
           [class.pointer-events-none]="!card.link">
           <a [href]="card.link" target="_blank" [class.pointer-events-none]="!card.link"
             class="flex flex-col items-center text-center space-y-4 ">
@@ -196,38 +196,12 @@
 
   <app-faq title="Perguntas Frequentes" [showContactCta]="false" [delayAnimation]="400"></app-faq>
 
-  <section class="py-20 bg-gradient-to-r from-primary to-primary-dark relative overflow-hidden" appScrollReveal
-    revealFrom="bottom" [revealDelay]="500">
-    <div class="absolute inset-0 opacity-10">
-      <div class="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl animate-pulse"></div>
-      <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse"
-        style="animation-delay: 1.5s"></div>
-    </div>
-
-    <div class="container mx-auto px-4 relative z-10">
-      <div class="max-w-3xl mx-auto text-center text-white">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">
-          Ainda não ficou convencido?
-        </h2>
-        <p class="text-xl mb-8 text-white/90">
-          Dê mais uma olhada em meus projetos ou então meu currículo!<br />
-          Tenho certeza que vai achar algo que te interesse!
-        </p>
-
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a routerLink="/projects" mat-raised-button
-            class="border-2 border-white text-white hover:bg-white/10 transition-colors flex items-center justify-center space-x-2 px-8 py-3">
-            <mat-icon>work</mat-icon>
-            <span>Ver Projetos</span>
-          </a>
-
-          <a href="assets/cv.pdf" download mat-raised-button
-            class="border-2 border-white text-white hover:bg-white/10 transition-colors flex items-center justify-center space-x-2 px-8 py-3">
-            <mat-icon>download</mat-icon>
-            <span>Download CV</span>
-          </a>
-        </div>
-      </div>
-    </div>
+  <section
+    class="py-20 bg-primary"
+    appScrollReveal
+    revealFrom="bottom"
+    [revealDelay]="100"
+  >
+    <app-information-bar [data]="ctaData"></app-information-bar>
   </section>
 </div>

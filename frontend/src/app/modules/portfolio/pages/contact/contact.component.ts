@@ -16,6 +16,7 @@ import { SocialLinksComponent } from '../../../shared/components/social-links/so
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
 import { FaqComponent } from '../../../shared/components/faq/faq.component';
+import { InformationBarComponent, InformationBarData } from '../../../shared/components/information-bar/information-bar.component';
 
 @Component({
   selector: 'app-contact',
@@ -30,6 +31,7 @@ import { FaqComponent } from '../../../shared/components/faq/faq.component';
     ScrollRevealDirective,
     SectionHeaderComponent,
     FaqComponent,
+    InformationBarComponent,
   ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
@@ -67,6 +69,26 @@ export class ContactComponent implements OnInit {
       color: 'primary',
     },
   ];
+
+  ctaData: InformationBarData = {
+    title: 'Ainda não ficou convencido?',
+    description:
+      'Dê mais uma olhada em meus projetos ou então meu currículo! Tenho certeza que vai achar algo que te interesse!',
+    buttons: [
+      {
+        text: 'Ver Projetos',
+        icon: 'work',
+        color: true,
+        link: '/projects',
+      },
+      {
+        text: 'Download CV',
+        icon: 'download',
+        color: false,
+        link: 'assets/cv.pdf',
+      },
+    ],
+  };
 
   ngOnInit(): void {
     this.initializeForm();

@@ -1,6 +1,6 @@
 <div class="min-h-screen bg-gray-50 dark:bg-custom-black transition-colors duration-300">
   <section appScrollReveal revealFrom="bottom" [revealDelay]="100"
-    class="relative py-24 bg-gradient-to-br from-white via-beige-light to-beige dark:from-custom-black dark:via-custom-black-light dark:to-custom-black overflow-hidden border-b border-gray-200 dark:border-gray-800">
+    class="relative py-24 bg-gradient-to-br from-white to-beige-light dark:from-custom-black dark:to-custom-black-light overflow-hidden border-b border-gray-200 dark:border-gray-800">
     <div class="container mx-auto px-4 relative z-10">
       <div class="max-w-3xl mx-auto text-center">
         <app-section-header title="Meus Projetos" subtitle="Uma coleção dos meus trabalhos mais recentes e impactantes."
@@ -280,33 +280,14 @@
       }
     </div>
   </section>
-  <section class="py-20 bg-gradient-to-r from-primary to-primary-dark" appScrollReveal revealFrom="bottom"
-    [revealDelay]="100">
-    <div class="container mx-auto px-4">
-      <div class="max-w-3xl mx-auto text-center text-white">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">
-          Gostou de algum projeto em espescífico?
-        </h2>
-        <p class="text-xl mb-8 text-white/90">
-          Entre em contato para trabalharmos juntos nele!
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a routerLink="/skills" mat-raised-button
-            class="border-2 border-white text-white hover:bg-white/10 transition-colors flex items-center justify-center space-x-2 px-8 py-3">
-            <mat-icon>work</mat-icon>
-            <span>Ver Habilidades</span>
-          </a>
-          <a routerLink="/contact" mat-raised-button
-            class="border-2 border-white text-white hover:bg-white/10 transition-colors flex items-center justify-center space-x-2 px-8 py-3">
-            <mat-icon>email</mat-icon>
-            <span>Entrar em Contato</span>
-          </a>
-        </div>
-      </div>
-    </div>
+  <section
+    class="py-20 bg-primary"
+    appScrollReveal
+    revealFrom="bottom"
+    [revealDelay]="100"
+  >
+    <app-information-bar [data]="ctaData"></app-information-bar>
   </section>
-
-  <!-- PROJECT MODAL -->
   <app-project-modal [project]="selectedProject" (close)="closeProjectModal()">
   </app-project-modal>
 </div>

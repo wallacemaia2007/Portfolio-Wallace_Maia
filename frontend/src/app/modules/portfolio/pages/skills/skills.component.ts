@@ -15,6 +15,7 @@ import {
   SKILL_CATEGORY_ICONS,
 } from '../../models/skill.model';
 import { ScrollRevealDirective } from "../../../shared/directives/scroll-reveal.directive";
+import { InformationBarComponent, InformationBarData } from '../../../shared/components/information-bar/information-bar.component';
 
 interface CategoryInfo {
   type: SkillCategoryType | 'all';
@@ -34,7 +35,8 @@ interface CategoryInfo {
     MatButtonModule,
     SectionHeaderComponent,
     SkillCategoryComponent,
-    ScrollRevealDirective
+    ScrollRevealDirective,
+    InformationBarComponent
 ],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss',
@@ -52,6 +54,25 @@ export class SkillsComponent implements OnInit {
   totalSkills = 0;
 
   statistics: Array<{ value: number; label: string }> = [];
+
+  ctaData: InformationBarData = {
+    title: 'Gostou das minhas habilidades?',
+    description: 'Vamos trabalhar juntos e criar algo incrível!',
+    buttons: [
+      {
+        text: 'Ver Projetos',
+        icon: 'work',
+        color: false,
+        link: '/projects',
+      },
+      {
+        text: 'Entrar em Contato',
+        icon: 'email',
+        color: true,
+        link: '/contact',
+      },
+    ],
+  };
 
   ngOnInit(): void {
     this.loadSkills();

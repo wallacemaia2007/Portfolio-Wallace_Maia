@@ -14,6 +14,7 @@ import {
 } from '../../models/project.model';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
+import { InformationBarComponent, InformationBarData } from '../../../shared/components/information-bar/information-bar.component';
 
 interface CategoryInfo {
   value: ProjectCategory | 'all';
@@ -34,7 +35,8 @@ interface CategoryInfo {
     ProjectFilterComponent,
     SectionHeaderComponent,
     RouterLink,
-    ScrollRevealDirective
+    ScrollRevealDirective,
+    InformationBarComponent
 ],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
@@ -54,6 +56,25 @@ export class ProjectsComponent implements OnInit {
   searchTerm = '';
   totalProjects = 0;
   categories: CategoryInfo[] = [];
+
+  ctaData: InformationBarData = {
+    title: 'Gostou de algum projeto em específico?',
+    description: 'Entre em contato para trabalharmos juntos nele!',
+    buttons: [
+      {
+        text: 'Ver Habilidades',
+        icon: 'work',
+        color: false,
+        link: '/skills',
+      },
+      {
+        text: 'Entrar em Contato',
+        icon: 'email',
+        color: true,
+        link: '/contact',
+      },
+    ],
+  };
 
   ngOnInit(): void {
     this.loadProjects();
