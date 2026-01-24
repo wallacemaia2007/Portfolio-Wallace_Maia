@@ -8,7 +8,7 @@
     "phone": "+55 (35) 91003-6806",
     "location": "Passos, MG - Brasil",
     "bio": "Desenvolvedor Full Stack apaixonado por criar experiências web incríveis e soluções inovadoras. Especializado em Angular, Java e Spring Boot com mais de 1 ano de experiência no mercado.",
-    "avatar": "assets/images/avatar.jpg",
+    "avatar": "assets/images/avatar.jpeg",
     "cvUrl": "assets/cv.pdf",
     "github": "https://github.com/wallacemaia2007",
     "linkedin": "https://www.linkedin.com/in/wallacemaia-dev/",
@@ -631,7 +631,7 @@
   "about": {
     "id": 1,
     "introduction": "Oi! Sou o Wallace, um desenvolvedor full stack apaixonado por tecnologia e inovação. Aqui você descobrirá mais sobre minha jornada, valores e o que me motiva a criar soluções incríveis.",
-    "profileImage": "assets/images/avatar.jpg",
+    "profileImage": "assets/images/banner.jpg",
     "backgroundImage": null,
     "aboutTexts": [
       "Comecei minha jornada na programação ainda no ensino médio, quando fiz meu primeiro curso de lógica de programação. Desde então, sou apaixonado por resolver problemas através do código.",
