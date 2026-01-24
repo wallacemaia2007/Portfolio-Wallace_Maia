@@ -11,7 +11,7 @@
         </div>
       </div>
     </div>
-        <div class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></div>
 
   </section>
 
@@ -125,12 +125,10 @@
   </section>
   }
 
-  <!-- FILTERS AND GALLERY SECTION -->
   <section class="py-20 bg-beige-light dark:bg-custom-black-light" appScrollReveal revealFrom="bottom"
     [revealDelay]="100">
     <div class="container mx-auto px-4">
 
-      <!-- GALLERY HEADER -->
       <div class="text-center mb-12">
         <h2 class="text-4xl md:text-5xl font-bold text-custom-black dark:text-white mb-4">
           Todos os Projetos
@@ -145,7 +143,6 @@
         </app-project-filter>
       </div>
 
-      <!-- LOADING STATE -->
       @if (isLoading) {
       <div class="flex flex-col justify-center items-center py-20">
         <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-primary mb-4"></div>
@@ -153,25 +150,21 @@
       </div>
       }
 
-      <!-- PROJECTS GALLERY -->
       @if (!isLoading && filteredProjects.length > 0) {
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         @for (project of filteredProjects; track project.id) {
         <article (click)="openProjectModal(project)" appScrollReveal revealFrom="bottom" [revealDelay]="100"
           class="project-card group bg-white dark:bg-custom-black-light rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer border-2 border-gray-200 dark:border-gray-800 hover:border-primary">
 
-          <!-- IMAGE -->
           <div
             class="relative h-56 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-custom-black to-custom-black-light">
             <img [src]="project.thumbnail" [alt]="project.title"
               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
 
-            <!-- SUBTLE OVERLAY ON HOVER -->
             <div
               class="absolute inset-0 bg-gradient-to-t from-custom-black/80 via-custom-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             </div>
 
-            <!-- BADGES -->
             <div class="absolute top-4 left-4 right-4 flex justify-between items-start z-10">
               @if (project.featured) {
               <span
@@ -191,29 +184,27 @@
 
           </div>
 
-          <!-- CONTENT -->
           <div class="p-6">
-            <!-- CATEGORY -->
             <div class="flex items-center gap-2 mb-3">
-              <div class="w-8 h-8 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center">
-                <mat-icon class="text-primary text-base">{{ getCategoryIcon(project.category) }}</mat-icon>
+              <div class="w-7 h-7 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center">
+                <mat-icon class="text-primary text-lg !leading-none !m-0 p-0 flex items-center justify-center"
+                  style="display: flex; align-items: center; justify-content: center; height: 1.25rem; width: 1.25rem; line-height: 1;">{{
+                  getCategoryIcon(project.category) }}</mat-icon>
               </div>
-              <span class="text-sm font-bold text-primary uppercase tracking-wide">
+              <span class="text-sm font-bold text-primary uppercase tracking-wide flex items-center h-7"
+                style="line-height: 1;">
                 {{ getCategoryLabel(project.category) }}
               </span>
             </div>
 
-            <!-- TITLE -->
             <h3 class="text-xl font-bold text-custom-black dark:text-white mb-3 line-clamp-2 leading-tight">
               {{ project.title }}
             </h3>
 
-            <!-- DESCRIPTION -->
             <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2 min-h-[2.5rem]">
               {{ project.shortDescription }}
             </p>
 
-            <!-- TECHNOLOGIES -->
             <div class="flex flex-wrap gap-2 mb-5">
               @for (tech of project.technologies.slice(0, 3); track tech) {
               <span
@@ -228,7 +219,6 @@
               }
             </div>
 
-            <!-- FOOTER -->
             <div class="flex items-center justify-between pt-4 border-t-2 border-gray-200 dark:border-gray-700"
               appScrollReveal revealFrom="bottom" [revealDelay]="100">
               <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
@@ -247,7 +237,6 @@
       </div>
       }
 
-      <!-- EMPTY STATE -->
       @if (!isLoading && filteredProjects.length === 0) {
       <div appScrollReveal revealFrom="bottom" [revealDelay]="100"
         class="text-center py-20 bg-white dark:bg-custom-black rounded-3xl border-2 border-dashed border-gray-300 dark:border-gray-700">
@@ -268,12 +257,7 @@
       }
     </div>
   </section>
-  <section
-    class="py-20 bg-primary"
-    appScrollReveal
-    revealFrom="bottom"
-    [revealDelay]="100"
-  >
+  <section class="py-20 bg-primary" appScrollReveal revealFrom="bottom" [revealDelay]="100">
     <app-information-bar [data]="ctaData"></app-information-bar>
   </section>
   <app-project-modal [project]="selectedProject" (close)="closeProjectModal()">

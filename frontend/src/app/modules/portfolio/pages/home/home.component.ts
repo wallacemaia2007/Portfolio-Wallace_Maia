@@ -1,14 +1,19 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { HeroSectionComponent } from '../../../shared/components/hero-section/hero-section.component';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
 import { SocialLinksComponent } from '../../../shared/components/social-links/social-links.component';
 import { ProjectCardComponent } from '../projects/components/project-card/project-card.component';
+import { ProjectModalComponent } from '../projects/components/project-modal/project-modal.component';
 import { PortfolioService } from '../../services/portfolio.service';
-import { Project } from '../../models/project.model';
+import {
+  Project,
+  ProjectCategory,
+  PROJECT_CATEGORY_NAMES,
+} from '../../models/project.model';
 import {
   SkillGroup,
   SKILL_CATEGORY_ICONS,
@@ -21,23 +26,23 @@ import {
   InformationBarComponent,
   InformationBarData,
 } from '../../../shared/components/information-bar/information-bar.component';
-import { ButtonComponent } from "../../../shared/components/button/button.component";
+import { ButtonComponent } from '../../../shared/components/button/button.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     CommonModule,
-    RouterLink,
     MatButtonModule,
     MatIconModule,
     HeroSectionComponent,
     SectionHeaderComponent,
-    ProjectCardComponent,
     ScrollRevealDirective,
     InformationBarComponent,
-    ButtonComponent
-],
+    ButtonComponent,
+    RouterLink,
+    ProjectModalComponent,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -46,6 +51,7 @@ export class HomeComponent implements OnInit {
 
   featuredProjects: Project[] = [];
   isLoadingProjects = true;
+  selectedProject: Project | null = null;
 
   skillCategories: SkillGroup[] = [];
   isLoadingSkills = true;
@@ -166,6 +172,58 @@ export class HomeComponent implements OnInit {
           { value: '0', label: 'Clientes Satisfeitos', suffix: '+' },
         ];
       },
+    });
+  }
+
+  openProjectModal(project: Project): void {
+    this.selectedProject = project;
+  }
+
+  closeProjectModal(): void {
+    this.selectedProject = null;
+  }
+
+  getCategoryLabel(category: ProjectCategory): string {
+    return PROJECT_CATEGORY_NAMES[category];
+  }
+
+  getCategoryIcon(category: ProjectCategory): string {
+    const icons: Record<ProjectCategory, string> = {
+      web: 'language',
+      mobile: 'phone_android',
+      desktop: 'computer',
+      backend: 'dns',
+      frontend: 'web',
+      other: 'more_horiz',
+    };
+    return icons[category];
+  }
+
+  getStatusClass(status: string): string {
+    const statusClasses: Record<string, string> = {
+      completed: 'bg-accent text-white',
+      'in-progress': 'bg-blue-500 text-white',
+      planned: 'bg-yellow-500 text-white',
+      paused: 'bg-gray-500 text-white',
+    };
+    return statusClasses[status] || 'bg-gray-500 text-white';
+  }
+
+  getStatusLabel(status: string): string {
+    const statusLabels: Record<string, string> = {
+      completed: 'Concluído',
+      'in-progress': 'Em Andamento',
+      planned: 'Planejado',
+      paused: 'Pausado',
+    };
+    return statusLabels[status] || status;
+  }
+
+  formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('pt-BR', {
+      month: 'short',
+      year: 'numeric',
     });
   }
 }

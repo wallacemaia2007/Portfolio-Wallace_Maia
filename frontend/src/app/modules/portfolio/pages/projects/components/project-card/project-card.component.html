@@ -47,8 +47,13 @@
 
   <div class="p-6">
     <div class="flex items-center gap-2 mb-3">
-      <mat-icon class="text-primary text-sm">{{ getCategoryIcon(project.category) }}</mat-icon>
-      <span class="text-sm font-medium text-primary">
+      <div class="w-7 h-7 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center">
+        <mat-icon class="text-primary text-lg !leading-none !m-0 p-0 flex items-center justify-center"
+          style="display: flex; align-items: center; justify-content: center; height: 1.25rem; width: 1.25rem; line-height: 1;">{{
+          getCategoryIcon(project.category) }}</mat-icon>
+      </div>
+      <span class="text-sm font-bold text-primary uppercase tracking-wide flex items-center h-7"
+        style="line-height: 1;">
         {{ getCategoryLabel(project.category) }}
       </span>
     </div>

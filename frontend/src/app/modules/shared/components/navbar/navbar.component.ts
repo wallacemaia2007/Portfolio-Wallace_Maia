@@ -9,6 +9,7 @@ import { ThemeService } from '../../../portfolio/services/theme.service';
 import { PortfolioService } from '../../../portfolio/services/portfolio.service';
 import { MatTooltip } from '@angular/material/tooltip';
 import { ScrollHideDirective } from '../../directives/scroll-hide.directive';
+import { ButtonComponent } from "../button/button.component";
 
 export interface NavbarTemplate {
   acronym: string;
@@ -29,7 +30,8 @@ export interface NavbarTemplate {
     MatMenuModule,
     MatTooltip,
     ScrollHideDirective,
-  ],
+    ButtonComponent
+],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })

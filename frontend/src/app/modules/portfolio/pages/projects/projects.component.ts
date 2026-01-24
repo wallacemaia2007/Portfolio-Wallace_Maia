@@ -14,7 +14,10 @@ import {
 } from '../../models/project.model';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
-import { InformationBarComponent, InformationBarData } from '../../../shared/components/information-bar/information-bar.component';
+import {
+  InformationBarComponent,
+  InformationBarData,
+} from '../../../shared/components/information-bar/information-bar.component';
 import { StatCardsComponent } from '../../../shared/components/stat-cards/stat-cards.component';
 
 interface CategoryInfo {
@@ -35,11 +38,10 @@ interface CategoryInfo {
     ProjectModalComponent,
     ProjectFilterComponent,
     SectionHeaderComponent,
-    RouterLink,
     ScrollRevealDirective,
     InformationBarComponent,
     StatCardsComponent,
-],
+  ],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
 })
@@ -122,14 +124,14 @@ export class ProjectsComponent implements OnInit {
         label: PROJECT_CATEGORY_NAMES[category],
         icon: this.getCategoryIcon(category),
         count,
-      })
+      }),
     );
 
     this.categories.sort((a, b) => b.count - a.count);
   }
 
   private findLatestCompletedProject(): void {
-    const completedProjects = this.allProjects
+    const completedProjects = this.allProjects;
 
     if (completedProjects.length === 0) {
       this.latestCompletedProject = null;
@@ -178,7 +180,7 @@ export class ProjectsComponent implements OnInit {
           p.description.toLowerCase().includes(searchLower) ||
           p.shortDescription.toLowerCase().includes(searchLower) ||
           p.technologies.some((t) => t.toLowerCase().includes(searchLower)) ||
-          p.tags.some((tag) => tag.toLowerCase().includes(searchLower))
+          p.tags.some((tag) => tag.toLowerCase().includes(searchLower)),
       );
     }
 
@@ -190,7 +192,6 @@ export class ProjectsComponent implements OnInit {
     this.searchTerm = '';
     this.filteredProjects = [...this.allProjects];
   }
-
 
   getTechnologiesCount(): number {
     const allTechs = this.allProjects.flatMap((p) => p.technologies);
