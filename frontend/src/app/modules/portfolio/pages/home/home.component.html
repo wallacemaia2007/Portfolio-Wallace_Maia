@@ -65,17 +65,14 @@
         </div>
 
         <div class="flex justify-center mt-12">
-          <a
-            routerLink="/projects"
-            mat-raised-button
-            color="primary"
-            class="px-8 py-3"
-          >
-            <span class="flex items-center space-x-2">
-              <span>Ver Todos os Projetos</span>
-              <mat-icon>arrow_forward</mat-icon>
-            </span>
-          </a>
+          <app-button
+            [buttonData]="{
+              label: 'Ver Todos os Projetos',
+              icon: 'arrow_forward',
+              link: '/projects',
+              color: 'primary',
+            }"
+          ></app-button>
         </div>
       } @else {
         <div class="text-center py-12">
@@ -146,17 +143,14 @@
         </div>
 
         <div class="flex justify-center mt-12">
-          <a
-            routerLink="/skills"
-            mat-raised-button
-            color="primary"
-            class="px-8 py-3"
-          >
-            <span class="flex items-center space-x-2">
-              <span>Ver Todas as Skills</span>
-              <mat-icon>arrow_forward</mat-icon>
-            </span>
-          </a>
+          <app-button
+            [buttonData]="{
+              label: 'Ver Todas as Skills',
+              icon: 'arrow_forward',
+              link: '/skills',
+              color: 'primary',
+            }"
+          ></app-button>
         </div>
       }
     </div>
@@ -286,17 +280,14 @@
         </div>
 
         <div class="flex justify-center mt-12">
-          <a
-            routerLink="/experience"
-            mat-raised-button
-            color="primary"
-            class="px-8 py-3"
-          >
-            <span class="flex items-center space-x-2">
-              <span>Ver Experiência Completa</span>
-              <mat-icon>arrow_forward</mat-icon>
-            </span>
-          </a>
+          <app-button
+            [buttonData]="{
+              label: 'Ver Experiência Completa',
+              icon: 'arrow_forward',
+              link: '/experience',
+              color: 'primary',
+            }"
+          ></app-button>
         </div>
       }
     </div>

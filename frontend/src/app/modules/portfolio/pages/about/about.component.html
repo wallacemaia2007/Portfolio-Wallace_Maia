@@ -4,7 +4,6 @@
   <section
     class="relative min-h-screen flex items-center justify-center overflow-hidden"
   >
-    <!-- Banner de fundo com a imagem -->
     <div
       class="absolute inset-0 z-0"
       appScrollReveal
@@ -26,13 +25,11 @@
           </div>
         }
       </div>
-      <!-- Overlay gradiente -->
       <div
-        class="absolute inset-0 bg-gradient-to-r from-white/95 to-white/60 dark:from-custom-black/95 dark:to-custom-black/60"
+        class="absolute inset-0 bg-gradient-to-r from-custom-black/80 via-custom-black/60 to-custom-black/40 dark:from-custom-black/95 dark:to-custom-black/60"
       ></div>
     </div>
 
-    <!-- Conteúdo com informações -->
     <div
       class="container mx-auto px-4 relative z-10"
       appScrollReveal
@@ -43,20 +40,20 @@
         <div class="space-y-6">
           <div class="inline-block">
             <span
-              class="px-4 py-2 bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-light rounded-full text-sm font-semibold"
+              class="px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold shadow-lg"
             >
               Sobre Mim
             </span>
           </div>
 
           <h1
-            class="text-5xl md:text-7xl font-bold text-custom-black dark:text-white leading-tight"
+            class="text-5xl md:text-7xl font-bold text-white leading-tight drop-shadow-lg"
           >
-            Olá! Sou o <span class="text-primary">Wallace</span>
+            Olá! Sou o <span class="text-primary-light">Wallace</span>
           </h1>
 
           <p
-            class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-medium max-w-2xl"
+            class="text-xl text-white leading-relaxed font-medium max-w-2xl drop-shadow-md"
           >
             {{ aboutInfo.introduction }}
           </p>
@@ -64,14 +61,14 @@
           <div class="flex flex-wrap gap-4 pt-4">
             <a
               href="#history"
-              class="px-8 py-3 bg-primary hover:bg-primary-dark text-white rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center gap-2"
+              class="px-8 py-3 bg-primary hover:bg-primary-dark text-white rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2"
             >
               <mat-icon>history</mat-icon>
               Minha História
             </a>
             <a
               href="#values"
-              class="px-8 py-3 border-2 border-primary text-primary dark:text-primary-light hover:bg-primary/10 dark:hover:bg-primary/20 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2"
+              class="px-8 py-3 bg-white/10 backdrop-blur-sm border-2 border-white/50 text-white hover:bg-white/20 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 shadow-lg"
             >
               <mat-icon>favorite</mat-icon>
               Meus Valores
@@ -80,7 +77,6 @@
         </div>
       </div>
     </div>
-    <!-- Linha divisória no final do banner -->
     <div class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></div>
   </section>
 

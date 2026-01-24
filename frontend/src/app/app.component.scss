@@ -1,192 +1,6 @@
-/* ═══════════════════════════════════════════════════════════
-   🎨 ESTILOS GLOBAIS DO APP + SCROLL REVEAL ANIMATIONS
-   ═══════════════════════════════════════════════════════════ */
-
 :host {
   display: block;
 }
-
-// ═══════════════════════════════════════
-// 🎬 ANIMAÇÕES BÁSICAS
-// ═══════════════════════════════════════
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slide-up {
-  from {
-    opacity: 0;
-    transform: translateY(30px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes slide-down {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes wave {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-  10%,
-  30% {
-    transform: rotate(14deg);
-  }
-  20%,
-  40% {
-    transform: rotate(-8deg);
-  }
-  50% {
-    transform: rotate(14deg);
-  }
-  60% {
-    transform: rotate(0deg);
-  }
-}
-
-@keyframes pulse-slow {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes move-bg {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 50px 50px;
-  }
-}
-
-// ═══════════════════════════════════════
-// 🎯 CLASSES DE ANIMAÇÃO
-// ═══════════════════════════════════════
-
-.animate-fade-in {
-  animation: fade-in 0.3s ease-out forwards;
-}
-
-.animate-slide-up {
-  animation: slide-up 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-
-.animate-slide-down {
-  animation: slide-down 0.4s ease-out forwards;
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-.animate-wave {
-  animation: wave 2s ease-in-out infinite;
-}
-
-.animate-pulse {
-  animation: pulse-slow 2s ease-in-out infinite;
-}
-
-.animate-spin {
-  animation: spin 1s linear infinite;
-}
-
-// ═══════════════════════════════════════
-// 🎭 SCROLL REVEAL ANIMATIONS
-// ═══════════════════════════════════════
-
-// Animação padrão (de baixo para cima)
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-
-  &.revealed {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-// Animação da esquerda
-.scroll-reveal-left {
-  opacity: 0;
-  transform: translateX(-40px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-
-  &.revealed {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-// Animação da direita
-.scroll-reveal-right {
-  opacity: 0;
-  transform: translateX(40px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-
-  &.revealed {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-// Animação de escala (zoom)
-.scroll-reveal-scale {
-  opacity: 0;
-  transform: scale(0.8);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-
-  &.revealed {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-// ═══════════════════════════════════════
-// ✨ EFEITOS DE SOMBRA
-// ═══════════════════════════════════════
 
 .shadow-glow {
   box-shadow: 0 0 20px rgba(155, 27, 31, 0.4);
@@ -199,10 +13,6 @@
 .shadow-glow-lg {
   box-shadow: 0 0 30px rgba(155, 27, 31, 0.5);
 }
-
-// ═══════════════════════════════════════
-// 📏 LINE CLAMP UTILITIES
-// ═══════════════════════════════════════
 
 .line-clamp-1 {
   display: -webkit-box;
@@ -225,10 +35,6 @@
   overflow: hidden;
 }
 
-// ═══════════════════════════════════════
-// 🎨 CARD HOVER EFFECTS
-// ═══════════════════════════════════════
-
 .card-hover {
   transition: all 0.3s ease;
 
@@ -237,19 +43,6 @@
     box-shadow: 0 10px 20px rgba(155, 27, 31, 0.15);
   }
 }
-
-.card-hover-subtle {
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(155, 27, 31, 0.1);
-  }
-}
-
-// ═══════════════════════════════════════
-// 🖼️ IMAGE ZOOM EFFECT
-// ═══════════════════════════════════════
 
 .image-zoom {
   overflow: hidden;
@@ -262,10 +55,6 @@
     transform: scale(1.1);
   }
 }
-
-// ═══════════════════════════════════════
-// 🔘 BUTTON EFFECTS
-// ═══════════════════════════════════════
 
 button {
   transition: all 0.3s ease;
@@ -283,32 +72,6 @@ button {
     cursor: not-allowed;
   }
 }
-
-// ═══════════════════════════════════════
-// 🌫️ BACKDROP BLUR SUPPORT
-// ═══════════════════════════════════════
-
-@supports (backdrop-filter: blur(12px)) {
-  .backdrop-blur-sm {
-    backdrop-filter: blur(4px);
-  }
-
-  .backdrop-blur {
-    backdrop-filter: blur(8px);
-  }
-
-  .backdrop-blur-md {
-    backdrop-filter: blur(12px);
-  }
-
-  .backdrop-blur-lg {
-    backdrop-filter: blur(16px);
-  }
-}
-
-// ═══════════════════════════════════════
-// 📜 SCROLLBAR CUSTOMIZATION
-// ═══════════════════════════════════════
 
 .scrollbar-thin {
   scrollbar-width: thin;
@@ -332,105 +95,8 @@ button {
   }
 }
 
-:host-context(.dark) {
-  .scrollbar-thin {
-    scrollbar-color: #9b1b1f rgba(255, 255, 255, 0.1);
-
-    &::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.05);
-    }
-  }
-}
-
-// ═══════════════════════════════════════
-// 🎯 FIXED BACKDROP BLUR
-// ═══════════════════════════════════════
-
-.fixed {
-  &.inset-0 {
-    backdrop-filter: blur(8px);
-  }
-}
-
-// ═══════════════════════════════════════
-// 🔄 TRANSITION OPACITY
-// ═══════════════════════════════════════
-
-.transition-opacity {
-  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-// ═══════════════════════════════════════
-// ♿ ACCESSIBILITY
-// ═══════════════════════════════════════
-
 *:focus-visible {
   outline: 3px solid #9b1b1f;
   outline-offset: 2px;
   border-radius: 4px;
-}
-
-// ═══════════════════════════════════════
-// 📱 RESPONSIVE ADJUSTMENTS
-// ═══════════════════════════════════════
-
-@media (max-width: 768px) {
-  .scroll-reveal,
-  .scroll-reveal-left,
-  .scroll-reveal-right,
-  .scroll-reveal-scale {
-    transform: none;
-    opacity: 0.3;
-
-    &.revealed {
-      opacity: 1;
-    }
-  }
-}
-
-// ═══════════════════════════════════════
-// 🖨️ PRINT STYLES
-// ═══════════════════════════════════════
-
-@media print {
-  .scroll-reveal,
-  .scroll-reveal-left,
-  .scroll-reveal-right,
-  .scroll-reveal-scale {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-
-  .animate-fade-in,
-  .animate-slide-up,
-  .animate-float,
-  .animate-pulse {
-    animation: none !important;
-  }
-}
-
-// ═══════════════════════════════════════
-// ♿ REDUCED MOTION SUPPORT
-// ═══════════════════════════════════════
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-
-  .scroll-reveal,
-  .scroll-reveal-left,
-  .scroll-reveal-right,
-  .scroll-reveal-scale {
-    transition: opacity 0.3s ease !important;
-    transform: none !important;
-
-    &.revealed {
-      opacity: 1;
-    }
-  }
 }

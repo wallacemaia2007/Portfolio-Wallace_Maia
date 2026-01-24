@@ -1,14 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 import { Skill, SKILL_CATEGORY_ICONS } from '../../../../models/skill.model';
 import { SkillCardComponent } from '../skill-card/skill-card.component';
+import { ButtonComponent } from '../../../../../shared/components/button/button.component';
 
 @Component({
   selector: 'app-skill-category',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule, SkillCardComponent],
+  imports: [CommonModule, MatIconModule, SkillCardComponent, ButtonComponent],
   templateUrl: './skill-category.component.html',
   styleUrl: './skill-category.component.scss',
 })

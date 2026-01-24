@@ -1,0 +1,19 @@
+<div class="stat-grid">
+  @for (stat of stats; track stat.label) {
+    <div
+      class="text-center bg-beige dark:bg-custom-black-light rounded-xl shadow-lg border border-gray-700 dark:border-gray-300 p-6 transition-all duration-300 hover:shadow-glow hover:-translate-y-1"
+    >
+      <div class="text-3xl md:text-4xl font-bold text-primary mb-2">
+        {{ stat.value }}{{ stat.suffix || '' }}
+      </div>
+      <div class="text-sm text-gray-600 dark:text-white font-medium">
+        {{ stat.label }}
+      </div>
+      @if (stat.description) {
+        <div class="text-xs text-gray-500 dark:text-gray-500 mt-2">
+          {{ stat.description }}
+        </div>
+      }
+    </div>
+  }
+</div>

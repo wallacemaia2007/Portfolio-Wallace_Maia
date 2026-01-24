@@ -1,15 +1,13 @@
 <div class="min-h-screen bg-white dark:bg-custom-black transition-colors duration-300">
-
-  <!-- HEADER -->
   <section class="py-20 bg-gradient-to-br from-beige-light to-white dark:from-custom-black dark:to-custom-black-light"
     appScrollReveal revealFrom="bottom" [revealDelay]="100">
     <div class="container mx-auto px-4">
       <app-section-header title="Experiência Profissional" subtitle="Minha jornada no mundo do desenvolvimento"
         description="Explore minha trajetória profissional, desde estágios até posições seniores, e veja como evoluí minhas habilidades ao longo do tempo."></app-section-header>
     </div>
+        <div class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></div>
   </section>
 
-  <!-- LOADING STATE -->
   @if (isLoading) {
   <section class="py-32" appScrollReveal revealFrom="bottom" [revealDelay]="0">
     <div class="container mx-auto px-4">
@@ -30,7 +28,6 @@
   </section>
   }
 
-  <!-- EXPERIENCES LIST -->
   @if (!isLoading && experiences.length > 0) {
   <section class="py-24 min-h-[300px] flex items-center justify-center bg-beige-light dark:bg-custom-black-light">
     <div class="container mx-auto px-4 max-w-6xl">
@@ -48,7 +45,6 @@
   </section>
   }
 
-  <!-- EMPTY STATE -->
   @if (!isLoading && experiences.length === 0) {
   <section class="py-32" appScrollReveal revealFrom="bottom" [revealDelay]="0">
     <div class="container mx-auto px-4">

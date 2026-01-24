@@ -15,6 +15,7 @@ import {
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
 import { InformationBarComponent, InformationBarData } from '../../../shared/components/information-bar/information-bar.component';
+import { StatCardsComponent } from '../../../shared/components/stat-cards/stat-cards.component';
 
 interface CategoryInfo {
   value: ProjectCategory | 'all';
@@ -36,7 +37,8 @@ interface CategoryInfo {
     SectionHeaderComponent,
     RouterLink,
     ScrollRevealDirective,
-    InformationBarComponent
+    InformationBarComponent,
+    StatCardsComponent,
 ],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
@@ -56,21 +58,22 @@ export class ProjectsComponent implements OnInit {
   searchTerm = '';
   totalProjects = 0;
   categories: CategoryInfo[] = [];
+  statistics: Array<{ value: number; label: string }> = [];
 
   ctaData: InformationBarData = {
     title: 'Gostou de algum projeto em específico?',
     description: 'Entre em contato para trabalharmos juntos nele!',
     buttons: [
       {
-        text: 'Ver Habilidades',
+        label: 'Ver Habilidades',
         icon: 'work',
-        color: false,
+        color: 'theme',
         link: '/skills',
       },
       {
-        text: 'Entrar em Contato',
+        label: 'Entrar em Contato',
         icon: 'email',
-        color: true,
+        color: 'theme',
         link: '/contact',
       },
     ],
@@ -91,6 +94,11 @@ export class ProjectsComponent implements OnInit {
 
         this.buildCategories();
         this.findLatestCompletedProject();
+        this.statistics = [
+          { value: this.totalProjects, label: 'Projetos' },
+          { value: this.categories.length, label: 'Categorias' },
+          { value: this.getTechnologiesCount(), label: 'Tecnologias' },
+        ];
         this.isLoading = false;
       },
       error: (error) => {

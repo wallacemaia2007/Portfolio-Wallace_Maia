@@ -24,14 +24,15 @@
 
   @if (skills.length > maxVisible) {
   <div class="flex justify-center pt-6">
-    <button (click)="toggleShowAll()" mat-raised-button color="primary" class="flex items-center space-x-2 px-6">
-      <span>
-        {{ showAll ? 'Ver Menos' : 'Ver Mais ' + (skills.length - maxVisible) }}
-      </span>
-      <mat-icon>
-        {{ showAll ? 'expand_less' : 'expand_more' }}
-      </mat-icon>
-    </button>
+    <app-button
+      [buttonData]="{
+        label: showAll ? 'Ver Menos' : 'Ver Mais ' + (skills.length - maxVisible),
+        icon: showAll ? 'expand_less' : 'expand_more',
+        color: 'primary',
+        link: '#'
+      }"
+      (click)="toggleShowAll()"
+    ></app-button>
   </div>
   }
 </div>

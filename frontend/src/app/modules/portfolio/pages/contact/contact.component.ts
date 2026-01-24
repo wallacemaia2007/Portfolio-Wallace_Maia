@@ -16,7 +16,10 @@ import { SocialLinksComponent } from '../../../shared/components/social-links/so
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
 import { FaqComponent } from '../../../shared/components/faq/faq.component';
-import { InformationBarComponent, InformationBarData } from '../../../shared/components/information-bar/information-bar.component';
+import {
+  InformationBarComponent,
+  InformationBarData,
+} from '../../../shared/components/information-bar/information-bar.component';
 
 @Component({
   selector: 'app-contact',
@@ -76,15 +79,15 @@ export class ContactComponent implements OnInit {
       'Dê mais uma olhada em meus projetos ou então meu currículo! Tenho certeza que vai achar algo que te interesse!',
     buttons: [
       {
-        text: 'Ver Projetos',
+        label: 'Ver Projetos',
         icon: 'work',
-        color: true,
+        color: 'theme',
         link: '/projects',
       },
       {
-        text: 'Download CV',
+        label: 'Download CV',
         icon: 'download',
-        color: false,
+        color: 'theme',
         link: 'assets/cv.pdf',
       },
     ],

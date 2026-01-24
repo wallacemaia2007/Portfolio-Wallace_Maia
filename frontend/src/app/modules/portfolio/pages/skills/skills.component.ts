@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
 import { SkillCategoryComponent } from './components/skill-category/skill-category.component';
 import { PortfolioService } from '../../services/portfolio.service';
+import { StatCardsComponent } from '../../../shared/components/stat-cards/stat-cards.component';
 import {
   Skill,
   SkillGroup,
@@ -14,8 +15,11 @@ import {
   SKILL_CATEGORY_NAMES,
   SKILL_CATEGORY_ICONS,
 } from '../../models/skill.model';
-import { ScrollRevealDirective } from "../../../shared/directives/scroll-reveal.directive";
-import { InformationBarComponent, InformationBarData } from '../../../shared/components/information-bar/information-bar.component';
+import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
+import {
+  InformationBarComponent,
+  InformationBarData,
+} from '../../../shared/components/information-bar/information-bar.component';
 
 interface CategoryInfo {
   type: SkillCategoryType | 'all';
@@ -36,8 +40,9 @@ interface CategoryInfo {
     SectionHeaderComponent,
     SkillCategoryComponent,
     ScrollRevealDirective,
-    InformationBarComponent
-],
+    InformationBarComponent,
+    StatCardsComponent,
+  ],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss',
 })
@@ -60,15 +65,15 @@ export class SkillsComponent implements OnInit {
     description: 'Vamos trabalhar juntos e criar algo incrível!',
     buttons: [
       {
-        text: 'Ver Projetos',
+        label: 'Ver Projetos',
         icon: 'work',
-        color: false,
+        color: 'theme',
         link: '/projects',
       },
       {
-        text: 'Entrar em Contato',
+        label: 'Entrar em Contato',
         icon: 'email',
-        color: true,
+        color: 'theme',
         link: '/contact',
       },
     ],
@@ -90,7 +95,7 @@ export class SkillsComponent implements OnInit {
               SKILL_CATEGORY_NAMES[category as SkillCategoryType] || category,
             icon: SKILL_CATEGORY_ICONS[category as SkillCategoryType],
             skills: skills,
-          })
+          }),
         );
 
         this.filteredSkillGroups = [...this.allSkillGroups];
@@ -109,7 +114,7 @@ export class SkillsComponent implements OnInit {
   private calculateTotalSkills(): number {
     return this.allSkillGroups.reduce(
       (total, group) => total + group.skills.length,
-      0
+      0,
     );
   }
 
@@ -130,7 +135,7 @@ export class SkillsComponent implements OnInit {
     const avgYearsExperience =
       allSkills.reduce(
         (sum, skill) => sum + (skill.yearsOfExperience || 0),
-        0
+        0,
       ) / allSkills.length;
 
     this.statistics = [
@@ -158,7 +163,7 @@ export class SkillsComponent implements OnInit {
 
     if (this.selectedCategory !== 'all') {
       filtered = filtered.filter(
-        (group) => group.category === this.selectedCategory
+        (group) => group.category === this.selectedCategory,
       );
     }
 
@@ -168,7 +173,7 @@ export class SkillsComponent implements OnInit {
         .map((group) => ({
           ...group,
           skills: group.skills.filter((skill) =>
-            skill.name.toLowerCase().includes(searchLower)
+            skill.name.toLowerCase().includes(searchLower),
           ),
         }))
         .filter((group) => group.skills.length > 0);

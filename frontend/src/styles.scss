@@ -5,6 +5,9 @@
 @use "@angular/material" as mat;
 @include mat.core();
 
+// Importar animações globais
+@import 'styles/animations';
+
 // ═══════════════════════════════════════
 // 🔴 PALETA PRINCIPAL - VERMELHO
 // ═══════════════════════════════════════

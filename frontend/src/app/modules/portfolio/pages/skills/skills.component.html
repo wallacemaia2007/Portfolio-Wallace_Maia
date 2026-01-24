@@ -1,103 +1,151 @@
-<div class="min-h-screen bg-white dark:bg-custom-black transition-colors duration-300">
-  <section class="py-20 bg-gradient-to-br from-beige-light to-white dark:from-custom-black dark:to-custom-black-light"
-    appScrollReveal revealFrom="bottom" [revealDelay]="100">
+<div
+  class="min-h-screen bg-white dark:bg-custom-black transition-colors duration-300"
+>
+  <section
+    class="py-20 bg-gradient-to-br from-beige-light to-white dark:from-custom-black dark:to-custom-black-light"
+    appScrollReveal
+    revealFrom="bottom"
+    [revealDelay]="100"
+  >
     <div class="container mx-auto px-4">
-      <app-section-header title="Minhas Habilidades"
+      <app-section-header
+        title="Minhas Habilidades"
         subtitle="Tecnologias e ferramentas que domino para criar soluções completas e eficientes para o mercado de trabalho."
-        align="center"></app-section-header>
+        align="center"
+      ></app-section-header>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-4xl mx-auto">
-        @for (stat of statistics; track stat.label) {
-        <div
-          class="text-center p-6 bg-white dark:bg-custom-black-light rounded-xl shadow-lg border border-gray-200 dark:border-gray-800">
-          <div class="text-4xl font-bold text-primary mb-2">
-            {{ stat.value }}
-          </div>
-          <div class="text-sm text-gray-600 dark:text-gray-400">
-            {{ stat.label }}
-          </div>
-        </div>
-        }
+      <div class="mt-12 max-w-5xl mx-auto">
+        <app-stat-cards [stats]="statistics"></app-stat-cards>
       </div>
     </div>
+    <div class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></div>
   </section>
 
-  <section class="py-8 bg-beige-light dark:bg-custom-black-light border-y border-gray-200 dark:border-gray-800"
-    appScrollReveal revealFrom="bottom" [revealDelay]="100">
+  <section
+    class="py-8 bg-beige-light dark:bg-custom-black-light"
+    appScrollReveal
+    revealFrom="bottom"
+    [revealDelay]="100"
+  >
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap gap-3 justify-center">
-        <button (click)="filterByCategory('all')"
-          [class]="selectedCategory === 'all' 
-            ? 'bg-primary text-white shadow-glow' 
-            : 'bg-white dark:bg-custom-black text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 hover:border-primary hover:text-primary'"
-          class="px-6 py-2 rounded-full font-medium transition-all duration-300 flex items-center space-x-2">
+        <button
+          (click)="filterByCategory('all')"
+          [class]="
+            selectedCategory === 'all'
+              ? 'bg-primary text-white shadow-glow'
+              : 'bg-white dark:bg-custom-black text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 hover:border-primary hover:text-primary'
+          "
+          class="px-6 py-2 rounded-full font-medium transition-all duration-300 flex items-center space-x-2"
+        >
           <mat-icon>apps</mat-icon>
           <span>Todas ({{ totalSkills }})</span>
         </button>
 
         @for (category of categories; track category.type) {
-        <button (click)="filterByCategory(category.type)"
-          [class]="selectedCategory === category.type 
-              ? 'bg-primary text-white shadow-glow' 
-              : 'bg-white dark:bg-custom-black text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 hover:border-primary hover:text-primary'"
-          class="px-6 py-2 rounded-full font-medium transition-all duration-300 flex items-center space-x-2">
-          <img [src]="category.icon" alt="{{ category.name }} Icon" class="w-6 h-6" />
-          <span>{{ category.name }} ({{ category.count }})</span>
-        </button>
+          <button
+            (click)="filterByCategory(category.type)"
+            [class]="
+              selectedCategory === category.type
+                ? 'bg-primary text-white shadow-glow'
+                : 'bg-white dark:bg-custom-black text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 hover:border-primary hover:text-primary'
+            "
+            class="px-6 py-2 rounded-full font-medium transition-all duration-300 flex items-center space-x-2"
+          >
+            <img
+              [src]="category.icon"
+              alt="{{ category.name }} Icon"
+              class="w-6 h-6"
+            />
+            <span>{{ category.name }} ({{ category.count }})</span>
+          </button>
         }
       </div>
 
       <div class="mt-6 max-w-md mx-auto">
         <div class="relative">
-          <mat-icon class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">search</mat-icon>
-          <input type="text" [(ngModel)]="searchTerm" (input)="onSearchChange()" placeholder="Buscar habilidade..."
-            class="w-full pl-12 pr-4 py-3 bg-white dark:bg-custom-black border border-gray-300 dark:border-gray-700 rounded-xl focus:outline-none focus:border-primary text-custom-black dark:text-white" />
+          <mat-icon
+            class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+            >search</mat-icon
+          >
+          <input
+            type="text"
+            [(ngModel)]="searchTerm"
+            (input)="onSearchChange()"
+            placeholder="Buscar habilidade..."
+            class="w-full pl-12 pr-4 py-3 bg-white dark:bg-custom-black border border-gray-300 dark:border-gray-700 rounded-xl focus:outline-none focus:border-primary text-custom-black dark:text-white"
+          />
         </div>
       </div>
     </div>
   </section>
 
   @if (isLoading) {
-  <section class="py-20" appScrollReveal revealFrom="bottom" [revealDelay]="100">
-    <div class="container mx-auto px-4">
-      <div class="flex justify-center">
-        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+    <section
+      class="py-20"
+      appScrollReveal
+      revealFrom="bottom"
+      [revealDelay]="100"
+    >
+      <div class="container mx-auto px-4">
+        <div class="flex justify-center">
+          <div
+            class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"
+          ></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
   }
 
   @if (!isLoading && filteredSkillGroups.length > 0) {
-  <section class="py-20" appScrollReveal revealFrom="bottom" [revealDelay]="100">
-    <div class="container mx-auto px-4 space-y-16">
-      @for (group of filteredSkillGroups; track group.category) {
-      <div class="animate-fade-in">
-        <app-skill-category [categoryName]="group.categoryName" [skills]="group.skills"
-          [categoryIcon]="group.icon"></app-skill-category>
+    <section
+      class="py-20"
+      appScrollReveal
+      revealFrom="bottom"
+      [revealDelay]="100"
+    >
+      <div class="container mx-auto px-4 space-y-16">
+        @for (group of filteredSkillGroups; track group.category) {
+          <div class="animate-fade-in">
+            <app-skill-category
+              [categoryName]="group.categoryName"
+              [skills]="group.skills"
+              [categoryIcon]="group.icon"
+            ></app-skill-category>
+          </div>
+        }
       </div>
-      }
-    </div>
-  </section>
+    </section>
   }
 
   @if (!isLoading && filteredSkillGroups.length === 0) {
-  <section class="py-20" appScrollReveal revealFrom="bottom" [revealDelay]="100">
-    <div class="container mx-auto px-4">
-      <div class="text-center max-w-md mx-auto">
-        <mat-icon class="text-6xl text-gray-400 mb-4">search_off</mat-icon>
-        <h3 class="text-2xl font-bold text-custom-black dark:text-white mb-2">
-          Nenhuma habilidade encontrada
-        </h3>
-        <p class="text-gray-600 dark:text-gray-400 mb-6">
-          Tente ajustar os filtros ou buscar por outro termo
-        </p>
-        <button (click)="clearFilters()" mat-raised-button color="primary" class="flex items-center space-x-2 mx-auto">
-          <mat-icon>refresh</mat-icon>
-          <span>Limpar Filtros</span>
-        </button>
+    <section
+      class="py-20"
+      appScrollReveal
+      revealFrom="bottom"
+      [revealDelay]="100"
+    >
+      <div class="container mx-auto px-4">
+        <div class="text-center max-w-md mx-auto">
+          <mat-icon class="text-6xl text-gray-400 mb-4">search_off</mat-icon>
+          <h3 class="text-2xl font-bold text-custom-black dark:text-white mb-2">
+            Nenhuma habilidade encontrada
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-6">
+            Tente ajustar os filtros ou buscar por outro termo
+          </p>
+          <button
+            (click)="clearFilters()"
+            mat-raised-button
+            color="primary"
+            class="flex items-center space-x-2 mx-auto"
+          >
+            <mat-icon>refresh</mat-icon>
+            <span>Limpar Filtros</span>
+          </button>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
   }
 
   <section

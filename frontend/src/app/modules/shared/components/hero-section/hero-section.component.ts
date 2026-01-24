@@ -1,14 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { PortfolioService } from '../../../portfolio/services/portfolio.service';
+import { ButtonComponent } from "../button/button.component";
 
 @Component({
   selector: 'app-hero-section',
   standalone: true,
-  imports: [CommonModule, RouterLink, MatButtonModule, MatIconModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule, ButtonComponent],
   templateUrl: './hero-section.component.html',
   styleUrl: './hero-section.component.scss',
 })

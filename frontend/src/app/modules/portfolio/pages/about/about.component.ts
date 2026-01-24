@@ -1,6 +1,5 @@
 import { Component, inject, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -16,7 +15,6 @@ import { InformationBarComponent, InformationBarData } from '../../../shared/com
   standalone: true,
   imports: [
     CommonModule,
-    RouterLink,
     MatIconModule,
     MatButtonModule,
     MatProgressBarModule,
@@ -45,15 +43,15 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
       'Se você se identificou com minha história e quer trabalhar em um projeto incrível, estou aqui para ajudar!',
     buttons: [
       {
-        text: 'Me Envie uma Mensagem',
+        label: 'Me Envie uma Mensagem',
         icon: 'email',
-        color: true,
+        color: 'theme',
         link: '/contact',
       },
       {
-        text: 'Ver Meus Projetos',
+        label: 'Ver Meus Projetos',
         icon: 'work',
-        color: false,
+        color: 'theme',
         link: '/projects',
       },
     ],

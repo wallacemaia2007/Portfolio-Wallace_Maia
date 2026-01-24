@@ -22,16 +22,18 @@
           {{ personalInfo.description }}
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
-          <a routerLink="/projects" mat-stroked-button color="beige"
-            class="flex items-center justify-center space-x-2 px-8 py-3">
-            <mat-icon>work</mat-icon>
-            <span>Meus Projetos</span>
-          </a>
-          <a routerLink="/contact" mat-stroked-button color="beige"
-            class="flex items-center justify-center space-x-2 px-8 py-3">
-            <mat-icon>email</mat-icon>
-            <span>Contato</span>
-          </a>
+          <app-button [buttonData]="{
+            label: 'Ver Projetos',
+            icon: 'code',
+            link: '/projects',
+            color: 'primary'
+          }"></app-button>
+          <app-button [buttonData]="{
+            label: 'Contato',
+            icon: 'email',
+            link: '/contact',
+            color: 'custom-black'
+          }"></app-button>
         </div>
       </div>
       <div class="relative lg:order-last order-first animate-float">

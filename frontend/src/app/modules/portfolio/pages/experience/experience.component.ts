@@ -51,15 +51,15 @@ export class ExperienceComponent implements OnInit {
     description: 'Vamos trabalhar juntos e criar algo incrível!',
     buttons: [
       {
-        text: 'Ver Projetos',
+        label: 'Ver Projetos',
         icon: 'work',
-        color: false,
+        color: 'theme',
         link: '/projects',
       },
       {
-        text: 'Entrar em Contato',
+        label: 'Entrar em Contato',
         icon: 'email',
-        color: true,
+        color: 'theme',
         link: '/contact',
       },
     ],

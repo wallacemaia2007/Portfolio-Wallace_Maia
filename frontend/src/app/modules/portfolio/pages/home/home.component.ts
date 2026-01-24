@@ -17,7 +17,11 @@ import {
 } from '../../models/skill.model';
 import { Experience } from '../../models/experience.model';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
-import { InformationBarComponent, InformationBarData } from '../../../shared/components/information-bar/information-bar.component';
+import {
+  InformationBarComponent,
+  InformationBarData,
+} from '../../../shared/components/information-bar/information-bar.component';
+import { ButtonComponent } from "../../../shared/components/button/button.component";
 
 @Component({
   selector: 'app-home',
@@ -29,10 +33,10 @@ import { InformationBarComponent, InformationBarData } from '../../../shared/com
     MatIconModule,
     HeroSectionComponent,
     SectionHeaderComponent,
-    SocialLinksComponent,
     ProjectCardComponent,
     ScrollRevealDirective,
-    InformationBarComponent
+    InformationBarComponent,
+    ButtonComponent
 ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -57,15 +61,15 @@ export class HomeComponent implements OnInit {
       'Estou sempre aberto a novos projetos e oportunidades interessantes. Entre em contato e vamos criar algo incrível!',
     buttons: [
       {
-        text: 'Entrar em Contato',
+        label: 'Entrar em Contato',
         icon: 'email',
-        color: true,
+        color: 'theme',
         link: '/contact',
       },
       {
-        text: 'Download CV',
+        label: 'Download CV',
         icon: 'download',
-        color: false,
+        color: 'theme',
         link: 'assets/cv.pdf',
       },
     ],
@@ -103,7 +107,7 @@ export class HomeComponent implements OnInit {
               SKILL_CATEGORY_NAMES[category as SkillCategoryType] || category,
             icon: SKILL_CATEGORY_ICONS[category as SkillCategoryType],
             skills: skills,
-          })
+          }),
         );
         this.isLoadingSkills = false;
       },

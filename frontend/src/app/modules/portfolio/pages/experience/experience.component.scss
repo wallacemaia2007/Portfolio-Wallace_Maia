@@ -2,150 +2,14 @@
   display: block;
 }
 
-// ═══════════════════════════════════════
-// 🎨 ANIMATIONS
-// ═══════════════════════════════════════
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes pulse-slow {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.05);
-  }
-}
-
-.animate-pulse-slow {
-  animation: pulse-slow 4s ease-in-out infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-spin {
-  animation: spin 1s linear infinite;
-}
-
-@keyframes ping {
-  75%,
-  100% {
-    transform: scale(2);
-    opacity: 0;
-  }
-}
-
-.animate-ping {
-  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-
-// ═══════════════════════════════════════
-// 📊 STATS CARDS
-// ═══════════════════════════════════════
-
 .shadow-3xl {
   box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
-}
-
-// ═══════════════════════════════════════
-// 🎯 CTA SECTION
-// ═══════════════════════════════════════
-
-// CTA buttons hover effects
-a[mat-raised-button] {
-  mat-icon {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-}
-
-// ═══════════════════════════════════════
-// 🌊 GRADIENT BACKGROUNDS
-// ═══════════════════════════════════════
-
-.bg-gradient-to-br {
-  background-size: 200% 200%;
-  animation: gradient-shift 8s ease infinite;
-}
-
-@keyframes gradient-shift {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-// ═══════════════════════════════════════
-// 📱 RESPONSIVE IMPROVEMENTS
-// ═══════════════════════════════════════
-
-@media (max-width: 1024px) {
-  .text-7xl {
-    font-size: 4rem;
-  }
-
-  .text-6xl {
-    font-size: 3.5rem;
-  }
-
-  .text-5xl {
-    font-size: 3rem;
-  }
 }
 
 @media (max-width: 768px) {
   .py-24 {
     padding-top: 4rem;
     padding-bottom: 4rem;
-  }
-
-  .text-7xl {
-    font-size: 3rem;
-  }
-
-  .text-6xl {
-    font-size: 2.5rem;
-  }
-
-  .text-5xl {
-    font-size: 2rem;
-  }
-
-  .text-4xl {
-    font-size: 1.75rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .py-24 {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-
-  .text-7xl {
-    font-size: 2.5rem;
-  }
-
-  .text-6xl {
-    font-size: 2rem;
   }
 
   .text-5xl {
@@ -165,15 +29,10 @@ a[mat-raised-button] {
   }
 }
 
-// ═══════════════════════════════════════
-// ⚡ PERFORMANCE OPTIMIZATIONS
-// ═══════════════════════════════════════
-
 .container {
   contain: layout style;
 }
 
-// GPU acceleration for smooth animations
 .group,
 .hover\:scale-105,
 .hover\:shadow-2xl,
@@ -182,17 +41,12 @@ a[mat-raised-button] {
   backface-visibility: hidden;
 }
 
-// ═══════════════════════════════════════
-// 🎨 LIGHT/DARK MODE TRANSITIONS
-// ═══════════════════════════════════════
-
 * {
   transition-property: background-color, border-color, color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
 }
 
-// Smooth theme transitions
 :host-context(.dark) {
   .shadow-xl {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3),
@@ -208,10 +62,6 @@ a[mat-raised-button] {
   }
 }
 
-// ═══════════════════════════════════════
-// ✨ HOVER EFFECTS
-// ═══════════════════════════════════════
-
 .hover\:scale-105:hover {
   transform: scale(1.05) translateZ(0);
 }
@@ -220,18 +70,9 @@ a[mat-raised-button] {
   transform: scale(1.1) translateZ(0);
 }
 
-// ═══════════════════════════════════════
-// 🎯 DECORATIVE ELEMENTS
-// ═══════════════════════════════════════
-
-// Gradient line
 .h-1.bg-gradient-to-r {
   box-shadow: 0 2px 8px rgba(155, 27, 31, 0.3);
 }
-
-// ═══════════════════════════════════════
-// ♿ ACCESSIBILITY
-// ═══════════════════════════════════════
 
 *:focus-visible {
   outline: 3px solid var(--primary);
@@ -239,7 +80,6 @@ a[mat-raised-button] {
   border-radius: 0.75rem;
 }
 
-// High contrast mode
 @media (prefers-contrast: high) {
   .border-gray-200,
   .border-gray-800 {
@@ -248,46 +88,33 @@ a[mat-raised-button] {
   }
 }
 
-// ═══════════════════════════════════════
-// 🖨️ PRINT STYLES
-// ═══════════════════════════════════════
-
 @media print {
-  // Remove animations
   .animate-spin,
   .animate-ping,
   .animate-pulse-slow {
     animation: none !important;
   }
 
-  // Simplify backgrounds
   .bg-gradient-to-r,
   .bg-gradient-to-br {
     background: white !important;
     color: black !important;
   }
 
-  // Hide CTA section
   section:last-child {
     display: none;
   }
 
-  // Simplify shadows
   .shadow-xl,
   .shadow-2xl,
   .shadow-3xl {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
   }
 
-  // Page breaks
   article {
     page-break-inside: avoid;
   }
 }
-
-// ═══════════════════════════════════════
-// ♿ REDUCED MOTION
-// ═══════════════════════════════════════
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -305,19 +132,11 @@ a[mat-raised-button] {
   }
 }
 
-// ═══════════════════════════════════════
-// 🌐 RTL SUPPORT
-// ═══════════════════════════════════════
-
 [dir="rtl"] {
   .group-hover\/link\:translate-x-2 {
     transform: translateX(-0.5rem);
   }
 }
-
-// ═══════════════════════════════════════
-// 📊 CONTENT VISIBILITY (Performance)
-// ═══════════════════════════════════════
 
 section {
   content-visibility: auto;

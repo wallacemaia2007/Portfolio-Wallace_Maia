@@ -6,30 +6,18 @@
         <app-section-header title="Meus Projetos" subtitle="Uma coleção dos meus trabalhos mais recentes e impactantes."
           align="center"></app-section-header>
 
-        <div class="grid grid-cols-3 gap-4 max-w-2xl mx-auto animate-fade-in" style="animation-delay: 0.4s;">
-          <div
-            class="bg-white/70 dark:bg-custom-black-light/70 backdrop-blur-sm rounded-xl p-4 border-2 border-gray-200 dark:border-gray-800 hover:scale-105 transition-all">
-            <div class="text-3xl font-bold text-primary">{{ totalProjects }}</div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">Projetos</div>
-          </div>
-          <div
-            class="bg-white/70 dark:bg-custom-black-light/70 backdrop-blur-sm rounded-xl p-4 border-2 border-gray-200 dark:border-gray-800 hover:scale-105 transition-all">
-            <div class="text-3xl font-bold text-primary">{{ categories.length }}</div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">Categorias</div>
-          </div>
-          <div
-            class="bg-white/70 dark:bg-custom-black-light/70 backdrop-blur-sm rounded-xl p-4 border-2 border-gray-200 dark:border-gray-800 hover:scale-105 transition-all">
-            <div class="text-3xl font-bold text-primary">{{ getTechnologiesCount() }}</div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">Tecnologias</div>
-          </div>
+        <div class="max-w-4xl mx-auto animate-fade-in" style="animation-delay: 0.4s;">
+          <app-stat-cards [stats]="statistics"></app-stat-cards>
         </div>
       </div>
     </div>
+        <div class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></div>
+
   </section>
 
   @if (latestCompletedProject) {
   <section appScrollReveal revealFrom="bottom" [revealDelay]="100"
-    class="py-12 bg-beige-dark dark:bg-custom-black hidden md:block border-b border-gray-200 dark:border-gray-800">
+    class="py-12 bg-beige-dark dark:bg-custom-black hidden md:block">
     <div class="container mx-auto px-4">
       <div
         class="relative rounded-3xl overflow-hidden border-2 border-primary/20 hover:border-primary transition-all duration-500 group cursor-pointer"
