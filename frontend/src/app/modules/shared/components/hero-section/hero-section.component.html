@@ -1,27 +1,27 @@
 <section
-  class="min-h-[calc(100vh-4rem)] flex items-center py-20 bg-gradient-to-br from-white to-beige-light dark:from-custom-black dark:to-custom-black-light transition-all duration-300">
+  class="min-h-screen flex items-center py-32 bg-gradient-to-br from-white to-beige-light dark:from-custom-black dark:to-custom-black-light transition-all duration-300">
   <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <div class="space-y-6 animate-fade-in">
-        <div class="space-y-2">
-          <p class="text-primary font-semibold text-lg flex items-center space-x-2">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="space-y-8 animate-fade-in">
+        <div class="space-y-4">
+          <p class="text-primary font-semibold text-xl flex items-center space-x-2">
             <mat-icon class="animate-wave">waving_hand</mat-icon>
             <span>Olá, eu sou</span>
           </p>
-          <h1 class="text-5xl md:text-6xl font-bold text-custom-black dark:text-white">
+          <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold text-custom-black dark:text-white">
             {{ personalInfo.name }}
           </h1>
-          <h2 class="text-3xl md:text-4xl font-semibold text-primary">
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-semibold text-primary">
             {{ personalInfo.role }}
           </h2>
-          <p class="text-primary font-semibold text-lg flex items-center space-x-2">
+          <p class="text-primary font-semibold text-xl flex items-center space-x-2">
             <span>Java | Angular | Spring Boot</span>
           </p>
         </div>
-        <p class="text-lg text-gray-700 dark:text-gray-400 max-w-xl">
+        <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-400 max-w-xl leading-relaxed">
           {{ personalInfo.description }}
         </p>
-        <div class="flex flex-col sm:flex-row gap-4">
+        <div class="flex flex-col sm:flex-row gap-6 pt-4">
           <app-button [buttonData]="{
             label: 'Ver Projetos',
             icon: 'work',
@@ -39,12 +39,12 @@
       <div class="relative lg:order-last order-first animate-float">
         <div class="relative z-10">
           <div
-            class="w-full max-w-md mx-auto aspect-square rounded-full overflow-hidden border-8 border-white dark:border-custom-black shadow-2xl">
+            class="w-full max-w-lg mx-auto aspect-square rounded-full overflow-hidden border-8 border-white dark:border-custom-black shadow-2xl">
             <img [src]="personalInfo.avatar" [alt]="personalInfo.name" class="w-full h-full object-cover">
           </div>
         </div>
-        <div class="absolute top-0 right-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl -z-10"></div>
-        <div class="absolute bottom-0 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10"></div>
       </div>
 
     </div>

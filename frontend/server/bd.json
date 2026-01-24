@@ -24,9 +24,9 @@
       "shortDescription": "API REST de banco digital em Java com Spring Boot",
       "thumbnail": "assets/images/projects/digital-bank/thumbnail.jpeg",
       "images": [
-        "assets/images/projects/digital-bank/api-1.jpg",
-        "assets/images/projects/digital-bank/api-2.jpg",
-        "assets/images/projects/digital-bank/api-3.jpg"
+        "assets/images/projects/digital-bank/digital-bank-1.jpg",
+        "assets/images/projects/digital-bank/digital-bank-2.jpg",
+        "assets/images/projects/digital-bank/digital-bank-3.jpg"
       ],
       "technologies": [
         "Java",
@@ -72,8 +72,8 @@
       "shortDescription": "Sistema web para gerenciar lugares favoritos de viagem",
       "thumbnail": "assets/images/projects/traveler-website/thumbnail.jpg",
       "images": [
-        "assets/images/projects/traveler-website/site.jpg",
-        "assets/images/projects/traveler-website-2.jpg"
+        "assets/images/projects/traveler-website/traveler-website-1.jpg",
+        "assets/images/projects/traveler-website/traveler-website-2.jpg"
       ],
       "technologies": [
         "Angular",
