@@ -64,7 +64,7 @@ public class ProjectMapper {
         if (dto.category() != null)
             entity.setCategory(dto.category());
         if (dto.featured() != null)
-            entity.setFeatured(dto.featured());
+            entity.setFeatured(Boolean.TRUE.equals(dto.featured()));
         if (dto.githubUrl() != null)
             entity.setGithubUrl(dto.githubUrl());
         if (dto.liveUrl() != null)

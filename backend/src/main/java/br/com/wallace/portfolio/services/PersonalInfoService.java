@@ -27,7 +27,6 @@ public class PersonalInfoService {
     @Transactional
     public PersonalInfoResponseDTO getPersonalInfo() {
         PersonalInfo info = getPersonalInfoEntity();
-
         return ProfileMapper.toResponse(info);
     }
 
