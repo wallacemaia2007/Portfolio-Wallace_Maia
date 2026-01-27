@@ -56,4 +56,29 @@ public class ProjectService {
         return ProjectMapper.toResponse(savedProject);
     }
 
+    public List<ProjectResponseDTO> getProjectsByCategory(String category) {
+        List<Project> projects = projectRepository.findAll().stream()
+                .filter(project -> category.equalsIgnoreCase(project.getCategory()))
+                .toList();
+        if (projects.isEmpty()) {
+            throw new ProjectsNotFoundException("No projects found in the category: " + category);
+        }
+        return projects.stream()
+                .map(ProjectMapper::toResponse)
+                .toList();
+    }
+
+
+    public List<ProjectResponseDTO> getProjectsByTitle(String title) {
+        List<Project> projects = projectRepository.findAll().stream()
+                .filter(project -> project.getTitle().toLowerCase().contains(title.toLowerCase()))
+                .toList();
+        if (projects.isEmpty()) {
+            throw new ProjectsNotFoundException("No projects found with name containing: " + title);
+        }
+        return projects.stream()
+                .map(ProjectMapper::toResponse)
+                .toList();
+    }
+
 }

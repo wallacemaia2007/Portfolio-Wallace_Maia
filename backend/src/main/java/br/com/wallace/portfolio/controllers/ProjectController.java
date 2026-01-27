@@ -15,6 +15,7 @@ import br.com.wallace.portfolio.dtos.ProjectResponseDTO;
 import br.com.wallace.portfolio.dtos.requests.ProjectRequestDTO;
 import br.com.wallace.portfolio.services.ProjectService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/api/projects")
@@ -47,6 +48,16 @@ public class ProjectController {
     @PostMapping()
     public ResponseEntity<ProjectResponseDTO> createProject(@RequestBody ProjectRequestDTO dto) {
         return ResponseEntity.ok().body(projectService.createProject(dto));
+    }
+
+    @GetMapping("/category/{category}")
+    public ResponseEntity<List<ProjectResponseDTO>> getProjectsByCategory(@PathVariable String category) {
+        return ResponseEntity.ok().body(projectService.getProjectsByCategory(category));
+    }
+
+    @GetMapping("/title/{title}")
+    public ResponseEntity<List<ProjectResponseDTO>> getProjectsByTitle(@PathVariable String title) {
+        return ResponseEntity.ok().body(projectService.getProjectsByTitle(title));
     }
 
 }
