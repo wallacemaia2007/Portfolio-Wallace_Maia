@@ -57,4 +57,26 @@ public class ProfileMapper {
         if (dto.website() != null)
             entity.setWebsite(dto.website());
     }
+
+    public static PersonalInfo toEntity(PersonalInfoRequestDTO dto) {
+        if (dto == null) {
+            return null;
+        }
+
+        PersonalInfo personalInfo = new PersonalInfo();
+        personalInfo.setFullName(dto.fullName());
+        personalInfo.setAcronym(dto.acronym());
+        personalInfo.setRole(dto.role());
+        personalInfo.setEmail(dto.email());
+        personalInfo.setPhone(dto.phone());
+        personalInfo.setLocation(dto.location());
+        personalInfo.setBio(dto.bio());
+        personalInfo.setAvatar(dto.avatar());
+        personalInfo.setCvUrl(dto.cvUrl());
+        personalInfo.setGithub(dto.github());
+        personalInfo.setLinkedin(dto.linkedin());
+        personalInfo.setWebsite(dto.website());
+
+        return personalInfo;
+    }
 }
