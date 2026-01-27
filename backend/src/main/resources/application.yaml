@@ -3,7 +3,7 @@ spring:
     # Substitua 'nome_do_seu_banco' pelo nome que você criará no pgAdmin
     url: jdbc:postgresql://localhost:5432/portfolio_db
     username: postgres
-    password: "@Wall1327"
+    password: "@SQL1327"
     driver-class-name: org.postgresql.Driver
 
   jpa:

@@ -3,14 +3,30 @@ package br.com.wallace.portfolio.mappers;
 import org.springframework.stereotype.Component;
 
 import br.com.wallace.portfolio.dtos.ProfileResponseDTO;
-import br.com.wallace.portfolio.model.entitites.Profile;
+import br.com.wallace.portfolio.model.entities.PersonalInfo;
 
 @Component
 public class ProfileMapper {
 
-    public static ProfileResponseDTO toResponse(Profile profile) {
-        return new ProfileResponseDTO(profile.getId(), profile.getFullName(), profile.getAcronym(), profile.getRole(),
-                profile.getEmail(), profile.getPhone(), profile.getLocation(), profile.getBio(), profile.getAvatar(),
-                profile.getCvUrl(), profile.getGithubUrl(), profile.getLinkedinUrl(), profile.getWebsiteUrl());
+    public static ProfileResponseDTO toResponse(PersonalInfo profile) {
+        if (profile == null) {
+            return null;
+        }
+
+        return new ProfileResponseDTO(
+                profile.getId(),
+                profile.getFullName(),
+                profile.getAcronym(),
+                profile.getRole(),
+                profile.getEmail(),
+                profile.getPhone(),
+                profile.getLocation(),
+                profile.getBio(),
+                profile.getAvatar(),
+                profile.getCvUrl(),
+                profile.getGithub(),
+                profile.getLinkedin(),
+                profile.getWebsite()
+        );
     }
 }

@@ -2,7 +2,7 @@ package br.com.wallace.portfolio.mappers;
 
 import br.com.wallace.portfolio.dtos.SkillResponseDTO;
 import br.com.wallace.portfolio.exceptions.SkillNotFoundException;
-import br.com.wallace.portfolio.model.entitites.Skill;
+import br.com.wallace.portfolio.model.entities.Skill;
 
 public class SkillMapper {
 
@@ -18,6 +18,6 @@ public class SkillMapper {
                 skill.getLevel(),
                 skill.getYearsOfExperience(),
                 skill.getIcon(),
-                skill.getProfile().getId());
+                skill.getColor());
     }
 }

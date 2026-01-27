@@ -2,7 +2,7 @@ package br.com.wallace.portfolio.mappers;
 
 import br.com.wallace.portfolio.dtos.SocialLinkResponseDTO;
 import br.com.wallace.portfolio.exceptions.SocialLinkNotFoundException;
-import br.com.wallace.portfolio.model.entitites.SocialLink;
+import br.com.wallace.portfolio.model.entities.SocialLink;
 
 public class SocialLinkMapper {
 
@@ -14,9 +14,9 @@ public class SocialLinkMapper {
         return new SocialLinkResponseDTO(
                 socialLink.getId(),
                 socialLink.getName(),
-                socialLink.getLinkUrl(),
-                socialLink.getIconUrl(),
-                socialLink.getProfile() != null ? socialLink.getProfile().getId() : null
+                socialLink.getUrl(),
+                socialLink.getIcon(),
+                socialLink.getColor()
         );
     }
 }
