@@ -34,7 +34,6 @@ interface CategoryInfo {
   imports: [
     CommonModule,
     FormsModule,
-    RouterLink,
     MatIconModule,
     MatButtonModule,
     SectionHeaderComponent,

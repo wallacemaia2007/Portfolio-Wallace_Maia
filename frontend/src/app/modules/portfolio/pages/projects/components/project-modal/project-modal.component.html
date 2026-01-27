@@ -137,7 +137,6 @@
           <h3 class="font-bold text-xl text-custom-black dark:text-white mb-4 flex items-center gap-2">
             <mat-icon class="text-primary">psychology</mat-icon>
             Desafios Enfrentados
-            <span class="text-sm font-normal text-gray-500 dark:text-gray-400">(Prévia)</span>
           </h3>
           <ul class="space-y-2">
             @for (challenge of project.challenges.slice(0, 3); track challenge) {
@@ -161,22 +160,15 @@
           <h3 class="font-bold text-xl text-custom-black dark:text-white mb-4 flex items-center gap-2">
             <mat-icon class="text-primary">lightbulb</mat-icon>
             Aprendizados
-            <span class="text-sm font-normal text-gray-500 dark:text-gray-400">(Prévia)</span>
           </h3>
           <ul class="space-y-2">
-            @for (learning of project.learnings.slice(0, 3); track learning) {
+            @for (learning of project.learnings; track learning) {
             <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
               <mat-icon class="text-accent text-xl mt-0.5">star</mat-icon>
               <span>{{ learning }}</span>
             </li>
             }
           </ul>
-          @if (project.learnings.length > 3) {
-          <p class="mt-3 text-sm text-gray-500 dark:text-gray-400 flex items-center gap-2">
-            <mat-icon class="text-base">info</mat-icon>
-            E mais {{ project.learnings.length - 3 }} aprendizado(s). Veja todos na página completa.
-          </p>
-          }
         </div>
         }
 
