@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.wallace.portfolio.model.entities.Hobby;
 
-public interface HobbyRepository extends JpaRepository<Hobby, String> {
+public interface HobbyRepository extends JpaRepository<Hobby, Long> {
     
 }

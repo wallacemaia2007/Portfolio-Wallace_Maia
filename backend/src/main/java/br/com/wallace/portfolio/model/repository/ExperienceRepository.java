@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.wallace.portfolio.model.entities.Experience;
 
-public interface ExperienceRepository extends JpaRepository<Experience, String> {
+public interface ExperienceRepository extends JpaRepository<Experience, Long> {
     
 }

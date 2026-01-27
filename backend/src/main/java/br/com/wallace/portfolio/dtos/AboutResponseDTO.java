@@ -3,7 +3,7 @@ package br.com.wallace.portfolio.dtos;
 import java.util.List;
 
 public record AboutResponseDTO(
-        Integer id,
+        Long id,
         String introduction,
         String profileImage,
         String backgroundImage,

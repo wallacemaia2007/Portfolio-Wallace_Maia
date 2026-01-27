@@ -1,7 +1,7 @@
 package br.com.wallace.portfolio.dtos;
 
 public record HobbyResponseDTO(
-        String id,
+        Long id,
         String name,
         String description,
         String emoji) {

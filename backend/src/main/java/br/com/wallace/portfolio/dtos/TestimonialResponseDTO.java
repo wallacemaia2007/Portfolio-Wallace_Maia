@@ -1,7 +1,7 @@
 package br.com.wallace.portfolio.dtos;
 
 public record TestimonialResponseDTO(
-        String id,
+        Long id,
         String author,
         String role,
         String company,

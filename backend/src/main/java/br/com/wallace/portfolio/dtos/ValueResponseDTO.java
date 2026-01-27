@@ -1,7 +1,7 @@
 package br.com.wallace.portfolio.dtos;
 
 public record ValueResponseDTO(
-        String id,
+        Long id,
         String title,
         String description) {
 }

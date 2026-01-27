@@ -1,7 +1,7 @@
 package br.com.wallace.portfolio.dtos;
 
 public record FAQResponseDTO(
-        String id,
+        Long id,
         String question,
         String answer,
         String category,

@@ -1,10 +1,20 @@
 package br.com.wallace.portfolio.model.entities;
 
-import jakarta.persistence.*;
+import java.time.LocalDate;
+import java.util.List;
+
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
 
 @Entity
 @Table(name = "experience")
@@ -13,8 +23,9 @@ import java.util.List;
 @AllArgsConstructor
 public class Experience {
     @Id
-    private String id;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     @Column(nullable = false)
     private String company;
 
@@ -24,8 +35,8 @@ public class Experience {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    private String startDate;
-    private String endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private boolean current;
     private String location;
     private String type;

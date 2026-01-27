@@ -1,14 +1,15 @@
 package br.com.wallace.portfolio.dtos;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public record ExperienceResponseDTO(
-    String id,
+    Long id,
     String company,
     String position,
     String description,
-    String startDate,
-    String endDate,
+    LocalDate startDate,
+    LocalDate endDate,
     boolean current,
     String location,
     String type,

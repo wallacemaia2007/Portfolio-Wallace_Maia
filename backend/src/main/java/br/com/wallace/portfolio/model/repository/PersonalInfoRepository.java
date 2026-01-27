@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.wallace.portfolio.model.entities.PersonalInfo;
 
-public interface PersonalInfoRepository extends JpaRepository<PersonalInfo, Integer> {
+public interface PersonalInfoRepository extends JpaRepository<PersonalInfo, Long> {
     
 }

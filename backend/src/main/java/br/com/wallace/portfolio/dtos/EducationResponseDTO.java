@@ -1,11 +1,13 @@
 package br.com.wallace.portfolio.dtos;
 
+import java.time.LocalDate;
+
 public record EducationResponseDTO(
-        String id,
+        Long id,
         String institution,
         String course,
-        String startDate,
-        String endDate,
+        LocalDate startDate,
+        LocalDate endDate,
         boolean current,
         String description,
         String location,

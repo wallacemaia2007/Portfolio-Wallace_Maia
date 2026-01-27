@@ -1,10 +1,9 @@
-package br.com.wallace.portfolio.dtos;
+package br.com.wallace.portfolio.dtos.requests;
 
-import java.time.LocalDate;
 import java.util.List;
+import java.time.LocalDate;
 
-public record ProjectResponseDTO(
-                Long id,
+public record ProjectRequestDTO(
                 String title,
                 String slug,
                 String description,
@@ -13,7 +12,7 @@ public record ProjectResponseDTO(
                 List<String> images,
                 List<String> technologies,
                 String category,
-                boolean featured,
+                Boolean featured,
                 String githubUrl,
                 String liveUrl,
                 LocalDate startDate,

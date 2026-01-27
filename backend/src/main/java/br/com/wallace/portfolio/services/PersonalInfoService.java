@@ -17,14 +17,14 @@ public class PersonalInfoService {
     private final PersonalInfoRepository personalInfoRepository;
 
     public PersonalInfoResponseDTO getPersonalInfo() {
-        PersonalInfo info = personalInfoRepository.findById(1)
+        PersonalInfo info = personalInfoRepository.findById(1L)
                 .orElseThrow(() -> new ProfileNotFoundException("Informações pessoais não encontradas"));
 
         return ProfileMapper.toResponse(info);
     }
 
     public PersonalInfoResponseDTO updatePersonalInfo(PersonalInfoRequestDTO request) {
-        PersonalInfo existingInfo = personalInfoRepository.findById(1)
+        PersonalInfo existingInfo = personalInfoRepository.findById(1L)
                 .orElseThrow(() -> new ProfileNotFoundException("Informações pessoais não encontradas"));
 
         ProfileMapper.updateEntityFromRequest(request, existingInfo);

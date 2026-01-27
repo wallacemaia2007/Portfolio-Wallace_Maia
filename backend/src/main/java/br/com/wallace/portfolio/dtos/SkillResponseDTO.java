@@ -1,7 +1,7 @@
 package br.com.wallace.portfolio.dtos;
 
 public record SkillResponseDTO(
-        String id,
+        Long id,
         String name,
         String category,
         Integer level,
