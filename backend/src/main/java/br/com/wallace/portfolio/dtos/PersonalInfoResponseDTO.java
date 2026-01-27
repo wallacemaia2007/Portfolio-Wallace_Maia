@@ -1,6 +1,6 @@
 package br.com.wallace.portfolio.dtos;
 
-public record ProfileResponseDTO(
+public record PersonalInfoResponseDTO(
         Integer id,
         String fullName,
         String acronym,

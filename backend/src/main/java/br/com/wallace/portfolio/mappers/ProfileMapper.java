@@ -2,18 +2,18 @@ package br.com.wallace.portfolio.mappers;
 
 import org.springframework.stereotype.Component;
 
-import br.com.wallace.portfolio.dtos.ProfileResponseDTO;
+import br.com.wallace.portfolio.dtos.PersonalInfoResponseDTO;
 import br.com.wallace.portfolio.model.entities.PersonalInfo;
 
 @Component
 public class ProfileMapper {
 
-    public static ProfileResponseDTO toResponse(PersonalInfo profile) {
+    public static PersonalInfoResponseDTO toResponse(PersonalInfo profile) {
         if (profile == null) {
             return null;
         }
 
-        return new ProfileResponseDTO(
+        return new PersonalInfoResponseDTO(
                 profile.getId(),
                 profile.getFullName(),
                 profile.getAcronym(),
