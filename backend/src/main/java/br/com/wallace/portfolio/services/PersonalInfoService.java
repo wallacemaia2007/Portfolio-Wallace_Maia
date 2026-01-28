@@ -21,7 +21,7 @@ public class PersonalInfoService {
 
     private PersonalInfo getPersonalInfoEntity() {
         return personalInfoRepository.findById(ID)
-                .orElseThrow(() -> new ProfileNotFoundException("Personal info not found with id: 1"));
+                .orElseThrow(() -> new ProfileNotFoundException("Personal info not found"));
     }
 
     @Transactional
@@ -33,7 +33,7 @@ public class PersonalInfoService {
     @Transactional
     public PersonalInfoResponseDTO updatePersonalInfo(PersonalInfoRequestDTO request) {
         PersonalInfo existingInfo = personalInfoRepository.findById(ID)
-                .orElseThrow(() -> new ProfileNotFoundException("Informações pessoais não encontradas"));
+                .orElseThrow(() -> new ProfileNotFoundException("Personal info not found"));
 
         ProfileMapper.updateEntityFromRequest(request, existingInfo);
 

@@ -1,9 +1,8 @@
-package br.com.wallace.portfolio.dtos;
+package br.com.wallace.portfolio.dtos.requests;
 
 import java.util.List;
 
-public record AboutResponseDTO(
-        Long id,
+public record AboutRequestDTO(
         String introduction,
         String profileImage,
         String backgroundImage,
@@ -11,4 +10,5 @@ public record AboutResponseDTO(
         String philosophyTitle,
         String philosophyText,
         List<String> futureGoals) {
+
 }
