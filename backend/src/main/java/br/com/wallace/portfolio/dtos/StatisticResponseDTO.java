@@ -6,7 +6,6 @@ public record StatisticResponseDTO(
     Integer completedProjects,
     Integer happyClients,
     Integer yearsExperience,
-    Integer technologies,
-    Integer coffeesCups
+    Integer technologies
 ) {
 }

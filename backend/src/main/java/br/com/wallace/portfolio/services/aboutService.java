@@ -21,24 +21,19 @@ public class AboutService {
 
     private About getAboutEntity() {
         return aboutRepository.findById(ID)
-                .orElseThrow(() -> new AboutNotFoundException("Personal info not found with id: 1"));
+                .orElseThrow(() -> new AboutNotFoundException("About not found"));
     }
 
     @Transactional
     public AboutResponseDTO getAbout() {
-        About about = getAboutEntity();
-        return AboutMapper.toResponse(about);
+        return AboutMapper.toResponse(getAboutEntity());
     }
 
     @Transactional
     public AboutResponseDTO updateAbout(AboutRequestDTO request) {
-        About existingAbout = aboutRepository.findById(ID)
-                .orElseThrow(() -> new AboutNotFoundException("About not found"));
-
+        About existingAbout = getAboutEntity();
         AboutMapper.updateEntityFromRequest(request, existingAbout);
-
-        About saved = aboutRepository.save(existingAbout);
-        return AboutMapper.toResponse(saved);
+        return AboutMapper.toResponse(aboutRepository.save(existingAbout));
     }
 
     @Transactional

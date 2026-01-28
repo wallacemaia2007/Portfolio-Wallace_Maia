@@ -22,5 +22,4 @@ public class Statistics {
     private Integer happyClients;
     private Integer yearsExperience;
     private Integer technologies;
-    private Integer coffeesCups;
 }
