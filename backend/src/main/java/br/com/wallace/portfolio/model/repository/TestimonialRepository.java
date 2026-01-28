@@ -8,6 +8,6 @@ import br.com.wallace.portfolio.model.entities.Testimonial;
 
 public interface TestimonialRepository extends JpaRepository<Testimonial, Long> {
 
-    public List<Testimonial> findByRating(int rating);
-    
+    public List<Testimonial> findByRating(Integer rating);
+
 }
