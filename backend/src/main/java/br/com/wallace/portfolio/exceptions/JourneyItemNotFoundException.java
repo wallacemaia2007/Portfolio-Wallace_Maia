@@ -4,9 +4,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
-public class EducationNotFoundException extends RuntimeException {
-    public EducationNotFoundException(String message) {
+public class JourneyItemNotFoundException extends RuntimeException {
+    public JourneyItemNotFoundException(String message) {
         super(message);
     }
-    
 }
