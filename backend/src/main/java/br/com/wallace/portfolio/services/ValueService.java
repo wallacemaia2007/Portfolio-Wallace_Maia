@@ -27,6 +27,14 @@ public class ValueService {
     }
 
     @Transactional
+    public ValueResponseDTO getValueById(Long id) {
+        Value value = valueRepository.findById(id)
+                .orElseThrow(() -> new ValueNotFoundException("Value not found with id: " + id));
+
+        return ValueMapper.toResponse(value);
+    }
+
+    @Transactional
     public ValueResponseDTO createValue(ValueRequestDTO request) {
         Value value = ValueMapper.toEntity(request);
         return ValueMapper.toResponse(valueRepository.save(value));

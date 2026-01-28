@@ -27,6 +27,14 @@ public class EducationService {
     }
 
     @Transactional
+    public EducationResponseDTO getEducationById(Long id) {
+        Education education = educationRepository.findById(id)
+                .orElseThrow(() -> new EducationNotFoundException("Education not found with id: " + id));
+
+        return EducationMapper.toResponse(education);
+    }
+
+    @Transactional
     public EducationResponseDTO createEducation(EducationRequestDTO request) {
         Education education = EducationMapper.toEntity(request);
         return EducationMapper.toResponse(educationRepository.save(education));

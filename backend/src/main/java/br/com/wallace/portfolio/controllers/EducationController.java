@@ -30,6 +30,11 @@ public class EducationController {
         return ResponseEntity.ok().body(educationService.getAllEducation());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<EducationResponseDTO> getEducationById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(educationService.getEducationById(id));
+    }
+
     @PostMapping
     public ResponseEntity<EducationResponseDTO> createEducation(@RequestBody EducationRequestDTO request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(educationService.createEducation(request));

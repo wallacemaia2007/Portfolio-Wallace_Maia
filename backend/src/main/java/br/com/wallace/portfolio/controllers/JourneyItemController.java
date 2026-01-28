@@ -30,6 +30,11 @@ public class JourneyItemController {
         return ResponseEntity.ok().body(journeyItemService.getAllJourneyItems());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<JourneyItemResponseDTO> getJourneyItemById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(journeyItemService.getJourneyItemById(id));
+    }
+
     @PostMapping
     public ResponseEntity<JourneyItemResponseDTO> createJourneyItem(@RequestBody JourneyItemRequestDTO request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(journeyItemService.createJourneyItem(request));

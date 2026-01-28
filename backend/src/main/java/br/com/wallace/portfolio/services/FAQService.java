@@ -19,15 +19,15 @@ public class FAQService {
 
     private final FAQRepository faqRepository;
 
-    public List<FAQResponseDTO> findAllFAQs() {
-
+    @Transactional
+    public List<FAQResponseDTO> getAllFAQs() {
         List<FAQ> faqs = faqRepository.findAll();
-
         return faqs.stream()
                 .map(FAQMapper::toResponse)
                 .toList();
     }
 
+    @Transactional
     public FAQResponseDTO getFAQById(Long id) {
         FAQ faq = faqRepository.findById(id)
                 .orElseThrow(() -> new FAQNotFoundException("FAQ not found with id: " + id));

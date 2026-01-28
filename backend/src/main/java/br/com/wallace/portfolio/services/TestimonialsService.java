@@ -19,21 +19,20 @@ public class TestimonialsService {
 
     private final TestimonialRepository testimonialRepository;
 
+    @Transactional
     public List<TestimonialResponseDTO> findTestimonials(Integer rating) {
-
         List<Testimonial> testimonials;
-
         if (rating != null) {
             testimonials = testimonialRepository.findByRating(rating);
         } else {
             testimonials = testimonialRepository.findAll();
         }
-
         return testimonials.stream()
                 .map(TestimonialMapper::toResponse)
                 .toList();
     }
 
+    @Transactional
     public TestimonialResponseDTO getTestimonialById(Long id) {
         Testimonial testimonial = testimonialRepository.findById(id)
                 .orElseThrow(() -> new TestimonialNotFoundException("Testimonial not found with id: " + id));

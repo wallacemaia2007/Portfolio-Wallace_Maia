@@ -30,6 +30,11 @@ public class HobbyController {
         return ResponseEntity.ok().body(hobbyService.getAllHobbies());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<HobbyResponseDTO> getHobbyById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(hobbyService.getHobbyById(id));
+    }
+
     @PostMapping
     public ResponseEntity<HobbyResponseDTO> createHobby(@RequestBody HobbyRequestDTO request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(hobbyService.createHobby(request));

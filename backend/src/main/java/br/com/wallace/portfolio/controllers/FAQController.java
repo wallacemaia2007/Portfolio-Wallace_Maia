@@ -29,7 +29,7 @@ public class FAQController {
     @GetMapping
     public ResponseEntity<List<FAQResponseDTO>> getFAQs() {
         return ResponseEntity.ok(
-                faqService.findAllFAQs());
+                faqService.getAllFAQs());
     }
 
     @GetMapping("/{id}")

@@ -27,6 +27,14 @@ public class JourneyItemService {
     }
 
     @Transactional
+    public JourneyItemResponseDTO getJourneyItemById(Long id) {
+        JourneyItem journeyItem = journeyItemRepository.findById(id)
+                .orElseThrow(() -> new JourneyItemNotFoundException("Journey Item not found with id: " + id));
+
+        return JourneyItemMapper.toResponse(journeyItem);
+    }
+
+    @Transactional
     public JourneyItemResponseDTO createJourneyItem(JourneyItemRequestDTO request) {
         JourneyItem journeyItem = JourneyItemMapper.toEntity(request);
         return JourneyItemMapper.toResponse(journeyItemRepository.save(journeyItem));

@@ -30,6 +30,11 @@ public class ValueController {
         return ResponseEntity.ok().body(valueService.getAllValues());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<ValueResponseDTO> getValueById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(valueService.getValueById(id));
+    }
+
     @PostMapping
     public ResponseEntity<ValueResponseDTO> createValue(@RequestBody ValueRequestDTO request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(valueService.createValue(request));

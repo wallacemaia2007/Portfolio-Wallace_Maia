@@ -26,6 +26,14 @@ public class HobbyService {
     }
 
     @Transactional
+    public HobbyResponseDTO getHobbyById(Long id) {
+        Hobby hobby = hobbyRepository.findById(id)
+                .orElseThrow(() -> new HobbyNotFoundException("Hobby not found with id: " + id));
+
+        return HobbyMapper.toResponse(hobby);
+    }
+
+    @Transactional
     public HobbyResponseDTO createHobby(HobbyRequestDTO request) {
         Hobby hobby = HobbyMapper.toEntity(request);
         return HobbyMapper.toResponse(hobbyRepository.save(hobby));
