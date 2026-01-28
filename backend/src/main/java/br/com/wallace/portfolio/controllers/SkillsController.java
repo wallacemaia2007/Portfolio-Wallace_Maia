@@ -46,6 +46,13 @@ public class SkillsController {
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
+    @PostMapping("/bulk")
+    public ResponseEntity<List<SkillResponseDTO>> createMultiple(
+            @Valid @RequestBody List<SkillRequestDTO> dtos) {
+        List<SkillResponseDTO> created = skillsService.createMultipleSkills(dtos);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
+    }
+
     @PatchMapping("/{id}")
     public ResponseEntity<SkillResponseDTO> update(
             @PathVariable Long id,

@@ -51,6 +51,19 @@ public class SkillsService {
     }
 
     @Transactional
+    public List<SkillResponseDTO> createMultipleSkills(List<SkillRequestDTO> requests) {
+        List<Skill> skills = requests.stream()
+                .map(SkillMapper::toEntity)
+                .toList();
+        
+        List<Skill> savedSkills = skillRepository.saveAll(skills);
+        
+        return savedSkills.stream()
+                .map(SkillMapper::toResponse)
+                .toList();
+    }
+
+    @Transactional
     public SkillResponseDTO updateSkill(Long id, SkillRequestDTO request) {
         Skill skill = skillRepository.findById(id)
                 .orElseThrow(() -> new SkillNotFoundException("Skill not found with id: " + id));
