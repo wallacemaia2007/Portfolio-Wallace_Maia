@@ -1,75 +1,45 @@
-<div
-  class="min-h-screen bg-white dark:bg-custom-black transition-colors duration-300"
->
-  <section
-    class="relative min-h-screen flex items-center justify-center overflow-hidden"
-  >
-    <div
-      class="absolute inset-0 z-0"
-      appScrollReveal
-      revealFrom="right"
-      [revealDelay]="200"
-    >
+<div class="min-h-screen bg-white dark:bg-custom-black transition-colors duration-300">
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0" appScrollReveal revealFrom="right" [revealDelay]="200">
       <div class="relative w-full h-full">
         @if (aboutInfo.profileImage) {
-          <img
-            [src]="aboutInfo.profileImage"
-            alt="Wallace Maia"
-            class="w-full h-full object-cover"
-          />
+        <img [src]="aboutInfo.profileImage" alt="Wallace Maia" class="w-full h-full object-cover" />
         } @else {
-          <div
-            class="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary to-primary-dark"
-          >
-            <mat-icon class="text-white/40 text-9xl">account_circle</mat-icon>
-          </div>
+        <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary to-primary-dark">
+          <mat-icon class="text-white/40 text-9xl">account_circle</mat-icon>
+        </div>
         }
       </div>
       <div
-        class="absolute inset-0 bg-gradient-to-r from-custom-black/80 via-custom-black/60 to-custom-black/40 dark:from-custom-black/95 dark:to-custom-black/60"
-      ></div>
+        class="absolute inset-0 bg-gradient-to-r from-custom-black/80 via-custom-black/60 to-custom-black/40 dark:from-custom-black/95 dark:to-custom-black/60">
+      </div>
     </div>
 
-    <div
-      class="container mx-auto px-4 relative z-10"
-      appScrollReveal
-      revealFrom="left"
-      [revealDelay]="100"
-    >
+    <div class="container mx-auto px-4 relative z-10" appScrollReveal revealFrom="left" [revealDelay]="100">
       <div class="max-w-4xl">
         <div class="space-y-6">
           <div class="inline-block">
-            <span
-              class="px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold shadow-lg"
-            >
+            <span class="px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold shadow-lg">
               Sobre Mim
             </span>
           </div>
 
-          <h1
-            class="text-5xl md:text-7xl font-bold text-white leading-tight drop-shadow-lg"
-          >
+          <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight drop-shadow-lg">
             Olá! Sou o <span class="text-primary-light">Wallace</span>
           </h1>
 
-          <p
-            class="text-xl text-white leading-relaxed font-medium max-w-2xl drop-shadow-md"
-          >
+          <p class="text-xl text-white leading-relaxed font-medium max-w-2xl drop-shadow-md">
             {{ aboutInfo.introduction }}
           </p>
 
           <div class="flex flex-wrap gap-4 pt-4">
-            <a
-              href="#history"
-              class="px-8 py-3 bg-primary hover:bg-primary-dark text-white rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2"
-            >
+            <a href="#history"
+              class="px-8 py-3 bg-primary hover:bg-primary-dark text-white rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2">
               <mat-icon>history</mat-icon>
               Minha História
             </a>
-            <a
-              href="#values"
-              class="px-8 py-3 bg-white/10 backdrop-blur-sm border-2 border-white/50 text-white hover:bg-white/20 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 shadow-lg"
-            >
+            <a href="#values"
+              class="px-8 py-3 bg-white/10 backdrop-blur-sm border-2 border-white/50 text-white hover:bg-white/20 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 shadow-lg">
               <mat-icon>favorite</mat-icon>
               Meus Valores
             </a>
@@ -80,35 +50,21 @@
     <div class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></div>
   </section>
 
-  <section
-    id="history"
-    class="py-20 bg-beige-light dark:bg-custom-black-light transition-colors duration-300"
-  >
+  <section id="history" class="py-20 bg-beige-light dark:bg-custom-black-light transition-colors duration-300">
     <div class="container mx-auto px-4 max-w-4xl">
-      <app-section-header
-        title="Minha História"
-        subtitle="Conheça mais sobre minha jornada e motivações"
-        align="center"
-      ></app-section-header>
+      <app-section-header title="Minha História" subtitle="Conheça mais sobre minha jornada e motivações"
+        align="center"></app-section-header>
 
       <div class="space-y-8 mt-12">
         @for (text of aboutInfo.aboutTexts; track text; let i = $index) {
+        <div appScrollReveal revealFrom="bottom" [revealDelay]="i * 150" class="group">
           <div
-            appScrollReveal
-            revealFrom="bottom"
-            [revealDelay]="i * 150"
-            class="group"
-          >
-            <div
-              class="p-8 bg-white dark:bg-custom-black rounded-2xl border-l-4 border-primary shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-            >
-              <p
-                class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed"
-              >
-                {{ text }}
-              </p>
-            </div>
+            class="p-8 bg-white dark:bg-custom-black rounded-2xl border-l-4 border-primary shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              {{ text }}
+            </p>
           </div>
+        </div>
         }
       </div>
     </div>
@@ -116,264 +72,173 @@
 
   <section class="py-20 bg-white dark:bg-custom-black">
     <div class="container mx-auto px-4 max-w-5xl">
-      <app-section-header
-        title="Minha Jornada"
-        subtitle="Uma linha do tempo do meu crescimento e aprendizado"
-        align="center"
-      ></app-section-header>
+      <app-section-header title="Minha Jornada" subtitle="Uma linha do tempo do meu crescimento e aprendizado"
+        align="center"></app-section-header>
 
       <div class="mt-12 space-y-8">
         @for (item of journeyItems; track item.year; let i = $index) {
-          <div appScrollReveal revealFrom="bottom" [revealDelay]="i * 100">
-            <div class="flex gap-6 md:gap-10 group">
-              <div class="flex flex-col items-center">
-                <div
-                  class="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-primary-dark text-white flex items-center justify-center font-bold text-lg shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110"
-                >
-                  <mat-icon>{{ getJourneyIcon(item.type) }}</mat-icon>
-                </div>
-                @if (i < journeyItems.length - 1) {
-                  <div
-                    class="w-1 h-16 bg-gradient-to-b from-primary/50 to-transparent mt-4"
-                  ></div>
-                }
-              </div>
-
-              <div class="pb-8 flex-1">
-                <div
-                class="p-6 bg-beige-light dark:bg-custom-black-light rounded-xl border border-primary/20 hover:border-primary/50 transition-all duration-300 shadow-md hover:shadow-lg transform group-hover:scale-105"
-                >
-                  <div class="flex items-center gap-3 mb-2">
-                    <span
-                      class="px-3 py-1 bg-primary text-white rounded-full text-sm font-bold"
-                    >
-                      {{ item.year }}
-                    </span>
-                    <h3
-                      class="text-xl font-bold text-custom-black dark:text-white"
-                    >
-                      {{ item.title }}
-                    </h3>
-                  </div>
-                  <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    {{ item.description }}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        }
-      </div>
-    </div>
-  </section>
-
-  <section class="py-20 bg-beige-light dark:bg-custom-black-light">
-    <div class="container mx-auto px-4 max-w-5xl">
-      <app-section-header
-        title="Formação & Certificações"
-        subtitle="Formação acadêmica e cursos complementares"
-        align="center"
-      ></app-section-header>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-        @for (education of educationList; track education.id; let i = $index) {
-          <div appScrollReveal revealFrom="bottom" [revealDelay]="i * 100">
-            <div
-              class="relative h-full p-6 bg-white dark:bg-custom-black rounded-2xl border border-primary/20 hover:border-primary/50 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group transform group-hover:scale-105"
-            >
+        <div appScrollReveal revealFrom="bottom" [revealDelay]="i * 100">
+          <div class="flex gap-6 md:gap-10 group">
+            <div class="flex flex-col items-center">
               <div
-                class="absolute top-0 right-0 w-32 h-32 bg-primary/5 dark:bg-primary/10 rounded-full blur-2xl transform translate-x-8 -translate-y-8 group-hover:scale-150 transition-transform duration-300"
-              ></div>
-
-              <div class="relative z-10 space-y-3">
-                <div class="flex items-start justify-between">
-                  <div class="space-y-1 flex-1">
-                    <h3
-                      class="text-xl font-bold text-custom-black dark:text-white"
-                    >
-                      {{ education.course }}
-                    </h3>
-                    <p
-                      class="text-primary dark:text-primary-light font-semibold"
-                    >
-                      {{ education.institution }}
-                    </p>
-                  </div>
-                  @if (isCurrentEducation(education)) {
-                    <mat-chip
-                      class="bg-accent text-white font-semibold text-xs px-3 py-1"
-                    >
-                      Cursando
-                    </mat-chip>
-                  }
-                </div>
-
-                @if (education.description) {
-                  <p
-                    class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed"
-                  >
-                    {{ education.description }}
-                  </p>
-                }
-
-                <div
-                  class="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 pt-2"
-                >
-                  <span class="flex items-center gap-1">
-                    <mat-icon class="text-lg">calendar_today</mat-icon>
-                    {{ education.startDate }}
-                  </span>
-                  @if (education.endDate) {
-                    <span>-</span>
-                    <span>{{ education.endDate }}</span>
-                  } @else if (isCurrentEducation(education)) {
-                    <span>- Presente</span>
-                  }
-                </div>
-
-                @if (education.location) {
-                  <div
-                    class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 pt-1"
-                  >
-                    <mat-icon class="text-lg">location_on</mat-icon>
-                    {{ education.location }}
-                  </div>
-                }
+                class="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-primary-dark text-white flex items-center justify-center font-bold text-lg shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110">
+                <mat-icon>{{ getJourneyIcon(item.type) }}</mat-icon>
               </div>
+              @if (i < journeyItems.length - 1) { <div
+                class="w-1 h-16 bg-gradient-to-b from-primary/50 to-transparent mt-4">
             </div>
+            }
           </div>
-        }
-      </div>
-    </div>
-  </section>
 
-  <section class="py-20 bg-white dark:bg-custom-black" id="values">
-    <div class="container mx-auto px-4 max-w-5xl">
-      <app-section-header
-        title="Meus Valores"
-        subtitle="Os princípios que guiam meu trabalho e vida"
-        align="center"
-      ></app-section-header>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-        @for (value of values; track value.id; let i = $index) {
-          <div
-            appScrollReveal
-            revealFrom="bottom"
-            [revealDelay]="i * 80"
-            class="h-full"
-          >
+          <div class="pb-8 flex-1">
             <div
-              class="h-full p-6 bg-gradient-to-br from-beige-light to-white dark:from-custom-black-light dark:to-custom-black rounded-2xl border border-primary/20 hover:border-primary/50 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 group"
-            >
-              <h3
-                class="text-2xl font-bold text-custom-black dark:text-white mb-3"
-              >
-                {{ value.title }}
-              </h3>
-
-              <p
-                class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm"
-              >
-                {{ value.description }}
+              class="p-6 bg-beige-light dark:bg-custom-black-light rounded-xl border border-primary/20 hover:border-primary/50 transition-all duration-300 shadow-md hover:shadow-lg transform group-hover:scale-105">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="px-3 py-1 bg-primary text-white rounded-full text-sm font-bold">
+                  {{ item.year }}
+                </span>
+                <h3 class="text-xl font-bold text-custom-black dark:text-white">
+                  {{ item.title }}
+                </h3>
+              </div>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                {{ item.description }}
               </p>
             </div>
           </div>
-        }
+        </div>
       </div>
+      }
     </div>
-  </section>
+</div>
+</section>
 
-  <section class="py-20 bg-beige-light dark:bg-custom-black-light">
-    <div class="container mx-auto px-4 max-w-5xl">
-      <app-section-header
-        title="Hobbies & Interesses"
-        subtitle="O que eu gosto de fazer no tempo livre"
-        align="center"
-      ></app-section-header>
+<section class="py-20 bg-beige-light dark:bg-custom-black-light">
+  <div class="container mx-auto px-4 max-w-5xl">
+    <app-section-header title="Formação & Certificações" subtitle="Formação acadêmica e cursos complementares"
+      align="center"></app-section-header>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-        @for (hobby of hobbies; track hobby.id; let i = $index) {
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+      @for (education of educationList; track education.id; let i = $index) {
+      <div appScrollReveal revealFrom="bottom" [revealDelay]="i * 100">
+        <div
+          class="relative h-full p-6 bg-white dark:bg-custom-black rounded-2xl border border-primary/20 hover:border-primary/50 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group transform group-hover:scale-105">
           <div
-            appScrollReveal
-            revealFrom="bottom"
-            [revealDelay]="i * 80"
-            class="h-full"
-          >
-          
-            <div
-              class="h-full p-6 bg-white dark:bg-custom-black rounded-2xl border-2 border-primary/30 hover:border-primary/80 shadow-md hover:shadow-xl transition-all duration-300 group overflow-hidden transform group-hover:scale-105"
-            >
-              <div class="relative z-10 space-y-4">
-                <div class="flex items-center justify-between">
-                  <h3
-                    class="text-2xl font-bold text-custom-black dark:text-white"
-                  >
-                    {{ hobby.name }}
-                  </h3>
-                  <span class="text-4xl">{{ hobby.emoji }}</span>
-                </div>
+            class="absolute top-0 right-0 w-32 h-32 bg-primary/5 dark:bg-primary/10 rounded-full blur-2xl transform translate-x-8 -translate-y-8 group-hover:scale-150 transition-transform duration-300">
+          </div>
 
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                  {{ hobby.description }}
+          <div class="relative z-10 space-y-3">
+            <div class="flex items-start justify-between">
+              <div class="space-y-1 flex-1">
+                <h3 class="text-xl font-bold text-custom-black dark:text-white">
+                  {{ education.course }}
+                </h3>
+                <p class="text-primary dark:text-primary-light font-semibold">
+                  {{ education.institution }}
                 </p>
               </div>
-            </div>
-          </div>
-        }
-      </div>
-    </div>
-  </section>
-
-  <section class="py-20 bg-white dark:bg-custom-black">
-    <div
-      class="container mx-auto px-4 max-w-4xl"
-      appScrollReveal
-      revealFrom="bottom"
-      [revealDelay]="100"
-    >
-      <div
-        class="relative p-10 md:p-12 bg-gradient-to-br from-primary to-primary-dark text-white rounded-3xl shadow-2xl overflow-hidden group"
-      >
-        <div
-          class="absolute -top-20 -right-20 w-64 h-64 bg-white/10 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-500"
-        ></div>
-        <div
-          class="absolute -bottom-20 -left-20 w-80 h-80 bg-white/5 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-500"
-        ></div>
-
-        <div class="relative z-10 space-y-6">
-          <div class="flex items-center gap-3">
-            <mat-icon class="text-4xl">lightbulb</mat-icon>
-            <h2 class="text-4xl font-bold">{{ aboutInfo.philosophyTitle }}</h2>
-          </div>
-
-          <p class="text-xl leading-relaxed text-white/95">
-            {{ aboutInfo.philosophyText }}
-          </p>
-
-          <div class="pt-4 border-t border-white/20">
-            <h3 class="text-lg font-semibold mb-4">Meus Objetivos Futuros:</h3>
-            <ul class="space-y-3">
-              @for (goal of aboutInfo.futureGoals; track goal; let i = $index) {
-                <li class="flex items-start gap-3">
-                  <mat-icon class="text-accent mt-1">check_circle</mat-icon>
-                  <span class="text-white/90">{{ goal }}</span>
-                </li>
+              @if (isCurrentEducation(education)) {
+              <mat-chip class="bg-accent text-white font-semibold text-xs px-3 py-1">
+                Cursando
+              </mat-chip>
               }
-            </ul>
+            </div>
+
+            @if (education.description) {
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+              {{ education.description }}
+            </p>
+            }
+
+            <div class="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 pt-2">
+              <span class="flex items-center gap-1">
+                <mat-icon class="text-lg">calendar_today</mat-icon>
+                {{ education.startDate }}
+              </span>
+              @if (education.endDate) {
+              <span>-</span>
+              <span>{{ education.endDate }}</span>
+              } @else if (isCurrentEducation(education)) {
+              <span>- Presente</span>
+              }
+            </div>
+
+            @if (education.location) {
+            <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 pt-1">
+              <mat-icon class="text-lg">location_on</mat-icon>
+              {{ education.location }}
+            </div>
+            }
+            @if (education.certificateUrl) {
+            <a [href]="education.certificateUrl" target="_blank" rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 mt-3 px-4 py-2 bg-gradient-to-r from-primary to-primary-dark text-white rounded-lg font-semibold text-sm shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5">
+              <mat-icon class="text-lg">open_in_new</mat-icon>
+              Ver Certificado
+            </a>
+            }
           </div>
         </div>
       </div>
+      }
     </div>
-  </section>
+  </div>
+</section>
 
-  <section
-    class="py-20 bg-primary"
-    appScrollReveal
-    revealFrom="bottom"
-    [revealDelay]="100"
-  >
-    <app-information-bar [data]="ctaData"></app-information-bar>
-  </section>
+<section class="py-20 bg-white dark:bg-custom-black" id="values">
+  <div class="container mx-auto px-4 max-w-5xl">
+    <app-section-header title="Meus Valores" subtitle="Os princípios que guiam meu trabalho e vida"
+      align="center"></app-section-header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+      @for (value of values; track value.id; let i = $index) {
+      <div appScrollReveal revealFrom="bottom" [revealDelay]="i * 80" class="h-full">
+        <div
+          class="h-full p-6 bg-gradient-to-br from-beige-light to-white dark:from-custom-black-light dark:to-custom-black rounded-2xl border border-primary/20 hover:border-primary/50 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 group">
+          <h3 class="text-2xl font-bold text-custom-black dark:text-white mb-3">
+            {{ value.title }}
+          </h3>
+
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">
+            {{ value.description }}
+          </p>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="py-20 bg-beige-light dark:bg-custom-black-light">
+  <div class="container mx-auto px-4 max-w-5xl">
+    <app-section-header title="Hobbies & Interesses" subtitle="O que eu gosto de fazer no tempo livre"
+      align="center"></app-section-header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+      @for (hobby of hobbies; track hobby.id; let i = $index) {
+      <div appScrollReveal revealFrom="bottom" [revealDelay]="i * 80" class="h-full">
+
+        <div
+          class="h-full p-6 bg-white dark:bg-custom-black rounded-2xl border-2 border-primary/30 hover:border-primary/80 shadow-md hover:shadow-xl transition-all duration-300 group overflow-hidden transform group-hover:scale-105">
+          <div class="relative z-10 space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-2xl font-bold text-custom-black dark:text-white">
+                {{ hobby.name }}
+              </h3>
+              <span class="text-4xl">{{ hobby.emoji }}</span>
+            </div>
+
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+              {{ hobby.description }}
+            </p>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="py-20 bg-primary" appScrollReveal revealFrom="bottom" [revealDelay]="100">
+  <app-information-bar [data]="ctaData"></app-information-bar>
+</section>
 </div>

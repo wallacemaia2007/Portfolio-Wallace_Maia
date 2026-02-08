@@ -41,7 +41,4 @@ export interface AboutInfo {
   educationList: Education[];
   values: Value[];
   hobbies: Hobby[];
-  philosophyTitle: string;
-  philosophyText: string;
-  futureGoals: string[];
 }

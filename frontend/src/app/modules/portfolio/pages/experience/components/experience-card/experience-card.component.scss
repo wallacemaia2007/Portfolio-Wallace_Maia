@@ -121,8 +121,6 @@ span[class*="px-5"] {
     left: 50%;
     width: 0;
     height: 0;
-    border-radius: 50%;
-    background: rgba(155, 27, 31, 0.1);
     transform: translate(-50%, -50%);
     transition: width 0.3s ease, height 0.3s ease;
   }
