@@ -18,7 +18,10 @@
         @for (image of project.images; track image; let i = $index) {
         <div class="absolute inset-0 transition-opacity duration-700" [class.opacity-100]="i === currentImageIndex"
           [class.opacity-0]="i !== currentImageIndex">
-          <img [src]="image" [alt]="project.title + ' - Imagem ' + (i + 1)" class="w-full h-full object-cover">
+          <img
+            [src]="getImageUrl(image)"
+            [alt]="project.title + ' - Imagem ' + (i + 1)"
+            class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50"></div>
         </div>
         }

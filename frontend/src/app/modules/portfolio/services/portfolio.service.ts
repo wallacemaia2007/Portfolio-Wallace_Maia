@@ -10,7 +10,13 @@ import {
 import { Skill } from '../models/skill.model';
 import { Experience } from '../models/experience.model';
 import { PersonalInfo } from '../models/personal-info.model';
-import { AboutInfo } from '../models/about.model';
+import {
+  AboutInfo,
+  Education,
+  Hobby,
+  JourneyItem,
+  Value,
+} from '../models/about.model';
 import { environment } from '../../../../environments/environment';
 import { SocialLink } from '../models/social-link.model';
 
@@ -78,7 +84,7 @@ export class PortfolioService {
       .get<Project[]>(`${this.apiUrl}/projects?slug=${slug}`)
       .pipe(
         map((projects) => projects[0]),
-        catchError(() => of(undefined))
+        catchError(() => of(undefined)),
       );
   }
 
@@ -87,7 +93,7 @@ export class PortfolioService {
    */
   getProjectsByCategory(category: string): Observable<Project[]> {
     return this.http.get<Project[]>(
-      `${this.apiUrl}/projects?category=${category}`
+      `${this.apiUrl}/projects?category=${category}`,
     );
   }
 
@@ -101,10 +107,10 @@ export class PortfolioService {
         map((projects) =>
           projects.filter((p) =>
             p.technologies.some((t) =>
-              t.toLowerCase().includes(technology.toLowerCase())
-            )
-          )
-        )
+              t.toLowerCase().includes(technology.toLowerCase()),
+            ),
+          ),
+        ),
       );
   }
 
@@ -125,9 +131,9 @@ export class PortfolioService {
               p.description.toLowerCase().includes(term) ||
               p.shortDescription.toLowerCase().includes(term) ||
               p.technologies.some((t) => t.toLowerCase().includes(term)) ||
-              p.tags.some((tag) => tag.toLowerCase().includes(term))
-          )
-        )
+              p.tags.some((tag) => tag.toLowerCase().includes(term)),
+          ),
+        ),
       );
   }
 
@@ -171,8 +177,8 @@ export class PortfolioService {
         if (filters.technology) {
           filtered = filtered.filter((p) =>
             p.technologies.some((t) =>
-              t.toLowerCase().includes(filters.technology!.toLowerCase())
-            )
+              t.toLowerCase().includes(filters.technology!.toLowerCase()),
+            ),
           );
         }
 
@@ -182,12 +188,12 @@ export class PortfolioService {
             (p) =>
               p.title.toLowerCase().includes(term) ||
               p.description.toLowerCase().includes(term) ||
-              p.shortDescription.toLowerCase().includes(term)
+              p.shortDescription.toLowerCase().includes(term),
           );
         }
 
         return filtered;
-      })
+      }),
     );
   }
 
@@ -239,7 +245,7 @@ export class PortfolioService {
         });
 
         return grouped;
-      })
+      }),
     );
   }
 
@@ -261,7 +267,7 @@ export class PortfolioService {
           .filter((tech, index, self) => self.indexOf(tech) === index)
           .sort();
         return allTechs;
-      })
+      }),
     );
   }
 
@@ -273,9 +279,7 @@ export class PortfolioService {
    * Retorna todas as experiências profissionais (ordenadas por data)
    */
   getExperience(): Observable<Experience[]> {
-    return this.http.get<Experience[]>(
-      `${this.apiUrl}/experience?_sort=startDate&_order=desc`
-    );
+    return this.http.get<Experience[]>(`${this.apiUrl}/experiences`);
   }
 
   /**
@@ -286,7 +290,7 @@ export class PortfolioService {
       .get<Experience[]>(`${this.apiUrl}/experience?current=true`)
       .pipe(
         map((experiences) => experiences[0]),
-        catchError(() => of(undefined))
+        catchError(() => of(undefined)),
       );
   }
 
@@ -295,7 +299,7 @@ export class PortfolioService {
    */
   getExperienceByType(type: Experience['type']): Observable<Experience[]> {
     return this.http.get<Experience[]>(
-      `${this.apiUrl}/experience?type=${type}`
+      `${this.apiUrl}/experience?type=${type}`,
     );
   }
 
@@ -322,7 +326,7 @@ export class PortfolioService {
    */
   getTestimonialsByRating(rating: number): Observable<Testimonial[]> {
     return this.http.get<Testimonial[]>(
-      `${this.apiUrl}/testimonials?rating=${rating}`
+      `${this.apiUrl}/testimonials?rating=${rating}`,
     );
   }
 
@@ -335,7 +339,7 @@ export class PortfolioService {
    */
   getBlogPosts(): Observable<BlogPost[]> {
     return this.http.get<BlogPost[]>(
-      `${this.apiUrl}/blog?_sort=publishedAt&_order=desc`
+      `${this.apiUrl}/blog?_sort=publishedAt&_order=desc`,
     );
   }
 
@@ -344,7 +348,7 @@ export class PortfolioService {
    */
   getFeaturedBlogPosts(): Observable<BlogPost[]> {
     return this.http.get<BlogPost[]>(
-      `${this.apiUrl}/blog?featured=true&_sort=publishedAt&_order=desc`
+      `${this.apiUrl}/blog?featured=true&_sort=publishedAt&_order=desc`,
     );
   }
 
@@ -354,7 +358,7 @@ export class PortfolioService {
   getBlogPostBySlug(slug: string): Observable<BlogPost | undefined> {
     return this.http.get<BlogPost[]>(`${this.apiUrl}/blog?slug=${slug}`).pipe(
       map((posts) => posts[0]),
-      catchError(() => of(undefined))
+      catchError(() => of(undefined)),
     );
   }
 
@@ -363,7 +367,7 @@ export class PortfolioService {
    */
   getBlogPostsByCategory(category: string): Observable<BlogPost[]> {
     return this.http.get<BlogPost[]>(
-      `${this.apiUrl}/blog?category=${category}&_sort=publishedAt&_order=desc`
+      `${this.apiUrl}/blog?category=${category}&_sort=publishedAt&_order=desc`,
     );
   }
 
@@ -378,7 +382,7 @@ export class PortfolioService {
           .patch(`${this.apiUrl}/blog/${id}`, { views: updatedPost.views })
           .subscribe();
         return updatedPost;
-      })
+      }),
     );
   }
 
@@ -410,7 +414,7 @@ export class PortfolioService {
         yearsExperience: this.calculateYearsOfExperience(),
         technologies: this.countUniqueTechnologies(projects),
         coffeesCups: 9999, // Easter egg :)
-      }))
+      })),
     );
   }
 
@@ -439,7 +443,7 @@ export class PortfolioService {
       map((projects) => {
         const categories = [...new Set(projects.map((p) => p.category))];
         return categories.sort();
-      })
+      }),
     );
   }
 
@@ -449,7 +453,7 @@ export class PortfolioService {
   projectExists(id: string): Observable<boolean> {
     return this.http.get<Project>(`${this.apiUrl}/projects/${id}`).pipe(
       map(() => true),
-      catchError(() => of(false))
+      catchError(() => of(false)),
     );
   }
 
@@ -475,17 +479,17 @@ export class PortfolioService {
           projects: data.projects.filter(
             (p) =>
               p.title.toLowerCase().includes(searchTerm) ||
-              p.description.toLowerCase().includes(searchTerm)
+              p.description.toLowerCase().includes(searchTerm),
           ),
           skills: data.skills.filter((s) =>
-            s.name.toLowerCase().includes(searchTerm)
+            s.name.toLowerCase().includes(searchTerm),
           ),
           experiences: data.experience.filter(
             (e) =>
               e.company.toLowerCase().includes(searchTerm) ||
-              e.position.toLowerCase().includes(searchTerm)
+              e.position.toLowerCase().includes(searchTerm),
           ),
-        }))
+        })),
       );
   }
 
@@ -499,7 +503,7 @@ export class PortfolioService {
    */
   getProjectsPaginated(
     page: number = 1,
-    limit: number = 10
+    limit: number = 10,
   ): Observable<{
     data: Project[];
     total: number;
@@ -514,7 +518,7 @@ export class PortfolioService {
         map((response) => {
           const total = parseInt(
             response.headers.get('X-Total-Count') || '0',
-            10
+            10,
           );
           return {
             data: response.body || [],
@@ -522,7 +526,7 @@ export class PortfolioService {
             page,
             totalPages: Math.ceil(total / limit),
           };
-        })
+        }),
       );
   }
 
@@ -531,7 +535,7 @@ export class PortfolioService {
    */
   getBlogPostsPaginated(
     page: number = 1,
-    limit: number = 10
+    limit: number = 10,
   ): Observable<{
     data: BlogPost[];
     total: number;
@@ -539,15 +543,14 @@ export class PortfolioService {
     totalPages: number;
   }> {
     return this.http
-      .get<BlogPost[]>(
-        `${this.apiUrl}/blog?_page=${page}&_limit=${limit}&_sort=publishedAt&_order=desc`,
-        { observe: 'response' }
-      )
+      .get<
+        BlogPost[]
+      >(`${this.apiUrl}/blog?_page=${page}&_limit=${limit}&_sort=publishedAt&_order=desc`, { observe: 'response' })
       .pipe(
         map((response) => {
           const total = parseInt(
             response.headers.get('X-Total-Count') || '0',
-            10
+            10,
           );
           return {
             data: response.body || [],
@@ -555,12 +558,23 @@ export class PortfolioService {
             page,
             totalPages: Math.ceil(total / limit),
           };
-        })
+        }),
       );
   }
 
   getAboutInfo(): Observable<AboutInfo> {
-    return this.http.get<AboutInfo>(`${this.apiUrl}/about`)
+    return this.http.get<AboutInfo>(`${this.apiUrl}/about`);
   }
-
+  getHobbies(): Observable<Hobby[]> {
+    return this.http.get<Hobby[]>(`${this.apiUrl}/hobbies`);
+  }
+  getValues(): Observable<Value[]> {
+    return this.http.get<Value[]>(`${this.apiUrl}/values`);
+  }
+  getEducation(): Observable<Education[]> {
+    return this.http.get<Education[]>(`${this.apiUrl}/education`);
+  }
+  getJourneyItems(): Observable<JourneyItem[]> {
+    return this.http.get<JourneyItem[]>(`${this.apiUrl}/journey`);
+  }
 }

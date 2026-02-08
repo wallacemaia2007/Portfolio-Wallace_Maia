@@ -89,6 +89,18 @@ export class ProjectModalComponent implements OnInit, OnDestroy {
     this.resetImageCarousel();
   }
 
+  getImageUrl(path: string): string {
+    if (!path) return '';
+    if (
+      path.startsWith('http://') ||
+      path.startsWith('https://') ||
+      path.startsWith('data:')
+    ) {
+      return path;
+    }
+    return path.startsWith('/') ? path : `/${path}`;
+  }
+
   private resetImageCarousel(): void {
     if (this.project && this.project.images && this.project.images.length > 1) {
       this.startImageCarousel();
