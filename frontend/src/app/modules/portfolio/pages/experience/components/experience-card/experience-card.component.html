@@ -120,9 +120,11 @@
       <div class="flex flex-wrap gap-3">
         @for (tech of experience.technologies; track tech) {
         <span class="px-5 py-2.5 rounded-xl text-sm font-bold transition-all
-                     bg-gray-100 dark:bg-custom-black
-                     text-gray-700 dark:text-gray-200
-                     border-2 border-gray-200 dark:border-gray-700">
+        scale-100 hover:scale-125 
+               bg-gray-100 dark:bg-custom-black
+               text-gray-700 dark:text-gray-200
+               border-2 border-gray-200 dark:border-gray-700
+               hover:bg-primary/20 hover:dark:bg-primary-light/20 hover:text-white duration-300">
           {{ tech }}
         </span>
         }

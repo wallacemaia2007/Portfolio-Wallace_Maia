@@ -14,7 +14,6 @@
     "linkedin": "https://www.linkedin.com/in/wallacemaia-dev/",
     "website": "https://wallacemaia.com"
   },
-
   "projects": [
     {
       "id": "1",
@@ -51,7 +50,11 @@
       "startDate": "2025-08-13",
       "endDate": "2025-09-21",
       "status": "completed",
-      "tags": ["backend", "banking", "api"],
+      "tags": [
+        "backend",
+        "banking",
+        "api"
+      ],
       "challenges": [
         "Implementação de transações financeiras seguras",
         "Validação robusta de dados de entrada",
@@ -91,7 +94,11 @@
       "startDate": "2025-10-20",
       "endDate": "2025-11-11",
       "status": "completed",
-      "tags": ["web", "angular", "gallery"],
+      "tags": [
+        "web",
+        "angular",
+        "gallery"
+      ],
       "challenges": [
         "Integração com Google OAuth",
         "Gerenciamento de estado com RxJS"
@@ -130,7 +137,11 @@
       "startDate": "2025-12-20",
       "endDate": "",
       "status": "in-progress",
-      "tags": ["portfolio", "web", "angular"],
+      "tags": [
+        "portfolio",
+        "web",
+        "angular"
+      ],
       "challenges": [
         "Design responsivo para múltiplos dispositivos",
         "Otimização de performance e SEO"
@@ -144,7 +155,6 @@
       "clientType": "freelance"
     }
   ],
-
   "skills": [
     {
       "id": "1",
@@ -227,7 +237,6 @@
       "icon": "assets/icons/springSecurity.svg",
       "color": "#6DB33F"
     },
-
     {
       "id": "10",
       "name": "MongoDB",
@@ -423,7 +432,7 @@
       "id": "1",
       "company": "CroSoften",
       "position": "Desenvolvedor Frontend Angular",
-      "description": "Desenvolvimento e manutenção de aplicações web utilizando Angular. Colaboração com equipes de design e backend para criar interfaces de usuário responsivas e funcionais. Participação em reuniões de planejamento e revisão de código.",
+      "description": "Atuo na Crosoften como Desenvolvedor Front-end especializado em Angular, focado na criação e evolução de interfaces eficientes, organizadas e escaláveis. Trabalho com arquitetura de componentes, boas práticas de desenvolvimento e programação reativa com RxJS, garantindo aplicações performáticas, estáveis e de fácil manutenção. Realizo integração com APIs RESTful, tratamento de fluxos assíncronos e melhoria contínua do código por meio de refatorações e otimizações. Também colaboro diretamente com equipes de design, back-end e QA para entregar soluções alinhadas ao produto, priorizando usabilidade, desempenho e qualidade.",
       "startDate": "2025-11-25",
       "endDate": "momento",
       "current": true,
@@ -450,7 +459,7 @@
       "id": "2",
       "company": "Freelancer",
       "position": "Full Stack Developer",
-      "description": "Desenvolvimento de sites e aplicações web para diversos clientes. Trabalho direto com designers e clientes para entregar soluções de alta qualidade. Uso de metodologias ágeis.",
+      "description": "Atuo como Desenvolvedor Full Stack freelancer, desenvolvendo aplicações web completas com Angular no front-end e Java com Spring Boot no back-end. Crio APIs REST, realizo integrações com bancos de dados e sistemas externos, além de desenvolver sites institucionais, landing pages, e-commerces e dashboards administrativos. Também sou responsável pelo deploy em servidores e cloud (incluindo AWS), bem como manutenção e otimização das aplicações.",
       "startDate": "2025-11-15",
       "endDate": "momento",
       "current": true,
@@ -472,11 +481,32 @@
       ],
       "companyLogo": "assets/images/companies/freelancer.png",
       "companyUrl": "https://freelancer.com"
+    },
+    {
+      "id": "3",
+      "company": "Prefeitura Municipal",
+      "position": "Estágio de Suporte Técnico ",
+      "description": "Atuei como estagiário na Divisão de Processamento de Dados da Prefeitura de Passos, prestando suporte técnico presencial e remoto aos servidores municipais. Fui responsável por manutenção preventiva e corretiva de computadores, configuração de redes, instalação de softwares e resolução de problemas técnicos, garantindo o bom funcionamento dos equipamentos e a continuidade dos serviços. A experiência fortaleceu minhas habilidades em atendimento ao usuário, diagnóstico de problemas e organização no suporte de TI.",
+      "startDate": "2026-01-05",
+      "endDate": "momento",
+      "current": true,
+      "location": "Passos, MG - Brasil",
+      "type": "Meio período",
+      "technologies": [
+        "Suporte Técnico",
+        "Solução de Problemas",
+        "Node.js",
+        "Redes de computadores",
+        "Manutenção de computador",
+        "Trabalho em equipe",
+        "Atendimento ao Cliente",
+        "Manutenção preventiva"
+      ],
+      "companyLogo": "assets/images/companies/freelancer.png",
+      "companyUrl": "https://www.passos.mg.gov.br/"
     }
   ],
-
   "testimonials": [],
-
   "blog": [
     {
       "id": "1",
@@ -486,7 +516,11 @@
       "content": "Conteúdo completo do post...",
       "coverImage": "assets/images/blog/angular-structure.jpg",
       "category": "Angular",
-      "tags": ["angular", "arquitetura", "boas-práticas"],
+      "tags": [
+        "angular",
+        "arquitetura",
+        "boas-práticas"
+      ],
       "publishedAt": "2024-01-15",
       "readTime": 8,
       "views": 1543,
@@ -501,7 +535,11 @@
       "content": "Conteúdo completo do post...",
       "coverImage": "assets/images/blog/react-performance.jpg",
       "category": "React",
-      "tags": ["react", "performance", "otimização"],
+      "tags": [
+        "react",
+        "performance",
+        "otimização"
+      ],
       "publishedAt": "2024-01-10",
       "readTime": 6,
       "views": 2156,
@@ -509,7 +547,6 @@
       "featured": true
     }
   ],
-
   "statistics": {
     "totalProjects": 4,
     "completedProjects": 4,
@@ -518,7 +555,6 @@
     "technologies": 30,
     "coffeesCups": 9999
   },
-
   "socialLinks": [
     {
       "name": "GitHub",
@@ -627,7 +663,6 @@
       "icon": "business_center"
     }
   ],
-
   "about": {
     "id": 1,
     "introduction": "Oi! Sou o Wallace, um desenvolvedor full stack apaixonado por tecnologia e inovação. Aqui você descobrirá mais sobre minha jornada, valores e o que me motiva a criar soluções incríveis.",
