@@ -236,12 +236,14 @@ export class ContactComponent implements OnInit {
   }
 
   openEmail(): void {
-    if (this.personalInfo?.email) {
-      this.contactService.openEmailClient(
-        this.personalInfo.email,
-        'Contato via Portfolio',
-      );
+    const to = this.personalInfo?.email || 'wallacemaia2007@gmail.com';
+
+    if (!to) {
+      this.toastr.error('Email de destino não carregou.');
+      return;
     }
+
+    this.contactService.openEmailClient(to, this.contactForm?.value?.name);
   }
 
   openWhatsApp(): void {

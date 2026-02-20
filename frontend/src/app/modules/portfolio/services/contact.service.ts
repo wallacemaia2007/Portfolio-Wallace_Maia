@@ -12,7 +12,7 @@ export class ContactService {
   private readonly apiUrl = environment.apiUrl;
 
   private lastSubmissionTime = 0;
-  private readonly minTimeBetweenSubmissions = 30000; 
+  private readonly minTimeBetweenSubmissions = 30000;
 
   constructor(private http: HttpClient) {}
 
@@ -28,13 +28,15 @@ export class ContactService {
           throwError(() => ({
             success: false,
             message: 'Erro ao enviar mensagem. Tente novamente.',
-          }))
-        )
+          })),
+        ),
       );
   }
 
   canSubmit(): boolean {
-    return Date.now() - this.lastSubmissionTime >= this.minTimeBetweenSubmissions;
+    return (
+      Date.now() - this.lastSubmissionTime >= this.minTimeBetweenSubmissions
+    );
   }
 
   recordSubmission(): void {
@@ -43,8 +45,7 @@ export class ContactService {
 
   getTimeUntilNextSubmission(): number {
     const diff =
-      this.minTimeBetweenSubmissions -
-      (Date.now() - this.lastSubmissionTime);
+      this.minTimeBetweenSubmissions - (Date.now() - this.lastSubmissionTime);
 
     return Math.max(0, Math.ceil(diff / 1000));
   }
@@ -56,12 +57,29 @@ export class ContactService {
       .replace(/[<>]/g, '');
   }
 
-  openEmailClient(to: string, subject?: string, body?: string): void {
-    const params = new URLSearchParams();
-    if (subject) params.append('subject', subject);
-    if (body) params.append('body', body);
+  openEmailClient(to: string, name?: string): void {
+    const subject = encodeURIComponent('Contato via Portfólio');
+    const body = encodeURIComponent(
+      `Olá Wallace,
 
-    window.location.href = `mailto:${to}?${params.toString()}`;
+      Vi seu portfólio e gostaria de conversar sobre:
+
+      ( ) Projeto
+      ( ) Orçamento
+      ( ) Vaga
+      ( ) Parceria
+
+      Detalhes:
+      ____________________________________________________
+
+
+      Atenciosamente,
+${name ?? ''}`,
+    );
+
+    const mailtoUrl = `mailto:${to}?subject=${subject}&body=${body}`;
+
+    window.open(mailtoUrl, '_self');
   }
 
   openWhatsApp(phone: string, message?: string): void {
