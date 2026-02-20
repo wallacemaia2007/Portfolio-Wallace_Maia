@@ -1,105 +1,127 @@
-<section
-  class="min-h-screen flex items-center py-32 transition-all duration-300 bg-beige dark:bg-custom-black"
->
+<section class="min-h-screen flex items-center py-20 bg-beige-light dark:bg-custom-black overflow-hidden">
   <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-      <!-- LEFT -->
-      <div class="space-y-8" data-hero-left>
-        <div class="space-y-4">
-          <p class="text-primary font-semibold text-xl flex items-center space-x-2" data-hero-kicker>
-            <mat-icon class="inline-block" data-hero-wave>waving_hand</mat-icon>
-            <span>Olá, eu   sou</span>
-          </p>
 
-          <h1
-            class="text-6xl md:text-7xl lg:text-8xl font-bold text-custom-black dark:text-white"
-            data-hero-name
-          >
-            {{ personalInfo.name }}
-          </h1>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch h-[85vh]">
 
-          <h2
-            class="text-4xl md:text-5xl lg:text-6xl font-semibold text-primary"
-            data-hero-role
-          >
-            {{ personalInfo.role }}
-          </h2>
+      <div class="flex flex-col justify-center space-y-6" data-hero-left>
 
-          <p class="text-primary font-semibold text-xl flex items-center space-x-2" data-hero-stack>
-            <span>Java | Angular | Spring Boot</span>
-          </p>
-        </div>
-
-        <p
-          class="text-xl md:text-2xl text-gray-700 dark:text-gray-400 max-w-xl leading-relaxed"
-          data-hero-desc
-        >
-          {{ personalInfo.description }}
+        <p class="text-primary font-semibold text-xl flex items-center gap-2" data-hero-kicker>
+          <mat-icon data-hero-wave class="inline-block">waving_hand</mat-icon>
+          <span>Olá, eu sou</span>
         </p>
 
-        <div class="flex flex-col sm:flex-row gap-6 pt-4" data-hero-actions>
-          <app-button
-            [buttonData]="{
-              label: 'Ver Projetos',
-              icon: 'work',
-              link: '/projects',
-              color: 'primary'
-            }"
-          ></app-button>
+        <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold text-custom-black dark:text-white leading-none"
+          data-hero-name>
+          {{ personalInfo.name || personalInfo.fullName }}
+        </h1>
 
-          <app-button
-            [buttonData]="{
-              label: 'Contato',
-              icon: 'email',
-              link: '/contact',
-              color: 'custom-black-light'
-            }"
-          ></app-button>
+        <h2 class="text-3xl md:text-4xl font-semibold text-primary" data-hero-role>
+          {{ personalInfo.role }}
+        </h2>
+
+        <div class="flex flex-wrap gap-2" data-hero-stack>
+          <span class="px-3 py-1 text-sm font-semibold rounded-full border border-primary text-white dark:text-gray-200 bg-primary dark:bg-primary/50
+                   dark:hover:bg-primary/80 hover:scale-105  transition-all duration-300 transform">
+            Java
+          </span> <span
+            class="self-center font-light text-xl select-none text-custom-black-lighter dark:text-gray-600">·</span>
+          <span class="px-3 py-1 text-sm font-semibold rounded-full border border-primary text-white dark:text-gray-200 bg-primary dark:bg-primary/50
+                   dark:hover:bg-primary/80 hover:scale-105  transition-all duration-300 transform">
+            Spring Boot
+          </span> <span
+            class="self-center font-light text-xl select-none text-custom-black-lighter dark:text-gray-600">·</span>
+          <span class="px-3 py-1 text-sm font-semibold rounded-full border border-primary text-white dark:text-gray-200 bg-primary dark:bg-primary/50
+                   dark:hover:bg-primary/80 hover:scale-105  transition-all duration-300 transform">
+            Angular
+          </span> <span
+            class="self-center font-light text-xl select-none text-custom-black-lighter dark:text-gray-600">·</span>
+          <span class="px-3 py-1 text-sm font-semibold rounded-full border border-primary text-white dark:text-gray-200 bg-primary dark:bg-primary/50
+                   dark:hover:bg-primary/80 hover:scale-105  transition-all duration-300 transform">
+            TypeScript
+          </span>
         </div>
 
-        <!-- CODE BOX / TERMINAL (opcional mas fica MUITO massa) -->
-        <div
-          class="mt-10 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white/70 dark:bg-custom-black-light/60 backdrop-blur-md shadow-lg overflow-hidden"
-          data-hero-terminal
-        >
-          <div class="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-800">
-            <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-full bg-red-400"></span>
-              <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
-              <span class="w-3 h-3 rounded-full bg-green-400"></span>
-            </div>
-            <span class="text-xs text-gray-600 dark:text-gray-300 font-mono">terminal</span>
-          </div>
+        <p class="text-lg text-custom-black-light dark:text-gray-400 max-w-xl leading-relaxed" data-hero-desc>
+          {{ personalInfo.bio || personalInfo.description }}
+        </p>
 
-          <div class="p-4 font-mono text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
-            <div class="opacity-70">~/portfolio</div>
-            <div class="mt-2">
-              <span class="text-primary font-semibold">$</span>
-              <span class="ml-2" data-hero-typed></span>
-              <span class="inline-block w-2 h-4 align-middle ml-1 bg-primary" data-hero-cursor></span>
-            </div>
-
-            <div class="mt-3 opacity-80" data-hero-terminal-lines>
-              <div>// carregando módulos...</div>
-              <div>// Angular + TypeScript + Java + Spring Boot</div>
-            </div>
-          </div>
+        <div class="flex flex-col sm:flex-row gap-4" data-hero-actions>
+          <app-button
+            [buttonData]="{ label: 'Ver Projetos', icon: 'work', link: '/projects', color: 'primary' }"></app-button>
+          <app-button
+            [buttonData]="{ label: 'Contato', icon: 'email', link: '/contact', color: 'custom-black-light' }"></app-button>
         </div>
+
+        <div class="flex items-center gap-3" data-hero-status>
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
+          </span>
+          <span class="text-sm text-custom-black-lighter dark:text-gray-400">
+            Disponível para novos projetos
+          </span>
+        </div>
+
       </div>
+      <div class="hidden lg:flex flex-col min-h-0 self-stretch" data-hero-terminal>
 
-      <!-- RIGHT -->
-      <div class="relative lg:order-last order-first" data-hero-right>
-        <div class="relative z-10" data-hero-avatar-wrap>
-          <div
-            class="w-full max-w-lg mx-auto aspect-square rounded-full overflow-hidden border-8 border-white dark:border-custom-black shadow-2xl"
-            data-hero-avatar
-          >
-            <img [src]="personalInfo.avatar" [alt]="personalInfo.name" class="w-full h-full object-cover">
+        <div class="flex flex-col flex-1 min-h-0 rounded-2xl overflow-hidden border
+                    border-beige-dark dark:border-custom-black-lighter
+                    shadow-2xl">
+
+          <div class="flex items-center gap-2 px-4 py-3 select-none shrink-0
+                      bg-beige dark:bg-custom-black-lighter
+                      border-b border-beige-dark dark:border-custom-black-light">
+
+            <span class="w-3 h-3 rounded-full bg-red-500"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+            <span class="w-3 h-3 rounded-full bg-green-400"></span>
+
+            <span class="ml-2 flex-1 text-center text-xs font-mono
+                         text-primary dark:text-gray-200">
+              ~/portfolio — bash
+            </span>
+
+            <div class="flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+              <span class="text-xs font-mono text-primary dark:text-gray-200">running</span>
+            </div>
+          </div>
+
+          <div class="flex-1 min-h-0 px-5 py-5 font-mono text-sm leading-6 overflow-y-auto
+                   bg-white dark:bg-custom-black-light
+                   text-custom-black dark:text-gray-200
+                   [scrollbar-width:thin] [scrollbar-color:#374151_transparent]
+                   [&::-webkit-scrollbar]:w-1
+                   [&::-webkit-scrollbar-track]:bg-transparent
+                   [&::-webkit-scrollbar-thumb]:bg-[#374151]
+                   [&::-webkit-scrollbar-thumb]:rounded" data-terminal-body>
+            @for (line of terminalLines; track line.id) {
+            @if (line.type === 'blank') {
+            <div class="h-2"></div>
+            } @else {
+            <div class="terminal-line flex gap-2 items-start" [class.visible]="line.visible"
+              [ngClass]="getLineClass(line.type)">
+              @if (line.type === 'command') {
+              <span class="text-primary select-none shrink-0">$</span>
+              }
+              @if (line.typing) {
+              <span>{{ line.typed }}<span class="cursor-inline"></span></span>
+              } @else {
+              <span>{{ line.text }}</span>
+              }
+            </div>
+            }
+            }
+
+            @if (terminalIdle) {
+            <div class="flex items-center gap-2 mt-1">
+              <span class="text-primary select-none">$</span>
+              <span class="cursor-block"></span>
+            </div>
+            }
           </div>
         </div>
-
-        <div class="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10" data-hero-glow-1></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10" data-hero-glow-2></div>
       </div>
     </div>
   </div>
