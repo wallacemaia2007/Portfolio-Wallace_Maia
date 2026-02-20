@@ -4,7 +4,7 @@
     "fullName": "Wallace Maia ",
     "acronym": "WM",
     "role": "Desenvolvedor Full Stack",
-    "email": "wallacemaia2007@email.com",
+    "email": "wallacemaia2007@gmail.com",
     "phone": "+55 (35) 91003-6806",
     "location": "Passos, MG - Brasil",
     "bio": "Desenvolvedor Full Stack apaixonado por criar experiências web incríveis e soluções inovadoras. Especializado em Angular, Java e Spring Boot com mais de 1 ano de experiência no mercado.",
@@ -874,6 +874,36 @@
       "subject": "Contratar Frelancer",
       "message": "Contratar FrelancerContratar FrelancerContratar FrelancerContratar FrelancerContratar FrelancerContratar FrelancerContratar FrelancerContratar FrelancerContratar FrelancerContratar Frelancer",
       "createdAt": "2026-02-20T03:21:36.194Z",
+      "status": "received"
+    },
+    {
+      "id": "1771601664319",
+      "name": "Geovanna",
+      "email": "geovanna.santos.martins@gmail.com",
+      "phone": "35910036806",
+      "subject": "testando o portfolio",
+      "message": "LoRem ipsandiuac",
+      "createdAt": "2026-02-20T15:34:24.319Z",
+      "status": "received"
+    },
+    {
+      "id": "1771601811227",
+      "name": "Kauan",
+      "email": "kauanalexandrets@gmail.com",
+      "phone": "35910036806",
+      "subject": "Olá meufi estou testando",
+      "message": "Olá meufi estou testandoOlá meufi estou testandoOlá meufi estou testandoOlá meufi estou testandoOlá meufi estou testandoOlá meufi estou testandoOlá meufi estou testandoOlá meufi estou testando",
+      "createdAt": "2026-02-20T15:36:51.227Z",
+      "status": "received"
+    },
+    {
+      "id": "1771602120562",
+      "name": "Kauan",
+      "email": "kauanalexandreds@gmail.com",
+      "phone": "12381238123123",
+      "subject": "teste",
+      "message": "testando o meu portfolio",
+      "createdAt": "2026-02-20T15:42:00.562Z",
       "status": "received"
     }
   ]

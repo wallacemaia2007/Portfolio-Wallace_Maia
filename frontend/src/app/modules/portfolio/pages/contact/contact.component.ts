@@ -20,6 +20,7 @@ import {
   InformationBarComponent,
   InformationBarData,
 } from '../../../shared/components/information-bar/information-bar.component';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-contact',
@@ -35,6 +36,7 @@ import {
     SectionHeaderComponent,
     FaqComponent,
     InformationBarComponent,
+    NgxMaskDirective
   ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',

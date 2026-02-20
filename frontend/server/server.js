@@ -151,18 +151,28 @@ server.post("/contact", async (req, res) => {
     const mailTo = process.env.MAIL_TO || process.env.MAIL_USER;
 
     const transporter = createTransporter();
+    // Formata a data para dd/mm/yyyy HH:MM
+    const createdAtDate = new Date(contactRecord.createdAt);
+    const formattedDate = createdAtDate.toLocaleString("pt-BR", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
     await transporter.sendMail({
       from: `"Portfólio" <${process.env.MAIL_USER}>`,
       to: mailTo,
       replyTo: email,
       subject: `[Portfólio] ${subject}`,
       text:
-        `Nome: ${name}\n` +
-        `Email: ${email}\n` +
-        `Telefone: ${phone || "-"}\n\n` +
-        `${message}\n\n` +
-        `ID: ${contactRecord.id}\n` +
-        `Data: ${contactRecord.createdAt}`,
+      `Nome: ${name}\n` +
+      `Email: ${email}\n` +
+      `Telefone: ${phone || "-"}\n\n` +
+      `${message}\n\n` +
+      `ID: ${contactRecord.id}\n` +
+      `Data: ${formattedDate}`,
     });
 
     // 3) RESPONDER
