@@ -13,6 +13,9 @@ const rewriter = jsonServer.rewriter({
   "/experiences*": "/experience$1",
 });
 
+// Railway roda atrás de proxy reverso; necessário para rate-limit ler IP corretamente.
+server.set("trust proxy", 1);
+
 // ====================
 // CORS TOTAL
 // ====================
