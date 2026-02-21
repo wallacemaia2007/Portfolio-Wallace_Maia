@@ -3,7 +3,6 @@ require("dotenv").config();
 
 const path = require("path");
 const jsonServer = require("json-server");
-const nodemailer = require("nodemailer");
 const rateLimit = require("express-rate-limit");
 
 const server = jsonServer.create();
@@ -54,30 +53,36 @@ function sanitize(str) {
     .replace(/[<>]/g, "");
 }
 
-function createTransporter() {
-  const user = process.env.MAIL_USER;
-  const pass = process.env.MAIL_PASS;
-  const host = process.env.MAIL_HOST || "smtp.gmail.com";
-  const port = Number(process.env.MAIL_PORT || 587);
-  const secure = process.env.MAIL_SECURE === "true" || port === 465;
+async function sendEmailViaResend({ to, replyTo, subject, text }) {
+  const apiKey = process.env.RESEND_API_KEY;
+  const from = process.env.RESEND_FROM;
 
-  if (!user || !pass) {
-    throw new Error("MAIL_USER/MAIL_PASS nao configurados.");
+  if (!apiKey || !from) {
+    throw new Error("RESEND_API_KEY/RESEND_FROM nao configurados.");
   }
 
-  return nodemailer.createTransport({
-    host,
-    port,
-    secure,
-    auth: { user, pass },
-    connectionTimeout: Number(process.env.MAIL_CONNECTION_TIMEOUT || 15000),
-    greetingTimeout: Number(process.env.MAIL_GREETING_TIMEOUT || 15000),
-    socketTimeout: Number(process.env.MAIL_SOCKET_TIMEOUT || 30000),
-    dnsTimeout: Number(process.env.MAIL_DNS_TIMEOUT || 10000),
-    tls: {
-      minVersion: "TLSv1.2",
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
     },
+    body: JSON.stringify({
+      from,
+      to: [to],
+      reply_to: replyTo,
+      subject,
+      text,
+    }),
   });
+
+  if (!response.ok) {
+    const errorBody = await response.text();
+    const error = new Error(`Resend API error (${response.status}): ${errorBody}`);
+    error.code = "RESEND_API_ERROR";
+    error.command = "HTTP";
+    throw error;
+  }
 }
 
 // ====================
@@ -157,12 +162,7 @@ server.post("/api/contact", async (req, res) => {
     router.db.get("contacts").push(contactRecord).write();
 
     // 2) ENVIAR EMAIL
-    const mailTo = process.env.MAIL_TO || process.env.MAIL_USER;
-    const mailFrom = process.env.MAIL_FROM || process.env.MAIL_USER;
-    const mailFromName = process.env.MAIL_FROM_NAME || "Portfolio";
-
-    const transporter = createTransporter();
-    await transporter.verify();
+    const mailTo = process.env.MAIL_TO;
     const createdAtDate = new Date(contactRecord.createdAt);
     const formattedDate = createdAtDate.toLocaleString("pt-BR", {
       day: "2-digit",
@@ -172,8 +172,11 @@ server.post("/api/contact", async (req, res) => {
       minute: "2-digit",
     });
 
-    await transporter.sendMail({
-      from: `"${mailFromName}" <${mailFrom}>`,
+    if (!mailTo) {
+      throw new Error("MAIL_TO nao configurado.");
+    }
+
+    await sendEmailViaResend({
       to: mailTo,
       replyTo: email,
       subject: `[Portfolio] ${subject}`, 
