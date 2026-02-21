@@ -30,7 +30,6 @@ server.use((req, res, next) => {
 // ====================
 // MIDDLEWARES
 // ====================
-server.use(jsonServer.defaults());
 server.use(jsonServer.bodyParser);
 
 // ====================
