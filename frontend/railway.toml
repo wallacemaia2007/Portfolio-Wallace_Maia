@@ -1,0 +1,8 @@
+[build]
+builder = "nixpacks"
+buildCommand = "cd frontend && npm install && npm run build:railway"
+
+[deploy]
+startCommand = "cd frontend && node server/server.js"
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3

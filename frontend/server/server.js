@@ -1,6 +1,7 @@
 // server/server.js
 require("dotenv").config();
 
+const path = require("path");
 const jsonServer = require("json-server");
 const nodemailer = require("nodemailer");
 const rateLimit = require("express-rate-limit");
@@ -139,19 +140,15 @@ server.post("/contact", async (req, res) => {
       status: "received",
     };
 
-    // garante array contacts
     const contacts = router.db.get("contacts");
     if (!contacts.value()) router.db.set("contacts", []).write();
 
     router.db.get("contacts").push(contactRecord).write();
 
     // 2) ENVIAR EMAIL
-    // Se você quiser que o site funcione mesmo sem .env, pode comentar este bloco
-    // e deixar apenas salvar. Mas o ideal é enviar.
     const mailTo = process.env.MAIL_TO || process.env.MAIL_USER;
 
     const transporter = createTransporter();
-    // Formata a data para dd/mm/yyyy HH:MM
     const createdAtDate = new Date(contactRecord.createdAt);
     const formattedDate = createdAtDate.toLocaleString("pt-BR", {
       day: "2-digit",
@@ -204,14 +201,29 @@ server.post("/upload-file/single", (_req, res) => {
 });
 
 // ====================
-// ROTAS PADRÃO
+// ROTAS JSON SERVER (API)
 // ====================
 server.use(router);
+
+// ====================
+// SERVIR ANGULAR (PRODUÇÃO)
+// ====================
+const distPath = path.join(__dirname, "../dist/pielak-web/browser");
+const express = require("express");
+
+server.use(express.static(distPath));
+
+// Fallback para SPA com HashLocation
+server.get("*", (_req, res) => {
+  res.sendFile(path.join(distPath, "index.html"));
+});
 
 // ====================
 // START
 // ====================
 const port = Number(process.env.PORT || 3000);
 server.listen(port, () => {
-  console.log(`JSON Server rodando em http://localhost:${port}`);
+  console.log(`Servidor rodando em http://localhost:${port}`);
+  console.log(`API disponível em http://localhost:${port}/api`);
+  console.log(`Frontend disponível em http://localhost:${port}`);
 });
