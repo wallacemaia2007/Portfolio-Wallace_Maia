@@ -10,7 +10,6 @@ const server = jsonServer.create();
 const router = jsonServer.router("server/bd.json");
 
 const rewriter = jsonServer.rewriter({
-  "/api/*": "/$1",
   "/experiences*": "/experience$1",
 });
 
@@ -33,7 +32,6 @@ server.use((req, res, next) => {
 // ====================
 server.use(jsonServer.defaults());
 server.use(jsonServer.bodyParser);
-server.use(rewriter);
 
 // ====================
 // LOG
@@ -72,22 +70,22 @@ function createTransporter() {
 // ====================
 // ROTAS CUSTOMIZADAS (GET)
 // ====================
-server.get("/education", (_req, res) => {
+server.get("/api/education", (_req, res) => {
   const education = router.db.get("about.educationList").value() || [];
   res.jsonp(education);
 });
 
-server.get("/journey", (_req, res) => {
+server.get("/api/journey", (_req, res) => {
   const journeyItems = router.db.get("about.journeyItems").value() || [];
   res.jsonp(journeyItems);
 });
 
-server.get("/values", (_req, res) => {
+server.get("/api/values", (_req, res) => {
   const values = router.db.get("about.values").value() || [];
   res.jsonp(values);
 });
 
-server.get("/hobbies", (_req, res) => {
+server.get("/api/hobbies", (_req, res) => {
   const hobbies = router.db.get("about.hobbies").value() || [];
   res.jsonp(hobbies);
 });
@@ -96,7 +94,7 @@ server.get("/hobbies", (_req, res) => {
 // RATE LIMIT (ANTI-SPAM)
 // ====================
 server.use(
-  "/contact",
+  "/api/contact",
   rateLimit({
     windowMs: 10 * 60 * 1000, // 10 min
     max: 5, // 5 envios por IP
@@ -112,7 +110,7 @@ server.use(
 // ====================
 // POST /contact (SALVA + ENVIA EMAIL)
 // ====================
-server.post("/contact", async (req, res) => {
+server.post("/api/contact", async (req, res) => {
   try {
     const body = req.body || {};
     const name = sanitize(body.name);
@@ -194,7 +192,7 @@ server.post("/contact", async (req, res) => {
 // ====================
 // UPLOAD MOCK
 // ====================
-server.post("/upload-file/single", (_req, res) => {
+server.post("/api/upload-file/single", (_req, res) => {
   return res.status(201).jsonp({
     url: "https://via.placeholder.com/1200x800.png?text=upload-mock",
   });
@@ -203,7 +201,7 @@ server.post("/upload-file/single", (_req, res) => {
 // ====================
 // ROTAS JSON SERVER (API)
 // ====================
-server.use(router);
+server.use("/api", rewriter, router);
 
 // ====================
 // SERVIR ANGULAR (PRODUÇÃO)
