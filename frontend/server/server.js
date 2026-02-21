@@ -52,17 +52,28 @@ function sanitize(str) {
 }
 
 function createTransporter() {
-  const service = process.env.MAIL_SERVICE || "gmail";
   const user = process.env.MAIL_USER;
   const pass = process.env.MAIL_PASS;
+  const host = process.env.MAIL_HOST || "smtp.gmail.com";
+  const port = Number(process.env.MAIL_PORT || 587);
+  const secure = process.env.MAIL_SECURE === "true" || port === 465;
 
   if (!user || !pass) {
-    throw new Error("MAIL_USER/MAIL_PASS não configurados no .env");
+    throw new Error("MAIL_USER/MAIL_PASS nao configurados.");
   }
 
   return nodemailer.createTransport({
-    service,
+    host,
+    port,
+    secure,
     auth: { user, pass },
+    connectionTimeout: Number(process.env.MAIL_CONNECTION_TIMEOUT || 15000),
+    greetingTimeout: Number(process.env.MAIL_GREETING_TIMEOUT || 15000),
+    socketTimeout: Number(process.env.MAIL_SOCKET_TIMEOUT || 30000),
+    dnsTimeout: Number(process.env.MAIL_DNS_TIMEOUT || 10000),
+    tls: {
+      minVersion: "TLSv1.2",
+    },
   });
 }
 
@@ -144,8 +155,11 @@ server.post("/api/contact", async (req, res) => {
 
     // 2) ENVIAR EMAIL
     const mailTo = process.env.MAIL_TO || process.env.MAIL_USER;
+    const mailFrom = process.env.MAIL_FROM || process.env.MAIL_USER;
+    const mailFromName = process.env.MAIL_FROM_NAME || "Portfolio";
 
     const transporter = createTransporter();
+    await transporter.verify();
     const createdAtDate = new Date(contactRecord.createdAt);
     const formattedDate = createdAtDate.toLocaleString("pt-BR", {
       day: "2-digit",
@@ -156,10 +170,10 @@ server.post("/api/contact", async (req, res) => {
     });
 
     await transporter.sendMail({
-      from: `"Portfólio" <${process.env.MAIL_USER}>`,
+      from: `"${mailFromName}" <${mailFrom}>`,
       to: mailTo,
       replyTo: email,
-      subject: `[Portfólio] ${subject}`,
+      subject: `[Portfolio] ${subject}`, 
       text:
       `Nome: ${name}\n` +
       `Email: ${email}\n` +
@@ -179,11 +193,15 @@ server.post("/api/contact", async (req, res) => {
       },
     });
   } catch (err) {
-    console.error("Erro /contact:", err);
+    const code = err?.code || "UNKNOWN";
+    const command = err?.command || "UNKNOWN";
+    const response = err?.response || err?.message || "Sem detalhes";
+    console.error(`Erro /contact [${code}] [${command}]:`, response);
     return res.status(500).jsonp({
       success: false,
-      message:
-        "Sua mensagem foi recebida, mas ocorreu um erro ao enviar o email. Tente novamente mais tarde.",
+      message: "Sua mensagem foi recebida, mas houve erro ao enviar o email.",
+      errorCode: code,
+      errorCommand: command,
     });
   }
 });
@@ -224,3 +242,5 @@ server.listen(port, () => {
   console.log(`API disponível em http://localhost:${port}/api`);
   console.log(`Frontend disponível em http://localhost:${port}`);
 });
+
+

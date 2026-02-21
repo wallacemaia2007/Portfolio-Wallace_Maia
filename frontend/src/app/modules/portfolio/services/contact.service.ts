@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ContactForm, ContactResponse } from '../models/contact.model';
@@ -24,10 +24,13 @@ export class ContactService {
     return this.http
       .post<ContactResponse>(`${this.apiUrl}/contact`, data, { headers })
       .pipe(
-        catchError(() =>
+        catchError((error: HttpErrorResponse) =>
           throwError(() => ({
             success: false,
-            message: 'Erro ao enviar mensagem. Tente novamente.',
+            message:
+              error?.error?.message || 'Erro ao enviar mensagem. Tente novamente.',
+            errorCode: error?.error?.errorCode,
+            errorCommand: error?.error?.errorCommand,
           })),
         ),
       );

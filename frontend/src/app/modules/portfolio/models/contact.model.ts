@@ -10,6 +10,8 @@ export interface ContactResponse {
   success: boolean;
   message: string;
   data?: any;
+  errorCode?: string;
+  errorCommand?: string;
 }
 
 export interface ContactInfo {
