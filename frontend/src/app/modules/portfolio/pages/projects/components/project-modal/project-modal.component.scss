@@ -18,6 +18,10 @@ button {
   box-shadow: 0 0 30px rgba(155, 27, 31, 0.5);
 }
 
+.media-clickable {
+  cursor: zoom-in;
+}
+
 @media (max-width: 768px) {
   .max-w-6xl {
     max-width: 100%;
@@ -41,3 +45,4 @@ button {
   outline-offset: 2px;
   border-radius: 4px;
 }
+

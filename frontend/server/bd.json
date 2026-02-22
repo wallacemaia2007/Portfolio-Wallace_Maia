@@ -27,6 +27,7 @@
         "assets/images/projects/digital-bank/digital-bank-2.png",
         "assets/images/projects/digital-bank/digital-bank-3.png"
       ],
+      "thumbVideo": "assets/images/projects/digital-bank/digital-bank-video.mp4",
       "technologies": [
         "Java",
         "Spring Boot",
@@ -79,6 +80,7 @@
         "assets/images/projects/traveler-website/traveler-website-2.png",
         "assets/images/projects/traveler-website/traveler-website-3.png"
       ],
+      "thumbVideo": "assets/images/projects/traveler-website/traveler-website-video.mp4",
       "technologies": [
         "Angular",
         "Angular Material",
@@ -123,6 +125,7 @@
         "assets/images/projects/portfolio-pessoal/portfolio-pessoal-2.png",
         "assets/images/projects/portfolio-pessoal/portfolio-pessoal-3.png"
       ],
+      "thumbVideo": "assets/images/projects/portfolio-pessoal/portfolio-pessoal-video.mp4",
       "technologies": [
         "Angular",
         "Tailwind CSS",

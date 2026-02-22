@@ -6,6 +6,7 @@ export interface Project {
   shortDescription: string;
   thumbnail: string;
   images: string[];
+  thumbVideo: string;
   technologies: string[];
   category: ProjectCategory;
   featured: boolean;

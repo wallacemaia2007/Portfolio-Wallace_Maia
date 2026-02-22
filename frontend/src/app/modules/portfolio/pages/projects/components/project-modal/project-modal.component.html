@@ -6,47 +6,67 @@
     class="relative w-full max-w-6xl max-h-[90vh] bg-white dark:bg-custom-black-light rounded-2xl overflow-hidden shadow-2xl animate-slide-up"
     (click)="$event.stopPropagation()">
 
-    <button (click)="onClose()"
-      class="absolute top-4 right-4 z-10 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all">
-      <mat-icon class="text-2xl">close</mat-icon>
+    <button (click)="onClose()" class="absolute top-4 right-4 z-10 w-12 h-12 rounded-full
+         bg-white/10 backdrop-blur-sm border border-white/20
+         grid place-items-center text-white
+         hover:bg-white/20 transition-all">
+      <mat-icon class="icon-center">close</mat-icon>
     </button>
 
     <div class="overflow-y-auto max-h-[90vh] scrollbar-thin">
       <div
         class="relative h-96 bg-gradient-to-br from-beige to-beige-dark dark:from-custom-black to-custom-black-light">
-        @if (project.images && project.images.length > 0) {
-        @for (image of project.images; track image; let i = $index) {
-        <div class="absolute inset-0 transition-opacity duration-700" [class.opacity-100]="i === currentImageIndex"
-          [class.opacity-0]="i !== currentImageIndex">
-          <img
-            [src]="getImageUrl(image)"
-            [alt]="project.title + ' - Imagem ' + (i + 1)"
-            class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50"></div>
+        @if (hasThumbVideo()) {
+        <div class="absolute inset-0 transition-opacity duration-700" [class.opacity-100]="isCurrentMediaVideo()"
+          [class.opacity-0]="!isCurrentMediaVideo()">
+          <video #galleryVideo [src]="getImageUrl(project.thumbVideo)" [poster]="getImageUrl(project.thumbnail)" muted
+            playsinline autoplay preload="metadata" (canplay)="onVideoCanPlay()" (ended)="onVideoEnded()"
+            class="w-full h-full object-cover media-clickable" (click)="openExpandedMedia()">
+          </video>
+          <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50 pointer-events-none">
+          </div>
         </div>
         }
 
-        @if (project.images.length > 1) {
-        <button (click)="previousImage()"
-          class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all z-10">
-          <mat-icon class="text-2xl">chevron_left</mat-icon>
+        @if (project.images && project.images.length > 0) {
+        @for (image of project.images; track image; let i = $index) {
+        <div class="absolute inset-0 transition-opacity duration-700"
+          [class.opacity-100]="getMediaIndexForImage(i) === currentMediaIndex"
+          [class.opacity-0]="getMediaIndexForImage(i) !== currentMediaIndex">
+          <img [src]="getImageUrl(image)" [alt]="project.title + ' - Imagem ' + (i + 1)"
+            class="w-full h-full object-cover media-clickable" (click)="openExpandedMedia()">
+          <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50 pointer-events-none">
+          </div>
+        </div>
+        }
+        }
+
+        @if (getGalleryItemsCount() > 1) {
+        <button (click)="previousImage()" class="absolute left-4 top-1/2 -translate-y-1/2 z-10
+         w-12 h-12 rounded-full
+         bg-white/10 backdrop-blur-sm border border-white/20
+         grid place-items-center text-white
+         hover:bg-white/20 transition-all">
+          <mat-icon class="icon-center">chevron_left</mat-icon>
         </button>
 
-        <button (click)="nextImage()"
-          class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all z-10">
-          <mat-icon class="text-2xl">chevron_right</mat-icon>
+        <button (click)="nextImage()" class="absolute right-4 top-1/2 -translate-y-1/2 z-10
+         w-12 h-12 rounded-full
+         bg-white/10 backdrop-blur-sm border border-white/20
+         grid place-items-center text-white
+         hover:bg-white/20 transition-all">
+          <mat-icon class="icon-center">chevron_right</mat-icon>
         </button>
 
         <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
-          @for (img of project.images; track img; let idx = $index) {
+          @for (idx of getGalleryIndexes(); track idx) {
           <button (click)="goToImage(idx)" class="transition-all rounded-full h-2" [ngClass]="{
-                      'w-8 bg-white': idx === currentImageIndex,
-                      'w-2 bg-white/40': idx !== currentImageIndex
+                      'w-8 bg-white': idx === currentMediaIndex,
+                      'w-2 bg-white/40': idx !== currentMediaIndex
                     }">
           </button>
           }
         </div>
-        }
         }
       </div>
 
@@ -197,6 +217,29 @@
       </div>
     </div>
   </div>
+
+  @if (expandedMediaOpen) {
+  <div class="fixed inset-0 z-[70] bg-black/95 p-4 md:p-8 flex items-center justify-center"
+    (click)="onExpandedBackdropClick($event)">
+    <button (click)="closeExpandedMedia(); $event.stopPropagation()" class="absolute top-4 right-4 z-10 w-12 h-12 rounded-full
+         bg-white/10 backdrop-blur-sm border border-white/20
+         grid place-items-center text-white
+         hover:bg-white/20 transition-all">
+      <mat-icon class="icon-center">close</mat-icon>
+    </button>
+
+    <div class="w-full h-full flex items-center justify-center" (click)="$event.stopPropagation()">
+      @if (isCurrentMediaVideo()) {
+      <video [src]="getCurrentExpandedMediaUrl()" [poster]="getImageUrl(project.thumbnail)" controls autoplay
+        playsinline preload="metadata" class="max-w-full max-h-full object-contain">
+      </video>
+      } @else {
+      <img [src]="getCurrentExpandedMediaUrl()" [alt]="project.title + ' - mídia expandida'"
+        class="max-w-full max-h-full object-contain">
+      }
+    </div>
+  </div>
+  }
 
 </div>
 }

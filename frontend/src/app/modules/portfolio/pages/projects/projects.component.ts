@@ -47,6 +47,7 @@ interface CategoryInfo {
 })
 export class ProjectsComponent implements OnInit {
   private portfolioService = inject(PortfolioService);
+  private playingPreviewIds = new Set<string>();
 
   isLoading = true;
   allProjects: Project[] = [];
@@ -241,5 +242,35 @@ export class ProjectsComponent implements OnInit {
       month: 'short',
       year: 'numeric',
     });
+  }
+
+  isProjectPreviewPlaying(projectId: string): boolean {
+    return this.playingPreviewIds.has(projectId);
+  }
+
+  onProjectCardEnter(project: Project, video: HTMLVideoElement): void {
+    if (!project.thumbVideo) {
+      return;
+    }
+
+    this.playingPreviewIds.add(project.id);
+    video.currentTime = 0;
+    void video.play().catch(() => {
+      this.playingPreviewIds.delete(project.id);
+    });
+  }
+
+  onProjectCardLeave(project: Project, video: HTMLVideoElement): void {
+    this.resetProjectPreview(project, video);
+  }
+
+  onProjectPreviewEnded(project: Project, video: HTMLVideoElement): void {
+    this.resetProjectPreview(project, video);
+  }
+
+  private resetProjectPreview(project: Project, video: HTMLVideoElement): void {
+    this.playingPreviewIds.delete(project.id);
+    video.pause();
+    video.currentTime = 0;
   }
 }
