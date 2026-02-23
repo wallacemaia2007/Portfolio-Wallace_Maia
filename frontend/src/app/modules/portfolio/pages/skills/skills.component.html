@@ -1,18 +1,10 @@
-<div
-  class="min-h-screen bg-white dark:bg-custom-black transition-colors duration-300"
->
-  <section
-    class="py-20 bg-gradient-to-br from-beige-light to-white dark:from-custom-black dark:to-custom-black-light"
-    appScrollReveal
-    revealFrom="bottom"
-    [revealDelay]="100"
-  >
+<div class="min-h-screen bg-white dark:bg-custom-black transition-colors duration-300">
+  <section class="py-20 bg-gradient-to-br from-beige-light to-white dark:from-custom-black dark:to-custom-black-light"
+    appScrollReveal revealFrom="bottom" [revealDelay]="100">
     <div class="container mx-auto px-4">
-      <app-section-header
-        title="Minhas Habilidades"
+      <app-section-header title="Minhas Habilidades"
         subtitle="Tecnologias e ferramentas que domino para criar soluções completas e eficientes para o mercado de trabalho."
-        align="center"
-      ></app-section-header>
+        align="center"></app-section-header>
 
       <div class="mt-12 max-w-5xl mx-auto">
         <app-stat-cards [stats]="statistics"></app-stat-cards>
@@ -21,139 +13,122 @@
     <div class="absolute bottom-0 left-0 right-0 h-1 bg-primary"></div>
   </section>
 
-  <section
-    class="py-8 bg-beige-light dark:bg-custom-black-light"
-    appScrollReveal
-    revealFrom="bottom"
-    [revealDelay]="100"
-  >
+  <section class="py-8 bg-beige-light dark:bg-custom-black-light" appScrollReveal revealFrom="bottom"
+    [revealDelay]="100">
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap gap-3 justify-center">
-        <button
-          (click)="filterByCategory('all')"
-          [class]="
+        <button (click)="filterByCategory('all')" [class]="
             selectedCategory === 'all'
               ? 'bg-primary text-white shadow-glow'
               : 'bg-white dark:bg-custom-black text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 hover:border-primary hover:text-primary'
-          "
-          class="px-6 py-2 rounded-full font-medium transition-all duration-300 flex items-center space-x-2"
-        >
+          " class="px-6 py-2 rounded-full font-medium transition-all duration-300 flex items-center space-x-2">
           <mat-icon>apps</mat-icon>
           <span>Todas ({{ totalSkills }})</span>
         </button>
 
         @for (category of categories; track category.type) {
-          <button
-            (click)="filterByCategory(category.type)"
-            [class]="
+        <button (click)="filterByCategory(category.type)" [class]="
               selectedCategory === category.type
                 ? 'bg-primary text-white shadow-glow'
                 : 'bg-white dark:bg-custom-black text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 hover:border-primary hover:text-primary'
-            "
-            class="px-6 py-2 rounded-full font-medium transition-all duration-300 flex items-center space-x-2"
-          >
-            <img
-              [src]="category.icon"
-              alt="{{ category.name }} Icon"
-              class="w-6 h-6"
-            />
-            <span>{{ category.name }} ({{ category.count }})</span>
-          </button>
+            " class="px-6 py-2 rounded-full font-medium transition-all duration-300 flex items-center space-x-2">
+          <img [src]="category.icon" alt="{{ category.name }} Icon" class="w-6 h-6" />
+          <span>{{ category.name }} ({{ category.count }})</span>
+        </button>
         }
       </div>
 
       <div class="mt-6 max-w-md mx-auto">
         <div class="relative">
-          <mat-icon
-            class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-            >search</mat-icon
-          >
-          <input
-            type="text"
-            [(ngModel)]="searchTerm"
-            (input)="onSearchChange()"
-            placeholder="Buscar habilidade..."
-            class="w-full pl-12 pr-4 py-3 bg-white dark:bg-custom-black border border-gray-300 dark:border-gray-700 rounded-xl focus:outline-none focus:border-primary text-custom-black dark:text-white"
-          />
+          <mat-icon class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">search</mat-icon>
+          <input type="text" [(ngModel)]="searchTerm" (input)="onSearchChange()" placeholder="Buscar habilidade..."
+            class="w-full pl-12 pr-4 py-3 bg-white dark:bg-custom-black border border-gray-300 dark:border-gray-700 rounded-xl focus:outline-none focus:border-primary text-custom-black dark:text-white" />
         </div>
       </div>
     </div>
   </section>
 
   @if (isLoading) {
-    <section
-      class="py-20"
-      appScrollReveal
-      revealFrom="bottom"
-      [revealDelay]="100"
-    >
-      <div class="container mx-auto px-4">
-        <div class="flex justify-center">
-          <div
-            class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"
-          ></div>
-        </div>
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-center">
+        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
       </div>
-    </section>
+    </div>
+  </section>
   }
 
-  @if (!isLoading && filteredSkillGroups.length > 0) {
-    <section
-      class="py-20"
-      appScrollReveal
-      revealFrom="bottom"
-      [revealDelay]="100"
-    >
-      <div class="container mx-auto px-4 space-y-16">
-        @for (group of filteredSkillGroups; track group.category) {
-          <div class="animate-fade-in">
-            <app-skill-category
-              [categoryName]="group.categoryName"
-              [skills]="group.skills"
-              [categoryIcon]="group.icon"
-            ></app-skill-category>
-          </div>
+  @if (!isLoading && isSearching && searchResults.length > 0) {
+  <section class="py-10">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <p class="text-center text-sm text-gray-500 dark:text-gray-400 mb-8">
+        {{ searchResults.length }} resultado(s) para
+        <span class="font-semibold text-primary">"{{ searchTerm }}"</span>
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        @for (skill of searchResults; track skill.id) {
+        <app-skill-card [skill]="skill"></app-skill-card>
         }
       </div>
-    </section>
+    </div>
+  </section>
   }
 
-  @if (!isLoading && filteredSkillGroups.length === 0) {
-    <section
-      class="py-20"
-      appScrollReveal
-      revealFrom="bottom"
-      [revealDelay]="100"
-    >
-      <div class="container mx-auto px-4">
-        <div class="text-center max-w-md mx-auto">
-          <mat-icon class="text-6xl text-gray-400 mb-4">search_off</mat-icon>
-          <h3 class="text-2xl font-bold text-custom-black dark:text-white mb-2">
-            Nenhuma habilidade encontrada
-          </h3>
-          <p class="text-gray-600 dark:text-gray-400 mb-6">
-            Tente ajustar os filtros ou buscar por outro termo
-          </p>
-          <button
-            (click)="clearFilters()"
-            mat-raised-button
-            color="primary"
-            class="flex items-center space-x-2 mx-auto"
-          >
-            <mat-icon>refresh</mat-icon>
-            <span>Limpar Filtros</span>
-          </button>
-        </div>
+  @if (!isLoading && !isSearching && filteredSkillGroups.length > 0) {
+  <section class="py-20" appScrollReveal revealFrom="bottom" [revealDelay]="100">
+    <div class="container mx-auto px-4 space-y-16">
+      @for (group of filteredSkillGroups; track group.category) {
+      <div class="animate-fade-in">
+        <app-skill-category [categoryName]="group.categoryName" [skills]="group.skills"
+          [categoryIcon]="group.icon"></app-skill-category>
       </div>
-    </section>
+      }
+    </div>
+  </section>
   }
 
-  <section
-    class="py-20 bg-primary"
-    appScrollReveal
-    revealFrom="bottom"
-    [revealDelay]="100"
-  >
+  @if (!isLoading && isSearching && searchResults.length === 0) {
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-md mx-auto">
+        <mat-icon class="text-6xl text-gray-400 mb-4">search_off</mat-icon>
+        <h3 class="text-2xl font-bold text-custom-black dark:text-white mb-2">
+          Nenhuma habilidade encontrada
+        </h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">
+          Nenhuma skill corresponde a
+          <span class="font-semibold text-primary">"{{ searchTerm }}"</span>
+        </p>
+        <button (click)="clearFilters()" mat-raised-button color="primary" class="flex items-center space-x-2 mx-auto">
+          <mat-icon>refresh</mat-icon>
+          <span>Limpar Filtros</span>
+        </button>
+      </div>
+    </div>
+  </section>
+  }
+
+  @if (!isLoading && !isSearching && filteredSkillGroups.length === 0) {
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-md mx-auto">
+        <mat-icon class="text-6xl text-gray-400 mb-4">search_off</mat-icon>
+        <h3 class="text-2xl font-bold text-custom-black dark:text-white mb-2">
+          Nenhuma habilidade encontrada
+        </h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">
+          Tente ajustar os filtros ou buscar por outro termo
+        </p>
+        <button (click)="clearFilters()" mat-raised-button color="primary" class="flex items-center space-x-2 mx-auto">
+          <mat-icon>refresh</mat-icon>
+          <span>Limpar Filtros</span>
+        </button>
+      </div>
+    </div>
+  </section>
+  }
+
+  <section class="py-20 bg-primary" appScrollReveal revealFrom="bottom" [revealDelay]="100">
     <app-information-bar [data]="ctaData"></app-information-bar>
   </section>
 </div>

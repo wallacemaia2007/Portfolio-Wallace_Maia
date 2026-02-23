@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
 import { SkillCategoryComponent } from './components/skill-category/skill-category.component';
+import { SkillCardComponent } from './components/skill-card/skill-card.component';
 import { PortfolioService } from '../../services/portfolio.service';
 import { StatCardsComponent } from '../../../shared/components/stat-cards/stat-cards.component';
 import {
@@ -38,6 +39,7 @@ interface CategoryInfo {
     MatButtonModule,
     SectionHeaderComponent,
     SkillCategoryComponent,
+    SkillCardComponent,
     ScrollRevealDirective,
     InformationBarComponent,
     StatCardsComponent,
@@ -51,6 +53,7 @@ export class SkillsComponent implements OnInit {
   isLoading = true;
   allSkillGroups: SkillGroup[] = [];
   filteredSkillGroups: SkillGroup[] = [];
+  searchResults: Skill[] = [];
   selectedCategory: SkillCategoryType | 'all' = 'all';
   searchTerm = '';
 
@@ -58,6 +61,10 @@ export class SkillsComponent implements OnInit {
   totalSkills = 0;
 
   statistics: Array<{ value: number; label: string }> = [];
+
+  get isSearching(): boolean {
+    return this.searchTerm.trim().length > 0;
+  }
 
   ctaData: InformationBarData = {
     title: 'Gostou das minhas habilidades?',
@@ -168,22 +175,20 @@ export class SkillsComponent implements OnInit {
 
     if (this.searchTerm.trim()) {
       const searchLower = this.searchTerm.toLowerCase();
-      filtered = filtered
-        .map((group) => ({
-          ...group,
-          skills: group.skills.filter((skill) =>
-            skill.name.toLowerCase().includes(searchLower),
-          ),
-        }))
-        .filter((group) => group.skills.length > 0);
+      this.searchResults = filtered
+        .flatMap((group) => group.skills)
+        .filter((skill) => skill.name.toLowerCase().includes(searchLower));
+      return;
     }
 
+    this.searchResults = [];
     this.filteredSkillGroups = filtered;
   }
 
   clearFilters(): void {
     this.selectedCategory = 'all';
     this.searchTerm = '';
+    this.searchResults = [];
     this.filteredSkillGroups = [...this.allSkillGroups];
   }
 }
