@@ -5,24 +5,25 @@ import {
   OnDestroy,
   OnInit,
   Renderer2,
-} from "@angular/core";
+} from '@angular/core';
 
 @Directive({
-  selector: "[appScrollReveal]",
+  selector: '[appScrollReveal]',
   standalone: true,
 })
 export class ScrollRevealDirective implements OnInit, OnDestroy {
-  @Input() revealFrom: "bottom" | "top" | "left" | "right" = "bottom";
+  @Input() revealFrom: 'bottom' | 'top' | 'left' | 'right' = 'bottom';
   @Input() revealDelay = 0;
   @Input() revealOnce = false;
   @Input() hideOnExit = true;
 
   private observer!: IntersectionObserver;
-  private initialTransform = "translateY(40px)";
+  private initialTransform = 'translateY(40px)';
+  private revealTimeout: ReturnType<typeof setTimeout> | null = null;
 
   constructor(
     private el: ElementRef,
-    private renderer: Renderer2
+    private renderer: Renderer2,
   ) {}
 
   ngOnInit(): void {
@@ -42,55 +43,76 @@ export class ScrollRevealDirective implements OnInit, OnDestroy {
         });
       },
       {
-        threshold: 0.2,
-      }
+        threshold: [0, 0.2],
+        rootMargin: '0px',
+      },
     );
 
     this.observer.observe(this.el.nativeElement);
   }
 
   ngOnDestroy(): void {
+    this.clearRevealTimeout();
     if (this.observer) {
       this.observer.disconnect();
     }
   }
 
   private setInitialStyles(): void {
-    this.renderer.setStyle(this.el.nativeElement, "opacity", "0");
+    this.renderer.setStyle(this.el.nativeElement, 'opacity', '0');
     this.renderer.setStyle(
       this.el.nativeElement,
-      "transition",
-      "opacity 0.6s ease, transform 0.6s ease"
+      'transition',
+      'opacity 0.6s ease, transform 0.6s ease',
     );
 
     switch (this.revealFrom) {
-      case "top":
-        this.initialTransform = "translateY(-40px)";
+      case 'top':
+        this.initialTransform = 'translateY(-40px)';
         break;
-      case "left":
-        this.initialTransform = "translateX(-40px)";
+      case 'left':
+        this.initialTransform = 'translateX(-40px)';
         break;
-      case "right":
-        this.initialTransform = "translateX(40px)";
+      case 'right':
+        this.initialTransform = 'translateX(40px)';
         break;
     }
 
-    this.renderer.setStyle(this.el.nativeElement, "transform", this.initialTransform);
+    this.renderer.setStyle(
+      this.el.nativeElement,
+      'transform',
+      this.initialTransform,
+    );
   }
 
   private reveal(): void {
-    setTimeout(() => {
-      this.renderer.setStyle(this.el.nativeElement, "opacity", "1");
+    this.clearRevealTimeout();
+
+    this.revealTimeout = setTimeout(() => {
+      this.renderer.setStyle(this.el.nativeElement, 'opacity', '1');
       this.renderer.setStyle(
         this.el.nativeElement,
-        "transform",
-        "translate(0)"
+        'transform',
+        'translate(0)',
       );
     }, this.revealDelay);
   }
 
   private hide(): void {
-    this.renderer.setStyle(this.el.nativeElement, "opacity", "0");
-    this.renderer.setStyle(this.el.nativeElement, "transform", this.initialTransform);
+    this.clearRevealTimeout();
+
+    this.renderer.setStyle(this.el.nativeElement, 'opacity', '0');
+    this.renderer.setStyle(
+      this.el.nativeElement,
+      'transform',
+      this.initialTransform,
+    );
+  }
+
+  private clearRevealTimeout(): void {
+    if (this.revealTimeout !== null) {
+      clearTimeout(this.revealTimeout);
+      this.revealTimeout = null;
+    }
   }
 }
