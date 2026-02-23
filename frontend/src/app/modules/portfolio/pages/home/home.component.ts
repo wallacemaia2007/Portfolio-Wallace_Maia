@@ -1,4 +1,12 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  Component,
+  inject,
+  OnInit,
+  AfterViewInit,
+  ViewChildren,
+  QueryList,
+  ElementRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -95,6 +103,11 @@ export class HomeComponent implements OnInit {
       next: (projects) => {
         this.featuredProjects = projects.slice(0, 3);
         this.isLoadingProjects = false;
+        setTimeout(() => {
+          document
+            .querySelectorAll<HTMLVideoElement>('.project-card video')
+            .forEach((video) => video.load());
+        }, 300);
       },
       error: (error) => {
         console.error('Erro ao carregar projetos em destaque:', error);
@@ -233,15 +246,26 @@ export class HomeComponent implements OnInit {
   }
 
   onProjectCardEnter(project: Project, video: HTMLVideoElement): void {
-    if (!project.thumbVideo) {
-      return;
-    }
+    if (!project.thumbVideo) return;
 
-    this.playingPreviewIds.add(project.id);
-    video.currentTime = 0;
-    void video.play().catch(() => {
-      this.playingPreviewIds.delete(project.id);
-    });
+    const tryPlay = () => {
+      this.playingPreviewIds.add(project.id);
+      video.currentTime = 0;
+      void video.play().catch(() => {
+        this.playingPreviewIds.delete(project.id);
+      });
+    };
+
+    if (video.readyState >= 3) {
+      tryPlay();
+    } else {
+      const onReady = () => {
+        tryPlay();
+        video.removeEventListener('canplaythrough', onReady);
+      };
+      video.addEventListener('canplaythrough', onReady);
+      video.load();
+    }
   }
 
   onProjectCardLeave(project: Project, video: HTMLVideoElement): void {
