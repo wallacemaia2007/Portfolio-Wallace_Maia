@@ -42,22 +42,17 @@
           (mouseleave)="onProjectCardLeave(project, previewVideo)"
           class="project-card group bg-white dark:bg-custom-black-light rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer border-2 border-gray-200 dark:border-gray-800 hover:border-primary">
 
-          <!-- IMAGE -->
           <div
             class="relative h-56 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-custom-black to-custom-black-light">
             <img [src]="project.thumbnail" [alt]="project.title"
               class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
               [class.opacity-0]="isProjectPreviewPlaying(project.id)">
-
-            <!-- ✅ preload="auto" garante que o vídeo carrega em background desde o início -->
-            <!-- ✅ [src] direto em vez de [attr.src] para o browser reconhecer o recurso imediatamente -->
             <video #previewVideo [src]="project.thumbVideo" [poster]="project.thumbnail" muted playsinline
               preload="auto" (ended)="onProjectPreviewEnded(project, previewVideo)"
               class="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-0 transition-opacity duration-300"
               [class.opacity-100]="isProjectPreviewPlaying(project.id)">
             </video>
 
-            <!-- BADGES -->
             <div class="absolute top-4 left-4 right-4 flex justify-between items-start z-10">
               @if (project.featured) {
               <span
@@ -76,9 +71,7 @@
             </div>
           </div>
 
-          <!-- CONTENT -->
           <div class="p-6">
-            <!-- CATEGORY -->
             <div class="flex items-center gap-2 mb-3">
               <div class="w-7 h-7 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center">
                 <mat-icon class="text-primary text-lg !leading-none !m-0 p-0 flex items-center justify-center"
@@ -91,17 +84,14 @@
               </span>
             </div>
 
-            <!-- TITLE -->
             <h3 class="text-xl font-bold text-custom-black dark:text-white mb-3 line-clamp-2 leading-tight">
               {{ project.title }}
             </h3>
 
-            <!-- DESCRIPTION -->
             <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2 min-h-[2.5rem]">
               {{ project.shortDescription }}
             </p>
 
-            <!-- TECHNOLOGIES -->
             <div class="flex flex-wrap gap-2 mb-5">
               @for (tech of project.technologies.slice(0, 3); track tech) {
               <span
@@ -116,7 +106,6 @@
               }
             </div>
 
-            <!-- FOOTER -->
             <div class="flex items-center justify-between pt-4 border-t-2 border-gray-200 dark:border-gray-700">
               <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                 <mat-icon class="text-base">calendar_today</mat-icon>
@@ -250,8 +239,7 @@
     </div>
   </section>
 
-  <section class="py-20 bg-beige dark:bg-custom-black-light" appScrollReveal revealFrom="bottom" [revealDelay]="100"
-    [revealOnce]="false">
+  <section class="py-20 bg-beige dark:bg-custom-black-light">
     <div class="container mx-auto px-4">
       <app-section-header title="Tecnologias & Habilidades"
         subtitle="Ferramentas e tecnologias que domino para criar soluções incríveis"
