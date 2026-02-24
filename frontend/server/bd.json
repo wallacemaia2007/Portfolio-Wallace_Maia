@@ -157,6 +157,50 @@
         "Boas práticas de UI/UX com Angular Material"
       ],
       "clientType": "freelance"
+    },
+    {
+      "id": "4",
+      "title": "Customer Register",
+      "slug": "customer-register",
+      "description": "Sistema web Angular para gerenciamento de cadastro de clientes com integração BrasilAPI, validação de formulários e persistência local. Desenvolvido com Angular 19, TypeScript e Material Design",
+      "shortDescription": "Sistema web para cadastrar e gerenciar clientes",
+      "thumbnail": "assets/images/projects/customer-register/thumbnail.png",
+      "images": [
+        "assets/images/projects/customer-register/customer-register-1.png",
+        "assets/images/projects/customer-register/customer-register-2.png",
+        "assets/images/projects/customer-register/customer-register-3.png"
+      ],
+      "thumbVideo": "assets/images/projects/customer-register/customer-register-video.mp4",
+      "technologies": [
+        "Angular",
+        "Angular Material",
+        "TypeScript",
+        "BrasilAPI",
+        "RxJS",
+        "UUID",
+        "LocalStorage"
+      ],
+      "category": "web",
+      "featured": true,
+      "githubUrl": "https://github.com/wallacemaia2007/Customer-register",
+      "liveUrl": "https://www.linkedin.com/posts/wallacemaia-dev_javascript-typescript-angular-activity-7385676116797079552-S7PG?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE9zdVsB33_pruHbEok_UbWu8X2JwL1Nfhk",
+      "startDate": "2025-10-07",
+      "endDate": "2025-10-17",
+      "status": "completed",
+      "tags": [
+        "web",
+        "angular",
+        "gallery"
+      ],
+      "challenges": [
+        "Uso do Angular Material para criar uma interface intuitiva",
+        "Implementação de validação de reactive forms"
+      ],
+      "learnings": [
+        "Integração com APIs externas usando HttpClient",
+        "Uso do Angular Material para criar uma interface intuitiva"
+      ],
+      "clientType": "pessoal"
     }
   ],
   "skills": [
@@ -751,7 +795,7 @@
         "id": "4",
         "institution": "DIO - Digital Innovation One",
         "course": "Santander 2025 - Back-End com Java e Spring Boot",
-        "certificateUrl": "assets/docs/bootcamp_java_certificate.pdf",
+        "certificateUrl": "assets/docs/bootcamp_java.pdf",
         "startDate": "2025-05",
         "endDate": "2025-08",
         "current": false,
