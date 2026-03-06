@@ -49,6 +49,7 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
     InformationBarComponent,
     ButtonComponent,
     RouterLink,
+    ProjectCardComponent,
     ProjectModalComponent,
   ],
   templateUrl: './home.component.html',

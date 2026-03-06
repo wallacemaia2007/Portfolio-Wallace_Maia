@@ -37,88 +37,11 @@
       } @else if (featuredProjects.length > 0) {
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         @for (project of featuredProjects.slice(0, 3); track project.id) {
-        <article (click)="openProjectModal(project)" appScrollReveal revealFrom="bottom" [revealDelay]="100"
-          (mouseenter)="onProjectCardEnter(project, previewVideo)"
-          (mouseleave)="onProjectCardLeave(project, previewVideo)"
-          class="project-card group bg-white dark:bg-custom-black-light rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer border-2 border-gray-200 dark:border-gray-800 hover:border-primary">
-
-          <div
-            class="relative h-56 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-custom-black to-custom-black-light">
-            <img [src]="project.thumbnail" [alt]="project.title"
-              class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
-              [class.opacity-0]="isProjectPreviewPlaying(project.id)">
-            <video #previewVideo [src]="project.thumbVideo" [poster]="project.thumbnail" muted playsinline
-              preload="auto" (ended)="onProjectPreviewEnded(project, previewVideo)"
-              class="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-0 transition-opacity duration-300"
-              [class.opacity-100]="isProjectPreviewPlaying(project.id)">
-            </video>
-
-            <div class="absolute top-4 left-4 right-4 flex justify-between items-start z-10">
-              @if (project.featured) {
-              <span
-                class="px-3 py-1.5 bg-primary text-white rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
-                <mat-icon class="text-sm">star</mat-icon>
-                Destaque
-              </span>
-              }
-              @if (!project.featured) {
-              <div></div>
-              }
-              <span class="px-3 py-1.5 rounded-full text-xs font-bold shadow-lg"
-                [ngClass]="getStatusClass(project.status)">
-                {{ getStatusLabel(project.status) }}
-              </span>
-            </div>
-          </div>
-
-          <div class="p-6">
-            <div class="flex items-center gap-2 mb-3">
-              <div class="w-7 h-7 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center">
-                <mat-icon class="text-primary text-lg !leading-none !m-0 p-0 flex items-center justify-center"
-                  style="display: flex; align-items: center; justify-content: center; height: 1.25rem; width: 1.25rem; line-height: 1;">{{
-                  getCategoryIcon(project.category) }}</mat-icon>
-              </div>
-              <span class="text-sm font-bold text-primary uppercase tracking-wide flex items-center h-7"
-                style="line-height: 1;">
-                {{ getCategoryLabel(project.category) }}
-              </span>
-            </div>
-
-            <h3 class="text-xl font-bold text-custom-black dark:text-white mb-3 line-clamp-2 leading-tight">
-              {{ project.title }}
-            </h3>
-
-            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2 min-h-[2.5rem]">
-              {{ project.shortDescription }}
-            </p>
-
-            <div class="flex flex-wrap gap-2 mb-5">
-              @for (tech of project.technologies.slice(0, 3); track tech) {
-              <span
-                class="px-3 py-1 bg-gray-100 dark:bg-custom-black text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 rounded-lg text-xs font-medium">
-                {{ tech }}
-              </span>
-              }
-              @if (project.technologies.length > 3) {
-              <span class="px-3 py-1 bg-primary/10 text-primary border border-primary/30 rounded-lg text-xs font-bold">
-                +{{ project.technologies.length - 3 }}
-              </span>
-              }
-            </div>
-
-            <div class="flex items-center justify-between pt-4 border-t-2 border-gray-200 dark:border-gray-700">
-              <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                <mat-icon class="text-base">calendar_today</mat-icon>
-                <span>{{ formatDate(project.startDate) }}</span>
-              </div>
-
-              <div class="flex items-center gap-1 text-primary font-bold text-sm group-hover:gap-2 transition-all">
-                <span>Abrir</span>
-                <mat-icon class="text-base">arrow_forward</mat-icon>
-              </div>
-            </div>
-          </div>
-        </article>
+        <app-project-card [project]="project" [isPreviewPlaying]="isProjectPreviewPlaying(project.id)"
+          (projectOpen)="openProjectModal($event)" (projectEnter)="onProjectCardEnter($event.project, $event.video)"
+          (projectLeave)="onProjectCardLeave($event.project, $event.video)"
+          (projectPreviewEnded)="onProjectPreviewEnded($event.project, $event.video)">
+        </app-project-card>
         }
       </div>
 

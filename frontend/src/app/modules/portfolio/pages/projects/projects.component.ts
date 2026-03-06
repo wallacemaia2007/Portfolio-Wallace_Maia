@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ProjectModalComponent } from './components/project-modal/project-modal.component';
 import { ProjectFilterComponent } from './components/project-filter/project-filter.component';
+import { ProjectCardComponent } from './components/project-card/project-card.component';
 import { PortfolioService } from '../../services/portfolio.service';
 import {
   Project,
@@ -37,6 +38,7 @@ interface CategoryInfo {
     MatButtonModule,
     ProjectModalComponent,
     ProjectFilterComponent,
+    ProjectCardComponent,
     SectionHeaderComponent,
     ScrollRevealDirective,
     InformationBarComponent,

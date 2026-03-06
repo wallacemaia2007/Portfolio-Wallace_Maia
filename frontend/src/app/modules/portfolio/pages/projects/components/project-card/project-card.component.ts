@@ -1,8 +1,14 @@
-import { Component, inject, Input } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
+import { ScrollRevealDirective } from '../../../../../shared/directives/scroll-reveal.directive';
 import {
   Project,
   ProjectCategory,
@@ -11,15 +17,66 @@ import {
   PROJECT_STATUS_NAMES,
 } from '../../../../models/project.model';
 
+interface ProjectCardVideoEvent {
+  project: Project;
+  video: HTMLVideoElement;
+}
+
 @Component({
   selector: 'app-project-card',
   standalone: true,
-  imports: [CommonModule, RouterLink, MatIconModule, MatButtonModule],
+  imports: [CommonModule, MatIconModule, ScrollRevealDirective],
   templateUrl: './project-card.component.html',
   styleUrl: './project-card.component.scss',
 })
 export class ProjectCardComponent {
   @Input({ required: true }) project!: Project;
+  @Input() isPreviewPlaying = false;
+  @Input() revealDelay = 100;
+
+  @Output() projectOpen = new EventEmitter<Project>();
+  @Output() projectEnter = new EventEmitter<ProjectCardVideoEvent>();
+  @Output() projectLeave = new EventEmitter<ProjectCardVideoEvent>();
+  @Output() projectPreviewEnded = new EventEmitter<ProjectCardVideoEvent>();
+
+  @ViewChild('previewVideo') previewVideo?: ElementRef<HTMLVideoElement>;
+
+  handleOpen(): void {
+    this.projectOpen.emit(this.project);
+  }
+
+  handleEnter(): void {
+    if (!this.previewVideo) {
+      return;
+    }
+
+    this.projectEnter.emit({
+      project: this.project,
+      video: this.previewVideo.nativeElement,
+    });
+  }
+
+  handleLeave(): void {
+    if (!this.previewVideo) {
+      return;
+    }
+
+    this.projectLeave.emit({
+      project: this.project,
+      video: this.previewVideo.nativeElement,
+    });
+  }
+
+  handlePreviewEnded(): void {
+    if (!this.previewVideo) {
+      return;
+    }
+
+    this.projectPreviewEnded.emit({
+      project: this.project,
+      video: this.previewVideo.nativeElement,
+    });
+  }
 
   getStatusClass(status: ProjectStatus): string {
     const statusClasses = {
