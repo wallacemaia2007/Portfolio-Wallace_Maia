@@ -2,6 +2,7 @@
 require("dotenv").config();
 
 const path = require("path");
+const fs = require("fs");
 const jsonServer = require("json-server");
 const rateLimit = require("express-rate-limit");
 
@@ -222,7 +223,9 @@ server.use("/api", rewriter, router);
 // ANGULAR — arquivos estáticos do build
 // ====================
 const express = require("express");
-const distPath = path.join(__dirname, "../dist/pielak-web/browser");
+const distRootPath = path.join(__dirname, "../dist/pielak-web");
+const distBrowserPath = path.join(distRootPath, "browser");
+const distPath = fs.existsSync(distBrowserPath) ? distBrowserPath : distRootPath;
 server.use(express.static(distPath));
 
 // Fallback SPA (HashLocation)

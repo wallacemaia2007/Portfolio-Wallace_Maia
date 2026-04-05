@@ -1,9 +1,5 @@
 [build]
 builder = "nixpacks"
-buildCommand = "cd frontend && npm ci --include=dev && npm run build:railway"
-
-[build.nixpacksPlan.phases.setup]
-nixPkgs = ["nodejs_20"]
 
 [deploy]
 startCommand = "cd frontend && node server/server.js"
