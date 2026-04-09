@@ -2,18 +2,58 @@
   display: block;
 }
 
-// Smooth transitions
+// ═══════════════════════════════════════
+// 🎨 ESTADO BASE DO NAV
+// ═══════════════════════════════════════
+
 nav {
-  transition: all 0.3s ease-in-out;
+  // Transições suaves para todas as propriedades
+  transition:
+    background 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-// Active link styling
+// ═══════════════════════════════════════
+// 📌 ESTADO "SCROLLED" — quando saiu do topo
+// ═══════════════════════════════════════
+
+nav.header--scrolled {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-bottom-color: rgb(229 231 235) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+// Dark mode scrolled
+:host-context(.dark) nav.header--scrolled {
+  background: rgba(28, 26, 26, 0.92) !important;
+  border-bottom-color: rgb(55 65 81) !important;
+}
+
+// ═══════════════════════════════════════
+// 🙈 ESTADO "HIDDEN" — esconde ao rolar para baixo
+// ═══════════════════════════════════════
+
+nav.header--hidden {
+  transform: translateY(-110%) !important;
+}
+
+// ═══════════════════════════════════════
+// 🔗 ACTIVE LINK
+// ═══════════════════════════════════════
+
 .router-link-active {
   font-weight: 500;
 }
 
-// Logo animation
-.group:hover .w-10 {
+// ═══════════════════════════════════════
+// 🖼️ LOGO ANIMATION
+// ═══════════════════════════════════════
+
+.group:hover img {
   transform: scale(1.1);
   transition: transform 0.2s ease-in-out;
 }
