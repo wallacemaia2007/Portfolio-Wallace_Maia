@@ -91,7 +91,7 @@
         "Tailwind CSS"
       ],
       "category": "web",
-      "featured": true,
+      "featured": false,
       "githubUrl": "https://github.com/wallacemaia2007/traveler-website",
       "liveUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7393610706035654656/",
       "startDate": "2025-10-20",
@@ -181,7 +181,7 @@
         "LocalStorage"
       ],
       "category": "web",
-      "featured": true,
+      "featured": false,
       "githubUrl": "https://github.com/wallacemaia2007/Customer-register",
       "liveUrl": "https://www.linkedin.com/posts/wallacemaia-dev_javascript-typescript-angular-activity-7385676116797079552-S7PG?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE9zdVsB33_pruHbEok_UbWu8X2JwL1Nfhk",
       "startDate": "2025-10-07",
@@ -201,6 +201,47 @@
         "Uso do Angular Material para criar uma interface intuitiva"
       ],
       "clientType": "pessoal"
+    },
+    {
+      "id": "4",
+      "title": "Instituto Motirõ",
+      "slug": "instituto-motiro",
+      "description": "O Instituto Motirõ (Associação Promotora de Educação e Cultura - APEC) foi criado em 2023 a partir do desejo de construir um espaço físico de encontro para pessoas interessadas em educação e cultura em Passos (MG). Dedicado ao fomento e promoção da educação-cultura no município de Passos e região, o Motirõ é composto por dois núcleos: o Centro de Educação Interdisciplinar e Aprovações (CEIA) e o Núcleo de Arte e Cultura (NAC), fomentando desenvolvimento pessoal e comunitário. O Instituto Motirõ nasceu com o propósito de fortalecer a cultura, a educação e a coletividade. Cada projeto, cada ação e cada encontro são construídos de forma colaborativa, valorizando a partilha, a união e o poder do coletivo. O termo Motirõ (pronúncia: Motirô) origina-se no tupi-guarani e representa a reunião de pessoas para construir algo em comum, com ajuda mútua.",
+      "shortDescription": "Instituto cultural e educacional focado em desenvolvimento comunitário",
+      "thumbnail": "assets/images/projects/instituto-motiro/motiro1.png",
+      "images": [
+        "assets/images/projects/instituto-motiro/motiro2.png",
+        "assets/images/projects/instituto-motiro/motiro3.png",
+        "assets/images/projects/instituto-motiro/motiro4.png"
+      ],
+      "thumbVideo": "assets/images/projects/instituto-motiro/motiro_video.mp4",
+      "technologies": [
+        "Vite",
+        "Tailwind CSS",
+        "TypeScript",
+        "RxJS",
+        "UUID",
+        "LocalStorage"
+      ],
+      "category": "web",
+      "featured": true,
+      "liveUrl": "https://www.institutomotiro.com.br/",
+      "startDate": "2026-03-25",
+      "endDate": "2026-04-15",
+      "status": "completed",
+      "tags": [
+        "web",
+        "vite",
+        "blog"
+      ],
+      "challenges": [
+        "Integração com domínio personalizado e hospedagem",
+        "Design responsivo para múltiplos dispositivos"
+      ],
+      "learnings": [
+        "Estudos de um novo framework (Vite) para desenvolvimento web"
+      ],
+      "clientType": "freelance"
     }
   ],
   "skills": [
@@ -472,6 +513,15 @@
       "level": 5,
       "yearsOfExperience": 2,
       "icon": "assets/icons/primeng.svg",
+      "color": "#8A2BE2"
+    },
+    {
+      "id": "31",
+      "name": "Vite",
+      "category": "frontend",
+      "level": 5,
+      "yearsOfExperience": 1,
+      "icon": "assets/icons/vite.svg",
       "color": "#8A2BE2"
     }
   ],

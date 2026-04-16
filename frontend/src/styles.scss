@@ -24,8 +24,7 @@ $my-red-palette: (
   800: #6b0b0f,
   // Red Dark
   900: #6b0b0f,
-  contrast: (
-    50: #000000,
+  contrast: (50: #000000,
     100: #000000,
     200: #000000,
     300: #000000,
@@ -53,8 +52,7 @@ $my-green-palette: (
   700: #388e3c,
   800: #2e7d32,
   900: #1b5e20,
-  contrast: (
-    50: #000000,
+  contrast: (50: #000000,
     100: #000000,
     200: #000000,
     300: #000000,
@@ -82,8 +80,7 @@ $my-red-dark-palette: (
   700: #c1353c,
   800: #b92d34,
   900: #ab1f26,
-  contrast: (
-    50: #000000,
+  contrast: (50: #000000,
     100: #000000,
     200: #000000,
     300: #000000,
@@ -103,32 +100,24 @@ $my-app-warn: mat.define-palette($my-red-dark-palette, 500);
 // ═══════════════════════════════════════
 // ☀️ TEMA CLARO
 // ═══════════════════════════════════════
-$my-app-light-theme: mat.define-light-theme(
-  (
-    color: (
-      primary: $my-app-primary,
-      accent: $my-app-accent,
-      warn: $my-app-warn,
-    ),
-    typography: mat.define-typography-config(),
-    density: 0,
-  )
-);
+$my-app-light-theme: mat.define-light-theme((color: (primary: $my-app-primary,
+        accent: $my-app-accent,
+        warn: $my-app-warn,
+      ),
+      typography: mat.define-typography-config(),
+      density: 0,
+    ));
 
 @include mat.all-component-themes($my-app-light-theme);
 
 // ═══════════════════════════════════════
 // 🌙 TEMA ESCURO
 // ═══════════════════════════════════════
-$my-app-dark-theme: mat.define-dark-theme(
-  (
-    color: (
-      primary: $my-app-primary,
-      accent: $my-app-accent,
-      warn: $my-app-warn,
-    ),
-  )
-);
+$my-app-dark-theme: mat.define-dark-theme((color: (primary: $my-app-primary,
+        accent: $my-app-accent,
+        warn: $my-app-warn,
+      ),
+    ));
 
 .dark {
   @include mat.all-component-colors($my-app-dark-theme);
@@ -202,52 +191,55 @@ body {
 /* ───────────────────────────────────
    🌞 SCROLLBAR LIGHT MODE (Vermelha em fundo claro)
    ─────────────────────────────────── */
+/* SCROLLBAR PADRÃO */
 ::-webkit-scrollbar {
   width: 12px;
+  /* Largura da scrollbar vertical */
   height: 12px;
+  /* Altura da scrollbar horizontal */
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: transparent;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #9b1b1f;
+  background-color: #9b1b1f;
   border-radius: 10px;
-  border: 2px solid #f1f1f1;
-
-  &:hover {
-    background: #6b0b0f;
-  }
-
-  &:active {
-    background: #b52228;
-  }
+  transition: background-color 0.3s ease;
 }
 
-/* ───────────────────────────────────
-   🌙 SCROLLBAR DARK MODE (Vermelha em fundo escuro)
-   ─────────────────────────────────── */
-.dark {
-  ::-webkit-scrollbar-track {
-    background: #1a1a1a;
-    border-radius: 10px;
-  }
+::-webkit-scrollbar-thumb:hover {
+  background-color: #6b0b0f;
+  /* Cor mais escura no hover */
+}
 
-  ::-webkit-scrollbar-thumb {
-    background: #9b1b1f;
-    border-radius: 10px;
-    border: 2px solid #1a1a1a;
+::-webkit-scrollbar-thumb:active {
+  background-color: #b52228;
+  /* Cor ligeiramente mais clara no active */
+}
 
-    &:hover {
-      background: #b52228;
-    }
+/* SCROLLBAR DARK MODE */
+.dark ::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
 
-    &:active {
-      background: #6b0b0f;
-    }
-  }
+.dark ::-webkit-scrollbar-thumb {
+  background-color: #9b1b1f;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: #b52228;
+  /* Cor mais clara no hover do modo escuro */
+}
+
+.dark ::-webkit-scrollbar-thumb:active {
+  background-color: #6b0b0f;
+  /* Cor mais escura no active do modo escuro */
 }
 
 /* ───────────────────────────────────
@@ -278,10 +270,12 @@ body {
 // ✨ ANIMAÇÕES ADICIONAIS
 // ═══════════════════════════════════════
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
