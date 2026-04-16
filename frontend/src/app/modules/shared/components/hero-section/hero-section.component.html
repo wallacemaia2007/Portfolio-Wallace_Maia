@@ -90,12 +90,7 @@
 
           <div class="flex-1 min-h-0 px-5 py-5 font-mono text-sm leading-6 overflow-y-auto
                    bg-white dark:bg-custom-black-light
-                   text-custom-black dark:text-gray-200
-                   [scrollbar-width:thin] [scrollbar-color:#374151_transparent]
-                   [&::-webkit-scrollbar]:w-1
-                   [&::-webkit-scrollbar-track]:bg-transparent
-                   [&::-webkit-scrollbar-thumb]:bg-[#374151]
-                   [&::-webkit-scrollbar-thumb]:rounded" data-terminal-body>
+                   text-custom-black dark:text-gray-200" data-terminal-body>
             @for (line of terminalLines; track line.id) {
             @if (line.type === 'blank') {
             <div class="h-2"></div>

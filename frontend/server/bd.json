@@ -242,6 +242,49 @@
         "Estudos de um novo framework (Vite) para desenvolvimento web"
       ],
       "clientType": "freelance"
+    },
+    {
+      "id": "5",
+      "title": "Portifólio Banda Aurah",
+      "slug": "banda-aurah-portfolio",
+      "description": "Portfólio da banda Aurah, desenvolvido para apresentar seus projetos, habilidades e experiência profissional. Construído com Angular e Tailwind CSS, o site é responsivo e otimizado para SEO.",
+      "shortDescription": "Portfólio da banda Aurah responsivo com Angular e Tailwind CSS",
+      "thumbnail": "assets/images/projects/banda-aurah/banda-aurah1.png",
+      "images": [
+        "assets/images/projects/banda-aurah/banda-aurah2.png",
+        "assets/images/projects/banda-aurah/banda-aurah3.png"
+      ],
+      "thumbVideo": "assets/images/projects/banda-aurah/banda-aurah_video.mp4",
+      "technologies": [
+        "Angular",
+        "Tailwind CSS",
+        "Angular Material",
+        "RxJS",
+        "Express",
+        "Node.js"
+      ],
+      "category": "web",
+      "featured": false,
+      "liveUrl": "https://portfolio-banda-aurah.vercel.app/",
+      "startDate": "2026-01-20",
+      "endDate": "2026-02-10",
+      "status": "completed",
+      "tags": [
+        "portfolio",
+        "web",
+        "angular"
+      ],
+      "challenges": [
+        "Design responsivo para múltiplos dispositivos",
+        "Otimização de performance e SEO"
+      ],
+      "learnings": [
+        "Melhores práticas de desenvolvimento web",
+        "Implementação de design responsivo com Tailwind CSS",
+        "Deploy de aplicações Angular",
+        "Boas práticas de UI/UX com Angular Material"
+      ],
+      "clientType": "freelance"
     }
   ],
   "skills": [
