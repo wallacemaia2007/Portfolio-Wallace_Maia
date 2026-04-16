@@ -1,10 +1,11 @@
-import {
+﻿import {
   Directive,
   ElementRef,
   Input,
   OnDestroy,
   OnInit,
   Renderer2,
+  inject,
 } from '@angular/core';
 
 @Directive({
@@ -14,45 +15,22 @@ import {
 export class ScrollRevealDirective implements OnInit, OnDestroy {
   @Input() revealFrom: 'bottom' | 'top' | 'left' | 'right' = 'bottom';
   @Input() revealDelay = 0;
-  @Input() revealOnce = false;
-  @Input() hideOnExit = true;
+  @Input() revealOnce = true;
+  @Input() hideOnExit = false;
 
   private observer!: IntersectionObserver;
-  private initialTransform = 'translateY(40px)';
-  private revealTimeout: ReturnType<typeof setTimeout> | null = null;
+  private initialTransform = 'translateY(30px)';
+  private hasRevealed = false;
 
-  constructor(
-    private el: ElementRef,
-    private renderer: Renderer2,
-  ) {}
+  private el = inject(ElementRef);
+  private renderer = inject(Renderer2);
 
   ngOnInit(): void {
     this.setInitialStyles();
-
-    this.observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            this.reveal();
-            if (this.revealOnce) {
-              this.observer.unobserve(this.el.nativeElement);
-            }
-          } else if (this.hideOnExit && !this.revealOnce) {
-            this.hide();
-          }
-        });
-      },
-      {
-        threshold: [0, 0.2],
-        rootMargin: '0px',
-      },
-    );
-
-    this.observer.observe(this.el.nativeElement);
+    this.setupIntersectionObserver();
   }
 
   ngOnDestroy(): void {
-    this.clearRevealTimeout();
     if (this.observer) {
       this.observer.disconnect();
     }
@@ -62,57 +40,83 @@ export class ScrollRevealDirective implements OnInit, OnDestroy {
     this.renderer.setStyle(this.el.nativeElement, 'opacity', '0');
     this.renderer.setStyle(
       this.el.nativeElement,
+      'will-change',
+      'opacity, transform'
+    );
+    this.renderer.setStyle(
+      this.el.nativeElement,
       'transition',
-      'opacity 0.6s ease, transform 0.6s ease',
+      'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
     );
 
     switch (this.revealFrom) {
       case 'top':
-        this.initialTransform = 'translateY(-40px)';
+        this.initialTransform = 'translateY(-30px)';
         break;
       case 'left':
-        this.initialTransform = 'translateX(-40px)';
+        this.initialTransform = 'translateX(-30px)';
         break;
       case 'right':
-        this.initialTransform = 'translateX(40px)';
+        this.initialTransform = 'translateX(30px)';
+        break;
+      case 'bottom':
+      default:
+        this.initialTransform = 'translateY(30px)';
         break;
     }
 
     this.renderer.setStyle(
       this.el.nativeElement,
       'transform',
-      this.initialTransform,
+      this.initialTransform
     );
   }
 
-  private reveal(): void {
-    this.clearRevealTimeout();
+  private setupIntersectionObserver(): void {
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !this.hasRevealed) {
+            this.reveal();
+          } else if (!entry.isIntersecting && this.hideOnExit && !this.revealOnce) {
+            this.hide();
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+        rootMargin: '-40px 0px',
+      }
+    );
 
-    this.revealTimeout = setTimeout(() => {
-      this.renderer.setStyle(this.el.nativeElement, 'opacity', '1');
-      this.renderer.setStyle(
-        this.el.nativeElement,
-        'transform',
-        'translate(0)',
-      );
-    }, this.revealDelay);
+    this.observer.observe(this.el.nativeElement);
+  }
+
+  private reveal(): void {
+    this.hasRevealed = true;
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        this.renderer.setStyle(this.el.nativeElement, 'opacity', '1');
+        this.renderer.setStyle(
+          this.el.nativeElement,
+          'transform',
+          'translate(0)'
+        );
+
+        if (this.revealOnce) {
+          this.observer.unobserve(this.el.nativeElement);
+        }
+      });
+    });
   }
 
   private hide(): void {
-    this.clearRevealTimeout();
-
     this.renderer.setStyle(this.el.nativeElement, 'opacity', '0');
     this.renderer.setStyle(
       this.el.nativeElement,
       'transform',
-      this.initialTransform,
+      this.initialTransform
     );
-  }
-
-  private clearRevealTimeout(): void {
-    if (this.revealTimeout !== null) {
-      clearTimeout(this.revealTimeout);
-      this.revealTimeout = null;
-    }
   }
 }

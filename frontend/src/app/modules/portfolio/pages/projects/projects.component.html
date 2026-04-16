@@ -6,7 +6,7 @@
         <app-section-header title="Meus Projetos" subtitle="Uma coleção dos meus trabalhos mais recentes e impactantes."
           align="center"></app-section-header>
 
-        <div class="max-w-4xl mx-auto animate-fade-in" style="animation-delay: 0.4s;">
+        <div class="max-w-4xl mx-auto">
           <app-stat-cards [stats]="statistics"></app-stat-cards>
         </div>
       </div>
@@ -17,7 +17,6 @@
   @if (latestCompletedProject) {
   <section appScrollReveal revealFrom="bottom" [revealDelay]="100"
     class="py-12 bg-beige-dark dark:bg-custom-black hidden md:block">
-    <!-- largura aumentada -->
     <div class="max-w-[1600px] mx-auto px-6 lg:px-10">
       <div
         class="relative rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-r from-white/5 to-white/[0.02] backdrop-blur-md transition-all duration-500 group cursor-pointer"
@@ -26,7 +25,6 @@
         (mouseleave)="onProjectCardLeave(latestCompletedProject, latestPreviewVideo)">
 
         <div class="flex flex-col">
-          <!-- TOP: MEDIA -->
           <div class="relative h-[280px] lg:h-[360px] overflow-hidden">
 
             <img [src]="latestCompletedProject.thumbnail" [alt]="latestCompletedProject.title"
@@ -43,11 +41,9 @@
             <div class="absolute inset-0 bg-gradient-to-t from-custom-black/40 via-transparent to-transparent"></div>
           </div>
 
-          <!-- BOTTOM: CONTENT -->
           <div class="flex items-center">
             <div class="px-8 py-8 lg:px-10 lg:py-8">
 
-              <!-- badges -->
               <div class="flex flex-wrap items-center gap-3 mb-5">
                 <span class="px-4 py-2 bg-primary text-white rounded-full text-sm font-bold flex items-center gap-2">
                   <mat-icon class="text-lg">star</mat-icon>
@@ -69,7 +65,6 @@
                 }
               </div>
 
-              <!-- categoria -->
               <div class="flex items-center gap-2 mb-3">
                 <mat-icon class="text-primary text-xl">
                   {{ getCategoryIcon(latestCompletedProject.category) }}
@@ -79,17 +74,14 @@
                 </span>
               </div>
 
-              <!-- titulo -->
               <h2 class="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
                 {{ latestCompletedProject.title }}
               </h2>
 
-              <!-- descricao -->
               <p class="text-base md:text-lg text-white/90 dark:text-gray-300 mb-6 line-clamp-3">
                 {{ latestCompletedProject.description }}
               </p>
 
-              <!-- tags -->
               <div class="flex flex-wrap gap-2 mb-6">
                 @for (tech of latestCompletedProject.technologies.slice(0, 5); track tech) {
                 <span
@@ -105,7 +97,6 @@
                 }
               </div>
 
-              <!-- botoes -->
               <div class="flex flex-wrap gap-3">
                 <button (click)="openProjectModal(latestCompletedProject); $event.stopPropagation()"
                   class="px-6 py-3 bg-primary hover:bg-primary-dark text-white rounded-xl font-bold text-base transition-all hover:scale-[1.03] flex items-center gap-2">
@@ -123,13 +114,12 @@
                 }
               </div>
 
-              <!-- data -->
               <div class="mt-6 flex items-center gap-2 text-gray-400 text-sm">
                 <mat-icon class="text-base">calendar_today</mat-icon>
 
                 @if(latestCompletedProject.endDate) {
                 <span>
-                  {{ formatDate(latestCompletedProject.startDate) }} — {{ formatDate(latestCompletedProject.endDate) }}
+                  {{ formatDate(latestCompletedProject.startDate) }} - {{ formatDate(latestCompletedProject.endDate) }}
                 </span>
                 }
 

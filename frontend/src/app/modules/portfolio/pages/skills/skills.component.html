@@ -1,4 +1,4 @@
-<div class="min-h-screen bg-white dark:bg-custom-black transition-colors duration-300">
+﻿<div class="min-h-screen bg-white dark:bg-custom-black transition-colors duration-300">
   <section class="py-20 bg-gradient-to-br from-beige-light to-white dark:from-custom-black dark:to-custom-black-light"
     appScrollReveal revealFrom="bottom" [revealDelay]="100">
     <div class="container mx-auto px-4">
@@ -78,7 +78,7 @@
   <section class="py-20" appScrollReveal revealFrom="bottom" [revealDelay]="100">
     <div class="container mx-auto px-4 space-y-16">
       @for (group of filteredSkillGroups; track group.category) {
-      <div class="animate-fade-in">
+      <div>
         <app-skill-category [categoryName]="group.categoryName" [skills]="group.skills"
           [categoryIcon]="group.icon"></app-skill-category>
       </div>

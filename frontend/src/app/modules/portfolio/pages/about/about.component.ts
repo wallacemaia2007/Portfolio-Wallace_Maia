@@ -1,9 +1,7 @@
-import {
+﻿import {
   Component,
   inject,
   OnInit,
-  AfterViewInit,
-  OnDestroy,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
@@ -43,7 +41,7 @@ import {
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })
-export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
+export class AboutComponent implements OnInit {
   private portfolioService = inject(PortfolioService);
 
   aboutInfo!: AboutInfo;
@@ -74,8 +72,6 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
     ],
   };
 
-  private intersectionObserver?: IntersectionObserver;
-
   ngOnInit(): void {
     this.loadAboutInfo();
     this.loadEducation();
@@ -84,27 +80,15 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
     this.loadHobbies();
   }
 
-  ngAfterViewInit(): void {
-    this.setupScrollRevealAnimations();
-  }
-
-  ngOnDestroy(): void {
-    if (this.intersectionObserver) {
-      this.intersectionObserver.disconnect();
-    }
-  }
-
   private loadAboutInfo(): void {
     this.isLoading = true;
     this.portfolioService.getAboutInfo().subscribe({
       next: (data) => {
         this.aboutInfo = data;
         this.isLoading = false;
-
-        setTimeout(() => this.setupScrollRevealAnimations(), 100);
       },
       error: (err) => {
-        console.error('Erro ao carregar informações do About:', err);
+        console.error('Erro ao carregar informacoes do About:', err);
         this.isLoading = false;
       },
     });
@@ -115,11 +99,9 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
       next: (data) => {
         this.educationList = data;
         this.isLoading = false;
-
-        setTimeout(() => this.setupScrollRevealAnimations(), 100);
       },
       error: (err) => {
-        console.error('Erro ao carregar informações da Educação:', err);
+        console.error('Erro ao carregar informacoes da Educacao:', err);
         this.isLoading = false;
       },
     });
@@ -130,11 +112,9 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
       next: (data) => {
         this.journeyItems = data;
         this.isLoading = false;
-
-        setTimeout(() => this.setupScrollRevealAnimations(), 100);
       },
       error: (err) => {
-        console.error('Erro ao carregar informações da Jornada:', err);
+        console.error('Erro ao carregar informacoes da Jornada:', err);
         this.isLoading = false;
       },
     });
@@ -145,11 +125,9 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
       next: (data) => {
         this.values = data;
         this.isLoading = false;
-
-        setTimeout(() => this.setupScrollRevealAnimations(), 100);
       },
       error: (err) => {
-        console.error('Erro ao carregar informações dos Valores:', err);
+        console.error('Erro ao carregar informacoes dos Valores:', err);
         this.isLoading = false;
       },
     });
@@ -160,48 +138,11 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
       next: (data) => {
         this.hobbies = data;
         this.isLoading = false;
-
-        setTimeout(() => this.setupScrollRevealAnimations(), 100);
       },
       error: (err) => {
-        console.error('Erro ao carregar informações dos Hobbies:', err);
+        console.error('Erro ao carregar informacoes dos Hobbies:', err);
         this.isLoading = false;
       },
-    });
-  }
-
-  private setupScrollRevealAnimations(): void {
-    const sections = document.querySelectorAll('section[appScrollReveal]');
-
-    const observerOptions: IntersectionObserverInit = {
-      threshold: 0.3,
-      rootMargin: '0px',
-    };
-
-    this.intersectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        const section = entry.target as HTMLElement;
-
-        if (entry.isIntersecting) {
-          section.classList.add('in-view');
-          section.classList.remove('scroll-exit');
-
-          if (index % 2 === 0) {
-            section.classList.add('from-left');
-            section.classList.remove('from-right');
-          } else {
-            section.classList.add('from-right');
-            section.classList.remove('from-left');
-          }
-        } else {
-          section.classList.remove('in-view');
-          section.classList.add('scroll-exit');
-        }
-      });
-    }, observerOptions);
-
-    sections.forEach((section) => {
-      this.intersectionObserver?.observe(section);
     });
   }
 

@@ -1,4 +1,4 @@
-<div
+﻿<div
   class="min-h-screen bg-white dark:bg-custom-black transition-colors duration-300"
 >
   <section
@@ -97,7 +97,7 @@
           <div
             appScrollReveal
             revealFrom="bottom"
-            [revealDelay]="i * 150"
+            [revealDelay]="i * 100"
             class="group"
           >
             <div
@@ -178,7 +178,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
         @for (education of educationList; track education.id; let i = $index) {
-          <div appScrollReveal revealFrom="bottom" [revealDelay]="i * 100">
+          <div appScrollReveal revealFrom="bottom" [revealDelay]="i * 80">
             <div
               class="relative h-full p-6 bg-white dark:bg-custom-black rounded-2xl border border-primary/20 hover:border-primary/50 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group transform group-hover:scale-105"
             >
