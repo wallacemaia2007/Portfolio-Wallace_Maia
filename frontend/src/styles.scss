@@ -1,16 +1,8 @@
-/* ═══════════════════════════════════════════════════════════
-   🎨 ANGULAR MATERIAL + TAILWIND - PALETA VERMELHA/BEGE/PRETA
-   ═══════════════════════════════════════════════════════════ */
-
 @use "@angular/material" as mat;
 @include mat.core();
 
-// Importar animações globais
 @import 'styles/animations';
 
-// ═══════════════════════════════════════
-// 🔴 PALETA PRINCIPAL - VERMELHO
-// ═══════════════════════════════════════
 $my-red-palette: (
   50: #fde8e9,
   100: #fac5c8,
@@ -18,11 +10,9 @@ $my-red-palette: (
   300: #f2777e,
   400: #ef5962,
   500: #9b1b1f,
-  // Red Medium (COR PRINCIPAL)
   600: #b51820,
   700: #9b1b1f,
   800: #6b0b0f,
-  // Red Dark
   900: #6b0b0f,
   contrast: (50: #000000,
     100: #000000,
@@ -37,9 +27,6 @@ $my-red-palette: (
   ),
 );
 
-// ═══════════════════════════════════════
-// ✅ PALETA ACCENT - VERDE
-// ═══════════════════════════════════════
 $my-green-palette: (
   50: #e8f5e9,
   100: #c8e6c9,
@@ -47,7 +34,6 @@ $my-green-palette: (
   300: #81c784,
   400: #66bb6a,
   500: #4caf50,
-  // Verde
   600: #43a047,
   700: #388e3c,
   800: #2e7d32,
@@ -65,9 +51,6 @@ $my-green-palette: (
   ),
 );
 
-// ═══════════════════════════════════════
-// ⚠️ PALETA WARN - VERMELHO ESCURO
-// ═══════════════════════════════════════
 $my-red-dark-palette: (
   50: #fbe9ea,
   100: #f5c8ca,
@@ -75,7 +58,6 @@ $my-red-dark-palette: (
   300: #e87e84,
   400: #e36269,
   500: #6b0b0f,
-  // Red Dark
   600: #c93d45,
   700: #c1353c,
   800: #b92d34,
@@ -97,9 +79,6 @@ $my-app-primary: mat.define-palette($my-red-palette, 500);
 $my-app-accent: mat.define-palette($my-green-palette, 500);
 $my-app-warn: mat.define-palette($my-red-dark-palette, 500);
 
-// ═══════════════════════════════════════
-// ☀️ TEMA CLARO
-// ═══════════════════════════════════════
 $my-app-light-theme: mat.define-light-theme((color: (primary: $my-app-primary,
         accent: $my-app-accent,
         warn: $my-app-warn,
@@ -110,9 +89,6 @@ $my-app-light-theme: mat.define-light-theme((color: (primary: $my-app-primary,
 
 @include mat.all-component-themes($my-app-light-theme);
 
-// ═══════════════════════════════════════
-// 🌙 TEMA ESCURO
-// ═══════════════════════════════════════
 $my-app-dark-theme: mat.define-dark-theme((color: (primary: $my-app-primary,
         accent: $my-app-accent,
         warn: $my-app-warn,
@@ -121,20 +97,41 @@ $my-app-dark-theme: mat.define-dark-theme((color: (primary: $my-app-primary,
 
 .dark {
   @include mat.all-component-colors($my-app-dark-theme);
-  background-color: #2d2d2d;
-  color: #ffffff;
+  background-color: var(--color-surface-dark);
+  color: var(--color-text-primary-dark);
 }
 
-// ═══════════════════════════════════════
-// 🎨 TAILWIND CSS
-// ═══════════════════════════════════════
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-// ═══════════════════════════════════════
-// 🌐 ESTILOS GLOBAIS
-// ═══════════════════════════════════════
+:root {
+  --color-primary: #9B1B1F;
+  --color-primary-light: #B52228;
+  --color-primary-dark: #6B0B0F;
+  --color-success: #4CAF50;
+  --color-success-light: #81C784;
+  --color-surface: #FFFFFF;
+  --color-surface-dark: #2D2D2D;
+  --color-surface-elevated: #404040;
+  --color-section-light: #FFFFFF;
+  --color-section-alt-light: #F5F0EA;
+  --color-section-card-light: #F8F8F8;
+  --color-section-dark: #1C1A1A;
+  --color-section-alt-dark: #2A2727;
+  --color-section-card-dark: #353535;
+  --color-text-primary: #2D2D2D;
+  --color-text-primary-dark: #FFFFFF;
+  --color-text-secondary: #666666;
+  --color-text-secondary-dark: #A0A0A0;
+  --color-text-muted: #9CA3AF;
+  --color-text-muted-dark: #6B7280;
+  --color-focus: #9B1B1F;
+  --color-scrollbar: #9B1B1F;
+  --shadow-glow-sm: 0 0 10px rgba(155, 27, 31, 0.2);
+  --shadow-glow: 0 0 20px rgba(155, 27, 31, 0.3);
+  --shadow-glow-lg: 0 0 30px rgba(155, 27, 31, 0.4);
+}
 
 html,
 body {
@@ -144,35 +141,31 @@ body {
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #ffffff;
-  color: #2d2d2d;
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
 
   &.dark {
-    background-color: #2d2d2d;
-    color: #ffffff;
+    background-color: var(--color-surface-dark);
+    color: var(--color-text-primary-dark);
   }
 }
-
-// ═══════════════════════════════════════
-// 🔧 CUSTOMIZAÇÕES ANGULAR MATERIAL
-// ═══════════════════════════════════════
 
 .mat-mdc-raised-button,
 .mat-mdc-unelevated-button {
   &.mat-primary {
-    background-color: #9b1b1f !important;
+    background-color: var(--color-primary) !important;
     color: white !important;
 
     &:hover {
-      background-color: #6b0b0f !important;
+      background-color: var(--color-primary-dark) !important;
     }
   }
 }
 
 .mat-mdc-outlined-button {
   &.mat-primary {
-    border-color: #9b1b1f !important;
-    color: #9b1b1f !important;
+    border-color: var(--color-primary) !important;
+    color: var(--color-primary) !important;
 
     &:hover {
       background-color: rgba(155, 27, 31, 0.04) !important;
@@ -181,17 +174,9 @@ body {
 }
 
 .dark .mat-mdc-card {
-  background-color: #404040 !important;
-  color: #ffffff !important;
+  background-color: var(--color-surface-elevated) !important;
+  color: var(--color-text-primary-dark) !important;
 }
-
-// ═══════════════════════════════════════
-// 📜 SCROLLBAR CUSTOMIZADA - LIGHT & DARK MODE
-// ═══════════════════════════════════════
-
-// ═══════════════════════════════════════
-// 📜 SCROLLBAR - MINIMALISTA (só o thumb aparece)
-// ═══════════════════════════════════════
 
 ::-webkit-scrollbar {
   width: 6px;
@@ -203,27 +188,24 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #9b1b1f;
+  background: var(--color-scrollbar);
   border-radius: 100px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #b52228;
+  background: var(--color-primary-light);
 }
 
 ::-webkit-scrollbar-thumb:active {
-  background: #6b0b0f;
+  background: var(--color-primary-dark);
 }
 
 ::-webkit-scrollbar-corner {
   background: none !important;
 }
 
-// ═══════════════════════════════════════
-// ♿ ACESSIBILIDADE
-// ═══════════════════════════════════════
 *:focus-visible {
-  outline: 2px solid #9b1b1f;
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
@@ -231,24 +213,15 @@ body {
   border-right: none;
 }
 
-// ═══════════════════════════════════════
-// ✨ ANIMAÇÕES ADICIONAIS
-// ═══════════════════════════════════════
 @keyframes float {
-
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0);
   }
-
   50% {
     transform: translateY(-10px);
   }
 }
 
-// ═══════════════════════════════════════════════════════════════════════════════════════════════════════════
-// SCROLL BEHAVIOR SUAVE GLOBAL
-// ═══════════════════════════════════════════════════════════════════════════════════════════════════════════
 html {
   scroll-behavior: smooth;
 }

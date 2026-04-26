@@ -813,7 +813,7 @@
       "Comecei minha jornada na programação ainda no ensino médio, quando fiz meu primeiro curso de lógica de programação. Desde então, sou apaixonado por resolver problemas através do código.",
       "Ao longo dos anos, desenvolvei expertise em diversas tecnologias, especialmente em Angular no frontend e Java/Spring Boot no backend. Cada projeto me ensina algo novo e me torna um desenvolvedor melhor.",
       "Além de código, acredito na importância de criar experiências que façam diferença. Cada aplicação que desenvolvo é pensada não apenas em funcionalidade, mas em como impactará o usuário final.",
-      "Atualmente, estou cursando Sistemas de Informação na UEMG em Passos, MG (3º período), o que complementa minha experiência prática com conhecimento teórico sólido e visão mais ampla da computação."
+      "Atualmente, estou cursando Sistemas de Informação na UFU em Monte Carmelo, MG , o que complementa minha experiência prática com conhecimento teórico sólido e visão mais ampla da computação."
     ],
     "journeyItems": [
       {
@@ -850,6 +850,13 @@
         "description": "Consegui meu primeiro emprego como Desenvolvedor Frontend Angular na CroSoften, onde aplico minhas habilidades e continuo aprendendo com os outros devs.",
         "type": "achievement",
         "icon": "rocket"
+      },
+      {
+        "year": "2026",
+        "title": "Aprovação na Federal de Uberlândia",
+        "description": "Consegui minha aprovação na Universidade Federal de Uberlândia, um marco importante que reflete meu esforço e dedicação aos estudos e à minha carreira.",
+        "type": "achievement",
+        "icon": "rocket"
       }
     ],
     "educationList": [
@@ -858,12 +865,22 @@
         "institution": "UEMG - Universidade Estadual de Minas Gerais",
         "course": "Sistemas de Informação",
         "startDate": "2025-03",
-        "current": true,
-        "description": "Cursando o 3º período. Aprendendo fundamentos sólidos de computação, algoritmos, arquitetura de sistemas e gestão de projetos.",
+        "endDate": "2026-03",
+        "current": false,
+        "description": "Cursei o 1 ano da faculdade. Aprendendo fundamentos sólidos de computação, algoritmos, arquitetura de sistemas e gestão de projetos.",
         "location": "Passos, MG"
       },
       {
         "id": "2",
+        "institution": "UFU - Universidade Federal de Uberlândia",
+        "course": "Sistemas de Informação",
+        "startDate": "2026-03",
+        "current": true,
+        "description": "Cursando o 1º período. Aprendendo fundamentos sólidos de computação, algoritmos, arquitetura de sistemas e gestão de projetos.",
+        "location": "Monte Carmelo, MG"
+      },
+      {
+        "id": "3",
         "institution": "UDEMY",
         "course": "Angular 19 - Curso Completo do Iniciante ao Avançado (2026)",
         "certificateUrl": "https://www.udemy.com/certificate/UC-68ca9451-6d8b-4b8d-b9f6-7ca6e6b9ed34/",
@@ -874,7 +891,7 @@
         "location": "Online"
       },
       {
-        "id": "3",
+        "id": "4'",
         "institution": "UDEMY",
         "course": "Java COMPLETO Programação Orientada a Objetos + Projetos + Spring Boot",
         "certificateUrl": "https://www.udemy.com/certificate/UC-35fc7385-fc29-4e4b-a9ba-dfabbba7fbd3/",
@@ -885,7 +902,7 @@
         "location": "Online"
       },
       {
-        "id": "4",
+        "id": "5",
         "institution": "DIO - Digital Innovation One",
         "course": "Santander 2025 - Back-End com Java e Spring Boot",
         "certificateUrl": "assets/docs/bootcamp_java.pdf",

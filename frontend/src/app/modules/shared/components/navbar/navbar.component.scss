@@ -2,32 +2,23 @@
   display: block;
 }
 
-// ═══════════════════════════════════════
-// NAV BASE
-// ═══════════════════════════════════════
-
 nav {
   transition:
     background 0.35s cubic-bezier(0.16, 1, 0.3, 1),
     border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1); // Transição mais rápida para o transform
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 
-  // Garante que o background esteja sempre presente quando o header não está escondido
   &.header--scrolled {
-    background: rgba(255, 255, 255, 0.92) !important; // Exemplo de cor clara com opacidade
+    background: rgba(255, 255, 255, 0.92) !important;
   }
 
   :host-context(.dark) & {
     &.header--scrolled {
-      background: rgba(28, 26, 26, 0.92) !important; // Cor escura com opacidade
+      background: rgba(28, 26, 26, 0.92) !important;
     }
   }
 }
-
-// ═══════════════════════════════════════
-// ESTADO SCROLLED
-// ═══════════════════════════════════════
 
 nav.header--scrolled {
   border-bottom-color: rgba(229, 231, 235, 0.8) !important;
@@ -39,7 +30,6 @@ nav.header--scrolled {
     opacity: 1 !important;
   }
 
-  // Garante que o background seja opaco imediatamente ao rolar
   background: var(--header-scrolled-bg-light, rgba(255, 255, 255, 0.92));
 }
 
@@ -48,68 +38,55 @@ nav.header--scrolled {
   border-bottom-color: rgba(55, 65, 81, 0.6) !important;
 }
 
-// ═══════════════════════════════════════
-// ESTADO HIDDEN (ao rolar para baixo)
-// ═══════════════════════════════════════
-
 nav.header--hidden {
   transform: translateY(-110%);
 }
-
-// ═══════════════════════════════════════
-// LINKS DE NAVEGAÇÃO DESKTOP
-// ═══════════════════════════════════════
 
 .nav-link {
   position: relative;
 
   &--active,
   &.nav-link--active {
-    color: #9B1B1F !important;
+    color: var(--color-primary) !important;
     background-color: rgba(155, 27, 31, 0.07);
 
     .dark & {
-      color: #B52228 !important;
+      color: var(--color-primary-light) !important;
       background-color: rgba(155, 27, 31, 0.12);
     }
 
     mat-icon {
-      color: #9B1B1F;
+      color: var(--color-primary);
     }
   }
 }
 
-// classe aplicada pelo routerLinkActive
 .nav-link--active {
-  color: #9B1B1F !important;
+  color: var(--color-primary) !important;
   background-color: rgba(155, 27, 31, 0.07);
 
   mat-icon {
-    color: #9B1B1F;
+    color: var(--color-primary);
   }
 }
 
 :host-context(.dark) .nav-link--active {
-  color: #B52228 !important;
+  color: var(--color-primary-light) !important;
   background-color: rgba(155, 27, 31, 0.12);
 }
 
-// ═══════════════════════════════════════
-// MENU MOBILE
-// ═══════════════════════════════════════
-
 .mobile-link--active {
-  color: #9B1B1F !important;
+  color: var(--color-primary) !important;
   background-color: rgba(155, 27, 31, 0.06);
   font-weight: 500;
 
   mat-icon {
-    color: #9B1B1F;
+    color: var(--color-primary);
   }
 }
 
 :host-context(.dark) .mobile-link--active {
-  color: #B52228 !important;
+  color: var(--color-primary-light) !important;
   background-color: rgba(155, 27, 31, 0.1);
 }
 
@@ -118,7 +95,6 @@ nav.header--hidden {
     opacity: 0;
     transform: translateY(-8px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -129,10 +105,6 @@ nav.header--hidden {
   animation: slideDown 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-// ═══════════════════════════════════════
-// LOGO
-// ═══════════════════════════════════════
-
 .logo-badge img {
   transition: transform 0.25s ease;
 }
@@ -141,19 +113,11 @@ a:hover .logo-badge img {
   transform: scale(1.08);
 }
 
-// ═══════════════════════════════════════
-// ACESSIBILIDADE
-// ═══════════════════════════════════════
-
 *:focus-visible {
-  outline: 2px solid #9B1B1F;
+  outline: 2px solid var(--color-primary);
   outline-offset: 3px;
   border-radius: 6px;
 }
-
-// ═══════════════════════════════════════
-// PRINT
-// ═══════════════════════════════════════
 
 @media print {
   nav {
@@ -161,12 +125,7 @@ a:hover .logo-badge img {
   }
 }
 
-// ═══════════════════════════════════════
-// REDUCED MOTION
-// ═══════════════════════════════════════
-
 @media (prefers-reduced-motion: reduce) {
-
   nav,
   .animate-slide-down,
   * {

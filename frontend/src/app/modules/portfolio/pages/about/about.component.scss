@@ -5,3 +5,22 @@
 section {
   transition: all 0.3s ease;
 }
+
+.parallax-banner {
+  background-image: url('/assets/banner-ufu.webp');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  min-height: 40vh;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (hover: none) {
+  .parallax-banner {
+    background-attachment: scroll;
+  }
+}

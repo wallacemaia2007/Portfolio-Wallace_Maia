@@ -5,53 +5,81 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // ═══════════════════════════════════════
-        // PALETA PRINCIPAL - Vermelho/Bege/Preto
-        // ═══════════════════════════════════════
-
         primary: {
-          DEFAULT: "#9B1B1F", // Red Medium
-          light: "#B52228", // Red claro
-          dark: "#6B0B0F", // Red Dark
+          DEFAULT: "#9B1B1F",
+          light: "#B52228",
+          dark: "#6B0B0F",
         },
-
+        success: {
+          DEFAULT: "#4CAF50",
+          light: "#81C784",
+          dark: "#388E3C",
+        },
+        surface: {
+          light: "#FFFFFF",
+          dark: "#2D2D2D",
+        },
+        "surface-elevated": {
+          light: "#FFFFFF",
+          dark: "#404040",
+        },
+        "text-primary": {
+          light: "#2D2D2D",
+          dark: "#FFFFFF",
+        },
+        "text-secondary": {
+          light: "#666666",
+          dark: "#A0A0A0",
+        },
+        "text-muted": {
+          light: "#9CA3AF",
+          dark: "#6B7280",
+        },
+        border: {
+          light: "#E5E7EB",
+          dark: "#374151",
+        },
+        focus: "#9B1B1F",
+        scrollbar: "#9B1B1F",
         beige: {
-          DEFAULT: "#E8DDD3", // Beige principal
-          light: "#F5F0EA", // Beige claro
-          dark: "#E6D9CE", // Beige escuro
+          DEFAULT: "#E8DDD3",
+          light: "#F5F0EA",
+          dark: "#E6D9CE",
         },
-
         "custom-black": {
-          DEFAULT: "#1C1A1A", // Preto principal (mais elegante)
-          light: "#2A2727", // Preto suavizado
-          lighter: "#3A3636", // Cinza escuro quente
+          DEFAULT: "#1C1A1A",
+          light: "#2A2727",
+          lighter: "#3A3636",
         },
-
-        // Acento verde (success/completed)
         accent: {
           DEFAULT: "#4CAF50",
           light: "#81C784",
           dark: "#388E3C",
         },
+        section: {
+          light: "#FFFFFF",
+          dark: "#1C1A1A",
+          alt: {
+            light: "#F5F0EA",
+            dark: "#2A2727",
+          },
+          card: {
+            light: "#F8F8F8",
+            dark: "#353535",
+          },
+        },
       },
-
       boxShadow: {
-        sm: "0 1px 2px 0 rgba(155, 27, 31, 0.05)",
-        md: "0 4px 6px -1px rgba(155, 27, 31, 0.1)",
-        lg: "0 10px 15px -3px rgba(155, 27, 31, 0.1)",
-        xl: "0 20px 25px -5px rgba(155, 27, 31, 0.1)",
-        "2xl": "0 25px 50px -12px rgba(155, 27, 31, 0.25)",
-        glow: "0 0 20px rgba(155, 27, 31, 0.3)",
         "glow-sm": "0 0 10px rgba(155, 27, 31, 0.2)",
+        glow: "0 0 20px rgba(155, 27, 31, 0.3)",
+        "glow-lg": "0 0 30px rgba(155, 27, 31, 0.4)",
       },
-
       animation: {
         "fade-in": "fadeIn 0.5s ease-in",
         "slide-up": "slideUp 0.5s ease-out",
         "slide-down": "slideDown 0.5s ease-out",
         "spin-slow": "spin 3s linear infinite",
       },
-
       keyframes: {
         fadeIn: {
           "0%": { opacity: "0" },

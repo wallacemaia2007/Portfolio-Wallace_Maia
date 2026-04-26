@@ -1,4 +1,11 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  Component,
+  inject,
+  OnInit,
+  AfterViewInit,
+  OnDestroy,
+  ElementRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,7 +19,14 @@ import {
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
 import { ExperienceCardComponent } from './components/experience-card/experience-card.component';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
-import { InformationBarComponent, InformationBarData } from '../../../shared/components/information-bar/information-bar.component';
+import {
+  InformationBarComponent,
+  InformationBarData,
+} from '../../../shared/components/information-bar/information-bar.component';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface ExperienceTypeInfo {
   value: ExperienceType | 'all';
@@ -32,14 +46,15 @@ interface ExperienceTypeInfo {
     ScrollRevealDirective,
     ExperienceCardComponent,
     SectionHeaderComponent,
-    RouterLink,
     InformationBarComponent,
   ],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.scss',
 })
-export class ExperienceComponent implements OnInit {
+export class ExperienceComponent implements OnInit, AfterViewInit, OnDestroy {
   private portfolioService = inject(PortfolioService);
+  private el = inject(ElementRef);
+  private ctx!: gsap.Context;
 
   isLoading = true;
   experiences: Experience[] = [];
@@ -50,18 +65,8 @@ export class ExperienceComponent implements OnInit {
     title: 'Gostou da minha trajetória?',
     description: 'Vamos trabalhar juntos e criar algo incrível!',
     buttons: [
-      {
-        label: 'Ver Projetos',
-        icon: 'work',
-        color: 'theme',
-        link: '/projects',
-      },
-      {
-        label: 'Entrar em Contato',
-        icon: 'email',
-        color: 'theme',
-        link: '/contact',
-      },
+      { label: 'Ver Projetos', icon: 'work', color: 'theme', link: '/projects' },
+      { label: 'Entrar em Contato', icon: 'email', color: 'theme', link: '/contact' },
     ],
   };
 
@@ -69,13 +74,75 @@ export class ExperienceComponent implements OnInit {
     this.loadExperiences();
   }
 
+  ngAfterViewInit(): void {
+    this.ctx = gsap.context(() => {
+      this.initHeroParallax();
+    }, this.el.nativeElement);
+  }
+
+  ngOnDestroy(): void {
+    this.ctx?.revert();
+    ScrollTrigger.getAll().forEach((st) => st.kill());
+  }
+
+  // ─── Hero blobs parallax on scroll ─────────────────────────────────────────
+
+  private initHeroParallax(): void {
+    const blob1 = this.el.nativeElement.querySelector('.hero-blob-1');
+    const blob2 = this.el.nativeElement.querySelector('.hero-blob-2');
+    const blob3 = this.el.nativeElement.querySelector('.hero-blob-3');
+    const heroContent = this.el.nativeElement.querySelector('.hero-content');
+    const hero = this.el.nativeElement.querySelector('.experience-hero');
+
+    if (!hero) return;
+
+    // Blobs move at different speeds on scroll (parallax layers)
+    if (blob1) {
+      gsap.to(blob1, {
+        y: -80,
+        x: 30,
+        scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: 1.5 },
+      });
+    }
+
+    if (blob2) {
+      gsap.to(blob2, {
+        y: -50,
+        x: -20,
+        scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: 1 },
+      });
+    }
+
+    if (blob3) {
+      gsap.to(blob3, {
+        y: -120,
+        scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: 2 },
+      });
+    }
+
+    // Hero content fades up slightly as user scrolls past
+    if (heroContent) {
+      gsap.to(heroContent, {
+        y: -40,
+        opacity: 0.6,
+        scrollTrigger: {
+          trigger: hero,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      });
+    }
+  }
+
+  // ─── Data ──────────────────────────────────────────────────────────────────
+
   private loadExperiences(): void {
     this.isLoading = true;
 
     this.portfolioService.getExperience().subscribe({
       next: (experiences) => {
         this.experiences = experiences;
-
         this.buildExperienceTypes();
         this.isLoading = false;
       },
@@ -94,14 +161,12 @@ export class ExperienceComponent implements OnInit {
       typeCounts.set(experience.type, count + 1);
     });
 
-    this.experienceTypes = Array.from(typeCounts.entries()).map(
-      ([type, count]) => ({
-        value: type,
-        label: EXPERIENCE_TYPE_NAMES[type],
-        icon: this.getTypeIcon(type),
-        count,
-      })
-    );
+    this.experienceTypes = Array.from(typeCounts.entries()).map(([type, count]) => ({
+      value: type,
+      label: EXPERIENCE_TYPE_NAMES[type],
+      icon: this.getTypeIcon(type),
+      count,
+    }));
 
     this.experienceTypes.sort((a, b) => b.count - a.count);
   }

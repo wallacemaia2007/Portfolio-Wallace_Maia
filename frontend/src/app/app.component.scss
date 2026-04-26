@@ -3,15 +3,15 @@
 }
 
 .shadow-glow {
-  box-shadow: 0 0 20px rgba(155, 27, 31, 0.4);
+  box-shadow: var(--shadow-glow);
 }
 
 .shadow-glow-sm {
-  box-shadow: 0 0 10px rgba(155, 27, 31, 0.3);
+  box-shadow: var(--shadow-glow-sm);
 }
 
 .shadow-glow-lg {
-  box-shadow: 0 0 30px rgba(155, 27, 31, 0.5);
+  box-shadow: var(--shadow-glow-lg);
 }
 
 .line-clamp-1 {
@@ -75,7 +75,7 @@ button {
 
 .scrollbar-thin {
   scrollbar-width: thin;
-  scrollbar-color: #9b1b1f transparent;
+  scrollbar-color: var(--color-scrollbar) transparent;
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -86,17 +86,17 @@ button {
   }
 
   &::-webkit-scrollbar-thumb {
-    background: #9b1b1f;
+    background: var(--color-scrollbar);
     border-radius: 4px;
 
     &:hover {
-      background: #7a1619;
+      background: var(--color-primary-dark);
     }
   }
 }
 
 *:focus-visible {
-  outline: 3px solid #9b1b1f;
+  outline: 3px solid var(--color-focus);
   outline-offset: 2px;
   border-radius: 4px;
 }

@@ -1,25 +1,49 @@
+// Garante que o título não escureça no hover do card
+.card-title {
+  color: #111827 !important;
+  /* preto para light */
+  transition: none !important;
+}
+
+:host-context(.dark) .card-title {
+  color: white !important;
+}
+
 :host {
   display: block;
 }
 
 // ═══════════════════════════════════════
-// 💳 CARD - IMPROVED DESIGN
+// 💳 CARD BASE
 // ═══════════════════════════════════════
 
 article {
+  // GPU layer promotion for smooth GSAP transforms
   transform: translateZ(0);
   backface-visibility: hidden;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+  // GSAP controls transitions — remove CSS transition on transform to avoid conflicts
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 // ═══════════════════════════════════════
-// ✨ HOVER EFFECTS
+// 🌐 PARALLAX ORBS
 // ═══════════════════════════════════════
 
-.group:hover {
-  h3 {
-    letter-spacing: 0.02em;
-  }
+.parallax-orb-1,
+.parallax-orb-2 {
+  will-change: transform;
+  pointer-events: none;
+}
+
+// ═══════════════════════════════════════
+// 🎴 CARD GRADIENT OVERLAY
+// ═══════════════════════════════════════
+
+.card-gradient {
+  // Opacity managed by GSAP
+  will-change: opacity;
 }
 
 // ═══════════════════════════════════════
@@ -27,7 +51,9 @@ article {
 // ═══════════════════════════════════════
 
 @keyframes ping {
-  75%, 100% {
+
+  75%,
+  100% {
     transform: scale(2);
     opacity: 0;
   }
@@ -38,93 +64,96 @@ article {
 }
 
 // ═══════════════════════════════════════
-// 📊 INFO GRID
+// 📊 INFO ITEMS
 // ═══════════════════════════════════════
 
-.group\/info {
+.info-item {
   cursor: default;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+  // No CSS hover transforms — GSAP handles scale
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 
   &:hover {
-    background-color: rgba(155, 27, 31, 0.05);
+    background-color: rgba(155, 27, 31, 0.08);
   }
 }
 
-:host-context(.dark) .group\/info:hover {
-  background-color: rgba(239, 68, 68, 0.1);
+:host-context(.dark) .info-item:hover {
+  background-color: rgba(239, 68, 68, 0.12);
+}
+
+.info-icon {
+  will-change: transform;
+  transition: none; // GSAP controls this
 }
 
 // ═══════════════════════════════════════
-// 🏆 CONQUISTAS
+// 🏷️ TECH TAGS
 // ═══════════════════════════════════════
 
-.border-l-4 {
-  position: relative;
-  transition: all 0.3s ease;
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: -4px;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background: linear-gradient(to bottom, #4caf50, #81c784);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform 0.5s ease;
-  }
-
-  &:hover::before {
-    transform: scaleY(1);
-  }
-}
-
-.group\/achievement {
-  transition: all 0.3s ease;
+.tech-tag {
+  will-change: transform, opacity;
+  cursor: default;
+  // Remove CSS hover — GSAP handles scale/translate
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 
   &:hover {
-    .w-6.h-6 {
-      animation: check-bounce 0.6s ease;
-    }
+    background-color: rgba(155, 27, 31, 0.15);
+    border-color: rgba(155, 27, 31, 0.4);
+    color: inherit;
   }
 }
 
-@keyframes check-bounce {
-  0%, 100% {
-    transform: scale(1) rotate(0deg);
-  }
-  25% {
-    transform: scale(1.2) rotate(-10deg);
-  }
-  50% {
-    transform: scale(1.3) rotate(10deg);
-  }
-  75% {
-    transform: scale(1.2) rotate(-5deg);
-  }
+:host-context(.dark) .tech-tag:hover {
+  background-color: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
 }
 
 // ═══════════════════════════════════════
-// 🎨 GRADIENTS
+// 🎯 COMPANY LINK
 // ═══════════════════════════════════════
 
-.bg-gradient-to-br {
+.company-link {
   position: relative;
 
   &::after {
     content: '';
     position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, transparent 0%, rgba(155, 27, 31, 0.05) 100%);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width 0.35s ease;
+  }
+
+  &:hover::after {
+    width: 100%;
   }
 }
 
-.group:hover .bg-gradient-to-br::after {
-  opacity: 1;
+.link-icon {
+  will-change: transform, opacity;
+}
+
+// ═══════════════════════════════════════
+// 🎨 SHADOWS
+// ═══════════════════════════════════════
+
+:host-context(.light) article {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  &:hover {
+    box-shadow: 0 35px 60px -15px rgba(155, 27, 31, 0.25);
+  }
+}
+
+:host-context(.dark) article {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    box-shadow: 0 35px 60px -15px rgba(239, 68, 68, 0.35);
+  }
 }
 
 // ═══════════════════════════════════════
@@ -134,18 +163,6 @@ article {
 @media (max-width: 1024px) {
   article {
     padding: 2.5rem;
-  }
-
-  h3 {
-    font-size: 2rem;
-  }
-
-  .text-4xl {
-    font-size: 2rem;
-  }
-
-  .text-3xl {
-    font-size: 1.75rem;
   }
 }
 
@@ -157,114 +174,14 @@ article {
   h3 {
     font-size: 1.75rem;
   }
-
-  .text-4xl {
-    font-size: 1.75rem;
-  }
-
-  .text-3xl {
-    font-size: 1.5rem;
-  }
-
-  .text-2xl {
-    font-size: 1.25rem;
-  }
-
-  .text-xl {
-    font-size: 1.125rem;
-  }
-
-  .grid-cols-3 {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-  }
 }
 
 @media (max-width: 640px) {
   article {
     padding: 1.5rem;
     border-width: 1px;
-  }
-
-  h3 {
-    font-size: 1.5rem;
-  }
-
-  .text-4xl {
-    font-size: 1.5rem;
-  }
-
-  .text-3xl {
-    font-size: 1.25rem;
-  }
-
-  .text-xl {
-    font-size: 1rem;
-  }
-
-  .text-lg {
-    font-size: 0.9375rem;
-  }
-
-  .p-10 {
-    padding: 1.5rem;
-  }
-
-  .w-12.h-12 {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-
-  mat-icon {
-    font-size: 1.25rem !important;
-  }
-}
-
-// ═══════════════════════════════════════
-// 🎨 LIGHT/DARK MODE
-// ═══════════════════════════════════════
-
-:host-context(.light) {
-  article {
-    --card-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    --card-hover-shadow: 0 35px 60px -15px rgba(155, 27, 31, 0.3);
-  }
-}
-
-:host-context(.dark) {
-  article {
-    --card-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
-    --card-hover-shadow: 0 35px 60px -15px rgba(239, 68, 68, 0.4);
-  }
-
-  .shadow-xl {
-    box-shadow: var(--card-shadow);
-  }
-}
-
-.group:hover {
-  box-shadow: var(--card-hover-shadow);
-}
-
-// ═══════════════════════════════════════
-// 🎯 COMPANY LINK
-// ═══════════════════════════════════════
-
-.group\/link {
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: currentColor;
-    transition: width 0.3s ease;
-  }
-
-  &:hover::after {
-    width: calc(100% - 2rem);
+    // Disable 3D tilt on touch devices
+    transform-style: flat;
   }
 }
 
@@ -272,16 +189,6 @@ article {
 // ⚡ PERFORMANCE
 // ═══════════════════════════════════════
 
-// GPU acceleration
-article,
-.group\/info,
-.group\/achievement,
-span[class*="px-5"] {
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
-
-// Content visibility for better performance
 article {
   content-visibility: auto;
   contain-intrinsic-size: auto 500px;
@@ -297,14 +204,27 @@ article {
   border-radius: 0.75rem;
 }
 
-// High contrast mode
 @media (prefers-contrast: high) {
   article {
     border-width: 3px;
   }
+}
 
-  .border-2 {
-    border-width: 3px;
+// ═══════════════════════════════════════
+// ♿ REDUCED MOTION — disable GSAP visually
+// ═══════════════════════════════════════
+
+@media (prefers-reduced-motion: reduce) {
+
+  article,
+  .parallax-orb-1,
+  .parallax-orb-2,
+  .info-icon,
+  .tech-tag {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    will-change: auto;
   }
 }
 
@@ -319,47 +239,18 @@ article {
     border: 2px solid #000 !important;
     box-shadow: none !important;
     background: white !important;
-
-    &:hover {
-      transform: none;
-    }
+    transform: none !important;
 
     * {
       color: black !important;
     }
   }
 
-  .animate-ping {
-    animation: none !important;
-  }
-
-  // Hide hover effects
-  .absolute.inset-0 {
-    display: none;
-  }
-}
-
-// ═══════════════════════════════════════
-// ♿ REDUCED MOTION
-// ═══════════════════════════════════════
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-
-  article:hover {
-    transform: none;
-  }
-
-  .group\/info:hover,
-  .group\/achievement:hover,
-  span:hover {
-    transform: none;
+  .animate-ping,
+  .parallax-orb-1,
+  .parallax-orb-2,
+  .card-gradient {
+    display: none !important;
   }
 }
 
@@ -368,21 +259,8 @@ article {
 // ═══════════════════════════════════════
 
 [dir="rtl"] {
-  .border-l-4 {
-    border-left: none;
-    border-right: 4px solid var(--accent);
-  }
-
-  .group\/link::after {
+  .company-link::after {
     left: auto;
     right: 0;
-  }
-
-  .group-hover\/link\:translate-x-2:hover {
-    transform: translateX(-0.5rem);
-  }
-
-  .group\/achievement:hover {
-    transform: translateX(-0.5rem);
   }
 }
