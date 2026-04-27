@@ -3,5 +3,105 @@
 }
 
 section {
-  transition: all 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+
+// ═══════════════════════════════════════
+// 🕐 TIMELINE
+// ═══════════════════════════════════════
+
+.experience-timeline-item {
+  position: relative;
+}
+
+.timeline-dot {
+  will-change: transform;
+  // GSAP controla scale — sem CSS transition aqui
+}
+
+.timeline-line {
+  will-change: transform;
+  transform-origin: top;
+}
+
+// ═══════════════════════════════════════
+// 💳 EXPERIENCE CARD (home)
+// ═══════════════════════════════════════
+
+.experience-home-card {
+  will-change: transform, opacity;
+  // GSAP controla opacity e translateX — sem CSS transition nesses props
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+
+  &:hover {
+    border-color: rgba(155, 27, 31, 0.5);
+    box-shadow: 0 20px 40px -10px rgba(155, 27, 31, 0.2);
+  }
+}
+
+:host-context(.dark) .experience-home-card:hover {
+  border-color: rgba(239, 68, 68, 0.4);
+  box-shadow: 0 20px 40px -10px rgba(239, 68, 68, 0.2);
+}
+
+.card-hover-gradient {
+  will-change: opacity;
+}
+
+// ═══════════════════════════════════════
+// 🏷️ TECH CHIPS
+// ═══════════════════════════════════════
+
+.tech-chip {
+  will-change: transform, opacity;
+  cursor: default;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+// ═══════════════════════════════════════
+// ♿ REDUCED MOTION
+// ═══════════════════════════════════════
+
+@media (prefers-reduced-motion: reduce) {
+
+  .timeline-dot,
+  .timeline-line,
+  .experience-home-card,
+  .tech-chip,
+  .card-hover-gradient {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    will-change: auto;
+  }
+
+  // Linha visível imediatamente sem animação
+  .timeline-line {
+    transform: scaleY(1) !important;
+  }
+}
+
+// ═══════════════════════════════════════
+// 🖨️ PRINT
+// ═══════════════════════════════════════
+
+@media print {
+  .experience-home-card {
+    opacity: 1 !important;
+    transform: none !important;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    break-inside: avoid;
+  }
+
+  .timeline-line {
+    transform: scaleY(1) !important;
+  }
+
+  .timeline-dot {
+    transform: scale(1) !important;
+  }
 }

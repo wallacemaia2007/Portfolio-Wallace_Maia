@@ -24,8 +24,8 @@
     </div>
   </section>
 
-  <section class="py-20 bg-section-alt-light dark:bg-custom-black" appScrollReveal revealFrom="bottom" [revealDelay]="100"
-    [revealOnce]="false">
+  <section class="py-20 bg-section-alt-light dark:bg-custom-black" appScrollReveal revealFrom="bottom"
+    [revealDelay]="100" [revealOnce]="false">
     <div class="container mx-auto px-4">
       <app-section-header title="Projetos em Destaque"
         subtitle="Confira alguns dos meus trabalhos mais recentes e impactantes" align="center"></app-section-header>
@@ -56,16 +56,14 @@
       } @else {
       <div class="text-center py-12">
         <mat-icon class="text-6xl text-gray-400 mb-4">folder_open</mat-icon>
-        <p class="text-gray-600 dark:text-gray-400">
-          Nenhum projeto em destaque ainda
-        </p>
+        <p class="text-gray-600 dark:text-gray-400">Nenhum projeto em destaque ainda</p>
       </div>
       }
     </div>
   </section>
 
-  <section class="py-20 bg-section-light dark:bg-custom-black-light" appScrollReveal revealFrom="bottom" [revealDelay]="100"
-    [revealOnce]="false">
+  <section class="py-20 bg-section-light dark:bg-custom-black-light" appScrollReveal revealFrom="bottom"
+    [revealDelay]="100" [revealOnce]="false">
     <div class="container mx-auto px-4">
       <app-section-header title="Stack Principal" subtitle="As tecnologias que impulsionam meus projetos"
         align="center"></app-section-header>
@@ -242,74 +240,123 @@
     </div>
   </section>
 
-  <section class="py-20 bg-beige-light dark:bg-custom-black" appScrollReveal revealFrom="bottom" [revealDelay]="100"
-    [revealOnce]="false">
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TRAJETÓRIA PROFISSIONAL — timeline animada com GSAP        -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section #experienceSection class="py-20 bg-beige-light dark:bg-custom-black">
     <div class="container mx-auto px-4">
       <app-section-header title="Trajetória Profissional"
-        subtitle="Minha jornada de crescimento e experiências ao longo dos anos" align="center"></app-section-header>
+        subtitle="Minha jornada de crescimento e experiências ao longo dos anos" align="center">
+      </app-section-header>
+
       @if (isLoadingExperience) {
       <div class="flex justify-center py-12">
         <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
       </div>
       } @else if (recentExperiences.length > 0) {
-      <div class="max-w-4xl mx-auto">
+      <div #timelineContainer class="max-w-4xl mx-auto mt-12">
+
         @for (experience of recentExperiences; track experience.id; let i = $index) {
-        <div class="relative pl-8 pb-12 last:pb-0">
+        <div #timelineItem class="experience-timeline-item relative pl-14 pb-12 last:pb-0">
+
+          <!-- Linha vertical conectora -->
           @if (!$last) {
-          <div class="absolute left-[15px] top-8 bottom-0 w-0.5 bg-gradient-to-b from-primary to-primary-dark"></div>
+          <div
+            class="timeline-line absolute left-[19px] top-10 bottom-0 w-0.5 bg-gradient-to-b from-primary to-transparent origin-top scale-y-0">
+          </div>
           }
 
-          <div class="absolute left-0 top-2 w-8 h-8 rounded-full flex items-center justify-center" [class]="
-                  experience.current
-                    ? 'bg-primary ring-4 ring-primary/20 shadow-glow-sm'
-                    : 'bg-beige dark:bg-custom-black-light border-2 border-primary'
-                ">
-            <span class="flex items-center justify-center w-full h-full">
-              <mat-icon [class]="experience.current ? 'text-white text-lg' : 'text-primary text-lg'"
-                style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
-                {{ experience.current ? "work" : "work_outline" }}
-              </mat-icon>
-            </span>
-          </div>
-
+          <!-- Dot / ícone -->
           <div
-            class="bg-white dark:bg-custom-black-light rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-800 hover:border-primary hover:shadow-glow transition-all duration-300">
-            <div class="flex flex-wrap items-start justify-between gap-4 mb-3">
-              <div>
-                <h3 class="text-xl font-bold text-custom-black dark:text-white">
-                  {{ experience.position }}
-                </h3>
-                <p class="text-primary font-semibold">{{ experience.company }}</p>
-              </div>
-              @if (experience.current) {
-              <span class="px-3 py-1 bg-accent text-white rounded-full text-sm font-medium">Atual</span>
-              }
-            </div>
-
-            <div class="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
-              <span class="flex items-center space-x-1">
-                <mat-icon class="text-lg">calendar_today</mat-icon>
-                <span>{{ experience.startDate }} - {{ experience.endDate || "Presente" }}</span>
-              </span>
-              <span class="flex items-center space-x-1">
-                <mat-icon class="text-lg">location_on</mat-icon>
-                <span>{{ experience.location }}</span>
-              </span>
-            </div>
-
-            <p class="text-gray-700 dark:text-gray-300 mb-4">{{ experience.description }}</p>
-
-            @if (experience.technologies.length > 0) {
-            <div class="flex flex-wrap gap-2">
-              @for (tech of experience.technologies.slice(0, 5); track tech) {
-              <span
-                class="px-2 py-1 bg-primary/10 text-gray-700 dark:text-gray-300 border border-primary/30 rounded text-xs font-medium">
-                {{ tech }}
-              </span>
-              }
-            </div>
+            class="timeline-dot absolute left-0 top-2 w-10 h-10 rounded-full flex items-center justify-center shadow-lg scale-0"
+            [class]="experience.current
+              ? 'bg-primary ring-4 ring-primary/20'
+              : 'bg-white dark:bg-custom-black-light border-2 border-primary'">
+            @if (experience.current) {
+            <span class="absolute inset-0 rounded-full bg-primary/40 animate-ping"></span>
             }
+            <mat-icon class="text-lg leading-none" [class]="experience.current ? 'text-white' : 'text-primary'">
+              {{ experience.current ? 'work' : 'work_outline' }}
+            </mat-icon>
           </div>
+
+          <!-- Card -->
+          <div class="experience-home-card group relative overflow-hidden
+                      bg-white dark:bg-custom-black-light
+                      rounded-2xl p-6
+                      border-2 border-gray-200 dark:border-gray-800
+                      shadow-lg
+                      opacity-0 translate-x-8">
+
+            <!-- Gradient hover overlay -->
+            <div
+              class="card-hover-gradient absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 pointer-events-none transition-opacity duration-400">
+            </div>
+
+            <!-- Orb decorativo -->
+            <div
+              class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-primary/5 dark:bg-primary-light/5 blur-2xl pointer-events-none group-hover:bg-primary/10 transition-colors duration-500">
+            </div>
+
+            <div class="relative z-10">
+              <!-- Cabeçalho -->
+              <div class="flex flex-wrap items-start justify-between gap-4 mb-3">
+                <div>
+                  <h3
+                    class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary dark:group-hover:text-primary-light transition-colors duration-300">
+                    {{ experience.position }}
+                  </h3>
+                  <p class="text-primary dark:text-primary-light font-semibold mt-0.5">{{ experience.company }}</p>
+                </div>
+                @if (experience.current) {
+                <span
+                  class="inline-flex items-center gap-2 px-4 py-1.5 bg-accent text-white rounded-full text-sm font-bold shadow">
+                  <span class="w-2 h-2 rounded-full bg-white"></span>
+                  Atual
+                </span>
+                }
+              </div>
+
+              <!-- Meta info -->
+              <div class="flex flex-wrap gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
+                <span class="flex items-center gap-1.5">
+                  <mat-icon class="text-base text-primary dark:text-primary-light">calendar_today</mat-icon>
+                  {{ formatDate(experience.startDate) }} — {{ experience.endDate ? formatDate(experience.endDate) :
+                  'Presente' }}
+                </span>
+                <span class="flex items-center gap-1.5">
+                  <mat-icon class="text-base text-primary dark:text-primary-light">location_on</mat-icon>
+                  {{ experience.location }}
+                </span>
+              </div>
+
+              <!-- Descrição -->
+              <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-4">
+                {{ experience.description }}
+              </p>
+
+              <!-- Tech tags -->
+              @if (experience.technologies.length > 0) {
+              <div class="flex flex-wrap gap-2">
+                @for (tech of experience.technologies.slice(0, 5); track tech) {
+                <span class="tech-chip px-3 py-1 rounded-lg text-xs font-semibold
+                             bg-primary/10 dark:bg-primary-light/10
+                             text-primary dark:text-primary-light
+                             border border-primary/20 dark:border-primary-light/20">
+                  {{ tech }}
+                </span>
+                }
+                @if (experience.technologies.length > 5) {
+                <span
+                  class="px-3 py-1 rounded-lg text-xs font-semibold bg-primary-light/10 text-gray-400 border border-primary/20">
+                  +{{ experience.technologies.length - 5 }}
+                </span>
+                }
+              </div>
+              }
+            </div>
+          </div>
+
         </div>
         }
       </div>
