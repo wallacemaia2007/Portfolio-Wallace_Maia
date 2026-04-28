@@ -45,7 +45,7 @@
         "Swagger"
       ],
       "category": "backend",
-      "featured": true,
+      "featured": false,
       "githubUrl": "https://github.com/wallacemaia2007/Digital-bank-api",
       "liveUrl": "https://www.linkedin.com/posts/wallacemaia-dev_java-springboot-springsecurity-activity-7376984431712083968-Hbt_?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE9zdVsB33_pruHbEok_UbWu8X2JwL1Nfhk",
       "startDate": "2025-08-13",
@@ -264,7 +264,7 @@
         "Node.js"
       ],
       "category": "web",
-      "featured": false,
+      "featured": true,
       "liveUrl": "https://portfolio-banda-aurah.vercel.app/",
       "startDate": "2026-01-20",
       "endDate": "2026-02-10",
