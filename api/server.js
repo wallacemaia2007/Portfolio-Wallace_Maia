@@ -1,27 +1,28 @@
-// server/server.js
-require("dotenv").config();
+// api/index.js — Vercel Serverless Function
+// Wraps the Express + JSON Server app so Vercel can call it
 
 const path = require("path");
 const fs = require("fs");
+
+// ── carrega as dependências ──────────────────────────────────────────────────
 const jsonServer = require("json-server");
 const rateLimit = require("express-rate-limit");
 
-// Caminho do bd.json relativo a este arquivo (server/)
-const DB_PATH = path.join(__dirname, "bd.json");
+// Caminho do bd.json  →  na raiz do projeto (fora de /api)
+const DB_PATH = path.join(__dirname, "..", "server", "bd.json");
 
 const server = jsonServer.create();
 const router = jsonServer.router(DB_PATH);
 
+// Rewrite: /experiences* → /experience*
 const rewriter = jsonServer.rewriter({
   "/experiences*": "/experience$1",
 });
 
-// Railway roda atrás de proxy reverso — necessário para rate-limit ler IP corretamente
+// Trust proxy (Vercel roda atrás de reverse proxy)
 server.set("trust proxy", 1);
 
-// ====================
-// CORS
-// ====================
+// ── CORS ─────────────────────────────────────────────────────────────────────
 server.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "*");
@@ -30,19 +31,9 @@ server.use((req, res, next) => {
   next();
 });
 
-// ====================
-// MIDDLEWARES
-// ====================
 server.use(jsonServer.bodyParser);
 
-server.use((req, _res, next) => {
-  console.log(`[${req.method}] ${req.url}`);
-  next();
-});
-
-// ====================
-// HELPERS
-// ====================
+// ── helpers ──────────────────────────────────────────────────────────────────
 function sanitize(str) {
   if (typeof str !== "string") return str;
   return str
@@ -55,9 +46,8 @@ async function sendEmailViaResend({ to, replyTo, subject, text }) {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.RESEND_FROM;
 
-  if (!apiKey || !from) {
-    throw new Error("RESEND_API_KEY/RESEND_FROM nao configurados.");
-  }
+  if (!apiKey || !from)
+    throw new Error("RESEND_API_KEY/RESEND_FROM não configurados.");
 
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -79,9 +69,7 @@ async function sendEmailViaResend({ to, replyTo, subject, text }) {
   }
 }
 
-// ====================
-// ROTAS CUSTOMIZADAS (GET) — leem sub-chaves do about no bd.json
-// ====================
+// ── rotas customizadas do "about" ─────────────────────────────────────────────
 server.get("/api/education", (_req, res) => {
   const list = router.db.get("about.educationList").value() || [];
   res.jsonp(list);
@@ -102,9 +90,7 @@ server.get("/api/hobbies", (_req, res) => {
   res.jsonp(list);
 });
 
-// ====================
-// RATE LIMIT (ANTI-SPAM)
-// ====================
+// ── rate limit para /api/contact ─────────────────────────────────────────────
 server.use(
   "/api/contact",
   rateLimit({
@@ -119,9 +105,7 @@ server.use(
   }),
 );
 
-// ====================
-// POST /api/contact
-// ====================
+// ── POST /api/contact ─────────────────────────────────────────────────────────
 server.post("/api/contact", async (req, res) => {
   try {
     const body = req.body || {};
@@ -132,12 +116,10 @@ server.post("/api/contact", async (req, res) => {
     const message = sanitize(body.message);
 
     if (!name || !email || !message) {
-      return res
-        .status(400)
-        .jsonp({
-          success: false,
-          message: "Campos obrigatórios: name, email e message.",
-        });
+      return res.status(400).jsonp({
+        success: false,
+        message: "Campos obrigatórios: name, email e message.",
+      });
     }
 
     const contactRecord = {
@@ -151,14 +133,13 @@ server.post("/api/contact", async (req, res) => {
       status: "received",
     };
 
-    // Salvar no bd.json (só persiste enquanto o container estiver rodando)
+    // salvar no bd.json (em memória no Vercel — sem persistência entre requests)
     const contacts = router.db.get("contacts");
     if (!contacts.value()) router.db.set("contacts", []).write();
     router.db.get("contacts").push(contactRecord).write();
 
-    // Enviar email
     const mailTo = process.env.MAIL_TO;
-    if (!mailTo) throw new Error("MAIL_TO nao configurado.");
+    if (!mailTo) throw new Error("MAIL_TO não configurado.");
 
     const formattedDate = new Date(contactRecord.createdAt).toLocaleString(
       "pt-BR",
@@ -203,42 +184,15 @@ server.post("/api/contact", async (req, res) => {
   }
 });
 
-// ====================
-// UPLOAD MOCK
-// ====================
+// ── upload mock ───────────────────────────────────────────────────────────────
 server.post("/api/upload-file/single", (_req, res) => {
-  return res
-    .status(201)
-    .jsonp({
-      url: "https://via.placeholder.com/1200x800.png?text=upload-mock",
-    });
+  return res.status(201).jsonp({
+    url: "https://via.placeholder.com/1200x800.png?text=upload-mock",
+  });
 });
 
-// ====================
-// JSON SERVER — rotas automáticas do bd.json
-// ====================
+// ── rotas automáticas do bd.json ─────────────────────────────────────────────
 server.use("/api", rewriter, router);
 
-// ====================
-// ANGULAR — arquivos estáticos do build
-// ====================
-const express = require("express");
-const distRootPath = path.join(__dirname, "../dist/pielak-web");
-const distBrowserPath = path.join(distRootPath, "browser");
-const distPath = fs.existsSync(distBrowserPath) ? distBrowserPath : distRootPath;
-server.use(express.static(distPath));
-
-// Fallback SPA (HashLocation)
-server.get("*", (_req, res) => {
-  res.sendFile(path.join(distPath, "index.html"));
-});
-
-// ====================
-// START
-// ====================
-const port = Number(process.env.PORT || 3000);
-server.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`);
-  console.log(`API: http://localhost:${port}/api`);
-  console.log(`Frontend: http://localhost:${port}`);
-});
+// ── exporta para o Vercel (serverless handler) ────────────────────────────────
+module.exports = server;
