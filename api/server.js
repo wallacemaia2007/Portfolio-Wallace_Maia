@@ -9,7 +9,7 @@ const jsonServer = require("json-server");
 const rateLimit = require("express-rate-limit");
 
 // Caminho do bd.json  →  na raiz do projeto (fora de /api)
-const DB_PATH = path.join(__dirname, "..", "server", "bd.json");
+const DB_PATH = path.join(__dirname, "..", "frontend", "server", "bd.json");
 
 const server = jsonServer.create();
 const router = jsonServer.router(DB_PATH);

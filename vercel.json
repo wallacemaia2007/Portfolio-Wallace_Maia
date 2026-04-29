@@ -4,7 +4,7 @@
     "outputDirectory": "frontend/dist/pielak-web/browser",
     "installCommand": "cd frontend && npm ci --include=dev",
     "functions": {
-        "api/index.js": {
+        "api/server.js": {
             "memory": 512,
             "maxDuration": 10,
             "includeFiles": "frontend/server/bd.json"
@@ -13,7 +13,7 @@
     "rewrites": [
         {
             "source": "/api/:path*",
-            "destination": "/api/index.js"
+            "destination": "/api/server.js"
         },
         {
             "source": "/(.*)",
