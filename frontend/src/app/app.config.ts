@@ -4,7 +4,6 @@ import {
   provideRouter,
   withComponentInputBinding,
   withInMemoryScrolling,
-  withHashLocation,
 } from '@angular/router';
 import { provideEnvironmentNgxMask } from 'ngx-mask';
 import { provideToastr } from 'ngx-toastr';
@@ -19,7 +18,6 @@ export const appConfig: ApplicationConfig = {
       routes,
       withComponentInputBinding(),
       withInMemoryScrolling({ scrollPositionRestoration: 'top' }),
-      withHashLocation()
     ),
     provideToastr({
       closeButton: true,
