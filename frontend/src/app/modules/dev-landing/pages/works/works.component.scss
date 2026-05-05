@@ -1,0 +1,55 @@
+:host {
+  display: block;
+}
+
+.building-skyscraper { height: 95%; }
+.building-commercial { height: 80%; }
+.building-shop { height: 50%; }
+.building-agency { height: 70%; }
+.building-studio { height: 60%; }
+.building-factory { height: 65%; }
+.building-workshop { height: 45%; }
+.building-tower { height: 85%; }
+
+.building-shape {
+  position: relative;
+  min-height: 40px;
+  background-image: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+  
+  &.active {
+    box-shadow: 0 -5px 25px -5px rgba(30, 144, 212, 0.4);
+    .windows-grid div {
+      background-color: theme('colors.dev.light');
+      box-shadow: 0 0 5px theme('colors.dev.DEFAULT');
+      opacity: 0.8;
+    }
+  }
+}
+
+.animate-slide-in {
+  animation: slideInRight 0.4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

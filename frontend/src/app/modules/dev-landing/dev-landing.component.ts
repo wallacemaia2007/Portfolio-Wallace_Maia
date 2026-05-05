@@ -6,9 +6,11 @@ import { HeroComponent } from './pages/hero/hero.component';
 import { CtaComponent } from './pages/cta/cta.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { WorksComponent } from './pages/works/works.component';
 
 export const RouterLinks = {
   hero: true,
+  works: true,
   stack: true,
   cta: true,
   projects: true,
@@ -24,6 +26,7 @@ export const RouterLinks = {
     StackComponent,
     ProjectsComponent,
     HeroComponent,
+    WorksComponent,
     ContactComponent,
     CtaComponent,
   ],
