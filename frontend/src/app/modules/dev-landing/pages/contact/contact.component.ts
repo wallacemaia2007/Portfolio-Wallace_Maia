@@ -37,7 +37,7 @@ export class ContactComponent {
   readonly contactInfo = {
     email: 'wallacemaia2007@gmail.com',
     phone: '+55 (35) 91003-6806',
-    location: 'Passos, MG - Brasil',
+    location: 'Uberlândia, MG - Brasil',
     linkedin: 'https://www.linkedin.com/in/wallacemaia-dev/',
     linkedinDisplay: 'wallacemaia-dev',
     github: 'https://github.com/wallacemaia2007',

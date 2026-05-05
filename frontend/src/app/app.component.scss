@@ -73,27 +73,6 @@ button {
   }
 }
 
-.scrollbar-thin {
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-scrollbar) transparent;
-
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: var(--color-scrollbar);
-    border-radius: 4px;
-
-    &:hover {
-      background: var(--color-primary-dark);
-    }
-  }
-}
 
 *:focus-visible {
   outline: 3px solid var(--color-focus);

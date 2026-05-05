@@ -30,10 +30,10 @@ interface NavLink {
 export class HeaderComponent implements OnInit, OnDestroy {
   readonly navLinks: NavLink[] = [
     { label: 'Inicio', href: '#hero', section: 'hero' },
+    { label: 'Serviços', href: '#works', section: 'works' },
     { label: 'Projetos', href: '#projects', section: 'projects' },
     { label: 'Stack', href: '#stack', section: 'stack' },
     { label: 'Contato', href: '#contact', section: 'contact' },
-    { label: 'CTA', href: '#cta', section: 'cta' },
   ];
 
   readonly ctaLinks = {
@@ -148,7 +148,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     const currentScrollY = window.scrollY;
     this.isScrolled = currentScrollY > 20;
 
-    if (currentScrollY > this.lastScrollY && currentScrollY > this.SCROLL_THRESHOLD) {
+    if (
+      currentScrollY > this.lastScrollY &&
+      currentScrollY > this.SCROLL_THRESHOLD
+    ) {
       this.isHidden = true;
     } else {
       this.isHidden = false;

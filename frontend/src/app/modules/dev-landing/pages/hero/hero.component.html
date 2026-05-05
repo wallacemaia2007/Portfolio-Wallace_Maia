@@ -8,13 +8,15 @@
       <div class="order-2 lg:order-1 space-y-6">
 
         <!-- Tag -->
-        <div class="hero-tag inline-flex items-center gap-2 rounded-full bg-dev/10 dark:bg-dev/20 px-4 py-1.5 text-sm font-semibold text-dev dark:text-dev-light">
+        <div
+          class="hero-tag inline-flex items-center gap-2 rounded-full bg-dev/10 dark:bg-dev/20 px-4 py-1.5 text-sm font-semibold text-dev dark:text-dev-light">
           <span class="text-base">&#x1F680;</span>
           <span>Desenvolvimento Web Focado em Resultados</span>
         </div>
 
         <!-- Name -->
-        <h1 class="hero-title text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-none text-gray-900 dark:text-white">
+        <h1
+          class="hero-title text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-none text-gray-900 dark:text-white">
           Aplicacoes web sob medida que transformam sua visao em negocio.
         </h1>
 
@@ -54,16 +56,6 @@
           </span>
           }
         </div>
-
-        <!-- Availability Indicator -->
-        <div class="hero-available flex items-center gap-2 text-sm">
-          <span class="relative flex h-3 w-3">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
-          </span>
-          <span class="font-medium text-accent dark:text-accent-light">Disponivel para novos projetos</span>
-        </div>
-
       </div>
 
       <!-- Right Block: Preview UI + Avatar -->
@@ -80,9 +72,7 @@
               </div>
               <div class="hero-preview-title">Dashboard de Conversoes</div>
               <div class="hero-preview-avatar">
-                <img
-                  [src]="personalInfo.avatar"
-                  [alt]="personalInfo.fullName + ' - Foto de perfil'"
+                <img [src]="personalInfo.avatar" [alt]="personalInfo.fullName + ' - Foto de perfil'"
                   (error)="onImageError($event)">
               </div>
             </div>

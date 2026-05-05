@@ -10,5 +10,28 @@ import { NavbarComponent } from '../shared/components/navbar/navbar.component';
   template: `<app-navbar></app-navbar>
     <router-outlet></router-outlet>
     <app-footer></app-footer> `,
+  styles: `
+    .scrollbar-thin {
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-scrollbar) transparent;
+
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: var(--color-scrollbar);
+        border-radius: 4px;
+
+        &:hover {
+          background: var(--color-primary-dark);
+        }
+      }
+    }
+  `,
 })
 export class PortfolioComponent {}

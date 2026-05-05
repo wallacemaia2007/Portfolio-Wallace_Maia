@@ -1,104 +1,210 @@
-<section id="stack"
-  class="py-16 md:py-24 bg-white dark:bg-dev-bg transition-colors duration-300"
-  appScrollReveal revealFrom="bottom" [revealDelay]="100">
+<section id="stack" class="py-20 md:py-32 bg-white dark:bg-dev-bg transition-colors duration-300 overflow-hidden">
 
   <div class="container mx-auto max-w-7xl px-4 lg:px-6">
 
     <!-- Section Header -->
-    <app-section-header
-      title="Minha Stack"
-      subtitle="Tecnologias e ferramentas que utilizo no dia a dia"
+    <app-section-header title="Minha Stack"
+      subtitle="As tecnologias que uso para construir produtos reais — do front ao back, do protótipo ao deploy"
       align="center">
     </app-section-header>
 
-    <!-- Category Tabs -->
-    <div class="mt-10 flex justify-center">
-      <div class="inline-flex gap-2 overflow-x-auto pb-2 px-1 max-w-full scrollbar-hide">
-        @for (tab of tabs; track tab.key) {
-        <button
-          (click)="setActiveCategory(tab.key)"
-          [class]="activeCategory === tab.key
-            ? 'bg-dev text-white shadow-dev-glow-sm'
-            : 'bg-gray-100 dark:bg-dev-bg-elevated text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dev-bg-surface'"
-          class="whitespace-nowrap rounded-xl px-5 py-2.5 text-sm font-semibold transition-all duration-200 active:scale-[0.98]"
-          [attr.aria-label]="'Ver skills de ' + tab.label">
-          {{ tab.label }}
-        </button>
-        }
+    <!-- ════════════════════════════════════════
+         MAIN STACKS — Hero Cards
+    ════════════════════════════════════════ -->
+    <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-6" appScrollReveal revealFrom="bottom" [revealDelay]="100">
+
+      <!-- STACK 1: Frontend -->
+      <div class="stack-hero-card group relative rounded-3xl overflow-hidden border border-white/5
+                  bg-gradient-to-br from-[#0a0e1a] to-[#111827]
+                  hover:border-[#3b82f6]/30 transition-all duration-500 hover:shadow-2xl hover:shadow-[#3b82f6]/10
+                  cursor-pointer" (click)="setFocusedStack('frontend')">
+
+        <!-- Glow Orb -->
+        <div
+          class="absolute top-0 right-0 w-64 h-64 rounded-full
+              bg-[#3b82f6]/10 blur-2xl opacity-70 pointer-events-none
+              group-hover:bg-[#3b82f6]/20 group-hover:opacity-90 transition-all duration-700 -translate-y-16 translate-x-16">
+        </div>
+
+        <div class="relative z-10 p-8 md:p-10">
+
+          <!-- Tag -->
+          <span class="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase
+                       text-[#60a5fa] bg-[#1e3a5f]/60 border border-[#3b82f6]/30
+                       px-3 py-1.5 rounded-full mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#60a5fa] animate-pulse"></span>
+            Interface & Experiência
+          </span>
+
+          <!-- Headline -->
+          <h3 class="text-3xl font-black text-white leading-tight mb-3">
+            Stack<br>
+            <span class="text-[#60a5fa]">Frontend</span>
+          </h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-8 max-w-xs">
+            Interfaces modernas, rápidas e acessíveis. Do design ao componente final,
+            com reatividade e performance de primeira.
+          </p>
+
+          <!-- Traits -->
+          <div class="flex flex-wrap gap-2 mb-8">
+            @for (trait of frontendTraits; track trait) {
+            <span
+              class="text-[11px] font-semibold text-[#93c5fd] bg-[#1e3a5f]/50 border border-[#3b82f6]/20 px-3 py-1 rounded-full">
+              {{ trait }}
+            </span>
+            }
+          </div>
+
+          <!-- Tech Icons Row -->
+          <div class="flex items-center gap-3">
+            @for (tech of frontendMain; track tech.id) {
+            <div class="tech-icon-chip flex items-center gap-2 bg-white/5 border border-white/10
+                        rounded-xl px-3 py-2 hover:bg-white/10 hover:border-[#3b82f6]/40
+                        transition-all duration-200 group/chip" [attr.aria-label]="tech.name">
+              <img [src]="tech.icon" [alt]="tech.name" class="w-5 h-5 object-contain" (error)="onIconError($event)">
+              <span class="text-xs font-semibold text-gray-300 group-hover/chip:text-white transition-colors">
+                {{ tech.name }}
+              </span>
+            </div>
+            }
+          </div>
+        </div>
       </div>
+
+      <!-- STACK 2: Backend -->
+      <div class="stack-hero-card group relative rounded-3xl overflow-hidden border border-white/5
+                  bg-gradient-to-br from-[#0a1a0e] to-[#0f1f14]
+                  hover:border-[#22c55e]/30 transition-all duration-500 hover:shadow-2xl hover:shadow-[#22c55e]/10
+                  cursor-pointer" (click)="setFocusedStack('backend')">
+
+        <!-- Glow Orb -->
+        <div
+          class="absolute top-0 right-0 w-64 h-64 rounded-full
+              bg-[#22c55e]/10 blur-2xl opacity-70 pointer-events-none
+              group-hover:bg-[#22c55e]/20 group-hover:opacity-90 transition-all duration-700 -translate-y-16 translate-x-16">
+        </div>
+
+        <div class="relative z-10 p-8 md:p-10">
+
+          <!-- Tag -->
+          <span class="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase
+                       text-[#4ade80] bg-[#14532d]/40 border border-[#22c55e]/30
+                       px-3 py-1.5 rounded-full mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#4ade80] animate-pulse"></span>
+            Lógica & Dados
+          </span>
+
+          <!-- Headline -->
+          <h3 class="text-3xl font-black text-white leading-tight mb-3">
+            Stack<br>
+            <span class="text-[#4ade80]">Backend</span>
+          </h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-8 max-w-xs">
+            APIs robustas, seguras e escaláveis. Java + Spring para produção real,
+            com Node.js para soluções ágeis e flexíveis.
+          </p>
+
+          <!-- Traits -->
+          <div class="flex flex-wrap gap-2 mb-8">
+            @for (trait of backendTraits; track trait) {
+            <span
+              class="text-[11px] font-semibold text-[#86efac] bg-[#14532d]/40 border border-[#22c55e]/20 px-3 py-1 rounded-full">
+              {{ trait }}
+            </span>
+            }
+          </div>
+
+          <!-- Tech Icons Row -->
+          <div class="flex items-center gap-3">
+            @for (tech of backendMain; track tech.id) {
+            <div class="tech-icon-chip flex items-center gap-2 bg-white/5 border border-white/10
+                        rounded-xl px-3 py-2 hover:bg-white/10 hover:border-[#22c55e]/40
+                        transition-all duration-200 group/chip" [attr.aria-label]="tech.name">
+              <img [src]="tech.icon" [alt]="tech.name" class="w-5 h-5 object-contain" (error)="onIconError($event)">
+              <span class="text-xs font-semibold text-gray-300 group-hover/chip:text-white transition-colors">
+                {{ tech.name }}
+              </span>
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Skills Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
+    <!-- ════════════════════════════════════════
+         CATEGORY TABS — Everything else
+    ════════════════════════════════════════ -->
+    <div class="mt-20" appScrollReveal revealFrom="bottom" [revealDelay]="150">
 
-      @for (skill of getActiveSkills(); track skill.id) {
-      <div class="skill-card-item group rounded-2xl bg-gray-50 dark:bg-dev-bg-surface p-5 border border-transparent hover:border-dev/20 dark:hover:border-dev/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-        appScrollReveal revealFrom="bottom" [revealDelay]="50">
+      <!-- Label -->
+      <p class="text-center text-xs font-bold tracking-widest uppercase text-gray-400 dark:text-gray-500 mb-6">
+        Todas as tecnologias
+      </p>
 
-        <!-- Skill Header -->
-        <div class="flex items-center gap-4">
-          <!-- Icon -->
-          <div class="w-12 h-12 rounded-xl bg-white dark:bg-dev-bg flex items-center justify-center p-2 shadow-sm group-hover:shadow-md transition-shadow">
-            @if (skill.icon) {
-            <img
-              [src]="skill.icon"
-              [alt]="skill.name + ' icon'"
-              (error)="onIconError($event)"
-              class="w-8 h-8 object-contain">
-            } @else {
-            <mat-icon class="text-dev" style="font-size: 24px; width: 24px; height: 24px;">code</mat-icon>
-            }
-          </div>
-
-          <!-- Name & Years -->
-          <div class="flex-1 min-w-0">
-            <h3 class="text-sm font-bold text-gray-900 dark:text-white truncate">
-              {{ skill.name }}
-            </h3>
-            @if (skill.yearsOfExperience) {
-            <p class="text-xs text-gray-500 dark:text-dev-text-muted mt-0.5">
-              {{ skill.yearsOfExperience }} ano(s) de experiencia
-            </p>
-            }
-          </div>
-
-          <!-- Level Badge -->
-          <span class="shrink-0 rounded-md px-2 py-0.5 text-[10px] font-bold"
-            [ngClass]="getLevelBadge(skill.level).cssClass">
-            {{ getLevelBadge(skill.level).label }}
-          </span>
+      <!-- Tabs -->
+      <div class="flex justify-center">
+        <div class="inline-flex gap-2 overflow-x-auto pb-2 px-1 max-w-full scrollbar-hide">
+          @for (tab of tabs; track tab.key) {
+          <button (click)="setActiveCategory(tab.key)"
+            [class]="activeCategory === tab.key
+              ? 'bg-dev text-white shadow-dev-glow-sm'
+              : 'bg-gray-100 dark:bg-dev-bg-elevated text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dev-bg-surface'"
+            class="whitespace-nowrap rounded-xl px-5 py-2.5 text-sm font-semibold transition-all duration-200 active:scale-[0.98]"
+            [attr.aria-label]="'Ver skills de ' + tab.label">
+            {{ tab.label }}
+          </button>
+          }
         </div>
+      </div>
 
-        <!-- Progress Bar -->
-        <div class="mt-4">
-          <div class="h-2 w-full rounded-full bg-gray-200 dark:bg-dev-bg-elevated overflow-hidden">
+      <!-- Skills Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 mt-8">
+
+        @for (skill of getActiveSkills(); track skill.id) {
+        <div class="skill-card-item group rounded-2xl
+              bg-gray-50 dark:bg-dev-bg-surface
+              border border-gray-200/60 dark:border-white/5
+              hover:border-dev/20 dark:hover:border-dev/30
+              p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl" appScrollReveal
+          revealFrom="bottom" [revealDelay]="40">
+
+          <!-- Icon + Name -->
+          <div class="flex items-center gap-3 mb-4">
             <div
-              class="skill-progress-fill h-full rounded-full transition-all duration-[800ms] ease-out"
-              [ngClass]="getProgressColor(skill.level)"
-              [attr.data-width]="getProgressWidth(skill.level) + '%'"
-              style="width: 0%">
+              class="w-10 h-10 rounded-xl bg-white dark:bg-dev-bg flex items-center justify-center p-2 shadow-sm group-hover:shadow-md transition-shadow shrink-0">
+              @if (skill.icon) {
+              <img [src]="skill.icon" [alt]="skill.name + ' icon'" (error)="onIconError($event)"
+                class="w-6 h-6 object-contain">
+              } @else {
+              <mat-icon class="text-dev" style="font-size: 20px; width: 20px; height: 20px;">code</mat-icon>
+              }
             </div>
-          </div>
-          <div class="flex justify-end mt-1">
-            <span class="text-[10px] font-semibold text-gray-500 dark:text-dev-text-muted">
-              {{ getProgressWidth(skill.level) }}%
+            <div class="flex-1 min-w-0">
+              <h3 class="text-sm font-bold text-gray-900 dark:text-white truncate">{{ skill.name }}</h3>
+            </div>
+            <span class="shrink-0 rounded-md px-2 py-0.5 text-[10px] font-bold"
+              [ngClass]="getLevelBadge(skill.level).cssClass">
+              {{ getLevelBadge(skill.level).label }}
             </span>
           </div>
-        </div>
 
+        </div>
+        }
+
+      </div>
+
+      <!-- Empty State -->
+      @if (getActiveSkills().length === 0) {
+      <div class="text-center py-12 mt-8">
+        <mat-icon class="text-5xl text-gray-400 dark:text-gray-600 mb-4"
+          style="font-size: 48px; width: 48px; height: 48px;">layers</mat-icon>
+        <p class="text-gray-600 dark:text-dev-text-muted text-lg">Nenhuma skill encontrada nesta categoria.</p>
       </div>
       }
 
     </div>
-
-    <!-- Empty State -->
-    @if (getActiveSkills().length === 0) {
-    <div class="text-center py-12 mt-8">
-      <mat-icon class="text-5xl text-gray-400 dark:text-gray-600 mb-4"
-        style="font-size: 48px; width: 48px; height: 48px;">layers</mat-icon>
-      <p class="text-gray-600 dark:text-dev-text-muted text-lg">Nenhuma skill encontrada nesta categoria.</p>
-    </div>
-    }
 
   </div>
 </section>

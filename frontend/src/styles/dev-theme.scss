@@ -8,6 +8,10 @@ body.theme-dev {
   --dev-text-primary: #c8dff5;
   --dev-text-muted: #7ba8cc;
   --dev-border: rgba(30, 144, 212, 0.2);
+  --color-scrollbar: var(--dev-accent);
+  --color-primary-light: var(--dev-accent-light);
+  --color-primary-dark: #166aa3;
+  --color-focus: var(--dev-accent);
 }
 
 body.theme-dev {

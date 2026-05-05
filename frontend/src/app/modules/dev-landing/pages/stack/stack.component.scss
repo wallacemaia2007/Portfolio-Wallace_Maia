@@ -11,8 +11,46 @@
   }
 }
 
+// ─── Hero Stack Cards ───────────────────────────────────────────────────────
+
+.stack-hero-card {
+  // Subtle grid pattern overlay
+  background-image:
+    linear-gradient(to bottom right, var(--from-color, #0a0e1a), var(--to-color, #111827)),
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.04) 1px, transparent 0);
+  background-size: 100% 100%, 28px 28px;
+
+  &:hover .tech-icon-chip {
+    transform: translateY(0);
+  }
+}
+
+.tech-icon-chip {
+  transform: translateY(2px);
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+// ─── Skill Grid Cards ───────────────────────────────────────────────────────
+
+.skill-card-item {
+  &:hover .skill-progress-fill {
+    filter: brightness(1.15);
+  }
+}
+
+// ─── Progress Bar Animation ─────────────────────────────────────────────────
+
 @media (prefers-reduced-motion: reduce) {
   .skill-progress-fill {
     transition: none !important;
+  }
+
+  .tech-icon-chip {
+    transition: none !important;
+    transform: none !important;
   }
 }

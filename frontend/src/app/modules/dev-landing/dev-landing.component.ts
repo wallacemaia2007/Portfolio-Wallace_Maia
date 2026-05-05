@@ -44,10 +44,14 @@ export class DevLandingComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // Landing page uses Tailwind dark mode via .dark class
+    const root = document.documentElement;
+    this.renderer.addClass(root, 'theme-dev');
+    this.renderer.addClass(document.body, 'theme-dev');
   }
 
   ngOnDestroy(): void {
-    // Cleanup if needed
+    const root = document.documentElement;
+    this.renderer.removeClass(root, 'theme-dev');
+    this.renderer.removeClass(document.body, 'theme-dev');
   }
 }

@@ -1,21 +1,19 @@
-<section id="contact"
-  class="py-16 md:py-24 bg-gray-50 dark:bg-dev-bg transition-colors duration-300"
-  appScrollReveal revealFrom="bottom" [revealDelay]="100">
+<section id="contact" class="py-16 md:py-24 bg-gray-50 dark:bg-dev-bg transition-colors duration-300" appScrollReveal
+  revealFrom="bottom" [revealDelay]="100">
 
   <div class="container mx-auto max-w-7xl px-4 lg:px-6">
 
     <!-- Section Header -->
-    <app-section-header
-      title="Vamos Conversar?"
-      subtitle="Estou sempre aberto a novas oportunidades e projetos interessantes"
-      align="center">
+    <app-section-header title="Vamos Conversar?"
+      subtitle="Estou sempre aberto a novas oportunidades e projetos interessantes" align="center">
     </app-section-header>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-12">
 
       <!-- Left Column: Contact Form -->
       <div class="order-2 lg:order-1" appScrollReveal revealFrom="left" [revealDelay]="200">
-        <div class="rounded-2xl bg-white dark:bg-dev-bg p-6 md:p-8 border border-gray-100 dark:border-dev-bg-elevated shadow-sm">
+        <div
+          class="rounded-2xl bg-white dark:bg-dev-bg p-6 md:p-8 border border-gray-100 dark:border-dev-bg-elevated shadow-sm">
 
           <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Envie uma mensagem</h3>
 
@@ -26,11 +24,7 @@
               <label for="contact-name" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                 Nome *
               </label>
-              <input
-                id="contact-name"
-                type="text"
-                formControlName="name"
-                placeholder="Seu nome completo"
+              <input id="contact-name" type="text" formControlName="name" placeholder="Seu nome completo"
                 class="w-full rounded-xl border px-4 py-3 text-sm text-gray-900 dark:text-white bg-gray-50 dark:bg-dev-bg-surface placeholder-gray-400 dark:placeholder-dev-text-muted transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-dev/50 focus:border-dev"
                 [ngClass]="isFieldInvalid('name') ? 'border-red-400 dark:border-red-500' : 'border-gray-200 dark:border-dev-bg-elevated'">
               @if (isFieldInvalid('name')) {
@@ -43,11 +37,7 @@
               <label for="contact-email" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                 Email *
               </label>
-              <input
-                id="contact-email"
-                type="email"
-                formControlName="email"
-                placeholder="seu&#64;email.com"
+              <input id="contact-email" type="email" formControlName="email" placeholder="seu&#64;email.com"
                 class="w-full rounded-xl border px-4 py-3 text-sm text-gray-900 dark:text-white bg-gray-50 dark:bg-dev-bg-surface placeholder-gray-400 dark:placeholder-dev-text-muted transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-dev/50 focus:border-dev"
                 [ngClass]="isFieldInvalid('email') ? 'border-red-400 dark:border-red-500' : 'border-gray-200 dark:border-dev-bg-elevated'">
               @if (isFieldInvalid('email')) {
@@ -60,11 +50,7 @@
               <label for="contact-subject" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                 Assunto
               </label>
-              <input
-                id="contact-subject"
-                type="text"
-                formControlName="subject"
-                placeholder="Assunto da mensagem"
+              <input id="contact-subject" type="text" formControlName="subject" placeholder="Assunto da mensagem"
                 class="w-full rounded-xl border border-gray-200 dark:border-dev-bg-elevated px-4 py-3 text-sm text-gray-900 dark:text-white bg-gray-50 dark:bg-dev-bg-surface placeholder-gray-400 dark:placeholder-dev-text-muted transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-dev/50 focus:border-dev">
             </div>
 
@@ -73,10 +59,7 @@
               <label for="contact-message" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                 Mensagem *
               </label>
-              <textarea
-                id="contact-message"
-                formControlName="message"
-                rows="5"
+              <textarea id="contact-message" formControlName="message" rows="5"
                 placeholder="Descreva seu projeto ou duvida..."
                 class="w-full rounded-xl border px-4 py-3 text-sm text-gray-900 dark:text-white bg-gray-50 dark:bg-dev-bg-surface placeholder-gray-400 dark:placeholder-dev-text-muted transition-colors duration-200 resize-none focus:outline-none focus:ring-2 focus:ring-dev/50 focus:border-dev"
                 [ngClass]="isFieldInvalid('message') ? 'border-red-400 dark:border-red-500' : 'border-gray-200 dark:border-dev-bg-elevated'">
@@ -87,9 +70,7 @@
             </div>
 
             <!-- Submit Button -->
-            <button
-              type="submit"
-              [disabled]="isSubmitting"
+            <button type="submit" [disabled]="isSubmitting"
               class="w-full rounded-xl bg-dev px-6 py-3 text-sm font-bold text-white transition-all duration-200 hover:bg-dev-dark hover:-translate-y-0.5 active:scale-[0.98] shadow-dev-glow-sm hover:shadow-dev-glow disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0 disabled:shadow-none flex items-center justify-center gap-2"
               aria-label="Enviar mensagem de contato">
               @if (isSubmitting) {
@@ -105,14 +86,16 @@
 
             <!-- Feedback Messages -->
             @if (submitSuccess) {
-            <div class="rounded-xl bg-accent/10 border border-accent/20 p-4 text-sm text-accent dark:text-accent-light font-medium flex items-center gap-2">
+            <div
+              class="rounded-xl bg-accent/10 border border-accent/20 p-4 text-sm text-accent dark:text-accent-light font-medium flex items-center gap-2">
               <mat-icon style="font-size: 18px; width: 18px; height: 18px;">check_circle</mat-icon>
               {{ submitMessage }}
             </div>
             }
 
             @if (submitError) {
-            <div class="rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 p-4 text-sm text-red-600 dark:text-red-400 font-medium flex items-center gap-2">
+            <div
+              class="rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 p-4 text-sm text-red-600 dark:text-red-400 font-medium flex items-center gap-2">
               <mat-icon style="font-size: 18px; width: 18px; height: 18px;">error</mat-icon>
               {{ submitMessage }}
             </div>
@@ -128,7 +111,8 @@
         <!-- Email Card -->
         <a [href]="'mailto:' + contactInfo.email"
           class="flex items-center gap-4 rounded-2xl bg-white dark:bg-dev-bg p-5 border border-gray-100 dark:border-dev-bg-elevated shadow-sm hover:border-dev/30 dark:hover:border-dev/40 transition-all duration-200 hover:-translate-y-0.5 group">
-          <div class="w-12 h-12 rounded-xl bg-dev/10 dark:bg-dev/20 flex items-center justify-center text-dev group-hover:bg-dev group-hover:text-white transition-colors">
+          <div
+            class="w-12 h-12 rounded-xl bg-dev/10 dark:bg-dev/20 flex items-center justify-center text-dev group-hover:bg-dev group-hover:text-white transition-colors">
             <mat-icon style="font-size: 22px; width: 22px; height: 22px;">email</mat-icon>
           </div>
           <div>
@@ -140,11 +124,13 @@
         <!-- WhatsApp Card -->
         <a [href]="whatsappLink" target="_blank" rel="noopener noreferrer"
           class="flex items-center gap-4 rounded-2xl bg-white dark:bg-dev-bg p-5 border border-gray-100 dark:border-dev-bg-elevated shadow-sm hover:border-accent/30 dark:hover:border-accent/40 transition-all duration-200 hover:-translate-y-0.5 group">
-          <div class="w-12 h-12 rounded-xl bg-accent/10 dark:bg-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-colors">
+          <div
+            class="w-12 h-12 rounded-xl bg-accent/10 dark:bg-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-colors">
             <mat-icon style="font-size: 22px; width: 22px; height: 22px;">chat</mat-icon>
           </div>
           <div>
-            <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">WhatsApp</p>
+            <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">WhatsApp
+            </p>
             <p class="text-sm font-bold text-gray-900 dark:text-white mt-0.5">{{ whatsappDisplay }}</p>
           </div>
         </a>
@@ -152,11 +138,13 @@
         <!-- LinkedIn Card -->
         <a [href]="contactInfo.linkedin" target="_blank" rel="noopener noreferrer"
           class="flex items-center gap-4 rounded-2xl bg-white dark:bg-dev-bg p-5 border border-gray-100 dark:border-dev-bg-elevated shadow-sm hover:border-blue-400/30 transition-all duration-200 hover:-translate-y-0.5 group">
-          <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+          <div
+            class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
             <mat-icon style="font-size: 22px; width: 22px; height: 22px;">person</mat-icon>
           </div>
           <div>
-            <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">LinkedIn</p>
+            <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">LinkedIn
+            </p>
             <p class="text-sm font-bold text-gray-900 dark:text-white mt-0.5">{{ contactInfo.linkedinDisplay }}</p>
           </div>
         </a>
@@ -164,7 +152,8 @@
         <!-- GitHub Card -->
         <a [href]="contactInfo.github" target="_blank" rel="noopener noreferrer"
           class="flex items-center gap-4 rounded-2xl bg-white dark:bg-dev-bg p-5 border border-gray-100 dark:border-dev-bg-elevated shadow-sm hover:border-gray-400/30 transition-all duration-200 hover:-translate-y-0.5 group">
-          <div class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 group-hover:bg-gray-800 dark:group-hover:bg-gray-600 group-hover:text-white transition-colors">
+          <div
+            class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 group-hover:bg-gray-800 dark:group-hover:bg-gray-600 group-hover:text-white transition-colors">
             <mat-icon style="font-size: 22px; width: 22px; height: 22px;">code</mat-icon>
           </div>
           <div>
@@ -174,12 +163,15 @@
         </a>
 
         <!-- Location Card -->
-        <div class="flex items-center gap-4 rounded-2xl bg-white dark:bg-dev-bg p-5 border border-gray-100 dark:border-dev-bg-elevated shadow-sm">
-          <div class="w-12 h-12 rounded-xl bg-dev/10 dark:bg-dev/20 flex items-center justify-center text-dev dark:text-dev-light">
+        <div
+          class="flex items-center gap-4 rounded-2xl bg-white dark:bg-dev-bg p-5 border border-gray-100 dark:border-dev-bg-elevated shadow-sm">
+          <div
+            class="w-12 h-12 rounded-xl bg-dev/10 dark:bg-dev/20 flex items-center justify-center text-dev dark:text-dev-light">
             <mat-icon style="font-size: 22px; width: 22px; height: 22px;">location_on</mat-icon>
           </div>
           <div>
-            <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">Localizacao</p>
+            <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">Localizacao
+            </p>
             <p class="text-sm font-bold text-gray-900 dark:text-white mt-0.5">{{ contactInfo.location }}</p>
           </div>
         </div>
@@ -193,15 +185,6 @@
             <mat-icon style="font-size: 20px; width: 20px; height: 20px;">{{ link.icon }}</mat-icon>
           </a>
           }
-        </div>
-
-        <!-- Availability Badge -->
-        <div class="flex items-center gap-2 pt-2">
-          <span class="relative flex h-3 w-3">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
-          </span>
-          <span class="text-sm font-medium text-accent dark:text-accent-light">Disponivel para freelance</span>
         </div>
 
       </div>
