@@ -8,6 +8,7 @@ import {
   NgZone,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 interface NavLink {
   label: string;
@@ -19,13 +20,12 @@ interface NavLink {
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  // TODO: Replace placeholder URLs with your real links.
   readonly navLinks: NavLink[] = [
     { label: 'Inicio', href: '#hero', section: 'hero' },
     { label: 'Projetos', href: '#projects', section: 'projects' },
@@ -33,19 +33,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
     { label: 'Contato', href: '#contact', section: 'contact' },
     { label: 'CTA', href: '#cta', section: 'cta' },
   ];
+
   readonly ctaLinks = {
     contact: '#contact',
     cv: '/assets/cv.pdf',
-    whatsapp:
-      'https://wa.me/5500000000000?text=Ola%20Wallace%2C%20vamos%20conversar!',
-    github: 'https://github.com/SEU_USUARIO',
-    linkedin: 'https://www.linkedin.com/in/SEU_USUARIO/',
-    instagram: 'https://www.instagram.com/SEU_USUARIO/',
+    whatsapp: 'https://wa.me/5535910036806',
+    github: 'https://github.com/wallacemaia2007',
+    linkedin: 'https://www.linkedin.com/in/wallacemaia-dev/',
+    instagram: 'https://www.instagram.com/',
   };
+
   isMenuOpen = false;
+  isScrolled = false;
+  isHidden = false;
   isAuthenticated = !!localStorage.getItem('token');
 
-  // ── Swipe state ─────────────────────────────────────────────
+  private lastScrollY = 0;
+  private readonly SCROLL_THRESHOLD = 80;
+
+  // Swipe state
   private touchStartX = 0;
   private touchStartY = 0;
   private readonly SWIPE_THRESHOLD = 55;
@@ -94,7 +100,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     const deltaX = e.touches[0].clientX - this.touchStartX;
     const deltaY = Math.abs(e.touches[0].clientY - this.touchStartY);
 
-    // Prevent scroll when swiping left to close open menu
     if (this.isMenuOpen && deltaX < -10 && deltaY < this.VERTICAL_LIMIT) {
       e.preventDefault();
     }
@@ -106,7 +111,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     if (deltaY > this.VERTICAL_LIMIT) return;
 
-    // Swipe RIGHT from left edge → open
     if (
       deltaX > this.SWIPE_THRESHOLD &&
       this.touchStartX < this.EDGE_ZONE &&
@@ -119,13 +123,27 @@ export class HeaderComponent implements OnInit, OnDestroy {
       return;
     }
 
-    // Swipe LEFT → close
     if (deltaX < -this.SWIPE_THRESHOLD && this.isMenuOpen) {
       this.ngZone.run(() => {
         this.closeMenu();
         this.cdr.markForCheck();
       });
     }
+  }
+
+  @HostListener('window:scroll')
+  onScroll(): void {
+    const currentScrollY = window.scrollY;
+    this.isScrolled = currentScrollY > 20;
+
+    if (currentScrollY > this.lastScrollY && currentScrollY > this.SCROLL_THRESHOLD) {
+      this.isHidden = true;
+    } else {
+      this.isHidden = false;
+    }
+
+    this.lastScrollY = currentScrollY;
+    this.cdr.markForCheck();
   }
 
   scrollTo(event: Event, href: string): void {

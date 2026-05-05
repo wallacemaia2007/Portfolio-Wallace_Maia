@@ -1,28 +1,35 @@
-<header class="site-header fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-bg/90 backdrop-blur-md" id="header">
-  <div class="container mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
+<header
+  class="fixed inset-x-0 top-0 z-50 transition-all duration-300"
+  [class.header--scrolled]="isScrolled"
+  [class.header--hidden]="isHidden"
+  [ngClass]="{
+    'bg-white/95 dark:bg-dev-bg/95 backdrop-blur-md border-b border-dev/10 dark:border-dev/20 shadow-sm': isScrolled,
+    'bg-transparent': !isScrolled
+  }"
+  id="header"
+  role="banner">
+
+  <div class="container mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-6">
 
     <!-- Logo -->
     <a href="#hero" (click)="scrollTo($event, '#hero')"
-      class="group flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-lg transition-shadow"
-      aria-label="Ir para o início">
-      <img src="/assets/logo.png" alt="Logo da Maiawall"
-        class="h-12 w-12 rounded-full object-cover shadow-sm transition-transform duration-200 group-hover:scale-110">
-      <span
-        class="font-heading text-xl font-extrabold tracking-tight text-text transition-colors group-hover:text-brand">
+      class="group flex items-center gap-3 rounded-lg transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-dev"
+      aria-label="Ir para o inicio">
+      <img src="/assets/logo.png" alt="Logo Maiawall"
+        class="h-10 w-10 rounded-full object-cover shadow-sm transition-transform duration-200 group-hover:scale-110">
+      <span class="text-lg font-bold tracking-tight text-gray-900 dark:text-white transition-colors group-hover:text-dev dark:group-hover:text-dev-light">
         Maiawall
       </span>
     </a>
 
     <!-- Nav Desktop -->
-    <nav class="hidden md:block">
-      <ul class="flex items-center gap-7">
+    <nav class="hidden md:block" role="navigation" aria-label="Menu principal">
+      <ul class="flex items-center gap-6">
         @for (link of navLinks; track link.href) {
         <li>
           <a [href]="link.href" (click)="scrollTo($event, link.href)"
-            class="relative text-sm font-semibold transition-all duration-300 ease-out" [class]="link.feature
-              ? 'px-5 py-2 rounded-full text-white bg-gradient-to-r from-brand via-brand-light to-brand shadow-md hover:shadow-xl hover:scale-105 active:scale-95 overflow-hidden'
-              : 'text-text hover:text-brand hover:scale-105'">
-            <span class="relative z-10">{{ link.label }}</span>
+            class="relative text-sm font-semibold text-gray-700 dark:text-gray-200 hover:text-dev dark:hover:text-dev-light transition-colors duration-200 after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-dev after:transition-all after:duration-300 hover:after:w-full">
+            {{ link.label }}
           </a>
         </li>
         }
@@ -32,17 +39,21 @@
     <!-- CTA Desktop -->
     <div class="hidden md:flex items-center gap-3">
       <a [href]="ctaLinks.cv" target="_blank" rel="noopener noreferrer"
-        class="inline-flex items-center justify-center rounded-xl border border-text/20 px-4 py-2.5 text-sm font-semibold text-text transition-all hover:border-brand hover:text-brand">
+        class="inline-flex items-center justify-center rounded-xl border border-gray-300 dark:border-gray-500/30 px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-200 transition-all duration-200 hover:border-dev hover:text-dev dark:hover:border-dev-light dark:hover:text-dev-light active:scale-[0.98]"
+        aria-label="Baixar curriculo em PDF">
         Baixar CV
       </a>
       <a [href]="ctaLinks.contact" (click)="scrollTo($event, ctaLinks.contact)"
-        class="inline-flex items-center justify-center rounded-xl bg-accent px-5 py-2.5 text-sm font-bold text-white transition-transform hover:-translate-y-0.5 active:scale-[0.98]">
+        class="inline-flex items-center justify-center rounded-xl bg-dev px-5 py-2 text-sm font-bold text-white transition-all duration-200 hover:bg-dev-dark hover:-translate-y-0.5 active:scale-[0.98] shadow-dev-glow-sm hover:shadow-dev-glow"
+        aria-label="Ir para a secao de contato">
         Fale comigo
       </a>
     </div>
 
-    <!-- Hambúrguer (mobile) -->
-    <button class="p-2 text-text md:hidden" [attr.aria-expanded]="isMenuOpen" aria-label="Abrir Menu"
+    <!-- Hamburger (mobile) -->
+    <button class="p-2 text-gray-900 dark:text-white md:hidden rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
+      [attr.aria-expanded]="isMenuOpen"
+      aria-label="Abrir Menu"
       (click)="toggleMenu()">
       @if (!isMenuOpen) {
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -63,23 +74,24 @@
   </div>
 </header>
 
-<!-- ══════════════════════════════════════════
-     MOBILE DRAWER — fora do <header> para não
-     herdar backdrop-filter/opacity do pai
-     ══════════════════════════════════════════ -->
-
-<!-- Backdrop escuro -->
-<div class="fixed inset-0 z-[998] md:hidden transition-all duration-300" [style.background]="'rgba(0,0,0,0.55)'"
-  [style.opacity]="isMenuOpen ? '1' : '0'" [style.pointerEvents]="isMenuOpen ? 'auto' : 'none'" (click)="closeMenu()">
+<!-- Mobile Drawer Backdrop -->
+<div
+  class="fixed inset-0 z-[998] md:hidden transition-all duration-300"
+  [style.background]="'rgba(0,0,0,0.55)'"
+  [style.opacity]="isMenuOpen ? '1' : '0'"
+  [style.pointerEvents]="isMenuOpen ? 'auto' : 'none'"
+  (click)="closeMenu()">
 </div>
 
-<!-- Painel lateral -->
-<nav id="mobile-menu-panel" aria-label="Navegação mobile"
-  class="fixed top-0 right-0 z-[999] h-full w-72 md:hidden flex flex-col transition-transform duration-300 ease-out"
-  [style.background]="'#1a2c3d'" [style.transform]="isMenuOpen ? 'translateX(0)' : 'translateX(100%)'">
+<!-- Mobile Drawer Panel -->
+<nav id="mobile-menu-panel"
+  aria-label="Menu mobile"
+  role="navigation"
+  class="fixed top-0 right-0 z-[999] h-full w-72 md:hidden flex flex-col transition-transform duration-300 ease-out bg-dev-bg"
+  [style.transform]="isMenuOpen ? 'translateX(0)' : 'translateX(100%)'">
 
-  <!-- Cabeçalho do drawer -->
-  <div class="flex items-center justify-between px-5 py-4" style="border-bottom: 1px solid rgba(255,255,255,0.1)">
+  <!-- Drawer Header -->
+  <div class="flex items-center justify-between px-5 py-4 border-b border-white/10">
     <div class="flex items-center gap-3">
       <img src="/assets/logo.png" alt="Logo" class="h-9 w-9 rounded-full object-cover">
       <span class="font-bold text-white text-sm leading-tight">Maiawall<br>Wallace Maia</span>
@@ -94,60 +106,53 @@
     </button>
   </div>
 
-  <!-- Links de navegação -->
+  <!-- Navigation Links -->
   <ul class="flex flex-col gap-1 p-4 flex-1 overflow-y-auto">
     @for (link of navLinks; track link.href) {
     <li>
       <a [href]="link.href" (click)="scrollTo($event, link.href)"
-        class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200" [style]="link.feature
-          ? 'background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.3);'
-          : 'color: rgba(255,255,255,0.85);'">
+        class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-white/85 hover:bg-dev/10 hover:text-white transition-all duration-200">
         {{ link.label }}
-        @if (link.feature) {
-        <span class="ml-auto text-[10px] font-bold px-2 py-0.5 rounded-full bg-accent text-white">NOVO</span>
-        }
       </a>
     </li>
     }
   </ul>
 
-  <!-- CTAs fixos no rodapé -->
-  <div class="p-5 flex flex-col gap-3" style="border-top: 1px solid rgba(255,255,255,0.1)">
+  <!-- Drawer Footer CTAs -->
+  <div class="p-5 flex flex-col gap-3 border-t border-white/10">
     <a [href]="ctaLinks.contact" (click)="scrollTo($event, ctaLinks.contact)"
-      class="flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-bold text-white active:scale-[0.98] transition-transform bg-accent">
+      class="flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-bold text-white bg-dev hover:bg-dev-dark active:scale-[0.98] transition-all">
       Fale comigo
     </a>
     <a [href]="ctaLinks.cv" target="_blank" rel="noopener noreferrer"
-      class="flex w-full items-center justify-center rounded-xl px-5 py-3 text-sm font-bold text-white active:scale-[0.98] transition-transform"
-      style="border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08)">
+      class="flex w-full items-center justify-center rounded-xl px-5 py-3 text-sm font-bold text-white border border-white/20 bg-white/5 hover:bg-white/10 active:scale-[0.98] transition-all">
       Baixar CV
     </a>
     <div class="grid grid-cols-2 gap-2">
       <a [href]="ctaLinks.github" target="_blank" rel="noopener noreferrer"
-        class="flex items-center justify-center rounded-lg px-3 py-2 text-xs font-semibold text-white/90 hover:text-white"
-        style="border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.04)">
+        class="flex items-center justify-center rounded-lg px-3 py-2 text-xs font-semibold text-white/90 hover:text-white border border-white/15 bg-white/5 hover:bg-white/10 transition-colors"
+        aria-label="GitHub">
         GitHub
       </a>
       <a [href]="ctaLinks.linkedin" target="_blank" rel="noopener noreferrer"
-        class="flex items-center justify-center rounded-lg px-3 py-2 text-xs font-semibold text-white/90 hover:text-white"
-        style="border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.04)">
+        class="flex items-center justify-center rounded-lg px-3 py-2 text-xs font-semibold text-white/90 hover:text-white border border-white/15 bg-white/5 hover:bg-white/10 transition-colors"
+        aria-label="LinkedIn">
         LinkedIn
       </a>
       <a [href]="ctaLinks.whatsapp" target="_blank" rel="noopener noreferrer"
-        class="flex items-center justify-center rounded-lg px-3 py-2 text-xs font-semibold text-white/90 hover:text-white"
-        style="border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.04)">
+        class="flex items-center justify-center rounded-lg px-3 py-2 text-xs font-semibold text-white/90 hover:text-white border border-white/15 bg-white/5 hover:bg-white/10 transition-colors"
+        aria-label="WhatsApp">
         WhatsApp
       </a>
       <a [href]="ctaLinks.instagram" target="_blank" rel="noopener noreferrer"
-        class="flex items-center justify-center rounded-lg px-3 py-2 text-xs font-semibold text-white/90 hover:text-white"
-        style="border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.04)">
+        class="flex items-center justify-center rounded-lg px-3 py-2 text-xs font-semibold text-white/90 hover:text-white border border-white/15 bg-white/5 hover:bg-white/10 transition-colors"
+        aria-label="Instagram">
         Instagram
       </a>
     </div>
     @if (isAuthenticated) {
     <a routerLink="/auth"
-      class="flex w-full items-center justify-center rounded-xl px-5 py-3 text-sm font-bold text-white active:scale-[0.98] transition-transform"
-      style="border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08)">
+      class="flex w-full items-center justify-center rounded-xl px-5 py-3 text-sm font-bold text-white border border-white/20 bg-white/5 hover:bg-white/10 active:scale-[0.98] transition-all">
       Login
     </a>
     }

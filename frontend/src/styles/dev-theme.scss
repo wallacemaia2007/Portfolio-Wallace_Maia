@@ -1,0 +1,16 @@
+:root.theme-dev,
+body.theme-dev {
+  --dev-bg-primary: #0a1628;
+  --dev-bg-surface: #0d2240;
+  --dev-bg-elevated: #1a3a5c;
+  --dev-accent: #1e90d4;
+  --dev-accent-light: #3baee8;
+  --dev-text-primary: #c8dff5;
+  --dev-text-muted: #7ba8cc;
+  --dev-border: rgba(30, 144, 212, 0.2);
+}
+
+body.theme-dev {
+  background-color: var(--dev-bg-primary) !important;
+  color: var(--dev-text-primary);
+}

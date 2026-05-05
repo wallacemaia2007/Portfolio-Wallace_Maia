@@ -3,17 +3,6 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
-import { SocialLinksComponent } from '../../../shared/components/social-links/social-links.component';
-
-export interface FooterTemplate {
-  fullName: string;
-  bio: string;
-  quickLinks: { label: string; href: string }[];
-  email: string;
-  phone: string;
-  location: string;
-  currentYear: number;
-}
 
 @Component({
   selector: 'app-footer',
@@ -23,28 +12,34 @@ export interface FooterTemplate {
     MatIconModule,
     ScrollRevealDirective,
     MatTooltip,
-    SocialLinksComponent,
   ],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })
 export class FooterComponent {
-  // TODO: Replace placeholder data with your real info.
-  footerData: FooterTemplate = {
+  readonly personalInfo = {
     fullName: 'Wallace Maia',
-    bio: 'Desenvolvedor full stack focado em experiencias digitais, produtos claros e codigo limpo.',
-    quickLinks: [
-      { label: 'Inicio', href: '#hero' },
-      { label: 'Projetos', href: '#projects' },
-      { label: 'Stack', href: '#stack' },
-      { label: 'Contato', href: '#contact' },
-      { label: 'CTA', href: '#cta' },
-    ],
-    email: 'contato@maiawall.com',
-    phone: '+55 00 00000-0000',
-    location: 'Minas Gerais, Brasil',
-    currentYear: new Date().getFullYear(),
+    bio: 'Desenvolvedor Full Stack apaixonado por criar experiências web incríveis e soluções inovadoras.',
+    email: 'wallacemaia2007@gmail.com',
+    phone: '+55 (35) 91003-6806',
+    location: 'Passos, MG - Brasil',
   };
+
+  readonly socialLinks = [
+    { name: 'GitHub', url: 'https://github.com/wallacemaia2007', icon: 'code' },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/wallacemaia-dev/', icon: 'person' },
+    { name: 'Instagram', url: 'https://www.instagram.com/', icon: 'photo_camera' },
+    { name: 'WhatsApp', url: 'https://wa.me/5535910036806', icon: 'chat' },
+  ];
+
+  readonly quickLinks = [
+    { label: 'Inicio', href: '#hero' },
+    { label: 'Projetos', href: '#projects' },
+    { label: 'Stack', href: '#stack' },
+    { label: 'Contato', href: '#contact' },
+  ];
+
+  readonly currentYear = new Date().getFullYear();
 
   scrollTo(event: Event, href: string): void {
     event.preventDefault();

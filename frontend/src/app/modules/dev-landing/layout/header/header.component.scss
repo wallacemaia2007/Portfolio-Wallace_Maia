@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+.header--hidden {
+  transform: translateY(-100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header--hidden {
+    transform: none;
+  }
+}

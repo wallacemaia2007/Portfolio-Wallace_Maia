@@ -68,11 +68,33 @@ module.exports = {
             dark: "#353535",
           },
         },
+        // ── Dev Landing Blue Palette ──────────────────────────
+        dev: {
+          DEFAULT: "#1e90d4",
+          light: "#3baee8",
+          dark: "#1574a8",
+          darker: "#0f5a85",
+        },
+        "dev-bg": {
+          DEFAULT: "#0a1628",
+          surface: "#0d2240",
+          elevated: "#1a3a5c",
+          card: "#122a47",
+        },
+        "dev-text": {
+          DEFAULT: "#c8dff5",
+          muted: "#7ba8cc",
+          bright: "#e8f0f8",
+        },
       },
       boxShadow: {
         "glow-sm": "0 0 10px rgba(155, 27, 31, 0.2)",
         glow: "0 0 20px rgba(155, 27, 31, 0.3)",
         "glow-lg": "0 0 30px rgba(155, 27, 31, 0.4)",
+        // Dev blue glows
+        "dev-glow-sm": "0 0 10px rgba(30, 144, 212, 0.2)",
+        "dev-glow": "0 0 20px rgba(30, 144, 212, 0.3)",
+        "dev-glow-lg": "0 0 30px rgba(30, 144, 212, 0.4)",
       },
       animation: {
         "fade-in": "fadeIn 0.5s ease-in",

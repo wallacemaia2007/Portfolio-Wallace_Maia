@@ -1,0 +1,23 @@
+:host {
+  display: block;
+}
+
+textarea {
+  font-family: 'Poppins', sans-serif;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #6b7280;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-spin {
+    animation: none;
+  }
+}

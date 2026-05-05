@@ -1,0 +1,18 @@
+:host {
+  display: block;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-progress-fill {
+    transition: none !important;
+  }
+}

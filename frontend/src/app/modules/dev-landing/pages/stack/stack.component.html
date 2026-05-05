@@ -1,3 +1,104 @@
-<section id="stack">
-	<p>stack works!</p>
+<section id="stack"
+  class="py-16 md:py-24 bg-white dark:bg-dev-bg transition-colors duration-300"
+  appScrollReveal revealFrom="bottom" [revealDelay]="100">
+
+  <div class="container mx-auto max-w-7xl px-4 lg:px-6">
+
+    <!-- Section Header -->
+    <app-section-header
+      title="Minha Stack"
+      subtitle="Tecnologias e ferramentas que utilizo no dia a dia"
+      align="center">
+    </app-section-header>
+
+    <!-- Category Tabs -->
+    <div class="mt-10 flex justify-center">
+      <div class="inline-flex gap-2 overflow-x-auto pb-2 px-1 max-w-full scrollbar-hide">
+        @for (tab of tabs; track tab.key) {
+        <button
+          (click)="setActiveCategory(tab.key)"
+          [class]="activeCategory === tab.key
+            ? 'bg-dev text-white shadow-dev-glow-sm'
+            : 'bg-gray-100 dark:bg-dev-bg-elevated text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dev-bg-surface'"
+          class="whitespace-nowrap rounded-xl px-5 py-2.5 text-sm font-semibold transition-all duration-200 active:scale-[0.98]"
+          [attr.aria-label]="'Ver skills de ' + tab.label">
+          {{ tab.label }}
+        </button>
+        }
+      </div>
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
+
+      @for (skill of getActiveSkills(); track skill.id) {
+      <div class="skill-card-item group rounded-2xl bg-gray-50 dark:bg-dev-bg-surface p-5 border border-transparent hover:border-dev/20 dark:hover:border-dev/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+        appScrollReveal revealFrom="bottom" [revealDelay]="50">
+
+        <!-- Skill Header -->
+        <div class="flex items-center gap-4">
+          <!-- Icon -->
+          <div class="w-12 h-12 rounded-xl bg-white dark:bg-dev-bg flex items-center justify-center p-2 shadow-sm group-hover:shadow-md transition-shadow">
+            @if (skill.icon) {
+            <img
+              [src]="skill.icon"
+              [alt]="skill.name + ' icon'"
+              (error)="onIconError($event)"
+              class="w-8 h-8 object-contain">
+            } @else {
+            <mat-icon class="text-dev" style="font-size: 24px; width: 24px; height: 24px;">code</mat-icon>
+            }
+          </div>
+
+          <!-- Name & Years -->
+          <div class="flex-1 min-w-0">
+            <h3 class="text-sm font-bold text-gray-900 dark:text-white truncate">
+              {{ skill.name }}
+            </h3>
+            @if (skill.yearsOfExperience) {
+            <p class="text-xs text-gray-500 dark:text-dev-text-muted mt-0.5">
+              {{ skill.yearsOfExperience }} ano(s) de experiencia
+            </p>
+            }
+          </div>
+
+          <!-- Level Badge -->
+          <span class="shrink-0 rounded-md px-2 py-0.5 text-[10px] font-bold"
+            [ngClass]="getLevelBadge(skill.level).cssClass">
+            {{ getLevelBadge(skill.level).label }}
+          </span>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="mt-4">
+          <div class="h-2 w-full rounded-full bg-gray-200 dark:bg-dev-bg-elevated overflow-hidden">
+            <div
+              class="skill-progress-fill h-full rounded-full transition-all duration-[800ms] ease-out"
+              [ngClass]="getProgressColor(skill.level)"
+              [attr.data-width]="getProgressWidth(skill.level) + '%'"
+              style="width: 0%">
+            </div>
+          </div>
+          <div class="flex justify-end mt-1">
+            <span class="text-[10px] font-semibold text-gray-500 dark:text-dev-text-muted">
+              {{ getProgressWidth(skill.level) }}%
+            </span>
+          </div>
+        </div>
+
+      </div>
+      }
+
+    </div>
+
+    <!-- Empty State -->
+    @if (getActiveSkills().length === 0) {
+    <div class="text-center py-12 mt-8">
+      <mat-icon class="text-5xl text-gray-400 dark:text-gray-600 mb-4"
+        style="font-size: 48px; width: 48px; height: 48px;">layers</mat-icon>
+      <p class="text-gray-600 dark:text-dev-text-muted text-lg">Nenhuma skill encontrada nesta categoria.</p>
+    </div>
+    }
+
+  </div>
 </section>
