@@ -1,9 +1,11 @@
 @if (project) {
 <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in"
+  [ngClass]="getModalThemeClass()"
   (click)="onClose()">
 
   <div
-    class="relative w-full max-w-6xl max-h-[90vh] bg-white dark:bg-custom-black-light rounded-2xl overflow-hidden shadow-2xl animate-slide-up"
+    class="relative w-full max-w-6xl max-h-[90vh] rounded-2xl overflow-hidden shadow-2xl animate-slide-up"
+    [ngClass]="getModalSurfaceClass()"
     (click)="$event.stopPropagation()">
 
     <button (click)="onClose()" class="absolute top-4 right-4 z-10 w-12 h-12 rounded-full
@@ -73,8 +75,8 @@
       <div class="p-8">
         <div class="mb-6">
           <div class="flex items-center gap-3 mb-4 flex-wrap">
-            <mat-icon class="text-primary text-2xl">{{ getCategoryIcon(project.category) }}</mat-icon>
-            <span class="text-lg font-medium text-primary">
+            <mat-icon class="text-2xl" [ngClass]="getAccentTextClass()">{{ getCategoryIcon(project.category) }}</mat-icon>
+            <span class="text-lg font-medium" [ngClass]="getAccentTextClass()">
               {{ getCategoryLabel(project.category) }}
             </span>
             <span class="px-3 py-1 rounded-full text-xs font-semibold" [ngClass]="getStatusClass(project.status)">
@@ -94,7 +96,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           <div class="bg-beige-light dark:bg-custom-black rounded-xl p-6 border-2 border-gray-200 dark:border-gray-800">
             <h3 class="font-bold text-custom-black dark:text-white mb-3 flex items-center gap-2">
-              <mat-icon class="text-primary">calendar_today</mat-icon>
+              <mat-icon [ngClass]="getAccentTextClass()">calendar_today</mat-icon>
               Período
             </h3>
             <p class="text-gray-700 dark:text-gray-300 mb-2">
@@ -113,20 +115,22 @@
 
           <div class="bg-beige-light dark:bg-custom-black rounded-xl p-6 border-2 border-gray-200 dark:border-gray-800">
             <h3 class="font-bold text-custom-black dark:text-white mb-3 flex items-center gap-2">
-              <mat-icon class="text-primary">link</mat-icon>
+              <mat-icon [ngClass]="getAccentTextClass()">link</mat-icon>
               Links do Projeto
             </h3>
             <div class="flex flex-wrap gap-3">
               @if (project.githubUrl) {
               <a [href]="project.githubUrl" target="_blank" rel="noopener noreferrer"
-                class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all hover:scale-105 flex items-center gap-2 shadow-md">
+                class="px-4 py-2 text-white rounded-lg transition-all hover:scale-105 flex items-center gap-2 shadow-md"
+                [ngClass]="getAccentButtonClass()">
                 <img src="assets/icons/github.svg" alt="" class="w-5 h-5">
                 <span>GitHub</span>
               </a>
               }
               @if (project.liveUrl) {
               <a [href]="project.liveUrl" target="_blank" rel="noopener noreferrer"
-                class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all hover:scale-105 flex items-center gap-2 shadow-md">
+                class="px-4 py-2 text-white rounded-lg transition-all hover:scale-105 flex items-center gap-2 shadow-md"
+                [ngClass]="getAccentButtonClass()">
                 <mat-icon>launch</mat-icon>
                 <span>Ver Live</span>
               </a>
@@ -142,13 +146,14 @@
 
         <div class="mb-8">
           <h3 class="font-bold text-xl text-custom-black dark:text-white mb-4 flex items-center gap-2">
-            <mat-icon class="text-primary">code</mat-icon>
+            <mat-icon [ngClass]="getAccentTextClass()">code</mat-icon>
             Tecnologias Utilizadas
           </h3>
           <div class="flex flex-wrap gap-3">
             @for (tech of project.technologies; track tech) {
             <span
-              class="px-4 py-2 bg-primary/10 dark:text-gray-300 text-primary border-2 border-primary/30 rounded-lg text-sm font-medium hover:bg-primary/20 hover:scale-105 transition-all">
+              class="px-4 py-2 dark:text-gray-300 border-2 rounded-lg text-sm font-medium hover:scale-105 transition-all"
+              [ngClass]="getAccentChipClass()">
               {{ tech }}
             </span>
             }
@@ -158,13 +163,13 @@
         @if (project.challenges && project.challenges.length > 0) {
         <div class="mb-8 p-6 bg-gray-50 dark:bg-custom-black rounded-xl border-2 border-gray-200 dark:border-gray-800">
           <h3 class="font-bold text-xl text-custom-black dark:text-white mb-4 flex items-center gap-2">
-            <mat-icon class="text-primary">psychology</mat-icon>
+            <mat-icon [ngClass]="getAccentTextClass()">psychology</mat-icon>
             Desafios Enfrentados
           </h3>
           <ul class="space-y-2">
             @for (challenge of project.challenges.slice(0, 3); track challenge) {
             <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
-              <mat-icon class="text-primary text-xl mt-0.5">check_circle</mat-icon>
+              <mat-icon class="text-xl mt-0.5" [ngClass]="getAccentTextClass()">check_circle</mat-icon>
               <span>{{ challenge }}</span>
             </li>
             }
@@ -181,7 +186,7 @@
         @if (project.learnings && project.learnings.length > 0) {
         <div class="p-6 bg-gray-50 dark:bg-custom-black rounded-xl border-2 border-gray-200 dark:border-gray-800">
           <h3 class="font-bold text-xl text-custom-black dark:text-white mb-4 flex items-center gap-2">
-            <mat-icon class="text-primary">lightbulb</mat-icon>
+            <mat-icon [ngClass]="getAccentTextClass()">lightbulb</mat-icon>
             Aprendizados
           </h3>
           <ul class="space-y-2">
@@ -195,11 +200,12 @@
         </div>
         }
 
-        <div class="mt-10 p-4 bg-primary/5 dark:bg-primary/10 rounded-xl border-2 border-primary/20">
+        <div class="mt-10 p-4 rounded-xl border-2"
+          [ngClass]="[getAccentSoftBgSubtleClass(), getAccentBorderSoftClass()]">
           <div class="flex items-center justify-between gap-4 flex-wrap">
             <div class="flex-1 min-w-[200px]">
               <h4 class="font-bold text-custom-black dark:text-white mb-1 flex items-center gap-2">
-                <mat-icon class="text-primary">info</mat-icon>
+                <mat-icon [ngClass]="getAccentTextClass()">info</mat-icon>
                 Quer ver mais detalhes? Ficou interessado?
               </h4>
               <p class="text-sm text-gray-600 dark:text-gray-400">
@@ -208,7 +214,8 @@
             </div>
 
             <button routerLink="/contact"
-              class="px-6 py-3 bg-primary hover:bg-primary-dark text-white rounded-xl font-bold transition-all hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 whitespace-nowrap">
+              class="px-6 py-3 text-white rounded-xl font-bold transition-all hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 whitespace-nowrap"
+              [ngClass]="getAccentButtonClass()">
               <span>Contato</span>
               <mat-icon>open_in_new</mat-icon>
             </button>

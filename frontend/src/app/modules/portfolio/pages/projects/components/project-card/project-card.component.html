@@ -1,9 +1,9 @@
 <article (click)="handleOpen()" appScrollReveal revealFrom="bottom" [revealDelay]="revealDelay"
   (mouseenter)="handleEnter()" (mouseleave)="handleLeave()"
-  class="project-card group bg-white dark:bg-custom-black-light rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer border-2 border-gray-200 dark:border-gray-800 hover:border-primary">
+  class="project-card group rounded-2xl overflow-hidden transition-all duration-500 cursor-pointer"
+  [ngClass]="getCardClass()">
 
-  <div
-    class="relative h-56 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-custom-black to-custom-black-light">
+  <div class="relative h-56 overflow-hidden" [ngClass]="getMediaWrapperClass()">
     <img [src]="project.thumbnail" [alt]="project.title"
       class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
       [class.opacity-0]="isPreviewPlaying">
@@ -15,7 +15,8 @@
 
     <div class="absolute top-4 left-4 right-4 flex justify-between items-start z-10">
       @if (project.featured) {
-      <span class="px-3 py-1.5 bg-primary text-white rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
+      <span class="px-3 py-1.5 text-white rounded-full text-xs font-bold flex items-center gap-1 shadow-lg"
+        [ngClass]="getAccentBadgeClass()">
         <mat-icon class="text-sm">star</mat-icon>
         Destaque
       </span>
@@ -31,12 +32,14 @@
 
   <div class="p-6">
     <div class="flex items-center gap-2 mb-3">
-      <div class="w-7 h-7 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center">
-        <mat-icon class="text-primary text-lg !leading-none !m-0 p-0 flex items-center justify-center"
+      <div class="w-7 h-7 rounded-lg flex items-center justify-center" [ngClass]="getAccentSoftBgClass()">
+        <mat-icon class="text-lg !leading-none !m-0 p-0 flex items-center justify-center"
+          [ngClass]="getAccentTextClass()"
           style="display: flex; align-items: center; justify-content: center; height: 1.25rem; width: 1.25rem; line-height: 1;">{{
           getCategoryIcon(project.category) }}</mat-icon>
       </div>
-      <span class="text-sm font-bold text-primary uppercase tracking-wide flex items-center h-7" style="line-height: 1;">
+      <span class="text-sm font-bold uppercase tracking-wide flex items-center h-7" style="line-height: 1;"
+        [ngClass]="getAccentTextClass()">
         {{ getCategoryLabel(project.category) }}
       </span>
     </div>
@@ -51,13 +54,12 @@
 
     <div class="flex flex-wrap gap-2 mb-5">
       @for (tech of project.technologies.slice(0, 3); track tech) {
-      <span
-        class="px-3 py-1 bg-gray-100 dark:bg-custom-black text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 rounded-lg text-xs font-medium">
+      <span class="px-3 py-1 rounded-lg text-xs font-medium" [ngClass]="getTechChipClass()">
         {{ tech }}
       </span>
       }
       @if (project.technologies.length > 3) {
-      <span class="px-3 py-1 bg-primary/10 text-primary border border-primary/30 rounded-lg text-xs font-bold">
+      <span class="px-3 py-1 rounded-lg text-xs font-bold" [ngClass]="getTechMoreClass()">
         +{{ project.technologies.length - 3 }}
       </span>
       }
@@ -69,7 +71,8 @@
         <span>{{ formatDate(project.startDate) }}</span>
       </div>
 
-      <div class="flex items-center gap-1 text-primary font-bold text-sm group-hover:gap-2 transition-all">
+      <div class="flex items-center gap-1 font-bold text-sm group-hover:gap-2 transition-all"
+        [ngClass]="getAccentTextClass()">
         <span>Abrir</span>
         <mat-icon class="text-base">arrow_forward</mat-icon>
       </div>

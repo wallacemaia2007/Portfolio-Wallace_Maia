@@ -10,6 +10,17 @@ button {
   }
 }
 
+.modal-theme-primary {
+  --color-scrollbar: var(--color-primary);
+}
+
+.modal-theme-dev {
+  --color-scrollbar: var(--dev-accent);
+  --color-primary-light: var(--dev-accent-light);
+  --color-primary-dark: #166aa3;
+  --color-focus: var(--dev-accent);
+}
+
 .shadow-glow {
   box-shadow: var(--shadow-glow);
 }

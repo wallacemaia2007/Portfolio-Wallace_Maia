@@ -37,6 +37,7 @@ export class ProjectModalComponent
   private router = inject(Router);
 
   @Input() project: Project | null = null;
+  @Input() variant: 'primary' | 'dev' = 'primary';
   @Output() close = new EventEmitter<void>();
   @ViewChild('galleryVideo')
   private galleryVideo?: ElementRef<HTMLVideoElement>;
@@ -276,6 +277,56 @@ export class ProjectModalComponent
 
   getCategoryLabel(category: ProjectCategory): string {
     return PROJECT_CATEGORY_NAMES[category];
+  }
+
+  getAccentTextClass(): string {
+    return this.variant === 'dev' ? 'text-dev' : 'text-primary';
+  }
+
+  getAccentBgClass(): string {
+    return this.variant === 'dev' ? 'bg-dev' : 'bg-primary';
+  }
+
+  getAccentHoverClass(): string {
+    return this.variant === 'dev' ? 'hover:bg-dev-dark' : 'hover:bg-primary-dark';
+  }
+
+  getAccentSoftBgClass(): string {
+    return this.variant === 'dev' ? 'bg-dev/10 dark:bg-dev/20' : 'bg-primary/10 dark:bg-primary/20';
+  }
+
+  getAccentSoftBgSubtleClass(): string {
+    return this.variant === 'dev' ? 'bg-dev/5 dark:bg-dev/10' : 'bg-primary/5 dark:bg-primary/10';
+  }
+
+  getAccentBorderClass(): string {
+    return this.variant === 'dev' ? 'border-dev/30' : 'border-primary/30';
+  }
+
+  getAccentBorderSoftClass(): string {
+    return this.variant === 'dev' ? 'border-dev/20' : 'border-primary/20';
+  }
+
+  getAccentButtonClass(): string {
+    return this.variant === 'dev'
+      ? 'bg-dev hover:bg-dev-dark'
+      : 'bg-primary hover:bg-primary-dark';
+  }
+
+  getModalSurfaceClass(): string {
+    return this.variant === 'dev'
+      ? 'bg-dev-bg-surface text-dev-text-primary'
+      : 'bg-white dark:bg-custom-black-light';
+  }
+
+  getModalThemeClass(): string {
+    return this.variant === 'dev' ? 'modal-theme-dev' : 'modal-theme-primary';
+  }
+
+  getAccentChipClass(): string {
+    return this.variant === 'dev'
+      ? 'bg-dev/10 text-dev border-dev/30 hover:bg-dev/20'
+      : 'bg-primary/10 text-primary border-primary/30 hover:bg-primary/20';
   }
 
   getCategoryIcon(category: ProjectCategory): string {
