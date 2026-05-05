@@ -1,4 +1,4 @@
-<section id="works" class="py-20 md:py-32 bg-dev-bg text-dev-text overflow-hidden" #worksSection>
+<section id="works" class="py-20 md:py-32 bg-white dark:bg-dev-bg text-gray-900 dark:text-dev-text overflow-hidden" #worksSection>
   <div class="container mx-auto px-6 max-w-7xl">
     <app-section-header
       title="Soluções que transformam ideias em produtos digitais"
@@ -9,7 +9,7 @@
     <div class="mt-16 flex flex-col lg:flex-row gap-8 relative" appScrollReveal>
       
       <!-- City Scene (60% Desktop / 100% Mobile) -->
-      <div class="w-full lg:w-[60%] city-container bg-dev-bg-surface rounded-2xl p-6 md:p-8 border border-dev-elevated shadow-dev-glow-sm relative">
+      <div class="w-full lg:w-[60%] city-container bg-gray-50 dark:bg-dev-bg-surface rounded-2xl p-6 md:p-8 border border-gray-200 dark:border-dev-elevated shadow-sm dark:shadow-dev-glow-sm relative">
         <div class="city-grid grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-8 gap-3 md:gap-4 h-[350px] md:h-[450px]">
           
           @for (cat of categories; track cat.id) {
@@ -18,7 +18,7 @@
               (click)="selectCategory(cat.id)"
             >
               <div class="text-center mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute -top-10 left-1/2 -translate-x-1/2 w-max z-10 pointer-events-none hidden md:block">
-                <span class="bg-dev-bg-elevated text-white text-xs px-2 py-1 rounded shadow-lg whitespace-nowrap">{{cat.name}}</span>
+                <span class="bg-gray-800 dark:bg-dev-bg-elevated text-white text-xs px-2 py-1 rounded shadow-lg whitespace-nowrap">{{cat.name}}</span>
               </div>
               <div class="md:hidden text-center mb-2 absolute -top-10 left-1/2 -translate-x-1/2 w-max z-10 pointer-events-none" [class.opacity-100]="activeCategoryId === cat.id" [class.opacity-0]="activeCategoryId !== cat.id">
                 <span class="bg-dev text-white text-[10px] px-1 py-0.5 rounded shadow-lg whitespace-nowrap">{{cat.name}}</span>
@@ -28,10 +28,10 @@
                 class="building-shape w-full max-w-[60px] md:max-w-[80px] mx-auto rounded-t-lg transition-all duration-300 flex flex-col items-center justify-center overflow-hidden"
                 [ngClass]="[
                   'building-' + cat.buildingType,
-                  activeCategoryId === cat.id ? 'active border-t-2 border-l-2 border-r-2 border-dev bg-dev-bg-elevated shadow-dev-glow scale-105 z-10' : 'bg-dev-bg-card border border-dev-dark hover:bg-dev-bg-elevated hover:border-dev-light/50'
+                  activeCategoryId === cat.id ? 'active border-t-2 border-l-2 border-r-2 border-dev bg-gray-100 dark:bg-dev-bg-elevated shadow-dev-glow scale-105 z-10' : 'bg-white dark:bg-dev-bg-card border border-gray-300 dark:border-dev-dark hover:bg-gray-50 dark:hover:bg-dev-bg-elevated hover:border-dev/50 dark:hover:border-dev-light/50'
                 ]"
               >
-                <mat-icon class="text-dev-muted mb-2 transition-colors duration-300 group-hover:text-dev-light hidden md:block" [class.text-dev-light]="activeCategoryId === cat.id">{{cat.icon}}</mat-icon>
+                <mat-icon class="text-gray-400 dark:text-dev-muted mb-2 transition-colors duration-300 group-hover:text-dev dark:group-hover:text-dev-light hidden md:block" [class.text-dev]="activeCategoryId === cat.id" [class.dark:text-dev-light]="activeCategoryId === cat.id">{{cat.icon}}</mat-icon>
                 <div class="windows-grid grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-2 px-2 pb-2 md:pb-4 opacity-40">
                   <div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-dev-light/50 rounded-sm"></div>
                   <div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-dev-light/50 rounded-sm"></div>
@@ -51,18 +51,18 @@
 
       <!-- Side Panel (40% Desktop / Accordion Mobile via flex-order or hidden/show) -->
       <div 
-        class="w-full lg:w-[40%] panel-container overflow-hidden rounded-2xl bg-dev-bg-elevated border border-dev-dark/50 shadow-lg relative min-h-[400px] md:min-h-[450px]"
+        class="w-full lg:w-[40%] panel-container overflow-hidden rounded-2xl bg-white dark:bg-dev-bg-elevated border border-gray-200 dark:border-dev-dark/50 shadow-lg relative min-h-[400px] md:min-h-[450px]"
       >
         @if (activeCategory) {
           <div class="p-6 md:p-8 h-full flex flex-col transition-all duration-500 animate-slide-in">
             <div class="flex items-center gap-4 mb-4">
-              <div class="w-12 h-12 rounded-xl bg-dev-bg flex items-center justify-center text-dev shadow-dev-glow-sm shrink-0">
+              <div class="w-12 h-12 rounded-xl bg-dev/10 dark:bg-dev-bg flex items-center justify-center text-dev shadow-sm dark:shadow-dev-glow-sm shrink-0">
                 <mat-icon>{{activeCategory.icon}}</mat-icon>
               </div>
-              <h3 class="text-xl md:text-2xl font-bold text-white leading-tight">{{activeCategory.name}}</h3>
+              <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white leading-tight">{{activeCategory.name}}</h3>
             </div>
             
-            <p class="text-dev-text-bright italic text-base md:text-lg mb-6 border-l-4 border-dev pl-4">
+            <p class="text-gray-700 dark:text-dev-text-bright italic text-base md:text-lg mb-6 border-l-4 border-dev pl-4">
               "{{activeCategory.phrase}}"
             </p>
 
@@ -70,16 +70,16 @@
               @for (service of activeCategory.services; track service) {
                 <li class="flex items-start gap-3">
                   <mat-icon class="text-accent text-[20px] h-[20px] w-[20px] mt-0.5 shrink-0">check_circle</mat-icon>
-                  <span class="text-dev-text/90 text-sm md:text-base">{{service}}</span>
+                  <span class="text-gray-600 dark:text-dev-text/90 text-sm md:text-base">{{service}}</span>
                 </li>
               }
             </ul>
 
             <div class="mb-8 mt-auto">
-              <h4 class="text-sm font-semibold text-dev-muted uppercase tracking-wider mb-3">Stack Principal</h4>
+              <h4 class="text-sm font-semibold text-gray-500 dark:text-dev-muted uppercase tracking-wider mb-3">Stack Principal</h4>
               <div class="flex flex-wrap gap-2">
                 @for (tech of activeCategory.stack; track tech) {
-                  <span class="px-3 py-1 bg-dev-bg rounded-full text-xs font-medium text-dev-text-bright border border-dev-dark/30">
+                  <span class="px-3 py-1 bg-gray-100 dark:bg-dev-bg rounded-full text-xs font-medium text-gray-700 dark:text-dev-text-bright border border-gray-200 dark:border-dev-dark/30">
                     {{tech}}
                   </span>
                 }
@@ -94,11 +94,11 @@
             </a>
           </div>
         } @else {
-          <div class="absolute inset-0 flex flex-col items-center justify-center text-dev-muted p-8 text-center animate-fade-in">
-            <div class="w-16 h-16 rounded-full bg-dev-bg-surface flex items-center justify-center mb-6 shadow-dev-glow-sm relative">
-                <mat-icon class="text-dev-light">touch_app</mat-icon>
+          <div class="absolute inset-0 flex flex-col items-center justify-center text-gray-400 dark:text-dev-muted p-8 text-center animate-fade-in">
+            <div class="w-16 h-16 rounded-full bg-gray-50 dark:bg-dev-bg-surface flex items-center justify-center mb-6 shadow-sm dark:shadow-dev-glow-sm relative">
+                <mat-icon class="text-dev dark:text-dev-light">touch_app</mat-icon>
             </div>
-            <p class="text-lg text-dev-text-bright font-medium">Selecione um serviço<br/> na cidade ao lado</p>
+            <p class="text-lg text-gray-600 dark:text-dev-text-bright font-medium">Selecione um serviço<br/> na cidade ao lado</p>
           </div>
         }
       </div>

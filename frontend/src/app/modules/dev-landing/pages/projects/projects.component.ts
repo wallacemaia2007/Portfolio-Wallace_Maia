@@ -165,9 +165,12 @@ export class ProjectsComponent implements OnDestroy, AfterViewInit {
         stagger: 0.08,
         duration: 0.6,
         ease: 'expo.out',
+        clearProps: 'opacity,transform',
+        immediateRender: false,
         scrollTrigger: {
           trigger: '.projects-grid',
           start: 'top 85%',
+          once: true,
         },
       });
     }, this.projectsGrid.nativeElement);

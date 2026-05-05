@@ -9,6 +9,8 @@ import {
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ThemeService } from '../../../portfolio/services/theme.service';
+import { MatIconModule } from '@angular/material/icon';
 
 interface NavLink {
   label: string;
@@ -20,7 +22,7 @@ interface NavLink {
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -65,7 +67,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(
     private readonly ngZone: NgZone,
     private readonly cdr: ChangeDetectorRef,
+    public readonly themeService: ThemeService,
   ) {}
+
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
+    this.cdr.markForCheck();
+  }
+
+  get isDarkMode(): boolean {
+    return this.themeService.isDarkMode();
+  }
 
   ngOnInit(): void {
     this.ngZone.runOutsideAngular(() => {
