@@ -4,8 +4,8 @@
 
     <!-- Section Header -->
     <app-section-header title="Vamos Conversar?"
-      subtitle="Estou sempre aberto a novas oportunidades e projetos interessantes" align="center"
-      appScrollReveal revealFrom="bottom" [revealDelay]="100">
+      subtitle="Estou sempre aberto a novas oportunidades e projetos interessantes" align="center" appScrollReveal
+      revealFrom="bottom" [revealDelay]="100">
     </app-section-header>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-12">
@@ -37,7 +37,7 @@
               <label for="contact-email" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                 Email *
               </label>
-              <input id="contact-email" type="email" formControlName="email" placeholder="seu&#64;email.com"
+              <input id="contact-email" type="email" formControlName="email" placeholder="seu@email.com"
                 class="w-full rounded-xl border px-4 py-3 text-base sm:text-sm text-gray-900 dark:text-white bg-gray-50 dark:bg-dev-bg-surface placeholder-gray-400 dark:placeholder-dev-text-muted transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-dev/50 focus:border-dev"
                 [ngClass]="isFieldInvalid('email') ? 'border-red-400 dark:border-red-500' : 'border-gray-200 dark:border-dev-bg-elevated'">
               @if (isFieldInvalid('email')) {
@@ -117,48 +117,69 @@
           </div>
           <div>
             <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">Email</p>
-            <p class="text-sm font-bold text-gray-900 dark:text-white mt-0.5 truncate break-all">{{ contactInfo.email }}</p>
+            <p class="text-sm font-bold text-gray-900 dark:text-white mt-0.5 truncate break-all">{{ contactInfo.email }}
+            </p>
           </div>
         </a>
 
         <!-- WhatsApp Card -->
-        <a [href]="whatsappLink" target="_blank" rel="noopener noreferrer" appScrollReveal revealFrom="bottom" [revealDelay]="230"
+        <a [href]="whatsappLink" target="_blank" rel="noopener noreferrer" appScrollReveal revealFrom="bottom"
+          [revealDelay]="230"
           class="flex items-center gap-4 rounded-2xl bg-white dark:bg-dev-bg p-5 border border-gray-100 dark:border-dev-bg-elevated shadow-sm hover:border-accent/30 dark:hover:border-accent/40 transition-all duration-200 hover:-translate-y-0.5 group">
           <div
             class="w-12 h-12 rounded-xl bg-accent/10 dark:bg-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-colors">
-            <mat-icon style="font-size: 22px; width: 22px; height: 22px;">chat</mat-icon>
+            <img src="assets/icons/whatsapp.svg" alt="WhatsApp" class="w-6 h-6">
           </div>
           <div>
             <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">WhatsApp
             </p>
-            <p class="text-sm font-bold text-gray-900 dark:text-white mt-0.5 truncate break-all">{{ whatsappDisplay }}</p>
+            <p class="text-sm font-bold text-gray-900 dark:text-white mt-0.5 truncate break-all">{{ whatsappDisplay }}
+            </p>
           </div>
         </a>
 
         <!-- LinkedIn Card -->
-        <a [href]="contactInfo.linkedin" target="_blank" rel="noopener noreferrer" appScrollReveal revealFrom="bottom" [revealDelay]="310"
+        <a [href]="contactInfo.linkedin" target="_blank" rel="noopener noreferrer" appScrollReveal revealFrom="bottom"
+          [revealDelay]="310"
           class="flex items-center gap-4 rounded-2xl bg-white dark:bg-dev-bg p-5 border border-gray-100 dark:border-dev-bg-elevated shadow-sm hover:border-blue-400/30 transition-all duration-200 hover:-translate-y-0.5 group">
           <div
             class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-            <mat-icon style="font-size: 22px; width: 22px; height: 22px;">person</mat-icon>
+            <img src="assets/icons/linkedin.svg" alt="LinkedIn" class="w-6 h-6">
           </div>
           <div>
             <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">LinkedIn
             </p>
-            <p class="text-sm font-bold text-gray-900 dark:text-white mt-0.5 truncate break-all">{{ contactInfo.linkedinDisplay }}</p>
+            <p class="text-sm font-bold text-gray-900 dark:text-white mt-0.5 truncate break-all">{{
+              contactInfo.linkedinDisplay }}</p>
           </div>
         </a>
 
         <!-- GitHub Card -->
-        <a [href]="contactInfo.github" target="_blank" rel="noopener noreferrer" appScrollReveal revealFrom="bottom" [revealDelay]="390"
+        <a [href]="contactInfo.github" target="_blank" rel="noopener noreferrer" appScrollReveal revealFrom="bottom"
+          [revealDelay]="390"
           class="flex items-center gap-4 rounded-2xl bg-white dark:bg-dev-bg p-5 border border-gray-100 dark:border-dev-bg-elevated shadow-sm hover:border-gray-400/30 transition-all duration-200 hover:-translate-y-0.5 group">
           <div
             class="w-12 h-12 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 group-hover:bg-gray-800 dark:group-hover:bg-gray-600 group-hover:text-white transition-colors">
-            <mat-icon style="font-size: 22px; width: 22px; height: 22px;">code</mat-icon>
+            <img src="assets/icons/github.svg" alt="GitHub" class="w-6 h-6">
           </div>
           <div>
             <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">GitHub</p>
-            <p class="text-sm font-bold text-gray-900 dark:text-white mt-0.5 truncate break-all">{{ contactInfo.githubDisplay }}</p>
+            <p class="text-sm font-bold text-gray-900 dark:text-white mt-0.5 truncate break-all">{{
+              contactInfo.githubDisplay }}</p>
+          </div>
+        </a>
+
+        <a [href]="contactInfo.fiverr" target="_blank" rel="noopener noreferrer" appScrollReveal revealFrom="bottom"
+          [revealDelay]="390"
+          class="flex items-center gap-4 rounded-2xl bg-white dark:bg-dev-bg p-5 border border-gray-100 dark:border-dev-bg-elevated shadow-sm hover:border-accent/30 dark:hover:border-accent/40 transition-all duration-200 hover:-translate-y-0.5 group">
+          <div
+            class="w-12 h-12 rounded-xl bg-accent/10 dark:bg-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-colors">
+            <img src="assets/icons/fiverr.svg" alt="Fiverr" class="w-6 h-6">
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">Fiverr</p>
+            <p class="text-sm font-bold text-gray-900 dark:text-white mt-0.5 truncate break-all">{{
+              contactInfo.fiverrDisplay }}</p>
           </div>
         </a>
 
@@ -172,17 +193,20 @@
           <div>
             <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">Localizacao
             </p>
-            <p class="text-sm font-bold text-gray-900 dark:text-white mt-0.5 truncate break-all">{{ contactInfo.location }}</p>
+            <p class="text-sm font-bold text-gray-900 dark:text-white mt-0.5 truncate break-all">{{ contactInfo.location
+              }}</p>
           </div>
         </div>
 
-        <!-- Inline Social Links -->
-        <div class="flex items-center gap-2 sm:gap-3 pt-3" appScrollReveal revealFrom="bottom" [revealDelay]="500">
+
+        <!-- Inline Social Links - FIXED VERSION -->
+        <div class="flex items-center gap-3 pt-4" appScrollReveal revealFrom="bottom" [revealDelay]="500">
           @for (link of socialLinks; track link.name) {
           <a [href]="link.url" target="_blank" rel="noopener noreferrer"
-            class="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-gray-100 dark:bg-dev-bg-elevated flex items-center justify-center text-gray-600 dark:text-dev-text-muted hover:bg-dev hover:text-white transition-all duration-200"
+            class="w-12 h-12 rounded-xl bg-white dark:bg-dev-bg border border-gray-100 dark:border-dev-bg-elevated flex items-center justify-center shadow-sm hover:border-dev/40 dark:hover:border-dev/50 hover:bg-dev group transition-all duration-200 hover:-translate-y-1"
             [attr.aria-label]="link.name">
-            <mat-icon style="font-size: 20px; width: 20px; height: 20px;">{{ link.icon }}</mat-icon>
+            <img [src]="link.src" [alt]="link.name" 
+              class="w-6 h-6 transition-all duration-200">
           </a>
           }
         </div>

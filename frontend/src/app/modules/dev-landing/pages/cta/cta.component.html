@@ -1,5 +1,4 @@
-<section id="cta"
-  class="cta-section relative py-10 md:py-18 overflow-hidden">
+<section id="cta" class="cta-section relative py-10 md:py-18 overflow-hidden">
 
   <!-- Parallax Background Image -->
   <div class="cta-parallax-bg absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -18,10 +17,10 @@
 
     <!-- Tag / label acima do título -->
     <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20
-                rounded-full px-4 py-1.5 mb-8"
-      appScrollReveal revealFrom="bottom" [revealDelay]="120">
+                rounded-full px-4 py-1.5 mb-8" appScrollReveal revealFrom="bottom" [revealDelay]="120">
       <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-      <span class="text-[10px] sm:text-xs font-bold tracking-widest uppercase text-white/80">Disponível para projetos</span>
+      <span class="text-[10px] sm:text-xs font-bold tracking-widest uppercase text-white/80">Disponível para
+        projetos</span>
     </div>
 
     <!-- Título -->
@@ -34,38 +33,34 @@
     </h2>
 
     <!-- Subtítulo -->
-    <p class="mt-6 text-sm sm:text-base md:text-lg text-white/60 max-w-xl mx-auto leading-relaxed"
-      appScrollReveal revealFrom="bottom" [revealDelay]="260">
+    <p class="mt-6 text-sm sm:text-base md:text-lg text-white/60 max-w-xl mx-auto leading-relaxed" appScrollReveal
+      revealFrom="bottom" [revealDelay]="260">
       Transformo suas ideias em produtos digitais reais.<br class="hidden sm:block">
       Vamos criar algo incrível.
     </p>
 
     <!-- Botões -->
-    <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
-      appScrollReveal revealFrom="bottom" [revealDelay]="340">
+    <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4" appScrollReveal revealFrom="bottom"
+      [revealDelay]="340">
 
       <!-- Primário: Ver Projetos -->
-      <a href="#projects" (click)="scrollTo($event, '#projects')"
-        class="group inline-flex items-center justify-center gap-2
+      <a href="#projects" (click)="scrollTo($event, '#projects')" class="group inline-flex items-center justify-center gap-2
                rounded-2xl bg-white px-8 py-4 text-sm font-bold text-dev
                transition-all duration-300
                hover:bg-gray-100 hover:-translate-y-1 hover:shadow-2xl hover:shadow-white/20
-               active:scale-[0.97]"
-        aria-label="Ver projetos">
+               active:scale-[0.97]" aria-label="Ver projetos">
         Ver Projetos
         <mat-icon class="transition-transform duration-300 group-hover:translate-x-1"
           style="font-size: 18px; width: 18px; height: 18px;">arrow_forward</mat-icon>
       </a>
 
       <!-- Secundário: WhatsApp -->
-      <a [href]="whatsappLink" target="_blank" rel="noopener noreferrer"
-        class="group inline-flex items-center justify-center gap-2
+      <a [href]="whatsappLink" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center justify-center gap-2
                rounded-2xl bg-accent px-8 py-4 text-sm font-bold text-white
                transition-all duration-300
                hover:bg-accent-dark hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/30
-               active:scale-[0.97]"
-        aria-label="Fale no WhatsApp">
-        <mat-icon style="font-size: 18px; width: 18px; height: 18px;">chat</mat-icon>
+               active:scale-[0.97]" aria-label="Fale no WhatsApp">
+        <img src="assets/icons/whatsapp.svg" alt="WhatsApp" class="w-5 h-5">
         Fale no WhatsApp
       </a>
 

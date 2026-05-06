@@ -7,12 +7,7 @@ import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [
-    CommonModule,
-    MatIconModule,
-    ScrollRevealDirective,
-    MatTooltip,
-  ],
+  imports: [CommonModule, MatIconModule, ScrollRevealDirective, MatTooltip],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })
@@ -26,10 +21,31 @@ export class FooterComponent {
   };
 
   readonly socialLinks = [
-    { name: 'GitHub', url: 'https://github.com/wallacemaia2007', icon: 'code' },
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/wallacemaia-dev/', icon: 'person' },
-    { name: 'Instagram', url: 'https://www.instagram.com/', icon: 'photo_camera' },
-    { name: 'WhatsApp', url: 'https://wa.me/5535910036806', icon: 'chat' },
+    {
+      name: 'GitHub',
+      url: 'https://github.com/wallacemaia2007',
+      src: 'assets/icons/github.svg',
+    },
+    {
+      name: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/wallacemaia-dev/',
+      src: 'assets/icons/linkedin.svg',
+    },
+    {
+      name: 'Instagram',
+      url: 'https://www.instagram.com/',
+      src: 'assets/icons/instagram.png',
+    },
+    {
+      name: 'WhatsApp',
+      url: 'https://wa.me/5535910036806',
+      src: 'assets/icons/whatsapp.svg',
+    },
+    {
+      name: 'Fiverr',
+      url: 'https://br.fiverr.com/wallace_maia?public_mode=true',
+      src: 'assets/icons/fiverr.svg',
+    },
   ];
 
   readonly quickLinks = [
