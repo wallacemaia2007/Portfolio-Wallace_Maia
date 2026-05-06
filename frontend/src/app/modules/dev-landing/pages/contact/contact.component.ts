@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { HttpClient } from '@angular/common/http';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
+import { SocialLinksDevComponent } from '../../../shared/components/social-links-dev/social-links-dev.component';
 import { environment } from '../../../../../environments/environment';
 
 @Component({
@@ -21,6 +22,7 @@ import { environment } from '../../../../../environments/environment';
     MatIconModule,
     ScrollRevealDirective,
     SectionHeaderComponent,
+    SocialLinksDevComponent,
   ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',

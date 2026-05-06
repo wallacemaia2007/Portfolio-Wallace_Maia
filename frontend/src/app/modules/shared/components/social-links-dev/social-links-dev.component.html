@@ -1,0 +1,13 @@
+<div class="flex gap-3" [ngClass]="{
+    'flex-row': orientation === 'horizontal',
+    'flex-col': orientation === 'vertical'
+  }">
+  @for (link of links; track link.name) {
+  <a [href]="link.url" target="_blank" rel="noopener noreferrer"
+    class="group flex items-center justify-center rounded-xl bg-white dark:bg-dev-bg border transition-all duration-200 hover:-translate-y-1"
+    [ngClass]="[getSizeClass(), getToneClasses()]" [attr.aria-label]="link.name">
+    <img [src]="link.src" [alt]="link.name" class="transition-all duration-200"
+      [ngClass]="getIconClass()">
+  </a>
+  }
+</div>

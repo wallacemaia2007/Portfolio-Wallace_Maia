@@ -199,16 +199,9 @@
         </div>
 
 
-        <!-- Inline Social Links - FIXED VERSION -->
-        <div class="flex items-center gap-3 pt-4" appScrollReveal revealFrom="bottom" [revealDelay]="500">
-          @for (link of socialLinks; track link.name) {
-          <a [href]="link.url" target="_blank" rel="noopener noreferrer"
-            class="w-12 h-12 rounded-xl bg-white dark:bg-dev-bg border border-gray-100 dark:border-dev-bg-elevated flex items-center justify-center shadow-sm hover:border-dev/40 dark:hover:border-dev/50 hover:bg-dev group transition-all duration-200 hover:-translate-y-1"
-            [attr.aria-label]="link.name">
-            <img [src]="link.src" [alt]="link.name" 
-              class="w-6 h-6 transition-all duration-200">
-          </a>
-          }
+        <!-- Inline Social Links -->
+        <div class="pt-4" appScrollReveal revealFrom="bottom" [revealDelay]="500">
+          <app-social-links-dev [links]="socialLinks" size="large"></app-social-links-dev>
         </div>
 
       </div>

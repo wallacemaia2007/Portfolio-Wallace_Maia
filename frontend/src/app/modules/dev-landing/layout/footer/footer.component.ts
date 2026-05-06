@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
+import { SocialLinksDevComponent } from '../../../shared/components/social-links-dev/social-links-dev.component';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule, MatIconModule, ScrollRevealDirective, MatTooltip],
+  imports: [CommonModule, MatIconModule, ScrollRevealDirective, MatTooltip, SocialLinksDevComponent],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })
