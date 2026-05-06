@@ -1,68 +1,43 @@
-<section id="hero" #heroSection
-  class="relative min-h-[100dvh] flex items-center overflow-hidden bg-gradient-to-br from-gray-50 to-white dark:from-dev-bg dark:to-dev-bg-surface pt-20 pb-12 lg:pt-24 lg:pb-16">
+<section id="hero" #heroSection class="relative min-h-screen overflow-hidden bg-dev-bg text-white flex items-center">
+  <canvas #particleCanvas class="hero-particle-canvas"></canvas>
 
-  <div class="container mx-auto max-w-7xl px-4 lg:px-6">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+  <div class="container mx-auto max-w-7xl px-4 lg:px-6 py-24 lg:py-28">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center justify-items-center">
 
-      <!-- Left Block: Content -->
-      <div class="order-2 lg:order-1 space-y-6">
-
-        <!-- Tag -->
-        <div
-          class="hero-tag inline-flex items-center gap-2 rounded-full bg-dev/10 dark:bg-dev/20 px-4 py-1.5 text-sm font-semibold text-dev dark:text-dev-light">
-          <span class="text-base">&#x1F680;</span>
-          <span>Desenvolvimento Web Focado em Resultados</span>
+      <div class="order-2 lg:order-1 flex flex-col items-center text-center gap-6 max-w-2xl">
+        <div class="hero-tag inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5">
+          <span class="h-2 w-2 rounded-full bg-accent animate-pulse"></span>
+          <span class="text-sm font-bold uppercase tracking-[0.2em] text-white/70">Dev Web Full Stack</span>
         </div>
 
-        <!-- Name -->
-        <h1
-          class="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-none text-gray-900 dark:text-white">
-          Aplicacoes web sob medida que transformam sua visao em negocio.
+        <h1 class="hero-title text-4xl sm:text-5xl lg:text-6xl font-black leading-tight">
+          Solucoes que transformam ideias em produtos digitais
         </h1>
 
-        <!-- Role -->
-        <p class="hero-role text-lg sm:text-xl md:text-2xl font-semibold text-gray-700 dark:text-gray-200 max-w-[60ch]">
-          Crio e otimizo sites, landing pages e sistemas completos para empreendedores e empresas que buscam
-          uma presenca digital profissional, performatica e que gere conversoes.
+        <p class="hero-role text-lg sm:text-xl font-semibold text-dev-light">
+          {{ personalInfo.role }}
         </p>
 
-        <!-- Tech Pills -->
-        <!-- Proof / Bio -->
-        <p class="hero-bio text-base leading-relaxed text-gray-600 dark:text-dev-text-muted max-w-[60ch]">
-          Ja ajudei dezenas de clientes a lancar produtos digitais de sucesso. Especialista em Angular e Node.js
-          para criar solucoes robustas e escalaveis.
+        <p class="hero-bio text-base sm:text-lg text-white/70 max-w-xl leading-relaxed">
+          Clique em um servico para explorar o que posso construir para voce
         </p>
 
-        <!-- Buttons -->
-        <div class="hero-buttons flex flex-col sm:flex-row gap-3">
+        <div class="hero-buttons flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="#works" (click)="scrollTo($event, '#works')"
+            class="inline-flex items-center justify-center gap-2 rounded-2xl bg-dev px-6 py-3 text-sm font-bold text-white transition-all duration-200 hover:bg-dev-dark hover:-translate-y-0.5 active:scale-[0.98] shadow-dev-glow-sm">
+            Ver Servicos
+            <mat-icon style="font-size: 18px; width: 18px; height: 18px;">arrow_forward</mat-icon>
+          </a>
           <a href="#contact" (click)="scrollTo($event, '#contact')"
-            class="inline-flex items-center justify-center rounded-xl bg-dev px-6 py-3 text-sm font-bold text-white transition-all duration-200 hover:bg-dev-dark hover:-translate-y-0.5 active:scale-[0.98] shadow-dev-glow-sm hover:shadow-dev-glow"
-            aria-label="Iniciar meu projeto">
-            Iniciar meu Projeto
+            class="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 px-6 py-3 text-sm font-bold text-white/80 transition-all duration-200 hover:border-dev hover:text-white hover:-translate-y-0.5">
+            Fale comigo
           </a>
-          <a href="#projects" (click)="scrollTo($event, '#projects')"
-            class="inline-flex items-center justify-center rounded-xl border border-gray-300 dark:border-gray-500/30 px-6 py-3 text-sm font-bold text-gray-700 dark:text-gray-200 transition-all duration-200 hover:border-dev hover:text-dev dark:hover:border-dev-light dark:hover:text-dev-light active:scale-[0.98]"
-            aria-label="Ver meus trabalhos">
-            Ver meus Trabalhos
-          </a>
-        </div>
-
-        <!-- Tech Pills -->
-        <div class="hero-pills flex flex-wrap gap-2">
-          @for (tech of techPills; track tech) {
-          <span
-            class="rounded-full border border-dev/20 bg-dev/10 px-4 py-1.5 text-xs font-semibold text-dev dark:text-dev-light backdrop-blur-sm transition-all duration-200 hover:border-dev/40 hover:bg-dev/20">
-            {{ tech }}
-          </span>
-          }
         </div>
       </div>
 
-      <!-- Right Block: Preview UI + Avatar -->
-      <div class="order-1 lg:order-2 flex justify-center lg:justify-end relative max-w-sm mx-auto lg:max-w-none lg:mx-0 w-full">
-        <div class="hero-preview-wrapper relative w-full max-w-xl px-4 sm:px-0 mt-6 lg:mt-0">
+      <div class="order-1 lg:order-2 flex justify-center relative max-w-sm mx-auto lg:max-w-none lg:mx-0 w-full">
+        <div class="hero-preview-wrapper relative w-full max-w-2xl px-4 sm:px-0 mt-6 lg:mt-0">
 
-          <!-- Mini Interface Preview -->
           <div class="hero-preview-card">
             <div class="hero-preview-header">
               <div class="hero-preview-dots">
@@ -79,28 +54,27 @@
 
             <div class="hero-preview-content">
               <div class="hero-metric">
-                <span class="metric-label">Leads Qualificados</span>
-                <span class="metric-value">+128%</span>
+                <span class="metric-label">Clientes Atendidos</span>
+                <span class="metric-value">+24</span>
               </div>
               <div class="hero-metric">
-                <span class="metric-label">Taxa de Conversao</span>
-                <span class="metric-value">4.8%</span>
+                <span class="metric-label">Projetos Entregues</span>
+                <span class="metric-value">38</span>
               </div>
               <div class="hero-metric">
-                <span class="metric-label">Tempo de Carregamento</span>
-                <span class="metric-value">0.9s</span>
+                <span class="metric-label">Anos de Experiencia</span>
+                <span class="metric-value">5+</span>
               </div>
 
               <div class="hero-progress">
                 <div class="progress-bar">
                   <span class="progress-fill"></span>
                 </div>
-                <div class="progress-caption">Performance otimizando resultados em tempo real</div>
+                <div class="progress-caption">Resultados consistentes em projetos reais</div>
               </div>
             </div>
           </div>
 
-          <!-- Floating Project Cards -->
           <div class="hero-preview-floating card-a hidden sm:block">
             <div class="floating-title">Landing Page SaaS</div>
             <div class="floating-chip">+36% conversao</div>
@@ -110,14 +84,13 @@
             <div class="floating-chip">ROI 3.2x</div>
           </div>
 
-          <!-- Badges -->
           <div class="hero-badge hero-badge-top hidden sm:flex">
             <mat-icon class="text-dev text-base" style="font-size: 18px; width: 18px; height: 18px;">work</mat-icon>
-            <span class="text-xs font-bold text-gray-900 dark:text-white">Full Stack</span>
+            <span class="text-xs font-bold">Full Stack</span>
           </div>
           <div class="hero-badge hero-badge-bottom hidden sm:flex">
             <mat-icon class="text-accent text-base" style="font-size: 18px; width: 18px; height: 18px;">code</mat-icon>
-            <span class="text-xs font-bold text-gray-900 dark:text-white">Open to Work</span>
+            <span class="text-xs font-bold">Open to Work</span>
           </div>
 
         </div>
@@ -125,5 +98,4 @@
 
     </div>
   </div>
-
 </section>
