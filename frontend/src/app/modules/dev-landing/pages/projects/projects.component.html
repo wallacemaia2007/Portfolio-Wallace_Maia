@@ -1,111 +1,98 @@
-<section
-  #projectsSection
-  id="projects"
-  class="projects-section py-16 md:py-24 bg-gray-100 dark:bg-dev-bg-surface transition-colors duration-300"
-  [style.--projects-count]="projects.length"
-  [style.--active-accent]="activeProject.theme.accent"
-  [style.--active-surface]="activeProject.theme.surface"
+<section id="projects" class="projects-section relative overflow-hidden bg-gray-100 dark:bg-dev-bg-surface"
+  [style.--active-accent]="activeProject.theme.accent" [style.--active-surface]="activeProject.theme.surface"
   [style.--active-glow]="activeProject.theme.glow">
+  <div class="projects-parallax-bg" aria-hidden="true"></div>
 
-  <div class="container mx-auto max-w-7xl px-4 lg:px-6">
-    <app-section-header
-      title="Projetos em construcao"
-      subtitle="Cada scroll monta um site completo dentro do mockup"
-      align="center">
-    </app-section-header>
+  <div class="projects-wrapper">
 
-    <div #projectsPin class="projects-pin mt-10">
-      <div class="projects-stage">
-        <div class="projects-selector">
-          @for (project of projects; track project.id; let i = $index) {
-            <button
-              type="button"
-              class="selector-pill"
-              [class.is-active]="i === activeProjectIndex"
-              (click)="scrollToProject(i)">
-              <span class="pill-index">0{{ i + 1 }}</span>
-              <span class="pill-title">{{ project.title }}</span>
-            </button>
-          }
+    <!-- ── Header ─────────────────────────────────────────────────────── -->
+    <header class="projects-header">
+      <span class="header-eyebrow">Portfólio</span>
+
+      <h2 class="header-title">Meus Projetos Recentes</h2>
+
+      <p class="header-subtitle">
+        Uma seleção dos meus trabalhos mais recentes, destacando a diversidade de tecnologias e soluções que implementei
+      </p>
+
+      <div class="projects-selector">
+        @for (project of projects; track project.id; let i = $index) {
+        <button type="button" class="selector-pill" [class.is-active]="i === activeProjectIndex"
+          (click)="selectProject(i)" [style.--pill-accent]="project.theme.accent"
+          [style.--pill-glow]="project.theme.glow">
+          <span class="pill-index">0{{ i + 1 }}</span>
+          <span class="pill-title">{{ project.title }}</span>
+        </button>
+        }
+      </div>
+    </header>
+
+    <!-- ── Main ───────────────────────────────────────────────────────── -->
+    <main class="projects-main">
+
+      <!-- Browser Mockup -->
+      <div class="browser-mockup">
+        <div class="browser-topbar">
+          <div class="browser-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <div class="browser-url-bar">
+            <span class="browser-lock">🔒</span>
+            <span class="browser-url-text">{{ activeProject.liveUrl.replace('https://', '') }}</span>
+          </div>
+          <span class="browser-scroll-hint">scroll →</span>
         </div>
 
-        <div class="projects-layout">
-          <div class="browser-mockup" #mockupSurface>
-            <div class="browser-topbar">
-              <span class="dot dot-red"></span>
-              <span class="dot dot-yellow"></span>
-              <span class="dot dot-green"></span>
-              <div class="browser-url">https://{{ activeProject.id }}</div>
-            </div>
+        <div class="browser-canvas" #innerScroll>
+          @for (page of activeProject.pages; track page; let i = $index) {
+          <div class="page-frame">
+            <img [src]="page" [alt]="activeProject.title + ' — página ' + (i + 1)" class="page-img" draggable="false" />
+            <span class="page-badge">{{ i + 1 }}/{{ activePageTotal }}</span>
+          </div>
+          }
+          @if (activeProject.video; as video) {
+          <div class="page-frame">
+            <video #projectVideo class="page-video" [src]="video.src" [attr.poster]="video.poster || null" muted
+              playsinline preload="metadata" loop></video>
+            <span class="page-badge">{{ activeProject.pages.length + 1 }}/{{ activePageTotal }}</span>
+          </div>
+          }
+        </div>
+      </div>
 
-            <div class="browser-content" [style.--segment-progress]="activeSegmentProgress">
-              <div class="mockup-canvas">
-                @for (layer of activeLayers; track layer.key) {
-                  <div
-                    class="mockup-layer"
-                    [class.is-active]="layer.isActive"
-                    [attr.data-layer]="layer.key"
-                    [style.--phase]="layer.phase"
-                    [style.--depth]="layer.depth + 'px'"
-                    [style.--enter-y]="layer.enterY + 'px'"
-                    [style.--enter-scale]="layer.enterScale"
-                    [style.--enter-blur]="layer.enterBlur + 'px'"
-                    [style.zIndex]="layer.zIndex"
-                    [style.backgroundImage]="'url(' + layer.image + ')'">
-                    <span class="mockup-label">{{ layer.label }}</span>
-                  </div>
-                }
-              </div>
+      <!-- Sidebar -->
+      <aside class="projects-sidebar">
+        <div class="sidebar-card">
+
+          <div class="pages-indicator">
+            <span class="indicator-label">Páginas do projeto</span>
+            <div class="indicator-dots">
+              @for (index of activePageIndicators; track index) {
+              <span class="indicator-dot"></span>
+              }
             </div>
           </div>
 
-          <aside class="projects-sidebar">
-            <div class="sidebar-card">
-              <div class="sidebar-progress">
-                <div class="progress-track">
-                  <div
-                    class="progress-fill"
-                    [style.--progress]="activeSegmentProgress">
-                  </div>
-                </div>
-                <div class="progress-stages">
-                  @for (stage of layerStages; track stage.key; let i = $index) {
-                    <div
-                      class="stage-item"
-                      [class.is-active]="i === activeStageIndex"
-                      [class.is-complete]="i < activeStageIndex">
-                      <span class="stage-dot"></span>
-                      <span class="stage-label">{{ stage.label }}</span>
-                    </div>
-                  }
-                </div>
-              </div>
-
-              <div class="sidebar-content">
-                <p class="sidebar-kicker">Projeto ativo</p>
-                <h3>{{ activeProject.title }}</h3>
-                <p class="sidebar-description">{{ activeProject.shortDescription }}</p>
-
-                <div class="sidebar-meta">
-                  <span class="meta-pill">Ano {{ activeProject.year }}</span>
-                  <span class="meta-pill">{{ activeProject.technologies.length }} techs</span>
-                </div>
-
-                <div class="sidebar-techs">
-                  @for (tech of activeProject.technologies; track tech) {
-                    <span class="tech-chip">{{ tech }}</span>
-                  }
-                </div>
-              </div>
-
-              <a class="sidebar-link" [href]="activeProject.liveUrl" target="_blank" rel="noreferrer">
-                Ver projeto
-                <span class="link-arrow">→</span>
-              </a>
+          <div class="sidebar-info">
+            <span class="project-year">{{ activeProject.year }}</span>
+            <h3 class="project-title">{{ activeProject.title }}</h3>
+            <p class="project-desc">{{ activeProject.shortDescription }}</p>
+            <div class="tech-tags">
+              @for (tech of activeProject.technologies; track tech) {
+              <span class="tech-tag">{{ tech }}</span>
+              }
             </div>
-          </aside>
+          </div>
+
+          <a [href]="activeProject.liveUrl" target="_blank" rel="noopener noreferrer" class="sidebar-cta">
+            Visitar Website <span>→</span>
+          </a>
+
         </div>
-      </div>
-    </div>
+      </aside>
+    </main>
+
   </div>
 </section>
