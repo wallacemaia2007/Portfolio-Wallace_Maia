@@ -44,6 +44,7 @@ export class CtaComponent implements OnInit, OnDestroy {
   };
 
   private applyParallax(): void {
+    if (window.innerWidth < 768) return;
     if (!this.bgEl || !this.sectionEl) return;
 
     const rect = this.sectionEl.getBoundingClientRect();

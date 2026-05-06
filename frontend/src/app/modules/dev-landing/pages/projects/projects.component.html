@@ -1,6 +1,5 @@
 <section id="projects"
-  class="py-16 md:py-24 bg-gray-100 dark:bg-dev-bg-surface transition-colors duration-300"
-  appScrollReveal revealFrom="bottom" [revealDelay]="100">
+  class="py-16 md:py-24 bg-gray-100 dark:bg-dev-bg-surface transition-colors duration-300">
 
   <div class="container mx-auto max-w-7xl px-4 lg:px-6">
 
@@ -8,16 +7,18 @@
     <app-section-header
       title="Meus Projetos"
       subtitle="Projetos que construi ao longo da minha jornada como desenvolvedor"
-      align="center">
+      align="center"
+      appScrollReveal revealFrom="bottom" [revealDelay]="100">
     </app-section-header>
 
     <!-- Projects Grid -->
-    <div #projectsGrid class="projects-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+    <div #projectsGrid class="projects-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-12">
 
       @for (project of projects; track project.id) {
       <app-project-card
         [project]="project"
         [variant]="'dev'"
+        appScrollReveal revealFrom="bottom" [revealDelay]="$index * 100 < 400 ? $index * 100 : 400"
         [isPreviewPlaying]="isProjectPreviewPlaying(project.id)"
         (projectOpen)="openProjectModal($event)"
         (projectEnter)="onProjectCardEnter($event.project, $event.video)"

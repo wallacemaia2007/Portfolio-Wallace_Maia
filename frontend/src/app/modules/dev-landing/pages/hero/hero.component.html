@@ -16,12 +16,12 @@
 
         <!-- Name -->
         <h1
-          class="hero-title text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-none text-gray-900 dark:text-white">
+          class="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-none text-gray-900 dark:text-white">
           Aplicacoes web sob medida que transformam sua visao em negocio.
         </h1>
 
         <!-- Role -->
-        <p class="hero-role text-xl md:text-2xl font-semibold text-gray-700 dark:text-gray-200 max-w-[60ch]">
+        <p class="hero-role text-lg sm:text-xl md:text-2xl font-semibold text-gray-700 dark:text-gray-200 max-w-[60ch]">
           Crio e otimizo sites, landing pages e sistemas completos para empreendedores e empresas que buscam
           uma presenca digital profissional, performatica e que gere conversoes.
         </p>
@@ -34,7 +34,7 @@
         </p>
 
         <!-- Buttons -->
-        <div class="hero-buttons flex flex-wrap gap-3">
+        <div class="hero-buttons flex flex-col sm:flex-row gap-3">
           <a href="#contact" (click)="scrollTo($event, '#contact')"
             class="inline-flex items-center justify-center rounded-xl bg-dev px-6 py-3 text-sm font-bold text-white transition-all duration-200 hover:bg-dev-dark hover:-translate-y-0.5 active:scale-[0.98] shadow-dev-glow-sm hover:shadow-dev-glow"
             aria-label="Iniciar meu projeto">
@@ -59,8 +59,8 @@
       </div>
 
       <!-- Right Block: Preview UI + Avatar -->
-      <div class="order-1 lg:order-2 flex justify-center lg:justify-end relative">
-        <div class="hero-preview-wrapper relative w-full max-w-xl">
+      <div class="order-1 lg:order-2 flex justify-center lg:justify-end relative max-w-sm mx-auto lg:max-w-none lg:mx-0 w-full">
+        <div class="hero-preview-wrapper relative w-full max-w-xl px-4 sm:px-0 mt-6 lg:mt-0">
 
           <!-- Mini Interface Preview -->
           <div class="hero-preview-card">
@@ -101,21 +101,21 @@
           </div>
 
           <!-- Floating Project Cards -->
-          <div class="hero-preview-floating card-a">
+          <div class="hero-preview-floating card-a hidden sm:block">
             <div class="floating-title">Landing Page SaaS</div>
             <div class="floating-chip">+36% conversao</div>
           </div>
-          <div class="hero-preview-floating card-b">
+          <div class="hero-preview-floating card-b hidden sm:block">
             <div class="floating-title">Sistema de Vendas</div>
             <div class="floating-chip">ROI 3.2x</div>
           </div>
 
           <!-- Badges -->
-          <div class="hero-badge hero-badge-top">
+          <div class="hero-badge hero-badge-top hidden sm:flex">
             <mat-icon class="text-dev text-base" style="font-size: 18px; width: 18px; height: 18px;">work</mat-icon>
             <span class="text-xs font-bold text-gray-900 dark:text-white">Full Stack</span>
           </div>
-          <div class="hero-badge hero-badge-bottom">
+          <div class="hero-badge hero-badge-bottom hidden sm:flex">
             <mat-icon class="text-accent text-base" style="font-size: 18px; width: 18px; height: 18px;">code</mat-icon>
             <span class="text-xs font-bold text-gray-900 dark:text-white">Open to Work</span>
           </div>

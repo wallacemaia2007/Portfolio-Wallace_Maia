@@ -207,3 +207,16 @@
     animation: none;
   }
 }
+
+@media (max-width: 640px) {
+  .hero-preview-card {
+    border-radius: 16px;
+    margin: 0 8px;
+  }
+  .hero-preview-content {
+    padding: 16px;
+  }
+  .metric-value {
+    font-size: 1.1rem;
+  }
+}

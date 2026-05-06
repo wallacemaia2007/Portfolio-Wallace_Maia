@@ -1,9 +1,9 @@
-<article (click)="handleOpen()" appScrollReveal revealFrom="bottom" [revealDelay]="revealDelay"
+<article (click)="handleOpen()"
   (mouseenter)="handleEnter()" (mouseleave)="handleLeave()"
   class="project-card group rounded-2xl overflow-hidden transition-all duration-500 cursor-pointer"
   [ngClass]="getCardClass()">
 
-  <div class="relative h-56 overflow-hidden" [ngClass]="getMediaWrapperClass()">
+  <div class="relative aspect-video w-full overflow-hidden" [ngClass]="getMediaWrapperClass()">
     <img [src]="project.thumbnail" [alt]="project.title"
       class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
       [class.opacity-0]="isPreviewPlaying">

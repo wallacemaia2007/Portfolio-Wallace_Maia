@@ -1,4 +1,4 @@
-﻿import {
+import {
   Directive,
   ElementRef,
   Input,
@@ -24,6 +24,7 @@ export class ScrollRevealDirective implements OnInit, OnDestroy {
 
   private el = inject(ElementRef);
   private renderer = inject(Renderer2);
+  private prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   ngOnInit(): void {
     this.setInitialStyles();
@@ -37,6 +38,11 @@ export class ScrollRevealDirective implements OnInit, OnDestroy {
   }
 
   private setInitialStyles(): void {
+    if (this.prefersReducedMotion) {
+      // Não esconder o elemento, revelar imediatamente
+      return;
+    }
+
     this.renderer.setStyle(this.el.nativeElement, 'opacity', '0');
     this.renderer.setStyle(
       this.el.nativeElement,
@@ -73,6 +79,10 @@ export class ScrollRevealDirective implements OnInit, OnDestroy {
   }
 
   private setupIntersectionObserver(): void {
+    if (this.prefersReducedMotion) {
+      return; // Não observar, elemento já está visível
+    }
+
     this.observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

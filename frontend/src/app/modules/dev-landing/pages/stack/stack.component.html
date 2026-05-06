@@ -11,13 +11,13 @@
     <!-- ════════════════════════════════════════
          MAIN STACKS — Hero Cards
     ════════════════════════════════════════ -->
-    <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-6" appScrollReveal revealFrom="bottom" [revealDelay]="100">
+    <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-6">
 
       <!-- STACK 1: Frontend -->
       <div class="stack-hero-card group relative rounded-3xl overflow-hidden border border-white/5
                   bg-gradient-to-br from-[#0a0e1a] to-[#111827]
                   hover:border-[#3b82f6]/30 transition-all duration-500 hover:shadow-2xl hover:shadow-[#3b82f6]/10
-                  cursor-pointer" (click)="setFocusedStack('frontend')">
+                  cursor-pointer" (click)="setFocusedStack('frontend')" appScrollReveal revealFrom="left" [revealDelay]="100">
 
         <!-- Glow Orb -->
         <div
@@ -26,7 +26,7 @@
               group-hover:bg-[#3b82f6]/20 group-hover:opacity-90 transition-all duration-700 -translate-y-16 translate-x-16">
         </div>
 
-        <div class="relative z-10 p-8 md:p-10">
+        <div class="relative z-10 p-5 sm:p-8 md:p-10">
 
           <!-- Tag -->
           <span class="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase
@@ -37,11 +37,11 @@
           </span>
 
           <!-- Headline -->
-          <h3 class="text-3xl font-black text-white leading-tight mb-3">
+          <h3 class="text-2xl sm:text-3xl font-black text-white leading-tight mb-3">
             Stack<br>
             <span class="text-[#60a5fa]">Frontend</span>
           </h3>
-          <p class="text-sm text-gray-400 leading-relaxed mb-8 max-w-xs">
+          <p class="text-xs sm:text-sm text-gray-400 leading-relaxed mb-8 max-w-xs">
             Interfaces modernas, rápidas e acessíveis. Do design ao componente final,
             com reatividade e performance de primeira.
           </p>
@@ -57,9 +57,9 @@
           </div>
 
           <!-- Tech Icons Row -->
-          <div class="flex items-center gap-3">
+          <div class="flex flex-wrap items-center gap-2 sm:gap-3">
             @for (tech of frontendMain; track tech.id) {
-            <div class="tech-icon-chip flex items-center gap-2 bg-white/5 border border-white/10
+            <div class="tech-icon-chip shrink-0 flex items-center gap-2 bg-white/5 border border-white/10
                         rounded-xl px-3 py-2 hover:bg-white/10 hover:border-[#3b82f6]/40
                         transition-all duration-200 group/chip" [attr.aria-label]="tech.name">
               <img [src]="tech.icon" [alt]="tech.name" class="w-5 h-5 object-contain" (error)="onIconError($event)">
@@ -76,7 +76,7 @@
       <div class="stack-hero-card group relative rounded-3xl overflow-hidden border border-white/5
                   bg-gradient-to-br from-[#0a1a0e] to-[#0f1f14]
                   hover:border-[#22c55e]/30 transition-all duration-500 hover:shadow-2xl hover:shadow-[#22c55e]/10
-                  cursor-pointer" (click)="setFocusedStack('backend')">
+                  cursor-pointer" (click)="setFocusedStack('backend')" appScrollReveal revealFrom="right" [revealDelay]="200">
 
         <!-- Glow Orb -->
         <div
@@ -85,7 +85,7 @@
               group-hover:bg-[#22c55e]/20 group-hover:opacity-90 transition-all duration-700 -translate-y-16 translate-x-16">
         </div>
 
-        <div class="relative z-10 p-8 md:p-10">
+        <div class="relative z-10 p-5 sm:p-8 md:p-10">
 
           <!-- Tag -->
           <span class="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase
@@ -96,11 +96,11 @@
           </span>
 
           <!-- Headline -->
-          <h3 class="text-3xl font-black text-white leading-tight mb-3">
+          <h3 class="text-2xl sm:text-3xl font-black text-white leading-tight mb-3">
             Stack<br>
             <span class="text-[#4ade80]">Backend</span>
           </h3>
-          <p class="text-sm text-gray-400 leading-relaxed mb-8 max-w-xs">
+          <p class="text-xs sm:text-sm text-gray-400 leading-relaxed mb-8 max-w-xs">
             APIs robustas, seguras e escaláveis. Java + Spring para produção real,
             com Node.js para soluções ágeis e flexíveis.
           </p>
@@ -116,9 +116,9 @@
           </div>
 
           <!-- Tech Icons Row -->
-          <div class="flex items-center gap-3">
+          <div class="flex flex-wrap items-center gap-2 sm:gap-3">
             @for (tech of backendMain; track tech.id) {
-            <div class="tech-icon-chip flex items-center gap-2 bg-white/5 border border-white/10
+            <div class="tech-icon-chip shrink-0 flex items-center gap-2 bg-white/5 border border-white/10
                         rounded-xl px-3 py-2 hover:bg-white/10 hover:border-[#22c55e]/40
                         transition-all duration-200 group/chip" [attr.aria-label]="tech.name">
               <img [src]="tech.icon" [alt]="tech.name" class="w-5 h-5 object-contain" (error)="onIconError($event)">
@@ -136,15 +136,15 @@
     <!-- ════════════════════════════════════════
          CATEGORY TABS — Everything else
     ════════════════════════════════════════ -->
-    <div class="mt-20" appScrollReveal revealFrom="bottom" [revealDelay]="150">
+    <div class="mt-20">
 
       <!-- Label -->
-      <p class="text-center text-xs font-bold tracking-widest uppercase text-gray-400 dark:text-gray-500 mb-6">
+      <p class="text-center text-xs font-bold tracking-widest uppercase text-gray-400 dark:text-gray-500 mb-6" appScrollReveal revealFrom="bottom" [revealDelay]="100">
         Todas as tecnologias
       </p>
 
       <!-- Tabs -->
-      <div class="flex justify-center">
+      <div class="flex justify-center" appScrollReveal revealFrom="bottom" [revealDelay]="150">
         <div class="inline-flex gap-2 overflow-x-auto pb-2 px-1 max-w-full scrollbar-hide">
           @for (tab of tabs; track tab.key) {
           <button (click)="setActiveCategory(tab.key)"

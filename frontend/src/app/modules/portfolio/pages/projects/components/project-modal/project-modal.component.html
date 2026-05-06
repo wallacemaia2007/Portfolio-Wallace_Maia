@@ -1,10 +1,10 @@
 @if (project) {
-<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in"
+<div class="fixed inset-0 z-50 flex items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-sm animate-fade-in"
   [ngClass]="getModalThemeClass()"
   (click)="onClose()">
 
   <div
-    class="relative w-full max-w-6xl max-h-[90vh] rounded-2xl overflow-hidden shadow-2xl animate-slide-up"
+    class="relative w-full h-full sm:h-auto max-w-6xl max-h-screen sm:max-h-[90vh] rounded-none sm:rounded-2xl overflow-hidden shadow-2xl animate-slide-up"
     [ngClass]="getModalSurfaceClass()"
     (click)="$event.stopPropagation()">
 
@@ -15,7 +15,7 @@
       <mat-icon class="icon-center">close</mat-icon>
     </button>
 
-    <div class="overflow-y-auto max-h-[90vh] scrollbar-thin">
+    <div class="overflow-y-auto h-full max-h-screen sm:max-h-[90vh] scrollbar-thin">
       <div
         class="relative h-96 bg-gradient-to-br from-beige to-beige-dark dark:from-custom-black to-custom-black-light">
         @if (hasThumbVideo()) {
@@ -121,7 +121,7 @@
             <div class="flex flex-wrap gap-3">
               @if (project.githubUrl) {
               <a [href]="project.githubUrl" target="_blank" rel="noopener noreferrer"
-                class="px-4 py-2 text-white rounded-lg transition-all hover:scale-105 flex items-center gap-2 shadow-md"
+                class="px-4 py-2 min-h-[44px] text-white rounded-lg transition-all hover:scale-105 flex items-center gap-2 shadow-md"
                 [ngClass]="getAccentButtonClass()">
                 <img src="assets/icons/github.svg" alt="" class="w-5 h-5">
                 <span>GitHub</span>
@@ -129,7 +129,7 @@
               }
               @if (project.liveUrl) {
               <a [href]="project.liveUrl" target="_blank" rel="noopener noreferrer"
-                class="px-4 py-2 text-white rounded-lg transition-all hover:scale-105 flex items-center gap-2 shadow-md"
+                class="px-4 py-2 min-h-[44px] text-white rounded-lg transition-all hover:scale-105 flex items-center gap-2 shadow-md"
                 [ngClass]="getAccentButtonClass()">
                 <mat-icon>launch</mat-icon>
                 <span>Ver Live</span>
@@ -149,7 +149,7 @@
             <mat-icon [ngClass]="getAccentTextClass()">code</mat-icon>
             Tecnologias Utilizadas
           </h3>
-          <div class="flex flex-wrap gap-3">
+          <div class="flex flex-wrap gap-1 sm:gap-3">
             @for (tech of project.technologies; track tech) {
             <span
               class="px-4 py-2 dark:text-gray-300 border-2 rounded-lg text-sm font-medium hover:scale-105 transition-all"
@@ -214,7 +214,7 @@
             </div>
 
             <button routerLink="/contact"
-              class="px-6 py-3 text-white rounded-xl font-bold transition-all hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 whitespace-nowrap"
+              class="px-6 py-3 min-h-[44px] text-white rounded-xl font-bold transition-all hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 whitespace-nowrap"
               [ngClass]="getAccentButtonClass()">
               <span>Contato</span>
               <mat-icon>open_in_new</mat-icon>

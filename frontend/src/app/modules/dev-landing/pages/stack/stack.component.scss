@@ -32,6 +32,10 @@
   &:hover {
     transform: translateY(-1px);
   }
+
+  @media (max-width: 640px) {
+    transform: none;
+  }
 }
 
 // ─── Skill Grid Cards ───────────────────────────────────────────────────────

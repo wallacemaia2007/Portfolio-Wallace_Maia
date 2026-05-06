@@ -11,6 +11,18 @@
 .building-workshop { height: 45%; }
 .building-tower { height: 85%; }
 
+@media (max-width: 640px) {
+  .building-skyscraper { height: 85%; }
+  .building-commercial { height: 70%; }
+  .building-shop { height: 40%; }
+  .building-agency { height: 60%; }
+  .building-studio { height: 50%; }
+  .building-factory { height: 55%; }
+  .building-workshop { height: 35%; }
+  .building-tower { height: 75%; }
+  .building-shape { min-height: 30px; }
+}
+
 .building-shape {
   position: relative;
   min-height: 40px;

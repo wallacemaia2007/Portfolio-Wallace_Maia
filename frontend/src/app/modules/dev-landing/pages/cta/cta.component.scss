@@ -24,3 +24,12 @@
     transition: none !important;
   }
 }
+
+@media (max-width: 767px) {
+  .cta-bg-image {
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    transform: none !important;
+  }
+}
