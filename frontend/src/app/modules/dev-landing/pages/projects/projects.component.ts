@@ -1,210 +1,317 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
-import { Project } from '../../../portfolio/models/project.model';
-import { ProjectCardComponent } from '../../../portfolio/pages/projects/components/project-card/project-card.component';
-import { ProjectModalComponent } from '../../../portfolio/pages/projects/components/project-modal/project-modal.component';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+type LayerKey = 'background' | 'header' | 'hero' | 'content' | 'cta';
+
+interface ShowcaseLayers {
+  background: string;
+  header: string;
+  hero: string;
+  content: string;
+  cta: string;
+}
+
+interface LayerStage {
+  key: LayerKey;
+  label: string;
+  start: number;
+  end: number;
+  depth: number;
+  enterY: number;
+  enterScale: number;
+  enterBlur: number;
+}
+
+interface ShowcaseLayerView extends LayerStage {
+  image: string;
+  phase: number;
+  zIndex: number;
+  isActive: boolean;
+}
+
+interface ShowcaseProject {
+  id: string;
+  title: string;
+  shortDescription: string;
+  year: string;
+  liveUrl: string;
+  technologies: string[];
+  theme: {
+    surface: string;
+    accent: string;
+    glow: string;
+  };
+  layers: ShowcaseLayers;
+}
 
 @Component({
   selector: 'app-projects',
   standalone: true,
   imports: [
     CommonModule,
-    ScrollRevealDirective,
     SectionHeaderComponent,
-    ProjectCardComponent,
-    ProjectModalComponent,
   ],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
 })
-export class ProjectsComponent {
-  private playingPreviewIds = new Set<string>();
+export class ProjectsComponent implements AfterViewInit, OnDestroy {
+  @ViewChild('projectsSection', { static: true }) projectsSection!: ElementRef<HTMLElement>;
+  @ViewChild('projectsPin', { static: true }) projectsPin!: ElementRef<HTMLElement>;
+  @ViewChild('mockupSurface', { static: true }) mockupSurface!: ElementRef<HTMLElement>;
 
-  selectedProject: Project | null = null;
+  private ctx?: gsap.Context;
+  private scrollTrigger?: ScrollTrigger;
+  private lastActiveIndex = 0;
+  prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  readonly projects: Project[] = [
+  activeProjectIndex = 0;
+  activeSegmentProgress = 0;
+  activeStageIndex = 0;
+
+  readonly layerStages: LayerStage[] = [
     {
-      id: '5',
+      key: 'background',
+      label: 'Background',
+      start: 0,
+      end: 0.2,
+      depth: 6,
+      enterY: 0,
+      enterScale: 1.08,
+      enterBlur: 14,
+    },
+    {
+      key: 'header',
+      label: 'Header',
+      start: 0.2,
+      end: 0.4,
+      depth: 12,
+      enterY: -40,
+      enterScale: 1.02,
+      enterBlur: 8,
+    },
+    {
+      key: 'hero',
+      label: 'Hero',
+      start: 0.4,
+      end: 0.6,
+      depth: 16,
+      enterY: 40,
+      enterScale: 1.04,
+      enterBlur: 10,
+    },
+    {
+      key: 'content',
+      label: 'Content',
+      start: 0.6,
+      end: 0.85,
+      depth: 22,
+      enterY: 80,
+      enterScale: 1.01,
+      enterBlur: 6,
+    },
+    {
+      key: 'cta',
+      label: 'CTA',
+      start: 0.85,
+      end: 1,
+      depth: 12,
+      enterY: 30,
+      enterScale: 1.02,
+      enterBlur: 4,
+    },
+  ];
+
+  readonly projects: ShowcaseProject[] = [
+    {
+      id: 'portfolio-pessoal',
+      title: 'Portfolio Pessoal',
+      shortDescription: 'Meu portfolio principal, com foco em performance e narrativa visual.',
+      year: '2025',
+      liveUrl: 'https://maiawall.com',
+      technologies: ['Angular', 'Tailwind CSS', 'RxJS', 'GSAP'],
+      theme: {
+        surface: '#0f172a',
+        accent: '#38bdf8',
+        glow: 'rgba(56, 189, 248, 0.45)',
+      },
+      layers: this.buildLayers([
+        'assets/images/projects/portfolio-pessoal/portfolio-pessoal-1.png',
+        'assets/images/projects/portfolio-pessoal/portfolio-pessoal-2.png',
+        'assets/images/projects/portfolio-pessoal/portfolio-pessoal-3.png',
+      ]),
+    },
+    {
+      id: 'banda-aurah',
+      title: 'Banda Aurah',
+      shortDescription: 'Identidade digital sonora com visual escuro e tipografia marcante.',
+      year: '2026',
+      liveUrl: 'https://portfolio-banda-aurah.vercel.app/',
+      technologies: ['Angular', 'Tailwind CSS', 'Angular Material'],
+      theme: {
+        surface: '#111827',
+        accent: '#f97316',
+        glow: 'rgba(249, 115, 22, 0.35)',
+      },
+      layers: this.buildLayers([
+        'assets/images/projects/banda-aurah/banda-aurah1.png',
+        'assets/images/projects/banda-aurah/banda-aurah2.png',
+        'assets/images/projects/banda-aurah/banda-aurah3.png',
+      ]),
+    },
+    {
+      id: 'instituto-motiro',
       title: 'Instituto Motiro',
-      slug: 'instituto-motiro',
-      description:
-        'Site institucional para o Instituto Motiro, com foco em cultura, educacao e desenvolvimento comunitario.',
-      shortDescription: 'Instituto cultural e educacional focado em desenvolvimento comunitario',
-      thumbnail: 'assets/images/projects/instituto-motiro/motiro1.png',
-      images: [
+      shortDescription: 'Site institucional com foco em cultura, educacao e comunidade.',
+      year: '2026',
+      liveUrl: 'https://www.institutomotiro.com.br/',
+      technologies: ['Vite', 'Tailwind CSS', 'TypeScript'],
+      theme: {
+        surface: '#0f2418',
+        accent: '#34d399',
+        glow: 'rgba(52, 211, 153, 0.35)',
+      },
+      layers: this.buildLayers([
         'assets/images/projects/instituto-motiro/motiro1.png',
         'assets/images/projects/instituto-motiro/motiro2.png',
         'assets/images/projects/instituto-motiro/motiro3.png',
         'assets/images/projects/instituto-motiro/motiro4.png',
-      ],
-      thumbVideo: 'assets/images/projects/instituto-motiro/motiro_video.mp4',
-      technologies: ['Vite', 'Tailwind CSS', 'TypeScript', 'RxJS', 'UUID', 'LocalStorage'],
-      category: 'web',
-      featured: true,
-      liveUrl: 'https://www.institutomotiro.com.br/',
-      startDate: '2026-03-25',
-      status: 'completed',
-      tags: ['institucional', 'comunidade', 'web'],
-      clientType: 'freelance',
+      ]),
     },
     {
-      id: '6',
-      title: 'Portfolio Banda Aurah',
-      slug: 'portfolio-banda-aurah',
-      description:
-        'Portfolio da banda Aurah com layout responsivo e identidade visual personalizada.',
-      shortDescription: 'Portfolio da banda Aurah responsivo com Angular e Tailwind CSS',
-      thumbnail: 'assets/images/projects/banda-aurah/banda-aurah1.png',
-      images: [
-        'assets/images/projects/banda-aurah/banda-aurah1.png',
-        'assets/images/projects/banda-aurah/banda-aurah2.png',
-        'assets/images/projects/banda-aurah/banda-aurah3.png',
-      ],
-      thumbVideo: 'assets/images/projects/banda-aurah/banda-aurah_video.mp4',
-      technologies: ['Angular', 'Tailwind CSS', 'Angular Material', 'RxJS', 'Express', 'Node.js'],
-      category: 'web',
-      featured: true,
-      liveUrl: 'https://portfolio-banda-aurah.vercel.app/',
-      startDate: '2026-01-20',
-      status: 'completed',
-      tags: ['musica', 'portfolio', 'web'],
-      clientType: 'freelance',
-    },
-    {
-      id: '3',
-      title: 'Portfolio Pessoal',
-      slug: 'portfolio-pessoal',
-      description:
-        'Portfolio pessoal com foco em performance, layout responsivo e organizacao de projetos.',
-      shortDescription: 'Portfolio pessoal responsivo com Angular e Tailwind CSS',
-      thumbnail: 'assets/images/projects/portfolio-pessoal/thumbnail.png',
-      images: [
-        'assets/images/projects/portfolio-pessoal/portfolio-pessoal-1.png',
-        'assets/images/projects/portfolio-pessoal/portfolio-pessoal-2.png',
-        'assets/images/projects/portfolio-pessoal/portfolio-pessoal-3.png',
-      ],
-      thumbVideo: 'assets/images/projects/portfolio-pessoal/portfolio-pessoal-video.mp4',
-      technologies: ['Angular', 'Tailwind CSS', 'Angular Material', 'RxJS', 'Express', 'Node.js'],
-      category: 'web',
-      featured: true,
-      githubUrl: 'https://github.com/wallacemaia2007/Portfolio-Wallace_Maia',
-      liveUrl: 'https://maiawall.com',
-      startDate: '2025-12-20',
-      status: 'completed',
-      tags: ['portfolio', 'angular', 'web'],
-      clientType: 'freelance',
-    },
-    {
-      id: '2',
+      id: 'traveler-website',
       title: 'Traveler Website',
-      slug: 'traveler-website',
-      description:
-        'Aplicacao web para organizar lugares favoritos, com busca e cadastro de destinos.',
-      shortDescription: 'Sistema web para gerenciar lugares favoritos de viagem',
-      thumbnail: 'assets/images/projects/traveler-website/thumbnail.jpg',
-      images: [
+      shortDescription: 'Plataforma de viagens com cadastro de destinos e busca rapida.',
+      year: '2025',
+      liveUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7393610706035654656/',
+      technologies: ['Angular', 'TypeScript', 'Angular Material'],
+      theme: {
+        surface: '#1f2937',
+        accent: '#a855f7',
+        glow: 'rgba(168, 85, 247, 0.35)',
+      },
+      layers: this.buildLayers([
         'assets/images/projects/traveler-website/traveler-website-1.png',
         'assets/images/projects/traveler-website/traveler-website-2.png',
         'assets/images/projects/traveler-website/traveler-website-3.png',
-      ],
-      thumbVideo: 'assets/images/projects/traveler-website/traveler-website-video.mp4',
-      technologies: ['Angular', 'Angular Material', 'TypeScript', 'RxJS', 'OAuth', 'ViaCep API', 'Tailwind CSS'],
-      category: 'web',
-      featured: false,
-      githubUrl: 'https://github.com/wallacemaia2007/traveler-website',
-      liveUrl: 'https://www.linkedin.com/feed/update/urn:li:activity:7393610706035654656/',
-      startDate: '2025-10-20',
-      status: 'completed',
-      tags: ['viagens', 'web', 'angular'],
-      clientType: 'pessoal',
-    },
-    {
-      id: '4',
-      title: 'Customer Register',
-      slug: 'customer-register',
-      description:
-        'Sistema web para cadastro e gerenciamento de clientes com integracao de API.',
-      shortDescription: 'Sistema web para cadastrar e gerenciar clientes',
-      thumbnail: 'assets/images/projects/customer-register/thumbnail.png',
-      images: [
-        'assets/images/projects/customer-register/customer-register-1.png',
-        'assets/images/projects/customer-register/customer-register-2.png',
-        'assets/images/projects/customer-register/customer-register-3.png',
-      ],
-      thumbVideo: '',
-      technologies: ['Angular', 'Angular Material', 'TypeScript', 'BrasilAPI', 'RxJS', 'UUID', 'LocalStorage'],
-      category: 'web',
-      featured: false,
-      githubUrl: 'https://github.com/wallacemaia2007/Customer-register',
-      liveUrl: 'https://www.linkedin.com/posts/wallacemaia-dev_javascript-typescript-angular-activity-7385676116797079552-S7PG',
-      startDate: '2025-10-07',
-      status: 'completed',
-      tags: ['clientes', 'web', 'angular'],
-      clientType: 'pessoal',
-    },
-    {
-      id: '1',
-      title: 'Digital Bank Api',
-      slug: 'digital-bank-api',
-      description:
-        'API REST de banco digital em Java com Spring Boot, focada em seguranca e integracoes.',
-      shortDescription: 'API REST de banco digital em Java com Spring Boot',
-      thumbnail: 'assets/images/projects/digital-bank/thumbnail.jpeg',
-      images: [
-        'assets/images/projects/digital-bank/digital-bank-1.png',
-        'assets/images/projects/digital-bank/digital-bank-2.png',
-        'assets/images/projects/digital-bank/digital-bank-3.png',
-      ],
-      thumbVideo: 'assets/images/projects/digital-bank/digital-bank-video.mp4',
-      technologies: ['Java', 'Spring Boot', 'Spring Data JPA', 'Hibernate', 'Spring Security', 'MySQL', 'REST API', 'Maven', 'JUnit', 'Postman', 'Git', 'Docker', 'Mockito', 'Swagger'],
-      category: 'backend',
-      featured: false,
-      githubUrl: 'https://github.com/wallacemaia2007/Digital-bank-api',
-      liveUrl: 'https://www.linkedin.com/posts/wallacemaia-dev_java-springboot-springsecurity-activity-7376984431712083968-Hbt_',
-      startDate: '2025-08-13',
-      status: 'completed',
-      tags: ['api', 'java', 'backend'],
-      clientType: 'pessoal',
+      ]),
     },
   ];
 
-  openProjectModal(project: Project): void {
-    this.selectedProject = project;
+  get activeProject(): ShowcaseProject {
+    return this.projects[this.activeProjectIndex];
   }
 
-  closeProjectModal(): void {
-    this.selectedProject = null;
-  }
+  get activeLayers(): ShowcaseLayerView[] {
+    return this.layerStages.map((stage, index) => {
+      const image = this.activeProject.layers[stage.key];
+      const phase = this.phaseValue(this.activeSegmentProgress, stage.start, stage.end);
 
-  isProjectPreviewPlaying(projectId: string): boolean {
-    return this.playingPreviewIds.has(projectId);
-  }
-
-  onProjectCardEnter(project: Project, video: HTMLVideoElement): void {
-    if (!project.thumbVideo) {
-      return;
-    }
-
-    this.playingPreviewIds.add(project.id);
-    video.currentTime = 0;
-    void video.play().catch(() => {
-      this.playingPreviewIds.delete(project.id);
+      return {
+        ...stage,
+        image,
+        phase,
+        zIndex: index + 1,
+        isActive: this.activeStageIndex === index,
+      };
     });
   }
 
-  onProjectCardLeave(project: Project, video: HTMLVideoElement): void {
-    this.resetProjectPreview(project, video);
+  ngAfterViewInit(): void {
+    this.ctx = gsap.context(() => {
+      this.scrollTrigger = ScrollTrigger.create({
+        trigger: this.projectsPin.nativeElement,
+        start: 'top top',
+        end: () => `+=${window.innerHeight * this.projects.length}`,
+        pin: this.projectsPin.nativeElement,
+        pinSpacing: true,
+        scrub: true,
+        anticipatePin: 1,
+        onUpdate: (self) => this.handleScrollUpdate(self.progress),
+        onRefresh: () => this.handleScrollUpdate(this.scrollTrigger?.progress ?? 0),
+      });
+    });
+
+    if (this.prefersReducedMotion) {
+      this.activeSegmentProgress = 1;
+      this.activeStageIndex = this.layerStages.length - 1;
+    }
+
+    ScrollTrigger.refresh();
   }
 
-  onProjectPreviewEnded(project: Project, video: HTMLVideoElement): void {
-    this.resetProjectPreview(project, video);
+  ngOnDestroy(): void {
+    this.scrollTrigger?.kill();
+    this.ctx?.revert();
   }
 
-  private resetProjectPreview(project: Project, video: HTMLVideoElement): void {
-    this.playingPreviewIds.delete(project.id);
-    video.pause();
-    video.currentTime = 0;
+  scrollToProject(index: number): void {
+    if (!this.scrollTrigger) {
+      return;
+    }
+
+    const start = this.scrollTrigger.start;
+    const end = this.scrollTrigger.end;
+    const segmentSize = (end - start) / this.projects.length;
+    const target = start + segmentSize * index;
+
+    gsap.to(window, {
+      scrollTo: target,
+      duration: 0.9,
+      ease: 'power3.out',
+    });
+  }
+
+  phaseValue(progress: number, start: number, end: number): number {
+    const clamped = gsap.utils.clamp(0, 1, (progress - start) / (end - start));
+    return clamped;
+  }
+
+  private handleScrollUpdate(progress: number): void {
+    const segmentSize = 1 / this.projects.length;
+    const nextIndex = Math.min(this.projects.length - 1, Math.floor(progress / segmentSize));
+    const segmentProgress = (progress - nextIndex * segmentSize) / segmentSize;
+
+    this.activeProjectIndex = nextIndex;
+    this.activeSegmentProgress = gsap.utils.clamp(0, 1, segmentProgress);
+    this.activeStageIndex = this.getStageIndex(this.activeSegmentProgress);
+
+    if (this.lastActiveIndex !== nextIndex) {
+      this.lastActiveIndex = nextIndex;
+      gsap.fromTo(
+        this.mockupSurface.nativeElement,
+        { opacity: 0.6, filter: 'blur(8px)', x: 24, scale: 1.02 },
+        { opacity: 1, filter: 'blur(0px)', x: 0, scale: 1, duration: 0.45, ease: 'power2.out' }
+      );
+    }
+  }
+
+  private getStageIndex(progress: number): number {
+    const stage = this.layerStages.findIndex(
+      (item) => progress >= item.start && progress < item.end
+    );
+
+    if (stage === -1) {
+      return this.layerStages.length - 1;
+    }
+
+    return stage;
+  }
+
+  private buildLayers(images: string[]): ShowcaseLayers {
+    const safe = (index: number) => images[index] ?? images[images.length - 1] ?? images[0] ?? '';
+
+    return {
+      background: safe(0),
+      header: safe(1),
+      hero: safe(2),
+      content: safe(3),
+      cta: safe(4),
+    };
   }
 }

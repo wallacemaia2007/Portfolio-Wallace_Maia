@@ -220,7 +220,6 @@ export class HeroComponent implements OnDestroy, AfterViewInit {
         .from('.hero-role', { opacity: 0, y: 30 }, '-=0.5')
         .from('.hero-bio', { opacity: 0, y: 30 }, '-=0.4')
         .from('.hero-buttons a', { opacity: 0, y: 20, stagger: 0.1 }, '-=0.3')
-        .from('.hero-pills span', { opacity: 0, y: 20, stagger: 0.08 }, '-=0.3')
         .from('.hero-preview-card', { opacity: 0, x: 60, duration: 1 }, '-=1')
         .from(
           '.hero-preview-floating',
