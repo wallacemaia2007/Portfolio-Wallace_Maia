@@ -1,34 +1,35 @@
 <header
-  class="fixed inset-x-0 top-0 z-50 transition-all duration-300"
-  [class.header--scrolled]="isScrolled"
+  class="fixed inset-x-0 top-0 z-50 flex justify-center transition-all duration-300 pt-3 px-4 lg:px-6 pointer-events-none"
   [class.header--hidden]="isHidden"
-  [ngClass]="{
-    'bg-white/95 dark:bg-dev-bg/95 backdrop-blur-md border-b border-gray-200 dark:border-dev/20 shadow-sm': isScrolled,
-    'bg-transparent': !isScrolled
-  }"
   id="header"
   role="banner">
 
-  <div class="container mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-6">
+  <div
+    class="pointer-events-auto w-full max-w-5xl flex items-center justify-between transition-all duration-300 px-3 py-2"
+    [ngClass]="{
+      'bg-white/95 dark:bg-dev-bg/95 backdrop-blur-md shadow-lg border border-gray-200/80 dark:border-dev/20': isScrolled,
+      'bg-white/80 dark:bg-dev-bg/80 backdrop-blur-sm shadow-md border border-gray-200/60 dark:border-white/10': !isScrolled
+    }"
+    style="border-radius: 9999px;">
 
     <!-- Logo -->
     <a href="#hero" (click)="scrollTo($event, '#hero')"
-      class="group flex items-center gap-3 rounded-lg transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-dev"
+      class="group flex items-center gap-2.5 rounded-full transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-dev pl-1"
       aria-label="Ir para o inicio">
-      <img src="/assets/logo.png" alt="Logo Maiawall"
-        class="h-10 w-10 rounded-full object-cover shadow-sm transition-transform duration-200 group-hover:scale-110">
-      <span class="text-lg font-bold tracking-tight text-gray-900 dark:text-white transition-colors group-hover:text-dev dark:group-hover:text-dev-light">
+      <img src="/assets/images/acronym.png" alt="Logo Maiawall"
+        class="h-9 w-9 rounded-full object-cover shadow-sm transition-transform duration-200 group-hover:scale-110">
+      <span class="text-sm font-bold tracking-tight text-gray-900 dark:text-white transition-colors group-hover:text-dev dark:group-hover:text-dev-light">
         Maiawall
       </span>
     </a>
 
     <!-- Nav Desktop -->
     <nav class="hidden md:block" role="navigation" aria-label="Menu principal">
-      <ul class="flex items-center gap-6">
+      <ul class="flex items-center gap-5">
         @for (link of navLinks; track link.href) {
         <li>
           <a [href]="link.href" (click)="scrollTo($event, link.href)"
-            class="relative text-sm font-semibold text-gray-700 dark:text-gray-200 hover:text-dev dark:hover:text-dev-light transition-colors duration-200 after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-dev after:transition-all after:duration-300 hover:after:w-full">
+            class="relative text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-dev dark:hover:text-dev-light transition-colors duration-200 after:absolute after:bottom-[-3px] after:left-0 after:h-[2px] after:w-0 after:bg-dev after:transition-all after:duration-300 hover:after:w-full">
             {{ link.label }}
           </a>
         </li>
@@ -37,39 +38,41 @@
     </nav>
 
     <!-- CTA Desktop -->
-    <div class="hidden md:flex items-center gap-3">
-      <button (click)="toggleTheme()" class="w-9 h-9 flex items-center justify-center rounded-lg border border-gray-300 dark:border-gray-500/30 text-gray-700 dark:text-gray-200 hover:border-dev hover:text-dev dark:hover:border-dev-light dark:hover:text-dev-light transition-all duration-200"
+    <div class="hidden md:flex items-center gap-2 pr-1">
+      <button (click)="toggleTheme()"
+        class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-500/30 text-gray-600 dark:text-gray-300 hover:border-dev hover:text-dev dark:hover:border-dev-light dark:hover:text-dev-light transition-all duration-200"
         [attr.aria-label]="isDarkMode ? 'Ativar modo claro' : 'Ativar modo escuro'">
-        <mat-icon style="font-size: 1.1rem; width: 1.1rem; height: 1.1rem;">
+        <mat-icon style="font-size: 1rem; width: 1rem; height: 1rem;">
           {{ isDarkMode ? 'light_mode' : 'dark_mode' }}
         </mat-icon>
       </button>
       <a [href]="ctaLinks.cv" target="_blank" rel="noopener noreferrer"
-        class="inline-flex items-center justify-center rounded-xl border border-gray-300 dark:border-gray-500/30 px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-200 transition-all duration-200 hover:border-dev hover:text-dev dark:hover:border-dev-light dark:hover:text-dev-light active:scale-[0.98]"
+        class="inline-flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-500/30 px-4 py-1.5 text-sm font-semibold text-gray-600 dark:text-gray-300 transition-all duration-200 hover:border-dev hover:text-dev dark:hover:border-dev-light dark:hover:text-dev-light active:scale-[0.98]"
         aria-label="Baixar curriculo em PDF">
         Baixar CV
       </a>
       <a [href]="ctaLinks.contact" (click)="scrollTo($event, ctaLinks.contact)"
-        class="inline-flex items-center justify-center rounded-xl bg-dev px-5 py-2 text-sm font-bold text-white transition-all duration-200 hover:bg-dev-dark hover:-translate-y-0.5 active:scale-[0.98] shadow-dev-glow-sm hover:shadow-dev-glow"
+        class="inline-flex items-center justify-center rounded-full bg-dev px-5 py-1.5 text-sm font-bold text-white transition-all duration-200 hover:bg-dev-dark hover:-translate-y-0.5 active:scale-[0.98] shadow-dev-glow-sm hover:shadow-dev-glow"
         aria-label="Ir para a secao de contato">
         Fale comigo
       </a>
     </div>
 
     <!-- Hamburger (mobile) -->
-    <button class="p-2 text-gray-900 dark:text-white md:hidden rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
+    <button
+      class="p-2 mr-0.5 text-gray-700 dark:text-white md:hidden rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
       [attr.aria-expanded]="isMenuOpen"
       aria-label="Abrir Menu"
       (click)="toggleMenu()">
       @if (!isMenuOpen) {
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="3" y1="6" x2="21" y2="6" />
         <line x1="3" y1="12" x2="21" y2="12" />
         <line x1="3" y1="18" x2="21" y2="18" />
       </svg>
       } @else {
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="18" y1="6" x2="6" y2="18" />
         <line x1="6" y1="6" x2="18" y2="18" />

@@ -22,7 +22,7 @@ export class FooterComponent {
     bio: 'Desenvolvedor Full Stack apaixonado por criar experiências web incríveis e soluções inovadoras.',
     email: 'wallacemaia2007@gmail.com',
     phone: '+55 (35) 91003-6806',
-    location: 'Passos, MG - Brasil',
+    location: 'Uberlândia, MG - Brasil',
   };
 
   readonly socialLinks = [
@@ -34,6 +34,7 @@ export class FooterComponent {
 
   readonly quickLinks = [
     { label: 'Inicio', href: '#hero' },
+    { label: 'Serviços', href: '#works' },
     { label: 'Projetos', href: '#projects' },
     { label: 'Stack', href: '#stack' },
     { label: 'Contato', href: '#contact' },
