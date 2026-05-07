@@ -69,7 +69,7 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
       id: 'portfolio-pessoal',
       title: 'Portfolio Pessoal',
       description:
-        'Este projeto é o meu portfólio profissional desenvolvido para apresentar minhas habilidades como desenvolvedor Full-Stack. A aplicação foi construída com Angular no frontend e Node.js no backend, simulando um ambiente real de produção com API, persistência de dados e integração de serviços. O sistema permite visualizar projetos, tecnologias utilizadas, informações profissionais e entrar em contato diretamente comigo por meio de envio de e-mail integrado ao servidor. Toda a interface foi planejada com foco em experiência do usuário, responsividade e performance, funcionando tanto em desktop quanto em dispositivos móveis. Além da parte visual, o projeto também implementa conceitos importantes de desenvolvimento moderno, como componentização, consumo de API REST, gerenciamento de estado, rotas protegidas, deploy em servidor e organização de arquitetura em camadas. Este portfólio não é apenas uma página estática, mas uma aplicação completa, desenvolvida para demonstrar na prática minhas competências em desenvolvimento web e minha capacidade de estruturar, implementar e publicar sistemas reais.',
+        'Este projeto é o meu portfólio profissional, desenvolvido para apresentar minhas habilidades como desenvolvedor Full-Stack. Construído com Angular no frontend e Node.js no backend, ele simula um ambiente real com API, persistência de dados e integração de serviços. A interface foi pensada para oferecer boa experiência ao usuário, responsividade e performance, tanto em desktop quanto em dispositivos móveis. O projeto também demonstra conceitos modernos como componentização, consumo de API REST, gerenciamento de estado, rotas protegidas e arquitetura em camadas.',
       year: '2025',
       liveUrl: 'https://maiawall.com',
       technologies: ['Angular', 'Tailwind CSS', 'RxJS', 'GSAP'],
@@ -134,30 +134,6 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
       },
     },
     {
-      id: 'traveler-website',
-      title: 'Traveler Website',
-      description:
-        'Plataforma de viagens com cadastro de destinos e busca rápida.',
-      year: '2025',
-      liveUrl:
-        'https://www.linkedin.com/feed/update/urn:li:activity:7393610706035654656/',
-      technologies: ['Angular', 'TypeScript', 'Angular Material'],
-      theme: {
-        surface: '#0b1220',
-        accent: '#1e40af',
-        glow: 'rgba(30, 64, 175, 0.35)',
-      },
-      pages: [
-        'assets/images/projects/traveler-website/traveler-website-1.png',
-        'assets/images/projects/traveler-website/traveler-website-2.png',
-        'assets/images/projects/traveler-website/traveler-website-3.png',
-      ],
-      video: {
-        src: 'assets/images/projects/traveler-website/traveler-website-video.mp4',
-        poster: 'assets/images/projects/traveler-website/thumbnail.jpg',
-      },
-    },
-    {
       id: 'painel-admin',
       title: 'Painel Administrativo',
       description:
@@ -175,14 +151,14 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
         'assets/images/projects/painel-admin/foto1.jpg',
         'assets/images/projects/painel-admin/foto2.jpg',
         'assets/images/projects/painel-admin/foto3.jpg',
-        'assets/images/projects/painel-admin/foto4.jpg', 
+        'assets/images/projects/painel-admin/foto4.jpg',
       ],
     },
     {
       id: 'schulles',
       title: 'Schulle Website',
       description:
-        'Um restaurante focado em marmitas mensais, buscando ampliar sua presença em toda a cidade, decidiu investir na criação de uma plataforma digital completa para fortalecer sua marca, facilitar o relacionamento com os clientes e otimizar sua operação interna. Neste projeto, desenvolvi um site profissional com foco em performance, experiência do usuário e conversão. A plataforma inclui páginas institucionais, cardápio dinâmico, apresentação dos planos de marmita mensal, área de informações para clientes e integração com canais de contato e redes sociais. Além do site, foi desenvolvido um sistema gerencial sob medida para centralizar a operação do negócio, permitindo o gerenciamento de clientes, cardápios, marmitas diárias, valores do site, acessos administrativos, compras, gastos e métricas de acesso via integração com o Google Analytics. A arquitetura foi planejada para crescimento futuro, permitindo novas funcionalidades sem necessidade de reconstrução da base. O projeto foi construído com foco em responsividade, rapidez de carregamento e escalabilidade. Tecnologias utilizadas: Angular, Spring Boot, HTML, SCSS, TypeScript e Tailwind CSS.',
+        'Um restaurante focado em marmitas mensais investiu em uma plataforma digital completa para fortalecer sua marca e otimizar a operação. Desenvolvi um site profissional com foco em performance, conversão e experiência do usuário, com páginas institucionais, cardápio dinâmico, planos de marmita e integração com canais de contato. Também foi criado um sistema gerencial para centralizar clientes, cardápios, compras, gastos e métricas via Google Analytics. O projeto foi pensado para ser responsivo, rápido e escalável. Tecnologias utilizadas: Angular, Spring Boot, HTML, SCSS, TypeScript e Tailwind CSS.',
       year: '2026',
       liveUrl: 'https://www.schulles.com.br/',
       technologies: ['Angular', 'TypeScript', 'Angular Material'],
