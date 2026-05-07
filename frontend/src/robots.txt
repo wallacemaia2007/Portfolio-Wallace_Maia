@@ -1,0 +1,18 @@
+# ═══════════════════════════════════════════════════════════
+# robots.txt — Wallace Maia Portfolio (maiawall.com)
+# ═══════════════════════════════════════════════════════════
+
+User-agent: *
+Allow: /
+
+# Bloquear rotas internas / API / assets desnecessários
+Disallow: /api/
+Disallow: /api/*
+Disallow: /*.json$
+
+# Permitir rastreamento de assets importantes para SEO visual
+Allow: /assets/images/
+Allow: /assets/cv.pdf
+
+# Sitemap
+Sitemap: https://maiawall.com/sitemap.xml
