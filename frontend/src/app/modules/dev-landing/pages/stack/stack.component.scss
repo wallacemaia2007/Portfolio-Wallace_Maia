@@ -4,8 +4,12 @@
 
 .stack-section {
   position: relative;
-  background: #020617; 
-  color: #e2e8f0;
+  background: var(--dev-bg-primary);
+  color: var(--dev-text-primary);
+}
+
+.stack-glass-overlay {
+  background: var(--dev-overlay);
 }
 
 .terminal-bg {
@@ -14,26 +18,30 @@
   flex-direction: column;
   justify-content: flex-start;
   pointer-events: none;
-  
+
   .terminal-line {
     font-size: 11px;
     line-height: 1.5;
-    color: rgba(148, 163, 184, 0.7); // Mais visível
+    color: var(--dev-text-muted);
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    
-    .keyword { 
-      color: rgba(96, 165, 250, 0.9); // Azul mais brilhante
-      font-weight: 600; 
+
+    .keyword {
+      color: var(--dev-accent-light);
+      font-weight: 600;
     }
-    .string { 
-      color: rgba(74, 222, 128, 0.8); // Verde mais brilhante
+
+    .string {
+      color: var(--dev-success);
     }
-    .comment { 
-      color: rgba(148, 163, 184, 0.5); 
-      font-style: italic; 
+
+    .comment {
+      color: var(--dev-text-muted);
+      font-style: italic;
+      opacity: 0.75;
     }
+
     .prompt {
-      color: rgba(59, 130, 246, 0.6);
+      color: var(--dev-accent);
       margin-right: 8px;
     }
   }
@@ -47,48 +55,59 @@
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
-  &::-webkit-scrollbar { display: none; }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .stack-hero-card {
   // Removido o gradiente opaco para deixar o terminal vazar
-  background: rgba(15, 23, 42, 0.4); 
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--dev-glass);
+  border: 1px solid var(--dev-border);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    background: rgba(15, 23, 42, 0.6);
-    border-color: rgba(59, 130, 246, 0.3);
-    .tech-icon-chip { transform: translateY(0); }
+    background: var(--dev-glass-strong);
+    border-color: var(--dev-accent-soft);
+
+    .tech-icon-chip {
+      transform: translateY(0);
+    }
   }
 }
 
 .tech-icon-chip {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--dev-glass);
+  border: 1px solid var(--dev-border);
+
   &:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(59, 130, 246, 0.4);
+    background: var(--dev-glass-strong);
+    border-color: var(--dev-accent-soft);
   }
 }
 
 .skill-card-item {
-  background: rgba(15, 23, 42, 0.3);
+  background: var(--dev-glass);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--dev-border);
   transition: all 0.3s ease;
-  
+
   &:hover {
-    background: rgba(15, 23, 42, 0.5);
-    border-color: rgba(59, 130, 246, 0.3);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    background: var(--dev-glass-strong);
+    border-color: var(--dev-accent-soft);
+    box-shadow: 0 10px 30px -10px var(--dev-shadow);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .terminal-bg { display: none; }
+  .terminal-bg {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
-  .terminal-bg .terminal-line { font-size: 9px; }
+  .terminal-bg .terminal-line {
+    font-size: 9px;
+  }
 }

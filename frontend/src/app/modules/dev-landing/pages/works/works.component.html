@@ -1,105 +1,119 @@
-<section id="works" class="py-20 md:py-32 bg-white dark:bg-dev-bg text-gray-900 dark:text-dev-text overflow-hidden" #worksSection>
+<section id="works" class="py-20 md:py-32 bg-white dark:bg-dev-bg text-gray-900 dark:text-dev-text overflow-hidden"
+  #worksSection>
   <div class="container mx-auto px-6 max-w-7xl">
-    <app-section-header
-      title="Soluções que transformam ideias em produtos digitais"
+    <app-section-header title="Soluções que transformam ideias em produtos digitais"
       subtitle="Clique em um serviço para explorar o que posso construir para você"
-      appScrollReveal
-    ></app-section-header>
+      appScrollReveal></app-section-header>
 
     <div class="mt-16 flex flex-col lg:flex-row gap-8 relative">
-      
-      <!-- City Scene (60% Desktop / 100% Mobile) -->
-      <div class="w-full lg:w-[60%] city-container bg-gray-50 dark:bg-dev-bg-surface rounded-2xl p-6 md:p-8 border border-gray-200 dark:border-dev-elevated shadow-sm dark:shadow-dev-glow-sm relative" appScrollReveal revealFrom="left" [revealDelay]="100">
-        <div class="city-grid grid grid-cols-4 lg:grid-cols-8 gap-2 md:gap-4 h-[280px] sm:h-[350px] md:h-[450px]">
-          
-          @for (cat of categories; track cat.id) {
-            <div 
-              class="building flex flex-col items-center justify-end h-full cursor-pointer group transition-all duration-300 relative w-full"
-              (click)="selectCategory(cat.id)"
-            >
-              <div class="text-center mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute -top-10 left-1/2 -translate-x-1/2 w-max z-10 pointer-events-none hidden md:block">
-                <span class="bg-gray-800 dark:bg-dev-bg-elevated text-white text-xs px-2 py-1 rounded shadow-lg whitespace-nowrap">{{cat.name}}</span>
-              </div>
-              <div class="md:hidden text-center mb-2 absolute -top-10 left-1/2 -translate-x-1/2 w-max z-10 pointer-events-none" [class.opacity-100]="activeCategoryId === cat.id" [class.opacity-0]="activeCategoryId !== cat.id">
-                <span class="bg-dev text-white text-[10px] px-1 py-0.5 rounded shadow-lg whitespace-nowrap">{{cat.name}}</span>
-              </div>
 
-              <div 
-                class="building-shape w-full max-w-[60px] md:max-w-[80px] mx-auto rounded-t-lg transition-all duration-300 flex flex-col items-center justify-center overflow-hidden"
-                [ngClass]="[
+      <!-- City Scene (60% Desktop / 100% Mobile) -->
+      <div
+        class="w-full lg:w-[60%] city-container bg-gray-50 dark:bg-dev-bg-surface rounded-2xl p-6 md:p-8 border border-gray-200 dark:border-dev-elevated shadow-sm dark:shadow-dev-glow-sm relative"
+        appScrollReveal revealFrom="left" [revealDelay]="100">
+        <div class="city-grid grid grid-cols-4 lg:grid-cols-8 gap-2 md:gap-4 h-[280px] sm:h-[350px] md:h-[450px]">
+
+          @for (cat of categories; track cat.id) {
+          <div
+            class="building flex flex-col items-center justify-end h-full cursor-pointer group transition-all duration-300 relative w-full"
+            (click)="selectCategory(cat.id)">
+            <div
+              class="text-center mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute -top-10 left-1/2 -translate-x-1/2 w-max z-10 pointer-events-none hidden md:block">
+              <span
+                class="bg-gray-800 dark:bg-dev-bg-elevated text-white text-xs px-2 py-1 rounded shadow-lg whitespace-nowrap">{{cat.name}}</span>
+            </div>
+            <div
+              class="md:hidden text-center mb-2 absolute -top-10 left-1/2 -translate-x-1/2 w-max z-10 pointer-events-none"
+              [class.opacity-100]="activeCategoryId === cat.id" [class.opacity-0]="activeCategoryId !== cat.id">
+              <span
+                class="bg-dev text-white text-[10px] px-1 py-0.5 rounded shadow-lg whitespace-nowrap">{{cat.name}}</span>
+            </div>
+
+            <div
+              class="building-shape w-full max-w-[60px] md:max-w-[80px] mx-auto rounded-t-lg transition-all duration-300 flex flex-col items-center justify-center overflow-hidden"
+              [ngClass]="[
                   'building-' + cat.buildingType,
                   activeCategoryId === cat.id ? 'active border-t-2 border-l-2 border-r-2 border-dev bg-gray-100 dark:bg-dev-bg-elevated shadow-dev-glow scale-105 z-10' : 'bg-white dark:bg-dev-bg-card border border-gray-300 dark:border-dev-dark hover:bg-gray-50 dark:hover:bg-dev-bg-elevated hover:border-dev/50 dark:hover:border-dev-light/50'
-                ]"
-              >
-                <mat-icon class="text-gray-400 dark:text-dev-muted mb-2 transition-colors duration-300 group-hover:text-dev dark:group-hover:text-dev-light hidden md:block" [class.text-dev]="activeCategoryId === cat.id" [class.dark:text-dev-light]="activeCategoryId === cat.id">{{cat.icon}}</mat-icon>
-                <div class="windows-grid grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-2 px-2 pb-2 md:pb-4 opacity-40">
-                  <div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-dev-light/50 rounded-sm"></div>
-                  <div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-dev-light/50 rounded-sm"></div>
-                  <div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-dev-light rounded-sm hidden md:block"></div>
-                  <div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-dev-light/50 rounded-sm"></div>
-                  <div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-dev-light rounded-sm"></div>
-                  <div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-dev-light/50 rounded-sm hidden md:block"></div>
-                </div>
+                ]">
+              <mat-icon
+                class="text-gray-400 dark:text-dev-muted mb-2 transition-colors duration-300 group-hover:text-dev dark:group-hover:text-dev-light hidden md:block"
+                [class.text-dev]="activeCategoryId === cat.id"
+                [class.dark:text-dev-light]="activeCategoryId === cat.id">{{cat.icon}}</mat-icon>
+              <div class="windows-grid grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-2 px-2 pb-2 md:pb-4 opacity-40">
+                <div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-dev-light/50 rounded-sm"></div>
+                <div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-dev-light/50 rounded-sm"></div>
+                <div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-dev-light rounded-sm hidden md:block"></div>
+                <div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-dev-light/50 rounded-sm"></div>
+                <div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-dev-light rounded-sm"></div>
+                <div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-dev-light/50 rounded-sm hidden md:block"></div>
               </div>
             </div>
+          </div>
           }
 
         </div>
         <!-- Floor line -->
-        <div class="absolute bottom-6 md:bottom-8 left-6 md:left-8 right-6 md:right-8 h-1 bg-gradient-to-r from-transparent via-dev-dark to-transparent opacity-50"></div>
+        <div
+          class="absolute bottom-6 md:bottom-8 left-6 md:left-8 right-6 md:right-8 h-1 bg-gradient-to-r from-transparent via-dev-dark to-transparent opacity-50">
+        </div>
       </div>
 
-      <div 
+      <div
         class="w-full lg:w-[40%] panel-container overflow-hidden rounded-2xl bg-white dark:bg-dev-bg-elevated border border-gray-200 dark:border-dev-dark/50 shadow-lg relative min-h-[320px] sm:min-h-[380px] md:min-h-[450px]"
-        appScrollReveal revealFrom="right" [revealDelay]="200"
-      >
+        appScrollReveal revealFrom="right" [revealDelay]="200">
         @if (activeCategory) {
-          <div class="p-6 md:p-8 h-full flex flex-col transition-all duration-500 animate-slide-in">
-            <div class="flex items-center gap-4 mb-4">
-              <div class="w-12 h-12 rounded-xl bg-dev/10 dark:bg-dev-bg flex items-center justify-center text-dev shadow-sm dark:shadow-dev-glow-sm shrink-0">
-                <mat-icon>{{activeCategory.icon}}</mat-icon>
-              </div>
-              <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white leading-tight">{{activeCategory.name}}</h3>
+        <div class="p-6 md:p-8 h-full flex flex-col transition-all duration-500 animate-slide-in">
+          <div class="flex items-center gap-4 mb-4">
+            <div
+              class="w-12 h-12 rounded-xl bg-dev/10 dark:bg-dev-bg flex items-center justify-center text-dev shadow-sm dark:shadow-dev-glow-sm shrink-0">
+              <mat-icon>{{activeCategory.icon}}</mat-icon>
             </div>
-            
-            <p class="text-gray-700 dark:text-dev-text-bright italic text-base md:text-lg mb-6 border-l-4 border-dev pl-4">
-              "{{activeCategory.phrase}}"
-            </p>
+            <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white leading-tight">
+              {{activeCategory.name}}</h3>
+          </div>
 
-            <ul class="flex-1 space-y-3 mb-6">
-              @for (service of activeCategory.services; track service) {
-                <li class="flex items-start gap-3">
-                  <mat-icon class="text-accent text-[20px] h-[20px] w-[20px] mt-0.5 shrink-0">check_circle</mat-icon>
-                  <span class="text-gray-600 dark:text-dev-text/90 text-sm md:text-base">{{service}}</span>
-                </li>
+          <p
+            class="text-gray-700 dark:text-dev-text-bright italic text-base md:text-lg mb-6 border-l-4 border-dev pl-4">
+            "{{activeCategory.phrase}}"
+          </p>
+
+          <ul class="flex-1 space-y-3 mb-6">
+            @for (service of activeCategory.services; track service) {
+            <li class="flex items-start gap-3">
+              <mat-icon class="text-accent text-[20px] h-[20px] w-[20px] mt-0.5 shrink-0">check_circle</mat-icon>
+              <span class="text-gray-600 dark:text-dev-text/90 text-sm md:text-base">{{service}}</span>
+            </li>
+            }
+          </ul>
+
+          <div class="mb-8 mt-auto">
+            <h4 class="text-sm font-semibold text-gray-500 dark:text-dev-muted uppercase tracking-wider mb-3">Stack
+              Principal</h4>
+            <div class="flex flex-wrap gap-2">
+              @for (tech of activeCategory.stack; track tech) {
+              <span
+                class="px-3 py-1 bg-gray-100 dark:bg-dev-bg rounded-full text-xs sm:text-sm font-medium text-gray-700 dark:text-dev-text-bright border border-gray-200 dark:border-dev-dark/30">
+                {{tech}}
+              </span>
               }
-            </ul>
-
-            <div class="mb-8 mt-auto">
-              <h4 class="text-sm font-semibold text-gray-500 dark:text-dev-muted uppercase tracking-wider mb-3">Stack Principal</h4>
-              <div class="flex flex-wrap gap-2">
-                @for (tech of activeCategory.stack; track tech) {
-                  <span class="px-3 py-1 bg-gray-100 dark:bg-dev-bg rounded-full text-xs sm:text-sm font-medium text-gray-700 dark:text-dev-text-bright border border-gray-200 dark:border-dev-dark/30">
-                    {{tech}}
-                  </span>
-                }
-              </div>
             </div>
-
-            <a 
-              href="#contact" 
-              class="w-full py-3 sm:py-4 rounded-xl bg-dev hover:bg-dev-light text-white font-bold text-sm sm:text-base text-center transition-all duration-300 shadow-dev-glow hover:shadow-dev-glow-lg active:scale-95 mt-auto"
-            >
-              Solicitar este serviço
-            </a>
           </div>
+
+          <a href="#contact"
+            class="w-full py-3 sm:py-4 rounded-xl bg-accent hover:bg-dev-light text-white font-bold text-sm sm:text-base text-center transition-all duration-300 shadow-dev-glow hover:shadow-dev-glow-lg active:scale-95 mt-auto">
+            Solicitar este serviço
+          </a>
+        </div>
         } @else {
-          <div class="absolute inset-0 flex flex-col items-center justify-center text-gray-400 dark:text-dev-muted p-8 text-center animate-fade-in">
-            <div class="w-16 h-16 rounded-full bg-gray-50 dark:bg-dev-bg-surface flex items-center justify-center mb-6 shadow-sm dark:shadow-dev-glow-sm relative">
-                <mat-icon class="text-dev dark:text-dev-light">touch_app</mat-icon>
-            </div>
-            <p class="text-lg text-gray-600 dark:text-dev-text-bright font-medium">Selecione um serviço<br/> na cidade ao lado</p>
+        <div
+          class="absolute inset-0 flex flex-col items-center justify-center text-gray-400 dark:text-dev-muted p-8 text-center animate-fade-in">
+          <div
+            class="w-16 h-16 rounded-full bg-gray-50 dark:bg-dev-bg-surface flex items-center justify-center mb-6 shadow-sm dark:shadow-dev-glow-sm relative">
+            <mat-icon class="text-dev dark:text-dev-light">touch_app</mat-icon>
           </div>
+          <p class="text-lg text-gray-600 dark:text-dev-text-bright font-medium">Selecione um serviço<br /> na cidade ao
+            lado</p>
+        </div>
         }
       </div>
 

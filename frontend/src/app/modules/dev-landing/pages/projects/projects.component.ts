@@ -22,7 +22,7 @@ gsap.registerPlugin(ScrollToPlugin);
 export interface ShowcaseProject {
   id: string;
   title: string;
-  shortDescription: string;
+  description: string;
   year: string;
   liveUrl: string;
   technologies: string[];
@@ -68,8 +68,8 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     {
       id: 'portfolio-pessoal',
       title: 'Portfolio Pessoal',
-      shortDescription:
-        'Meu portfolio principal, com foco em performance e narrativa visual.',
+      description:
+        'Este projeto é o meu portfólio profissional desenvolvido para apresentar minhas habilidades como desenvolvedor Full-Stack. A aplicação foi construída com Angular no frontend e Node.js no backend, simulando um ambiente real de produção com API, persistência de dados e integração de serviços. O sistema permite visualizar projetos, tecnologias utilizadas, informações profissionais e entrar em contato diretamente comigo por meio de envio de e-mail integrado ao servidor. Toda a interface foi planejada com foco em experiência do usuário, responsividade e performance, funcionando tanto em desktop quanto em dispositivos móveis. Além da parte visual, o projeto também implementa conceitos importantes de desenvolvimento moderno, como componentização, consumo de API REST, gerenciamento de estado, rotas protegidas, deploy em servidor e organização de arquitetura em camadas. Este portfólio não é apenas uma página estática, mas uma aplicação completa, desenvolvida para demonstrar na prática minhas competências em desenvolvimento web e minha capacidade de estruturar, implementar e publicar sistemas reais.',
       year: '2025',
       liveUrl: 'https://maiawall.com',
       technologies: ['Angular', 'Tailwind CSS', 'RxJS', 'GSAP'],
@@ -91,8 +91,8 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     {
       id: 'banda-aurah',
       title: 'Banda Aurah',
-      shortDescription:
-        'Identidade digital sonora com visual escuro e tipografia marcante.',
+      description:
+        'Portfólio da banda Aurah, desenvolvido para apresentar seus projetos, habilidades e experiência profissional. Construído com Angular e Tailwind CSS, o site é responsivo e otimizado para SEO, o site conta com um sistema de agendamento integrado ao portfólio juntamente com a apresentação dos principais vídeos da banda e seu calendário com todas as datas de seus próximos shows.',
       year: '2026',
       liveUrl: 'https://portfolio-banda-aurah.vercel.app/',
       technologies: ['Angular', 'Tailwind CSS', 'Angular Material'],
@@ -113,8 +113,8 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     {
       id: 'instituto-motiro',
       title: 'Instituto Motiro',
-      shortDescription:
-        'Site institucional com foco em cultura, educação e comunidade.',
+      description:
+        'O Instituto Motirõ (Associação Promotora de Educação e Cultura - APEC) foi criado em 2023 a partir do desejo de construir um espaço físico de encontro para pessoas interessadas em educação e cultura em Passos (MG). Dedicado ao fomento e promoção da educação-cultura no município de Passos e região, o Motirõ é composto por dois núcleos: o Centro de Educação Interdisciplinar e Aprovações (CEIA) e o Núcleo de Arte e Cultura (NAC), fomentando desenvolvimento pessoal e comunitário. O Instituto Motirõ nasceu com o propósito de fortalecer a cultura, a educação e a coletividade. Cada projeto, cada ação e cada encontro são construídos de forma colaborativa, valorizando a partilha, a união e o poder do coletivo. O termo Motirõ (pronúncia: Motirô) origina-se no tupi-guarani e representa a reunião de pessoas para construir algo em comum, com ajuda mútua.',
       year: '2026',
       liveUrl: 'https://www.institutomotiro.com.br/',
       technologies: ['Vite', 'Tailwind CSS', 'TypeScript'],
@@ -136,16 +136,16 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     {
       id: 'traveler-website',
       title: 'Traveler Website',
-      shortDescription:
+      description:
         'Plataforma de viagens com cadastro de destinos e busca rápida.',
       year: '2025',
       liveUrl:
         'https://www.linkedin.com/feed/update/urn:li:activity:7393610706035654656/',
       technologies: ['Angular', 'TypeScript', 'Angular Material'],
       theme: {
-        surface: '#1f2937',
-        accent: '#a855f7',
-        glow: 'rgba(168, 85, 247, 0.35)',
+        surface: '#0b1220',
+        accent: '#1e40af',
+        glow: 'rgba(30, 64, 175, 0.35)',
       },
       pages: [
         'assets/images/projects/traveler-website/traveler-website-1.png',
@@ -156,6 +156,46 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
         src: 'assets/images/projects/traveler-website/traveler-website-video.mp4',
         poster: 'assets/images/projects/traveler-website/thumbnail.jpg',
       },
+    },
+    {
+      id: 'painel-admin',
+      title: 'Painel Administrativo',
+      description:
+        'Você busca uma solução robusta para gerenciar seu negócio de eventos ou música? Eu ofereço o desenvolvimento de um ecossistema digital completo, focado em escalabilidade, organização e controle total sobre sua operação. Este projeto é ideal para agências, produtoras ou plataformas de agenciamento que precisam de uma interface intuitiva e painéis de dados precisos. O que está incluso no sistema Gestão de Usuários e Perfis: Controle de acessos multinível (Admin, Músicos, Clientes) com segurança de dados. Cadastro Estruturado: Módulo completo para cadastro de pacotes de serviços, catálogo de músicos e gerenciamento de base de clientes. Dashboard Dinâmico: Visualização de métricas em tempo real com gráficos interativos para tomada de decisão rápida. Controle Financeiro Integrado: Gestão de entradas, saídas, pagamentos de prestadores e histórico de transações. Interface Responsiva: Design moderno e funcional, adaptado para desktop e dispositivos móveis (conforme as imagens do portfólio).',
+      year: '2026',
+      liveUrl:
+        'https://www.linkedin.com/feed/update/urn:li:activity:7393610706035654656/',
+      technologies: ['Angular', 'TypeScript', 'Angular Material'],
+      theme: {
+        surface: '#0b1220',
+        accent: '#1e40af',
+        glow: 'rgba(30, 64, 175, 0.35)',
+      },
+      pages: [
+        'assets/images/projects/painel-admin/foto1.jpg',
+        'assets/images/projects/painel-admin/foto2.jpg',
+        'assets/images/projects/painel-admin/foto3.jpg',
+        'assets/images/projects/painel-admin/foto4.jpg', 
+      ],
+    },
+    {
+      id: 'schulles',
+      title: 'Schulle Website',
+      description:
+        'Um restaurante focado em marmitas mensais, buscando ampliar sua presença em toda a cidade, decidiu investir na criação de uma plataforma digital completa para fortalecer sua marca, facilitar o relacionamento com os clientes e otimizar sua operação interna. Neste projeto, desenvolvi um site profissional com foco em performance, experiência do usuário e conversão. A plataforma inclui páginas institucionais, cardápio dinâmico, apresentação dos planos de marmita mensal, área de informações para clientes e integração com canais de contato e redes sociais. Além do site, foi desenvolvido um sistema gerencial sob medida para centralizar a operação do negócio, permitindo o gerenciamento de clientes, cardápios, marmitas diárias, valores do site, acessos administrativos, compras, gastos e métricas de acesso via integração com o Google Analytics. A arquitetura foi planejada para crescimento futuro, permitindo novas funcionalidades sem necessidade de reconstrução da base. O projeto foi construído com foco em responsividade, rapidez de carregamento e escalabilidade. Tecnologias utilizadas: Angular, Spring Boot, HTML, SCSS, TypeScript e Tailwind CSS.',
+      year: '2026',
+      liveUrl: 'https://www.schulles.com.br/',
+      technologies: ['Angular', 'TypeScript', 'Angular Material'],
+      theme: {
+        surface: '#0b1220',
+        accent: '#1e40af',
+        glow: 'rgba(30, 64, 175, 0.35)',
+      },
+      pages: [
+        'assets/images/projects/schulles/hero.jpg',
+        'assets/images/projects/schulles/mobile.jpg',
+        'assets/images/projects/schulles/plans.jpg',
+      ],
     },
   ];
 

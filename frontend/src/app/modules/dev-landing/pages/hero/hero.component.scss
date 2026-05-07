@@ -76,9 +76,17 @@ section.relative {
   border-radius: 999px;
 }
 
-.hero-preview-dots .dot-red   { background: #f87171; }
-.hero-preview-dots .dot-yellow { background: #fbbf24; }
-.hero-preview-dots .dot-green  { background: #34d399; }
+.hero-preview-dots .dot-red {
+  background: #f87171;
+}
+
+.hero-preview-dots .dot-yellow {
+  background: #fbbf24;
+}
+
+.hero-preview-dots .dot-green {
+  background: #34d399;
+}
 
 .hero-preview-avatar {
   width: 32px;
@@ -165,7 +173,8 @@ section.relative {
     0 0 0 1px rgba(255, 255, 255, 0.06) inset;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  z-index: 3; /* Acima do card principal */
+  z-index: 3;
+  /* Acima do card principal */
   min-width: 160px;
 }
 
@@ -191,16 +200,20 @@ section.relative {
 
 /* card-a: topo direito – ACIMA e à direita do card principal */
 .hero-preview-floating.card-a {
-  top: 0;          /* Dentro do padding superior */
-  right: 0;        /* Dentro do padding direito */
+  top: 0;
+  /* Dentro do padding superior */
+  right: 0;
+  /* Dentro do padding direito */
   transform: translate(12px, -12px);
   animation: float-a 5s ease-in-out infinite;
 }
 
 /* card-b: baixo esquerdo – ABAIXO e à esquerda do card principal */
 .hero-preview-floating.card-b {
-  bottom: 0;       /* Dentro do padding inferior */
-  left: 0;         /* Dentro do padding esquerdo */
+  bottom: 0;
+  /* Dentro do padding inferior */
+  left: 0;
+  /* Dentro do padding esquerdo */
   transform: translate(-12px, 12px);
   animation: float-b 6s ease-in-out infinite;
 }
@@ -229,26 +242,44 @@ section.relative {
 
 /* Badges posicionados dentro do wrapper, mas nas bordas do card principal */
 .hero-badge-top {
-  top: 40px;        /* Alinhado ao topo do card dentro do padding */
-  left: 16px;       /* Levemente à esquerda */
+  top: 40px;
+  /* Alinhado ao topo do card dentro do padding */
+  left: 16px;
+  /* Levemente à esquerda */
   animation: float-b 4s ease-in-out infinite;
 }
 
 .hero-badge-bottom {
-  bottom: 44px;     /* Alinhado ao fundo do card dentro do padding */
-  right: 48px;      /* Levemente à direita */
+  bottom: 44px;
+  /* Alinhado ao fundo do card dentro do padding */
+  right: 48px;
+  /* Levemente à direita */
   animation: float-a 5.5s ease-in-out infinite;
 }
 
 /* ══ ANIMAÇÕES ══ */
 @keyframes float-a {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50%       { transform: translateY(-10px) rotate(0.5deg); }
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(0.5deg);
+  }
 }
 
 @keyframes float-b {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50%       { transform: translateY(-8px) rotate(-0.5deg); }
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(-0.5deg);
+  }
 }
 
 /* ══ RESPONSIVO ══ */
@@ -282,6 +313,7 @@ section.relative {
 
 /* ══ REDUCED MOTION ══ */
 @media (prefers-reduced-motion: reduce) {
+
   .hero-preview-floating,
   .hero-badge {
     animation: none;

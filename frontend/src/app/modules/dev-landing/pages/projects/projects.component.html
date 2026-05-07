@@ -1,4 +1,4 @@
-<section id="projects" class="projects-section relative overflow-hidden bg-gray-100 dark:bg-dev-bg-surface"
+<section id="projects" class="projects-section relative overflow-hidden"
   [style.--active-accent]="activeProject.theme.accent" [style.--active-surface]="activeProject.theme.surface"
   [style.--active-glow]="activeProject.theme.glow">
   <div class="projects-parallax-bg" aria-hidden="true"></div>
@@ -78,7 +78,7 @@
           <div class="sidebar-info">
             <span class="project-year">{{ activeProject.year }}</span>
             <h3 class="project-title">{{ activeProject.title }}</h3>
-            <p class="project-desc">{{ activeProject.shortDescription }}</p>
+            <p class="project-desc">{{ activeProject.description }}</p>
             <div class="tech-tags">
               @for (tech of activeProject.technologies; track tech) {
               <span class="tech-tag">{{ tech }}</span>

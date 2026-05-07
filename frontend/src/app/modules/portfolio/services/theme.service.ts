@@ -5,7 +5,7 @@ import { Injectable, signal, effect } from '@angular/core';
 })
 export class ThemeService {
   // Signal para o tema atual
-  public currentTheme = signal<'light' | 'dark'>('light');
+  public currentTheme = signal<'light' | 'dark'>('dark');
 
   constructor() {
     // Inicializar tema do localStorage ou preferência do sistema

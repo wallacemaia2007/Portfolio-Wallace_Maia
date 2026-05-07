@@ -1,17 +1,47 @@
-:root.theme-dev,
-body.theme-dev {
-  --dev-bg-primary: #0a1628;
-  --dev-bg-surface: #0d2240;
-  --dev-bg-elevated: #1a3a5c;
+:root.theme-dev {
+  --dev-bg-primary: #f8fafc;
+  --dev-bg-surface: #ffffff;
+  --dev-bg-elevated: #f1f5f9;
+  --dev-bg-card: #f8fafc;
   --dev-accent: #1e90d4;
   --dev-accent-light: #3baee8;
-  --dev-text-primary: #c8dff5;
-  --dev-text-muted: #7ba8cc;
-  --dev-border: rgba(30, 144, 212, 0.2);
+  --dev-accent-soft: rgba(30, 144, 212, 0.25);
+  --dev-text-primary: #0f172a;
+  --dev-text-muted: #475569;
+  --dev-border: rgba(15, 23, 42, 0.12);
+  --dev-glow: rgba(30, 144, 212, 0.2);
+  --dev-shadow: rgba(15, 23, 42, 0.15);
+  --dev-success: #22c55e;
+  --dev-glass: rgba(255, 255, 255, 0.7);
+  --dev-glass-strong: rgba(255, 255, 255, 0.88);
+  --dev-overlay: rgba(248, 250, 252, 0.65);
+  --dev-parallax-opacity: 0.14;
+  --dev-parallax-filter: saturate(1) contrast(1) brightness(1.08);
   --color-scrollbar: var(--dev-accent);
   --color-primary-light: var(--dev-accent-light);
   --color-primary-dark: #166aa3;
   --color-focus: var(--dev-accent);
+}
+
+:root.theme-dev.dark {
+  --dev-bg-primary: #0a1628;
+  --dev-bg-surface: #0d2240;
+  --dev-bg-elevated: #1a3a5c;
+  --dev-bg-card: #122a47;
+  --dev-accent: #1e90d4;
+  --dev-accent-light: #3baee8;
+  --dev-accent-soft: rgba(30, 144, 212, 0.3);
+  --dev-text-primary: #c8dff5;
+  --dev-text-muted: #7ba8cc;
+  --dev-border: rgba(30, 144, 212, 0.2);
+  --dev-glow: rgba(30, 144, 212, 0.35);
+  --dev-shadow: rgba(2, 6, 23, 0.55);
+  --dev-success: #4ade80;
+  --dev-glass: rgba(15, 23, 42, 0.45);
+  --dev-glass-strong: rgba(15, 23, 42, 0.65);
+  --dev-overlay: rgba(2, 6, 23, 0.6);
+  --dev-parallax-opacity: 0.35;
+  --dev-parallax-filter: saturate(1.05) contrast(1.05);
 }
 
 body.theme-dev {

@@ -1,16 +1,13 @@
 <header
   class="fixed inset-x-0 top-0 z-50 flex justify-center transition-all duration-300 pt-3 px-4 lg:px-6 pointer-events-none"
-  [class.header--hidden]="isHidden"
-  id="header"
-  role="banner">
+  [class.header--hidden]="isHidden" id="header" role="banner">
 
   <div
     class="pointer-events-auto w-full max-w-5xl flex items-center justify-between transition-all duration-300 px-2 py-1.5 sm:px-3 sm:py-2"
     [ngClass]="{
       'bg-white/95 dark:bg-dev-bg/95 backdrop-blur-md shadow-lg border border-gray-200/80 dark:border-dev/20': isScrolled,
       'bg-white/80 dark:bg-dev-bg/80 backdrop-blur-sm shadow-md border border-gray-200/60 dark:border-white/10': !isScrolled
-    }"
-    style="border-radius: 9999px;">
+    }" style="border-radius: 9999px;">
 
     <!-- Logo -->
     <a href="#hero" (click)="scrollTo($event, '#hero')"
@@ -18,7 +15,8 @@
       aria-label="Ir para o inicio">
       <img src="/assets/images/acronym.png" alt="Logo Maiawall"
         class="h-9 w-9 rounded-full object-cover shadow-sm transition-transform duration-200 group-hover:scale-110">
-      <span class="text-xs sm:text-sm font-bold tracking-tight text-gray-900 dark:text-white transition-colors group-hover:text-dev dark:group-hover:text-dev-light">
+      <span
+        class="text-xs sm:text-sm font-bold tracking-tight text-gray-900 dark:text-white transition-colors group-hover:text-dev dark:group-hover:text-dev-light">
         Maiawall
       </span>
     </a>
@@ -39,13 +37,15 @@
 
     <!-- CTA Desktop -->
     <div class="hidden md:flex items-center gap-2 pr-1">
-      <button (click)="toggleTheme()"
+      <!--
+        <button (click)="toggleTheme()"
         class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-500/30 text-gray-600 dark:text-gray-300 hover:border-dev hover:text-dev dark:hover:border-dev-light dark:hover:text-dev-light transition-all duration-200"
         [attr.aria-label]="isDarkMode ? 'Ativar modo claro' : 'Ativar modo escuro'">
         <mat-icon style="font-size: 1rem; width: 1rem; height: 1rem;">
           {{ isDarkMode ? 'light_mode' : 'dark_mode' }}
         </mat-icon>
       </button>
+      -->
       <a [href]="ctaLinks.cv" target="_blank" rel="noopener noreferrer"
         class="inline-flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-500/30 px-4 py-1.5 text-sm font-semibold text-gray-600 dark:text-gray-300 transition-all duration-200 hover:border-dev hover:text-dev dark:hover:border-dev-light dark:hover:text-dev-light active:scale-[0.98]"
         aria-label="Baixar curriculo em PDF">
@@ -61,9 +61,7 @@
     <!-- Hamburger (mobile) -->
     <button
       class="p-2 mr-0.5 text-gray-700 dark:text-white md:hidden rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
-      [attr.aria-expanded]="isMenuOpen"
-      aria-label="Abrir Menu"
-      (click)="toggleMenu()">
+      [attr.aria-expanded]="isMenuOpen" aria-label="Abrir Menu" (click)="toggleMenu()">
       @if (!isMenuOpen) {
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -84,35 +82,33 @@
 </header>
 
 <!-- Mobile Drawer Backdrop -->
-<div
-  class="fixed inset-0 z-[998] md:hidden transition-all duration-300"
-  [style.background]="'rgba(0,0,0,0.55)'"
-  [style.opacity]="isMenuOpen ? '1' : '0'"
-  [style.pointerEvents]="isMenuOpen ? 'auto' : 'none'"
-  (click)="closeMenu()">
+<div class="fixed inset-0 z-[998] md:hidden transition-all duration-300" [style.background]="'rgba(0,0,0,0.55)'"
+  [style.opacity]="isMenuOpen ? '1' : '0'" [style.pointerEvents]="isMenuOpen ? 'auto' : 'none'" (click)="closeMenu()">
 </div>
 
 <!-- Mobile Drawer Panel -->
-<nav id="mobile-menu-panel"
-  aria-label="Menu mobile"
-  role="navigation"
+<nav id="mobile-menu-panel" aria-label="Menu mobile" role="navigation"
   class="fixed top-0 right-0 z-[999] h-full w-72 md:hidden flex flex-col transition-transform duration-300 ease-out bg-white dark:bg-dev-bg"
   [style.transform]="isMenuOpen ? 'translateX(0)' : 'translateX(100%)'">
 
   <!-- Drawer Header -->
   <div class="flex items-center justify-between px-5 py-4 border-b border-gray-200 dark:border-white/10">
     <div class="flex items-center gap-3">
-      <img src="/assets/logo.png" alt="Logo" class="h-9 w-9 rounded-full object-cover">
+      <img src="/assets/images/acronym.png" alt="Logo Maiawall" class="h-9 w-9 rounded-full object-cover">
       <span class="font-bold text-gray-900 dark:text-white text-sm leading-tight">Maiawall<br>Wallace Maia</span>
     </div>
     <div class="flex items-center gap-2">
-      <button (click)="toggleTheme()" class="w-9 h-9 flex items-center justify-center rounded-lg border border-gray-300 dark:border-white/20 text-gray-600 dark:text-white/70 hover:text-dev dark:hover:text-white hover:border-dev dark:hover:border-white transition-all duration-200"
+      <!--
+        <button (click)="toggleTheme()"
+        class="w-9 h-9 flex items-center justify-center rounded-lg border border-gray-300 dark:border-white/20 text-gray-600 dark:text-white/70 hover:text-dev dark:hover:text-white hover:border-dev dark:hover:border-white transition-all duration-200"
         [attr.aria-label]="isDarkMode ? 'Ativar modo claro' : 'Ativar modo escuro'">
         <mat-icon style="font-size: 1.1rem; width: 1.1rem; height: 1.1rem;">
           {{ isDarkMode ? 'light_mode' : 'dark_mode' }}
         </mat-icon>
       </button>
-      <button class="p-2 rounded-lg text-gray-600 dark:text-white/70 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
+      -->
+      <button
+        class="p-2 rounded-lg text-gray-600 dark:text-white/70 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
         aria-label="Fechar Menu" (click)="closeMenu()">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
