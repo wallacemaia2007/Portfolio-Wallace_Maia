@@ -1,3 +1,7 @@
-a{
-    cursor: pointer;
+:host {
+  display: block;
+}
+
+a {
+  cursor: pointer;
 }

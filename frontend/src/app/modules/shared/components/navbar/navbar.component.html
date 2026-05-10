@@ -15,56 +15,67 @@
         </span>
       </a>
 
-      <!-- Links desktop -->
-      <div class="hidden md:flex items-center gap-1">
-        @for (item of navbarData.navItems; track item.route) {
-        <a [routerLink]="item.route" routerLinkActive="nav-link--active" #rla="routerLinkActive" class="nav-link relative px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2
-                  text-gray-600 dark:text-gray-400
-                  hover:text-custom-black dark:hover:text-white
-                  hover:bg-beige dark:hover:bg-custom-black-light">
-          <mat-icon class="text-base leading-none" style="font-size: 1rem; width: 1rem; height: 1rem;">{{ item.icon
-            }}</mat-icon>
-          <span>{{ item.label }}</span>
-          @if (rla.isActive) {
-          <span class="active-dot absolute -bottom-0.5 left-1/2 -translate-x-1/2
-                         w-1 h-1 rounded-full bg-primary"></span>
+      <!-- Right Side Content -->
+      <div class="flex items-center gap-4 md:gap-8 lg:gap-12">
+        <!-- Links desktop -->
+        <div class="hidden md:flex items-center gap-1">
+          @for (item of navbarData.navItems; track item.route) {
+          <a [routerLink]="item.route" routerLinkActive="nav-link--active" #rla="routerLinkActive" class="nav-link relative px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2
+                    text-gray-600 dark:text-gray-400
+                    hover:text-custom-black dark:hover:text-white
+                    hover:bg-beige dark:hover:bg-custom-black-light">
+            <mat-icon class="text-base leading-none" style="font-size: 1rem; width: 1rem; height: 1rem;">{{ item.icon
+              }}</mat-icon>
+            <span>{{ item.label }}</span>
+            @if (rla.isActive) {
+            <span class="active-dot absolute -bottom-0.5 left-1/2 -translate-x-1/2
+                           w-1 h-1 rounded-full bg-primary"></span>
+            }
+          </a>
           }
-        </a>
-        }
-      </div>
+        </div>
 
-      <!-- Ações -->
-      <div class="flex items-center gap-2">
-        <!-- Botão tema -->
-        <button (click)="toggleTheme()" class="w-9 h-9 flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700
-                 text-gray-600 dark:text-gray-400
-                 hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary
-                 transition-all duration-200"
-          [attr.aria-label]="isDarkMode ? 'Ativar modo claro' : 'Ativar modo escuro'"
-          [matTooltip]="isDarkMode ? 'Modo claro' : 'Modo escuro'" matTooltipPosition="below">
-          <mat-icon style="font-size: 1.1rem; width: 1.1rem; height: 1.1rem;">
-            {{ isDarkMode ? 'light_mode' : 'dark_mode' }}
-          </mat-icon>
-        </button>
+        <!-- Botão Hire Me (Desktop) -->
+        <div class="hidden lg:flex items-center">
+          <a href="https://maiawall.com/dev" target="_blank"
+            class="hire-me-btn flex items-center px-5 py-2.5 rounded-full text-sm font-bold text-white bg-dev hover:bg-dev-light transition-all duration-300">
+            <span>Contrate meus Serviços</span>
+          </a>
+        </div>
 
-        <!-- CV desktop -->
-        <app-button class="hidden md:flex" [buttonData]="{
-            label: 'Download CV',
-            icon: 'download',
-            link: 'assets/cv.pdf',
-            color: 'primary',
-          }"></app-button>
+        <!-- Ações -->
+        <div class="flex items-center gap-2">
+          <!-- Botão tema -->
+          <button (click)="toggleTheme()" class="w-9 h-9 flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700
+                   text-gray-600 dark:text-gray-400
+                   hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary
+                   transition-all duration-200"
+            [attr.aria-label]="isDarkMode ? 'Ativar modo claro' : 'Ativar modo escuro'"
+            [matTooltip]="isDarkMode ? 'Modo claro' : 'Modo escuro'" matTooltipPosition="below">
+            <mat-icon style="font-size: 1.1rem; width: 1.1rem; height: 1.1rem;">
+              {{ isDarkMode ? 'light_mode' : 'dark_mode' }}
+            </mat-icon>
+          </button>
 
-        <!-- Hamburguer mobile -->
-        <button (click)="toggleMenu()" class="flex md:hidden w-9 h-9 items-center justify-center rounded-lg
-                 border border-gray-200 dark:border-gray-700
-                 text-gray-600 dark:text-gray-400
-                 hover:border-primary hover:text-primary
-                 transition-all duration-200" aria-label="Menu">
-          <mat-icon style="font-size: 1.1rem; width: 1.1rem; height: 1.1rem;">
-            {{ menuOpen ? 'close' : 'menu' }}
-          </mat-icon>
-        </button>
+          <!-- CV desktop -->
+          <app-button class="hidden lg:flex" [buttonData]="{
+              label: 'Download CV',
+              icon: 'download',
+              link: 'assets/cv.pdf',
+              color: 'primary',
+            }"></app-button>
+
+          <!-- Hamburguer mobile -->
+          <button (click)="toggleMenu()" class="flex md:hidden w-9 h-9 items-center justify-center rounded-lg
+                   border border-gray-200 dark:border-gray-700
+                   text-gray-600 dark:text-gray-400
+                   hover:border-primary hover:text-primary
+                   transition-all duration-200" aria-label="Menu">
+            <mat-icon style="font-size: 1.1rem; width: 1.1rem; height: 1.1rem;">
+              {{ menuOpen ? 'close' : 'menu' }}
+            </mat-icon>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -85,13 +96,13 @@
         }
       </div>
 
-      <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-800">
-        <app-button class="w-full pr-5" [buttonData]="{
-            label: 'Download CV',
-            icon: 'download',
-            link: 'assets/cv.pdf',
-            color: 'primary',
-          }" (click)="closeMenu()"></app-button>
+      <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-800 flex flex-col gap-6">
+        <a href="https://maiawall.com/dev" target="_blank" (click)="closeMenu()"
+          class="hire-me-btn w-full flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-sm font-bold text-white bg-dev">
+          <mat-icon style="font-size: 1.1rem; width: 1.1rem; height: 1.1rem;">rocket_launch</mat-icon>
+          <span>Contrate meus Serviços</span>
+        </a>
+
       </div>
     </div>
     }

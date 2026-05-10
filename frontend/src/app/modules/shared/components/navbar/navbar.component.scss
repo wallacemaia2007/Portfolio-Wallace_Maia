@@ -95,6 +95,7 @@ nav.header--hidden {
     opacity: 0;
     transform: translateY(-8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -103,6 +104,69 @@ nav.header--hidden {
 
 .animate-slide-down {
   animation: slideDown 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hire-me-btn {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(30, 144, 212, 0.3);
+  animation: glow-pulse 3s infinite ease-in-out;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 144, 212, 0.5);
+    animation: glow-pulse-hover 1.5s infinite ease-in-out;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent);
+    transform: rotate(45deg);
+    animation: shine 4s infinite;
+  }
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 4px 15px rgba(30, 144, 212, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 4px 25px rgba(30, 144, 212, 0.6);
+  }
+}
+
+@keyframes glow-pulse-hover {
+
+  0%,
+  100% {
+    box-shadow: 0 8px 25px rgba(30, 144, 212, 0.5);
+  }
+
+  50% {
+    box-shadow: 0 8px 35px rgba(30, 144, 212, 0.8);
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-150%) rotate(45deg);
+  }
+
+  20%,
+  100% {
+    transform: translateX(150%) rotate(45deg);
+  }
 }
 
 .logo-badge img {
@@ -126,6 +190,7 @@ a:hover .logo-badge img {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   nav,
   .animate-slide-down,
   * {
