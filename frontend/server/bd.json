@@ -629,8 +629,8 @@
       "position": "Estágio de Suporte Técnico ",
       "description": "Atuei como estagiário na Divisão de Processamento de Dados da Prefeitura de Passos, prestando suporte técnico presencial e remoto aos servidores municipais. Fui responsável por manutenção preventiva e corretiva de computadores, configuração de redes, instalação de softwares e resolução de problemas técnicos, garantindo o bom funcionamento dos equipamentos e a continuidade dos serviços. A experiência fortaleceu minhas habilidades em atendimento ao usuário, diagnóstico de problemas e organização no suporte de TI.",
       "startDate": "2026-01-05",
-      "endDate": "momento",
-      "current": true,
+      "endDate": "2026-03-30",
+      "current": false,
       "location": "Passos, MG - Brasil",
       "type": "Meio período",
       "technologies": [
@@ -862,16 +862,6 @@
     "educationList": [
       {
         "id": "1",
-        "institution": "UEMG - Universidade Estadual de Minas Gerais",
-        "course": "Sistemas de Informação",
-        "startDate": "2025-03",
-        "endDate": "2026-03",
-        "current": false,
-        "description": "Cursei o 1 ano da faculdade. Aprendendo fundamentos sólidos de computação, algoritmos, arquitetura de sistemas e gestão de projetos.",
-        "location": "Passos, MG"
-      },
-      {
-        "id": "2",
         "institution": "UFU - Universidade Federal de Uberlândia",
         "course": "Sistemas de Informação",
         "startDate": "2026-03",
@@ -880,7 +870,7 @@
         "location": "Monte Carmelo, MG"
       },
       {
-        "id": "3",
+        "id": "2",
         "institution": "UDEMY",
         "course": "Angular 19 - Curso Completo do Iniciante ao Avançado (2026)",
         "certificateUrl": "https://www.udemy.com/certificate/UC-68ca9451-6d8b-4b8d-b9f6-7ca6e6b9ed34/",
@@ -891,7 +881,7 @@
         "location": "Online"
       },
       {
-        "id": "4'",
+        "id": "3",
         "institution": "UDEMY",
         "course": "Java COMPLETO Programação Orientada a Objetos + Projetos + Spring Boot",
         "certificateUrl": "https://www.udemy.com/certificate/UC-35fc7385-fc29-4e4b-a9ba-dfabbba7fbd3/",
@@ -902,7 +892,7 @@
         "location": "Online"
       },
       {
-        "id": "5",
+        "id": "4",
         "institution": "DIO - Digital Innovation One",
         "course": "Santander 2025 - Back-End com Java e Spring Boot",
         "certificateUrl": "assets/docs/bootcamp_java.pdf",
