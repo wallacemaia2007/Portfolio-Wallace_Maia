@@ -1,10 +1,18 @@
-import { Component, AfterViewInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  AfterViewInit,
+  OnDestroy,
+  ElementRef,
+  ViewChild,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { WhatsAppService } from '../../../shared/services/whatsapp-service.service';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,9 +29,14 @@ export interface ServiceCategory {
 @Component({
   selector: 'app-works',
   standalone: true,
-  imports: [CommonModule, MatIconModule, ScrollRevealDirective, SectionHeaderComponent],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    ScrollRevealDirective,
+    SectionHeaderComponent,
+  ],
   templateUrl: './works.component.html',
-  styleUrl: './works.component.scss'
+  styleUrl: './works.component.scss',
 })
 export class WorksComponent implements AfterViewInit, OnDestroy {
   @ViewChild('worksSection', { static: true }) worksSection!: ElementRef;
@@ -32,22 +45,25 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
   private prefersReducedMotion = false;
   activeCategoryId: string | null = null;
 
+  private whatsAppService = inject(WhatsAppService);
+
   readonly categories: ServiceCategory[] = [
     {
       id: 'systems',
       name: 'Sistemas & SaaS',
       icon: 'domain',
-      phrase: 'Transformo processos manuais em plataformas digitais escaláveis.',
+      phrase:
+        'Transformo processos manuais em plataformas digitais escaláveis.',
       services: [
         'Desenvolvimento de SaaS do zero',
         'Criação de CRMs empresariais',
         'Softwares de gestão interna',
         'Sistemas de controle e relatórios',
         'Painéis administrativos completos',
-        'Áreas de cliente e painéis de usuário'
+        'Áreas de cliente e painéis de usuário',
       ],
       stack: ['Angular', 'Java', 'Spring Boot', 'MySQL', 'REST API', 'Docker'],
-      buildingType: 'skyscraper'
+      buildingType: 'skyscraper',
     },
     {
       id: 'webapps',
@@ -58,10 +74,10 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
         'Aplicações sob medida',
         'Dashboards administrativos',
         'Integração com APIs externas',
-        'Sistemas B2B e B2C'
+        'Sistemas B2B e B2C',
       ],
       stack: ['Angular', 'TypeScript', 'Tailwind CSS', 'RxJS', 'Node.js'],
-      buildingType: 'commercial'
+      buildingType: 'commercial',
     },
     {
       id: 'ecommerce',
@@ -72,24 +88,25 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
         'E-commerces completos',
         'Catálogos digitais iterativos',
         'Sistemas de agendamento e reservas',
-        'Integração com gateways de pagamento'
+        'Integração com gateways de pagamento',
       ],
       stack: ['Angular', 'Node.js', 'Express', 'PostgreSQL', 'Stripe'],
-      buildingType: 'shop'
+      buildingType: 'shop',
     },
     {
       id: 'sites',
       name: 'Sites & Landing Pages',
       icon: 'web_asset',
-      phrase: 'Presença digital de alta performance para converter visitantes em clientes.',
+      phrase:
+        'Presença digital de alta performance para converter visitantes em clientes.',
       services: [
         'Landing pages otimizadas',
         'Sites institucionais modernos',
         'Sites dinâmicos',
-        'Blogs e plataformas de conteúdo'
+        'Blogs e plataformas de conteúdo',
       ],
       stack: ['Angular', 'Tailwind CSS', 'GSAP', 'SEO'],
-      buildingType: 'agency'
+      buildingType: 'agency',
     },
     {
       id: 'branding',
@@ -100,10 +117,10 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
         'Criação de portfólios profissionais',
         'Sites pessoais',
         'Páginas de apresentação (Link in bio)',
-        'Design UI/UX'
+        'Design UI/UX',
       ],
       stack: ['Figma', 'Angular', 'CSS/SCSS', 'Tailwind CSS'],
-      buildingType: 'studio'
+      buildingType: 'studio',
     },
     {
       id: 'performance',
@@ -114,10 +131,10 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
         'Automação de processos via scripts',
         'Otimização de performance web',
         'SEO técnico e estrutural',
-        'Integração de webhooks'
+        'Integração de webhooks',
       ],
       stack: ['Lighthouse', 'Node.js', 'Python', 'Shell'],
-      buildingType: 'factory'
+      buildingType: 'factory',
     },
     {
       id: 'maintenance',
@@ -128,28 +145,31 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
         'Manutenção de sistemas web',
         'Modernização de aplicações legadas',
         'Refatoração de código',
-        'Atualização de dependências'
+        'Atualização de dependências',
       ],
       stack: ['Git', 'Docker', 'CI/CD', 'Jest'],
-      buildingType: 'workshop'
+      buildingType: 'workshop',
     },
     {
       id: 'integrations',
       name: 'Integrações',
       icon: 'hub',
-      phrase: 'Conectando as ferramentas que você já usa em um ecossistema único.',
+      phrase:
+        'Conectando as ferramentas que você já usa em um ecossistema único.',
       services: [
         'Integração com APIs e serviços externos',
         'Automação de workflows (Zapier, Make)',
-        'Sincronização de dados'
+        'Sincronização de dados',
       ],
       stack: ['RESTful APIs', 'GraphQL', 'Webhooks', 'OAuth'],
-      buildingType: 'tower'
-    }
+      buildingType: 'tower',
+    },
   ];
 
   ngAfterViewInit(): void {
-    this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
     if (this.prefersReducedMotion) return;
 
     setTimeout(() => {
@@ -167,7 +187,8 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
     if (!this.worksSection) return;
 
     this.ctx = gsap.context(() => {
-      gsap.fromTo('.building', 
+      gsap.fromTo(
+        '.building',
         { y: 60, opacity: 0 },
         {
           y: 0,
@@ -178,9 +199,9 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
           scrollTrigger: {
             trigger: this.worksSection.nativeElement,
             start: 'top 85%',
-            toggleActions: 'play none none none'
-          }
-        }
+            toggleActions: 'play none none none',
+          },
+        },
       );
     }, this.worksSection.nativeElement);
   }
@@ -190,6 +211,11 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
   }
 
   get activeCategory(): ServiceCategory | undefined {
-    return this.categories.find(c => c.id === this.activeCategoryId);
+    return this.categories.find((c) => c.id === this.activeCategoryId);
+  }
+
+  moreInfo(projectTitle: string): void {
+    const link = this.whatsAppService.getWorkDetailsLink(projectTitle);
+    window.open(link, '_blank');
   }
 }

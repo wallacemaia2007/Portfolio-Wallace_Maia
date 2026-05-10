@@ -20,4 +20,10 @@ export class WhatsAppService {
     const phone = this.normalizePhone(whatsappNumber);
     return `https://wa.me/${phone}?text=${encodeURIComponent(mensagem)}`;
   }
+
+  getWorkDetailsLink(itemName: string): string {
+    const mensagem = `Olá! Quero saber mais sobre como funciona ${itemName} e como posso contratar seus serviços!`;
+    const phone = this.normalizePhone(whatsappNumber);
+    return `https://wa.me/${phone}?text=${encodeURIComponent(mensagem)}`;
+  }
 }

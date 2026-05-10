@@ -99,10 +99,11 @@
             </div>
           </div>
 
-          <a href="#contact"
-            class="w-full py-3 sm:py-4 rounded-xl bg-accent hover:bg-dev-light text-white font-bold text-sm sm:text-base text-center transition-all duration-300 shadow-dev-glow hover:shadow-dev-glow-lg active:scale-95 mt-auto">
+          <button type="button" (click)="moreInfo(activeCategory.name)" class=" w-full py-3 sm:py-4 rounded-xl bg-accent hover:bg-dev-light text-white font-bold text-sm
+            sm:text-base text-center transition-all duration-300 shadow-dev-glow hover:shadow-dev-glow-lg
+            active:scale-95 mt-auto">
             Solicitar este serviço
-          </a>
+          </button>
         </div>
         } @else {
         <div
