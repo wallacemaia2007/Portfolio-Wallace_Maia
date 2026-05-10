@@ -8,12 +8,15 @@ import {
   ChangeDetectionStrategy,
   ViewChildren,
   QueryList,
+  Inject,
+  inject,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { WhatsAppService } from '../../../shared/services/whatsapp-service.service';
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -63,7 +66,8 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
   activeProjectIndex = 0;
   private ctx?: gsap.Context;
   private videoObserver?: IntersectionObserver;
-
+  private whatsAppService = inject(WhatsAppService);
+  
   readonly projects: ShowcaseProject[] = [
     {
       id: 'portfolio-pessoal',
@@ -262,5 +266,10 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     if (playResult && typeof playResult.catch === 'function') {
       playResult.catch(() => undefined);
     }
+  }
+
+  moreInfo(projectTitle: string): void {
+    const link = this.whatsAppService.getItemOrderLink(projectTitle);
+    window.open(link, '_blank');
   }
 }

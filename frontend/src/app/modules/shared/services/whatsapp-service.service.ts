@@ -16,7 +16,7 @@ export class WhatsAppService {
   }
 
   getItemOrderLink(itemName: string): string {
-    const mensagem = `Olá! Quero saber mais sobre o: ${itemName}`;
+    const mensagem = `Olá! Quero saber mais sobre ${itemName} e como posso contratar seus serviços!`;
     const phone = this.normalizePhone(whatsappNumber);
     return `https://wa.me/${phone}?text=${encodeURIComponent(mensagem)}`;
   }

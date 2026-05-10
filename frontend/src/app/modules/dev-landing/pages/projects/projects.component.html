@@ -9,10 +9,12 @@
     <header class="projects-header">
       <span class="header-eyebrow">Portfólio</span>
 
-      <h2 class="header-title">Meus Projetos Recentes</h2>
+      <h2 class="header-title">Alguns de meus serviços</h2>
 
       <p class="header-subtitle">
-        Uma seleção dos meus trabalhos mais recentes, destacando a diversidade de tecnologias e soluções que implementei
+        Desde websites institucionais até plataformas de e-commerce, cada projeto é uma oportunidade de criar algo
+        único e impactante. Abaixo, você pode explorar uma seleção dos meus trabalhos mais recentes e significativos,
+        cada um refletindo meu compromisso com a excelência, inovação e satisfação do cliente.
       </p>
 
       <div class="projects-selector">
@@ -86,9 +88,9 @@
             </div>
           </div>
 
-          <a [href]="activeProject.liveUrl" target="_blank" rel="noopener noreferrer" class="sidebar-cta">
-            Visitar Website <span>→</span>
-          </a>
+          <button class="sidebar-cta" type="button" (click)="moreInfo(activeProject.title)">
+            Saiba Mais! →
+          </button>
 
         </div>
       </aside>
