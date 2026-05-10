@@ -7,6 +7,7 @@ import { CtaComponent } from './pages/cta/cta.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { WorksComponent } from './pages/works/works.component';
+import { ThemeService } from '../portfolio/services/theme.service';
 
 export const RouterLinks = {
   hero: true,
@@ -35,6 +36,8 @@ export const RouterLinks = {
 })
 export class DevLandingComponent implements OnInit, OnDestroy {
   private renderer = inject(Renderer2);
+  private themeService = inject(ThemeService);
+  private previousTheme: 'light' | 'dark' | null = null;
   readonly whatsappFloatingLink: string;
   routerLinks = RouterLinks;
 
@@ -47,11 +50,22 @@ export class DevLandingComponent implements OnInit, OnDestroy {
     const root = document.documentElement;
     this.renderer.addClass(root, 'theme-dev');
     this.renderer.addClass(document.body, 'theme-dev');
+
+    // Salvar tema atual para restaurar depois
+    this.previousTheme = this.themeService.getTheme();
+
+    // Forçar tema escuro sempre no dev-landing
+    this.themeService.setTheme('dark');
   }
 
   ngOnDestroy(): void {
     const root = document.documentElement;
     this.renderer.removeClass(root, 'theme-dev');
     this.renderer.removeClass(document.body, 'theme-dev');
+
+    // Restaurar tema anterior ao sair do dev-landing
+    if (this.previousTheme) {
+      this.themeService.setTheme(this.previousTheme);
+    }
   }
 }

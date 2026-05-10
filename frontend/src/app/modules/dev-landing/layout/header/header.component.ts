@@ -70,10 +70,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     public readonly themeService: ThemeService,
   ) {}
 
+  /*
   toggleTheme(): void {
     this.themeService.toggleTheme();
     this.cdr.markForCheck();
   }
+  */
 
   get isDarkMode(): boolean {
     return this.themeService.isDarkMode();

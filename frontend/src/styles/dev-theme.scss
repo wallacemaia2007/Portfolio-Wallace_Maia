@@ -1,4 +1,5 @@
 :root.theme-dev {
+  /* Tema Claro (Comentado para forçar sempre escuro)
   --dev-bg-primary: #f8fafc;
   --dev-bg-surface: #ffffff;
   --dev-bg-elevated: #f1f5f9;
@@ -17,13 +18,9 @@
   --dev-overlay: rgba(248, 250, 252, 0.65);
   --dev-parallax-opacity: 0.14;
   --dev-parallax-filter: saturate(1) contrast(1) brightness(1.08);
-  --color-scrollbar: var(--dev-accent);
-  --color-primary-light: var(--dev-accent-light);
-  --color-primary-dark: #166aa3;
-  --color-focus: var(--dev-accent);
-}
+  */
 
-:root.theme-dev.dark {
+  // Tema Escuro (Padrão para Dev-Landing)
   --dev-bg-primary: #0a1628;
   --dev-bg-surface: #0d2240;
   --dev-bg-elevated: #1a3a5c;
@@ -42,6 +39,17 @@
   --dev-overlay: rgba(2, 6, 23, 0.6);
   --dev-parallax-opacity: 0.35;
   --dev-parallax-filter: saturate(1.05) contrast(1.05);
+
+  --color-scrollbar: var(--dev-accent);
+  --color-primary-light: var(--dev-accent-light);
+  --color-primary-dark: #166aa3;
+  --color-focus: var(--dev-accent);
+}
+
+// Mantemos o seletor .dark para compatibilidade com outros componentes que dependam dele,
+// mas os valores de dev-theme já são os mesmos do modo escuro por padrão acima.
+:root.theme-dev.dark {
+  // Já definidos no root.theme-dev acima
 }
 
 body.theme-dev {
