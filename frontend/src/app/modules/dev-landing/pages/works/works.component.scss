@@ -2,34 +2,38 @@
   display: block;
 }
 
-.building-skyscraper { height: 95%; }
-.building-commercial { height: 80%; }
-.building-shop { height: 50%; }
-.building-agency { height: 70%; }
-.building-studio { height: 60%; }
-.building-factory { height: 65%; }
-.building-workshop { height: 45%; }
-.building-tower { height: 85%; }
+// Fixed height so the city never grows/shrinks with the panel
+.city-container {
+  height: 476px; // p-8 top (32) + city-grid md:h-[380px] + p-8 bottom (32) + floor line gap (32)
+  flex-shrink: 0;
 
-@media (max-width: 640px) {
-  .building-skyscraper { height: 85%; }
-  .building-commercial { height: 70%; }
-  .building-shop { height: 40%; }
-  .building-agency { height: 60%; }
-  .building-studio { height: 50%; }
-  .building-factory { height: 55%; }
-  .building-workshop { height: 35%; }
-  .building-tower { height: 75%; }
-  .building-shape { min-height: 30px; }
+  @media (max-width: 768px) {
+    height: auto;
+  }
+}
+
+// Empty state gives the panel a minimum height matching the city
+.panel-empty {
+  min-height: 476px;
+
+  @media (max-width: 1024px) {
+    min-height: 260px;
+  }
+}
+
+.panel-container {
+  overflow: hidden;
 }
 
 .building-shape {
   position: relative;
-  min-height: 40px;
-  background-image: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 100%);
-  
+  min-height: 30px;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+  transition: height 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+
   &.active {
     box-shadow: 0 -5px 25px -5px rgba(30, 144, 212, 0.4);
+
     .windows-grid div {
       background-color: theme('colors.dev.light');
       box-shadow: 0 0 5px theme('colors.dev.DEFAULT');
@@ -39,29 +43,19 @@
 }
 
 .animate-slide-in {
-  animation: slideInRight 0.4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  animation: slideInRight 0.35s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.4s ease-out forwards;
+  animation: fadeIn 0.35s ease-out forwards;
 }
 
 @keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }

@@ -24,6 +24,7 @@ export interface ServiceCategory {
   services: string[];
   stack: string[];
   buildingType: string;
+  maxHeight?: number;
 }
 
 @Component({
@@ -44,6 +45,7 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
   private ctx?: gsap.Context;
   private prefersReducedMotion = false;
   activeCategoryId: string | null = null;
+  buildingHeights: Record<string, number> = {};
 
   private whatsAppService = inject(WhatsAppService);
 
@@ -52,15 +54,14 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
       id: 'systems',
       name: 'Sistemas & SaaS',
       icon: 'domain',
-      phrase:
-        'Transformo processos manuais em plataformas digitais escaláveis.',
+      phrase: 'Processo manual é dinheiro parado. Transformo fluxos complexos em plataformas digitais robustas, escaláveis e prontas para crescer com o seu negócio.',
       services: [
-        'Desenvolvimento de SaaS do zero',
-        'Criação de CRMs empresariais',
+        'SaaS completo do zero ao deploy',
+        'CRMs sob medida para sua operação',
         'Softwares de gestão interna',
-        'Sistemas de controle e relatórios',
-        'Painéis administrativos completos',
-        'Áreas de cliente e painéis de usuário',
+        'Painéis administrativos e dashboards',
+        'Sistemas de controle, relatórios e KPIs',
+        'Área de cliente e portais de usuário',
       ],
       stack: ['Angular', 'Java', 'Spring Boot', 'MySQL', 'REST API', 'Docker'],
       buildingType: 'skyscraper',
@@ -69,12 +70,12 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
       id: 'webapps',
       name: 'Aplicações Web',
       icon: 'web',
-      phrase: 'Sistemas robustos e sob medida para o seu modelo de negócio.',
+      phrase: 'Soluções web de alta performance construídas sob medida — sem templates, sem limitações, exatamente do jeito que o seu modelo de negócio exige.',
       services: [
-        'Aplicações sob medida',
-        'Dashboards administrativos',
-        'Integração com APIs externas',
-        'Sistemas B2B e B2C',
+        'Aplicações customizadas B2B e B2C',
+        'Dashboards interativos em tempo real',
+        'Integração com APIs e serviços externos',
+        'Autenticação, permissões e controle de acesso',
       ],
       stack: ['Angular', 'TypeScript', 'Tailwind CSS', 'RxJS', 'Node.js'],
       buildingType: 'commercial',
@@ -83,11 +84,11 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
       id: 'ecommerce',
       name: 'E-commerce & Catálogos',
       icon: 'storefront',
-      phrase: 'Lojas virtuais e catálogos para expandir suas vendas online.',
+      phrase: 'Venda mais com uma loja que realmente converte — do catálogo ao checkout, com a experiência que seus clientes merecem.',
       services: [
-        'E-commerces completos',
-        'Catálogos digitais iterativos',
-        'Sistemas de agendamento e reservas',
+        'Lojas virtuais completas e personalizadas',
+        'Catálogos digitais interativos',
+        'Sistemas de agendamento e reservas online',
         'Integração com gateways de pagamento',
       ],
       stack: ['Angular', 'Node.js', 'Express', 'PostgreSQL', 'Stripe'],
@@ -97,13 +98,12 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
       id: 'sites',
       name: 'Sites & Landing Pages',
       icon: 'web_asset',
-      phrase:
-        'Presença digital de alta performance para converter visitantes em clientes.',
+      phrase: 'Sua vitrine digital precisa impressionar em segundos. Crio sites e landing pages que carregam rápido, ranqueiam bem e transformam visitas em clientes.',
       services: [
-        'Landing pages otimizadas',
-        'Sites institucionais modernos',
-        'Sites dinâmicos',
-        'Blogs e plataformas de conteúdo',
+        'Landing pages de alta conversão',
+        'Sites institucionais modernos e responsivos',
+        'Sites dinâmicos com painel de conteúdo',
+        'Blogs e plataformas editoriais',
       ],
       stack: ['Angular', 'Tailwind CSS', 'GSAP', 'SEO'],
       buildingType: 'agency',
@@ -112,12 +112,12 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
       id: 'branding',
       name: 'Portfólios & Branding',
       icon: 'brush',
-      phrase: 'Sua marca pessoal ou empresarial destacada na internet.',
+      phrase: 'A primeira impressão é digital. Construo a presença online que faz sua marca — ou você mesmo — ser lembrado pelo motivo certo.',
       services: [
-        'Criação de portfólios profissionais',
-        'Sites pessoais',
-        'Páginas de apresentação (Link in bio)',
-        'Design UI/UX',
+        'Portfólios profissionais interativos',
+        'Sites pessoais e páginas de apresentação',
+        'Link in bio com estilo e identidade própria',
+        'Direção de UI/UX e identidade visual digital',
       ],
       stack: ['Figma', 'Angular', 'CSS/SCSS', 'Tailwind CSS'],
       buildingType: 'studio',
@@ -126,12 +126,12 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
       id: 'performance',
       name: 'Automação & Performance',
       icon: 'speed',
-      phrase: 'Acelere seu site e automatize rotinas maçantes.',
+      phrase: 'Cada segundo de carregamento perdido é receita que vai embora. Otimizo, automatizo e libero sua equipe para o que realmente importa.',
       services: [
-        'Automação de processos via scripts',
-        'Otimização de performance web',
+        'Otimização de performance web (Core Web Vitals)',
         'SEO técnico e estrutural',
-        'Integração de webhooks',
+        'Automação de processos repetitivos via scripts',
+        'Integração de webhooks e eventos em tempo real',
       ],
       stack: ['Lighthouse', 'Node.js', 'Python', 'Shell'],
       buildingType: 'factory',
@@ -140,12 +140,12 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
       id: 'maintenance',
       name: 'Manutenção & Evolução',
       icon: 'build',
-      phrase: 'Mantenha seu sistema seguro, atualizado e pronto para crescer.',
+      phrase: 'Software que não evolui, envelhece. Mantenho seu sistema seguro, atualizado e sempre preparado para o próximo passo.',
       services: [
-        'Manutenção de sistemas web',
+        'Manutenção contínua de sistemas web',
         'Modernização de aplicações legadas',
-        'Refatoração de código',
-        'Atualização de dependências',
+        'Refatoração e otimização de código',
+        'Atualização de dependências e segurança',
       ],
       stack: ['Git', 'Docker', 'CI/CD', 'Jest'],
       buildingType: 'workshop',
@@ -154,48 +154,50 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
       id: 'integrations',
       name: 'Integrações',
       icon: 'hub',
-      phrase:
-        'Conectando as ferramentas que você já usa em um ecossistema único.',
+      phrase: 'Suas ferramentas não conversam entre si? Conecto sistemas, APIs e plataformas para que tudo funcione como um ecossistema único e automatizado.',
       services: [
-        'Integração com APIs e serviços externos',
-        'Automação de workflows (Zapier, Make)',
-        'Sincronização de dados',
+        'Integração com APIs REST e GraphQL',
+        'Automação de workflows (Zapier, Make, n8n)',
+        'Sincronização e migração de dados',
       ],
       stack: ['RESTful APIs', 'GraphQL', 'Webhooks', 'OAuth'],
       buildingType: 'tower',
     },
   ];
 
-  ngAfterViewInit(): void {
-    this.prefersReducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)',
-    ).matches;
-    if (this.prefersReducedMotion) return;
+  constructor() {
+    // Calculate max height per category based on content volume
+    this.categories.forEach(cat => {
+      const score = cat.services.length * 10 + cat.stack.length * 4 + cat.phrase.length * 0.12;
+      const allScores = this.categories.map(c =>
+        c.services.length * 10 + c.stack.length * 4 + c.phrase.length * 0.12
+      );
+      const min = Math.min(...allScores);
+      const max = Math.max(...allScores);
+      cat.maxHeight = Math.round(45 + ((score - min) / (max - min)) * 50); // 45%–95%
+    });
 
-    setTimeout(() => {
-      this.initAnimations();
-    }, 300);
+    this.randomizeHeights(null);
+  }
+
+  ngAfterViewInit(): void {
+    this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (this.prefersReducedMotion) return;
+    setTimeout(() => this.initAnimations(), 300);
   }
 
   ngOnDestroy(): void {
-    if (this.ctx) {
-      this.ctx.revert();
-    }
+    this.ctx?.revert();
   }
 
   private initAnimations(): void {
     if (!this.worksSection) return;
-
     this.ctx = gsap.context(() => {
       gsap.fromTo(
         '.building',
         { y: 60, opacity: 0 },
         {
-          y: 0,
-          opacity: 1,
-          stagger: 0.08,
-          duration: 0.8,
-          ease: 'expo.out',
+          y: 0, opacity: 1, stagger: 0.08, duration: 0.8, ease: 'expo.out',
           scrollTrigger: {
             trigger: this.worksSection.nativeElement,
             start: 'top 85%',
@@ -206,12 +208,32 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
     }, this.worksSection.nativeElement);
   }
 
+  private randomizeHeights(selectedId: string | null): void {
+    const heights: Record<string, number> = {};
+    for (const cat of this.categories) {
+      const max = cat.maxHeight ?? 60;
+      if (cat.id === selectedId) {
+        heights[cat.id] = max;
+      } else {
+        const lo = Math.round(max * 0.28);
+        const hi = Math.round(max * 0.72);
+        heights[cat.id] = lo + Math.floor(Math.random() * (hi - lo + 1));
+      }
+    }
+    this.buildingHeights = heights;
+  }
+
   selectCategory(id: string): void {
     this.activeCategoryId = this.activeCategoryId === id ? null : id;
+    this.randomizeHeights(this.activeCategoryId);
   }
 
   get activeCategory(): ServiceCategory | undefined {
-    return this.categories.find((c) => c.id === this.activeCategoryId);
+    return this.categories.find(c => c.id === this.activeCategoryId);
+  }
+
+  getBuildingHeight(catId: string): string {
+    return (this.buildingHeights[catId] ?? 45) + '%';
   }
 
   moreInfo(projectTitle: string): void {
