@@ -54,123 +54,206 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
       id: 'systems',
       name: 'Sistemas & SaaS',
       icon: 'domain',
-      phrase: 'Processo manual é dinheiro parado. Transformo fluxos complexos em plataformas digitais robustas, escaláveis e prontas para crescer com o seu negócio.',
+      phrase:
+        'Processos manuais travam crescimento. Desenvolvo sistemas robustos e plataformas SaaS sob medida que automatizam operações, centralizam informações e escalam junto com o negócio.',
       services: [
         'SaaS completo do zero ao deploy',
-        'CRMs sob medida para sua operação',
-        'Softwares de gestão interna',
+        'CRMs personalizados para empresas',
+        'ERP e sistemas internos de gestão',
         'Painéis administrativos e dashboards',
-        'Sistemas de controle, relatórios e KPIs',
-        'Área de cliente e portais de usuário',
+        'Controle financeiro, estoque e relatórios',
+        'Sistemas de autenticação e permissões',
+        'Área do cliente e portais privados',
+        'Sistemas acadêmicos e empresariais',
+        'Integração entre setores e processos',
       ],
-      stack: ['Angular', 'Java', 'Spring Boot', 'MySQL', 'REST API', 'Docker'],
+      stack: [
+        'Java',
+        'Spring Boot',
+        'Angular',
+        'MySQL',
+        'REST API',
+        'Docker',
+        'JWT',
+        'Hibernate',
+      ],
       buildingType: 'skyscraper',
     },
+
     {
       id: 'webapps',
       name: 'Aplicações Web',
       icon: 'web',
-      phrase: 'Soluções web de alta performance construídas sob medida — sem templates, sem limitações, exatamente do jeito que o seu modelo de negócio exige.',
+      phrase:
+        'Aplicações modernas, rápidas e altamente personalizadas para empresas, startups e operações digitais que precisam de performance e experiência premium.',
       services: [
-        'Aplicações customizadas B2B e B2C',
-        'Dashboards interativos em tempo real',
-        'Integração com APIs e serviços externos',
-        'Autenticação, permissões e controle de acesso',
+        'Aplicações web B2B e B2C',
+        'Dashboards em tempo real',
+        'Sistemas responsivos e escaláveis',
+        'Integração com APIs externas',
+        'Autenticação, permissões e segurança',
+        'Painéis administrativos completos',
+        'Sistemas com upload de arquivos',
+        'Aplicações com arquitetura moderna',
+        'Interfaces interativas e fluidas',
       ],
-      stack: ['Angular', 'TypeScript', 'Tailwind CSS', 'RxJS', 'Node.js'],
+      stack: [
+        'Angular',
+        'TypeScript',
+        'RxJS',
+        'Tailwind CSS',
+        'SCSS',
+        'Node.js',
+        'Java',
+      ],
       buildingType: 'commercial',
     },
+
     {
       id: 'ecommerce',
-      name: 'E-commerce & Catálogos',
+      name: 'E-commerce & Vendas',
       icon: 'storefront',
-      phrase: 'Venda mais com uma loja que realmente converte — do catálogo ao checkout, com a experiência que seus clientes merecem.',
+      phrase:
+        'Lojas digitais criadas para vender mais, transmitir confiança e entregar uma experiência moderna do catálogo ao checkout.',
       services: [
-        'Lojas virtuais completas e personalizadas',
+        'Lojas virtuais personalizadas',
         'Catálogos digitais interativos',
-        'Sistemas de agendamento e reservas online',
+        'Sistemas de pedidos online',
         'Integração com gateways de pagamento',
+        'Checkout otimizado para conversão',
+        'Plataformas de reservas e agendamentos',
+        'Painel de gerenciamento de produtos',
+        'Experiência mobile-first',
       ],
-      stack: ['Angular', 'Node.js', 'Express', 'PostgreSQL', 'Stripe'],
+      stack: [
+        'Angular',
+        'Node.js',
+        'Express',
+        'PostgreSQL',
+        'Stripe',
+        'REST API',
+      ],
       buildingType: 'shop',
     },
+
     {
       id: 'sites',
       name: 'Sites & Landing Pages',
       icon: 'web_asset',
-      phrase: 'Sua vitrine digital precisa impressionar em segundos. Crio sites e landing pages que carregam rápido, ranqueiam bem e transformam visitas em clientes.',
+      phrase:
+        'Seu site precisa impressionar nos primeiros segundos. Crio experiências modernas, rápidas e estratégicas que fortalecem sua marca e convertem visitantes em clientes.',
       services: [
         'Landing pages de alta conversão',
-        'Sites institucionais modernos e responsivos',
-        'Sites dinâmicos com painel de conteúdo',
+        'Sites institucionais modernos',
+        'Sites empresariais completos',
         'Blogs e plataformas editoriais',
+        'Sites com painel administrativo',
+        'Sites otimizados para SEO',
+        'Design responsivo e premium',
+        'Animações e interações modernas',
+        'Deploy profissional e domínio',
       ],
-      stack: ['Angular', 'Tailwind CSS', 'GSAP', 'SEO'],
+      stack: ['Angular', 'Tailwind CSS', 'GSAP', 'SEO', 'TypeScript', 'Vercel'],
       buildingType: 'agency',
     },
+
     {
       id: 'branding',
       name: 'Portfólios & Branding',
       icon: 'brush',
-      phrase: 'A primeira impressão é digital. Construo a presença online que faz sua marca — ou você mesmo — ser lembrado pelo motivo certo.',
+      phrase:
+        'A presença digital certa faz você parecer maior, mais profissional e mais memorável. Construo identidades digitais que destacam pessoas e marcas.',
       services: [
         'Portfólios profissionais interativos',
-        'Sites pessoais e páginas de apresentação',
-        'Link in bio com estilo e identidade própria',
-        'Direção de UI/UX e identidade visual digital',
+        'Sites pessoais premium',
+        'Link in bio personalizado',
+        'Apresentações digitais para negócios',
+        'UI/UX estratégico',
+        'Design moderno com identidade forte',
+        'Experiências visuais imersivas',
+        'Posicionamento visual para freelancers',
       ],
-      stack: ['Figma', 'Angular', 'CSS/SCSS', 'Tailwind CSS'],
+      stack: ['Figma', 'Angular', 'Tailwind CSS', 'SCSS', 'GSAP'],
       buildingType: 'studio',
     },
     {
-      id: 'performance',
-      name: 'Automação & Performance',
-      icon: 'speed',
-      phrase: 'Cada segundo de carregamento perdido é receita que vai embora. Otimizo, automatizo e libero sua equipe para o que realmente importa.',
+      id: 'automation',
+      name: 'Automação & Integrações',
+      icon: 'hub',
+      phrase:
+        'Automatizo tarefas repetitivas e conecto plataformas para transformar processos lentos em fluxos inteligentes e eficientes.',
       services: [
-        'Otimização de performance web (Core Web Vitals)',
-        'SEO técnico e estrutural',
-        'Automação de processos repetitivos via scripts',
-        'Integração de webhooks e eventos em tempo real',
+        'Integrações com APIs REST e GraphQL',
+        'Automação de workflows',
+        'Webhooks e eventos em tempo real',
+        'Integração entre plataformas',
+        'Sincronização e migração de dados',
+        'Automação de atendimento e processos',
+        'Conexão entre sistemas empresariais',
+        'Integrações com ferramentas externas',
       ],
-      stack: ['Lighthouse', 'Node.js', 'Python', 'Shell'],
-      buildingType: 'factory',
+      stack: [
+        'REST API',
+        'GraphQL',
+        'Webhooks',
+        'OAuth',
+        'Node.js',
+        'Python',
+        'n8n',
+      ],
+      buildingType: 'tower',
     },
+
     {
       id: 'maintenance',
       name: 'Manutenção & Evolução',
       icon: 'build',
-      phrase: 'Software que não evolui, envelhece. Mantenho seu sistema seguro, atualizado e sempre preparado para o próximo passo.',
+      phrase:
+        'Software parado envelhece rápido. Faço manutenção contínua, melhorias e evolução de sistemas para manter tudo seguro, moderno e eficiente.',
       services: [
-        'Manutenção contínua de sistemas web',
-        'Modernização de aplicações legadas',
-        'Refatoração e otimização de código',
-        'Atualização de dependências e segurança',
+        'Manutenção contínua de aplicações',
+        'Correção de bugs e falhas',
+        'Atualização de dependências',
+        'Refatoração de código',
+        'Modernização de sistemas legados',
+        'Melhoria de arquitetura',
+        'Deploy e monitoramento',
+        'Versionamento e organização Git',
       ],
-      stack: ['Git', 'Docker', 'CI/CD', 'Jest'],
+      stack: ['Git', 'GitHub', 'Docker', 'CI/CD', 'Jest', 'Spring Boot'],
       buildingType: 'workshop',
     },
+
     {
-      id: 'integrations',
-      name: 'Integrações',
-      icon: 'hub',
-      phrase: 'Suas ferramentas não conversam entre si? Conecto sistemas, APIs e plataformas para que tudo funcione como um ecossistema único e automatizado.',
+      id: 'consulting',
+      name: 'Consultoria & Estratégia',
+      icon: 'lightbulb',
+      phrase:
+        'Nem todo problema precisa apenas de código. Ajudo empresas e profissionais a definirem a melhor estratégia digital para crescer online.',
       services: [
-        'Integração com APIs REST e GraphQL',
-        'Automação de workflows (Zapier, Make, n8n)',
-        'Sincronização e migração de dados',
+        'Consultoria para presença digital',
+        'Planejamento de sistemas e aplicações',
+        'Estratégia para produtos SaaS',
+        'Estruturação de arquitetura web',
+        'Análise técnica de projetos',
+        'Mentoria para freelancers e devs',
+        'Direcionamento tecnológico',
+        'Escolha de stack e infraestrutura',
       ],
-      stack: ['RESTful APIs', 'GraphQL', 'Webhooks', 'OAuth'],
-      buildingType: 'tower',
+      stack: ['Arquitetura Web', 'UX/UI', 'SEO', 'Angular', 'Spring Boot'],
+      buildingType: 'headquarters',
     },
   ];
-
   constructor() {
     // Calculate max height per category based on content volume
-    this.categories.forEach(cat => {
-      const score = cat.services.length * 10 + cat.stack.length * 4 + cat.phrase.length * 0.12;
-      const allScores = this.categories.map(c =>
-        c.services.length * 10 + c.stack.length * 4 + c.phrase.length * 0.12
+    this.categories.forEach((cat) => {
+      const score =
+        cat.services.length * 10 +
+        cat.stack.length * 4 +
+        cat.phrase.length * 0.12;
+      const allScores = this.categories.map(
+        (c) =>
+          c.services.length * 10 + c.stack.length * 4 + c.phrase.length * 0.12,
       );
       const min = Math.min(...allScores);
       const max = Math.max(...allScores);
@@ -181,7 +264,9 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
     if (this.prefersReducedMotion) return;
     setTimeout(() => this.initAnimations(), 300);
   }
@@ -197,7 +282,11 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
         '.building',
         { y: 60, opacity: 0 },
         {
-          y: 0, opacity: 1, stagger: 0.08, duration: 0.8, ease: 'expo.out',
+          y: 0,
+          opacity: 1,
+          stagger: 0.08,
+          duration: 0.8,
+          ease: 'expo.out',
           scrollTrigger: {
             trigger: this.worksSection.nativeElement,
             start: 'top 85%',
@@ -229,7 +318,7 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
   }
 
   get activeCategory(): ServiceCategory | undefined {
-    return this.categories.find(c => c.id === this.activeCategoryId);
+    return this.categories.find((c) => c.id === this.activeCategoryId);
   }
 
   getBuildingHeight(catId: string): string {
