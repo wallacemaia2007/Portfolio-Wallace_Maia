@@ -7,10 +7,12 @@ import { CtaComponent } from './pages/cta/cta.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { WorksComponent } from './pages/works/works.component';
+import { ProblemSolutionComponent } from './pages/problem-solution/problem-solution.component';
 import { ThemeService } from '../portfolio/services/theme.service';
 
 export const RouterLinks = {
   hero: true,
+  problemSolution: true,
   works: true,
   stack: true,
   cta: true,
@@ -28,6 +30,7 @@ export const RouterLinks = {
     ProjectsComponent,
     HeroComponent,
     WorksComponent,
+    ProblemSolutionComponent,
     ContactComponent,
     CtaComponent,
   ],
