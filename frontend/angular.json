@@ -27,6 +27,36 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
+              {
+                "glob": "favicon.svg",
+                "input": "src",
+                "output": "."
+              },
+              {
+                "glob": "favicon-96x96.png",
+                "input": "src",
+                "output": "."
+              },
+              {
+                "glob": "apple-touch-icon.png",
+                "input": "src",
+                "output": "."
+              },
+              {
+                "glob": "web-app-manifest-192x192.png",
+                "input": "src",
+                "output": "."
+              },
+              {
+                "glob": "web-app-manifest-512x512.png",
+                "input": "src",
+                "output": "."
+              },
+              {
+                "glob": "site.webmanifest",
+                "input": "src",
+                "output": "."
+              },
               "src/BingSiteAuth.xml",
               "src/assets",
               "src/sitemap.xml",
@@ -102,6 +132,36 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
+              {
+                "glob": "favicon.svg",
+                "input": "src",
+                "output": "."
+              },
+              {
+                "glob": "favicon-96x96.png",
+                "input": "src",
+                "output": "."
+              },
+              {
+                "glob": "apple-touch-icon.png",
+                "input": "src",
+                "output": "."
+              },
+              {
+                "glob": "web-app-manifest-192x192.png",
+                "input": "src",
+                "output": "."
+              },
+              {
+                "glob": "web-app-manifest-512x512.png",
+                "input": "src",
+                "output": "."
+              },
+              {
+                "glob": "site.webmanifest",
+                "input": "src",
+                "output": "."
+              },
               "src/BingSiteAuth.xml",
               "src/assets",
               "src/sitemap.xml",
