@@ -27,6 +27,7 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
+              "src/BingSiteAuth.xml",
               "src/assets",
               "src/sitemap.xml",
               "src/robots.txt"
@@ -101,6 +102,7 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
+              "src/BingSiteAuth.xml",
               "src/assets",
               "src/sitemap.xml",
               "src/robots.txt"
