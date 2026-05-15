@@ -1,4 +1,4 @@
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig } from '@angular/core';
 import {
   provideRouter,
@@ -28,6 +28,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideEnvironmentNgxMask(),
     provideHttpClient(
+      withFetch(),
       withInterceptors([globalErrorInterceptor, loadingInterceptor])
     ),
   ],

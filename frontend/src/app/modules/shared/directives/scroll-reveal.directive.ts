@@ -4,9 +4,11 @@ import {
   Input,
   OnDestroy,
   OnInit,
+  PLATFORM_ID,
   Renderer2,
   inject,
 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
   selector: '[appScrollReveal]',
@@ -24,11 +26,15 @@ export class ScrollRevealDirective implements OnInit, OnDestroy {
 
   private el = inject(ElementRef);
   private renderer = inject(Renderer2);
-  private prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  private platformId = inject(PLATFORM_ID);
+  private prefersReducedMotion = false;
 
   ngOnInit(): void {
-    this.setInitialStyles();
-    this.setupIntersectionObserver();
+    if (isPlatformBrowser(this.platformId)) {
+      this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      this.setInitialStyles();
+      this.setupIntersectionObserver();
+    }
   }
 
   ngOnDestroy(): void {

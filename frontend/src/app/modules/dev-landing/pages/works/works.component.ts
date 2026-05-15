@@ -5,16 +5,14 @@ import {
   ElementRef,
   ViewChild,
   inject,
+  PLATFORM_ID,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { WhatsAppService } from '../../../shared/services/whatsapp-service.service';
-
-gsap.registerPlugin(ScrollTrigger);
+import { gsap } from '../../../../core/gsap-register';
 
 export interface ServiceCategory {
   id: string;
@@ -42,6 +40,7 @@ export interface ServiceCategory {
 export class WorksComponent implements AfterViewInit, OnDestroy {
   @ViewChild('worksSection', { static: true }) worksSection!: ElementRef;
 
+  private platformId = inject(PLATFORM_ID);
   private ctx?: gsap.Context;
   private prefersReducedMotion = false;
   activeCategoryId: string | null = null;
@@ -264,6 +263,7 @@ export class WorksComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     this.prefersReducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
     ).matches;

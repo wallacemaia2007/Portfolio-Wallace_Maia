@@ -1,20 +1,23 @@
-import { Injectable, signal, effect } from '@angular/core';
+import { Injectable, signal, effect, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ThemeService {
-  // Signal para o tema atual
+  private platformId = inject(PLATFORM_ID);
   public currentTheme = signal<'light' | 'dark'>('dark');
 
   constructor() {
-    // Inicializar tema do localStorage ou preferência do sistema
-    this.initializeTheme();
+    if (isPlatformBrowser(this.platformId)) {
+      this.initializeTheme();
+    }
 
-    // Effect para aplicar mudanças de tema
     effect(() => {
-      const theme = this.currentTheme();
-      this.applyTheme(theme);
+      if (isPlatformBrowser(this.platformId)) {
+        const theme = this.currentTheme();
+        this.applyTheme(theme);
+      }
     });
   }
 

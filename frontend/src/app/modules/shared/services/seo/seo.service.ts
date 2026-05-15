@@ -1,6 +1,7 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, PLATFORM_ID, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router, NavigationEnd } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 import { filter } from 'rxjs/operators';
 
 export interface PageSeoData {
@@ -82,6 +83,7 @@ export class SeoService {
   private meta = inject(Meta);
   private titleService = inject(Title);
   private router = inject(Router);
+  private platformId = inject(PLATFORM_ID);
 
   init(): void {
     this.router.events
@@ -148,6 +150,7 @@ export class SeoService {
   }
 
   private setLinkCanonical(url: string): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     let link: HTMLLinkElement | null =
       document.querySelector("link[rel='canonical']");
     if (!link) {

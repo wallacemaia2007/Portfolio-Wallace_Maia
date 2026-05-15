@@ -16,7 +16,6 @@ export class AppComponent implements OnInit {
   private seoService = inject(SeoService);
 
   ngOnInit(): void {
-    // Inicia o listener de rotas para atualizar metadados em cada navegação
     this.seoService.init();
   }
 }

@@ -4,12 +4,13 @@ import {
   OnInit,
   AfterViewInit,
   OnDestroy,
+  PLATFORM_ID,
   ElementRef,
   ViewChild,
   ViewChildren,
   QueryList,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -37,10 +38,7 @@ import {
   InformationBarData,
 } from '../../../shared/components/information-bar/information-bar.component';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { gsap } from '../../../../core/gsap-register';
 
 @Component({
   selector: 'app-home',
@@ -64,7 +62,8 @@ gsap.registerPlugin(ScrollTrigger);
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private portfolioService = inject(PortfolioService);
   private el = inject(ElementRef);
-  private ctx!: gsap.Context;
+  private platformId = inject(PLATFORM_ID);
+  private ctx?: gsap.Context;
   private playingPreviewIds = new Set<string>();
 
   @ViewChild('experienceSection') experienceSectionRef!: ElementRef;
@@ -111,7 +110,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    // Experiences load async — watch for them to render then animate
+    if (!isPlatformBrowser(this.platformId)) return;
     this.ctx = gsap.context(() => {}, this.el.nativeElement);
   }
 
@@ -122,6 +121,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   // ─── Called after experiences render ───────────────────────────────────────
 
   private initTimelineAnimations(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     // Give Angular one more tick to render the *ngFor items
     setTimeout(() => {
       this.ctx = gsap.context(() => {
@@ -255,11 +255,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       next: (projects) => {
         this.featuredProjects = projects.slice(0, 3);
         this.isLoadingProjects = false;
-        setTimeout(() => {
-          document
-            .querySelectorAll<HTMLVideoElement>('.project-card video')
-            .forEach((video) => video.load());
-        }, 300);
+        if (isPlatformBrowser(this.platformId)) {
+          setTimeout(() => {
+            document
+              .querySelectorAll<HTMLVideoElement>('.project-card video')
+              .forEach((video) => video.load());
+          }, 300);
+        }
       },
       error: (error) => {
         console.error('Erro ao carregar projetos em destaque:', error);
@@ -296,8 +298,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       next: (experiences) => {
         this.recentExperiences = experiences.slice(0, 3);
         this.isLoadingExperience = false;
-        // Trigger GSAP after Angular renders the list
-        this.initTimelineAnimations();
+        if (isPlatformBrowser(this.platformId)) {
+          this.initTimelineAnimations();
+        }
       },
       error: (error) => {
         console.error('Erro ao carregar experiências:', error);

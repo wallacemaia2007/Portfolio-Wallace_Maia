@@ -8,17 +8,14 @@ import {
   ChangeDetectionStrategy,
   ViewChildren,
   QueryList,
-  Inject,
   inject,
+  PLATFORM_ID,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
-import gsap from 'gsap';
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { WhatsAppService } from '../../../shared/services/whatsapp-service.service';
-
-gsap.registerPlugin(ScrollToPlugin);
+import { gsap } from '../../../../core/gsap-register';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -52,6 +49,8 @@ export interface ShowcaseProject {
 export class ProjectsComponent implements AfterViewInit, OnDestroy {
   @ViewChild('outerScroll', { static: true })
   outerScroll!: ElementRef<HTMLElement>;
+
+  private platformId = inject(PLATFORM_ID);
 
   @ViewChildren('projectCard')
   projectCards!: QueryList<ElementRef<HTMLElement>>;
@@ -182,6 +181,7 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
   constructor(private readonly cdr: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     this.ctx = gsap.context(() => {});
     setTimeout(() => this.setupVideoObserver(), 0);
   }

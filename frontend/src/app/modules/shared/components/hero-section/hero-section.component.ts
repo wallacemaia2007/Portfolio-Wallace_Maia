@@ -1,15 +1,16 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import {
   AfterViewInit,
   Component,
   NgZone,
   OnDestroy,
   OnInit,
+  PLATFORM_ID,
   inject,
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { gsap } from 'gsap';
+import { gsap } from '../../../../core/gsap-register';
 
 import { PortfolioService } from '../../../portfolio/services/portfolio.service';
 import { ButtonComponent } from '../button/button.component';
@@ -242,6 +243,7 @@ const TERMINAL_SCRIPT: ScriptLine[] = [
 export class HeroSectionComponent implements OnInit, AfterViewInit, OnDestroy {
   private portfolioService = inject(PortfolioService);
   private ngZone = inject(NgZone);
+  private platformId = inject(PLATFORM_ID);
   private ctx?: gsap.Context;
 
   personalInfo: any = { name: '', role: '', description: '', avatar: '' };
@@ -258,6 +260,7 @@ export class HeroSectionComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     this.ngZone.runOutsideAngular(() => {
       const scope = document.querySelector(
         'app-hero-section',

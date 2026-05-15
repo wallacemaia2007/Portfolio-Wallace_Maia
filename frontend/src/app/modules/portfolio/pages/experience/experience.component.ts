@@ -5,8 +5,9 @@ import {
   AfterViewInit,
   OnDestroy,
   ElementRef,
+  PLATFORM_ID,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,10 +24,7 @@ import {
   InformationBarComponent,
   InformationBarData,
 } from '../../../shared/components/information-bar/information-bar.component';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { gsap, ScrollTrigger } from '../../../../core/gsap-register';
 
 interface ExperienceTypeInfo {
   value: ExperienceType | 'all';
@@ -54,7 +52,8 @@ interface ExperienceTypeInfo {
 export class ExperienceComponent implements OnInit, AfterViewInit, OnDestroy {
   private portfolioService = inject(PortfolioService);
   private el = inject(ElementRef);
-  private ctx!: gsap.Context;
+  private platformId = inject(PLATFORM_ID);
+  private ctx?: gsap.Context;
 
   isLoading = true;
   experiences: Experience[] = [];
@@ -75,6 +74,7 @@ export class ExperienceComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     this.ctx = gsap.context(() => {
       this.initHeroParallax();
     }, this.el.nativeElement);
@@ -82,7 +82,9 @@ export class ExperienceComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.ctx?.revert();
-    ScrollTrigger.getAll().forEach((st) => st.kill());
+    if (isPlatformBrowser(this.platformId)) {
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+    }
   }
 
   // ─── Hero blobs parallax on scroll ─────────────────────────────────────────

@@ -6,14 +6,13 @@ import {
   ViewChild,
   NgZone,
   HostListener,
+  inject,
+  PLATFORM_ID,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { gsap } from '../../../../core/gsap-register';
 
 // ══ Classes de partícula (igual ao login/signup) ══
 
@@ -82,6 +81,7 @@ export class HeroComponent implements OnDestroy, AfterViewInit {
   @ViewChild('heroSection', { static: true }) heroSection!: ElementRef;
   @ViewChild('particleCanvas') particleCanvas!: ElementRef<HTMLCanvasElement>;
 
+  private platformId = inject(PLATFORM_ID);
   private ctx?: gsap.Context;
   private prefersReducedMotion = false;
 
@@ -126,6 +126,7 @@ export class HeroComponent implements OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     this.prefersReducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
     ).matches;

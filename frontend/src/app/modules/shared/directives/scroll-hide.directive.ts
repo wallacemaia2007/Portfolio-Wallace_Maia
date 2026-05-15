@@ -4,8 +4,11 @@ import {
   HostListener,
   OnDestroy,
   OnInit,
+  PLATFORM_ID,
   Renderer2,
+  inject,
 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
   selector: '[appScrollHide]',
@@ -19,12 +22,15 @@ export class ScrollHideDirective implements OnInit, OnDestroy {
 
   private progressBar: HTMLElement | null = null;
 
+  private platformId = inject(PLATFORM_ID);
+
   constructor(
     private el: ElementRef<HTMLElement>,
     private renderer: Renderer2,
   ) {}
 
   ngOnInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     this.createProgressBar();
     this.processScroll();
   }

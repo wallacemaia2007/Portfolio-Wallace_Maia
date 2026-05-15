@@ -6,18 +6,16 @@ import {
   OnDestroy,
   ElementRef,
   inject,
+  PLATFORM_ID,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import {
   Experience,
   ExperienceType,
   EXPERIENCE_TYPE_NAMES,
 } from '../../../../models/experience.model';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { gsap, ScrollTrigger } from '../../../../../../core/gsap-register';
 
 @Component({
   selector: 'app-experience-card',
@@ -31,7 +29,8 @@ export class ExperienceCardComponent implements OnInit, AfterViewInit, OnDestroy
   @Input() cardIndex: number = 0;
 
   private el = inject(ElementRef);
-  private ctx!: gsap.Context;
+  private platformId = inject(PLATFORM_ID);
+  private ctx?: gsap.Context;
   private mouseMoveHandler!: (e: MouseEvent) => void;
 
   duration = '';
@@ -44,6 +43,7 @@ export class ExperienceCardComponent implements OnInit, AfterViewInit, OnDestroy
   }
 
   ngAfterViewInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     // Defer to next tick so DOM is fully rendered
     setTimeout(() => {
       this.ctx = gsap.context(() => {

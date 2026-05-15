@@ -982,5 +982,99 @@
       "Me conectar com novas pessoas na área de tecnologia",
       "Aprender novas linguagens e frameworks - React e Node.js estão na minha lista"
     ]
-  }
+  },
+  "analytics_sessions": [
+    {
+      "id": "cb127582-e890-4ba7-ab66-40ebd2508cb3",
+      "ipHash": "7f8ddf51d12c6e233dc8ca6e1f00041d0bab01b001de6d8135540c4ae6442341",
+      "userAgent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; pt-BR) WindowsPowerShell/5.1.19041.6456",
+      "referrer": "https://github.com/wallacemaia2007",
+      "origin": "github",
+      "deviceType": "desktop",
+      "browser": "other",
+      "os": "Windows",
+      "country": null,
+      "language": null,
+      "pageEntered": "/home",
+      "pageViewsCount": 1,
+      "eventsCount": 2,
+      "startedAt": "2026-05-14T22:51:44.047Z",
+      "lastActivity": "2026-05-14T22:51:44.079Z",
+      "isActive": true
+    },
+    {
+      "id": "10dfbf44-2ac4-4476-95be-d47bdcd408c2",
+      "ipHash": "9ee2aaffd863eea66a04afddcfe35ea296d9d6a1f52283e4ab01b1c2458add75",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "referrer": "",
+      "origin": "direct",
+      "deviceType": "desktop",
+      "browser": "Chrome",
+      "os": "Windows",
+      "country": null,
+      "language": "pt-BR",
+      "pageEntered": "/",
+      "pageViewsCount": 3,
+      "eventsCount": 0,
+      "startedAt": "2026-05-14T22:52:53.755Z",
+      "lastActivity": "2026-05-15T00:00:41.048Z",
+      "isActive": true
+    }
+  ],
+  "analytics_page_views": [
+    {
+      "id": "51889f12-49e9-4d7f-bd2f-c3efae163a83",
+      "sessionId": "cb127582-e890-4ba7-ab66-40ebd2508cb3",
+      "pagePath": "/home",
+      "pageTitle": "Home",
+      "timeSpentSeconds": 0,
+      "timestamp": "2026-05-14T22:51:44.069Z"
+    },
+    {
+      "id": "a6583a0f-a48d-4f2d-9973-fb7087ab172f",
+      "sessionId": "10dfbf44-2ac4-4476-95be-d47bdcd408c2",
+      "pagePath": "/home",
+      "pageTitle": "Wallace Maia | Desenvolvedor Full Stack Angular & Java",
+      "timeSpentSeconds": 0,
+      "timestamp": "2026-05-14T22:52:54.004Z"
+    },
+    {
+      "id": "07accc0d-80d1-4912-bcc0-5312dfe1e8be",
+      "sessionId": "10dfbf44-2ac4-4476-95be-d47bdcd408c2",
+      "pagePath": "/home",
+      "pageTitle": "Wallace Maia | Desenvolvedor Full Stack Angular & Java",
+      "timeSpentSeconds": 0,
+      "timestamp": "2026-05-14T22:59:42.304Z"
+    },
+    {
+      "id": "49cd9b6c-9e4e-422f-9922-5be10efbb374",
+      "sessionId": "10dfbf44-2ac4-4476-95be-d47bdcd408c2",
+      "pagePath": "/dev",
+      "pageTitle": "Serviços — Wallace Maia | Desenvolvimento Web & Sistemas",
+      "timeSpentSeconds": 0,
+      "timestamp": "2026-05-15T00:00:41.049Z"
+    }
+  ],
+  "analytics_events": [
+    {
+      "id": "afd043c4-009e-4ac5-b9e0-169b0a95db6b",
+      "sessionId": "cb127582-e890-4ba7-ab66-40ebd2508cb3",
+      "eventName": "cv_download",
+      "category": "Downloads",
+      "label": "Resume",
+      "value": null,
+      "pagePath": null,
+      "metadata": null,
+      "timestamp": "2026-05-14T22:51:44.076Z"
+    }
+  ],
+  "analytics_downloads": [
+    {
+      "id": "b46a23c5-210b-4214-b571-e55ebfa4a242",
+      "sessionId": "cb127582-e890-4ba7-ab66-40ebd2508cb3",
+      "fileName": "curriculo.pdf",
+      "pagePath": "/home",
+      "timestamp": "2026-05-14T22:51:44.080Z"
+    }
+  ]
 }

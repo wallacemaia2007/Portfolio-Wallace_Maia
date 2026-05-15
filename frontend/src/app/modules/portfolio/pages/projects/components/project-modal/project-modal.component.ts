@@ -8,11 +8,13 @@ import {
   AfterViewInit,
   OnChanges,
   SimpleChanges,
+  PLATFORM_ID,
   inject,
   ViewChild,
   ElementRef,
   HostListener,
 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
@@ -35,6 +37,7 @@ export class ProjectModalComponent
   implements OnInit, OnDestroy, AfterViewInit, OnChanges
 {
   private router = inject(Router);
+  private platformId = inject(PLATFORM_ID);
 
   @Input() project: Project | null = null;
   @Input() variant: 'primary' | 'dev' = 'primary';
@@ -69,20 +72,20 @@ export class ProjectModalComponent
 
     this.stopImageCarousel();
     this.resetCurrentVideo();
-    document.body.style.overflow = 'auto';
+    if (isPlatformBrowser(this.platformId)) document.body.style.overflow = 'auto';
   }
 
   ngOnDestroy(): void {
     this.stopImageCarousel();
     this.resetCurrentVideo();
-    document.body.style.overflow = 'auto';
+    if (isPlatformBrowser(this.platformId)) document.body.style.overflow = 'auto';
   }
 
   onClose(): void {
     this.stopImageCarousel();
     this.resetCurrentVideo();
     this.expandedMediaOpen = false;
-    document.body.style.overflow = 'auto';
+    if (isPlatformBrowser(this.platformId)) document.body.style.overflow = 'auto';
     this.close.emit();
   }
 
@@ -370,7 +373,7 @@ export class ProjectModalComponent
     this.currentMediaIndex = 0;
     this.expandedMediaOpen = false;
     this.startImageCarousel();
-    document.body.style.overflow = 'hidden';
+    if (isPlatformBrowser(this.platformId)) document.body.style.overflow = 'hidden';
     this.playCurrentVideoIfNeeded(true);
   }
 }

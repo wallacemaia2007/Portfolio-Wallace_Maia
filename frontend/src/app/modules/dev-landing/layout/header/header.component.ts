@@ -6,9 +6,11 @@ import {
   OnInit,
   OnDestroy,
   NgZone,
+  inject,
+  PLATFORM_ID,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ThemeService } from '../../../portfolio/services/theme.service';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -28,6 +30,8 @@ interface NavLink {
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  private readonly platformId = inject(PLATFORM_ID);
+
   readonly navLinks: NavLink[] = [
     { label: 'Inicio', href: '#hero', section: 'hero' },
     { label: 'Serviços', href: '#works', section: 'works' },
@@ -48,7 +52,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isMenuOpen = false;
   isScrolled = false;
   isHidden = false;
-  isAuthenticated = !!localStorage.getItem('token');
+  isAuthenticated = false;
 
   private lastScrollY = 0;
   private readonly SCROLL_THRESHOLD = 80;
@@ -82,6 +86,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    this.isAuthenticated = !!localStorage.getItem('token');
+
     this.ngZone.runOutsideAngular(() => {
       this.boundTouchStart = this.handleTouchStart.bind(this);
       this.boundTouchMove = this.handleTouchMove.bind(this);
@@ -100,6 +108,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     document.removeEventListener('touchstart', this.boundTouchStart);
     document.removeEventListener('touchmove', this.boundTouchMove);
     document.removeEventListener('touchend', this.boundTouchEnd);
@@ -147,6 +156,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   @HostListener('window:scroll')
   onScroll(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     const currentScrollY = window.scrollY;
     this.isScrolled = currentScrollY > 20;
 

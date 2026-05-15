@@ -230,6 +230,23 @@
   <!-- ═══════════════════════════════════════════════════════ -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Google Analytics 4: contagem de visitas no site em produção (ignora localhost) -->
+  <script>
+    (function () {
+      var h = location.hostname;
+      if (h === 'localhost' || h === '127.0.0.1') return;
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-VZEP2XCS38');
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-VZEP2XCS38';
+      document.head.appendChild(s);
+    })();
+  </script>
 </head>
 
 <body>

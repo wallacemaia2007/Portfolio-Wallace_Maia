@@ -8,16 +8,15 @@ import {
   QueryList,
   ViewChild,
   ViewChildren,
+  inject,
+  PLATFORM_ID,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Subscription } from 'rxjs';
-
-gsap.registerPlugin(ScrollTrigger);
+import { gsap } from '../../../../core/gsap-register';
 
 interface SkillData {
   id: string;
@@ -61,6 +60,7 @@ export class StackComponent implements AfterViewInit, OnDestroy {
   @ViewChildren('stackCard')
   stackCards!: QueryList<ElementRef<HTMLElement>>;
 
+  private platformId = inject(PLATFORM_ID);
   private ctx?: gsap.Context;
   private prefersReducedMotion = false;
   private isMobile = false;
@@ -173,6 +173,7 @@ export class StackComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     this.isMobile = window.innerWidth < 768;
 

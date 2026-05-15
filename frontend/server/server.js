@@ -1,28 +1,20 @@
-// api/index.js — Vercel Serverless Function
-// Wraps the Express + JSON Server app so Vercel can call it
-
 const path = require("path");
 const fs = require("fs");
 
-// ── carrega as dependências ──────────────────────────────────────────────────
 const jsonServer = require("json-server");
 const rateLimit = require("express-rate-limit");
 
-// Caminho do bd.json  →  na raiz do projeto (fora de /api)
-const DB_PATH = path.join(__dirname, "..", "frontend", "server", "bd.json");
+const DB_PATH = path.join(__dirname, "bd.json");
 
 const server = jsonServer.create();
 const router = jsonServer.router(DB_PATH);
 
-// Rewrite: /experiences* → /experience*
 const rewriter = jsonServer.rewriter({
   "/experiences*": "/experience$1",
 });
 
-// Trust proxy (Vercel roda atrás de reverse proxy)
 server.set("trust proxy", 1);
 
-// ── CORS ─────────────────────────────────────────────────────────────────────
 server.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "*");
@@ -33,7 +25,6 @@ server.use((req, res, next) => {
 
 server.use(jsonServer.bodyParser);
 
-// ── helpers ──────────────────────────────────────────────────────────────────
 function sanitize(str) {
   if (typeof str !== "string") return str;
   return str
@@ -60,16 +51,13 @@ async function sendEmailViaResend({ to, replyTo, subject, text }) {
 
   if (!response.ok) {
     const errorBody = await response.text();
-    const error = new Error(
-      `Resend API error (${response.status}): ${errorBody}`,
-    );
+    const error = new Error(`Resend API error (${response.status}): ${errorBody}`);
     error.code = "RESEND_API_ERROR";
     error.command = "HTTP";
     throw error;
   }
 }
 
-// ── rotas customizadas do "about" ─────────────────────────────────────────────
 server.get("/api/education", (_req, res) => {
   const list = router.db.get("about.educationList").value() || [];
   res.jsonp(list);
@@ -90,7 +78,6 @@ server.get("/api/hobbies", (_req, res) => {
   res.jsonp(list);
 });
 
-// ── rate limit para /api/contact ─────────────────────────────────────────────
 server.use(
   "/api/contact",
   rateLimit({
@@ -105,7 +92,6 @@ server.use(
   }),
 );
 
-// ── POST /api/contact ─────────────────────────────────────────────────────────
 server.post("/api/contact", async (req, res) => {
   try {
     const body = req.body || {};
@@ -133,7 +119,6 @@ server.post("/api/contact", async (req, res) => {
       status: "received",
     };
 
-    // salvar no bd.json (em memória no Vercel — sem persistência entre requests)
     const contacts = router.db.get("contacts");
     if (!contacts.value()) router.db.set("contacts", []).write();
     router.db.get("contacts").push(contactRecord).write();
@@ -141,16 +126,13 @@ server.post("/api/contact", async (req, res) => {
     const mailTo = process.env.MAIL_TO;
     if (!mailTo) throw new Error("MAIL_TO não configurado.");
 
-    const formattedDate = new Date(contactRecord.createdAt).toLocaleString(
-      "pt-BR",
-      {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-      },
-    );
+    const formattedDate = new Date(contactRecord.createdAt).toLocaleString("pt-BR", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
 
     await sendEmailViaResend({
       to: mailTo,
@@ -173,8 +155,7 @@ server.post("/api/contact", async (req, res) => {
   } catch (err) {
     const code = err?.code || "UNKNOWN";
     const command = err?.command || "UNKNOWN";
-    const response = err?.response || err?.message || "Sem detalhes";
-    console.error(`Erro /contact [${code}] [${command}]:`, response);
+    console.error(`Erro /contact [${code}] [${command}]:`, err?.message);
     return res.status(500).jsonp({
       success: false,
       message: "Sua mensagem foi recebida, mas houve erro ao enviar o email.",
@@ -184,14 +165,13 @@ server.post("/api/contact", async (req, res) => {
   }
 });
 
-// ── upload mock ───────────────────────────────────────────────────────────────
 server.post("/api/upload-file/single", (_req, res) => {
   return res.status(201).jsonp({
     url: "https://via.placeholder.com/1200x800.png?text=upload-mock",
   });
 });
 
-// ── analytics ─────────────────────────────────────────────────────────────────
+// ── Analytics ─────────────────────────────────────────────────────────────────
 const crypto = require("crypto");
 const ANALYTICS_SALT = crypto.randomBytes(8).toString("hex");
 
@@ -419,8 +399,8 @@ server.get("/api/analytics/stats/summary", (_req, res) => {
 
     let mostViewedProject = null;
     let mostViewedViews = 0;
-    for (const [path, count] of Object.entries(projectViews)) {
-      if (count > mostViewedViews) { mostViewedProject = path; mostViewedViews = count; }
+    for (const [p, c] of Object.entries(projectViews)) {
+      if (c > mostViewedViews) { mostViewedProject = p; mostViewedViews = c; }
     }
 
     const sourceCount = {};
@@ -485,8 +465,11 @@ server.get("/api/analytics/stats/live", (_req, res) => {
   }
 });
 
-// ── rotas automáticas do bd.json ─────────────────────────────────────────────
+// ── Rotas automáticas do bd.json ──────────────────────────────────────────────
 server.use("/api", rewriter, router);
 
-// ── exporta para o Vercel (serverless handler) ────────────────────────────────
-module.exports = server;
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+  console.log(`[Mock Server] Running on http://localhost:${PORT}`);
+  console.log(`[Mock Server] Analytics API at http://localhost:${PORT}/api/analytics`);
+});
