@@ -108,5 +108,9 @@
   </div>
 </nav>
 
+@if (menuOpen) {
+<div class="fixed inset-0 z-40 bg-black/55 md:hidden" (click)="closeMenu()"></div>
+}
+
 <!-- Espaçador -->
 <div class="h-16"></div>

@@ -82,13 +82,13 @@
 </header>
 
 <!-- Mobile Drawer Backdrop -->
-<div class="fixed inset-0 z-[998] md:hidden transition-all duration-300" [style.background]="'rgba(0,0,0,0.55)'"
+<div class="fixed inset-0 z-40 md:hidden transition-all duration-300" [style.background]="'rgba(0,0,0,0.55)'"
   [style.opacity]="isMenuOpen ? '1' : '0'" [style.pointerEvents]="isMenuOpen ? 'auto' : 'none'" (click)="closeMenu()">
 </div>
 
 <!-- Mobile Drawer Panel -->
 <nav id="mobile-menu-panel" aria-label="Menu mobile" role="navigation"
-  class="fixed top-0 right-0 z-[999] h-full w-72 md:hidden flex flex-col transition-transform duration-300 ease-out bg-white dark:bg-dev-bg"
+  class="fixed top-0 right-0 z-[60] h-full w-72 md:hidden flex flex-col transition-transform duration-300 ease-out bg-white dark:bg-dev-bg"
   [style.transform]="isMenuOpen ? 'translateX(0)' : 'translateX(100%)'">
 
   <!-- Drawer Header -->
