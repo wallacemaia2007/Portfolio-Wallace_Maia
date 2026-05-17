@@ -21,6 +21,7 @@ import {
   InformationBarComponent,
   InformationBarData,
 } from '../../../shared/components/information-bar/information-bar.component';
+import { SkillsBubbleSectionComponent } from './components/skills-bubble-section/skills-bubble-section.component';
 
 interface CategoryInfo {
   type: SkillCategoryType | 'all';
@@ -43,6 +44,7 @@ interface CategoryInfo {
     ScrollRevealDirective,
     InformationBarComponent,
     StatCardsComponent,
+    SkillsBubbleSectionComponent,
   ],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss',
@@ -147,7 +149,6 @@ export class SkillsComponent implements OnInit {
     this.statistics = [
       { value: this.totalSkills, label: 'Habilidades' },
       { value: totalCategories, label: 'Categorias' },
-      { value: expertSkills, label: 'Habilidades Expert' },
       {
         value: Math.round(avgYearsExperience),
         label: 'Anos de Experiência',

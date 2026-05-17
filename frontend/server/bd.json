@@ -319,7 +319,7 @@
       "id": "4",
       "name": "JavaScript",
       "category": "frontend",
-      "level": 4,
+      "level": 5,
       "yearsOfExperience": 2,
       "icon": "assets/icons/javascript.svg",
       "color": "#F7DF1E"
@@ -337,7 +337,7 @@
       "id": "6",
       "name": "CSS3",
       "category": "frontend",
-      "level": 5,
+      "level": 4,
       "yearsOfExperience": 2,
       "icon": "assets/icons/css3.svg",
       "color": "#1572B6"
@@ -346,7 +346,7 @@
       "id": "7",
       "name": "Tailwind CSS",
       "category": "frontend",
-      "level": 5,
+      "level": 4,
       "yearsOfExperience": 1,
       "icon": "assets/icons/tailwind.svg",
       "color": "#06B6D4"
@@ -364,7 +364,7 @@
       "id": "9",
       "name": "Spring Security",
       "category": "backend",
-      "level": 4,
+      "level": 5,
       "yearsOfExperience": 1,
       "icon": "assets/icons/springSecurity.svg",
       "color": "#6DB33F"
@@ -391,7 +391,7 @@
       "id": "12",
       "name": "MySQL",
       "category": "database",
-      "level": 5,
+      "level": 4,
       "yearsOfExperience": 2,
       "icon": "assets/icons/mysql.svg",
       "color": "#FFCA28"
@@ -427,7 +427,7 @@
       "id": "16",
       "name": "Figma",
       "category": "tools",
-      "level": 4,
+      "level": 3,
       "yearsOfExperience": 1,
       "icon": "assets/icons/figma.svg",
       "color": "#F24E1E"
@@ -454,7 +454,7 @@
       "id": "19",
       "name": "JUnit",
       "category": "backend",
-      "level": 5,
+      "level": 4,
       "yearsOfExperience": 2,
       "icon": "assets/icons/junit.svg",
       "color": "#25A162"
@@ -463,7 +463,7 @@
       "id": "20",
       "name": "Mockito",
       "category": "backend",
-      "level": 5,
+      "level": 4,
       "yearsOfExperience": 2,
       "icon": "assets/icons/mockito.svg",
       "color": "#8A2BE2"
@@ -472,7 +472,7 @@
       "id": "21",
       "name": "OAuth",
       "category": "frontend",
-      "level": 4,
+      "level": 3,
       "yearsOfExperience": 1,
       "icon": "assets/icons/oauth.svg",
       "color": "#8A2BE2"
@@ -481,7 +481,7 @@
       "id": "22",
       "name": "RxJS",
       "category": "frontend",
-      "level": 5,
+      "level": 4,
       "yearsOfExperience": 1,
       "icon": "assets/icons/rxjs.svg",
       "color": "#8A2BE2"
@@ -490,7 +490,7 @@
       "id": "23",
       "name": "Node.js",
       "category": "backend",
-      "level": 3,
+      "level": 5,
       "yearsOfExperience": 1,
       "icon": "assets/icons/nodejs.svg",
       "color": "#8A2BE2"
@@ -499,7 +499,7 @@
       "id": "24",
       "name": "Express",
       "category": "backend",
-      "level": 3,
+      "level": 5,
       "yearsOfExperience": 1,
       "icon": "assets/icons/express.svg",
       "color": "#8A2BE2"
@@ -508,7 +508,7 @@
       "id": "25",
       "name": "Json-Server",
       "category": "tools",
-      "level": 4,
+      "level": 3,
       "yearsOfExperience": 1,
       "icon": "assets/icons/json.svg",
       "color": "#8A2BE2"
@@ -517,7 +517,7 @@
       "id": "26",
       "name": "Spring Data JPA",
       "category": "backend",
-      "level": 5,
+      "level": 3,
       "yearsOfExperience": 2,
       "icon": "assets/icons/springDataJPA.svg",
       "color": "#8A2BE2"
@@ -535,7 +535,7 @@
       "id": "28",
       "name": "Angular Material",
       "category": "frontend",
-      "level": 5,
+      "level": 4,
       "yearsOfExperience": 2,
       "icon": "assets/icons/angularMaterial.svg",
       "color": "#8A2BE2"
@@ -544,7 +544,7 @@
       "id": "29",
       "name": "Linux",
       "category": "tools",
-      "level": 5,
+      "level": 2,
       "yearsOfExperience": 2,
       "icon": "assets/icons/linux.svg",
       "color": "#8A2BE2"
@@ -553,7 +553,7 @@
       "id": "30",
       "name": "PrimeNG",
       "category": "frontend",
-      "level": 5,
+      "level": 2,
       "yearsOfExperience": 2,
       "icon": "assets/icons/primeng.svg",
       "color": "#8A2BE2"
@@ -562,7 +562,7 @@
       "id": "31",
       "name": "Vite",
       "category": "frontend",
-      "level": 5,
+      "level": 3,
       "yearsOfExperience": 1,
       "icon": "assets/icons/vite.svg",
       "color": "#8A2BE2"
@@ -836,13 +836,6 @@
         "description": "Aprofundei meus conhecimentos em Angular para frontend e Spring Boot para backend, consolidando minha atuação full stack.",
         "type": "achievement",
         "icon": "trending_up"
-      },
-      {
-        "year": "2025",
-        "title": "Ingresso na Faculdade",
-        "description": "Comecei o curso de Sistemas de Informação na UEMG, onde eu consigui conhecer profissionais e professores incríveis na área de programação que me ajudaram a crescer ainda mais.",
-        "type": "education",
-        "icon": "school"
       },
       {
         "year": "2025",

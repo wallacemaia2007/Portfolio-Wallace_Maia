@@ -1,0 +1,83 @@
+<section class="skills-bubble-section" #sectionRef>
+
+  <div class="bubble-stage" #stageRef (click)="onStageClick($event)">
+    <div class="section-header-wrapper">
+      <app-section-header title="Habilidades Técnicas" subtitle="Arraste as bolhas ou clique para ver detalhes"
+        align="center"></app-section-header>
+    </div>
+    <!-- Fundo decorativo -->
+    <div class="stage-grid"></div>
+
+    <!-- Bolhas -->
+    @for (bubble of bubbles; track bubble.skill.id; let i = $index) {
+    <div class="skill-bubble" [class.selected]="selectedSkill?.id === bubble.skill.id"
+      [class.dimmed]="selectedSkill && selectedSkill.id !== bubble.skill.id" [class.dragging]="bubble.dragging"
+      [class.revealing]="bubble.revealPulse"
+      #bubbleEl (mousedown)="onBubbleMouseDown(bubble, $event)" (touchstart)="onBubbleTouchStart(bubble, $event)"
+      [title]="bubble.skill.name">
+      @if (bubble.skill.icon) {
+      <img [src]="bubble.skill.icon" [alt]="bubble.skill.name" class="bubble-icon"
+        (error)="onImgError($event, bubble.skill)" draggable="false" />
+      } @else {
+      <span class="bubble-letter">{{ bubble.skill.name.charAt(0) }}</span>
+      }
+
+      <span class="bubble-label">{{ bubble.skill.name }}</span>
+    </div>
+    }
+
+    <!-- Card de detalhe -->
+    @if (selectedSkill) {
+    <div class="detail-card" #detailCard [style.left.px]="detailPos.x" [style.top.px]="detailPos.y"
+      (click)="$event.stopPropagation()">
+      <button class="detail-close" (click)="closeDetail($event)">✕</button>
+
+      <div class="detail-icon-wrap">
+        @if (selectedSkill.icon && !iconError) {
+        <img [src]="selectedSkill.icon" [alt]="selectedSkill.name" class="detail-icon" />
+        } @else {
+        <span class="detail-letter">{{ selectedSkill.name.charAt(0) }}</span>
+        }
+      </div>
+
+      <h3 class="detail-name">{{ selectedSkill.name }}</h3>
+      <p class="detail-category">{{ getCategoryLabel(selectedSkill.category) }}</p>
+
+      @if (selectedSkill.yearsOfExperience) {
+      <div class="detail-exp">
+        <span class="exp-number">{{ selectedSkill.yearsOfExperience }}</span>
+        <span class="exp-label">
+          {{ selectedSkill.yearsOfExperience === 1 ? 'ano' : 'anos' }} de experiência
+        </span>
+      </div>
+      }
+
+      <div class="detail-level">
+        @for (star of [1,2,3,4,5]; track star) {
+        <span class="star" [class.filled]="star <= selectedSkill.level">★</span>
+        }
+        <span class="level-text">{{ getLevelLabel(selectedSkill.level) }}</span>
+      </div>
+
+      <div class="detail-bar">
+        <div class="detail-bar-fill" [style.width.%]="selectedSkill.level * 20"></div>
+      </div>
+    </div>
+    }
+  </div>
+
+  <!-- Legenda -->
+  <div class="category-legend">
+    @for (cat of categoryList; track cat.type) {
+    <button class="legend-item" [class.active]="filterCategory === cat.type" (click)="toggleFilter(cat.type)">
+      <span class="legend-dot" [style.background]="cat.color"></span>
+      <span class="legend-name">{{ cat.name }}</span>
+      <span class="legend-count">({{ cat.count }})</span>
+    </button>
+    }
+    @if (filterCategory) {
+    <button class="legend-reset" (click)="clearFilter()">Todas</button>
+    }
+  </div>
+</section>
+
