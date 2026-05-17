@@ -14,6 +14,7 @@
       [class.dimmed]="selectedSkill && selectedSkill.id !== bubble.skill.id" [class.dragging]="bubble.dragging"
       [class.revealing]="bubble.revealPulse"
       #bubbleEl (mousedown)="onBubbleMouseDown(bubble, $event)" (touchstart)="onBubbleTouchStart(bubble, $event)"
+      (click)="onBubbleClick(bubble, $event)"
       [title]="bubble.skill.name">
       @if (bubble.skill.icon) {
       <img [src]="bubble.skill.icon" [alt]="bubble.skill.name" class="bubble-icon"

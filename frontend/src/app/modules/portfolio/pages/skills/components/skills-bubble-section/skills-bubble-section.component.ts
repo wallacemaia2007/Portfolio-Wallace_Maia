@@ -651,6 +651,15 @@ export class SkillsBubbleSectionComponent
     this.selectedSkill = null;
   }
 
+  // Ensure single-tap opens detail on mobile/desktop
+  onBubbleClick(bubble: BubbleState, event: MouseEvent): void {
+    event.stopPropagation();
+    // ignore clicks while dragging or when pointer-events are disabled
+    if (bubble.dragging || this.dragBubble) return;
+    if (bubble.opacity < 0.08) return;
+    this.openDetail(bubble.skill, event.clientX, event.clientY);
+  }
+
   /** Fechar ao clicar no fundo da stage */
   onStageClick(event: MouseEvent): void {
     const target = event.target as HTMLElement;
