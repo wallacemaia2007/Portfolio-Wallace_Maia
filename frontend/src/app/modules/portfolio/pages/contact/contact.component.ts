@@ -86,7 +86,7 @@ export class ContactComponent implements OnInit {
         {
           label: t('contact.ctaProjectsButton'),
           icon: 'work',
-          color: 'primary',
+          color: 'theme',
           link: '/projects',
         },
         {

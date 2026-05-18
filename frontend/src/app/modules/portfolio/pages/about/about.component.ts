@@ -71,7 +71,7 @@ export class AboutComponent implements OnInit {
         {
           label: t('about.ctaProjectsButton'),
           icon: 'work',
-          color: 'primary',
+          color: 'theme',
           link: '/projects',
         },
       ],

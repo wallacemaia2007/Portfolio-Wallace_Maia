@@ -71,7 +71,7 @@ export class ExperienceComponent implements OnInit, AfterViewInit, OnDestroy {
         {
           label: t('experience.ctaProjectsButton'),
           icon: 'work',
-          color: 'primary',
+          color: 'theme',
           link: '/projects',
         },
         {
