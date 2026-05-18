@@ -17,6 +17,7 @@ import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
 import { Subscription } from 'rxjs';
 import { gsap } from '../../../../core/gsap-register';
+import { TranslateService } from '../../../../core/services/translate.service';
 
 interface SkillData {
   id: string;
@@ -61,6 +62,7 @@ export class StackComponent implements AfterViewInit, OnDestroy {
   stackCards!: QueryList<ElementRef<HTMLElement>>;
 
   private platformId = inject(PLATFORM_ID);
+  readonly translate = inject(TranslateService);
   private ctx?: gsap.Context;
   private prefersReducedMotion = false;
   private isMobile = false;
@@ -111,15 +113,31 @@ export class StackComponent implements AfterViewInit, OnDestroy {
     { id: '24', name: 'Express', icon: 'assets/icons/express.svg' },
   ];
 
-  readonly frontendTraits: string[] = ['Reativo', 'Componentizado', 'Performático', 'Tipado'];
-  readonly backendTraits: string[] = ['Robusto', 'Seguro', 'Escalável', 'REST & JWT'];
+  get frontendTraits(): string[] {
+    return [
+      this.translate.translate('devStack.traitReactive'),
+      this.translate.translate('devStack.traitComponent'),
+      this.translate.translate('devStack.traitPerformance'),
+      this.translate.translate('devStack.traitTyped'),
+    ];
+  }
+  get backendTraits(): string[] {
+    return [
+      this.translate.translate('devStack.traitRobust'),
+      this.translate.translate('devStack.traitSecure'),
+      this.translate.translate('devStack.traitScalable'),
+      this.translate.translate('devStack.traitRest'),
+    ];
+  }
 
-  readonly tabs: SkillTab[] = [
-    { key: 'frontend', label: 'Frontend' },
-    { key: 'backend', label: 'Backend' },
-    { key: 'database', label: 'Database' },
-    { key: 'tools', label: 'Ferramentas' },
-  ];
+  get tabs(): SkillTab[] {
+    return [
+      { key: 'frontend', label: this.translate.translate('devStack.tabFrontend') },
+      { key: 'backend', label: this.translate.translate('devStack.tabBackend') },
+      { key: 'database', label: this.translate.translate('devStack.tabDatabase') },
+      { key: 'tools', label: this.translate.translate('devStack.tabTools') },
+    ];
+  }
 
   readonly allSkills: SkillData[] = [
     { id: '1', name: 'Angular', category: 'frontend', level: 5, yearsOfExperience: 1, icon: 'assets/icons/angular.svg', color: '#DD0031' },
@@ -159,13 +177,15 @@ export class StackComponent implements AfterViewInit, OnDestroy {
 
   constructor(private readonly ngZone: NgZone) {}
 
-  readonly levelBadges: Record<number, LevelBadge> = {
-    1: { label: 'Iniciante', cssClass: 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300' },
-    2: { label: 'Basico', cssClass: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' },
-    3: { label: 'Intermediario', cssClass: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300' },
-    4: { label: 'Avancado', cssClass: 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300' },
-    5: { label: 'Expert', cssClass: 'bg-blue-500/15 text-blue-500 dark:bg-blue-500/25 dark:text-blue-400' },
-  };
+  get levelBadges(): Record<number, LevelBadge> {
+    return {
+      1: { label: this.translate.translate('devStack.levelBeginner'), cssClass: 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300' },
+      2: { label: this.translate.translate('devStack.levelBasic'), cssClass: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' },
+      3: { label: this.translate.translate('devStack.levelIntermediate'), cssClass: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300' },
+      4: { label: this.translate.translate('devStack.levelAdvanced'), cssClass: 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300' },
+      5: { label: this.translate.translate('devStack.levelExpert'), cssClass: 'bg-blue-500/15 text-blue-500 dark:bg-blue-500/25 dark:text-blue-400' },
+    };
+  }
 
   @HostListener('window:resize')
   onResize(): void {

@@ -7,10 +7,10 @@
     <div class="container mx-auto px-4 relative z-10">
       <div class="hero-content">
         <app-section-header
-          title="Experiência Profissional"
-          subtitle="Minha jornada no desenvolvimento"
-          description="Explore minha trajetória profissional, desde estágios até posições seniores, e veja como evoluí minhas habilidades ao longo do tempo.">
+          [title]="translate.translate('experience.title')"
+          [subtitle]="translate.translate('experience.subtitle')">
         </app-section-header>
+        <p class="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-4">{{ translate.translate('experience.description') }}</p>
       </div>
     </div>
 
@@ -27,7 +27,7 @@
           <div class="absolute inset-0 animate-ping rounded-full h-20 w-20 border-4 border-primary dark:border-primary-light opacity-20"></div>
         </div>
         <p class="text-gray-600 dark:text-gray-400 mt-8 text-xl font-medium">
-          Carregando experiências...
+          {{ translate.translate('experience.loading') }}
         </p>
       </div>
     </div>
@@ -58,8 +58,8 @@
         <div class="inline-block p-10 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-custom-black-light dark:to-custom-black rounded-3xl mb-8 shadow-xl">
           <mat-icon class="text-7xl text-gray-400 dark:text-gray-600">work_off</mat-icon>
         </div>
-        <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Nenhuma experiência encontrada</h3>
-        <p class="text-lg text-gray-600 dark:text-gray-400">Ainda não há experiências cadastradas.</p>
+        <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">{{ translate.translate('experience.notFound') }}</h3>
+        <p class="text-lg text-gray-600 dark:text-gray-400">{{ translate.translate('experience.notFoundMsg') }}</p>
       </div>
     </div>
   </section>

@@ -21,6 +21,7 @@ import {
   InformationBarData,
 } from '../../../shared/components/information-bar/information-bar.component';
 import { NgxMaskDirective } from 'ngx-mask';
+import { TranslateService } from '../../../../core/services/translate.service';
 
 @Component({
   selector: 'app-contact',
@@ -46,6 +47,7 @@ export class ContactComponent implements OnInit {
   private contactService = inject(ContactService);
   private portfolioService = inject(PortfolioService);
   private toastr = inject(ToastrService);
+  translate = inject(TranslateService);
 
   contactForm!: FormGroup;
   isSubmitting = false;
@@ -61,7 +63,7 @@ export class ContactComponent implements OnInit {
     },
     {
       icon: 'assets/icons/whatsapp.svg',
-      title: 'Whatzapp',
+      title: 'WhatsApp',
       content: '',
       link: 'https://wa.me/35910036806',
       color: 'primary',
@@ -75,25 +77,27 @@ export class ContactComponent implements OnInit {
     },
   ];
 
-  ctaData: InformationBarData = {
-    title: 'Ainda não ficou convencido?',
-    description:
-      'Dê mais uma olhada em meus projetos ou então meu currículo! Tenho certeza que vai achar algo que te interesse!',
-    buttons: [
-      {
-        label: 'Ver Projetos',
-        icon: 'work',
-        color: 'theme',
-        link: '/projects',
-      },
-      {
-        label: 'Download CV',
-        icon: 'download',
-        color: 'theme',
-        link: 'assets/cv.pdf',
-      },
-    ],
-  };
+  get ctaData(): InformationBarData {
+    const t = (key: string) => this.translate.translate(key);
+    return {
+      title: t('contact.ctaTitle'),
+      description: t('contact.ctaDescription'),
+      buttons: [
+        {
+          label: t('contact.ctaProjectsButton'),
+          icon: 'work',
+          color: 'primary',
+          link: '/projects',
+        },
+        {
+          label: t('contact.ctaCvButton'),
+          icon: 'download',
+          color: 'theme',
+          link: 'assets/cv.pdf',
+        },
+      ],
+    };
+  }
 
   ngOnInit(): void {
     this.initializeForm();
@@ -117,7 +121,7 @@ export class ContactComponent implements OnInit {
         this.updateContactInfoCards();
       },
       error: (error) => {
-        console.error('Erro ao carregar informações:', error);
+        console.error('Error loading info:', error);
       },
     });
   }
@@ -151,7 +155,7 @@ export class ContactComponent implements OnInit {
   onSubmit(): void {
     if (this.contactForm.invalid) {
       this.markFormGroupTouched(this.contactForm);
-      this.toastr.warning('Por favor, preencha todos os campos obrigatórios.');
+      this.toastr.warning(this.translate.translate('contact.toastWarningFields'));
       return;
     }
 
@@ -159,7 +163,7 @@ export class ContactComponent implements OnInit {
     if (!this.contactService.canSubmit()) {
       const secondsRemaining = this.contactService.getTimeUntilNextSubmission();
       this.toastr.warning(
-        `Por favor, aguarde ${secondsRemaining} segundos antes de enviar outra mensagem.`,
+        this.translate.translate('contact.toastWarningCooldown').replace('{seconds}', secondsRemaining.toString()),
       );
       return;
     }
@@ -183,19 +187,19 @@ export class ContactComponent implements OnInit {
       next: (response) => {
         if (response.success) {
           this.toastr.success(
-            'Mensagem enviada com sucesso! Em breve entrarei em contato.',
+            this.translate.translate('contact.toastSuccess'),
           );
           this.contactForm.reset({ subject: '' });
           this.contactService.recordSubmission();
         } else {
-          this.toastr.error(response.message || 'Erro ao enviar mensagem.');
+          this.toastr.error(response.message || this.translate.translate('contact.toastError'));
         }
         this.isSubmitting = false;
       },
       error: (error) => {
-        console.error('Erro ao enviar mensagem:', error);
+        console.error('Error sending message:', error);
         this.toastr.error(
-          'Erro ao enviar mensagem. Tente novamente mais tarde.',
+          this.translate.translate('contact.toastError'),
         );
         this.isSubmitting = false;
       },
@@ -215,18 +219,19 @@ export class ContactComponent implements OnInit {
 
   getErrorMessage(fieldName: string): string {
     const control = this.contactForm.get(fieldName);
+    const t = (key: string) => this.translate.translate(key);
 
     if (control?.hasError('required')) {
-      return 'Este campo é obrigatório';
+      return t('contact.validationRequired');
     }
 
     if (control?.hasError('email')) {
-      return 'Email inválido';
+      return t('contact.validationEmail');
     }
 
     if (control?.hasError('minlength')) {
-      const minLength = control.getError('minlength').requiredLength;
-      return `Mínimo de ${minLength} caracteres`;
+      const error = control.getError('minlength');
+      return t('contact.validationMinLength').replace('{min}', error.requiredLength.toString());
     }
 
     return '';
@@ -241,7 +246,7 @@ export class ContactComponent implements OnInit {
     const to = this.personalInfo?.email || 'wallacemaia2007@gmail.com';
 
     if (!to) {
-      this.toastr.error('Email de destino não carregou.');
+      this.toastr.error(this.translate.translate('contact.toastEmailNotLoaded'));
       return;
     }
 
@@ -253,7 +258,7 @@ export class ContactComponent implements OnInit {
       const phone = this.personalInfo.phone.replace(/\D/g, '');
       this.contactService.openWhatsApp(
         phone,
-        'Olá! Vi seu portfolio e gostaria de conversar.',
+        this.translate.translate('contact.whatsappDefaultMsg'),
       );
     }
   }

@@ -18,7 +18,7 @@
       <span class="px-3 py-1.5 text-white rounded-full text-xs font-bold flex items-center gap-1 shadow-lg"
         [ngClass]="getAccentBadgeClass()">
         <mat-icon class="text-sm">star</mat-icon>
-        Destaque
+        {{ translate.translate('projects.highlight') }}
       </span>
       }
       @if (!project.featured) {
@@ -49,7 +49,7 @@
     </h3>
 
     <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2 min-h-[2.5rem]">
-      {{ project.shortDescription }}
+      {{ project.shortDescription | langText:project.shortDescriptionEn }}
     </p>
 
     <div class="flex flex-wrap gap-2 mb-5">
@@ -73,7 +73,7 @@
 
       <div class="flex items-center gap-1 font-bold text-sm group-hover:gap-2 transition-all"
         [ngClass]="getAccentTextClass()">
-        <span>Abrir</span>
+        <span>{{ translate.translate('projects.open') }}</span>
         <mat-icon class="text-base">arrow_forward</mat-icon>
       </div>
     </div>

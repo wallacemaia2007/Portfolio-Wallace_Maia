@@ -8,7 +8,7 @@
           : 'bg-white dark:bg-custom-black text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 hover:border-primary hover:text-primary'"
         class="px-6 py-2.5 rounded-full font-semibold transition-all duration-300 flex items-center space-x-2">
         <mat-icon class="text-xl">apps</mat-icon>
-        <span>Todos ({{ totalProjects }})</span>
+        <span>{{ translate.translate('projects.filterAll') }} ({{ totalProjects }})</span>
       </button>
 
       @for (category of categories; track category.value) {
@@ -27,7 +27,7 @@
       <div class="relative">
         <mat-icon class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">search</mat-icon>
         <input type="text" [(ngModel)]="searchTerm" (input)="onSearchChange()"
-          placeholder="Buscar por nome, descrição ou tecnologia..."
+          [placeholder]="translate.translate('projects.filterPlaceholder')"
           class="w-full pl-12 pr-4 py-3 bg-white dark:bg-custom-black border-2 border-gray-300 dark:border-gray-700 rounded-xl focus:outline-none focus:border-primary text-custom-black dark:text-white placeholder-gray-400 transition-all">
       </div>
     </div>

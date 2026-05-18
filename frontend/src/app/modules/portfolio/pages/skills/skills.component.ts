@@ -14,8 +14,10 @@ import {
   SkillGroup,
   SkillCategoryType,
   SKILL_CATEGORY_NAMES,
+  SKILL_CATEGORY_NAMES_EN,
   SKILL_CATEGORY_ICONS,
 } from '../../models/skill.model';
+import { TranslateService } from '../../../../core/services/translate.service';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
 import {
   InformationBarComponent,
@@ -51,6 +53,7 @@ interface CategoryInfo {
 })
 export class SkillsComponent implements OnInit {
   private portfolioService = inject(PortfolioService);
+  protected translate = inject(TranslateService);
 
   isLoading = true;
   allSkillGroups: SkillGroup[] = [];
@@ -68,24 +71,26 @@ export class SkillsComponent implements OnInit {
     return this.searchTerm.trim().length > 0;
   }
 
-  ctaData: InformationBarData = {
-    title: 'Gostou das minhas habilidades?',
-    description: 'Vamos trabalhar juntos e criar algo incrível!',
-    buttons: [
-      {
-        label: 'Ver Projetos',
-        icon: 'work',
-        color: 'theme',
-        link: '/projects',
-      },
-      {
-        label: 'Entrar em Contato',
-        icon: 'email',
-        color: 'theme',
-        link: '/contact',
-      },
-    ],
-  };
+  get ctaData(): InformationBarData {
+    return {
+      title: this.translate.translate('skills.ctaTitle'),
+      description: this.translate.translate('skills.ctaDescription'),
+      buttons: [
+        {
+          label: this.translate.translate('skills.ctaProjectsButton'),
+          icon: 'work',
+          color: 'theme',
+          link: '/projects',
+        },
+        {
+          label: this.translate.translate('skills.ctaContactButton'),
+          icon: 'email',
+          color: 'theme',
+          link: '/contact',
+        },
+      ],
+    };
+  }
 
   ngOnInit(): void {
     this.loadSkills();
@@ -100,7 +105,7 @@ export class SkillsComponent implements OnInit {
           ([category, skills]) => ({
             category: category as SkillCategoryType,
             categoryName:
-              SKILL_CATEGORY_NAMES[category as SkillCategoryType] || category,
+              (this.translate.isEn() ? SKILL_CATEGORY_NAMES_EN : SKILL_CATEGORY_NAMES)[category as SkillCategoryType] || category,
             icon: SKILL_CATEGORY_ICONS[category as SkillCategoryType],
             skills: skills,
           }),
@@ -113,7 +118,7 @@ export class SkillsComponent implements OnInit {
         this.isLoading = false;
       },
       error: (error) => {
-        console.error('Erro ao carregar skills:', error);
+        console.error('Error loading skills:', error);
         this.isLoading = false;
       },
     });
@@ -147,11 +152,11 @@ export class SkillsComponent implements OnInit {
       ) / allSkills.length;
 
     this.statistics = [
-      { value: this.totalSkills, label: 'Habilidades' },
+      { value: this.totalSkills, label: this.translate.translate('skills.statsSkills') },
       { value: totalCategories, label: 'Categorias' },
       {
         value: Math.round(avgYearsExperience),
-        label: 'Anos de Experiência',
+        label: this.translate.translate('skills.statsExperience'),
       },
     ];
   }

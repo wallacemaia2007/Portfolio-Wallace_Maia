@@ -4,7 +4,7 @@
   <div class="h-48 flex flex-col justify-center items-center text-center">
     <mat-icon>cloud_upload</mat-icon>
     @if (!fileUrl) {
-      <p class="text-xl">Faça upload da imagem da capa</p>
+      <p class="text-xl">{{ translate.translate('common.fileUpload') }}</p>
       <p class="text-sm">JPEG, PNG</p>
     } @else {
       <p>{{ fileUrl }}</p>

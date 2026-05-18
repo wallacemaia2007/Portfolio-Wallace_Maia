@@ -17,6 +17,8 @@ import {
   Value,
   Hobby,
 } from '../../models/about.model';
+import { TranslateService } from '../../../../core/services/translate.service';
+import { LangTextPipe } from '../../../shared/pipes/lang-text.pipe';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
 import {
@@ -34,6 +36,7 @@ import {
     MatProgressBarModule,
     MatProgressSpinnerModule,
     MatChipsModule,
+    LangTextPipe,
     ScrollRevealDirective,
     SectionHeaderComponent,
     InformationBarComponent,
@@ -43,6 +46,7 @@ import {
 })
 export class AboutComponent implements OnInit {
   private portfolioService = inject(PortfolioService);
+  protected translate = inject(TranslateService);
 
   aboutInfo!: AboutInfo;
   isLoading = true;
@@ -52,25 +56,27 @@ export class AboutComponent implements OnInit {
   values: Value[] = [];
   hobbies: Hobby[] = [];
 
-  ctaData: InformationBarData = {
-    title: 'Vamos Trabalhar Juntos?',
-    description:
-      'Se você se identificou com minha história e quer trabalhar em um projeto incrível, estou aqui para ajudar!',
-    buttons: [
-      {
-        label: 'Me Envie uma Mensagem',
-        icon: 'email',
-        color: 'theme',
-        link: '/contact',
-      },
-      {
-        label: 'Ver Meus Projetos',
-        icon: 'work',
-        color: 'theme',
-        link: '/projects',
-      },
-    ],
-  };
+  get ctaData(): InformationBarData {
+    const t = (key: string) => this.translate.translate(key);
+    return {
+      title: t('about.ctaTitle'),
+      description: t('about.ctaDescription'),
+      buttons: [
+        {
+          label: t('about.ctaButton'),
+          icon: 'email',
+          color: 'theme',
+          link: '/contact',
+        },
+        {
+          label: t('about.ctaProjectsButton'),
+          icon: 'work',
+          color: 'primary',
+          link: '/projects',
+        },
+      ],
+    };
+  }
 
   ngOnInit(): void {
     this.loadAboutInfo();
@@ -88,7 +94,7 @@ export class AboutComponent implements OnInit {
         this.isLoading = false;
       },
       error: (err) => {
-        console.error('Erro ao carregar informacoes do About:', err);
+        console.error('Error loading about info:', err);
         this.isLoading = false;
       },
     });
@@ -101,7 +107,7 @@ export class AboutComponent implements OnInit {
         this.isLoading = false;
       },
       error: (err) => {
-        console.error('Erro ao carregar informacoes da Educacao:', err);
+        console.error('Error loading education:', err);
         this.isLoading = false;
       },
     });
@@ -114,7 +120,7 @@ export class AboutComponent implements OnInit {
         this.isLoading = false;
       },
       error: (err) => {
-        console.error('Erro ao carregar informacoes da Jornada:', err);
+        console.error('Error loading journey:', err);
         this.isLoading = false;
       },
     });
@@ -127,7 +133,7 @@ export class AboutComponent implements OnInit {
         this.isLoading = false;
       },
       error: (err) => {
-        console.error('Erro ao carregar informacoes dos Valores:', err);
+        console.error('Error loading values:', err);
         this.isLoading = false;
       },
     });
@@ -140,7 +146,7 @@ export class AboutComponent implements OnInit {
         this.isLoading = false;
       },
       error: (err) => {
-        console.error('Erro ao carregar informacoes dos Hobbies:', err);
+        console.error('Error loading hobbies:', err);
         this.isLoading = false;
       },
     });

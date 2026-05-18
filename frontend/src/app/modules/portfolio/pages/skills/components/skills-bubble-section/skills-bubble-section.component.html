@@ -2,7 +2,7 @@
 
   <div class="bubble-stage" #stageRef (click)="onStageClick($event)">
     <div class="section-header-wrapper">
-      <app-section-header title="Habilidades Técnicas" subtitle="Arraste as bolhas ou clique para ver detalhes"
+      <app-section-header [title]="translate.translate('skills.bubbleTitle')" [subtitle]="translate.translate('skills.bubbleSubtitle')"
         align="center"></app-section-header>
     </div>
     <!-- Fundo decorativo -->
@@ -48,7 +48,7 @@
       <div class="detail-exp">
         <span class="exp-number">{{ selectedSkill.yearsOfExperience }}</span>
         <span class="exp-label">
-          {{ selectedSkill.yearsOfExperience === 1 ? 'ano' : 'anos' }} de experiência
+          {{ selectedSkill.yearsOfExperience === 1 ? translate.translate('skills.years') : translate.translate('skills.yearsPlural') }} {{ translate.translate('skills.statsExperience') | lowercase }}
         </span>
       </div>
       }
@@ -77,7 +77,7 @@
     </button>
     }
     @if (filterCategory) {
-    <button class="legend-reset" (click)="clearFilter()">Todas</button>
+    <button class="legend-reset" (click)="clearFilter()">{{ translate.translate('skills.allSkills') }}</button>
     }
   </div>
 </section>

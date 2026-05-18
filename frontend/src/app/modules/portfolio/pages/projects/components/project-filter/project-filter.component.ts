@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
@@ -6,6 +6,7 @@ import {
   CategoryInfo,
   ProjectCategory,
 } from '../../../../models/project.model';
+import { TranslateService } from '../../../../../../core/services/translate.service';
 
 @Component({
   selector: 'app-project-filter',
@@ -15,6 +16,7 @@ import {
   styleUrl: './project-filter.component.scss',
 })
 export class ProjectFilterComponent {
+  protected translate = inject(TranslateService);
   @Input() totalProjects = 0;
   @Input() categories: CategoryInfo[] = [];
 

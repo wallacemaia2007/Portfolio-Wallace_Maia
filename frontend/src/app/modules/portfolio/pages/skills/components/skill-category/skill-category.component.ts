@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { Skill, SKILL_CATEGORY_ICONS } from '../../../../models/skill.model';
 import { SkillCardComponent } from '../skill-card/skill-card.component';
 import { ButtonComponent } from '../../../../../shared/components/button/button.component';
+import { TranslateService } from '../../../../../../core/services/translate.service';
 
 @Component({
   selector: 'app-skill-category',
@@ -17,6 +18,8 @@ export class SkillCategoryComponent {
   @Input({ required: true }) skills!: Skill[];
   @Input() categoryIcon?: string;
   @Input() maxVisible: number = 6; 
+
+  protected translate = inject(TranslateService);
 
   showAll = false;
   displayedSkills: Skill[] = [];

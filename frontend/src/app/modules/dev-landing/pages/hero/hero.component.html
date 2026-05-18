@@ -7,30 +7,30 @@
       <div class="order-2 lg:order-1 flex flex-col items-center text-center gap-6 max-w-2xl">
         <div class="hero-tag inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5">
           <span class="h-2 w-2 rounded-full bg-accent animate-pulse"></span>
-          <span class="text-sm font-bold uppercase tracking-[0.2em] text-white/70">Dev Web Full Stack</span>
+          <span class="text-sm font-bold uppercase tracking-[0.2em] text-white/70">{{ translate.translate('devHero.tag') }}</span>
         </div>
 
         <h1 class="hero-title text-4xl sm:text-5xl lg:text-6xl font-black leading-tight">
-          Sites modernos e rapidos que ajudam negocios a vender mais
+          {{ translate.translate('devHero.title') }}
         </h1>
 
         <p class="hero-role text-lg sm:text-xl font-semibold text-dev-light">
-          Para empresas e negocios digitais que precisam de autoridade e conversao
+          {{ translate.translate('devHero.subtitle') }}
         </p>
 
         <p class="hero-bio text-base sm:text-lg text-white/70 max-w-xl leading-relaxed">
-          Mais confianca, mais vendas, mais autoridade
+          {{ translate.translate('devHero.description') }}
         </p>
 
         <div class="hero-buttons flex flex-col sm:flex-row gap-3 justify-center">
           <a href="#contact" (click)="scrollTo($event, '#contact')"
             class="inline-flex items-center justify-center gap-2 rounded-2xl bg-dev px-6 py-3 text-sm font-bold text-white transition-all duration-200 hover:bg-dev-dark hover:-translate-y-0.5 active:scale-[0.98] shadow-dev-glow-sm">
-            Solicitar orcamento
+            {{ translate.translate('devHero.ctaOrcamento') }}
             <mat-icon style="font-size: 18px; width: 18px; height: 18px;">arrow_forward</mat-icon>
           </a>
           <a href="#works" (click)="scrollTo($event, '#works')"
             class="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 px-6 py-3 text-sm font-bold text-white/80 transition-all duration-200 hover:border-dev hover:text-white hover:-translate-y-0.5">
-            Ver servicos
+            {{ translate.translate('devHero.ctaServicos') }}
           </a>
         </div>
       </div>
@@ -45,7 +45,7 @@
                 <span class="dot dot-yellow"></span>
                 <span class="dot dot-green"></span>
               </div>
-              <div class="hero-preview-title">Dashboard de Conversoes</div>
+              <div class="hero-preview-title">{{ translate.translate('devHero.cardDashboard') }}</div>
               <div class="hero-preview-avatar">
                 <img [src]="personalInfo.avatar" [alt]="personalInfo.fullName + ' - Foto de perfil'"
                   (error)="onImageError($event)">
@@ -54,15 +54,15 @@
 
             <div class="hero-preview-content">
               <div class="hero-metric">
-                <span class="metric-label">Clientes Atendidos</span>
+                <span class="metric-label">{{ translate.translate('devHero.metricClients') }}</span>
                 <span class="metric-value">8+</span>
               </div>
               <div class="hero-metric">
-                <span class="metric-label">Projetos Entregues</span>
+                <span class="metric-label">{{ translate.translate('devHero.metricProjects') }}</span>
                 <span class="metric-value">12+</span>
               </div>
               <div class="hero-metric">
-                <span class="metric-label">Anos de Experiencia</span>
+                <span class="metric-label">{{ translate.translate('devHero.metricExperience') }}</span>
                 <span class="metric-value">2+</span>
               </div>
 
@@ -70,17 +70,17 @@
                 <div class="progress-bar">
                   <span class="progress-fill"></span>
                 </div>
-                <div class="progress-caption">Resultados consistentes em projetos reais</div>
+                <div class="progress-caption">{{ translate.translate('devHero.progressCaption') }}</div>
               </div>
             </div>
           </div>
 
           <div class="hero-preview-floating card-a hidden sm:block">
-            <div class="floating-title">Landing Page SaaS</div>
-            <div class="floating-chip">+36% conversao</div>
+            <div class="floating-title">{{ translate.translate('devHero.cardLanding') }}</div>
+            <div class="floating-chip">{{ translate.translate('devHero.cardConversion') }}</div>
           </div>
           <div class="hero-preview-floating card-b hidden sm:block">
-            <div class="floating-title">Sistema de Vendas</div>
+            <div class="floating-title">{{ translate.translate('devHero.cardSales') }}</div>
             <div class="floating-chip">ROI 3.2x</div>
           </div>
 

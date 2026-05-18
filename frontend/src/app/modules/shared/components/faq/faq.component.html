@@ -33,7 +33,7 @@
                 {{ faq.icon || 'help_outline' }}
               </mat-icon>
               <h3 class="text-xl font-bold text-custom-black dark:text-white leading-tight">
-                {{ faq.question }}
+                {{ faq.question | langText:faq.questionEn }}
               </h3>
             </div>
 
@@ -46,7 +46,7 @@
           <div [id]="'faq-answer-' + faq.id" class="overflow-hidden transition-all duration-300"
             [class.max-h-0]="!isOpen(faq.id)" [class.max-h-96]="isOpen(faq.id)">
             <div class="px-6 pb-6 pl-14">
-              <p class="text-gray-600 dark:text-gray-400 leading-relaxed" [innerHTML]="faq.answer"></p>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed" [innerHTML]="getFaqAnswer(faq)"></p>
             </div>
           </div>
         </div>
@@ -60,10 +60,10 @@
           <mat-icon class="text-6xl text-gray-400">quiz</mat-icon>
         </div>
         <h3 class="text-2xl font-bold text-custom-black dark:text-white mb-2">
-          Nenhuma pergunta encontrada
+          {{ translate.translate('faq.notFound') }}
         </h3>
         <p class="text-gray-600 dark:text-gray-400">
-          Ainda não há perguntas frequentes disponíveis.
+          {{ translate.translate('faq.notFoundMsg') }}
         </p>
       </div>
       }
@@ -71,15 +71,15 @@
       @if (showContactCta && !isLoading && faqs.length > 0) {
       <div class="mt-12 text-center p-8 bg-primary/5 dark:bg-primary/10 rounded-2xl border-2 border-primary/20">
         <h3 class="text-2xl font-bold text-custom-black dark:text-white mb-3">
-          Ainda tem dúvidas?
+          {{ translate.translate('faq.stillQuestions') }}
         </h3>
         <p class="text-gray-600 dark:text-gray-400 mb-6">
-          Entre em contato diretamente para que eu possa ajudar!
+          {{ translate.translate('faq.contactDesc') }}
         </p>
         <a routerLink="/contact"
           class="inline-flex items-center gap-2 px-8 py-3 bg-primary hover:bg-primary-dark text-white font-bold rounded-xl transition-all duration-300 hover:shadow-glow hover:scale-105">
           <mat-icon>email</mat-icon>
-          <span>Entrar em Contato</span>
+          <span>{{ translate.translate('faq.contactBtn') }}</span>
         </a>
       </div>
       }

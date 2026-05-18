@@ -3,10 +3,12 @@ export interface PersonalInfo {
   fullName: string;
   acronym: string;
   role: string;
+  roleEn: string;
   email: string;
   phone: string;
   location: string;
   bio: string;
+  bioEn: string;
   avatar: string;
   cvUrl?: string;
   github?: string;

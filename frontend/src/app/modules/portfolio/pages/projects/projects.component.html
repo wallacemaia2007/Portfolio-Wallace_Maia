@@ -3,7 +3,7 @@
     class="relative py-24 bg-gradient-to-br from-white to-beige-light dark:from-custom-black dark:to-custom-black-light overflow-hidden border-b border-gray-200 dark:border-gray-800">
     <div class="container mx-auto px-4 relative z-10">
       <div class="max-w-3xl mx-auto text-center">
-        <app-section-header title="Meus Projetos" subtitle="Uma coleção dos meus trabalhos mais recentes e impactantes."
+        <app-section-header [title]="translate.translate('projects.title')" [subtitle]="translate.translate('projects.subtitle')"
           align="center"></app-section-header>
 
         <div class="max-w-4xl mx-auto">
@@ -47,7 +47,7 @@
               <div class="flex flex-wrap items-center gap-3 mb-5">
                 <span class="px-4 py-2 bg-primary text-white rounded-full text-sm font-bold flex items-center gap-2">
                   <mat-icon class="text-lg">star</mat-icon>
-                  Projeto Mais Recente
+                  {{ translate.translate('projects.latestProject') }}
                 </span>
 
                 @if (latestCompletedProject.status === 'completed') {
@@ -79,7 +79,7 @@
               </h2>
 
               <p class="text-base md:text-lg text-white/90 dark:text-gray-300 mb-6 line-clamp-3">
-                {{ latestCompletedProject.description }}
+                {{ latestCompletedProject.description | langText:latestCompletedProject.descriptionEn }}
               </p>
 
               <div class="flex flex-wrap gap-2 mb-6">
@@ -92,7 +92,7 @@
 
                 @if (latestCompletedProject.technologies.length > 5) {
                 <span class="px-3 py-1.5 bg-primary/20 border border-primary text-primary rounded-lg text-xs font-bold">
-                  +{{ latestCompletedProject.technologies.length - 5 }} mais
+                  +{{ latestCompletedProject.technologies.length - 5 }} {{ translate.translate('common.more') }}
                 </span>
                 }
               </div>
@@ -100,7 +100,7 @@
               <div class="flex flex-wrap gap-3">
                 <button (click)="openProjectModal(latestCompletedProject); $event.stopPropagation()"
                   class="px-6 py-3 bg-primary hover:bg-primary-dark text-white rounded-xl font-bold text-base transition-all hover:scale-[1.03] flex items-center gap-2">
-                  <span>Ver Detalhes</span>
+                  <span>{{ translate.translate('projects.viewDetails') }}</span>
                   <mat-icon>arrow_forward</mat-icon>
                 </button>
 
@@ -109,7 +109,7 @@
                   (click)="$event.stopPropagation()"
                   class="px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-xl font-bold text-base transition-all flex items-center gap-2">
                   <mat-icon>launch</mat-icon>
-                  <span>Ver Live</span>
+                  <span>{{ translate.translate('projects.viewLive') }}</span>
                 </a>
                 }
               </div>
@@ -125,7 +125,7 @@
 
                 @if(!latestCompletedProject.endDate) {
                 <span>
-                  Iniciado em {{ formatDate(latestCompletedProject.startDate) }}
+                  {{ translate.translate('projects.startedAt') }} {{ formatDate(latestCompletedProject.startDate) }}
                 </span>
                 }
               </div>
@@ -143,10 +143,10 @@
 
       <div class="text-center mb-12">
         <h2 class="text-4xl md:text-5xl font-bold text-custom-black dark:text-white mb-4">
-          Todos os Projetos
+          {{ translate.translate('projects.allProjects') }}
         </h2>
         <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-          Explore minha coleção completa de trabalhos organizados por categoria
+          {{ translate.translate('projects.allProjectsSubtitle') }}
         </p>
 
         <app-project-filter class="mb-16" (categorySelected)="onCategorySelected($event)" appScrollReveal
@@ -158,7 +158,7 @@
       @if (isLoading) {
       <div class="flex flex-col justify-center items-center py-20">
         <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-primary mb-4"></div>
-        <p class="text-gray-600 dark:text-gray-400">Carregando projetos...</p>
+        <p class="text-gray-600 dark:text-gray-400">{{ translate.translate('projects.loading') }}</p>
       </div>
       }
 
@@ -181,14 +181,14 @@
           <mat-icon class="text-6xl text-gray-400">search_off</mat-icon>
         </div>
         <h3 class="text-2xl font-bold text-custom-black dark:text-white mb-2">
-          Nenhum projeto encontrado
+          {{ translate.translate('projects.notFound') }}
         </h3>
         <p class="text-gray-600 dark:text-gray-400 mb-6">
-          Tente ajustar os filtros ou buscar por outro termo
+          {{ translate.translate('projects.notFoundMsg') }}
         </p>
         <button (click)="clearFilters()" mat-raised-button color="primary" class="flex items-center space-x-2 mx-auto">
           <mat-icon>refresh</mat-icon>
-          <span>Limpar Filtros</span>
+          <span>{{ translate.translate('projects.clearFilters') }}</span>
         </button>
       </div>
       }

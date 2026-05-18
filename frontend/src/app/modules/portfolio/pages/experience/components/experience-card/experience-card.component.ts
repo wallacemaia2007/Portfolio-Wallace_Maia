@@ -14,13 +14,16 @@ import {
   Experience,
   ExperienceType,
   EXPERIENCE_TYPE_NAMES,
+  EXPERIENCE_TYPE_NAMES_EN,
 } from '../../../../models/experience.model';
+import { LangTextPipe } from '../../../../../shared/pipes/lang-text.pipe';
+import { TranslateService } from '../../../../../../core/services/translate.service';
 import { gsap, ScrollTrigger } from '../../../../../../core/gsap-register';
 
 @Component({
   selector: 'app-experience-card',
   standalone: true,
-  imports: [CommonModule, MatIconModule],
+  imports: [CommonModule, MatIconModule, LangTextPipe],
   templateUrl: './experience-card.component.html',
   styleUrl: './experience-card.component.scss',
 })
@@ -30,6 +33,7 @@ export class ExperienceCardComponent implements OnInit, AfterViewInit, OnDestroy
 
   private el = inject(ElementRef);
   private platformId = inject(PLATFORM_ID);
+  protected translate = inject(TranslateService);
   private ctx?: gsap.Context;
   private mouseMoveHandler!: (e: MouseEvent) => void;
 
@@ -72,6 +76,7 @@ export class ExperienceCardComponent implements OnInit, AfterViewInit, OnDestroy
     const description = this.el.nativeElement.querySelector('.card-description');
     const infoItems = this.el.nativeElement.querySelectorAll('.info-item');
     const techs = this.el.nativeElement.querySelector('.card-techs');
+    const highlights = this.el.nativeElement.querySelectorAll('.highlight-item');
 
     // Set initial states
     gsap.set(article, { opacity: 0, y: 60, scale: 0.97 });
@@ -80,6 +85,7 @@ export class ExperienceCardComponent implements OnInit, AfterViewInit, OnDestroy
     gsap.set(description, { opacity: 0, y: 20 });
     gsap.set(infoItems, { opacity: 0, y: 20, scale: 0.95 });
     if (techs) gsap.set(techs, { opacity: 0, y: 20 });
+    if (highlights.length) gsap.set(highlights, { opacity: 0, y: 20, scale: 0.95 });
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -110,6 +116,12 @@ export class ExperienceCardComponent implements OnInit, AfterViewInit, OnDestroy
         ease: 'power2.out',
       }, '-=0.2')
       .to(techs, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }, '-=0.1');
+    if (highlights.length) {
+      tl.to(highlights, {
+        opacity: 1, y: 0, scale: 1,
+        duration: 0.4, stagger: 0.1, ease: 'power2.out',
+      }, '-=0.1');
+    }
   }
 
   // ─── Mouse parallax effect ──────────────────────────────────────────────────
@@ -270,20 +282,22 @@ export class ExperienceCardComponent implements OnInit, AfterViewInit, OnDestroy
     }
 
     if (years === 0 && months === 0) {
-      this.duration = 'Menos de 1 mês';
+      this.duration = this.translate.translate('experience.durationLessThanMonth');
     } else if (years === 0) {
-      this.duration = `${months} ${months === 1 ? 'mês' : 'meses'}`;
+      this.duration = `${months} ${months === 1 ? this.translate.translate('experience.durationMonth') : this.translate.translate('experience.durationMonths')}`;
     } else if (months === 0) {
-      this.duration = `${years} ${years === 1 ? 'ano' : 'anos'}`;
+      this.duration = `${years} ${years === 1 ? this.translate.translate('experience.durationYear') : this.translate.translate('experience.durationYears')}`;
     } else {
-      this.duration = `${years} ${years === 1 ? 'ano' : 'anos'} e ${months} ${
-        months === 1 ? 'mês' : 'meses'
+      this.duration = `${years} ${years === 1 ? this.translate.translate('experience.durationYear') : this.translate.translate('experience.durationYears')} ${this.translate.translate('common.and')} ${months} ${
+        months === 1 ? this.translate.translate('experience.durationMonth') : this.translate.translate('experience.durationMonths')
       }`;
     }
   }
 
   private setTypeInfo(): void {
-    this.typeLabel = EXPERIENCE_TYPE_NAMES[this.experience.type];
+    this.typeLabel = this.translate.isEn()
+      ? EXPERIENCE_TYPE_NAMES_EN[this.experience.type]
+      : EXPERIENCE_TYPE_NAMES[this.experience.type];
     this.typeIcon = this.getTypeIcon(this.experience.type);
   }
 
@@ -299,9 +313,10 @@ export class ExperienceCardComponent implements OnInit, AfterViewInit, OnDestroy
   }
 
   formatDate(dateString: string): string {
-    if (dateString === 'momento') return 'Presente';
+    if (dateString === 'momento') return this.translate.text('Presente', 'Present');
     const date = new Date(dateString);
-    return date.toLocaleDateString('pt-BR', { month: 'short', year: 'numeric' });
+    const locale = this.translate.isEn() ? 'en-US' : 'pt-BR';
+    return date.toLocaleDateString(locale, { month: 'short', year: 'numeric' });
   }
 
   onImageError(event: Event): void {

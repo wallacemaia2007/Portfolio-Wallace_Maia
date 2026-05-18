@@ -1,8 +1,17 @@
+export interface ExperienceHighlight {
+  title: string;
+  impact: string;
+  impactEn: string;
+}
+
 export interface Experience {
   id: string;
   company: string;
   position: string;
+  positionEn?: string;
   description: string;
+  descriptionEn: string;
+  highlights: ExperienceHighlight[];
   startDate: string;
   endDate?: string;
   current: boolean;
@@ -26,4 +35,12 @@ export const EXPERIENCE_TYPE_NAMES: Record<ExperienceType, string> = {
   freelance: 'Freelance',
   internship: 'Estágio',
   contract: 'Contrato',
+};
+
+export const EXPERIENCE_TYPE_NAMES_EN: Record<ExperienceType, string> = {
+  'full-time': 'Full Time',
+  'part-time': 'Part Time',
+  freelance: 'Freelance',
+  internship: 'Internship',
+  contract: 'Contract',
 };

@@ -12,7 +12,7 @@
     <!-- Logo -->
     <a href="#hero" (click)="scrollTo($event, '#hero')"
       class="group flex items-center gap-2.5 rounded-full transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-dev pl-1"
-      aria-label="Ir para o inicio">
+      [attr.aria-label]="translate.translate('header.home')">
       <img src="/assets/images/acronym.png" alt="Logo Maiawall"
         class="h-9 w-9 rounded-full object-cover shadow-sm transition-transform duration-200 group-hover:scale-110">
       <span
@@ -28,7 +28,7 @@
         <li>
           <a [href]="link.href" (click)="scrollTo($event, link.href)"
             class="relative text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-dev dark:hover:text-dev-light transition-colors duration-200 after:absolute after:bottom-[-3px] after:left-0 after:h-[2px] after:w-0 after:bg-dev after:transition-all after:duration-300 hover:after:w-full">
-            {{ link.label }}
+            {{ translate.translate('header.' + link.translateKey) }}
           </a>
         </li>
         }
@@ -37,31 +37,46 @@
 
     <!-- CTA Desktop -->
     <div class="hidden md:flex items-center gap-2 pr-1">
-      <!--
-        <button (click)="toggleTheme()"
-        class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-500/30 text-gray-600 dark:text-gray-300 hover:border-dev hover:text-dev dark:hover:border-dev-light dark:hover:text-dev-light transition-all duration-200"
-        [attr.aria-label]="isDarkMode ? 'Ativar modo claro' : 'Ativar modo escuro'">
-        <mat-icon style="font-size: 1rem; width: 1rem; height: 1rem;">
-          {{ isDarkMode ? 'light_mode' : 'dark_mode' }}
-        </mat-icon>
+      <!-- Botão idioma -->
+      <button (click)="toggleLang()" class="lang-btn w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-500/30 text-gray-600 dark:text-gray-300 hover:border-dev hover:text-dev dark:hover:border-dev-light dark:hover:text-dev-light transition-all duration-200 overflow-hidden"
+        [attr.aria-label]="currentLang === 'pt' ? 'Mudar para inglês' : 'Switch to Portuguese'"
+        [title]="currentLang === 'pt' ? 'English' : 'Português'">
+        @if (currentLang === 'pt') {
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" class="w-4 h-4">
+          <rect width="640" height="480" fill="#229e45"/>
+          <polygon points="320,70 640,240 320,410 0,240" fill="#f8e509"/>
+          <circle cx="320" cy="240" r="100" fill="#2b49a3"/>
+        </svg>
+        } @else {
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" class="w-4 h-4">
+          <rect width="640" height="480" fill="#bd3d44"/>
+          <rect y="53" width="640" height="40" fill="#fff"/>
+          <rect y="127" width="640" height="40" fill="#fff"/>
+          <rect y="201" width="640" height="40" fill="#fff"/>
+          <rect y="275" width="640" height="40" fill="#fff"/>
+          <rect y="349" width="640" height="40" fill="#fff"/>
+          <rect y="423" width="640" height="40" fill="#fff"/>
+          <rect width="364" height="260" fill="#192f5d"/>
+        </svg>
+        }
       </button>
-      -->
+
       <a [href]="ctaLinks.cv" target="_blank" rel="noopener noreferrer"
         class="inline-flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-500/30 px-4 py-1.5 text-sm font-semibold text-gray-600 dark:text-gray-300 transition-all duration-200 hover:border-dev hover:text-dev dark:hover:border-dev-light dark:hover:text-dev-light active:scale-[0.98]"
-        aria-label="Baixar curriculo em PDF">
-        Baixar CV
+        [attr.aria-label]="translate.translate('header.downloadCv')">
+        {{ translate.translate('header.downloadCv') }}
       </a>
       <a [href]="ctaLinks.contact" (click)="scrollTo($event, ctaLinks.contact)"
         class="inline-flex items-center justify-center rounded-full bg-dev px-5 py-1.5 text-sm font-bold text-white transition-all duration-200 hover:bg-dev-dark hover:-translate-y-0.5 active:scale-[0.98] shadow-dev-glow-sm hover:shadow-dev-glow"
-        aria-label="Ir para a secao de contato">
-        Fale comigo
+        [attr.aria-label]="translate.translate('header.talkToMe')">
+        {{ translate.translate('header.talkToMe') }}
       </a>
     </div>
 
     <!-- Hamburger (mobile) -->
     <button
       class="p-2 mr-0.5 text-gray-700 dark:text-white md:hidden rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
-      [attr.aria-expanded]="isMenuOpen" aria-label="Abrir Menu" (click)="toggleMenu()">
+      [attr.aria-expanded]="isMenuOpen" [attr.aria-label]="translate.translate('common.menu')" (click)="toggleMenu()">
       @if (!isMenuOpen) {
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -98,15 +113,29 @@
       <span class="font-bold text-gray-900 dark:text-white text-sm leading-tight">Maiawall<br>Wallace Maia</span>
     </div>
     <div class="flex items-center gap-2">
-      <!--
-        <button (click)="toggleTheme()"
-        class="w-9 h-9 flex items-center justify-center rounded-lg border border-gray-300 dark:border-white/20 text-gray-600 dark:text-white/70 hover:text-dev dark:hover:text-white hover:border-dev dark:hover:border-white transition-all duration-200"
-        [attr.aria-label]="isDarkMode ? 'Ativar modo claro' : 'Ativar modo escuro'">
-        <mat-icon style="font-size: 1.1rem; width: 1.1rem; height: 1.1rem;">
-          {{ isDarkMode ? 'light_mode' : 'dark_mode' }}
-        </mat-icon>
+      <!-- Botão idioma mobile -->
+      <button (click)="toggleLang()" class="lang-btn w-9 h-9 flex items-center justify-center rounded-lg border border-gray-300 dark:border-white/20 text-gray-600 dark:text-white/70 hover:text-dev dark:hover:text-white hover:border-dev dark:hover:border-white transition-all duration-200 overflow-hidden"
+        [attr.aria-label]="currentLang === 'pt' ? 'Mudar para inglês' : 'Switch to Portuguese'">
+        @if (currentLang === 'pt') {
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" class="w-5 h-5">
+          <rect width="640" height="480" fill="#229e45"/>
+          <polygon points="320,70 640,240 320,410 0,240" fill="#f8e509"/>
+          <circle cx="320" cy="240" r="100" fill="#2b49a3"/>
+        </svg>
+        } @else {
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" class="w-5 h-5">
+          <rect width="640" height="480" fill="#bd3d44"/>
+          <rect y="53" width="640" height="40" fill="#fff"/>
+          <rect y="127" width="640" height="40" fill="#fff"/>
+          <rect y="201" width="640" height="40" fill="#fff"/>
+          <rect y="275" width="640" height="40" fill="#fff"/>
+          <rect y="349" width="640" height="40" fill="#fff"/>
+          <rect y="423" width="640" height="40" fill="#fff"/>
+          <rect width="364" height="260" fill="#192f5d"/>
+        </svg>
+        }
       </button>
-      -->
+
       <button
         class="p-2 rounded-lg text-gray-600 dark:text-white/70 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
         aria-label="Fechar Menu" (click)="closeMenu()">
@@ -125,7 +154,7 @@
     <li>
       <a [href]="link.href" (click)="scrollTo($event, link.href)"
         class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-gray-700 dark:text-white/85 hover:bg-gray-100 dark:hover:bg-dev/10 hover:text-dev dark:hover:text-white transition-all duration-200">
-        {{ link.label }}
+        {{ translate.translate('header.' + link.translateKey) }}
       </a>
     </li>
     }
@@ -135,11 +164,11 @@
   <div class="p-5 flex flex-col gap-3 border-t border-gray-200 dark:border-white/10">
     <a [href]="ctaLinks.contact" (click)="scrollTo($event, ctaLinks.contact)"
       class="flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-bold text-white bg-dev hover:bg-dev-dark active:scale-[0.98] transition-all">
-      Fale comigo
+      {{ translate.translate('header.talkToMe') }}
     </a>
     <a [href]="ctaLinks.cv" target="_blank" rel="noopener noreferrer"
       class="flex w-full items-center justify-center rounded-xl px-5 py-3 text-sm font-bold text-gray-700 dark:text-white border border-gray-300 dark:border-white/20 bg-gray-50 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10 active:scale-[0.98] transition-all">
-      Baixar CV
+      {{ translate.translate('header.downloadCv') }}
     </a>
     <div class="grid grid-cols-2 gap-2">
       <a [href]="ctaLinks.github" target="_blank" rel="noopener noreferrer"

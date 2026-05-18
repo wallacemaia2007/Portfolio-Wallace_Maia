@@ -12,6 +12,7 @@ import {
   Project,
   ProjectCategory,
   PROJECT_CATEGORY_NAMES,
+  PROJECT_CATEGORY_NAMES_EN,
 } from '../../models/project.model';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
@@ -20,6 +21,8 @@ import {
   InformationBarData,
 } from '../../../shared/components/information-bar/information-bar.component';
 import { StatCardsComponent } from '../../../shared/components/stat-cards/stat-cards.component';
+import { LangTextPipe } from '../../../shared/pipes/lang-text.pipe';
+import { TranslateService } from '../../../../core/services/translate.service';
 
 interface CategoryInfo {
   value: ProjectCategory | 'all';
@@ -43,12 +46,14 @@ interface CategoryInfo {
     ScrollRevealDirective,
     InformationBarComponent,
     StatCardsComponent,
+    LangTextPipe,
   ],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
 })
 export class ProjectsComponent implements OnInit {
   private portfolioService = inject(PortfolioService);
+  protected translate = inject(TranslateService);
   private playingPreviewIds = new Set<string>();
 
   isLoading = true;
@@ -65,24 +70,26 @@ export class ProjectsComponent implements OnInit {
   categories: CategoryInfo[] = [];
   statistics: Array<{ value: number; label: string }> = [];
 
-  ctaData: InformationBarData = {
-    title: 'Gostou de algum projeto em específico?',
-    description: 'Entre em contato para trabalharmos juntos nele!',
-    buttons: [
-      {
-        label: 'Ver Habilidades',
-        icon: 'work',
-        color: 'theme',
-        link: '/skills',
-      },
-      {
-        label: 'Entrar em Contato',
-        icon: 'email',
-        color: 'theme',
-        link: '/contact',
-      },
-    ],
-  };
+  get ctaData(): InformationBarData {
+    return {
+      title: this.translate.translate('projects.ctaTitle'),
+      description: this.translate.translate('projects.ctaDescription'),
+      buttons: [
+        {
+          label: this.translate.translate('projects.ctaSkillsButton'),
+          icon: 'work',
+          color: 'theme',
+          link: '/skills',
+        },
+        {
+          label: this.translate.translate('projects.ctaContactButton'),
+          icon: 'email',
+          color: 'theme',
+          link: '/contact',
+        },
+      ],
+    };
+  }
 
   ngOnInit(): void {
     this.loadProjects();
@@ -100,14 +107,14 @@ export class ProjectsComponent implements OnInit {
         this.buildCategories();
         this.findLatestCompletedProject();
         this.statistics = [
-          { value: this.totalProjects, label: 'Projetos' },
+          { value: this.totalProjects, label: this.translate.translate('projects.statsProjects') },
           { value: this.categories.length, label: 'Categorias' },
-          { value: this.getTechnologiesCount(), label: 'Tecnologias' },
+          { value: this.getTechnologiesCount(), label: this.translate.translate('projects.statsTechnologies') },
         ];
         this.isLoading = false;
       },
       error: (error) => {
-        console.error('Erro ao carregar projetos:', error);
+        console.error('Error loading projects:', error);
         this.isLoading = false;
       },
     });
@@ -121,10 +128,11 @@ export class ProjectsComponent implements OnInit {
       categoryCounts.set(project.category, count + 1);
     });
 
+    const catNames = this.translate.isEn() ? PROJECT_CATEGORY_NAMES_EN : PROJECT_CATEGORY_NAMES;
     this.categories = Array.from(categoryCounts.entries()).map(
       ([category, count]) => ({
         value: category,
-        label: PROJECT_CATEGORY_NAMES[category],
+        label: catNames[category],
         icon: this.getCategoryIcon(category),
         count,
       }),
@@ -203,7 +211,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   getCategoryLabel(category: ProjectCategory): string {
-    return PROJECT_CATEGORY_NAMES[category];
+    return this.translate.isEn() ? PROJECT_CATEGORY_NAMES_EN[category] : PROJECT_CATEGORY_NAMES[category];
   }
 
   getCategoryIcon(category: ProjectCategory): string {
@@ -229,18 +237,18 @@ export class ProjectsComponent implements OnInit {
   }
 
   getStatusLabel(status: string): string {
-    const statusLabels: Record<string, string> = {
-      completed: 'Concluído',
-      'in-progress': 'Em Andamento',
-      planned: 'Planejado',
-      paused: 'Pausado',
+    const map: Record<string, string> = {
+      completed: 'projects.statusCompleted',
+      'in-progress': 'projects.statusInProgress',
+      planned: 'projects.statusPlanned',
+      paused: 'projects.statusPaused',
     };
-    return statusLabels[status] || status;
+    return this.translate.translate(map[status] || status);
   }
 
   formatDate(dateString: string): string {
     const date = new Date(dateString);
-    return date.toLocaleDateString('pt-BR', {
+    return date.toLocaleDateString(this.translate.isEn() ? 'en-US' : 'pt-BR', {
       month: 'short',
       year: 'numeric',
     });

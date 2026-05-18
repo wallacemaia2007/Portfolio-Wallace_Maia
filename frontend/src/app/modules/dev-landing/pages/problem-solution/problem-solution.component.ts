@@ -5,10 +5,12 @@ import {
   OnDestroy,
   PLATFORM_ID,
   Inject,
+  inject,
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { gsap } from '../../../../core/gsap-register';
+import { TranslateService } from '../../../../core/services/translate.service';
 
 interface ComparisonItem {
   text: string;
@@ -28,74 +30,42 @@ interface ServiceItem {
   styleUrl: './problem-solution.component.scss',
 })
 export class ProblemSolutionComponent implements AfterViewInit, OnDestroy {
-  readonly currentSiteItems: ComparisonItem[] = [
-    { text: 'Visual desatualizado e genérico' },
-    { text: 'Mensagem confusa, visitante não entende o valor' },
-    { text: 'Pouca conversão e oportunidades perdidas' },
-    { text: 'Não transmite confiança ou profissionalismo' },
-    { text: 'Site que só ocupa espaço, não gera retorno' },
-  ];
+  readonly translate = inject(TranslateService);
 
-  readonly deliveredItems: ComparisonItem[] = [
-    { text: 'Design moderno e alinhado à sua marca' },
-    { text: 'Mensagem clara que conecta e convence' },
-    { text: 'Estratégia focada em conversão e resultados' },
-    { text: 'Transmite confiança e autoridade' },
-    { text: 'Um site que trabalha por você 24h por dia' },
-  ];
+  get currentSiteItems(): ComparisonItem[] {
+    return [
+      { text: this.translate.translate('devProblemSolution.current01') },
+      { text: this.translate.translate('devProblemSolution.current02') },
+      { text: this.translate.translate('devProblemSolution.current03') },
+      { text: this.translate.translate('devProblemSolution.current04') },
+      { text: this.translate.translate('devProblemSolution.current05') },
+    ];
+  }
 
-  readonly services: ServiceItem[] = [
-    {
-      icon: 'store',
-      title: 'ERP',
-      description: 'Gestao completa do negocio',
-    },
-    {
-      icon: 'support_agent',
-      title: 'CRM',
-      description: 'Relacionamento e vendas',
-    },
-    {
-      icon: 'cloud',
-      title: 'SAAS',
-      description: 'Produto escalavel na nuvem',
-    },
-    {
-      icon: 'public',
-      title: 'PORTFOLIOS',
-      description: 'Autoridade e conversao',
-    },
-    {
-      icon: 'campaign',
-      title: 'LANDING PAGES',
-      description: 'Captacao e vendas',
-    },
-    {
-      icon: 'dashboard',
-      title: 'PAINEIS ADM',
-      description: 'Controle em tempo real',
-    },
-    {
-      icon: 'shopping_cart',
-      title: 'E-COMMERCE',
-      description: 'Loja pronta para vender',
-    },
-    {
-      icon: 'insights',
-      title: 'DASHBOARDS',
-      description: 'Indicadores claros',
-    },
-    {
-      icon: 'support',
-      title: 'SUPORTE',
-      description: 'Evolucao continua',
-    },
-    {
-      icon: 'integration_instructions',
-      title: 'INTEGRACOES',
-      description: 'APIs e automacoes',
-    },
-  ];
+  get deliveredItems(): ComparisonItem[] {
+    return [
+      { text: this.translate.translate('devProblemSolution.delivered01') },
+      { text: this.translate.translate('devProblemSolution.delivered02') },
+      { text: this.translate.translate('devProblemSolution.delivered03') },
+      { text: this.translate.translate('devProblemSolution.delivered04') },
+      { text: this.translate.translate('devProblemSolution.delivered05') },
+    ];
+  }
+
+  get services(): ServiceItem[] {
+    return [
+      { icon: 'store', title: 'ERP', description: this.translate.translate('devProblemSolution.service01') },
+      { icon: 'support_agent', title: 'CRM', description: this.translate.translate('devProblemSolution.service02') },
+      { icon: 'cloud', title: 'SAAS', description: this.translate.translate('devProblemSolution.service03') },
+      { icon: 'public', title: 'PORTFOLIOS', description: this.translate.translate('devProblemSolution.service04') },
+      { icon: 'campaign', title: 'LANDING PAGES', description: this.translate.translate('devProblemSolution.service05') },
+      { icon: 'dashboard', title: 'PAINEIS ADM', description: this.translate.translate('devProblemSolution.service06') },
+      { icon: 'shopping_cart', title: 'E-COMMERCE', description: this.translate.translate('devProblemSolution.service07') },
+      { icon: 'insights', title: 'DASHBOARDS', description: this.translate.translate('devProblemSolution.service08') },
+      { icon: 'support', title: 'SUPORTE', description: this.translate.translate('devProblemSolution.service09') },
+      { icon: 'integration_instructions', title: 'INTEGRACOES', description: this.translate.translate('devProblemSolution.service10') },
+    ];
+  }
 
   private ctx?: gsap.Context;
 

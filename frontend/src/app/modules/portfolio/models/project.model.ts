@@ -3,7 +3,9 @@ export interface Project {
   title: string;
   slug: string;
   description: string;
+  descriptionEn: string;
   shortDescription: string;
+  shortDescriptionEn: string;
   thumbnail: string;
   images: string[];
   thumbVideo: string;
@@ -17,7 +19,9 @@ export interface Project {
   status: ProjectStatus;
   tags: string[];
   challenges?: string[];
+  challengesEn?: string[];
   learnings?: string[];
+  learningsEn?: string[];
   clientType?: ClientType;
 }
 
@@ -42,6 +46,15 @@ export const PROJECT_CATEGORY_NAMES: Record<ProjectCategory, string> = {
   other: 'Outros',
 };
 
+export const PROJECT_CATEGORY_NAMES_EN: Record<ProjectCategory, string> = {
+  web: 'Web',
+  mobile: 'Mobile',
+  desktop: 'Desktop',
+  backend: 'Backend',
+  frontend: 'Frontend',
+  other: 'Other',
+};
+
 export const PROJECT_STATUS_NAMES: Record<ProjectStatus, string> = {
   completed: 'Concluído',
   'in-progress': 'Em Andamento',
@@ -49,10 +62,24 @@ export const PROJECT_STATUS_NAMES: Record<ProjectStatus, string> = {
   paused: 'Pausado',
 };
 
+export const PROJECT_STATUS_NAMES_EN: Record<ProjectStatus, string> = {
+  completed: 'Completed',
+  'in-progress': 'In Progress',
+  planned: 'Planned',
+  paused: 'Paused',
+};
+
 export const CLIENT_TYPE_NAMES: Record<ClientType, string> = {
   freelance: 'Freelance',
   empresa: 'Empresa',
   pessoal: 'Pessoal',
+  'open-source': 'Open Source',
+};
+
+export const CLIENT_TYPE_NAMES_EN: Record<ClientType, string> = {
+  freelance: 'Freelance',
+  empresa: 'Company',
+  pessoal: 'Personal',
   'open-source': 'Open Source',
 };
 

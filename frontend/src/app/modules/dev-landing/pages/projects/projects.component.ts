@@ -16,6 +16,7 @@ import { SectionHeaderComponent } from '../../../shared/components/section-heade
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
 import { WhatsAppService } from '../../../shared/services/whatsapp-service.service';
 import { gsap } from '../../../../core/gsap-register';
+import { TranslateService } from '../../../../core/services/translate.service';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -66,13 +67,15 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
   private ctx?: gsap.Context;
   private videoObserver?: IntersectionObserver;
   private whatsAppService = inject(WhatsAppService);
-  
-  readonly projects: ShowcaseProject[] = [
+  readonly translate = inject(TranslateService);
+
+  get projects(): ShowcaseProject[] {
+    const t = (key: string) => this.translate.translate('devProjects.' + key);
+    const result: ShowcaseProject[] = [
     {
       id: 'portfolio-pessoal',
-      title: 'Portfolio Pessoal',
-      description:
-        'Este projeto é o meu portfólio profissional, desenvolvido para apresentar minhas habilidades como desenvolvedor Full-Stack. Construído com Angular no frontend e Node.js no backend, ele simula um ambiente real com API, persistência de dados e integração de serviços. A interface foi pensada para oferecer boa experiência ao usuário, responsividade e performance, tanto em desktop quanto em dispositivos móveis. O projeto também demonstra conceitos modernos como componentização, consumo de API REST, gerenciamento de estado, rotas protegidas e arquitetura em camadas.',
+      title: t('proj01Title'),
+      description: t('proj01Desc'),
       year: '2025',
       liveUrl: 'https://maiawall.com',
       technologies: ['Angular', 'Tailwind CSS', 'RxJS', 'GSAP'],
@@ -93,9 +96,8 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     },
     {
       id: 'banda-aurah',
-      title: 'Banda Aurah',
-      description:
-        'Portfólio da banda Aurah, desenvolvido para apresentar seus projetos, habilidades e experiência profissional. Construído com Angular e Tailwind CSS, o site é responsivo e otimizado para SEO, o site conta com um sistema de agendamento integrado ao portfólio juntamente com a apresentação dos principais vídeos da banda e seu calendário com todas as datas de seus próximos shows.',
+      title: t('proj02Title'),
+      description: t('proj02Desc'),
       year: '2026',
       liveUrl: 'https://portfolio-banda-aurah.vercel.app/',
       technologies: ['Angular', 'Tailwind CSS', 'Angular Material'],
@@ -115,9 +117,8 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     },
     {
       id: 'instituto-motiro',
-      title: 'Instituto Motiro',
-      description:
-        'O Instituto Motirõ (Associação Promotora de Educação e Cultura - APEC) foi criado em 2023 a partir do desejo de construir um espaço físico de encontro para pessoas interessadas em educação e cultura em Passos (MG). Dedicado ao fomento e promoção da educação-cultura no município de Passos e região, o Motirõ é composto por dois núcleos: o Centro de Educação Interdisciplinar e Aprovações (CEIA) e o Núcleo de Arte e Cultura (NAC), fomentando desenvolvimento pessoal e comunitário. O Instituto Motirõ nasceu com o propósito de fortalecer a cultura, a educação e a coletividade. Cada projeto, cada ação e cada encontro são construídos de forma colaborativa, valorizando a partilha, a união e o poder do coletivo. O termo Motirõ (pronúncia: Motirô) origina-se no tupi-guarani e representa a reunião de pessoas para construir algo em comum, com ajuda mútua.',
+      title: t('proj03Title'),
+      description: t('proj03Desc'),
       year: '2026',
       liveUrl: 'https://www.institutomotiro.com.br/',
       technologies: ['Vite', 'Tailwind CSS', 'TypeScript'],
@@ -138,9 +139,8 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     },
     {
       id: 'painel-admin',
-      title: 'Painel Administrativo',
-      description:
-        'Você busca uma solução robusta para gerenciar seu negócio de eventos ou música? Eu ofereço o desenvolvimento de um ecossistema digital completo, focado em escalabilidade, organização e controle total sobre sua operação. Este projeto é ideal para agências, produtoras ou plataformas de agenciamento que precisam de uma interface intuitiva e painéis de dados precisos. O que está incluso no sistema Gestão de Usuários e Perfis: Controle de acessos multinível (Admin, Músicos, Clientes) com segurança de dados. Cadastro Estruturado: Módulo completo para cadastro de pacotes de serviços, catálogo de músicos e gerenciamento de base de clientes. Dashboard Dinâmico: Visualização de métricas em tempo real com gráficos interativos para tomada de decisão rápida. Controle Financeiro Integrado: Gestão de entradas, saídas, pagamentos de prestadores e histórico de transações. Interface Responsiva: Design moderno e funcional, adaptado para desktop e dispositivos móveis (conforme as imagens do portfólio).',
+      title: t('proj04Title'),
+      description: t('proj04Desc'),
       year: '2026',
       liveUrl:
         'https://www.linkedin.com/feed/update/urn:li:activity:7393610706035654656/',
@@ -159,9 +159,8 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     },
     {
       id: 'schulles',
-      title: 'Schulle Website',
-      description:
-        'Um restaurante focado em marmitas mensais investiu em uma plataforma digital completa para fortalecer sua marca e otimizar a operação. Desenvolvi um site profissional com foco em performance, conversão e experiência do usuário, com páginas institucionais, cardápio dinâmico, planos de marmita e integração com canais de contato. Também foi criado um sistema gerencial para centralizar clientes, cardápios, compras, gastos e métricas via Google Analytics. O projeto foi pensado para ser responsivo, rápido e escalável. Tecnologias utilizadas: Angular, Spring Boot, HTML, SCSS, TypeScript e Tailwind CSS.',
+      title: t('proj05Title'),
+      description: t('proj05Desc'),
       year: '2026',
       liveUrl: 'https://www.schulles.com.br/',
       technologies: ['Angular', 'TypeScript', 'Angular Material'],
@@ -176,7 +175,9 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
         'assets/images/projects/schulles/plans.jpg',
       ],
     },
-  ];
+    ];
+    return result;
+  }
 
   constructor(private readonly cdr: ChangeDetectorRef) {}
 

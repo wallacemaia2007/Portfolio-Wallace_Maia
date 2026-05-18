@@ -17,6 +17,7 @@ import {
   ExperienceType,
   EXPERIENCE_TYPE_NAMES,
 } from '../../models/experience.model';
+import { TranslateService } from '../../../../core/services/translate.service';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
 import { ExperienceCardComponent } from './components/experience-card/experience-card.component';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
@@ -54,20 +55,34 @@ export class ExperienceComponent implements OnInit, AfterViewInit, OnDestroy {
   private el = inject(ElementRef);
   private platformId = inject(PLATFORM_ID);
   private ctx?: gsap.Context;
+  protected translate = inject(TranslateService);
 
   isLoading = true;
   experiences: Experience[] = [];
   selectedType: ExperienceType | 'all' = 'all';
   experienceTypes: ExperienceTypeInfo[] = [];
 
-  ctaData: InformationBarData = {
-    title: 'Gostou da minha trajetória?',
-    description: 'Vamos trabalhar juntos e criar algo incrível!',
-    buttons: [
-      { label: 'Ver Projetos', icon: 'work', color: 'theme', link: '/projects' },
-      { label: 'Entrar em Contato', icon: 'email', color: 'theme', link: '/contact' },
-    ],
-  };
+  get ctaData(): InformationBarData {
+    const t = (key: string) => this.translate.translate(key);
+    return {
+      title: t('experience.ctaTitle'),
+      description: t('experience.ctaDescription'),
+      buttons: [
+        {
+          label: t('experience.ctaProjectsButton'),
+          icon: 'work',
+          color: 'primary',
+          link: '/projects',
+        },
+        {
+          label: t('experience.ctaContactButton'),
+          icon: 'email',
+          color: 'theme',
+          link: '/contact',
+        },
+      ],
+    };
+  }
 
   ngOnInit(): void {
     this.loadExperiences();
@@ -149,7 +164,7 @@ export class ExperienceComponent implements OnInit, AfterViewInit, OnDestroy {
         this.isLoading = false;
       },
       error: (error) => {
-        console.error('Erro ao carregar experiências:', error);
+        console.error('Error loading experiences:', error);
         this.isLoading = false;
       },
     });

@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { Skill } from '../../../../models/skill.model';
+import { TranslateService } from '../../../../../../core/services/translate.service';
 
 @Component({
   selector: 'app-skill-card',
@@ -12,6 +13,7 @@ import { Skill } from '../../../../models/skill.model';
 })
 export class SkillCardComponent {
   @Input({ required: true }) skill!: Skill;
+  protected translate = inject(TranslateService);
 
   getLevelClass(): string {
     const levelClasses = {

@@ -3,14 +3,13 @@
     class="py-20 bg-gradient-to-br from-beige-light to-white dark:from-custom-black dark:to-custom-black-light relative overflow-hidden"
     appScrollReveal revealFrom="bottom" [revealDelay]="100">
     <div class="container mx-auto px-4 relative z-10">
-      <app-section-header title="Entre em Contato" subtitle="Vamos trabalhar juntos e criar algo incrível!"
+      <app-section-header [title]="translate.translate('contact.title')" [subtitle]="translate.translate('contact.subtitle')"
         align="center"></app-section-header>
 
       <p class="text-center text-gray-700 dark:text-gray-300 text-lg max-w-2xl mx-auto mt-6">
-        Estou sempre aberto a novos projetos, oportunidades e colaborações.
+        {{ translate.translate('contact.intro') }}
         <br />
-        Preencha o formulário abaixo ou entre em contato diretamente pelos
-        canais disponíveis.
+        {{ translate.translate('contact.introForm') }}
       </p>
     </div>
   </section>
@@ -52,10 +51,10 @@
           class="bg-beige-light dark:bg-custom-black-light rounded-3xl p-8 shadow-2xl border border-beige dark:border-gray-800">
           <div class="mb-8">
             <h2 class="text-3xl font-bold text-custom-black dark:text-white mb-2">
-              Envie sua Mensagem
+              {{ translate.translate('contact.formTitle') }}
             </h2>
             <p class="text-gray-600 dark:text-gray-400">
-              Preencha o formulário abaixo e responderei o mais breve possível.
+              {{ translate.translate('contact.formDesc') }}
             </p>
           </div>
 
@@ -64,7 +63,7 @@
               <div
                 class="flex items-center gap-3 px-4 py-4 bg-white dark:bg-custom-black rounded-xl border-2 border-beige dark:border-gray-700 focus-within:border-primary transition-all duration-300 hover:border-primary/50 dark:hover:border-gray-600">
                 <mat-icon class="text-primary text-xl">person</mat-icon>
-                <input type="text" formControlName="name" placeholder="Nome Completo*"
+                <input type="text" formControlName="name" [placeholder]="translate.translate('contact.namePlaceholder')"
                   class="flex-1 bg-transparent text-custom-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 outline-none text-base" />
               </div>
               @if (isFieldInvalid("name")) {
@@ -79,7 +78,7 @@
               <div
                 class="flex items-center gap-3 px-4 py-4 bg-white dark:bg-custom-black rounded-xl border-2 border-beige dark:border-gray-700 focus-within:border-primary transition-all duration-300 hover:border-primary/50 dark:hover:border-gray-600">
                 <mat-icon class="text-primary text-xl">email</mat-icon>
-                <input type="email" formControlName="email" placeholder="Email*"
+                <input type="email" formControlName="email" [placeholder]="translate.translate('contact.emailPlaceholder')"
                   class="flex-1 bg-transparent text-custom-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 outline-none text-base" />
               </div>
               @if (isFieldInvalid("email")) {
@@ -94,7 +93,7 @@
               <div
                 class="flex items-center gap-3 px-4 py-4 bg-white dark:bg-custom-black rounded-xl border-2 border-beige dark:border-gray-700 focus-within:border-primary transition-all duration-300 hover:border-primary/50 dark:hover:border-gray-600">
                 <mat-icon class="text-primary text-xl">phone</mat-icon>
-                <input mask="(00) 00000-0000" type="tel" formControlName="phone" placeholder="Telefone (Opcional)"
+                <input mask="(00) 00000-0000" type="tel" formControlName="phone" [placeholder]="translate.translate('contact.phonePlaceholder')"
                   class="flex-1 bg-transparent text-custom-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 outline-none text-base" />
               </div>
             </div>
@@ -103,7 +102,7 @@
               <div
                 class="flex items-center gap-3 px-4 py-4 bg-white dark:bg-custom-black rounded-xl border-2 border-beige dark:border-gray-700 focus-within:border-primary transition-all duration-300 hover:border-primary/50 dark:hover:border-gray-600">
                 <mat-icon class="text-primary text-xl">label</mat-icon>
-                <input type="text" formControlName="subject" placeholder="Assunto*"
+                <input type="text" formControlName="subject" [placeholder]="translate.translate('contact.subjectPlaceholder')"
                   class="flex-1 bg-transparent text-custom-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 outline-none text-base" />
               </div>
               @if (isFieldInvalid("subject")) {
@@ -118,7 +117,7 @@
               <div
                 class="flex items-start gap-3 px-4 py-4 bg-white dark:bg-custom-black rounded-xl border-2 border-beige dark:border-gray-700 focus-within:border-primary transition-all duration-300 hover:border-primary/50 dark:hover:border-gray-600">
                 <mat-icon class="text-primary text-xl mt-1">message</mat-icon>
-                <textarea formControlName="message" rows="6" placeholder="Mensagem*"
+                <textarea formControlName="message" rows="6" [placeholder]="translate.translate('contact.messagePlaceholder')"
                   class="flex-1 bg-transparent text-custom-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 outline-none text-base resize-none"></textarea>
               </div>
               @if (isFieldInvalid("message")) {
@@ -133,9 +132,9 @@
               class="w-full py-4 bg-primary hover:bg-primary-dark disabled:bg-gray-600 text-white font-bold text-base rounded-xl transition-all duration-300 hover:shadow-glow hover:scale-[1.02] disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2">
               @if (isSubmitting) {
               <span class="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></span>
-              <span>Enviando...</span>
+              <span>{{ translate.translate('contact.sending') }}</span>
               } @else {
-              <span>Enviar Mensagem</span>
+              <span>{{ translate.translate('contact.send') }}</span>
               }
             </button>
           </form>
@@ -145,18 +144,18 @@
           <div
             class="bg-gradient-to-br from-primary to-primary-dark rounded-3xl p-8 text-white shadow-2xl hover:shadow-glow-lg transition-all duration-300">
             <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
-              <span>Contato Rápido</span>
+              <span>{{ translate.translate('contact.quickContact') }}</span>
             </h3>
 
             <div class="space-y-4">
               <button type="button" (click)="openEmail()"
                 class="w-full py-4 bg-white/10 hover:bg-white hover:text-primary border-2 border-white text-white transition-all rounded-xl flex items-center justify-center gap-2 text-base font-semibold backdrop-blur-sm">
-                <span>Enviar Email Diretamente</span>
+                <span>{{ translate.translate('contact.sendEmail') }}</span>
               </button>
 
               <button type="button" (click)="openWhatsApp()"
                 class="w-full py-4 bg-white/10 hover:bg-white hover:text-accent border-2 border-white text-white transition-all rounded-xl flex items-center justify-center gap-2 text-base font-semibold backdrop-blur-sm">
-                <span>WhatsApp</span>
+                <span>{{ translate.translate('contact.whatsapp') }}</span>
               </button>
             </div>
           </div>
@@ -164,12 +163,11 @@
           <div
             class="bg-beige-light dark:bg-custom-black-light rounded-3xl p-8 shadow-xl border border-beige dark:border-gray-800">
             <h3 class="text-2xl font-bold text-custom-black dark:text-white mb-6 flex items-center gap-3">
-              <span>Redes Sociais</span>
+              <span>{{ translate.translate('contact.socialTitle') }}</span>
             </h3>
 
             <p class="text-gray-600 dark:text-gray-400 mb-6">
-              Conecte-se comigo nas redes sociais para acompanhar meu trabalho e
-              novidades:
+              {{ translate.translate('contact.socialDesc') }}
             </p>
 
             <div class="flex justify-center">
@@ -184,20 +182,19 @@
                 <span class="relative inline-flex rounded-full h-4 w-4 bg-accent"></span>
               </div>
               <h3 class="text-xl font-bold text-custom-black dark:text-white">
-                Disponível para Projetos
+                {{ translate.translate('contact.availableTitle') }}
               </h3>
             </div>
 
             <p class="text-gray-700 dark:text-gray-300">
-              Atualmente aceitando novos projetos e oportunidades de
-              colaboração. Respondo normalmente em até 24 horas.
+              {{ translate.translate('contact.availableDesc') }}
             </p>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <app-faq title="Perguntas Frequentes" [showContactCta]="false" [delayAnimation]="400"></app-faq>
+  <app-faq [title]="translate.translate('contact.faqTitle')" [showContactCta]="false" [delayAnimation]="400"></app-faq>
 
   <section class="py-20 bg-primary" appScrollReveal revealFrom="bottom" [revealDelay]="100">
     <app-information-bar [data]="ctaData"></app-information-bar>

@@ -89,34 +89,34 @@
           </h2>
 
           <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-            {{ project.description }}
+            {{ project.description | langText:project.descriptionEn }}
           </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           <div class="bg-beige-light dark:bg-custom-black rounded-xl p-6 border-2 border-gray-200 dark:border-gray-800">
-            <h3 class="font-bold text-custom-black dark:text-white mb-3 flex items-center gap-2">
-              <mat-icon [ngClass]="getAccentTextClass()">calendar_today</mat-icon>
-              Período
-            </h3>
-            <p class="text-gray-700 dark:text-gray-300 mb-2">
-              <span class="font-semibold">Início:</span> {{ formatDate(project.startDate) }}
-            </p>
-            @if (project.endDate) {
-            <p class="text-gray-700 dark:text-gray-300">
-              <span class="font-semibold">Fim:</span> {{ formatDate(project.endDate) }}
-            </p>
-            } @else {
-            <p class="text-gray-700 dark:text-gray-300">
-              <span class="font-semibold">Status:</span> Em andamento
-            </p>
-            }
+              <h3 class="font-bold text-custom-black dark:text-white mb-3 flex items-center gap-2">
+                <mat-icon [ngClass]="getAccentTextClass()">calendar_today</mat-icon>
+                {{ translate.translate('projects.period') }}
+              </h3>
+              <p class="text-gray-700 dark:text-gray-300 mb-2">
+                <span class="font-semibold">{{ translate.translate('projects.start') }}</span> {{ formatDate(project.startDate) }}
+              </p>
+              @if (project.endDate) {
+              <p class="text-gray-700 dark:text-gray-300">
+                <span class="font-semibold">{{ translate.translate('projects.end') }}</span> {{ formatDate(project.endDate) }}
+              </p>
+              } @else {
+              <p class="text-gray-700 dark:text-gray-300">
+                <span class="font-semibold">{{ translate.translate('projects.status') }}</span> {{ translate.translate('projects.inProgress') }}
+              </p>
+              }
           </div>
 
           <div class="bg-beige-light dark:bg-custom-black rounded-xl p-6 border-2 border-gray-200 dark:border-gray-800">
             <h3 class="font-bold text-custom-black dark:text-white mb-3 flex items-center gap-2">
               <mat-icon [ngClass]="getAccentTextClass()">link</mat-icon>
-              Links do Projeto
+              {{ translate.translate('projects.projectLinks') }}
             </h3>
             <div class="flex flex-wrap gap-3">
               @if (project.githubUrl) {
@@ -124,7 +124,7 @@
                 class="px-4 py-2 min-h-[44px] text-white rounded-lg transition-all hover:scale-105 flex items-center gap-2 shadow-md"
                 [ngClass]="getAccentButtonClass()">
                 <img src="assets/icons/github.svg" alt="" class="w-5 h-5">
-                <span>GitHub</span>
+                <span>{{ translate.translate('projects.github') }}</span>
               </a>
               }
               @if (project.liveUrl) {
@@ -132,12 +132,12 @@
                 class="px-4 py-2 min-h-[44px] text-white rounded-lg transition-all hover:scale-105 flex items-center gap-2 shadow-md"
                 [ngClass]="getAccentButtonClass()">
                 <mat-icon>launch</mat-icon>
-                <span>Ver Live</span>
+                <span>{{ translate.translate('projects.viewLive') }}</span>
               </a>
               }
               @if (!project.githubUrl && !project.liveUrl) {
               <p class="text-sm text-gray-500 dark:text-gray-400 italic">
-                Links não disponíveis
+                {{ translate.translate('projects.linksNotAvailable') }}
               </p>
               }
             </div>
@@ -147,7 +147,7 @@
         <div class="mb-8">
           <h3 class="font-bold text-xl text-custom-black dark:text-white mb-4 flex items-center gap-2">
             <mat-icon [ngClass]="getAccentTextClass()">code</mat-icon>
-            Tecnologias Utilizadas
+            {{ translate.translate('projects.technologies') }}
           </h3>
           <div class="flex flex-wrap gap-1 sm:gap-3">
             @for (tech of project.technologies; track tech) {
@@ -164,20 +164,20 @@
         <div class="mb-8 p-6 bg-gray-50 dark:bg-custom-black rounded-xl border-2 border-gray-200 dark:border-gray-800">
           <h3 class="font-bold text-xl text-custom-black dark:text-white mb-4 flex items-center gap-2">
             <mat-icon [ngClass]="getAccentTextClass()">psychology</mat-icon>
-            Desafios Enfrentados
+            {{ translate.translate('projects.challenges') }}
           </h3>
           <ul class="space-y-2">
-            @for (challenge of project.challenges.slice(0, 3); track challenge) {
+            @for (challenge of project.challenges.slice(0, 3); track challenge; let i = $index) {
             <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
               <mat-icon class="text-xl mt-0.5" [ngClass]="getAccentTextClass()">check_circle</mat-icon>
-              <span>{{ challenge }}</span>
+              <span>{{ challenge | langText:project.challengesEn?.[i] }}</span>
             </li>
             }
           </ul>
           @if (project.challenges.length > 3) {
           <p class="mt-3 text-sm text-gray-500 dark:text-gray-400 flex items-center gap-2">
             <mat-icon class="text-base">info</mat-icon>
-            E mais {{ project.challenges.length - 3 }} desafio(s). Veja todos na página completa.
+            {{ translate.translate('common.more') }} {{ project.challenges.length - 3 }} {{ translate.translate('projects.challenges') | lowercase }}.
           </p>
           }
         </div>
@@ -187,13 +187,13 @@
         <div class="p-6 bg-gray-50 dark:bg-custom-black rounded-xl border-2 border-gray-200 dark:border-gray-800">
           <h3 class="font-bold text-xl text-custom-black dark:text-white mb-4 flex items-center gap-2">
             <mat-icon [ngClass]="getAccentTextClass()">lightbulb</mat-icon>
-            Aprendizados
+            {{ translate.translate('projects.learnings') }}
           </h3>
           <ul class="space-y-2">
-            @for (learning of project.learnings; track learning) {
+            @for (learning of project.learnings; track learning; let i = $index) {
             <li class="flex items-start gap-3 text-gray-700 dark:text-gray-300">
               <mat-icon class="text-accent text-xl mt-0.5">star</mat-icon>
-              <span>{{ learning }}</span>
+              <span>{{ learning | langText:project.learningsEn?.[i] }}</span>
             </li>
             }
           </ul>
@@ -206,17 +206,17 @@
             <div class="flex-1 min-w-[200px]">
               <h4 class="font-bold text-custom-black dark:text-white mb-1 flex items-center gap-2">
                 <mat-icon [ngClass]="getAccentTextClass()">info</mat-icon>
-                Quer ver mais detalhes? Ficou interessado?
+                {{ translate.translate('projects.contactPrompt') }}
               </h4>
               <p class="text-sm text-gray-600 dark:text-gray-400">
-                Entre em contato para saber mais detalhes sobre este projeto ou para discutir possíveis trabalhos!
+                {{ translate.translate('projects.contactMsg') }}
               </p>
             </div>
 
             <button routerLink="/contact"
               class="px-6 py-3 min-h-[44px] text-white rounded-xl font-bold transition-all hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 whitespace-nowrap"
               [ngClass]="getAccentButtonClass()">
-              <span>Contato</span>
+              <span>{{ translate.translate('projects.contact') }}</span>
               <mat-icon>open_in_new</mat-icon>
             </button>
           </div>

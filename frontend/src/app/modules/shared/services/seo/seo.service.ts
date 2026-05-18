@@ -1,8 +1,9 @@
-import { Injectable, PLATFORM_ID, inject } from '@angular/core';
+import { Injectable, PLATFORM_ID, inject, effect } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router, NavigationEnd } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { filter } from 'rxjs/operators';
+import { TranslateService } from '../../../../core/services/translate.service';
 
 export interface PageSeoData {
   title: string;
@@ -15,9 +16,7 @@ export interface PageSeoData {
 
 const BASE_URL = 'https://maiawall.com';
 const DEFAULT_OG_IMAGE = `${BASE_URL}/assets/images/og-image.png`;
-const SITE_NAME = 'Wallace Maia | Portfólio Full Stack';
-
-const SEO_MAP: Record<string, PageSeoData> = {
+const SEO_MAP_PT: Record<string, PageSeoData> = {
   '/home': {
     title: 'Wallace Maia | Desenvolvedor Full Stack Angular & Java',
     description:
@@ -76,6 +75,65 @@ const SEO_MAP: Record<string, PageSeoData> = {
   },
 };
 
+const SEO_MAP_EN: Record<string, PageSeoData> = {
+  '/home': {
+    title: 'Wallace Maia | Full Stack Developer Angular & Java',
+    description:
+      'Portfolio of Wallace Cândido Maia Sousa — Full Stack Developer in Angular, Java, and Spring Boot. Real projects, experience at CroSoften and freelance. Uberlândia/MG.',
+    keywords:
+      'Wallace Maia, Wallace Cândido Maia Sousa, full stack developer, Angular, Java, Spring Boot, developer portfolio, programmer MG',
+    ogType: 'website',
+  },
+  '/about': {
+    title: 'About — Wallace Maia | Full Stack Developer',
+    description:
+      'Learn the story of Wallace Maia: from student in Passos/MG to Full Stack Developer at CroSoften and UFU. Education, journey, values and hobbies.',
+    keywords:
+      'Wallace Maia about, developer trajectory, CroSoften Angular developer, UFU information systems, developer Uberlândia',
+    ogType: 'profile',
+  },
+  '/projects': {
+    title: 'Projects — Wallace Maia | Angular, Java, Spring Boot',
+    description:
+      'Project portfolio of Wallace Maia: Digital Bank API, Instituto Motirõ, Banda Aurah, Customer Register and more. Angular, Java, Vite, Node.js.',
+    keywords:
+      'Angular projects, Java Spring Boot projects, Digital Bank API, Instituto Motiro, web project portfolio, freelance developer projects',
+    ogType: 'website',
+  },
+  '/skills': {
+    title: 'Skills — Wallace Maia | Angular, Java, Spring Boot, Docker',
+    description:
+      'Technical skills of Wallace Maia: Angular 19, TypeScript, Java, Spring Boot, Spring Security, RxJS, MySQL, PostgreSQL, MongoDB, Docker, AWS and more.',
+    keywords:
+      'developer skills, Angular expert, Java developer, Spring Boot, TypeScript, RxJS, Docker, AWS, MySQL, full stack developer skills',
+    ogType: 'website',
+  },
+  '/experience': {
+    title: 'Experience — Wallace Maia | CroSoften, Freelance, City Hall',
+    description:
+      'Professional trajectory of Wallace Maia: Frontend Developer at CroSoften, Full Stack freelancer and IT intern at Passos City Hall.',
+    keywords:
+      'Wallace Maia CroSoften, Angular frontend developer job, professional developer experience, freelance web developer MG',
+    ogType: 'website',
+  },
+  '/contact': {
+    title: 'Contact — Wallace Maia | Full Stack Developer',
+    description:
+      'Get in touch with Wallace Maia: wallacemaia2007@gmail.com, WhatsApp (35) 91003-6806. Available for freelance projects and full-time opportunities.',
+    keywords:
+      'hire developer, Wallace Maia contact, angular java freelancer, web developer uberlândia contact',
+    ogType: 'website',
+  },
+  '/dev': {
+    title: 'Services — Wallace Maia | Web Development & Systems',
+    description:
+      'Web development services by Wallace Maia: websites, SaaS systems, e-commerce, APIs, landing pages and maintenance. Angular + Java + Spring Boot.',
+    keywords:
+      'web development services, create website, web system, SaaS development, REST API development, professional landing page',
+    ogType: 'website',
+  },
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -84,13 +142,33 @@ export class SeoService {
   private titleService = inject(Title);
   private router = inject(Router);
   private platformId = inject(PLATFORM_ID);
+  private translate = inject(TranslateService);
+
+  constructor() {
+    effect(() => {
+      this.translate.currentLang();
+      const path = this.normalizePath(this.router.url);
+      const seoMap = this.getSeoMap();
+      const seo = seoMap[path] ?? seoMap['/home'];
+      if (seo) this.apply(seo, path);
+    });
+  }
+
+  private getSeoMap(): Record<string, PageSeoData> {
+    return this.translate.currentLang() === 'en' ? SEO_MAP_EN : SEO_MAP_PT;
+  }
+
+  private getLocale(): string {
+    return this.translate.currentLang() === 'en' ? 'en_US' : 'pt_BR';
+  }
 
   init(): void {
     this.router.events
       .pipe(filter((e) => e instanceof NavigationEnd))
       .subscribe((event: any) => {
         const path = this.normalizePath(event.urlAfterRedirects);
-        const seo = SEO_MAP[path] ?? SEO_MAP['/home'];
+        const seoMap = this.getSeoMap();
+        const seo = seoMap[path] ?? seoMap['/home'];
         this.apply(seo, path);
       });
   }
@@ -108,7 +186,10 @@ export class SeoService {
     this.setTag('description', data.description);
     if (data.keywords) this.setTag('keywords', data.keywords);
     this.setTag('author', 'Wallace Cândido Maia Sousa');
-    this.setTag('robots', 'index, follow, max-snippet:-1, max-image-preview:large');
+    this.setTag(
+      'robots',
+      'index, follow, max-snippet:-1, max-image-preview:large',
+    );
 
     // Canonical
     this.setLinkCanonical(canonical);
@@ -121,9 +202,9 @@ export class SeoService {
     this.setOgTag('og:image', ogImage);
     this.setOgTag('og:image:width', '1200');
     this.setOgTag('og:image:height', '630');
-    this.setOgTag('og:image:alt', 'Wallace Maia — Desenvolvedor Full Stack');
-    this.setOgTag('og:site_name', SITE_NAME);
-    this.setOgTag('og:locale', 'pt_BR');
+    this.setOgTag('og:image:alt', this.translate.translate('seo.ogImageAlt'));
+    this.setOgTag('og:site_name', this.translate.translate('seo.siteName'));
+    this.setOgTag('og:locale', this.getLocale());
 
     // Twitter
     this.setTag('twitter:card', 'summary_large_image');
@@ -151,8 +232,9 @@ export class SeoService {
 
   private setLinkCanonical(url: string): void {
     if (!isPlatformBrowser(this.platformId)) return;
-    let link: HTMLLinkElement | null =
-      document.querySelector("link[rel='canonical']");
+    let link: HTMLLinkElement | null = document.querySelector(
+      "link[rel='canonical']",
+    );
     if (!link) {
       link = document.createElement('link');
       link.setAttribute('rel', 'canonical');
@@ -162,6 +244,8 @@ export class SeoService {
   }
 
   private normalizePath(url: string): string {
-    return url.split('?')[0].split('#')[0] || '/home';
+    return (url.split('?')[0].split('#')[0] || '/home') === '/'
+      ? '/home'
+      : url.split('?')[0].split('#')[0] || '/home';
   }
 }

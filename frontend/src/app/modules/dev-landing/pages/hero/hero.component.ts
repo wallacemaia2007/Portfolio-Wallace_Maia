@@ -13,6 +13,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
 import { gsap } from '../../../../core/gsap-register';
+import { TranslateService } from '../../../../core/services/translate.service';
 
 // ══ Classes de partícula (igual ao login/signup) ══
 
@@ -82,6 +83,7 @@ export class HeroComponent implements OnDestroy, AfterViewInit {
   @ViewChild('particleCanvas') particleCanvas!: ElementRef<HTMLCanvasElement>;
 
   private platformId = inject(PLATFORM_ID);
+  readonly translate = inject(TranslateService);
   private ctx?: gsap.Context;
   private prefersReducedMotion = false;
 
@@ -95,7 +97,7 @@ export class HeroComponent implements OnDestroy, AfterViewInit {
 
   readonly personalInfo = {
     fullName: 'Wallace Maia',
-    role: 'Desenvolvedor Web Full Stack',
+    role: this.translate.translate('devHero.role'),
     avatar: 'assets/images/avatar.png',
   };
 

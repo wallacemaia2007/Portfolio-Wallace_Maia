@@ -13,6 +13,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { gsap } from '../../../../core/gsap-register';
 
 import { PortfolioService } from '../../../portfolio/services/portfolio.service';
+import { TranslateService } from '../../../../core/services/translate.service';
+import { LangTextPipe } from '../../../shared/pipes/lang-text.pipe';
 import { ButtonComponent } from '../button/button.component';
 
 export type LineType =
@@ -37,206 +39,11 @@ export interface RenderedLine extends ScriptLine {
   typing: boolean;
   typed: string;
 }
-const TERMINAL_SCRIPT: ScriptLine[] = [
-  {
-    type: 'command',
-    text: 'echo "Bem-vindo ao portfólio de Wallace Maia!"',
-    delay: 0,
-    typewriter: true,
-  },
-  {
-    type: 'info',
-    text: ' Desenvolvedor Full Stack | Angular | Java | Spring Boot',
-    delay: 160,
-  },
-  { type: 'info', text: 'Passos, MG - Brasil', delay: 120 },
-  { type: 'blank', text: '', delay: 120 },
 
-  { type: 'command', text: 'node -v && npm -v', delay: 0, typewriter: true },
-  { type: 'output', text: '    Node.js e NPM detectados ✔', delay: 140 },
-  { type: 'blank', text: '', delay: 120 },
-
-  { type: 'command', text: 'ng version', delay: 0, typewriter: true },
-  {
-    type: 'output',
-    text: '    Angular CLI (Angular 19) pronto para produção',
-    delay: 160,
-  },
-  { type: 'output', text: '    TypeScript + RxJS carregados', delay: 120 },
-  { type: 'blank', text: '', delay: 120 },
-
-  { type: 'command', text: 'npm install', delay: 0, typewriter: true },
-  {
-    type: 'output',
-    text: '    Dependências instaladas: Angular, TypeScript, RxJS',
-    delay: 160,
-  },
-  {
-    type: 'output',
-    text: '    UI: Angular Material, PrimeNG, Tailwind CSS',
-    delay: 140,
-  },
-  { type: 'success', text: '  ✔  Frontend dependencies OK', delay: 180 },
-  { type: 'blank', text: '', delay: 120 },
-
-  { type: 'command', text: 'npm install gsap', delay: 0, typewriter: true },
-  {
-    type: 'output',
-    text: '    GSAP instalado (animações e microinterações)',
-    delay: 140,
-  },
-  { type: 'blank', text: '', delay: 120 },
-
-  { type: 'command', text: 'ng test', delay: 0, typewriter: true },
-  { type: 'output', text: '    Suítes de testes executadas', delay: 140 },
-  { type: 'success', text: '  ✔  Testes do frontend finalizados!', delay: 180 },
-  { type: 'blank', text: '', delay: 120 },
-
-  {
-    type: 'command',
-    text: 'ng build --configuration production',
-    delay: 0,
-    typewriter: true,
-  },
-  {
-    type: 'output',
-    text: '    Build otimizado: lazy-loading + tree-shaking',
-    delay: 150,
-  },
-  {
-    type: 'output',
-    text: '    Tailwind CSS aplicado + componentes Material/PrimeNG',
-    delay: 140,
-  },
-  { type: 'success', text: '  ✔  Frontend pronto para deploy!', delay: 180 },
-  { type: 'blank', text: '', delay: 120 },
-
-  { type: 'command', text: 'mvn -v', delay: 0, typewriter: true },
-  { type: 'output', text: '    Maven detectado ✔', delay: 140 },
-  { type: 'blank', text: '', delay: 120 },
-
-  { type: 'command', text: 'mvn test', delay: 0, typewriter: true },
-  {
-    type: 'output',
-    text: '    Testes: JUnit + Mockito executados',
-    delay: 160,
-  },
-  { type: 'success', text: '  ✔  Backend test suite OK', delay: 180 },
-  { type: 'blank', text: '', delay: 120 },
-
-  {
-    type: 'command',
-    text: 'java -jar spring-app.jar',
-    delay: 0,
-    typewriter: true,
-  },
-  { type: 'output', text: '    Spring Boot inicializado', delay: 150 },
-  {
-    type: 'output',
-    text: '    Spring Security: autenticação/autorização configuradas',
-    delay: 140,
-  },
-  {
-    type: 'output',
-    text: '    Persistência: Spring Data JPA + Hibernate',
-    delay: 140,
-  },
-  {
-    type: 'output',
-    text: '    Banco conectado: MySQL (experiência também com PostgreSQL/MongoDB)',
-    delay: 140,
-  },
-  { type: 'success', text: '  ✔  Backend operacional!', delay: 180 },
-  { type: 'blank', text: '', delay: 120 },
-
-  {
-    type: 'command',
-    text: 'swagger-ui: open http://localhost:8080/swagger-ui',
-    delay: 0,
-    typewriter: true,
-  },
-  {
-    type: 'output',
-    text: '    Swagger disponível para documentação da API',
-    delay: 140,
-  },
-  { type: 'blank', text: '', delay: 120 },
-
-  {
-    type: 'command',
-    text: 'postman run digital-bank-api.collection.json',
-    delay: 0,
-    typewriter: true,
-  },
-  {
-    type: 'output',
-    text: '    Coleção Postman executada (validação de endpoints)',
-    delay: 140,
-  },
-  { type: 'success', text: '  ✔  Rotas REST validadas!', delay: 180 },
-  { type: 'blank', text: '', delay: 120 },
-  { type: 'command', text: 'docker compose up -d', delay: 0, typewriter: true },
-  { type: 'output', text: '    Containers iniciados: app + banco', delay: 140 },
-  { type: 'success', text: '  ✔  Ambiente dockerizado no ar!', delay: 180 },
-  { type: 'blank', text: '', delay: 120 },
-
-  { type: 'command', text: 'npm run api', delay: 0, typewriter: true },
-  { type: 'output', text: '    JSON Server rodando com bd.json', delay: 140 },
-  {
-    type: 'output',
-    text: '    Express/Node.js prontos para rotas e middleware',
-    delay: 140,
-  },
-  { type: 'success', text: '  ✔  Mock backend online!', delay: 180 },
-  { type: 'blank', text: '', delay: 120 },
-
-  { type: 'info', text: ' Projetos em destaque:', delay: 200 },
-  {
-    type: 'info',
-    text: '  - Digital Bank API (Java, Spring Boot, JPA, Security, MySQL, Swagger)',
-    delay: 170,
-  },
-  {
-    type: 'info',
-    text: '  - Traveler Website (Angular 19, OAuth, RxJS, Angular Material, Tailwind)',
-    delay: 170,
-  },
-  {
-    type: 'info',
-    text: '  - Portfólio Pessoal (Angular, Tailwind, Node.js, Express, JSON Server)',
-    delay: 170,
-  },
-  { type: 'blank', text: '', delay: 120 },
-  {
-    type: 'command',
-    text: 'git status && git log -1 --oneline',
-    delay: 0,
-    typewriter: true,
-  },
-  {
-    type: 'output',
-    text: '    Versionamento com Git + publicação no GitHub',
-    delay: 140,
-  },
-  { type: 'blank', text: '', delay: 120 },
-
-  {
-    type: 'info',
-    text: ' Sempre aprendendo: arquitetura, testes, UI/UX e boas práticas',
-    delay: 200,
-  },
-  { type: 'info', text: '📩 Contato: wallacemaia2007@gmail.com', delay: 200 },
-  {
-    type: 'info',
-    text: '🔗 LinkedIn: linkedin.com/in/wallacemaia-dev',
-    delay: 200,
-  },
-  { type: 'info', text: '💻 GitHub: github.com/wallacemaia2007', delay: 200 },
-];
 @Component({
   selector: 'app-hero-section',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIconModule, ButtonComponent],
+  imports: [CommonModule, MatButtonModule, MatIconModule, LangTextPipe, ButtonComponent],
   templateUrl: './hero-section.component.html',
   styleUrl: './hero-section.component.scss',
 })
@@ -244,6 +51,7 @@ export class HeroSectionComponent implements OnInit, AfterViewInit, OnDestroy {
   private portfolioService = inject(PortfolioService);
   private ngZone = inject(NgZone);
   private platformId = inject(PLATFORM_ID);
+  protected translate = inject(TranslateService);
   private ctx?: gsap.Context;
 
   personalInfo: any = { name: '', role: '', description: '', avatar: '' };
@@ -252,6 +60,205 @@ export class HeroSectionComponent implements OnInit, AfterViewInit, OnDestroy {
   terminalIdle = false;
 
   private timeouts: ReturnType<typeof setTimeout>[] = [];
+
+  get terminalScript(): ScriptLine[] {
+    return [
+      {
+        type: 'command',
+        text: this.translate.translate('hero.terminalLine01'),
+        delay: 0,
+        typewriter: true,
+      },
+      {
+        type: 'info',
+        text: this.translate.translate('hero.terminalLine02'),
+        delay: 160,
+      },
+      { type: 'info', text: this.translate.translate('hero.terminalLine03'), delay: 120 },
+      { type: 'blank', text: '', delay: 120 },
+
+      { type: 'command', text: 'node -v && npm -v', delay: 0, typewriter: true },
+      { type: 'output', text: '    Node.js e NPM detectados ✔', delay: 140 },
+      { type: 'blank', text: '', delay: 120 },
+
+      { type: 'command', text: 'ng version', delay: 0, typewriter: true },
+      {
+        type: 'output',
+        text: this.translate.translate('hero.terminalLine06'),
+        delay: 160,
+      },
+      { type: 'output', text: this.translate.translate('hero.terminalLine07'), delay: 120 },
+      { type: 'blank', text: '', delay: 120 },
+
+      { type: 'command', text: 'npm install', delay: 0, typewriter: true },
+      {
+        type: 'output',
+        text: this.translate.translate('hero.terminalLine09'),
+        delay: 160,
+      },
+      {
+        type: 'output',
+        text: this.translate.translate('hero.terminalLine10'),
+        delay: 140,
+      },
+      { type: 'success', text: this.translate.translate('hero.terminalLine11'), delay: 180 },
+      { type: 'blank', text: '', delay: 120 },
+
+      { type: 'command', text: 'npm install gsap', delay: 0, typewriter: true },
+      {
+        type: 'output',
+        text: this.translate.translate('hero.terminalLine13'),
+        delay: 140,
+      },
+      { type: 'blank', text: '', delay: 120 },
+
+      { type: 'command', text: 'ng test', delay: 0, typewriter: true },
+      { type: 'output', text: this.translate.translate('hero.terminalLine15'), delay: 140 },
+      { type: 'success', text: this.translate.translate('hero.terminalLine16'), delay: 180 },
+      { type: 'blank', text: '', delay: 120 },
+
+      {
+        type: 'command',
+        text: 'ng build --configuration production',
+        delay: 0,
+        typewriter: true,
+      },
+      {
+        type: 'output',
+        text: this.translate.translate('hero.terminalLine19'),
+        delay: 150,
+      },
+      {
+        type: 'output',
+        text: this.translate.translate('hero.terminalLine20'),
+        delay: 140,
+      },
+      { type: 'success', text: this.translate.translate('hero.terminalLine21'), delay: 180 },
+      { type: 'blank', text: '', delay: 120 },
+
+      { type: 'command', text: 'mvn -v', delay: 0, typewriter: true },
+      { type: 'output', text: '    Maven detectado ✔', delay: 140 },
+      { type: 'blank', text: '', delay: 120 },
+
+      { type: 'command', text: 'mvn test', delay: 0, typewriter: true },
+      {
+        type: 'output',
+        text: this.translate.translate('hero.terminalLine24'),
+        delay: 160,
+      },
+      { type: 'success', text: '  ✔  Backend test suite OK', delay: 180 },
+      { type: 'blank', text: '', delay: 120 },
+
+      {
+        type: 'command',
+        text: 'java -jar spring-app.jar',
+        delay: 0,
+        typewriter: true,
+      },
+      { type: 'output', text: '    Spring Boot inicializado', delay: 150 },
+      {
+        type: 'output',
+        text: this.translate.translate('hero.terminalLine27'),
+        delay: 140,
+      },
+      {
+        type: 'output',
+        text: this.translate.translate('hero.terminalLine28'),
+        delay: 140,
+      },
+      {
+        type: 'output',
+        text: this.translate.translate('hero.terminalLine29'),
+        delay: 140,
+      },
+      { type: 'success', text: '  ✔  Backend operacional!', delay: 180 },
+      { type: 'blank', text: '', delay: 120 },
+
+      {
+        type: 'command',
+        text: 'swagger-ui: open http://localhost:8080/swagger-ui',
+        delay: 0,
+        typewriter: true,
+      },
+      {
+        type: 'output',
+        text: this.translate.translate('hero.terminalLine32'),
+        delay: 140,
+      },
+      { type: 'blank', text: '', delay: 120 },
+
+      {
+        type: 'command',
+        text: 'postman run digital-bank-api.collection.json',
+        delay: 0,
+        typewriter: true,
+      },
+      {
+        type: 'output',
+        text: this.translate.translate('hero.terminalLine34'),
+        delay: 140,
+      },
+      { type: 'success', text: '  ✔  Rotas REST validadas!', delay: 180 },
+      { type: 'blank', text: '', delay: 120 },
+      { type: 'command', text: 'docker compose up -d', delay: 0, typewriter: true },
+      { type: 'output', text: '    Containers iniciados: app + banco', delay: 140 },
+      { type: 'success', text: '  ✔  Ambiente dockerizado no ar!', delay: 180 },
+      { type: 'blank', text: '', delay: 120 },
+
+      { type: 'command', text: 'npm run api', delay: 0, typewriter: true },
+      { type: 'output', text: '    JSON Server rodando com bd.json', delay: 140 },
+      {
+        type: 'output',
+        text: '    Express/Node.js prontos para rotas e middleware',
+        delay: 140,
+      },
+      { type: 'success', text: '  ✔  Mock backend online!', delay: 180 },
+      { type: 'blank', text: '', delay: 120 },
+
+      { type: 'info', text: ' Projetos em destaque:', delay: 200 },
+      {
+        type: 'info',
+        text: '  - Digital Bank API (Java, Spring Boot, JPA, Security, MySQL, Swagger)',
+        delay: 170,
+      },
+      {
+        type: 'info',
+        text: '  - Traveler Website (Angular 19, OAuth, RxJS, Angular Material, Tailwind)',
+        delay: 170,
+      },
+      {
+        type: 'info',
+        text: '  - Portfólio Pessoal (Angular, Tailwind, Node.js, Express, JSON Server)',
+        delay: 170,
+      },
+      { type: 'blank', text: '', delay: 120 },
+      {
+        type: 'command',
+        text: 'git status && git log -1 --oneline',
+        delay: 0,
+        typewriter: true,
+      },
+      {
+        type: 'output',
+        text: this.translate.translate('hero.terminalLine41'),
+        delay: 140,
+      },
+      { type: 'blank', text: '', delay: 120 },
+
+      {
+        type: 'info',
+        text: this.translate.translate('hero.terminalLine43'),
+        delay: 200,
+      },
+      { type: 'info', text: this.translate.translate('hero.terminalLine44'), delay: 200 },
+      {
+        type: 'info',
+        text: '🔗 LinkedIn: linkedin.com/in/wallacemaia-dev',
+        delay: 200,
+      },
+      { type: 'info', text: '💻 GitHub: github.com/wallacemaia2007', delay: 200 },
+    ];
+  }
 
   ngOnInit(): void {
     this.portfolioService.getPersonalInfo().subscribe((info) => {
@@ -335,7 +342,7 @@ export class HeroSectionComponent implements OnInit, AfterViewInit, OnDestroy {
   private runScript(): void {
     let accumulated = 0;
 
-    TERMINAL_SCRIPT.forEach((scriptLine, index) => {
+    this.terminalScript.forEach((scriptLine, index) => {
       accumulated += scriptLine.delay;
       const startAt = accumulated;
 

@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslateService } from '../../../../core/services/translate.service';
 
 @Component({
   selector: 'app-file-upload',
@@ -11,6 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
   ],
 })
 export class FileUploadComponent {
+  protected translate = inject(TranslateService);
+
   fileUrl!: string | null;
 
   @Output() fileSelected = new EventEmitter<File>();

@@ -19,14 +19,13 @@
     <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20
                 rounded-full px-4 py-1.5 mb-8" appScrollReveal revealFrom="bottom" [revealDelay]="120">
       <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-      <span class="text-[10px] sm:text-xs font-bold tracking-widest uppercase text-white/80">Disponível para
-        projetos</span>
+      <span class="text-[10px] sm:text-xs font-bold tracking-widest uppercase text-white/80">{{ translate.translate('devCta.tag') }}</span>
     </div>
 
     <!-- Título -->
     <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tight"
       appScrollReveal revealFrom="bottom" [revealDelay]="180">
-      Pronto para trabalhar<br>
+      {{ translate.translate('devCta.title') }}<br>
       <span class="text-transparent bg-clip-text bg-gradient-to-r from-dev-light to-accent-light">
         juntos?
       </span>
@@ -35,8 +34,7 @@
     <!-- Subtítulo -->
     <p class="mt-6 text-sm sm:text-base md:text-lg text-white/60 max-w-xl mx-auto leading-relaxed" appScrollReveal
       revealFrom="bottom" [revealDelay]="260">
-      Transformo suas ideias em produtos digitais reais.<br class="hidden sm:block">
-      Vamos criar algo incrível.
+      {{ translate.translate('devCta.subtitle') }}
     </p>
 
     <!-- Botões -->
@@ -48,8 +46,8 @@
                rounded-2xl bg-white px-8 py-4 text-sm font-bold text-dev
                transition-all duration-300
                hover:bg-gray-100 hover:-translate-y-1 hover:shadow-2xl hover:shadow-white/20
-               active:scale-[0.97]" aria-label="Ver projetos">
-        Ver Projetos
+               active:scale-[0.97]" [attr.aria-label]="translate.translate('devCta.projectsBtn')">
+        {{ translate.translate('devCta.projectsBtn') }}
         <mat-icon class="transition-transform duration-300 group-hover:translate-x-1"
           style="font-size: 18px; width: 18px; height: 18px;">arrow_forward</mat-icon>
       </a>
@@ -59,9 +57,9 @@
                rounded-2xl bg-accent px-8 py-4 text-sm font-bold text-white
                transition-all duration-300
                hover:bg-accent-dark hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/30
-               active:scale-[0.97]" aria-label="Fale no WhatsApp">
+               active:scale-[0.97]" [attr.aria-label]="translate.translate('devCta.whatsappBtn')">
         <img src="assets/icons/whatsapp.svg" alt="WhatsApp" class="w-5 h-5">
-        Fale no WhatsApp
+        {{ translate.translate('devCta.whatsappBtn') }}
       </a>
 
     </div>

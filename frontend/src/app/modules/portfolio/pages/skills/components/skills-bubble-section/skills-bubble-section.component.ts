@@ -17,9 +17,11 @@ import {
   Skill,
   SkillCategoryType,
   SKILL_CATEGORY_NAMES,
+  SKILL_CATEGORY_NAMES_EN,
 } from '../../../../models/skill.model';
 import { SectionHeaderComponent } from '../../../../../shared/components/section-header/section-header.component';
 import { PortfolioService } from '../../../../services/portfolio.service';
+import { TranslateService } from '../../../../../../core/services/translate.service';
 
 interface BubbleState {
   skill: Skill;
@@ -81,6 +83,7 @@ export class SkillsBubbleSectionComponent
   private portfolioService = inject(PortfolioService);
   private platformId = inject(PLATFORM_ID);
   private ngZone = inject(NgZone);
+  protected translate = inject(TranslateService);
 
   @ViewChild('stageRef') stageRef!: ElementRef<HTMLDivElement>;
   @ViewChildren('bubbleEl') bubbleEls!: QueryList<ElementRef<HTMLDivElement>>;
@@ -204,16 +207,17 @@ export class SkillsBubbleSectionComponent
   }
 
   getCategoryLabel(type: SkillCategoryType): string {
-    return SKILL_CATEGORY_NAMES[type] ?? type;
+    const names = this.translate.isEn() ? SKILL_CATEGORY_NAMES_EN : SKILL_CATEGORY_NAMES;
+    return names[type] ?? type;
   }
 
   getLevelLabel(level: number): string {
     const labels: Record<number, string> = {
-      1: 'Iniciante',
-      2: 'Básico',
-      3: 'Intermediário',
-      4: 'Avançado',
-      5: 'Expert',
+      1: this.translate.translate('skills.levelBeginner'),
+      2: this.translate.translate('skills.levelBasic'),
+      3: this.translate.translate('skills.levelIntermediate'),
+      4: this.translate.translate('skills.levelAdvanced'),
+      5: this.translate.translate('skills.levelExpert'),
     };
     return labels[level] ?? '';
   }

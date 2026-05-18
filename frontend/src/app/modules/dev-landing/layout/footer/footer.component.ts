@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
 import { SocialLinksDevComponent } from '../../../shared/components/social-links-dev/social-links-dev.component';
+import { TranslateService } from '../../../../core/services/translate.service';
 
 @Component({
   selector: 'app-footer',
@@ -13,6 +14,7 @@ import { SocialLinksDevComponent } from '../../../shared/components/social-links
   styleUrl: './footer.component.scss',
 })
 export class FooterComponent {
+  readonly translate = inject(TranslateService);
   readonly personalInfo = {
     fullName: 'Wallace Maia',
     bio: 'Desenvolvedor Full Stack apaixonado por criar experiências web incríveis e soluções inovadoras.',
@@ -50,11 +52,11 @@ export class FooterComponent {
   ];
 
   readonly quickLinks = [
-    { label: 'Inicio', href: '#hero' },
-    { label: 'Serviços', href: '#works' },
-    { label: 'Projetos', href: '#projects' },
-    { label: 'Stack', href: '#stack' },
-    { label: 'Contato', href: '#contact' },
+    { label: 'home', href: '#hero' },
+    { label: 'services', href: '#works' },
+    { label: 'projects', href: '#projects' },
+    { label: 'stack', href: '#stack' },
+    { label: 'contact', href: '#contact' },
   ];
 
   readonly currentYear = new Date().getFullYear();

@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
 import { SocialLinksDevComponent } from '../../../shared/components/social-links-dev/social-links-dev.component';
+import { TranslateService } from '../../../../core/services/translate.service';
 import { environment } from '../../../../../environments/environment';
 
 @Component({
@@ -30,6 +31,7 @@ import { environment } from '../../../../../environments/environment';
 export class ContactComponent {
   private fb = inject(FormBuilder);
   private http = inject(HttpClient);
+  readonly translate = inject(TranslateService);
 
   isSubmitting = false;
   submitSuccess = false;
@@ -107,15 +109,13 @@ export class ContactComponent {
       next: () => {
         this.isSubmitting = false;
         this.submitSuccess = true;
-        this.submitMessage =
-          'Mensagem enviada com sucesso. Retornarei em breve.';
+        this.submitMessage = this.translate.translate('devContact.toastSuccess');
         this.contactForm.reset();
       },
       error: () => {
         this.isSubmitting = false;
         this.submitError = true;
-        this.submitMessage =
-          'Erro ao enviar mensagem. Tente novamente ou use o WhatsApp.';
+        this.submitMessage = this.translate.translate('devContact.toastError');
       },
     });
   }
@@ -129,11 +129,11 @@ export class ContactComponent {
     const field = this.contactForm.get(fieldName);
     if (!field || !field.errors) return '';
 
-    if (field.errors['required']) return 'Campo obrigatorio';
-    if (field.errors['email']) return 'Email invalido';
+    if (field.errors['required']) return this.translate.translate('devContact.validationRequired');
+    if (field.errors['email']) return this.translate.translate('devContact.validationEmail');
     if (field.errors['minlength']) {
       const minLength = field.errors['minlength'].requiredLength;
-      return `Minimo de ${minLength} caracteres`;
+      return this.translate.translate('devContact.validationMinLength').replace('{min}', String(minLength));
     }
     return '';
   }

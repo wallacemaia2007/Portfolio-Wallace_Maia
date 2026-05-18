@@ -7,15 +7,11 @@
 
     <!-- ── Header ─────────────────────────────────────────────────────── -->
     <header class="projects-header">
-      <span class="header-eyebrow">Portfólio</span>
+      <span class="header-eyebrow">{{ translate.translate('devProjects.title') }}</span>
 
-      <h2 class="header-title">Alguns de meus serviços</h2>
+      <h2 class="header-title">{{ translate.translate('devProjects.subtitle01') }}</h2>
 
-      <p class="header-subtitle">
-        Desde websites institucionais até plataformas de e-commerce, cada projeto é uma oportunidade de criar algo
-        único e impactante. Abaixo, você pode explorar uma seleção dos meus trabalhos mais recentes e significativos,
-        cada um refletindo meu compromisso com a excelência, inovação e satisfação do cliente.
-      </p>
+      <p class="header-subtitle">{{ translate.translate('devProjects.subtitle02') }} {{ translate.translate('devProjects.subtitle03') }}</p>
 
       <div class="projects-selector">
         @for (project of projects; track project.id; let i = $index) {
@@ -69,7 +65,7 @@
         <div class="sidebar-card">
 
           <div class="pages-indicator">
-            <span class="indicator-label">Páginas do projeto</span>
+            <span class="indicator-label">{{ translate.translate('devProjects.pages') }}</span>
             <div class="indicator-dots">
               @for (index of activePageIndicators; track index) {
               <span class="indicator-dot"></span>
@@ -89,7 +85,7 @@
           </div>
 
           <button class="sidebar-cta" type="button" (click)="moreInfo(activeProject.title)">
-            Saiba Mais! →
+            {{ translate.translate('devProjects.cta') }}
           </button>
 
         </div>

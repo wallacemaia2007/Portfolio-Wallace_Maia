@@ -7,7 +7,7 @@
 
         <p class="text-primary font-semibold text-xl flex items-center gap-2" data-hero-kicker>
           <mat-icon data-hero-wave class="inline-block">waving_hand</mat-icon>
-          <span>Olá, eu sou</span>
+          <span>{{ translate.translate('hero.greeting') }}</span>
         </p>
 
         <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold text-custom-black dark:text-white leading-none"
@@ -16,7 +16,7 @@
         </h1>
 
         <h2 class="text-3xl md:text-4xl font-semibold text-primary" data-hero-role>
-          {{ personalInfo.role }}
+          {{ personalInfo.role | langText:personalInfo.roleEn }}
         </h2>
 
         <div class="flex flex-wrap gap-2" data-hero-stack>
@@ -42,14 +42,14 @@
         </div>
 
         <p class="text-lg text-custom-black-light dark:text-gray-400 max-w-xl leading-relaxed" data-hero-desc>
-          {{ personalInfo.bio || personalInfo.description }}
+          {{ (personalInfo.bio || personalInfo.description) | langText:(personalInfo.bioEn || personalInfo.descriptionEn) }}
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4" data-hero-actions>
           <app-button
-            [buttonData]="{ label: 'Ver Projetos', icon: 'work', link: '/projects', color: 'primary' }"></app-button>
+            [buttonData]="{ label: translate.translate('hero.viewProjects'), icon: 'work', link: '/projects', color: 'primary' }"></app-button>
           <app-button
-            [buttonData]="{ label: 'Contato', icon: 'email', link: '/contact', color: 'custom-black-light' }"></app-button>
+            [buttonData]="{ label: translate.translate('hero.contact'), icon: 'email', link: '/contact', color: 'custom-black-light' }"></app-button>
         </div>
 
         <div class="flex items-center gap-3" data-hero-status>
@@ -58,7 +58,7 @@
             <span class="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
           </span>
           <span class="text-sm text-custom-black-lighter dark:text-gray-400">
-            Disponível para novos projetos
+            {{ translate.translate('hero.available') }}
           </span>
         </div>
 
@@ -79,12 +79,12 @@
 
             <span class="ml-2 flex-1 text-center text-xs font-mono
                          text-primary dark:text-gray-200">
-              ~/portfolio — bash
+              {{ translate.translate('hero.terminal') }}
             </span>
 
             <div class="flex items-center gap-1.5">
               <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
-              <span class="text-xs font-mono text-primary dark:text-gray-200">running</span>
+              <span class="text-xs font-mono text-primary dark:text-gray-200">{{ translate.translate('hero.running') }}</span>
             </div>
           </div>
 

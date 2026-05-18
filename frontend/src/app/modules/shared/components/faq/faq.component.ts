@@ -5,17 +5,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
 import { FaqService } from '../../../portfolio/services/faq.service';
 import { Faq } from '../../../portfolio/models/faq.model';
+import { TranslateService } from '../../../../core/services/translate.service';
+import { LangTextPipe } from '../../../shared/pipes/lang-text.pipe';
 import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-faq',
   standalone: true,
-  imports: [CommonModule, RouterLink, MatIconModule, ScrollRevealDirective],
+  imports: [CommonModule, RouterLink, MatIconModule, LangTextPipe, ScrollRevealDirective],
   templateUrl: './faq.component.html',
   styleUrl: './faq.component.scss',
 })
 export class FaqComponent implements OnInit {
   private faqService = inject(FaqService);
+  protected translate = inject(TranslateService);
 
   @Input() title = 'Perguntas Frequentes';
   @Input() subtitle?: string;
@@ -56,6 +59,10 @@ export class FaqComponent implements OnInit {
 
   isOpen(faqId: string): boolean {
     return this.openFaqIds.has(faqId);
+  }
+
+  getFaqAnswer(faq: Faq): string {
+    return this.translate.text(faq.answer, faq.answerEn);
   }
 
   openAll(): void {

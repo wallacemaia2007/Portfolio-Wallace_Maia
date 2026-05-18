@@ -24,12 +24,16 @@ import {
   ProjectCategory,
   PROJECT_CATEGORY_NAMES,
   PROJECT_STATUS_NAMES,
+  PROJECT_CATEGORY_NAMES_EN,
+  PROJECT_STATUS_NAMES_EN,
 } from '../../../../models/project.model';
+import { LangTextPipe } from '../../../../../shared/pipes/lang-text.pipe';
+import { TranslateService } from '../../../../../../core/services/translate.service';
 
 @Component({
   selector: 'app-project-modal',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule, RouterLink],
+  imports: [CommonModule, MatIconModule, MatButtonModule, RouterLink, LangTextPipe],
   templateUrl: './project-modal.component.html',
   styleUrl: './project-modal.component.scss',
 })
@@ -38,6 +42,7 @@ export class ProjectModalComponent
 {
   private router = inject(Router);
   private platformId = inject(PLATFORM_ID);
+  protected translate = inject(TranslateService);
 
   @Input() project: Project | null = null;
   @Input() variant: 'primary' | 'dev' = 'primary';
@@ -279,7 +284,7 @@ export class ProjectModalComponent
   }
 
   getCategoryLabel(category: ProjectCategory): string {
-    return PROJECT_CATEGORY_NAMES[category];
+    return this.translate.isEn() ? PROJECT_CATEGORY_NAMES_EN[category] : PROJECT_CATEGORY_NAMES[category];
   }
 
   getAccentTextClass(): string {
@@ -355,10 +360,10 @@ export class ProjectModalComponent
   }
 
   getStatusLabel(status: string): string {
-    return (
-      PROJECT_STATUS_NAMES[status as keyof typeof PROJECT_STATUS_NAMES] ||
-      status
-    );
+    const key = status as keyof typeof PROJECT_STATUS_NAMES;
+    return this.translate.isEn()
+      ? (PROJECT_STATUS_NAMES_EN[key] || status)
+      : (PROJECT_STATUS_NAMES[key] || status);
   }
 
   formatDate(dateString: string): string {

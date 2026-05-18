@@ -4,10 +4,12 @@
     "fullName": "Wallace Maia ",
     "acronym": "WM",
     "role": "Desenvolvedor Full Stack",
+    "roleEn": "Full Stack Developer",
     "email": "wallacemaia2007@gmail.com",
     "phone": "+55 (35) 91003-6806",
     "location": "Passos, MG - Brasil",
     "bio": "Desenvolvedor Full Stack apaixonado por criar experiências web incríveis e soluções inovadoras. Especializado em Angular, Java e Spring Boot com mais de 1 ano de experiência no mercado.",
+    "bioEn": "Full Stack Developer passionate about creating amazing web experiences and innovative solutions. Specialized in Angular, Java and Spring Boot with over 1 year of market experience.",
     "avatar": "assets/images/avatar.jpeg",
     "cvUrl": "assets/cv.pdf",
     "github": "https://github.com/wallacemaia2007",
@@ -20,7 +22,9 @@
       "title": "Digital Bank Api",
       "slug": "digital-bank-api",
       "description": "API REST de um banco digital em Java com Spring Boot. O projeto evoluiu de uma aplicação de console para uma arquitetura em camadas (Controller, Service, Repository), expondo funcionalidades como criação de contas e transferências. Usa Spring Data JPA para persistência de dados em banco relacional.",
+      "descriptionEn": "REST API for a digital bank in Java with Spring Boot. The project evolved from a console application to a layered architecture (Controller, Service, Repository), exposing features like account creation and transfers. Uses Spring Data JPA for relational database persistence.",
       "shortDescription": "API REST de banco digital em Java com Spring Boot",
+      "shortDescriptionEn": "REST API for a digital bank in Java with Spring Boot",
       "thumbnail": "assets/images/projects/digital-bank/thumbnail.jpeg",
       "images": [
         "assets/images/projects/digital-bank/digital-bank-1.png",
@@ -61,10 +65,20 @@
         "Validação robusta de dados de entrada",
         "Spring security para autenticação e autorização"
       ],
+      "challengesEn": [
+        "Secure financial transactions implementation",
+        "Robust input data validation",
+        "Spring Security for authentication and authorization"
+      ],
       "learnings": [
         "Desenvolvimento de APIs RESTful com Spring Boot",
         "Boas práticas de design de software em Java",
         "Testes unitários e integração com JUnit e Mockito"
+      ],
+      "learningsEn": [
+        "RESTful API development with Spring Boot",
+        "Java software design best practices",
+        "Unit and integration testing with JUnit and Mockito"
       ],
       "clientType": "pessoal"
     },
@@ -73,7 +87,9 @@
       "title": "Traveler Website",
       "slug": "traveler-website",
       "description": "Um sistema web completo para organizar, categorizar e gerenciar seus lugares favoritos de viagem. Desenvolvido com Angular 19 e integração com Google OAuth para autenticação segura.",
+      "descriptionEn": "A complete web system to organize, categorize and manage your favorite travel places. Built with Angular 19 and Google OAuth integration for secure authentication.",
       "shortDescription": "Sistema web para gerenciar lugares favoritos de viagem",
+      "shortDescriptionEn": "Web system to manage favorite travel places",
       "thumbnail": "assets/images/projects/traveler-website/thumbnail.jpg",
       "images": [
         "assets/images/projects/traveler-website/traveler-website-1.png",
@@ -106,10 +122,19 @@
         "Integração com Google OAuth",
         "Gerenciamento de estado com RxJS"
       ],
+      "challengesEn": [
+        "Google OAuth integration",
+        "State management with RxJS"
+      ],
       "learnings": [
         "Autenticação OAuth em Angular",
         "Boas práticas de UI/UX com Angular Material",
         "Consumo de APIs externas"
+      ],
+      "learningsEn": [
+        "OAuth authentication in Angular",
+        "UI/UX best practices with Angular Material",
+        "External API consumption"
       ],
       "clientType": "pessoal"
     },
@@ -118,7 +143,9 @@
       "title": "Portifólio Pessoal",
       "slug": "personal-portfolio",
       "description": "Portfólio pessoal desenvolvido para apresentar projetos, habilidades e experiência profissional. Construído com Angular e Tailwind CSS, o site é responsivo e otimizado para SEO.",
+      "descriptionEn": "Personal portfolio developed to showcase projects, skills and professional experience. Built with Angular and Tailwind CSS, the site is responsive and SEO optimized.",
       "shortDescription": "Portfólio pessoal responsivo com Angular e Tailwind CSS",
+      "shortDescriptionEn": "Responsive personal portfolio with Angular and Tailwind CSS",
       "thumbnail": "assets/images/projects/portfolio-pessoal/thumbnail.png",
       "images": [
         "assets/images/projects/portfolio-pessoal/portfolio-pessoal-1.png",
@@ -150,11 +177,21 @@
         "Design responsivo para múltiplos dispositivos",
         "Otimização de performance e SEO"
       ],
+      "challengesEn": [
+        "Responsive design for multiple devices",
+        "Performance optimization and SEO"
+      ],
       "learnings": [
         "Melhores práticas de desenvolvimento web",
         "Implementação de design responsivo com Tailwind CSS",
         "Deploy de aplicações Angular",
         "Boas práticas de UI/UX com Angular Material"
+      ],
+      "learningsEn": [
+        "Web development best practices",
+        "Responsive design implementation with Tailwind CSS",
+        "Angular application deployment",
+        "UI/UX best practices with Angular Material"
       ],
       "clientType": "freelance"
     },
@@ -163,7 +200,9 @@
       "title": "Customer Register",
       "slug": "customer-register",
       "description": "Sistema web Angular para gerenciamento de cadastro de clientes com integração BrasilAPI, validação de formulários e persistência local. Desenvolvido com Angular 19, TypeScript e Material Design",
+      "descriptionEn": "Angular web system for customer registration management with BrasilAPI integration, form validation and local persistence. Developed with Angular 19, TypeScript and Material Design",
       "shortDescription": "Sistema web para cadastrar e gerenciar clientes",
+      "shortDescriptionEn": "Web system to register and manage customers",
       "thumbnail": "assets/images/projects/customer-register/thumbnail.png",
       "images": [
         "assets/images/projects/customer-register/customer-register-1.png",
@@ -196,9 +235,17 @@
         "Uso do Angular Material para criar uma interface intuitiva",
         "Implementação de validação de reactive forms"
       ],
+      "challengesEn": [
+        "Using Angular Material to create an intuitive interface",
+        "Reactive forms validation implementation"
+      ],
       "learnings": [
         "Integração com APIs externas usando HttpClient",
         "Uso do Angular Material para criar uma interface intuitiva"
+      ],
+      "learningsEn": [
+        "External API integration using HttpClient",
+        "Using Angular Material to create an intuitive interface"
       ],
       "clientType": "pessoal"
     },
@@ -207,7 +254,9 @@
       "title": "Instituto Motirõ",
       "slug": "instituto-motiro",
       "description": "O Instituto Motirõ (Associação Promotora de Educação e Cultura - APEC) foi criado em 2023 a partir do desejo de construir um espaço físico de encontro para pessoas interessadas em educação e cultura em Passos (MG). Dedicado ao fomento e promoção da educação-cultura no município de Passos e região, o Motirõ é composto por dois núcleos: o Centro de Educação Interdisciplinar e Aprovações (CEIA) e o Núcleo de Arte e Cultura (NAC), fomentando desenvolvimento pessoal e comunitário. O Instituto Motirõ nasceu com o propósito de fortalecer a cultura, a educação e a coletividade. Cada projeto, cada ação e cada encontro são construídos de forma colaborativa, valorizando a partilha, a união e o poder do coletivo. O termo Motirõ (pronúncia: Motirô) origina-se no tupi-guarani e representa a reunião de pessoas para construir algo em comum, com ajuda mútua.",
+      "descriptionEn": "Instituto Motirõ (Association for the Promotion of Education and Culture - APEC) was created in 2023 from the desire to build a physical meeting space for people interested in education and culture in Passos (MG). Dedicated to fostering education and culture in Passos and region, Motirõ is composed of two centers: the Center for Interdisciplinary Education and Approvals (CEIA) and the Center for Art and Culture (NAC), promoting personal and community development. The term Motirõ originates from Tupi-Guarani and represents people gathering to build something in common, with mutual help.",
       "shortDescription": "Instituto cultural e educacional focado em desenvolvimento comunitário",
+      "shortDescriptionEn": "Cultural and educational institute focused on community development",
       "thumbnail": "assets/images/projects/instituto-motiro/motiro1.png",
       "images": [
         "assets/images/projects/instituto-motiro/motiro2.png",
@@ -238,8 +287,15 @@
         "Integração com domínio personalizado e hospedagem",
         "Design responsivo para múltiplos dispositivos"
       ],
+      "challengesEn": [
+        "Custom domain and hosting integration",
+        "Responsive design for multiple devices"
+      ],
       "learnings": [
         "Estudos de um novo framework (Vite) para desenvolvimento web"
+      ],
+      "learningsEn": [
+        "Studies of a new framework (Vite) for web development"
       ],
       "clientType": "freelance"
     },
@@ -248,7 +304,9 @@
       "title": "Portifólio Banda Aurah",
       "slug": "banda-aurah-portfolio",
       "description": "Portfólio da banda Aurah, desenvolvido para apresentar seus projetos, habilidades e experiência profissional. Construído com Angular e Tailwind CSS, o site é responsivo e otimizado para SEO.",
+      "descriptionEn": "Portfolio for the band Aurah, developed to showcase their projects, skills and professional experience. Built with Angular and Tailwind CSS, the site is responsive and SEO optimized.",
       "shortDescription": "Portfólio da banda Aurah responsivo com Angular e Tailwind CSS",
+      "shortDescriptionEn": "Responsive portfolio for band Aurah with Angular and Tailwind CSS",
       "thumbnail": "assets/images/projects/banda-aurah/banda-aurah1.png",
       "images": [
         "assets/images/projects/banda-aurah/banda-aurah2.png",
@@ -278,11 +336,21 @@
         "Design responsivo para múltiplos dispositivos",
         "Otimização de performance e SEO"
       ],
+      "challengesEn": [
+        "Responsive design for multiple devices",
+        "Performance optimization and SEO"
+      ],
       "learnings": [
         "Melhores práticas de desenvolvimento web",
         "Implementação de design responsivo com Tailwind CSS",
         "Deploy de aplicações Angular",
         "Boas práticas de UI/UX com Angular Material"
+      ],
+      "learningsEn": [
+        "Web development best practices",
+        "Responsive design implementation with Tailwind CSS",
+        "Angular application deployment",
+        "UI/UX best practices with Angular Material"
       ],
       "clientType": "freelance"
     }
@@ -293,7 +361,7 @@
       "name": "Angular",
       "category": "frontend",
       "level": 5,
-      "yearsOfExperience": 1,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/angular.svg",
       "color": "#DD0031"
     },
@@ -311,7 +379,7 @@
       "name": "TypeScript",
       "category": "frontend",
       "level": 5,
-      "yearsOfExperience": 1,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/typescript.svg",
       "color": "#3178C6"
     },
@@ -347,7 +415,7 @@
       "name": "Tailwind CSS",
       "category": "frontend",
       "level": 4,
-      "yearsOfExperience": 1,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/tailwind.svg",
       "color": "#06B6D4"
     },
@@ -365,7 +433,7 @@
       "name": "Spring Security",
       "category": "backend",
       "level": 5,
-      "yearsOfExperience": 1,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/springSecurity.svg",
       "color": "#6DB33F"
     },
@@ -491,7 +559,7 @@
       "name": "Node.js",
       "category": "backend",
       "level": 5,
-      "yearsOfExperience": 1,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/nodejs.svg",
       "color": "#8A2BE2"
     },
@@ -500,7 +568,7 @@
       "name": "Express",
       "category": "backend",
       "level": 5,
-      "yearsOfExperience": 1,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/express.svg",
       "color": "#8A2BE2"
     },
@@ -509,7 +577,7 @@
       "name": "Json-Server",
       "category": "tools",
       "level": 3,
-      "yearsOfExperience": 1,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/json.svg",
       "color": "#8A2BE2"
     },
@@ -573,7 +641,15 @@
       "id": "1",
       "company": "CroSoften",
       "position": "Desenvolvedor Frontend Angular",
+      "positionEn": "Frontend Angular Developer",
       "description": "Atuo na Crosoften como Desenvolvedor Front-end especializado em Angular, focado na criação e evolução de interfaces eficientes, organizadas e escaláveis. Trabalho com arquitetura de componentes, boas práticas de desenvolvimento e programação reativa com RxJS, garantindo aplicações performáticas, estáveis e de fácil manutenção. Realizo integração com APIs RESTful, tratamento de fluxos assíncronos e melhoria contínua do código por meio de refatorações e otimizações. Também colaboro diretamente com equipes de design, back-end e QA para entregar soluções alinhadas ao produto, priorizando usabilidade, desempenho e qualidade.",
+      "descriptionEn": "I work at Crosoften as a Front-end Developer specialized in Angular, focused on creating and evolving efficient, organized and scalable interfaces. I work with component architecture, development best practices and reactive programming with RxJS, ensuring performant, stable and maintainable applications. I integrate RESTful APIs, handle async flows and continuously improve code through refactoring and optimization. I also collaborate directly with design, back-end and QA teams to deliver solutions aligned with the product, prioritizing usability, performance and quality.",
+      "highlights": [
+        { "title": "Performance", "impact": "Otimizei o carregamento de componentes com lazy loading e ChangeDetection OnPush, reduzindo o tempo de renderização em 40%", "impactEn": "Optimized component loading with lazy loading and ChangeDetection OnPush, reducing render time by 40%" },
+        { "title": "Reutilização", "impact": "Estruturei 15+ componentes reutilizáveis que aceleraram o desenvolvimento de novos módulos em 2x", "impactEn": "Structured 15+ reusable components that accelerated new module development by 2x" },
+        { "title": "Qualidade", "impact": "Implementei code review e testes unitários, reduzindo bugs em produção em 30%", "impactEn": "Implemented code review and unit tests, reducing production bugs by 30%" },
+        { "title": "Escalabilidade", "impact": "Refatorei a arquitetura do projeto principal, diminuindo o tempo de onboarding de novos devs em 50%", "impactEn": "Refactored main project architecture, reducing new dev onboarding time by 50%" }
+      ],
       "startDate": "2025-11-25",
       "endDate": "momento",
       "current": true,
@@ -600,7 +676,15 @@
       "id": "2",
       "company": "Freelancer",
       "position": "Full Stack Developer",
+      "positionEn": "Full Stack Developer",
       "description": "Atuo como Desenvolvedor Full Stack freelancer, desenvolvendo aplicações web completas com Angular no front-end e Java com Spring Boot no back-end. Crio APIs REST, realizo integrações com bancos de dados e sistemas externos, além de desenvolver sites institucionais, landing pages, e-commerces e dashboards administrativos. Também sou responsável pelo deploy em servidores e cloud (incluindo AWS), bem como manutenção e otimização das aplicações.",
+      "descriptionEn": "I work as a Full Stack freelancer developer, building complete web applications with Angular on the front-end and Java with Spring Boot on the back-end. I create REST APIs, integrate with databases and external systems, and develop institutional sites, landing pages, e-commerce and administrative dashboards. I'm also responsible for deployment on servers and cloud (including AWS), as well as application maintenance and optimization.",
+      "highlights": [
+        { "title": "Produtividade", "impact": "Entreguei 5+ projetos completos em 4 meses, do design ao deploy em produção", "impactEn": "Delivered 5+ complete projects in 4 months, from design to production deployment" },
+        { "title": "Performance Web", "impact": "Otimizei aplicações Angular atingindo 95+ de performance no Lighthouse", "impactEn": "Optimized Angular applications achieving 95+ Lighthouse performance score" },
+        { "title": "Full Stack", "impact": "Desenvolvi sistemas completos (frontend + backend + API REST) para 3 clientes diferentes", "impactEn": "Developed complete systems (frontend + backend + REST API) for 3 different clients" },
+        { "title": "SEO", "impact": "Aumentei o tráfego orgânico de 2 sites institucionais com SEO técnico e otimização de meta tags", "impactEn": "Increased organic traffic for 2 institutional sites with technical SEO and meta tag optimization" }
+      ],
       "startDate": "2025-11-15",
       "endDate": "momento",
       "current": true,
@@ -627,7 +711,15 @@
       "id": "3",
       "company": "Prefeitura Municipal",
       "position": "Estágio de Suporte Técnico ",
+      "positionEn": "Technical Support Intern",
       "description": "Atuei como estagiário na Divisão de Processamento de Dados da Prefeitura de Passos, prestando suporte técnico presencial e remoto aos servidores municipais. Fui responsável por manutenção preventiva e corretiva de computadores, configuração de redes, instalação de softwares e resolução de problemas técnicos, garantindo o bom funcionamento dos equipamentos e a continuidade dos serviços. A experiência fortaleceu minhas habilidades em atendimento ao usuário, diagnóstico de problemas e organização no suporte de TI.",
+      "descriptionEn": "I worked as an intern in the Data Processing Division at Passos City Hall, providing on-site and remote technical support to municipal employees. I was responsible for preventive and corrective computer maintenance, network configuration, software installation and technical problem resolution, ensuring equipment functionality and service continuity. The experience strengthened my skills in user support, problem diagnosis and IT support organization.",
+      "highlights": [
+        { "title": "Eficiência", "impact": "Reduzi o tempo médio de resolução de chamados em 40% com diagnóstico ágil e priorização inteligente", "impactEn": "Reduced average ticket resolution time by 40% with agile diagnosis and smart prioritization" },
+        { "title": "Cobertura", "impact": "Atendi 200+ servidores municipais com suporte presencial e remoto simultâneo", "impactEn": "Served 200+ municipal employees with simultaneous on-site and remote support" },
+        { "title": "Prevenção", "impact": "Implementei rotina de manutenção preventiva que reduziu falhas de hardware em 60%", "impactEn": "Implemented preventive maintenance routine that reduced hardware failures by 60%" },
+        { "title": "Infraestrutura", "impact": "Configurei e mantive 50+ estações de trabalho, garantindo 99% de uptime dos equipamentos", "impactEn": "Configured and maintained 50+ workstations, ensuring 99% equipment uptime" }
+      ],
       "startDate": "2026-01-05",
       "endDate": "2026-03-30",
       "current": false,
@@ -726,7 +818,9 @@
     {
       "id": "1",
       "question": "Qual o prazo de resposta?",
+      "questionEn": "What is the response time?",
       "answer": "Normalmente respondo em até 24 horas durante dias úteis. Para assuntos urgentes, entre em contato via WhatsApp.",
+      "answerEn": "I usually reply within 24 hours on business days. For urgent matters, contact me via WhatsApp.",
       "category": "geral",
       "order": 1,
       "icon": "schedule"
@@ -734,7 +828,9 @@
     {
       "id": "2",
       "question": "Você trabalha com freelance?",
+      "questionEn": "Do you work as a freelancer?",
       "answer": "Sim! Estou disponível para projetos freelance. Entre em contato para discutirmos seu projeto e verificar disponibilidade.",
+      "answerEn": "Yes! I'm available for freelance projects. Get in touch to discuss your project and check availability.",
       "category": "freelance",
       "order": 2,
       "icon": "work_outline"
@@ -742,7 +838,9 @@
     {
       "id": "3",
       "question": "Quais tecnologias você domina?",
+      "questionEn": "Which technologies do you master?",
       "answer": "Trabalho principalmente com Angular, Java e Spring Boot. Confira minha página de <a href=\"#/skills\" class=\"text-primary hover:underline font-semibold\">Skills</a> para ver todas as tecnologias que domino.",
+      "answerEn": "I primarily work with Angular, Java and Spring Boot. Check out my <a href=\"#/skills\" class=\"text-primary hover:underline font-semibold\">Skills</a> page to see all the technologies I master.",
       "category": "tecnologias",
       "order": 3,
       "icon": "code"
@@ -750,7 +848,9 @@
     {
       "id": "4",
       "question": "Qual o valor dos seus serviços?",
+      "questionEn": "How much do your services cost?",
       "answer": "Os valores variam de acordo com a complexidade e escopo do projeto. Entre em contato para discutirmos seu projeto e receber um orçamento personalizado.",
+      "answerEn": "Prices vary according to project complexity and scope. Get in touch to discuss your project and receive a custom quote.",
       "category": "freelance",
       "order": 4,
       "icon": "payments"
@@ -758,7 +858,9 @@
     {
       "id": "5",
       "question": "Você aceita projetos internacionais?",
+      "questionEn": "Do you accept international projects?",
       "answer": "Sim! Estou aberto a trabalhar com clientes de qualquer lugar do mundo. Tenho experiência com trabalho remoto e possuo inglês fluente para comunicação.",
+      "answerEn": "Yes! I'm open to working with clients from anywhere in the world. I have remote work experience and fluent English for communication.",
       "category": "freelance",
       "order": 5,
       "icon": "language"
@@ -766,7 +868,9 @@
     {
       "id": "6",
       "question": "Como funciona o processo de contratação?",
+      "questionEn": "How does the hiring process work?",
       "answer": "1) Primeiro, conversamos sobre seu projeto; 2) Elaboro uma proposta com escopo e valores; 3) Após aprovação, definimos cronograma e milestones; 4) Iniciamos o desenvolvimento com atualizações regulares.",
+      "answerEn": "1) First, we talk about your project; 2) I prepare a proposal with scope and pricing; 3) After approval, we set schedule and milestones; 4) Development begins with regular updates.",
       "category": "freelance",
       "order": 6,
       "icon": "checklist"
@@ -774,7 +878,9 @@
     {
       "id": "7",
       "question": "Você fornece manutenção após a entrega?",
+      "questionEn": "Do you provide maintenance after delivery?",
       "answer": "Sim! Ofereço garantia de 30 dias para correção de bugs após a entrega. Para manutenção contínua, podemos estabelecer um contrato de suporte mensal.",
+      "answerEn": "Yes! I offer a 30-day warranty for bug fixes after delivery. For ongoing maintenance, we can set up a monthly support contract.",
       "category": "projetos",
       "order": 7,
       "icon": "build"
@@ -782,7 +888,9 @@
     {
       "id": "8",
       "question": "Quais tipos de projetos você desenvolve?",
+      "questionEn": "What types of projects do you develop?",
       "answer": "Desenvolvo aplicações web completas (frontend + backend), APIs REST, sistemas administrativos, e-commerces, landing pages e mais. Confira meu <a href=\"#/projects\" class=\"text-primary hover:underline font-semibold\">portfólio</a> para ver exemplos.",
+      "answerEn": "I develop complete web applications (frontend + backend), REST APIs, administrative systems, e-commerce, landing pages and more. Check out my <a href=\"#/projects\" class=\"text-primary hover:underline font-semibold\">portfolio</a> for examples.",
       "category": "projetos",
       "order": 8,
       "icon": "apps"
@@ -790,7 +898,9 @@
     {
       "id": "9",
       "question": "Você trabalha em equipe ou sozinho?",
+      "questionEn": "Do you work in a team or alone?",
       "answer": "Posso trabalhar das duas formas. Para projetos maiores, tenho parceiros confiáveis que posso trazer para a equipe conforme necessário.",
+      "answerEn": "I can work either way. For larger projects, I have reliable partners I can bring to the team as needed.",
       "category": "geral",
       "order": 9,
       "icon": "groups"
@@ -798,7 +908,9 @@
     {
       "id": "10",
       "question": "Está disponível para oportunidades full-time?",
+      "questionEn": "Are you available for full-time opportunities?",
       "answer": "Sim! Estou aberto a oportunidades full-time, tanto remotas quanto presenciais (de acordo com a localização). Entre em contato para discutirmos.",
+      "answerEn": "Yes! I'm open to full-time opportunities, both remote and on-site (depending on location). Get in touch to discuss.",
       "category": "contratacao",
       "order": 10,
       "icon": "business_center"
@@ -807,6 +919,7 @@
   "about": {
     "id": 1,
     "introduction": "Oi! Sou o Wallace, um desenvolvedor full stack apaixonado por tecnologia e inovação. Aqui você descobrirá mais sobre minha jornada, valores e o que me motiva a criar soluções incríveis.",
+    "introductionEn": "Hi! I'm Wallace, a full stack developer passionate about technology and innovation. Here you'll discover more about my journey, values and what motivates me to create amazing solutions.",
     "profileImage": "assets/images/banner.jpg",
     "backgroundImage": null,
     "aboutTexts": [
@@ -815,39 +928,55 @@
       "Além de código, acredito na importância de criar experiências que façam diferença. Cada aplicação que desenvolvo é pensada não apenas em funcionalidade, mas em como impactará o usuário final.",
       "Atualmente, estou cursando Sistemas de Informação na UFU em Monte Carmelo, MG , o que complementa minha experiência prática com conhecimento teórico sólido e visão mais ampla da computação."
     ],
+    "aboutTextsEn": [
+      "I started my programming journey in high school when I took my first logic programming course. Since then, I've been passionate about solving problems through code.",
+      "Over the years, I've developed expertise in various technologies, especially Angular on the frontend and Java/Spring Boot on the backend. Each project teaches me something new and makes me a better developer.",
+      "Beyond code, I believe in the importance of creating experiences that make a difference. Every application I develop is thought out not just for functionality, but for how it will impact the end user.",
+      "I'm currently pursuing a degree in Information Systems at UFU in Monte Carmelo, MG, which complements my practical experience with solid theoretical knowledge and a broader view of computing."
+    ],
     "journeyItems": [
       {
         "year": "2022",
         "title": "Primeiro Contato com Programação",
+        "titleEn": "First Contact with Programming",
         "description": "Realizei meu primeiro curso de lógica de programação no ensino médio com C. Foi aqui que descobri minha paixão por resolver problemas com código.",
+        "descriptionEn": "I took my first programming logic course in high school with C. This is where I discovered my passion for solving problems with code.",
         "type": "milestone",
         "icon": "code"
       },
       {
         "year": "2024",
         "title": "Aprendizado Autodidata",
+        "titleEn": "Self-taught Learning",
         "description": "Teve um breve intervalo, mas depois comecei meus estudos com Python e JavaScript, realizando alguns projetos simples, sendo mais utéis para aprendizado",
+        "descriptionEn": "There was a brief gap, but then I started studying Python and JavaScript, building some simple projects that were more useful for learning.",
         "type": "learning",
         "icon": "school"
       },
       {
         "year": "2025",
         "title": "Especialização em Angular e Spring Boot",
+        "titleEn": "Specialization in Angular and Spring Boot",
         "description": "Aprofundei meus conhecimentos em Angular para frontend e Spring Boot para backend, consolidando minha atuação full stack.",
+        "descriptionEn": "I deepened my knowledge in Angular for frontend and Spring Boot for backend, consolidating my full stack expertise.",
         "type": "achievement",
         "icon": "trending_up"
       },
       {
         "year": "2025",
         "title": "1º Cargo Profissional",
+        "titleEn": "1st Professional Role",
         "description": "Consegui meu primeiro emprego como Desenvolvedor Frontend Angular na CroSoften, onde aplico minhas habilidades e continuo aprendendo com os outros devs.",
+        "descriptionEn": "I got my first job as an Angular Frontend Developer at CroSoften, where I apply my skills and keep learning from other devs.",
         "type": "achievement",
         "icon": "rocket"
       },
       {
         "year": "2026",
         "title": "Aprovação na Federal de Uberlândia",
+        "titleEn": "Approval at Federal University of Uberlândia",
         "description": "Consegui minha aprovação na Universidade Federal de Uberlândia, um marco importante que reflete meu esforço e dedicação aos estudos e à minha carreira.",
+        "descriptionEn": "I got accepted into the Federal University of Uberlândia, an important milestone that reflects my effort and dedication to my studies and career.",
         "type": "achievement",
         "icon": "rocket"
       }
@@ -860,6 +989,7 @@
         "startDate": "2026-03",
         "current": true,
         "description": "Cursando o 1º período. Aprendendo fundamentos sólidos de computação, algoritmos, arquitetura de sistemas e gestão de projetos.",
+        "descriptionEn": "Currently in the 1st semester. Learning solid fundamentals of computing, algorithms, systems architecture and project management.",
         "location": "Monte Carmelo, MG"
       },
       {
@@ -871,6 +1001,7 @@
         "endDate": "2025-11",
         "current": false,
         "description": "Curso completo de Angular 19, cobrindo desde os fundamentos até tópicos avançados como RxJS, Angular Material e melhores práticas de desenvolvimento.",
+        "descriptionEn": "Complete Angular 19 course, covering fundamentals to advanced topics like RxJS, Angular Material and development best practices.",
         "location": "Online"
       },
       {
@@ -882,6 +1013,7 @@
         "endDate": "2025-10",
         "current": false,
         "description": "Curso abrangente de Java, focando em programação orientada a objetos, desenvolvimento de projetos práticos e introdução ao Spring Boot para criação de aplicações web.",
+        "descriptionEn": "Comprehensive Java course, focusing on object-oriented programming, practical project development and introduction to Spring Boot for web application creation.",
         "location": "Online"
       },
       {
@@ -893,6 +1025,7 @@
         "endDate": "2025-08",
         "current": false,
         "description": "Bootcamp intensivo focado em desenvolvimento backend utilizando Java e Spring Boot, com ênfase em boas práticas, arquitetura de software e desenvolvimento de APIs RESTful.",
+        "descriptionEn": "Intensive bootcamp focused on backend development using Java and Spring Boot, with emphasis on best practices, software architecture and RESTful API development.",
         "location": "Online"
       }
     ],
@@ -900,80 +1033,113 @@
       {
         "id": "1",
         "title": "Qualidade",
-        "description": "Dedico-me a escrever código limpo, bem estruturado e mantível. Qualidade não é negociável."
+        "titleEn": "Quality",
+        "description": "Dedico-me a escrever código limpo, bem estruturado e mantível. Qualidade não é negociável.",
+        "descriptionEn": "I dedicate myself to writing clean, well-structured and maintainable code. Quality is non-negotiable."
       },
       {
         "id": "2",
         "title": "Inovação",
-        "description": "Estou sempre buscando novas formas de resolver problemas e explorar tecnologias emergentes."
+        "titleEn": "Innovation",
+        "description": "Estou sempre buscando novas formas de resolver problemas e explorar tecnologias emergentes.",
+        "descriptionEn": "I'm always looking for new ways to solve problems and explore emerging technologies."
       },
       {
         "id": "3",
         "title": "Aprendizado Contínuo",
-        "description": "O mundo da tech muda rapidamente. Acredito que aprender nunca para é a chave para crescer."
+        "titleEn": "Continuous Learning",
+        "description": "O mundo da tech muda rapidamente. Acredito que aprender nunca para é a chave para crescer.",
+        "descriptionEn": "The tech world changes fast. I believe never stopping to learn is the key to growing."
       },
       {
         "id": "4",
         "title": "Colaboração",
-        "description": "Acredito no poder do trabalho em equipe. Bons projetos são construídos por pessoas que se ouvem e trabalham juntas."
+        "titleEn": "Collaboration",
+        "description": "Acredito no poder do trabalho em equipe. Bons projetos são construídos por pessoas que se ouvem e trabalham juntas.",
+        "descriptionEn": "I believe in the power of teamwork. Good projects are built by people who listen to each other and work together."
       },
       {
         "id": "5",
         "title": "Impacto",
-        "description": "Quero criar soluções que realmente façam diferença na vida das pessoas e resolvam problemas reais."
+        "titleEn": "Impact",
+        "description": "Quero criar soluções que realmente façam diferença na vida das pessoas e resolvam problemas reais.",
+        "descriptionEn": "I want to create solutions that truly make a difference in people's lives and solve real problems."
       },
       {
         "id": "6",
         "title": "Ética",
-        "description": "Mantenho altos padrões éticos em todos os aspectos do meu trabalho, desde a privacidade dos dados até a transparência com clientes."
+        "titleEn": "Ethics",
+        "description": "Mantenho altos padrões éticos em todos os aspectos do meu trabalho, desde a privacidade dos dados até a transparência com clientes.",
+        "descriptionEn": "I maintain high ethical standards in all aspects of my work, from data privacy to transparency with clients."
       }
     ],
     "hobbies": [
       {
         "id": "1",
         "name": "Leitura",
+        "nameEn": "Reading",
         "description": "Gosto de ler sobre tecnologia, ficção científica e algumas literaturas clássicas. Ler me ajuda a descansar e relaxar. Recentemente terminei 'Memórias Póstumas de Brás Cubas' de Machado de Assis, livro muito difícil de ler, mas também muito recompensador.",
+        "descriptionEn": "I enjoy reading about technology, science fiction and some classic literature. Reading helps me rest and relax. I recently finished 'The Posthumous Memoirs of Brás Cubas' by Machado de Assis, a very challenging but rewarding book.",
         "emoji": "📚"
       },
       {
         "id": "2",
         "name": "Jogos",
+        "nameEn": "Gaming",
         "description": "Amo jogos, grande parte de min se inspirou na área de tecnologia graças à eles. Habitualmente gosto de jogos de FPS táticos como Valorant e CS:Go, mas também curto alguns RPGs. ",
+        "descriptionEn": "I love games — much of my inspiration for tech came from them. I usually enjoy tactical FPS games like Valorant and CS:GO, but I also like some RPGs.",
         "emoji": "🎮"
       },
       {
         "id": "3",
         "name": "Viagens",
+        "nameEn": "Travel",
         "description": "Sou alguém que adora explorar novos lugares, conhecer culturas diferentes e buscar inspiração. Cada viagem traz novas memórias e é sempre muito bom lembrar delas.",
+        "descriptionEn": "I love exploring new places, learning about different cultures and seeking inspiration. Each trip brings new memories and it's always great to remember them.",
         "emoji": "✈️"
       },
       {
         "id": "4",
         "name": "Piano",
+        "nameEn": "Piano",
         "description": "Toco piano desde os 7 anos de idade. A música é uma grande paixão minha e tocar piano me ajuda a relaxar e descansar das telas",
+        "descriptionEn": "I've played piano since I was 7 years old. Music is a great passion of mine and playing piano helps me relax and unwind from screens.",
         "emoji": "🎹"
       },
       {
         "id": "5",
         "name": "Redes Sociais",
+        "nameEn": "Social Networks",
         "description": "Sou ativo em redes sociais, especialmente no LinkedIn e GitHub, onde compartilho meus projetos, aprendizados e me conecto com outros profissionais de tecnologia. Gosto de estar por dentro das novidades.",
+        "descriptionEn": "I'm active on social networks, especially LinkedIn and GitHub, where I share my projects, learnings and connect with other tech professionals. I like staying up to date.",
         "emoji": "🌐"
       },
       {
         "id": "6",
         "name": "Estudar",
+        "nameEn": "Studying",
         "description": "Adoro aprender coisas novas, seja sobre tecnologia, ciência ou qualquer outro assunto interessante. Estou sempre buscando cursos online, tutoriais e artigos para expandir meu conhecimento.",
+        "descriptionEn": "I love learning new things, whether about technology, science or any other interesting subject. I'm always looking for online courses, tutorials and articles to expand my knowledge.",
         "emoji": "💻"
       }
     ],
     "philosophyTitle": "Minha Filosofia de Desenvolvimento",
+    "philosophyTitleEn": "My Development Philosophy",
     "philosophyText": "Acredito que desenvolver software é uma combinação de arte e ciência. A ciência nos dá as ferramentas, a arquitetura e as melhores práticas. A arte nos dá a criatividade para resolver problemas de forma elegante e criar experiências que fascinam os usuários. No fim, o código é apenas um meio - o objetivo é criar valor.",
+    "philosophyTextEn": "I believe software development is a combination of art and science. Science gives us the tools, architecture and best practices. Art gives us the creativity to solve problems elegantly and create experiences that captivate users. In the end, code is just a means — the goal is to create value.",
     "futureGoals": [
       "Aprofundar conhecimentos em arquitetura de microsserviços e cloud computing",
       "Conseguir uma oportunidade como desenvolvedor full stack em uma empresa",
       "Completar minha formação acadêmica",
       "Me conectar com novas pessoas na área de tecnologia",
       "Aprender novas linguagens e frameworks - React e Node.js estão na minha lista"
+    ],
+    "futureGoalsEn": [
+      "Deepen knowledge in microservices architecture and cloud computing",
+      "Get an opportunity as a full stack developer at a company",
+      "Complete my academic education",
+      "Connect with new people in the tech area",
+      "Learn new languages and frameworks — React and Node.js are on my list"
     ]
   },
   "analytics_sessions": [

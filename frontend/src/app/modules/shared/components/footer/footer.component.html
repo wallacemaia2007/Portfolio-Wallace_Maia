@@ -14,7 +14,7 @@
           </span>
         </div>
         <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
-          {{ footerData.bio }}
+          {{ footerData.bio | langText:footerData.bioEn }}
         </p>
         <app-social-links></app-social-links>
       </div>
@@ -22,14 +22,14 @@
       <div class="space-y-4">
         <h3 class="text-lg font-semibold text-custom-black dark:text-white flex items-center space-x-2">
           <span class="w-1 h-6 bg-primary rounded"></span>
-          <span>Links Rápidos</span>
+          <span>{{ translate.translate('footer.quickLinks') }}</span>
         </h3>
         <nav class="flex flex-col space-y-2">
           @for (link of footerData.quickLinks; track link.route) {
           <a [routerLink]="link.route"
             class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light hover:translate-x-2 transition-all duration-200 text-sm flex items-center space-x-2">
             <span class="text-primary">→</span>
-            <span>{{ link.label }}</span>
+            <span>{{ translate.translate(link.label) }}</span>
           </a>
           }
         </nav>
@@ -38,7 +38,7 @@
       <div class="space-y-4">
         <h3 class="text-lg font-semibold text-custom-black dark:text-white flex items-center space-x-2">
           <span class="w-1 h-6 bg-primary rounded"></span>
-          <span>Contato</span>
+          <span>{{ translate.translate('footer.contact') }}</span>
         </h3>
         <div class="space-y-3">
           <a [href]="'mailto:' + footerData.email"
@@ -75,12 +75,12 @@
       <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
         <p class="text-gray-700 dark:text-gray-300 text-sm text-center md:text-left">
           © {{ footerData.currentYear }} <span class="font-semibold text-primary">{{ footerData.fullName }}</span>.
-          Todos os direitos reservados.
+          {{ translate.translate('footer.rightsReserved') }}
         </p>
 
-        <button (click)="scrollToTop()" [matTooltip]="'Voltar ao topo'" matTooltipPosition="above"
+        <button (click)="scrollToTop()" [matTooltip]="translate.translate('footer.backToTop')" matTooltipPosition="above"
           class="w-12 h-12 rounded-full bg-primary-light hover:bg-primary-dark text-white shadow-lg hover:shadow-glow transition-all hover:scale-110 flex items-center justify-center"
-          aria-label="Voltar ao topo">
+          [attr.aria-label]="translate.translate('footer.backToTop')">
           <mat-icon class="text-2xl flex items-center justify-center leading-none">arrow_upward</mat-icon>
         </button>
       </div>

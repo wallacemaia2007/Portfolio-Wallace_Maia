@@ -1,8 +1,8 @@
 <section class="py-20 md:py-32 bg-white dark:bg-dev-bg text-gray-900 dark:text-dev-text overflow-hidden"
   #worksSection>
   <div class="container mx-auto px-6 max-w-7xl">
-    <app-section-header title="Soluções que transformam ideias em produtos digitais"
-      subtitle="Clique em um serviço para explorar o que posso construir para você"
+    <app-section-header [title]="translate.translate('devWorks.title')"
+      [subtitle]="translate.translate('devWorks.subtitle')"
       appScrollReveal></app-section-header>
 
     <div class="mt-16 flex flex-col lg:flex-row gap-8 relative lg:items-start">
@@ -101,7 +101,7 @@
           <!-- CTA -->
           <button type="button" (click)="moreInfo(activeCategory.name)"
             class="w-full py-3 rounded-xl bg-accent hover:bg-dev-light text-white font-bold text-sm text-center transition-all duration-300 shadow-dev-glow hover:shadow-dev-glow-lg active:scale-95">
-            Solicitar este serviço
+            {{ translate.translate('devWorks.ctaSolicitar') }}
           </button>
         </div>
 
@@ -111,8 +111,8 @@
           <div class="w-14 h-14 rounded-full bg-gray-50 dark:bg-dev-bg-surface flex items-center justify-center mb-4 shadow-sm dark:shadow-dev-glow-sm">
             <mat-icon class="text-dev dark:text-dev-light text-[28px]">touch_app</mat-icon>
           </div>
-          <p class="text-base text-gray-600 dark:text-dev-text-bright font-semibold mb-1">Explore os serviços</p>
-          <p class="text-sm text-gray-400 dark:text-dev-muted leading-snug">Clique em um prédio para descobrir<br />o que posso construir para você.</p>
+          <p class="text-base text-gray-600 dark:text-dev-text-bright font-semibold mb-1">{{ translate.translate('devWorks.emptyTitle') }}</p>
+          <p class="text-sm text-gray-400 dark:text-dev-muted leading-snug">{{ translate.translate('devWorks.emptyMsg') }}</p>
         </div>
         }
 

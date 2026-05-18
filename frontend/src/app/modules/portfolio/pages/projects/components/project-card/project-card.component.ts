@@ -5,6 +5,7 @@ import {
   Input,
   Output,
   ViewChild,
+  inject,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,7 +16,11 @@ import {
   ProjectStatus,
   PROJECT_CATEGORY_NAMES,
   PROJECT_STATUS_NAMES,
+  PROJECT_CATEGORY_NAMES_EN,
+  PROJECT_STATUS_NAMES_EN,
 } from '../../../../models/project.model';
+import { LangTextPipe } from '../../../../../shared/pipes/lang-text.pipe';
+import { TranslateService } from '../../../../../../core/services/translate.service';
 
 interface ProjectCardVideoEvent {
   project: Project;
@@ -25,12 +30,13 @@ interface ProjectCardVideoEvent {
 @Component({
   selector: 'app-project-card',
   standalone: true,
-  imports: [CommonModule, MatIconModule, ScrollRevealDirective],
+  imports: [CommonModule, MatIconModule, LangTextPipe, ScrollRevealDirective],
   templateUrl: './project-card.component.html',
   styleUrl: './project-card.component.scss',
 })
 export class ProjectCardComponent {
   @Input({ required: true }) project!: Project;
+  protected translate = inject(TranslateService);
   @Input() isPreviewPlaying = false;
   @Input() revealDelay = 100;
   @Input() variant: 'primary' | 'dev' = 'primary';
@@ -126,11 +132,11 @@ export class ProjectCardComponent {
   }
 
   getStatusLabel(status: ProjectStatus): string {
-    return PROJECT_STATUS_NAMES[status];
+    return this.translate.isEn() ? PROJECT_STATUS_NAMES_EN[status] : PROJECT_STATUS_NAMES[status];
   }
 
   getCategoryLabel(category: ProjectCategory): string {
-    return PROJECT_CATEGORY_NAMES[category];
+    return this.translate.isEn() ? PROJECT_CATEGORY_NAMES_EN[category] : PROJECT_CATEGORY_NAMES[category];
   }
 
   getCategoryIcon(category: ProjectCategory): string {
@@ -147,7 +153,7 @@ export class ProjectCardComponent {
 
   formatDate(dateString: string): string {
     const date = new Date(dateString);
-    return date.toLocaleDateString('pt-BR', {
+    return date.toLocaleDateString(this.translate.isEn() ? 'en-US' : 'pt-BR', {
       month: 'short',
       year: 'numeric',
     });

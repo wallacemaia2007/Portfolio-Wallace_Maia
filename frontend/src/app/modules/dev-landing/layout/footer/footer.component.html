@@ -25,14 +25,14 @@
       <div class="space-y-4" appScrollReveal revealFrom="bottom" [revealDelay]="200">
         <h3 class="text-lg font-semibold text-gray-900 dark:text-white flex items-center gap-2">
           <span class="w-1 h-6 bg-dev rounded"></span>
-          <span>Links Rapidos</span>
+          <span>{{ translate.translate('footer.quickLinks') }}</span>
         </h3>
         <nav class="flex flex-col gap-2" aria-label="Links de navegacao do rodape">
           @for (link of quickLinks; track link.href) {
           <a [href]="link.href" (click)="scrollTo($event, link.href)"
             class="text-gray-700 dark:text-dev-text-muted hover:text-dev dark:hover:text-dev-light hover:translate-x-2 transition-all duration-200 text-sm flex items-center gap-2">
             <span class="text-dev">&#8594;</span>
-            <span>{{ link.label }}</span>
+            <span>{{ translate.translate('header.' + link.label) }}</span>
           </a>
           }
         </nav>
@@ -42,7 +42,7 @@
       <div class="space-y-4" appScrollReveal revealFrom="right" [revealDelay]="300">
         <h3 class="text-lg font-semibold text-gray-900 dark:text-white flex items-center gap-2">
           <span class="w-1 h-6 bg-dev rounded"></span>
-          <span>Contato</span>
+          <span>{{ translate.translate('footer.contact') }}</span>
         </h3>
         <div class="space-y-3">
 
@@ -90,12 +90,12 @@
         <p class="text-gray-700 dark:text-dev-text-muted text-xs sm:text-sm text-center md:text-left">
           &copy; {{ currentYear }}
           <span class="font-semibold text-dev">{{ personalInfo.fullName }}</span>.
-          Todos os direitos reservados.
+          {{ translate.translate('footer.rightsReserved') }}
         </p>
 
-        <button (click)="scrollToTop()" [matTooltip]="'Voltar ao topo'" matTooltipPosition="above"
+        <button (click)="scrollToTop()" [matTooltip]="translate.translate('footer.backToTop')" matTooltipPosition="above"
           class="w-12 h-12 rounded-full bg-dev hover:bg-dev-dark text-white shadow-lg hover:shadow-dev-glow transition-all duration-200 hover:scale-110 active:scale-[0.98] flex items-center justify-center"
-          aria-label="Voltar ao topo">
+          [attr.aria-label]="translate.translate('footer.backToTop')">
           <mat-icon class="flex items-center justify-center leading-none">arrow_upward</mat-icon>
         </button>
       </div>

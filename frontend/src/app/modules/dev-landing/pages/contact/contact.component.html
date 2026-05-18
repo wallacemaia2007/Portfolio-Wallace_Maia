@@ -3,8 +3,8 @@
   <div class="container mx-auto max-w-7xl px-4 lg:px-6">
 
     <!-- Section Header -->
-    <app-section-header title="Vamos Conversar?"
-      subtitle="Estou sempre aberto a novas oportunidades e projetos interessantes" align="center" appScrollReveal
+    <app-section-header [title]="translate.translate('devContact.title')"
+      [subtitle]="translate.translate('devContact.subtitle')" align="center" appScrollReveal
       revealFrom="bottom" [revealDelay]="100">
     </app-section-header>
 
@@ -15,16 +15,16 @@
         <div appScrollReveal revealFrom="left" [revealDelay]="150"
           class="rounded-2xl bg-white dark:bg-dev-bg p-6 md:p-8 border border-gray-100 dark:border-dev-bg-elevated shadow-sm">
 
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Envie uma mensagem</h3>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">{{ translate.translate('devContact.formTitle') }}</h3>
 
           <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-5">
 
             <!-- Name -->
             <div>
               <label for="contact-name" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-                Nome *
+                {{ translate.translate('devContact.nameLabel') }}
               </label>
-              <input id="contact-name" type="text" formControlName="name" placeholder="Seu nome completo"
+              <input id="contact-name" type="text" formControlName="name" [placeholder]="translate.translate('devContact.namePlaceholder')"
                 class="w-full rounded-xl border px-4 py-3 text-base sm:text-sm text-gray-900 dark:text-white bg-gray-50 dark:bg-dev-bg-surface placeholder-gray-400 dark:placeholder-dev-text-muted transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-dev/50 focus:border-dev"
                 [ngClass]="isFieldInvalid('name') ? 'border-red-400 dark:border-red-500' : 'border-gray-200 dark:border-dev-bg-elevated'">
               @if (isFieldInvalid('name')) {
@@ -35,9 +35,9 @@
             <!-- Email -->
             <div>
               <label for="contact-email" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-                Email *
+                {{ translate.translate('devContact.emailLabel') }}
               </label>
-              <input id="contact-email" type="email" formControlName="email" placeholder="seu@email.com"
+              <input id="contact-email" type="email" formControlName="email" [placeholder]="translate.translate('devContact.emailPlaceholder')"
                 class="w-full rounded-xl border px-4 py-3 text-base sm:text-sm text-gray-900 dark:text-white bg-gray-50 dark:bg-dev-bg-surface placeholder-gray-400 dark:placeholder-dev-text-muted transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-dev/50 focus:border-dev"
                 [ngClass]="isFieldInvalid('email') ? 'border-red-400 dark:border-red-500' : 'border-gray-200 dark:border-dev-bg-elevated'">
               @if (isFieldInvalid('email')) {
@@ -48,19 +48,19 @@
             <!-- Subject -->
             <div>
               <label for="contact-subject" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-                Assunto
+                {{ translate.translate('devContact.subjectLabel') }}
               </label>
-              <input id="contact-subject" type="text" formControlName="subject" placeholder="Assunto da mensagem"
+              <input id="contact-subject" type="text" formControlName="subject" [placeholder]="translate.translate('devContact.subjectPlaceholder')"
                 class="w-full rounded-xl border border-gray-200 dark:border-dev-bg-elevated px-4 py-3 text-base sm:text-sm text-gray-900 dark:text-white bg-gray-50 dark:bg-dev-bg-surface placeholder-gray-400 dark:placeholder-dev-text-muted transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-dev/50 focus:border-dev">
             </div>
 
             <!-- Message -->
             <div>
               <label for="contact-message" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-                Mensagem *
+                {{ translate.translate('devContact.messageLabel') }}
               </label>
               <textarea id="contact-message" formControlName="message" rows="5"
-                placeholder="Descreva seu projeto ou duvida..."
+                [placeholder]="translate.translate('devContact.messagePlaceholder')"
                 class="w-full rounded-xl border px-4 py-3 text-base sm:text-sm text-gray-900 dark:text-white bg-gray-50 dark:bg-dev-bg-surface placeholder-gray-400 dark:placeholder-dev-text-muted transition-colors duration-200 resize-none focus:outline-none focus:ring-2 focus:ring-dev/50 focus:border-dev"
                 [ngClass]="isFieldInvalid('message') ? 'border-red-400 dark:border-red-500' : 'border-gray-200 dark:border-dev-bg-elevated'">
               </textarea>
@@ -72,15 +72,15 @@
             <!-- Submit Button -->
             <button type="submit" [disabled]="isSubmitting"
               class="w-full rounded-xl bg-dev px-6 py-3 text-sm font-bold text-white transition-all duration-200 hover:bg-dev-dark hover:-translate-y-0.5 active:scale-[0.98] shadow-dev-glow-sm hover:shadow-dev-glow disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0 disabled:shadow-none flex items-center justify-center gap-2"
-              aria-label="Enviar mensagem de contato">
+              [attr.aria-label]="translate.translate('devContact.send')">
               @if (isSubmitting) {
               <svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
               </svg>
-              <span>Enviando...</span>
+              <span>{{ translate.translate('devContact.sending') }}</span>
               } @else {
-              <span>Enviar Mensagem</span>
+              <span>{{ translate.translate('devContact.send') }}</span>
               }
             </button>
 
@@ -116,7 +116,7 @@
             <mat-icon style="font-size: 22px; width: 22px; height: 22px;">email</mat-icon>
           </div>
           <div>
-            <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">Email</p>
+            <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">{{ translate.translate('devContact.cardEmail') }}</p>
             <p class="text-sm font-bold text-gray-900 dark:text-white mt-0.5 truncate break-all">{{ contactInfo.email }}
             </p>
           </div>
@@ -131,7 +131,7 @@
             <img src="assets/icons/whatsapp.svg" alt="WhatsApp" class="w-6 h-6">
           </div>
           <div>
-            <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">WhatsApp
+            <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">{{ translate.translate('devContact.cardWhatsapp') }}
             </p>
             <p class="text-sm font-bold text-gray-900 dark:text-white mt-0.5 truncate break-all">{{ whatsappDisplay }}
             </p>
@@ -147,7 +147,7 @@
             <img src="assets/icons/linkedin.svg" alt="LinkedIn" class="w-6 h-6">
           </div>
           <div>
-            <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">LinkedIn
+            <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">{{ translate.translate('devContact.cardLinkedin') }}
             </p>
             <p class="text-sm font-bold text-gray-900 dark:text-white mt-0.5 truncate break-all">{{
               contactInfo.linkedinDisplay }}</p>
@@ -163,7 +163,7 @@
             <img src="assets/icons/github.svg" alt="GitHub" class="w-6 h-6">
           </div>
           <div>
-            <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">GitHub</p>
+            <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">{{ translate.translate('devContact.cardGithub') }}</p>
             <p class="text-sm font-bold text-gray-900 dark:text-white mt-0.5 truncate break-all">{{
               contactInfo.githubDisplay }}</p>
           </div>
@@ -177,7 +177,7 @@
             <img src="assets/icons/fiverr.svg" alt="Fiverr" class="w-6 h-6">
           </div>
           <div>
-            <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">Fiverr</p>
+            <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">{{ translate.translate('devContact.cardFiverr') }}</p>
             <p class="text-sm font-bold text-gray-900 dark:text-white mt-0.5 truncate break-all">{{
               contactInfo.fiverrDisplay }}</p>
           </div>
@@ -191,7 +191,7 @@
             <mat-icon style="font-size: 22px; width: 22px; height: 22px;">location_on</mat-icon>
           </div>
           <div>
-            <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">Localizacao
+            <p class="text-xs font-semibold text-gray-500 dark:text-dev-text-muted uppercase tracking-wider">{{ translate.translate('devContact.cardLocation') }}
             </p>
             <p class="text-sm font-bold text-gray-900 dark:text-white mt-0.5 truncate break-all">{{ contactInfo.location
               }}</p>

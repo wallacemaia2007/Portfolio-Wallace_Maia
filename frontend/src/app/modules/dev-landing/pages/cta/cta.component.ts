@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
+import { TranslateService } from '../../../../core/services/translate.service';
 
 @Component({
   selector: 'app-cta',
@@ -11,8 +12,12 @@ import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.
   styleUrl: './cta.component.scss',
 })
 export class CtaComponent implements OnInit, OnDestroy {
-  readonly whatsappLink =
-    'https://wa.me/5535910036806?text=Ola%20Wallace%2C%20gostaria%20de%20saber%20mais%20sobre%20seus%20servicos!';
+  readonly translate = inject(TranslateService);
+
+  get whatsappLink(): string {
+    const msg = encodeURIComponent(this.translate.translate('whatsapp.generic'));
+    return `https://wa.me/5535910036806?text=${msg}`;
+  }
 
   private bgEl: HTMLElement | null = null;
   private sectionEl: HTMLElement | null = null;

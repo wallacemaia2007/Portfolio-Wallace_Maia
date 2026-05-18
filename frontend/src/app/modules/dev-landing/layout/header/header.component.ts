@@ -13,11 +13,13 @@ import { RouterLink } from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ThemeService } from '../../../portfolio/services/theme.service';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslateService, SupportedLang } from '../../../../core/services/translate.service';
 
 interface NavLink {
   label: string;
   href: string;
   section: string;
+  translateKey: string;
   feature?: boolean;
 }
 
@@ -32,12 +34,14 @@ interface NavLink {
 export class HeaderComponent implements OnInit, OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
 
+  readonly translate = inject(TranslateService);
+
   readonly navLinks: NavLink[] = [
-    { label: 'Inicio', href: '#hero', section: 'hero' },
-    { label: 'Serviços', href: '#works', section: 'works' },
-    { label: 'Projetos', href: '#projects', section: 'projects' },
-    { label: 'Stack', href: '#stack', section: 'stack' },
-    { label: 'Contato', href: '#contact', section: 'contact' },
+    { label: 'Inicio', href: '#hero', section: 'hero', translateKey: 'home' },
+    { label: 'Serviços', href: '#works', section: 'works', translateKey: 'services' },
+    { label: 'Projetos', href: '#projects', section: 'projects', translateKey: 'projects' },
+    { label: 'Stack', href: '#stack', section: 'stack', translateKey: 'stack' },
+    { label: 'Contato', href: '#contact', section: 'contact', translateKey: 'contact' },
   ];
 
   readonly ctaLinks = {
@@ -180,6 +184,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     if (this.isMenuOpen) this.closeMenu();
+  }
+
+  toggleLang(): void {
+    this.translate.toggleLang();
+    this.cdr.markForCheck();
+  }
+
+  get currentLang(): SupportedLang {
+    return this.translate.currentLang();
   }
 
   toggleMenu(): void {

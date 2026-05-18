@@ -6,13 +6,13 @@
             <div
                 class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider mb-4 animate-pulse">
                 <mat-icon class="text-[14px] h-[14px] w-[14px]">auto_awesome</mat-icon>
-                TRANSFORMO SITES EM RESULTADOS
+                {{ translate.translate('devProblemSolution.badge') }}
             </div>
             <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight">
-                Seu site hoje <span class="text-blue-500">X</span> Meu serviço
+                {{ translate.translate('devProblemSolution.title') }}
             </h2>
             <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
-                A diferença entre apenas existir online e realmente <span class="text-blue-400">gerar resultados</span>.
+                {{ translate.translate('devProblemSolution.description') }}
             </p>
         </div>
 
@@ -31,7 +31,7 @@
                 <div class="flex justify-center mb-8">
                     <span
                         class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-gray-800 border border-white/10 text-gray-400 text-sm font-bold uppercase">
-                        <mat-icon class="text-sm">close</mat-icon> SEU SITE HOJE
+                        <mat-icon class="text-sm">close</mat-icon> {{ translate.translate('devProblemSolution.currentSiteLabel') }}
                     </span>
                 </div>
 
@@ -72,7 +72,7 @@
                 <div class="flex justify-center mb-8">
                     <span
                         class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-blue-600 border border-blue-400/30 text-white text-sm font-bold uppercase shadow-[0_0_15px_rgba(37,99,235,0.4)]">
-                        <mat-icon class="text-sm">check</mat-icon> MEU SERVIÇO
+                        <mat-icon class="text-sm">check</mat-icon> {{ translate.translate('devProblemSolution.deliveredLabel') }}
                     </span>
                 </div>
 
@@ -138,10 +138,8 @@
             </div>
 
             <div class="text-center mb-10 space-y-3">
-                <span class="text-blue-400 text-xs font-bold uppercase tracking-[0.2em]">SERVIÇOS QUE EU
-                    IMPLEMENTO</span>
-                <p class="text-gray-400 text-sm md:text-base">Soluções pensadas para quem precisa vender, organizar e
-                    escalar com tecnologia.</p>
+                <span class="text-blue-400 text-xs font-bold uppercase tracking-[0.2em]">{{ translate.translate('devProblemSolution.servicesLabel') }}</span>
+                <p class="text-gray-400 text-sm md:text-base">{{ translate.translate('devProblemSolution.servicesDesc') }}</p>
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">

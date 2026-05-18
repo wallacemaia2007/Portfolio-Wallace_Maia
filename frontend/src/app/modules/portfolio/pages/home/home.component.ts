@@ -38,6 +38,8 @@ import {
   InformationBarData,
 } from '../../../shared/components/information-bar/information-bar.component';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
+import { LangTextPipe } from '../../../shared/pipes/lang-text.pipe';
+import { TranslateService } from '../../../../core/services/translate.service';
 import { gsap } from '../../../../core/gsap-register';
 
 @Component({
@@ -55,6 +57,7 @@ import { gsap } from '../../../../core/gsap-register';
     RouterLink,
     ProjectCardComponent,
     ProjectModalComponent,
+    LangTextPipe,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -63,6 +66,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private portfolioService = inject(PortfolioService);
   private el = inject(ElementRef);
   private platformId = inject(PLATFORM_ID);
+  translate = inject(TranslateService);
   private ctx?: gsap.Context;
   private playingPreviewIds = new Set<string>();
 
@@ -80,27 +84,40 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   recentExperiences: Experience[] = [];
   isLoadingExperience = true;
 
-  statistics: Array<{ value: string; label: string; suffix?: string }> = [];
+  private statsData: { value: string; suffix?: string }[] = [];
 
-  ctaData: InformationBarData = {
-    title: 'Vamos Trabalhar Juntos?',
-    description:
-      'Estou sempre aberto a novos projetos e oportunidades interessantes. Entre em contato e vamos criar algo incrível!',
-    buttons: [
-      {
-        label: 'Entrar em Contato',
-        icon: 'email',
-        color: 'theme',
-        link: '/contact',
-      },
-      {
-        label: 'Download CV',
-        icon: 'download',
-        color: 'theme',
-        link: 'assets/cv.pdf',
-      },
-    ],
-  };
+  get statistics(): Array<{ value: string; label: string; suffix?: string }> {
+    const t = (key: string) => this.translate.translate(key);
+    const labels = [
+      t('home.statsProjects'),
+      t('home.statsExperience'),
+      t('home.statsTechnologies'),
+      t('home.statsClients'),
+    ];
+    return this.statsData.map((s, i) => ({ ...s, label: labels[i] }));
+  }
+
+  get ctaData(): InformationBarData {
+    const t = (key: string) => this.translate.translate(key);
+    return {
+      title: t('home.ctaTitle'),
+      description: t('home.ctaDescription'),
+      buttons: [
+        {
+          label: t('home.ctaButton'),
+          icon: 'email',
+          color: 'theme',
+          link: '/contact',
+        },
+        {
+          label: t('home.ctaCvButton'),
+          icon: 'download',
+          color: 'theme',
+          link: 'assets/cv.pdf',
+        },
+      ],
+    };
+  }
 
   ngOnInit(): void {
     this.loadFeaturedProjects();
@@ -264,7 +281,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       },
       error: (error) => {
-        console.error('Erro ao carregar projetos em destaque:', error);
+        console.error('Error loading featured projects:', error);
         this.isLoadingProjects = false;
       },
     });
@@ -286,7 +303,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         this.isLoadingSkills = false;
       },
       error: (error) => {
-        console.error('Erro ao carregar skills:', error);
+        console.error('Error loading skills:', error);
         this.isLoadingSkills = false;
       },
     });
@@ -303,7 +320,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       },
       error: (error) => {
-        console.error('Erro ao carregar experiências:', error);
+        console.error('Error loading experiences:', error);
         this.isLoadingExperience = false;
       },
     });
@@ -312,34 +329,19 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private loadStatistics(): void {
     this.portfolioService.getStatistics().subscribe({
       next: (stats) => {
-        this.statistics = [
-          {
-            value: stats.completedProjects.toString(),
-            label: 'Projetos Concluídos',
-          },
-          {
-            value: stats.yearsExperience.toString(),
-            label: 'Anos de Experiência',
-            suffix: '+',
-          },
-          {
-            value: stats.technologies.toString(),
-            label: 'Tecnologias',
-            suffix: '+',
-          },
-          {
-            value: stats.happyClients.toString(),
-            label: 'Clientes Satisfeitos',
-            suffix: '+',
-          },
+        this.statsData = [
+          { value: stats.completedProjects.toString() },
+          { value: stats.yearsExperience.toString(), suffix: '+' },
+          { value: stats.technologies.toString(), suffix: '+' },
+          { value: stats.happyClients.toString(), suffix: '+' },
         ];
       },
       error: () => {
-        this.statistics = [
-          { value: '0', label: 'Projetos Concluídos' },
-          { value: '0', label: 'Anos de Experiência', suffix: '+' },
-          { value: '0', label: 'Tecnologias', suffix: '+' },
-          { value: '0', label: 'Clientes Satisfeitos', suffix: '+' },
+        this.statsData = [
+          { value: '0' },
+          { value: '0', suffix: '+' },
+          { value: '0', suffix: '+' },
+          { value: '0', suffix: '+' },
         ];
       },
     });
@@ -355,8 +357,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   formatDate(dateString: string): string {
-    if (!dateString || dateString === 'momento') return 'Presente';
-    return new Date(dateString).toLocaleDateString('pt-BR', {
+    if (!dateString || dateString === 'momento')
+      return this.translate.translate('home.present');
+    const locale = this.translate.currentLang() === 'en' ? 'en-US' : 'pt-BR';
+    return new Date(dateString).toLocaleDateString(locale, {
       month: 'short',
       year: 'numeric',
     });
@@ -389,11 +393,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   getStatusLabel(status: string): string {
+    const t = (key: string) => this.translate.translate(key);
     const map: Record<string, string> = {
-      completed: 'Concluído',
-      'in-progress': 'Em Andamento',
-      planned: 'Planejado',
-      paused: 'Pausado',
+      completed: t('projects.statusCompleted'),
+      'in-progress': t('projects.statusInProgress'),
+      planned: t('projects.statusPlanned'),
+      paused: t('projects.statusPaused'),
     };
     return map[status] || status;
   }
