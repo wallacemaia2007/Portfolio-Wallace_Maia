@@ -7,7 +7,7 @@
     "roleEn": "Full Stack Developer",
     "email": "wallacemaia2007@gmail.com",
     "phone": "+55 (35) 91003-6806",
-    "location": "Passos, MG - Brasil",
+    "location": "Uberlândia, MG - Brasil",
     "bio": "Desenvolvedor Full Stack apaixonado por criar experiências web incríveis e soluções inovadoras. Especializado em Angular, Java e Spring Boot com mais de 1 ano de experiência no mercado.",
     "bioEn": "Full Stack Developer passionate about creating amazing web experiences and innovative solutions. Specialized in Angular, Java and Spring Boot with over 1 year of market experience.",
     "avatar": "assets/images/avatar.jpeg",
@@ -851,7 +851,7 @@
       "startDate": "2026-01-05",
       "endDate": "2026-03-30",
       "current": false,
-      "location": "Passos, MG - Brasil",
+      "location": "Uberlândia, MG - Brasil",
       "type": "Meio período",
       "technologies": [
         "Suporte Técnico",
@@ -940,6 +940,12 @@
       "url": "https://wa.me/35910036806",
       "icon": "assets/icons/whatsapp.svg",
       "color": "#25D366"
+    },
+    {
+      "name": "Fiverr",
+      "url":"https://br.fiverr.com/wallace_maia?public_mode=true",
+      "icon": "assets/icons/fiverr.svg",
+      "color": "#1DBF73"
     }
   ],
   "faqs": [
