@@ -19,343 +19,6 @@
   "projects": [
     {
       "id": "1",
-      "title": "Digital Bank Api",
-      "slug": "digital-bank-api",
-      "description": "API REST de um banco digital em Java com Spring Boot. O projeto evoluiu de uma aplicação de console para uma arquitetura em camadas (Controller, Service, Repository), expondo funcionalidades como criação de contas e transferências. Usa Spring Data JPA para persistência de dados em banco relacional.",
-      "descriptionEn": "REST API for a digital bank in Java with Spring Boot. The project evolved from a console application to a layered architecture (Controller, Service, Repository), exposing features like account creation and transfers. Uses Spring Data JPA for relational database persistence.",
-      "shortDescription": "API REST de banco digital em Java com Spring Boot",
-      "shortDescriptionEn": "REST API for a digital bank in Java with Spring Boot",
-      "thumbnail": "assets/images/projects/digital-bank/thumbnail.jpeg",
-      "images": [
-        "assets/images/projects/digital-bank/digital-bank-1.png",
-        "assets/images/projects/digital-bank/digital-bank-2.png",
-        "assets/images/projects/digital-bank/digital-bank-3.png"
-      ],
-      "thumbVideo": "assets/images/projects/digital-bank/digital-bank-video.mp4",
-      "technologies": [
-        "Java",
-        "Spring Boot",
-        "Spring Data JPA",
-        "Hibernate",
-        "Spring Security",
-        "MySQL",
-        "REST API",
-        "Maven",
-        "JUnit",
-        "Postman",
-        "Git",
-        "Docker",
-        "Mockito",
-        "Swagger"
-      ],
-      "category": "backend",
-      "featured": false,
-      "githubUrl": "https://github.com/wallacemaia2007/Digital-bank-api",
-      "liveUrl": "https://www.linkedin.com/posts/wallacemaia-dev_java-springboot-springsecurity-activity-7376984431712083968-Hbt_?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE9zdVsB33_pruHbEok_UbWu8X2JwL1Nfhk",
-      "startDate": "2025-08-13",
-      "endDate": "2025-09-21",
-      "status": "completed",
-      "tags": [
-        "backend",
-        "banking",
-        "api"
-      ],
-      "challenges": [
-        "Implementação de transações financeiras seguras",
-        "Validação robusta de dados de entrada",
-        "Spring security para autenticação e autorização"
-      ],
-      "challengesEn": [
-        "Secure financial transactions implementation",
-        "Robust input data validation",
-        "Spring Security for authentication and authorization"
-      ],
-      "learnings": [
-        "Desenvolvimento de APIs RESTful com Spring Boot",
-        "Boas práticas de design de software em Java",
-        "Testes unitários e integração com JUnit e Mockito"
-      ],
-      "learningsEn": [
-        "RESTful API development with Spring Boot",
-        "Java software design best practices",
-        "Unit and integration testing with JUnit and Mockito"
-      ],
-      "clientType": "pessoal"
-    },
-    {
-      "id": "2",
-      "title": "Traveler Website",
-      "slug": "traveler-website",
-      "description": "Um sistema web completo para organizar, categorizar e gerenciar seus lugares favoritos de viagem. Desenvolvido com Angular 19 e integração com Google OAuth para autenticação segura.",
-      "descriptionEn": "A complete web system to organize, categorize and manage your favorite travel places. Built with Angular 19 and Google OAuth integration for secure authentication.",
-      "shortDescription": "Sistema web para gerenciar lugares favoritos de viagem",
-      "shortDescriptionEn": "Web system to manage favorite travel places",
-      "thumbnail": "assets/images/projects/traveler-website/thumbnail.jpg",
-      "images": [
-        "assets/images/projects/traveler-website/traveler-website-1.png",
-        "assets/images/projects/traveler-website/traveler-website-2.png",
-        "assets/images/projects/traveler-website/traveler-website-3.png"
-      ],
-      "thumbVideo": "assets/images/projects/traveler-website/traveler-website-video.mp4",
-      "technologies": [
-        "Angular",
-        "Angular Material",
-        "TypeScript",
-        "RxJS",
-        "OAuth",
-        "ViaCep API",
-        "Tailwind CSS"
-      ],
-      "category": "web",
-      "featured": false,
-      "githubUrl": "https://github.com/wallacemaia2007/traveler-website",
-      "liveUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7393610706035654656/",
-      "startDate": "2025-10-20",
-      "endDate": "2025-11-11",
-      "status": "completed",
-      "tags": [
-        "web",
-        "angular",
-        "gallery"
-      ],
-      "challenges": [
-        "Integração com Google OAuth",
-        "Gerenciamento de estado com RxJS"
-      ],
-      "challengesEn": [
-        "Google OAuth integration",
-        "State management with RxJS"
-      ],
-      "learnings": [
-        "Autenticação OAuth em Angular",
-        "Boas práticas de UI/UX com Angular Material",
-        "Consumo de APIs externas"
-      ],
-      "learningsEn": [
-        "OAuth authentication in Angular",
-        "UI/UX best practices with Angular Material",
-        "External API consumption"
-      ],
-      "clientType": "pessoal"
-    },
-    {
-      "id": "3",
-      "title": "Portifólio Pessoal",
-      "slug": "personal-portfolio",
-      "description": "Portfólio pessoal desenvolvido para apresentar projetos, habilidades e experiência profissional. Construído com Angular e Tailwind CSS, o site é responsivo e otimizado para SEO.",
-      "descriptionEn": "Personal portfolio developed to showcase projects, skills and professional experience. Built with Angular and Tailwind CSS, the site is responsive and SEO optimized.",
-      "shortDescription": "Portfólio pessoal responsivo com Angular e Tailwind CSS",
-      "shortDescriptionEn": "Responsive personal portfolio with Angular and Tailwind CSS",
-      "thumbnail": "assets/images/projects/portfolio-pessoal/thumbnail.png",
-      "images": [
-        "assets/images/projects/portfolio-pessoal/portfolio-pessoal-1.png",
-        "assets/images/projects/portfolio-pessoal/portfolio-pessoal-2.png",
-        "assets/images/projects/portfolio-pessoal/portfolio-pessoal-3.png"
-      ],
-      "thumbVideo": "assets/images/projects/portfolio-pessoal/portfolio-pessoal-video.mp4",
-      "technologies": [
-        "Angular",
-        "Tailwind CSS",
-        "Angular Material",
-        "RxJS",
-        "Express",
-        "Node.js"
-      ],
-      "category": "web",
-      "featured": false,
-      "githubUrl": "https://github.com/wallacemaia2007/Portfolio-Wallace_Maia",
-      "liveUrl": "https://maiawall.com",
-      "startDate": "2025-12-20",
-      "endDate": "",
-      "status": "completed",
-      "tags": [
-        "portfolio",
-        "web",
-        "angular"
-      ],
-      "challenges": [
-        "Design responsivo para múltiplos dispositivos",
-        "Otimização de performance e SEO"
-      ],
-      "challengesEn": [
-        "Responsive design for multiple devices",
-        "Performance optimization and SEO"
-      ],
-      "learnings": [
-        "Melhores práticas de desenvolvimento web",
-        "Implementação de design responsivo com Tailwind CSS",
-        "Deploy de aplicações Angular",
-        "Boas práticas de UI/UX com Angular Material"
-      ],
-      "learningsEn": [
-        "Web development best practices",
-        "Responsive design implementation with Tailwind CSS",
-        "Angular application deployment",
-        "UI/UX best practices with Angular Material"
-      ],
-      "clientType": "freelance"
-    },
-    {
-      "id": "4",
-      "title": "Customer Register",
-      "slug": "customer-register",
-      "description": "Sistema web Angular para gerenciamento de cadastro de clientes com integração BrasilAPI, validação de formulários e persistência local. Desenvolvido com Angular 19, TypeScript e Material Design",
-      "descriptionEn": "Angular web system for customer registration management with BrasilAPI integration, form validation and local persistence. Developed with Angular 19, TypeScript and Material Design",
-      "shortDescription": "Sistema web para cadastrar e gerenciar clientes",
-      "shortDescriptionEn": "Web system to register and manage customers",
-      "thumbnail": "assets/images/projects/customer-register/thumbnail.png",
-      "images": [
-        "assets/images/projects/customer-register/customer-register-1.png",
-        "assets/images/projects/customer-register/customer-register-2.png",
-        "assets/images/projects/customer-register/customer-register-3.png"
-      ],
-      "thumbVideo": "assets/images/projects/customer-register/customer-register-video.mp4",
-      "technologies": [
-        "Angular",
-        "Angular Material",
-        "TypeScript",
-        "BrasilAPI",
-        "RxJS",
-        "UUID",
-        "LocalStorage"
-      ],
-      "category": "web",
-      "featured": false,
-      "githubUrl": "https://github.com/wallacemaia2007/Customer-register",
-      "liveUrl": "https://www.linkedin.com/posts/wallacemaia-dev_javascript-typescript-angular-activity-7385676116797079552-S7PG?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE9zdVsB33_pruHbEok_UbWu8X2JwL1Nfhk",
-      "startDate": "2025-10-07",
-      "endDate": "2025-10-17",
-      "status": "completed",
-      "tags": [
-        "web",
-        "angular",
-        "gallery"
-      ],
-      "challenges": [
-        "Uso do Angular Material para criar uma interface intuitiva",
-        "Implementação de validação de reactive forms"
-      ],
-      "challengesEn": [
-        "Using Angular Material to create an intuitive interface",
-        "Reactive forms validation implementation"
-      ],
-      "learnings": [
-        "Integração com APIs externas usando HttpClient",
-        "Uso do Angular Material para criar uma interface intuitiva"
-      ],
-      "learningsEn": [
-        "External API integration using HttpClient",
-        "Using Angular Material to create an intuitive interface"
-      ],
-      "clientType": "pessoal"
-    },
-    {
-      "id": "4",
-      "title": "Instituto Motirõ",
-      "slug": "instituto-motiro",
-      "description": "O Instituto Motirõ (Associação Promotora de Educação e Cultura - APEC) foi criado em 2023 a partir do desejo de construir um espaço físico de encontro para pessoas interessadas em educação e cultura em Passos (MG). Dedicado ao fomento e promoção da educação-cultura no município de Passos e região, o Motirõ é composto por dois núcleos: o Centro de Educação Interdisciplinar e Aprovações (CEIA) e o Núcleo de Arte e Cultura (NAC), fomentando desenvolvimento pessoal e comunitário. O Instituto Motirõ nasceu com o propósito de fortalecer a cultura, a educação e a coletividade. Cada projeto, cada ação e cada encontro são construídos de forma colaborativa, valorizando a partilha, a união e o poder do coletivo. O termo Motirõ (pronúncia: Motirô) origina-se no tupi-guarani e representa a reunião de pessoas para construir algo em comum, com ajuda mútua.",
-      "descriptionEn": "Instituto Motirõ (Association for the Promotion of Education and Culture - APEC) was created in 2023 from the desire to build a physical meeting space for people interested in education and culture in Passos (MG). Dedicated to fostering education and culture in Passos and region, Motirõ is composed of two centers: the Center for Interdisciplinary Education and Approvals (CEIA) and the Center for Art and Culture (NAC), promoting personal and community development. The term Motirõ originates from Tupi-Guarani and represents people gathering to build something in common, with mutual help.",
-      "shortDescription": "Instituto cultural e educacional focado em desenvolvimento comunitário",
-      "shortDescriptionEn": "Cultural and educational institute focused on community development",
-      "thumbnail": "assets/images/projects/instituto-motiro/motiro1.png",
-      "images": [
-        "assets/images/projects/instituto-motiro/motiro2.png",
-        "assets/images/projects/instituto-motiro/motiro3.png",
-        "assets/images/projects/instituto-motiro/motiro4.png"
-      ],
-      "thumbVideo": "assets/images/projects/instituto-motiro/motiro_video.mp4",
-      "technologies": [
-        "Vite",
-        "Tailwind CSS",
-        "TypeScript",
-        "RxJS",
-        "UUID",
-        "LocalStorage"
-      ],
-      "category": "web",
-      "featured": true,
-      "liveUrl": "https://www.institutomotiro.com.br/",
-      "startDate": "2026-03-25",
-      "endDate": "2026-04-15",
-      "status": "completed",
-      "tags": [
-        "web",
-        "vite",
-        "blog"
-      ],
-      "challenges": [
-        "Integração com domínio personalizado e hospedagem",
-        "Design responsivo para múltiplos dispositivos"
-      ],
-      "challengesEn": [
-        "Custom domain and hosting integration",
-        "Responsive design for multiple devices"
-      ],
-      "learnings": [
-        "Estudos de um novo framework (Vite) para desenvolvimento web"
-      ],
-      "learningsEn": [
-        "Studies of a new framework (Vite) for web development"
-      ],
-      "clientType": "freelance"
-    },
-    {
-      "id": "5",
-      "title": "Portifólio Banda Aurah",
-      "slug": "banda-aurah-portfolio",
-      "description": "Portfólio da banda Aurah, desenvolvido para apresentar seus projetos, habilidades e experiência profissional. Construído com Angular e Tailwind CSS, o site é responsivo e otimizado para SEO.",
-      "descriptionEn": "Portfolio for the band Aurah, developed to showcase their projects, skills and professional experience. Built with Angular and Tailwind CSS, the site is responsive and SEO optimized.",
-      "shortDescription": "Portfólio da banda Aurah responsivo com Angular e Tailwind CSS",
-      "shortDescriptionEn": "Responsive portfolio for band Aurah with Angular and Tailwind CSS",
-      "thumbnail": "assets/images/projects/banda-aurah/banda-aurah1.png",
-      "images": [
-        "assets/images/projects/banda-aurah/banda-aurah2.png",
-        "assets/images/projects/banda-aurah/banda-aurah3.png"
-      ],
-      "thumbVideo": "assets/images/projects/banda-aurah/banda-aurah_video.mp4",
-      "technologies": [
-        "Angular",
-        "Tailwind CSS",
-        "Angular Material",
-        "RxJS",
-        "Express",
-        "Node.js"
-      ],
-      "category": "web",
-      "featured": true,
-      "liveUrl": "https://portfolio-banda-aurah.vercel.app/",
-      "startDate": "2026-01-20",
-      "endDate": "2026-02-10",
-      "status": "completed",
-      "tags": [
-        "portfolio",
-        "web",
-        "angular"
-      ],
-      "challenges": [
-        "Design responsivo para múltiplos dispositivos",
-        "Otimização de performance e SEO"
-      ],
-      "challengesEn": [
-        "Responsive design for multiple devices",
-        "Performance optimization and SEO"
-      ],
-      "learnings": [
-        "Melhores práticas de desenvolvimento web",
-        "Implementação de design responsivo com Tailwind CSS",
-        "Deploy de aplicações Angular",
-        "Boas práticas de UI/UX com Angular Material"
-      ],
-      "learningsEn": [
-        "Web development best practices",
-        "Responsive design implementation with Tailwind CSS",
-        "Angular application deployment",
-        "UI/UX best practices with Angular Material"
-      ],
-      "clientType": "freelance"
-    },
-    {
-      "id": "6",
       "title": "Schulles Gastronomia ERP",
       "slug": "schulles-gastronomia-erp",
       "description": "Sistema web completo de gestão gastronômica desenvolvido para a Schulles Gastronomia. O projeto inclui painel administrativo, autenticação segura, gerenciamento de cardápio semanal, controle de pedidos, clientes, acessos e métricas financeiras. Construído com Angular e TypeScript, o sistema foi projetado para oferecer uma experiência moderna, intuitiva e altamente responsiva para administração completa do negócio.",
@@ -433,6 +96,343 @@
         "Performance optimization in complex applications"
       ],
       "clientType": "freelance"
+    },
+    {
+      "id": "2",
+      "title": "Instituto Motirõ",
+      "slug": "instituto-motiro",
+      "description": "O Instituto Motirõ (Associação Promotora de Educação e Cultura - APEC) foi criado em 2023 a partir do desejo de construir um espaço físico de encontro para pessoas interessadas em educação e cultura em Passos (MG). Dedicado ao fomento e promoção da educação-cultura no município de Passos e região, o Motirõ é composto por dois núcleos: o Centro de Educação Interdisciplinar e Aprovações (CEIA) e o Núcleo de Arte e Cultura (NAC), fomentando desenvolvimento pessoal e comunitário. O Instituto Motirõ nasceu com o propósito de fortalecer a cultura, a educação e a coletividade. Cada projeto, cada ação e cada encontro são construídos de forma colaborativa, valorizando a partilha, a união e o poder do coletivo. O termo Motirõ (pronúncia: Motirô) origina-se no tupi-guarani e representa a reunião de pessoas para construir algo em comum, com ajuda mútua.",
+      "descriptionEn": "Instituto Motirõ (Association for the Promotion of Education and Culture - APEC) was created in 2023 from the desire to build a physical meeting space for people interested in education and culture in Passos (MG). Dedicated to fostering education and culture in Passos and region, Motirõ is composed of two centers: the Center for Interdisciplinary Education and Approvals (CEIA) and the Center for Art and Culture (NAC), promoting personal and community development. The term Motirõ originates from Tupi-Guarani and represents people gathering to build something in common, with mutual help.",
+      "shortDescription": "Instituto cultural e educacional focado em desenvolvimento comunitário",
+      "shortDescriptionEn": "Cultural and educational institute focused on community development",
+      "thumbnail": "assets/images/projects/instituto-motiro/motiro1.png",
+      "images": [
+        "assets/images/projects/instituto-motiro/motiro2.png",
+        "assets/images/projects/instituto-motiro/motiro3.png",
+        "assets/images/projects/instituto-motiro/motiro4.png"
+      ],
+      "thumbVideo": "assets/images/projects/instituto-motiro/motiro_video.mp4",
+      "technologies": [
+        "Vite",
+        "Tailwind CSS",
+        "TypeScript",
+        "RxJS",
+        "UUID",
+        "LocalStorage"
+      ],
+      "category": "web",
+      "featured": true,
+      "liveUrl": "https://www.institutomotiro.com.br/",
+      "startDate": "2026-03-25",
+      "endDate": "2026-04-15",
+      "status": "completed",
+      "tags": [
+        "web",
+        "vite",
+        "blog"
+      ],
+      "challenges": [
+        "Integração com domínio personalizado e hospedagem",
+        "Design responsivo para múltiplos dispositivos"
+      ],
+      "challengesEn": [
+        "Custom domain and hosting integration",
+        "Responsive design for multiple devices"
+      ],
+      "learnings": [
+        "Estudos de um novo framework (Vite) para desenvolvimento web"
+      ],
+      "learningsEn": [
+        "Studies of a new framework (Vite) for web development"
+      ],
+      "clientType": "freelance"
+    },
+    {
+      "id": "3",
+      "title": "Portifólio Banda Aurah",
+      "slug": "banda-aurah-portfolio",
+      "description": "Portfólio da banda Aurah, desenvolvido para apresentar seus projetos, habilidades e experiência profissional. Construído com Angular e Tailwind CSS, o site é responsivo e otimizado para SEO.",
+      "descriptionEn": "Portfolio for the band Aurah, developed to showcase their projects, skills and professional experience. Built with Angular and Tailwind CSS, the site is responsive and SEO optimized.",
+      "shortDescription": "Portfólio da banda Aurah responsivo com Angular e Tailwind CSS",
+      "shortDescriptionEn": "Responsive portfolio for band Aurah with Angular and Tailwind CSS",
+      "thumbnail": "assets/images/projects/banda-aurah/banda-aurah1.png",
+      "images": [
+        "assets/images/projects/banda-aurah/banda-aurah2.png",
+        "assets/images/projects/banda-aurah/banda-aurah3.png"
+      ],
+      "thumbVideo": "assets/images/projects/banda-aurah/banda-aurah_video.mp4",
+      "technologies": [
+        "Angular",
+        "Tailwind CSS",
+        "Angular Material",
+        "RxJS",
+        "Express",
+        "Node.js"
+      ],
+      "category": "web",
+      "featured": true,
+      "liveUrl": "https://portfolio-banda-aurah.vercel.app/",
+      "startDate": "2026-01-20",
+      "endDate": "2026-02-10",
+      "status": "completed",
+      "tags": [
+        "portfolio",
+        "web",
+        "angular"
+      ],
+      "challenges": [
+        "Design responsivo para múltiplos dispositivos",
+        "Otimização de performance e SEO"
+      ],
+      "challengesEn": [
+        "Responsive design for multiple devices",
+        "Performance optimization and SEO"
+      ],
+      "learnings": [
+        "Melhores práticas de desenvolvimento web",
+        "Implementação de design responsivo com Tailwind CSS",
+        "Deploy de aplicações Angular",
+        "Boas práticas de UI/UX com Angular Material"
+      ],
+      "learningsEn": [
+        "Web development best practices",
+        "Responsive design implementation with Tailwind CSS",
+        "Angular application deployment",
+        "UI/UX best practices with Angular Material"
+      ],
+      "clientType": "freelance"
+    },
+    {
+      "id": "4",
+      "title": "Portifólio Pessoal",
+      "slug": "personal-portfolio",
+      "description": "Portfólio pessoal desenvolvido para apresentar projetos, habilidades e experiência profissional. Construído com Angular e Tailwind CSS, o site é responsivo e otimizado para SEO.",
+      "descriptionEn": "Personal portfolio developed to showcase projects, skills and professional experience. Built with Angular and Tailwind CSS, the site is responsive and SEO optimized.",
+      "shortDescription": "Portfólio pessoal responsivo com Angular e Tailwind CSS",
+      "shortDescriptionEn": "Responsive personal portfolio with Angular and Tailwind CSS",
+      "thumbnail": "assets/images/projects/portfolio-pessoal/thumbnail.png",
+      "images": [
+        "assets/images/projects/portfolio-pessoal/portfolio-pessoal-1.png",
+        "assets/images/projects/portfolio-pessoal/portfolio-pessoal-2.png",
+        "assets/images/projects/portfolio-pessoal/portfolio-pessoal-3.png"
+      ],
+      "thumbVideo": "assets/images/projects/portfolio-pessoal/portfolio-pessoal-video.mp4",
+      "technologies": [
+        "Angular",
+        "Tailwind CSS",
+        "Angular Material",
+        "RxJS",
+        "Express",
+        "Node.js"
+      ],
+      "category": "web",
+      "featured": false,
+      "githubUrl": "https://github.com/wallacemaia2007/Portfolio-Wallace_Maia",
+      "liveUrl": "https://maiawall.com",
+      "startDate": "2025-12-20",
+      "endDate": "",
+      "status": "completed",
+      "tags": [
+        "portfolio",
+        "web",
+        "angular"
+      ],
+      "challenges": [
+        "Design responsivo para múltiplos dispositivos",
+        "Otimização de performance e SEO"
+      ],
+      "challengesEn": [
+        "Responsive design for multiple devices",
+        "Performance optimization and SEO"
+      ],
+      "learnings": [
+        "Melhores práticas de desenvolvimento web",
+        "Implementação de design responsivo com Tailwind CSS",
+        "Deploy de aplicações Angular",
+        "Boas práticas de UI/UX com Angular Material"
+      ],
+      "learningsEn": [
+        "Web development best practices",
+        "Responsive design implementation with Tailwind CSS",
+        "Angular application deployment",
+        "UI/UX best practices with Angular Material"
+      ],
+      "clientType": "freelance"
+    },
+    {
+      "id": "5",
+      "title": "Digital Bank Api",
+      "slug": "digital-bank-api",
+      "description": "API REST de um banco digital em Java com Spring Boot. O projeto evoluiu de uma aplicação de console para uma arquitetura em camadas (Controller, Service, Repository), expondo funcionalidades como criação de contas e transferências. Usa Spring Data JPA para persistência de dados em banco relacional.",
+      "descriptionEn": "REST API for a digital bank in Java with Spring Boot. The project evolved from a console application to a layered architecture (Controller, Service, Repository), exposing features like account creation and transfers. Uses Spring Data JPA for relational database persistence.",
+      "shortDescription": "API REST de banco digital em Java com Spring Boot",
+      "shortDescriptionEn": "REST API for a digital bank in Java with Spring Boot",
+      "thumbnail": "assets/images/projects/digital-bank/thumbnail.jpeg",
+      "images": [
+        "assets/images/projects/digital-bank/digital-bank-1.png",
+        "assets/images/projects/digital-bank/digital-bank-2.png",
+        "assets/images/projects/digital-bank/digital-bank-3.png"
+      ],
+      "thumbVideo": "assets/images/projects/digital-bank/digital-bank-video.mp4",
+      "technologies": [
+        "Java",
+        "Spring Boot",
+        "Spring Data JPA",
+        "Hibernate",
+        "Spring Security",
+        "MySQL",
+        "REST API",
+        "Maven",
+        "JUnit",
+        "Postman",
+        "Git",
+        "Docker",
+        "Mockito",
+        "Swagger"
+      ],
+      "category": "backend",
+      "featured": false,
+      "githubUrl": "https://github.com/wallacemaia2007/Digital-bank-api",
+      "liveUrl": "https://www.linkedin.com/posts/wallacemaia-dev_java-springboot-springsecurity-activity-7376984431712083968-Hbt_?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE9zdVsB33_pruHbEok_UbWu8X2JwL1Nfhk",
+      "startDate": "2025-08-13",
+      "endDate": "2025-09-21",
+      "status": "completed",
+      "tags": [
+        "backend",
+        "banking",
+        "api"
+      ],
+      "challenges": [
+        "Implementação de transações financeiras seguras",
+        "Validação robusta de dados de entrada",
+        "Spring security para autenticação e autorização"
+      ],
+      "challengesEn": [
+        "Secure financial transactions implementation",
+        "Robust input data validation",
+        "Spring Security for authentication and authorization"
+      ],
+      "learnings": [
+        "Desenvolvimento de APIs RESTful com Spring Boot",
+        "Boas práticas de design de software em Java",
+        "Testes unitários e integração com JUnit e Mockito"
+      ],
+      "learningsEn": [
+        "RESTful API development with Spring Boot",
+        "Java software design best practices",
+        "Unit and integration testing with JUnit and Mockito"
+      ],
+      "clientType": "pessoal"
+    },
+    {
+      "id": "6",
+      "title": "Traveler Website",
+      "slug": "traveler-website",
+      "description": "Um sistema web completo para organizar, categorizar e gerenciar seus lugares favoritos de viagem. Desenvolvido com Angular 19 e integração com Google OAuth para autenticação segura.",
+      "descriptionEn": "A complete web system to organize, categorize and manage your favorite travel places. Built with Angular 19 and Google OAuth integration for secure authentication.",
+      "shortDescription": "Sistema web para gerenciar lugares favoritos de viagem",
+      "shortDescriptionEn": "Web system to manage favorite travel places",
+      "thumbnail": "assets/images/projects/traveler-website/thumbnail.jpg",
+      "images": [
+        "assets/images/projects/traveler-website/traveler-website-1.png",
+        "assets/images/projects/traveler-website/traveler-website-2.png",
+        "assets/images/projects/traveler-website/traveler-website-3.png"
+      ],
+      "thumbVideo": "assets/images/projects/traveler-website/traveler-website-video.mp4",
+      "technologies": [
+        "Angular",
+        "Angular Material",
+        "TypeScript",
+        "RxJS",
+        "OAuth",
+        "ViaCep API",
+        "Tailwind CSS"
+      ],
+      "category": "web",
+      "featured": false,
+      "githubUrl": "https://github.com/wallacemaia2007/traveler-website",
+      "liveUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7393610706035654656/",
+      "startDate": "2025-10-20",
+      "endDate": "2025-11-11",
+      "status": "completed",
+      "tags": [
+        "web",
+        "angular",
+        "gallery"
+      ],
+      "challenges": [
+        "Integração com Google OAuth",
+        "Gerenciamento de estado com RxJS"
+      ],
+      "challengesEn": [
+        "Google OAuth integration",
+        "State management with RxJS"
+      ],
+      "learnings": [
+        "Autenticação OAuth em Angular",
+        "Boas práticas de UI/UX com Angular Material",
+        "Consumo de APIs externas"
+      ],
+      "learningsEn": [
+        "OAuth authentication in Angular",
+        "UI/UX best practices with Angular Material",
+        "External API consumption"
+      ],
+      "clientType": "pessoal"
+    },
+    {
+      "id": "7",
+      "title": "Customer Register",
+      "slug": "customer-register",
+      "description": "Sistema web Angular para gerenciamento de cadastro de clientes com integração BrasilAPI, validação de formulários e persistência local. Desenvolvido com Angular 19, TypeScript e Material Design",
+      "descriptionEn": "Angular web system for customer registration management with BrasilAPI integration, form validation and local persistence. Developed with Angular 19, TypeScript and Material Design",
+      "shortDescription": "Sistema web para cadastrar e gerenciar clientes",
+      "shortDescriptionEn": "Web system to register and manage customers",
+      "thumbnail": "assets/images/projects/customer-register/thumbnail.png",
+      "images": [
+        "assets/images/projects/customer-register/customer-register-1.png",
+        "assets/images/projects/customer-register/customer-register-2.png",
+        "assets/images/projects/customer-register/customer-register-3.png"
+      ],
+      "thumbVideo": "assets/images/projects/customer-register/customer-register-video.mp4",
+      "technologies": [
+        "Angular",
+        "Angular Material",
+        "TypeScript",
+        "BrasilAPI",
+        "RxJS",
+        "UUID",
+        "LocalStorage"
+      ],
+      "category": "web",
+      "featured": false,
+      "githubUrl": "https://github.com/wallacemaia2007/Customer-register",
+      "liveUrl": "https://www.linkedin.com/posts/wallacemaia-dev_javascript-typescript-angular-activity-7385676116797079552-S7PG?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE9zdVsB33_pruHbEok_UbWu8X2JwL1Nfhk",
+      "startDate": "2025-10-07",
+      "endDate": "2025-10-17",
+      "status": "completed",
+      "tags": [
+        "web",
+        "angular",
+        "gallery"
+      ],
+      "challenges": [
+        "Uso do Angular Material para criar uma interface intuitiva",
+        "Implementação de validação de reactive forms"
+      ],
+      "challengesEn": [
+        "Using Angular Material to create an intuitive interface",
+        "Reactive forms validation implementation"
+      ],
+      "learnings": [
+        "Integração com APIs externas usando HttpClient",
+        "Uso do Angular Material para criar uma interface intuitiva"
+      ],
+      "learningsEn": [
+        "External API integration using HttpClient",
+        "Using Angular Material to create an intuitive interface"
+      ],
+      "clientType": "pessoal"
     }
   ],
   "skills": [
@@ -731,9 +731,9 @@
           "impactEn": "Optimized component loading with lazy loading and ChangeDetection OnPush, reducing render time by 40%"
         },
         {
-          "title": "Reutilização",
-          "impact": "Estruturei 15+ componentes reutilizáveis que aceleraram o desenvolvimento de novos módulos em 2x",
-          "impactEn": "Structured 15+ reusable components that accelerated new module development by 2x"
+          "title": "Criação",
+          "impact": "Já criei diversos CRM's e ERPs para clientes, entregando soluções completas e personalizadas",
+          "impactEn": "I have already created several CRMs and ERPs for clients, delivering complete and customized solutions"
         },
         {
           "title": "Qualidade",
@@ -788,8 +788,8 @@
         },
         {
           "title": "Full Stack",
-          "impact": "Desenvolvi sistemas completos (frontend + backend + API REST) para 3 clientes diferentes",
-          "impactEn": "Developed complete systems (frontend + backend + REST API) for 3 different clients"
+          "impact": "Desenvolvi sistemas completos (frontend + backend + API REST) para 4+ clientes diferentes",
+          "impactEn": "Developed complete systems (frontend + backend + REST API) for 4+ different clients"
         },
         {
           "title": "SEO",
@@ -829,13 +829,13 @@
       "highlights": [
         {
           "title": "Eficiência",
-          "impact": "Reduzi o tempo médio de resolução de chamados em 40% com diagnóstico ágil e priorização inteligente",
-          "impactEn": "Reduced average ticket resolution time by 40% with agile diagnosis and smart prioritization"
+          "impact": "Formatei diversos computadores pelos setores públicos da cidade, realizando backups e reinstalação de sistemas operacionais",
+          "impactEn": "Formatted various computers across the city's public sectors, performing backups and OS reinstallation"
         },
         {
-          "title": "Cobertura",
-          "impact": "Atendi 200+ servidores municipais com suporte presencial e remoto simultâneo",
-          "impactEn": "Served 200+ municipal employees with simultaneous on-site and remote support"
+          "title": "Trabalho em equipe",
+          "impact": "Juntamente com os técnicos da prefeitura, organizei o suporte técnico para os servidores municipais, atendendo presencialmente e remotamente, garantindo a resolução de problemas em tempo hábil",
+          "impactEn": "Together with the city hall technicians, I organized technical support for municipal employees, providing on-site and remote assistance, ensuring timely problem resolution"
         },
         {
           "title": "Prevenção",
@@ -844,8 +844,8 @@
         },
         {
           "title": "Infraestrutura",
-          "impact": "Configurei e mantive 50+ estações de trabalho, garantindo 99% de uptime dos equipamentos",
-          "impactEn": "Configured and maintained 50+ workstations, ensuring 99% equipment uptime"
+          "impact": "Configurei e mantive 30+ computadores novos, incluindo configuração de rede e instalação de softwares essenciais, garantindo 99% de uptime dos equipamentos",
+          "impactEn": "Configured and maintained 30+ new computers, including network setup and essential software installation, ensuring 99% uptime of equipment"
         }
       ],
       "startDate": "2026-01-05",
@@ -977,8 +977,8 @@
       "id": "4",
       "question": "Qual o valor dos seus serviços?",
       "questionEn": "How much do your services cost?",
-      "answer": "Os valores variam de acordo com a complexidade e escopo do projeto. Entre em contato para discutirmos seu projeto e receber um orçamento personalizado.",
-      "answerEn": "Prices vary according to project complexity and scope. Get in touch to discuss your project and receive a custom quote.",
+      "answer": "Os valores variam de acordo com a complexidade e escopo do projeto, para mais informações sobre eles veja alguns de meus serviços na página <a href=\"/dev\" class=\"text-primary hover:underline font-semibold\">Serviços</a>. Entre em contato para discutirmos seu projeto ou então e receber um orçamento personalizado.",
+      "answerEn": "Prices vary according to project complexity and scope, for more information about them see some of my services on the <a href=\"/dev\" class=\"text-primary hover:underline font-semibold\">Services</a> page. Get in touch to discuss your project or to receive a personalized quote.",
       "category": "freelance",
       "order": 4,
       "icon": "payments"
