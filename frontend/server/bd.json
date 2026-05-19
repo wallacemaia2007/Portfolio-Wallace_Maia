@@ -162,7 +162,7 @@
         "Node.js"
       ],
       "category": "web",
-      "featured": true,
+      "featured": false,
       "githubUrl": "https://github.com/wallacemaia2007/Portfolio-Wallace_Maia",
       "liveUrl": "https://maiawall.com",
       "startDate": "2025-12-20",
@@ -351,6 +351,86 @@
         "Responsive design implementation with Tailwind CSS",
         "Angular application deployment",
         "UI/UX best practices with Angular Material"
+      ],
+      "clientType": "freelance"
+    },
+    {
+      "id": "6",
+      "title": "Schulles Gastronomia ERP",
+      "slug": "schulles-gastronomia-erp",
+      "description": "Sistema web completo de gestão gastronômica desenvolvido para a Schulles Gastronomia. O projeto inclui painel administrativo, autenticação segura, gerenciamento de cardápio semanal, controle de pedidos, clientes, acessos e métricas financeiras. Construído com Angular e TypeScript, o sistema foi projetado para oferecer uma experiência moderna, intuitiva e altamente responsiva para administração completa do negócio.",
+      "descriptionEn": "Complete gastronomic management web system developed for Schulles Gastronomia. The project includes an administrative dashboard, secure authentication, weekly menu management, order control, customer management, user access and financial metrics. Built with Angular and TypeScript, the system was designed to provide a modern, intuitive and highly responsive experience for complete business administration.",
+      "shortDescription": "ERP gastronômico completo para gerenciamento de cardápio, pedidos e clientes",
+      "shortDescriptionEn": "Complete gastronomic ERP for menu, orders and customer management",
+      "thumbnail": "assets/images/projects/schulles/hero.jpg",
+      "images": [
+        "assets/images/projects/schulles/hero.jpg",
+        "assets/images/projects/schulles/mobile.jpg",
+        "assets/images/projects/schulles/plans.jpg"
+      ],
+      "thumbVideo": "assets/images/projects/schulles/video.mp4",
+      "technologies": [
+        "Angular",
+        "TypeScript",
+        "Angular Material",
+        "RxJS",
+        "Tailwind CSS",
+        "SCSS",
+        "Node.js",
+        "Express",
+        "REST API",
+        "JWT",
+        "Responsive Design",
+        "Chart.js",
+        "UX/UI",
+        "SEO"
+      ],
+      "category": "web",
+      "featured": true,
+      "githubUrl": "",
+      "liveUrl": "https://www.schulles.com.br/",
+      "startDate": "2026-04-10",
+      "endDate": "2026-05-18",
+      "status": "completed",
+      "tags": [
+        "erp",
+        "dashboard",
+        "angular",
+        "web",
+        "gastronomia",
+        "admin"
+      ],
+      "challenges": [
+        "Desenvolver um sistema administrativo completo e escalável",
+        "Criar dashboards modernos para visualização de métricas e pedidos",
+        "Implementar gerenciamento dinâmico de cardápio semanal",
+        "Garantir excelente experiência responsiva em desktop e mobile",
+        "Estruturar autenticação e controle de acessos administrativos",
+        "Manter alta performance mesmo com múltiplas funcionalidades"
+      ],
+      "challengesEn": [
+        "Develop a complete and scalable administrative system",
+        "Create modern dashboards for metrics and order visualization",
+        "Implement dynamic weekly menu management",
+        "Ensure excellent responsive experience on desktop and mobile",
+        "Structure authentication and administrative access control",
+        "Maintain high performance with multiple functionalities"
+      ],
+      "learnings": [
+        "Arquitetura de sistemas administrativos escaláveis com Angular",
+        "Criação de dashboards interativos e componentes reutilizáveis",
+        "Gerenciamento de estado e fluxos reativos com RxJS",
+        "Aplicação avançada de UI/UX em sistemas empresariais",
+        "Estruturação de permissões e autenticação segura",
+        "Otimização de performance em aplicações complexas"
+      ],
+      "learningsEn": [
+        "Scalable administrative system architecture with Angular",
+        "Interactive dashboards and reusable component creation",
+        "State management and reactive flows with RxJS",
+        "Advanced UI/UX application in enterprise systems",
+        "Secure authentication and permission structuring",
+        "Performance optimization in complex applications"
       ],
       "clientType": "freelance"
     }
@@ -645,10 +725,26 @@
       "description": "Atuo na Crosoften como Desenvolvedor Front-end especializado em Angular, focado na criação e evolução de interfaces eficientes, organizadas e escaláveis. Trabalho com arquitetura de componentes, boas práticas de desenvolvimento e programação reativa com RxJS, garantindo aplicações performáticas, estáveis e de fácil manutenção. Realizo integração com APIs RESTful, tratamento de fluxos assíncronos e melhoria contínua do código por meio de refatorações e otimizações. Também colaboro diretamente com equipes de design, back-end e QA para entregar soluções alinhadas ao produto, priorizando usabilidade, desempenho e qualidade.",
       "descriptionEn": "I work at Crosoften as a Front-end Developer specialized in Angular, focused on creating and evolving efficient, organized and scalable interfaces. I work with component architecture, development best practices and reactive programming with RxJS, ensuring performant, stable and maintainable applications. I integrate RESTful APIs, handle async flows and continuously improve code through refactoring and optimization. I also collaborate directly with design, back-end and QA teams to deliver solutions aligned with the product, prioritizing usability, performance and quality.",
       "highlights": [
-        { "title": "Performance", "impact": "Otimizei o carregamento de componentes com lazy loading e ChangeDetection OnPush, reduzindo o tempo de renderização em 40%", "impactEn": "Optimized component loading with lazy loading and ChangeDetection OnPush, reducing render time by 40%" },
-        { "title": "Reutilização", "impact": "Estruturei 15+ componentes reutilizáveis que aceleraram o desenvolvimento de novos módulos em 2x", "impactEn": "Structured 15+ reusable components that accelerated new module development by 2x" },
-        { "title": "Qualidade", "impact": "Implementei code review e testes unitários, reduzindo bugs em produção em 30%", "impactEn": "Implemented code review and unit tests, reducing production bugs by 30%" },
-        { "title": "Escalabilidade", "impact": "Refatorei a arquitetura do projeto principal, diminuindo o tempo de onboarding de novos devs em 50%", "impactEn": "Refactored main project architecture, reducing new dev onboarding time by 50%" }
+        {
+          "title": "Performance",
+          "impact": "Otimizei o carregamento de componentes com lazy loading e ChangeDetection OnPush, reduzindo o tempo de renderização em 40%",
+          "impactEn": "Optimized component loading with lazy loading and ChangeDetection OnPush, reducing render time by 40%"
+        },
+        {
+          "title": "Reutilização",
+          "impact": "Estruturei 15+ componentes reutilizáveis que aceleraram o desenvolvimento de novos módulos em 2x",
+          "impactEn": "Structured 15+ reusable components that accelerated new module development by 2x"
+        },
+        {
+          "title": "Qualidade",
+          "impact": "Implementei code review e testes unitários, reduzindo bugs em produção em 30%",
+          "impactEn": "Implemented code review and unit tests, reducing production bugs by 30%"
+        },
+        {
+          "title": "Escalabilidade",
+          "impact": "Refatorei a arquitetura do projeto principal, diminuindo o tempo de onboarding de novos devs em 50%",
+          "impactEn": "Refactored main project architecture, reducing new dev onboarding time by 50%"
+        }
       ],
       "startDate": "2025-11-25",
       "endDate": "momento",
@@ -680,10 +776,26 @@
       "description": "Atuo como Desenvolvedor Full Stack freelancer, desenvolvendo aplicações web completas com Angular no front-end e Java com Spring Boot no back-end. Crio APIs REST, realizo integrações com bancos de dados e sistemas externos, além de desenvolver sites institucionais, landing pages, e-commerces e dashboards administrativos. Também sou responsável pelo deploy em servidores e cloud (incluindo AWS), bem como manutenção e otimização das aplicações.",
       "descriptionEn": "I work as a Full Stack freelancer developer, building complete web applications with Angular on the front-end and Java with Spring Boot on the back-end. I create REST APIs, integrate with databases and external systems, and develop institutional sites, landing pages, e-commerce and administrative dashboards. I'm also responsible for deployment on servers and cloud (including AWS), as well as application maintenance and optimization.",
       "highlights": [
-        { "title": "Produtividade", "impact": "Entreguei 5+ projetos completos em 4 meses, do design ao deploy em produção", "impactEn": "Delivered 5+ complete projects in 4 months, from design to production deployment" },
-        { "title": "Performance Web", "impact": "Otimizei aplicações Angular atingindo 95+ de performance no Lighthouse", "impactEn": "Optimized Angular applications achieving 95+ Lighthouse performance score" },
-        { "title": "Full Stack", "impact": "Desenvolvi sistemas completos (frontend + backend + API REST) para 3 clientes diferentes", "impactEn": "Developed complete systems (frontend + backend + REST API) for 3 different clients" },
-        { "title": "SEO", "impact": "Aumentei o tráfego orgânico de 2 sites institucionais com SEO técnico e otimização de meta tags", "impactEn": "Increased organic traffic for 2 institutional sites with technical SEO and meta tag optimization" }
+        {
+          "title": "Produtividade",
+          "impact": "Entreguei 5+ projetos completos em 4 meses, do design ao deploy em produção",
+          "impactEn": "Delivered 5+ complete projects in 4 months, from design to production deployment"
+        },
+        {
+          "title": "Performance Web",
+          "impact": "Otimizei aplicações Angular atingindo 95+ de performance no Lighthouse",
+          "impactEn": "Optimized Angular applications achieving 95+ Lighthouse performance score"
+        },
+        {
+          "title": "Full Stack",
+          "impact": "Desenvolvi sistemas completos (frontend + backend + API REST) para 3 clientes diferentes",
+          "impactEn": "Developed complete systems (frontend + backend + REST API) for 3 different clients"
+        },
+        {
+          "title": "SEO",
+          "impact": "Aumentei o tráfego orgânico de 2 sites institucionais com SEO técnico e otimização de meta tags",
+          "impactEn": "Increased organic traffic for 2 institutional sites with technical SEO and meta tag optimization"
+        }
       ],
       "startDate": "2025-11-15",
       "endDate": "momento",
@@ -715,10 +827,26 @@
       "description": "Atuei como estagiário na Divisão de Processamento de Dados da Prefeitura de Passos, prestando suporte técnico presencial e remoto aos servidores municipais. Fui responsável por manutenção preventiva e corretiva de computadores, configuração de redes, instalação de softwares e resolução de problemas técnicos, garantindo o bom funcionamento dos equipamentos e a continuidade dos serviços. A experiência fortaleceu minhas habilidades em atendimento ao usuário, diagnóstico de problemas e organização no suporte de TI.",
       "descriptionEn": "I worked as an intern in the Data Processing Division at Passos City Hall, providing on-site and remote technical support to municipal employees. I was responsible for preventive and corrective computer maintenance, network configuration, software installation and technical problem resolution, ensuring equipment functionality and service continuity. The experience strengthened my skills in user support, problem diagnosis and IT support organization.",
       "highlights": [
-        { "title": "Eficiência", "impact": "Reduzi o tempo médio de resolução de chamados em 40% com diagnóstico ágil e priorização inteligente", "impactEn": "Reduced average ticket resolution time by 40% with agile diagnosis and smart prioritization" },
-        { "title": "Cobertura", "impact": "Atendi 200+ servidores municipais com suporte presencial e remoto simultâneo", "impactEn": "Served 200+ municipal employees with simultaneous on-site and remote support" },
-        { "title": "Prevenção", "impact": "Implementei rotina de manutenção preventiva que reduziu falhas de hardware em 60%", "impactEn": "Implemented preventive maintenance routine that reduced hardware failures by 60%" },
-        { "title": "Infraestrutura", "impact": "Configurei e mantive 50+ estações de trabalho, garantindo 99% de uptime dos equipamentos", "impactEn": "Configured and maintained 50+ workstations, ensuring 99% equipment uptime" }
+        {
+          "title": "Eficiência",
+          "impact": "Reduzi o tempo médio de resolução de chamados em 40% com diagnóstico ágil e priorização inteligente",
+          "impactEn": "Reduced average ticket resolution time by 40% with agile diagnosis and smart prioritization"
+        },
+        {
+          "title": "Cobertura",
+          "impact": "Atendi 200+ servidores municipais com suporte presencial e remoto simultâneo",
+          "impactEn": "Served 200+ municipal employees with simultaneous on-site and remote support"
+        },
+        {
+          "title": "Prevenção",
+          "impact": "Implementei rotina de manutenção preventiva que reduziu falhas de hardware em 60%",
+          "impactEn": "Implemented preventive maintenance routine that reduced hardware failures by 60%"
+        },
+        {
+          "title": "Infraestrutura",
+          "impact": "Configurei e mantive 50+ estações de trabalho, garantindo 99% de uptime dos equipamentos",
+          "impactEn": "Configured and maintained 50+ workstations, ensuring 99% equipment uptime"
+        }
       ],
       "startDate": "2026-01-05",
       "endDate": "2026-03-30",
