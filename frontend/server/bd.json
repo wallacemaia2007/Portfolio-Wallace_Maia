@@ -940,6 +940,12 @@
       "url": "https://wa.me/35910036806",
       "icon": "assets/icons/whatsapp.svg",
       "color": "#25D366"
+    },
+    {
+      "name": "Fiverr",
+      "url":"https://br.fiverr.com/wallace_maia?public_mode=true",
+      "icon": "assets/icons/fiverr.svg",
+      "color": "#1DBF73"
     }
   ],
   "faqs": [
