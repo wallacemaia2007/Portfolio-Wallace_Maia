@@ -20,9 +20,9 @@ const SEO_MAP_PT: Record<string, PageSeoData> = {
   '/home': {
     title: 'Wallace Maia | Desenvolvedor Full Stack Angular & Java',
     description:
-      'Portfólio de Wallace Cândido Maia Sousa — Desenvolvedor Full Stack em Angular, Java e Spring Boot. Projetos reais, experiência na CroSoften e freelance. Uberlândia/MG.',
+      'Portfólio de Wallace Candido Maia Sousa — Desenvolvedor Full Stack em Angular, Java e Spring Boot. Projetos reais, experiência na CroSoften e freelance. Uberlândia/MG.',
     keywords:
-      'Wallace Maia, Wallace Cândido Maia Sousa, desenvolvedor full stack, Angular, Java, Spring Boot, portfólio desenvolvedor, programador MG',
+      'Wallace Maia, Wallace Candido Maia Sousa, desenvolvedor full stack, Angular, Java, Spring Boot, portfólio desenvolvedor, programador MG',
     ogType: 'website',
   },
   '/about': {
@@ -79,9 +79,9 @@ const SEO_MAP_EN: Record<string, PageSeoData> = {
   '/home': {
     title: 'Wallace Maia | Full Stack Developer Angular & Java',
     description:
-      'Portfolio of Wallace Cândido Maia Sousa — Full Stack Developer in Angular, Java, and Spring Boot. Real projects, experience at CroSoften and freelance. Uberlândia/MG.',
+      'Portfolio of Wallace Candido Maia Sousa — Full Stack Developer in Angular, Java, and Spring Boot. Real projects, experience at CroSoften and freelance. Uberlândia/MG.',
     keywords:
-      'Wallace Maia, Wallace Cândido Maia Sousa, full stack developer, Angular, Java, Spring Boot, developer portfolio, programmer MG',
+      'Wallace Maia, Wallace Candido Maia Sousa, full stack developer, Angular, Java, Spring Boot, developer portfolio, programmer MG',
     ogType: 'website',
   },
   '/about': {
@@ -185,7 +185,7 @@ export class SeoService {
     // Basic meta
     this.setTag('description', data.description);
     if (data.keywords) this.setTag('keywords', data.keywords);
-    this.setTag('author', 'Wallace Cândido Maia Sousa');
+    this.setTag('author', 'Wallace Candido Maia Sousa');
     this.setTag(
       'robots',
       'index, follow, max-snippet:-1, max-image-preview:large',
