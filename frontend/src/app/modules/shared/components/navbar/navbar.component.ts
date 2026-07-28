@@ -74,6 +74,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   public menuOpen = false;
   private previousBodyOverflow = '';
+  private touchStartX = 0;
+  private touchStartY = 0;
+  private edgeSwipeCandidate = false;
+  private readonly swipeEdgeWidth = 40;
+  private readonly swipeOpenDistance = 64;
+  private readonly swipeVerticalTolerance = 72;
   private readonly focusableSelector = [
     'a[href]',
     'button:not([disabled])',
@@ -150,6 +156,40 @@ export class NavbarComponent implements OnInit, OnDestroy {
     if (isPlatformBrowser(this.platformId) && window.innerWidth >= 1024) {
       this.closeMenu();
     }
+  }
+
+  @HostListener('window:touchstart', ['$event'])
+  onTouchStart(event: TouchEvent): void {
+    if (!isPlatformBrowser(this.platformId) || this.menuOpen) return;
+    if (window.innerWidth >= 1024 || event.touches.length !== 1) return;
+
+    const touch = event.touches[0];
+    this.touchStartX = touch.clientX;
+    this.touchStartY = touch.clientY;
+    this.edgeSwipeCandidate =
+      touch.clientX >= window.innerWidth - this.swipeEdgeWidth;
+  }
+
+  @HostListener('window:touchend', ['$event'])
+  onTouchEnd(event: TouchEvent): void {
+    if (!this.edgeSwipeCandidate || this.menuOpen) return;
+
+    const touch = event.changedTouches[0];
+    const deltaX = touch.clientX - this.touchStartX;
+    const deltaY = Math.abs(touch.clientY - this.touchStartY);
+    this.edgeSwipeCandidate = false;
+
+    if (
+      deltaX <= -this.swipeOpenDistance &&
+      deltaY <= this.swipeVerticalTolerance
+    ) {
+      this.openMenu();
+    }
+  }
+
+  @HostListener('window:touchcancel')
+  onTouchCancel(): void {
+    this.edgeSwipeCandidate = false;
   }
 
   private lockBodyScroll(): void {
