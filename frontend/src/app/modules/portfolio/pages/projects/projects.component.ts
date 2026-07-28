@@ -55,6 +55,14 @@ export class ProjectsComponent implements OnInit {
   private portfolioService = inject(PortfolioService);
   protected translate = inject(TranslateService);
   private playingPreviewIds = new Set<string>();
+  private readonly projectGridPreference = new Map<string, number>(
+    [
+      'split-hub',
+      'portfolio-marcio-carvalho',
+      'schulles-gastronomia-erp',
+      'instituto-motiro',
+    ].map((slug, index) => [slug, index]),
+  );
 
   isLoading = true;
   allProjects: Project[] = [];
@@ -101,15 +109,21 @@ export class ProjectsComponent implements OnInit {
     this.portfolioService.getProjects().subscribe({
       next: (projects) => {
         this.allProjects = projects;
-        this.filteredProjects = [...projects];
+        this.filteredProjects = this.sortProjectsForGrid(projects);
         this.totalProjects = projects.length;
 
         this.buildCategories();
         this.findLatestCompletedProject();
         this.statistics = [
-          { value: this.totalProjects, label: this.translate.translate('projects.statsProjects') },
+          {
+            value: this.totalProjects,
+            label: this.translate.translate('projects.statsProjects'),
+          },
           { value: this.categories.length, label: 'Categorias' },
-          { value: this.getTechnologiesCount(), label: this.translate.translate('projects.statsTechnologies') },
+          {
+            value: this.getTechnologiesCount(),
+            label: this.translate.translate('projects.statsTechnologies'),
+          },
         ];
         this.isLoading = false;
       },
@@ -128,7 +142,9 @@ export class ProjectsComponent implements OnInit {
       categoryCounts.set(project.category, count + 1);
     });
 
-    const catNames = this.translate.isEn() ? PROJECT_CATEGORY_NAMES_EN : PROJECT_CATEGORY_NAMES;
+    const catNames = this.translate.isEn()
+      ? PROJECT_CATEGORY_NAMES_EN
+      : PROJECT_CATEGORY_NAMES;
     this.categories = Array.from(categoryCounts.entries()).map(
       ([category, count]) => ({
         value: category,
@@ -142,7 +158,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   private findLatestCompletedProject(): void {
-    const completedProjects = this.allProjects;
+    const completedProjects = [...this.allProjects];
 
     if (completedProjects.length === 0) {
       this.latestCompletedProject = null;
@@ -195,13 +211,31 @@ export class ProjectsComponent implements OnInit {
       );
     }
 
-    this.filteredProjects = filtered;
+    this.filteredProjects = this.sortProjectsForGrid(filtered);
   }
 
   clearFilters(): void {
     this.selectedCategory = 'all';
     this.searchTerm = '';
-    this.filteredProjects = [...this.allProjects];
+    this.filteredProjects = this.sortProjectsForGrid(this.allProjects);
+  }
+
+  private sortProjectsForGrid(projects: Project[]): Project[] {
+    return projects
+      .map((project, index) => ({ project, index }))
+      .sort((a, b) => {
+        const priorityA = this.projectGridPreference.get(a.project.slug);
+        const priorityB = this.projectGridPreference.get(b.project.slug);
+        const rankA = priorityA ?? Number.MAX_SAFE_INTEGER;
+        const rankB = priorityB ?? Number.MAX_SAFE_INTEGER;
+
+        if (rankA !== rankB) {
+          return rankA - rankB;
+        }
+
+        return a.index - b.index;
+      })
+      .map(({ project }) => project);
   }
 
   getTechnologiesCount(): number {
@@ -211,7 +245,9 @@ export class ProjectsComponent implements OnInit {
   }
 
   getCategoryLabel(category: ProjectCategory): string {
-    return this.translate.isEn() ? PROJECT_CATEGORY_NAMES_EN[category] : PROJECT_CATEGORY_NAMES[category];
+    return this.translate.isEn()
+      ? PROJECT_CATEGORY_NAMES_EN[category]
+      : PROJECT_CATEGORY_NAMES[category];
   }
 
   getCategoryIcon(category: ProjectCategory): string {

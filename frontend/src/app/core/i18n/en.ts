@@ -413,6 +413,9 @@ export const en = {
     proj06Title: 'Márcio Carvalho Portfolio',
     proj06Desc:
       'Institutional Next.js website showcasing Márcio Carvalho’s career, education, cultural projects, academic production, music, media appearances and contact channels.',
+    proj07Title: 'SplitHub',
+    proj07Desc:
+      'Full-stack platform for splitting group expenses, tracking balances, payments, proofs, invites, plans, and real-time notifications.',
   },
   devStack: {
     title: 'My Stack',

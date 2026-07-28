@@ -420,6 +420,9 @@ export const pt = {
     proj06Title: 'Portfólio Márcio Carvalho',
     proj06Desc:
       'Site institucional em Next.js para apresentar a trajetória, formação, projetos culturais, produção acadêmica, música, mídia e canais de contato de Márcio Carvalho.',
+    proj07Title: 'SplitHub',
+    proj07Desc:
+      'Plataforma full stack para dividir despesas em grupo, controlar saldos, pagamentos, comprovantes, convites, planos e notificações em tempo real.',
   },
   devStack: {
     title: 'Minha Stack',

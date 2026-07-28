@@ -482,6 +482,100 @@
         "Integrated a contact form through an API Route using Zod, environment variables and an external email service."
       ],
       "clientType": "freelance"
+    },
+    {
+      "id": "9",
+      "title": "SplitHub",
+      "slug": "split-hub",
+      "description": "Plataforma web full stack para gerenciamento de despesas compartilhadas entre grupos. O SplitHub permite criar grupos, convidar membros, registrar despesas, dividir valores por diferentes modos, acompanhar saldos, confirmar pagamentos, anexar comprovantes, receber notificações em tempo real e usar recursos de planos, relatórios, recorrências e assistente por áudio/IA.",
+      "descriptionEn": "Full-stack web platform for managing shared expenses between groups. SplitHub lets users create groups, invite members, register expenses, split amounts with different modes, track balances, confirm payments, attach payment proofs, receive real-time notifications, and use plan-based features, reports, recurring expenses, and an audio/AI assistant.",
+      "shortDescription": "App full stack para dividir despesas em grupo, controlar saldos, pagamentos, comprovantes e notificações em tempo real.",
+      "shortDescriptionEn": "Full-stack app for splitting group expenses, tracking balances, payments, proofs, and real-time notifications.",
+      "thumbnail": "assets/images/projects/split-hub/thumbnail.png",
+      "images": [
+        "assets/images/projects/split-hub/imagem-1.png",
+        "assets/images/projects/split-hub/imagem-2.png",
+        "assets/images/projects/split-hub/imagem-3.png"
+      ],
+      "thumbVideo": "",
+      "technologies": [
+        "Angular 20",
+        "TypeScript",
+        "SCSS",
+        "RxJS",
+        "Angular CDK",
+        "Tailwind CSS",
+        "GSAP",
+        "ApexCharts",
+        "Java 21",
+        "Spring Boot 3.5",
+        "Spring Security",
+        "Spring Data JPA",
+        "PostgreSQL",
+        "JWT",
+        "OAuth2",
+        "WebSocket",
+        "STOMP",
+        "Maven",
+        "Flyway",
+        "Swagger/OpenAPI",
+        "Google Cloud Storage",
+        "Google Gemini",
+        "Google Text-to-Speech",
+        "Resend",
+        "Docker",
+        "Vercel",
+        "Render"
+      ],
+      "category": "web",
+      "featured": false,
+      "githubUrl": "https://github.com/wallacemaia2007/split-hub",
+      "liveUrl": "https://splithub.maiawall.com",
+      "startDate": "2026-03-08",
+      "endDate": "",
+      "status": "in-progress",
+      "tags": [
+        "Full Stack",
+        "Fintech",
+        "Despesas compartilhadas",
+        "Angular",
+        "Spring Boot",
+        "PostgreSQL",
+        "JWT",
+        "OAuth2",
+        "WebSocket",
+        "IA",
+        "SaaS"
+      ],
+      "challenges": [
+        "Construir uma arquitetura full stack com frontend Angular separado da API Spring Boot, mantendo contratos REST consistentes entre as camadas.",
+        "Evoluir autenticação para um fluxo com cookies, refresh token, CSRF, OAuth2 e hidratação de sessão no frontend.",
+        "Modelar regras de negócio para grupos, membros, despesas, divisões, pagamentos, convites, permissões e planos.",
+        "Implementar notificações e atualizações em tempo real com WebSocket/STOMP.",
+        "Organizar recursos avançados como comprovantes, recorrências, relatórios, limites por plano, assistente de IA e armazenamento externo."
+      ],
+      "challengesEn": [
+        "Building a full-stack architecture with a separate Angular frontend and Spring Boot API while keeping REST contracts consistent across layers.",
+        "Evolving authentication into a cookie-based flow with refresh tokens, CSRF, OAuth2, and frontend session hydration.",
+        "Modeling business rules for groups, members, expenses, splits, payments, invites, permissions, and plans.",
+        "Implementing real-time notifications and updates with WebSocket/STOMP.",
+        "Organizing advanced features such as payment proofs, recurring expenses, reports, plan limits, AI assistant, and external storage."
+      ],
+      "learnings": [
+        "Aprofundamento em Spring Security, OAuth2, JWT com cookies, refresh token e proteção CSRF em uma aplicação SPA.",
+        "Integração entre Angular moderno com standalone components, signals, interceptors HTTP e rotas protegidas.",
+        "Criação de uma API modular com controllers, services, repositories, DTOs, mappers, handlers de exceção e migrações SQL.",
+        "Uso de WebSocket autenticado para notificações e eventos de domínio.",
+        "Planejamento de produto SaaS com planos Free, Plus e Controle, limites de uso e diferenciais voltados ao contexto brasileiro."
+      ],
+      "learningsEn": [
+        "Deeper experience with Spring Security, OAuth2, cookie-based JWT, refresh tokens, and CSRF protection in a SPA.",
+        "Integration of modern Angular with standalone components, signals, HTTP interceptors, and protected routes.",
+        "Design of a modular API with controllers, services, repositories, DTOs, mappers, exception handlers, and SQL migrations.",
+        "Use of authenticated WebSocket communication for notifications and domain events.",
+        "SaaS product planning with Free, Plus, and Controle plans, usage limits, and differentiators focused on the Brazilian market."
+      ],
+      "clientType": "pessoal"
     }
   ],
   "skills": [

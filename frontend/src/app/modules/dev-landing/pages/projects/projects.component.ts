@@ -201,6 +201,31 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
           'assets/images/projects/portfolio-marcio-carvalho/imagem-3.png',
         ],
       },
+      {
+        id: 'split-hub',
+        title: t('proj07Title'),
+        description: t('proj07Desc'),
+        year: '2026',
+        liveUrl: 'https://splithub.maiawall.com',
+        technologies: [
+          'Angular',
+          'Spring Boot',
+          'PostgreSQL',
+          'WebSocket',
+          'OAuth2',
+          'IA',
+        ],
+        theme: {
+          surface: '#0b1220',
+          accent: '#1e40af',
+          glow: 'rgba(30, 64, 175, 0.35)',
+        },
+        pages: [
+          'assets/images/projects/split-hub/imagem-1.png',
+          'assets/images/projects/split-hub/imagem-2.png',
+          'assets/images/projects/split-hub/imagem-3.png',
+        ],
+      },
     ];
     return result;
   }
