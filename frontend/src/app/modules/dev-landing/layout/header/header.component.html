@@ -13,8 +13,10 @@
     <a href="#hero" (click)="scrollTo($event, '#hero')"
       class="group flex items-center gap-2.5 rounded-full transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-dev pl-1"
       [attr.aria-label]="translate.translate('header.home')">
-      <img src="/assets/images/acronym.png" alt="Logo Maiawall"
-        class="h-9 w-9 rounded-full object-cover shadow-sm transition-transform duration-200 group-hover:scale-110">
+      <span
+        class="h-9 w-9 rounded-lg overflow-hidden bg-white border border-dev/30 dark:border-dev/40 shadow-sm transition-transform duration-200 group-hover:scale-110">
+        <img src="/assets/brand/logo-light.png" alt="Logo Maiawall" class="h-full w-full object-cover">
+      </span>
       <span
         class="text-xs sm:text-sm font-bold tracking-tight text-gray-900 dark:text-white transition-colors group-hover:text-dev dark:group-hover:text-dev-light">
         Maiawall
@@ -109,7 +111,9 @@
   <!-- Drawer Header -->
   <div class="flex items-center justify-between px-5 py-4 border-b border-gray-200 dark:border-white/10">
     <div class="flex items-center gap-3">
-      <img src="/assets/images/acronym.png" alt="Logo Maiawall" class="h-9 w-9 rounded-full object-cover">
+      <span class="h-9 w-9 rounded-lg overflow-hidden bg-white border border-dev/30 dark:border-dev/40">
+        <img src="/assets/brand/logo-light.png" alt="Logo Maiawall" class="h-full w-full object-cover">
+      </span>
       <span class="font-bold text-gray-900 dark:text-white text-sm leading-tight">Maiawall<br>Wallace Maia</span>
     </div>
     <div class="flex items-center gap-2">

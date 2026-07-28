@@ -26,35 +26,39 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
+              {
+                "glob": "favicon.ico",
+                "input": "src/assets/brand",
+                "output": "."
+              },
               {
                 "glob": "favicon.svg",
-                "input": "src",
+                "input": "src/assets/brand",
                 "output": "."
               },
               {
                 "glob": "favicon-96x96.png",
-                "input": "src",
+                "input": "src/assets/brand",
                 "output": "."
               },
               {
                 "glob": "apple-touch-icon.png",
-                "input": "src",
+                "input": "src/assets/brand",
                 "output": "."
               },
               {
                 "glob": "web-app-manifest-192x192.png",
-                "input": "src",
+                "input": "src/assets/brand",
                 "output": "."
               },
               {
                 "glob": "web-app-manifest-512x512.png",
-                "input": "src",
+                "input": "src/assets/brand",
                 "output": "."
               },
               {
                 "glob": "site.webmanifest",
-                "input": "src",
+                "input": "src/assets/brand",
                 "output": "."
               },
               "src/BingSiteAuth.xml",
@@ -134,35 +138,39 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
+              {
+                "glob": "favicon.ico",
+                "input": "src/assets/brand",
+                "output": "."
+              },
               {
                 "glob": "favicon.svg",
-                "input": "src",
+                "input": "src/assets/brand",
                 "output": "."
               },
               {
                 "glob": "favicon-96x96.png",
-                "input": "src",
+                "input": "src/assets/brand",
                 "output": "."
               },
               {
                 "glob": "apple-touch-icon.png",
-                "input": "src",
+                "input": "src/assets/brand",
                 "output": "."
               },
               {
                 "glob": "web-app-manifest-192x192.png",
-                "input": "src",
+                "input": "src/assets/brand",
                 "output": "."
               },
               {
                 "glob": "web-app-manifest-512x512.png",
-                "input": "src",
+                "input": "src/assets/brand",
                 "output": "."
               },
               {
                 "glob": "site.webmanifest",
-                "input": "src",
+                "input": "src/assets/brand",
                 "output": "."
               },
               "src/BingSiteAuth.xml",

@@ -12,6 +12,7 @@ Disallow: /*.json$
 
 # Permitir rastreamento de assets importantes para SEO visual
 Allow: /assets/images/
+Allow: /assets/brand/
 Allow: /assets/cv.pdf
 
 # Sitemap

@@ -15,7 +15,7 @@ export interface PageSeoData {
 }
 
 const BASE_URL = 'https://maiawall.com';
-const DEFAULT_OG_IMAGE = `${BASE_URL}/assets/images/og-image.png`;
+const DEFAULT_OG_IMAGE = `${BASE_URL}/assets/images/og-image.jpg`;
 const SEO_MAP_PT: Record<string, PageSeoData> = {
   '/home': {
     title: 'Wallace Maia | Desenvolvedor Full Stack Angular & Java',
@@ -201,7 +201,7 @@ export class SeoService {
     this.setOgTag('og:url', canonical);
     this.setOgTag('og:image', ogImage);
     this.setOgTag('og:image:width', '1200');
-    this.setOgTag('og:image:height', '630');
+    this.setOgTag('og:image:height', '674');
     this.setOgTag('og:image:alt', this.translate.translate('seo.ogImageAlt'));
     this.setOgTag('og:site_name', this.translate.translate('seo.siteName'));
     this.setOgTag('og:locale', this.getLocale());
