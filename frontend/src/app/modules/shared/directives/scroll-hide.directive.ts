@@ -2,6 +2,7 @@ import {
   Directive,
   ElementRef,
   HostListener,
+  Input,
   OnDestroy,
   OnInit,
   PLATFORM_ID,
@@ -17,10 +18,21 @@ import { isPlatformBrowser } from '@angular/common';
 export class ScrollHideDirective implements OnInit, OnDestroy {
   private lastScrollY = 0;
   private ticking = false;
-  private readonly HIDE_THRESHOLD = 80;
-  private readonly SCROLL_DELTA = 10;
-
+  private paused = false;
   private progressBar: HTMLElement | null = null;
+
+  @Input() appScrollHideThreshold = 9;
+  @Input() appScrollHideTopOffset = 80;
+  @Input() appScrollHideHideAfter = 300;
+
+  @Input()
+  set appScrollHidePaused(value: boolean | string) {
+    this.paused = value === '' || value === true || value === 'true';
+
+    if (this.paused) {
+      this.setHeaderVisibility(true);
+    }
+  }
 
   private platformId = inject(PLATFORM_ID);
 
@@ -32,6 +44,7 @@ export class ScrollHideDirective implements OnInit, OnDestroy {
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
     this.createProgressBar();
+    this.setHeaderVisibility(true);
     this.processScroll();
   }
 
@@ -69,20 +82,41 @@ export class ScrollHideDirective implements OnInit, OnDestroy {
   }
 
   private updateHiddenState(scrollY: number): void {
+    if (this.paused) {
+      this.setHeaderVisibility(true);
+      return;
+    }
+
     const delta = scrollY - this.lastScrollY;
 
-    // Se o scroll estiver muito próximo do topo, garantir que o header não esteja escondido
-    if (scrollY <= 5) {
-      // Reduzindo o threshold para garantir visibilidade imediata no topo
+    if (scrollY < this.appScrollHideTopOffset) {
+      this.setHeaderVisibility(true);
+      return;
+    }
+
+    if (
+      delta > this.appScrollHideThreshold &&
+      scrollY >= this.appScrollHideHideAfter
+    ) {
+      this.setHeaderVisibility(false);
+    } else if (delta < -this.appScrollHideThreshold) {
+      this.setHeaderVisibility(true);
+    }
+  }
+
+  private setHeaderVisibility(isVisible: boolean): void {
+    if (isVisible) {
+      this.renderer.setAttribute(this.el.nativeElement, 'data-state', 'visible');
+      this.renderer.addClass(this.el.nativeElement, 'header-visible');
+      this.renderer.removeClass(this.el.nativeElement, 'header-hidden');
       this.renderer.removeClass(this.el.nativeElement, 'header--hidden');
       return;
     }
 
-    if (delta > this.SCROLL_DELTA && scrollY > this.HIDE_THRESHOLD) {
-      this.renderer.addClass(this.el.nativeElement, 'header--hidden');
-    } else if (delta < -this.SCROLL_DELTA) {
-      this.renderer.removeClass(this.el.nativeElement, 'header--hidden');
-    }
+    this.renderer.setAttribute(this.el.nativeElement, 'data-state', 'hidden');
+    this.renderer.addClass(this.el.nativeElement, 'header-hidden');
+    this.renderer.addClass(this.el.nativeElement, 'header--hidden');
+    this.renderer.removeClass(this.el.nativeElement, 'header-visible');
   }
 
   private updateProgressBar(scrollY: number): void {
@@ -112,7 +146,11 @@ export class ScrollHideDirective implements OnInit, OnDestroy {
     this.renderer.setStyle(this.progressBar, 'left', '0');
     this.renderer.setStyle(this.progressBar, 'width', '100%');
     this.renderer.setStyle(this.progressBar, 'height', '2px');
-    this.renderer.setStyle(this.progressBar, 'background', '#9B1B1F');
+    this.renderer.setStyle(
+      this.progressBar,
+      'background',
+      'var(--color-primary)',
+    );
     this.renderer.setStyle(this.progressBar, 'transform', 'scaleX(0)');
     this.renderer.setStyle(this.progressBar, 'transform-origin', 'left');
     this.renderer.setStyle(

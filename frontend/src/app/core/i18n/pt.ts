@@ -16,6 +16,7 @@ export const pt = {
     langEn: 'English',
     langPt: 'Português',
     menu: 'Menu',
+    closeMenu: 'Fechar menu',
   },
   header: {
     services: 'Serviços',
