@@ -81,6 +81,14 @@ async function sendEmailViaResend({ mailTo, email, subject, text }) {
   }
 }
 
+function saveContactRecord(contactRecord) {
+  if (process.env.VERCEL) return false;
+
+  const contacts = router.db.get("contacts");
+  if (!contacts.value()) router.db.set("contacts", []).write();
+  router.db.get("contacts").push(contactRecord).write();
+  return true;
+}
 // ── rotas customizadas do "about" ─────────────────────────────────────────────
 server.get("/api/education", (_req, res) => {
   const list = router.db.get("about.educationList").value() || [];
@@ -146,9 +154,7 @@ server.post("/api/contact", async (req, res) => {
     };
 
     // salvar no bd.json (em memória no Vercel — sem persistência entre requests)
-    const contacts = router.db.get("contacts");
-    if (!contacts.value()) router.db.set("contacts", []).write();
-    router.db.get("contacts").push(contactRecord).write();
+    saveContactRecord(contactRecord);
 
     const mailTo = requireEnv("MAIL_TO");
 
