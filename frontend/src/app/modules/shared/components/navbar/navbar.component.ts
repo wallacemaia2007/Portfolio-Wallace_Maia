@@ -9,7 +9,6 @@ import { ThemeService } from '../../../portfolio/services/theme.service';
 import { PortfolioService } from '../../../portfolio/services/portfolio.service';
 import { MatTooltip } from '@angular/material/tooltip';
 import { ScrollHideDirective } from '../../directives/scroll-hide.directive';
-import { ButtonComponent } from "../button/button.component";
 import { TranslateService, SupportedLang } from '../../../../core/services/translate.service';
 
 export interface NavbarTemplate {
@@ -30,9 +29,8 @@ export interface NavbarTemplate {
     MatIconModule,
     MatMenuModule,
     MatTooltip,
-    ScrollHideDirective,
-    ButtonComponent
-],
+    ScrollHideDirective
+  ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })

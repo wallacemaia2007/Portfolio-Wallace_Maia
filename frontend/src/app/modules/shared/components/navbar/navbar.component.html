@@ -16,9 +16,9 @@
       </a>
 
       <!-- Right Side Content -->
-      <div class="flex items-center gap-4 md:gap-8 lg:gap-12">
+      <div class="flex items-center gap-3 xl:gap-6">
         <!-- Links desktop -->
-        <div class="hidden md:flex items-center gap-1">
+        <div class="hidden xl:flex items-center gap-1">
           @for (item of navbarData.navItems; track item.route) {
           <a [routerLink]="item.route" routerLinkActive="nav-link--active" #rla="routerLinkActive" class="nav-link relative px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2
                     text-gray-600 dark:text-gray-400
@@ -36,9 +36,9 @@
         </div>
 
         <!-- Botão Hire Me (Desktop) -->
-        <div class="hidden lg:flex items-center">
+        <div class="hidden xl:flex items-center">
           <a href="https://maiawall.com/dev" target="_blank"
-            class="hire-me-btn flex items-center px-5 py-2.5 rounded-full text-sm font-bold text-white bg-dev hover:bg-dev-light transition-all duration-300">
+            class="hire-me-btn flex shrink-0 items-center px-5 py-2.5 rounded-full text-sm font-bold text-white bg-dev hover:bg-dev-light transition-all duration-300 whitespace-nowrap">
             <span>{{ translate.translate('navbar.hireMe') }}</span>
           </a>
         </div>
@@ -87,15 +87,15 @@
           </button>
 
           <!-- CV desktop -->
-          <app-button class="hidden lg:flex" [buttonData]="{
-              label: translate.translate('navbar.downloadCv'),
-              icon: 'download',
-              link: 'assets/cv.pdf',
-              color: 'primary',
-            }"></app-button>
+          <a href="/assets/cv.pdf" target="_blank" rel="noopener noreferrer"
+            class="hidden xl:inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-primary-dark hover:scale-105 hover:shadow-lg whitespace-nowrap"
+            [attr.aria-label]="translate.translate('navbar.downloadCv')">
+            <mat-icon style="font-size: 1.1rem; width: 1.1rem; height: 1.1rem;">download</mat-icon>
+            <span>{{ translate.translate('navbar.downloadCv') }}</span>
+          </a>
 
           <!-- Hamburguer mobile -->
-          <button (click)="toggleMenu()" class="flex md:hidden w-9 h-9 items-center justify-center rounded-lg
+          <button (click)="toggleMenu()" class="flex xl:hidden w-9 h-9 items-center justify-center rounded-lg
                    border border-gray-200 dark:border-gray-700
                    text-gray-600 dark:text-gray-400
                    hover:border-primary hover:text-primary
@@ -110,7 +110,7 @@
 
     <!-- Menu mobile -->
     @if (menuOpen) {
-    <div class="md:hidden mobile-menu pb-4 pt-2 border-t border-gray-200 dark:border-gray-800 animate-slide-down">
+    <div class="xl:hidden mobile-menu pb-4 pt-2 border-t border-gray-200 dark:border-gray-800 animate-slide-down">
       <div class="space-y-1">
         @for (item of navbarData.navItems; track item.route) {
         <a [routerLink]="item.route" routerLinkActive="mobile-link--active" (click)="closeMenu()" class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-lg
@@ -170,6 +170,12 @@
           <span>{{ translate.translate('navbar.hireMe') }}</span>
         </a>
 
+        <a href="/assets/cv.pdf" target="_blank" rel="noopener noreferrer" (click)="closeMenu()"
+          class="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-sm font-bold text-white bg-primary hover:bg-primary-dark transition-all duration-200">
+          <mat-icon style="font-size: 1rem; width: 1rem; height: 1rem;">download</mat-icon>
+          <span>{{ translate.translate('navbar.downloadCv') }}</span>
+        </a>
+
       </div>
     </div>
     }
@@ -177,7 +183,7 @@
 </nav>
 
 @if (menuOpen) {
-<div class="fixed inset-0 z-40 bg-black/55 md:hidden" (click)="closeMenu()"></div>
+<div class="fixed inset-0 z-40 bg-black/55 xl:hidden" (click)="closeMenu()"></div>
 }
 
 <!-- Espaçador -->
