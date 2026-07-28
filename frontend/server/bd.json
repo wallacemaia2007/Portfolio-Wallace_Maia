@@ -55,14 +55,7 @@
       "startDate": "2026-04-10",
       "endDate": "2026-05-18",
       "status": "completed",
-      "tags": [
-        "erp",
-        "dashboard",
-        "angular",
-        "web",
-        "gastronomia",
-        "admin"
-      ],
+      "tags": ["erp", "dashboard", "angular", "web", "gastronomia", "admin"],
       "challenges": [
         "Desenvolver um sistema administrativo completo e escalável",
         "Criar dashboards modernos para visualização de métricas e pedidos",
@@ -126,11 +119,7 @@
       "startDate": "2026-03-25",
       "endDate": "2026-04-15",
       "status": "completed",
-      "tags": [
-        "web",
-        "vite",
-        "blog"
-      ],
+      "tags": ["web", "vite", "blog"],
       "challenges": [
         "Integração com domínio personalizado e hospedagem",
         "Design responsivo para múltiplos dispositivos"
@@ -142,9 +131,7 @@
       "learnings": [
         "Estudos de um novo framework (Vite) para desenvolvimento web"
       ],
-      "learningsEn": [
-        "Studies of a new framework (Vite) for web development"
-      ],
+      "learningsEn": ["Studies of a new framework (Vite) for web development"],
       "clientType": "freelance"
     },
     {
@@ -170,16 +157,12 @@
         "Node.js"
       ],
       "category": "web",
-      "featured": true,
+      "featured": false,
       "liveUrl": "https://portfolio-banda-aurah.vercel.app/",
       "startDate": "2026-01-20",
       "endDate": "2026-02-10",
       "status": "completed",
-      "tags": [
-        "portfolio",
-        "web",
-        "angular"
-      ],
+      "tags": ["portfolio", "web", "angular"],
       "challenges": [
         "Design responsivo para múltiplos dispositivos",
         "Otimização de performance e SEO"
@@ -232,11 +215,7 @@
       "startDate": "2025-12-20",
       "endDate": "",
       "status": "completed",
-      "tags": [
-        "portfolio",
-        "web",
-        "angular"
-      ],
+      "tags": ["portfolio", "web", "angular"],
       "challenges": [
         "Design responsivo para múltiplos dispositivos",
         "Otimização de performance e SEO"
@@ -297,11 +276,7 @@
       "startDate": "2025-08-13",
       "endDate": "2025-09-21",
       "status": "completed",
-      "tags": [
-        "backend",
-        "banking",
-        "api"
-      ],
+      "tags": ["backend", "banking", "api"],
       "challenges": [
         "Implementação de transações financeiras seguras",
         "Validação robusta de dados de entrada",
@@ -355,11 +330,7 @@
       "startDate": "2025-10-20",
       "endDate": "2025-11-11",
       "status": "completed",
-      "tags": [
-        "web",
-        "angular",
-        "gallery"
-      ],
+      "tags": ["web", "angular", "gallery"],
       "challenges": [
         "Integração com Google OAuth",
         "Gerenciamento de estado com RxJS"
@@ -411,11 +382,7 @@
       "startDate": "2025-10-07",
       "endDate": "2025-10-17",
       "status": "completed",
-      "tags": [
-        "web",
-        "angular",
-        "gallery"
-      ],
+      "tags": ["web", "angular", "gallery"],
       "challenges": [
         "Uso do Angular Material para criar uma interface intuitiva",
         "Implementação de validação de reactive forms"
@@ -433,6 +400,88 @@
         "Using Angular Material to create an intuitive interface"
       ],
       "clientType": "pessoal"
+    },
+    {
+      "id": "8",
+      "title": "Portfólio Márcio Carvalho",
+      "slug": "portfolio-marcio-carvalho",
+      "description": "Site institucional e portfólio profissional desenvolvido para Márcio Francisco de Carvalho, historiador, produtor cultural, educador, pesquisador e músico de Passos-MG. O projeto reúne biografia, formação, produção cultural, livros, artigos, trajetória musical, presença na mídia e canais de contato em uma experiência visual editorial, responsiva e orientada a conteúdo real.",
+      "descriptionEn": "Institutional portfolio website developed for Márcio Francisco de Carvalho, a historian, cultural producer, educator, researcher and musician from Passos, Minas Gerais, Brazil. The project brings together biography, education, cultural projects, books, articles, music work, media appearances and contact channels in a responsive, editorial and content-driven experience.",
+      "shortDescription": "Portfólio institucional em Next.js para historiador, produtor cultural, educador, pesquisador e músico.",
+      "shortDescriptionEn": "Institutional Next.js portfolio for a historian, cultural producer, educator, researcher and musician.",
+      "thumbnail": "assets/images/projects/portfolio-marcio-carvalho/thumbnail.png",
+      "images": [
+        "assets/images/projects/portfolio-marcio-carvalho/imagem-1.png",
+        "assets/images/projects/portfolio-marcio-carvalho/imagem-2.png",
+        "assets/images/projects/portfolio-marcio-carvalho/imagem-3.png"
+      ],
+      "thumbVideo": "",
+      "technologies": [
+        "Next.js 16",
+        "React 19",
+        "TypeScript",
+        "Tailwind CSS 4",
+        "shadcn/ui",
+        "Base UI",
+        "GSAP",
+        "Framer Motion",
+        "TanStack Query",
+        "React Hook Form",
+        "Zod",
+        "Resend",
+        "Next Themes",
+        "Sonner",
+        "Lucide React",
+        "React Icons"
+      ],
+      "category": "web",
+      "featured": true,
+      "githubUrl": "https://github.com/wallacemaia2007/Portfolio-Marcio.git",
+      "liveUrl": "https://www.marciofcarvalho.com.br",
+      "startDate": "2026-07-13",
+      "endDate": "2026-07-27",
+      "status": "completed",
+      "tags": [
+        "portfolio",
+        "site institucional",
+        "nextjs",
+        "react",
+        "typescript",
+        "tailwind",
+        "seo",
+        "formulário de contato",
+        "animações",
+        "conteúdo cultural"
+      ],
+      "challenges": [
+        "Organizar um grande volume de conteúdo biográfico, acadêmico, cultural, musical e midiático em uma arquitetura data-driven.",
+        "Construir uma identidade visual editorial com alternância de temas entre patrimônio cultural e território, mantendo consistência entre home e páginas internas.",
+        "Implementar experiências interativas com GSAP, incluindo carrosséis, vitrine de projetos e seção de mídia com estética de TV retrô.",
+        "Criar um formulário de contato server-side com validação, honeypot, rate limit e envio por Resend.",
+        "Adicionar infraestrutura de SEO técnico com metadata, Open Graph, sitemap, robots, canonicalização de domínio e JSON-LD de pessoa."
+      ],
+      "challengesEn": [
+        "Organizing a large amount of biographical, academic, cultural, musical and media content into a data-driven architecture.",
+        "Building an editorial visual identity with alternating heritage and territory themes while keeping consistency across the home page and internal pages.",
+        "Implementing interactive GSAP experiences, including carousels, project showcases and a retro TV-inspired media section.",
+        "Creating a server-side contact form with validation, honeypot protection, rate limiting and Resend email delivery.",
+        "Adding technical SEO infrastructure with metadata, Open Graph, sitemap, robots, domain canonicalization and Person JSON-LD."
+      ],
+      "learnings": [
+        "Aprofundamento no App Router do Next.js 16 com dados centralizados em TypeScript.",
+        "Uso de animações acessíveis com preferência por reduced motion e interações responsivas.",
+        "Estruturação de SEO para site pessoal/profissional com dados estruturados e domínio canônico.",
+        "Criação de componentes reutilizáveis de seção temática para preservar consistência visual em páginas diferentes.",
+        "Integração de formulário em API Route com Zod, variáveis de ambiente e serviço externo de e-mail."
+      ],
+      "learningsEn": [
+        "Deepened usage of the Next.js 16 App Router with centralized TypeScript data.",
+        "Built accessible animations with reduced-motion handling and responsive interactions.",
+        "Structured SEO for a personal/professional website with structured data and canonical domain handling.",
+        "Created reusable themed section components to keep visual consistency across different pages.",
+        "Integrated a contact form through an API Route using Zod, environment variables and an external email service."
+      ],
+      "clientType": "freelance"
     }
   ],
   "skills": [
@@ -877,11 +926,7 @@
       "content": "Conteúdo completo do post...",
       "coverImage": "assets/images/blog/angular-structure.jpg",
       "category": "Angular",
-      "tags": [
-        "angular",
-        "arquitetura",
-        "boas-práticas"
-      ],
+      "tags": ["angular", "arquitetura", "boas-práticas"],
       "publishedAt": "2024-01-15",
       "readTime": 8,
       "views": 1543,
@@ -896,11 +941,7 @@
       "content": "Conteúdo completo do post...",
       "coverImage": "assets/images/blog/react-performance.jpg",
       "category": "React",
-      "tags": [
-        "react",
-        "performance",
-        "otimização"
-      ],
+      "tags": ["react", "performance", "otimização"],
       "publishedAt": "2024-01-10",
       "readTime": 6,
       "views": 2156,
@@ -943,7 +984,7 @@
     },
     {
       "name": "Fiverr",
-      "url":"https://br.fiverr.com/wallace_maia?public_mode=true",
+      "url": "https://br.fiverr.com/wallace_maia?public_mode=true",
       "icon": "assets/icons/fiverr.svg",
       "color": "#1DBF73"
     }

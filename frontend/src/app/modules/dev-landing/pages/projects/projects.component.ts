@@ -72,109 +72,135 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
   get projects(): ShowcaseProject[] {
     const t = (key: string) => this.translate.translate('devProjects.' + key);
     const result: ShowcaseProject[] = [
-    {
-      id: 'portfolio-pessoal',
-      title: t('proj01Title'),
-      description: t('proj01Desc'),
-      year: '2025',
-      liveUrl: 'https://maiawall.com',
-      technologies: ['Angular', 'Tailwind CSS', 'RxJS', 'GSAP'],
-      theme: {
-        surface: '#0f172a',
-        accent: '#38bdf8',
-        glow: 'rgba(56, 189, 248, 0.45)',
+      {
+        id: 'portfolio-pessoal',
+        title: t('proj01Title'),
+        description: t('proj01Desc'),
+        year: '2025',
+        liveUrl: 'https://maiawall.com',
+        technologies: ['Angular', 'Tailwind CSS', 'RxJS', 'GSAP'],
+        theme: {
+          surface: '#0f172a',
+          accent: '#38bdf8',
+          glow: 'rgba(56, 189, 248, 0.45)',
+        },
+        pages: [
+          'assets/images/projects/portfolio-pessoal/portfolio-pessoal-1.png',
+          'assets/images/projects/portfolio-pessoal/portfolio-pessoal-2.png',
+          'assets/images/projects/portfolio-pessoal/portfolio-pessoal-3.png',
+        ],
+        video: {
+          src: 'assets/images/projects/portfolio-pessoal/portfolio-pessoal-video.mp4',
+          poster: 'assets/images/projects/portfolio-pessoal/thumbnail.png',
+        },
       },
-      pages: [
-        'assets/images/projects/portfolio-pessoal/portfolio-pessoal-1.png',
-        'assets/images/projects/portfolio-pessoal/portfolio-pessoal-2.png',
-        'assets/images/projects/portfolio-pessoal/portfolio-pessoal-3.png',
-      ],
-      video: {
-        src: 'assets/images/projects/portfolio-pessoal/portfolio-pessoal-video.mp4',
-        poster: 'assets/images/projects/portfolio-pessoal/thumbnail.png',
+      {
+        id: 'banda-aurah',
+        title: t('proj02Title'),
+        description: t('proj02Desc'),
+        year: '2026',
+        liveUrl: 'https://portfolio-banda-aurah.vercel.app/',
+        technologies: ['Angular', 'Tailwind CSS', 'Angular Material'],
+        theme: {
+          surface: '#111827',
+          accent: '#f97316',
+          glow: 'rgba(249, 115, 22, 0.35)',
+        },
+        pages: [
+          'assets/images/projects/banda-aurah/banda-aurah1.png',
+          'assets/images/projects/banda-aurah/banda-aurah2.png',
+          'assets/images/projects/banda-aurah/banda-aurah3.png',
+        ],
+        video: {
+          src: 'assets/images/projects/banda-aurah/banda-aurah_video.mp4',
+        },
       },
-    },
-    {
-      id: 'banda-aurah',
-      title: t('proj02Title'),
-      description: t('proj02Desc'),
-      year: '2026',
-      liveUrl: 'https://portfolio-banda-aurah.vercel.app/',
-      technologies: ['Angular', 'Tailwind CSS', 'Angular Material'],
-      theme: {
-        surface: '#111827',
-        accent: '#f97316',
-        glow: 'rgba(249, 115, 22, 0.35)',
+      {
+        id: 'instituto-motiro',
+        title: t('proj03Title'),
+        description: t('proj03Desc'),
+        year: '2026',
+        liveUrl: 'https://www.institutomotiro.com.br/',
+        technologies: ['Vite', 'Tailwind CSS', 'TypeScript'],
+        theme: {
+          surface: '#0f2418',
+          accent: '#34d399',
+          glow: 'rgba(52, 211, 153, 0.35)',
+        },
+        pages: [
+          'assets/images/projects/instituto-motiro/motiro1.png',
+          'assets/images/projects/instituto-motiro/motiro2.png',
+          'assets/images/projects/instituto-motiro/motiro3.png',
+          'assets/images/projects/instituto-motiro/motiro4.png',
+        ],
+        video: {
+          src: 'assets/images/projects/instituto-motiro/motiro_video.mp4',
+        },
       },
-      pages: [
-        'assets/images/projects/banda-aurah/banda-aurah1.png',
-        'assets/images/projects/banda-aurah/banda-aurah2.png',
-        'assets/images/projects/banda-aurah/banda-aurah3.png',
-      ],
-      video: {
-        src: 'assets/images/projects/banda-aurah/banda-aurah_video.mp4',
+      {
+        id: 'painel-admin',
+        title: t('proj04Title'),
+        description: t('proj04Desc'),
+        year: '2026',
+        liveUrl:
+          'https://www.linkedin.com/feed/update/urn:li:activity:7393610706035654656/',
+        technologies: ['Angular', 'TypeScript', 'Angular Material'],
+        theme: {
+          surface: '#0b1220',
+          accent: '#1e40af',
+          glow: 'rgba(30, 64, 175, 0.35)',
+        },
+        pages: [
+          'assets/images/projects/painel-admin/foto1.jpg',
+          'assets/images/projects/painel-admin/foto2.jpg',
+          'assets/images/projects/painel-admin/foto3.jpg',
+          'assets/images/projects/painel-admin/foto4.jpg',
+        ],
       },
-    },
-    {
-      id: 'instituto-motiro',
-      title: t('proj03Title'),
-      description: t('proj03Desc'),
-      year: '2026',
-      liveUrl: 'https://www.institutomotiro.com.br/',
-      technologies: ['Vite', 'Tailwind CSS', 'TypeScript'],
-      theme: {
-        surface: '#0f2418',
-        accent: '#34d399',
-        glow: 'rgba(52, 211, 153, 0.35)',
+      {
+        id: 'schulles',
+        title: t('proj05Title'),
+        description: t('proj05Desc'),
+        year: '2026',
+        liveUrl: 'https://www.schulles.com.br/',
+        technologies: ['Angular', 'TypeScript', 'Angular Material'],
+        theme: {
+          surface: '#0b1220',
+          accent: '#1e40af',
+          glow: 'rgba(30, 64, 175, 0.35)',
+        },
+        pages: [
+          'assets/images/projects/schulles/hero.jpg',
+          'assets/images/projects/schulles/mobile.jpg',
+          'assets/images/projects/schulles/plans.jpg',
+        ],
       },
-      pages: [
-        'assets/images/projects/instituto-motiro/motiro1.png',
-        'assets/images/projects/instituto-motiro/motiro2.png',
-        'assets/images/projects/instituto-motiro/motiro3.png',
-        'assets/images/projects/instituto-motiro/motiro4.png',
-      ],
-      video: {
-        src: 'assets/images/projects/instituto-motiro/motiro_video.mp4',
+      {
+        id: 'portfolio-marcio-carvalho',
+        title: t('proj06Title'),
+        description: t('proj06Desc'),
+        year: '2026',
+        liveUrl: 'https://www.marciofcarvalho.com.br',
+        technologies: [
+          'Next.js',
+          'React',
+          'TypeScript',
+          'Tailwind CSS',
+          'GSAP',
+          'Zod',
+          'Resend',
+        ],
+        theme: {
+          surface: '#4A2E20',
+          accent: '#C68A2E',
+          glow: 'rgba(198, 138, 46, 0.35)',
+        },
+        pages: [
+          'assets/images/projects/portfolio-marcio-carvalho/imagem-1.png',
+          'assets/images/projects/portfolio-marcio-carvalho/imagem-2.png',
+          'assets/images/projects/portfolio-marcio-carvalho/imagem-3.png',
+        ],
       },
-    },
-    {
-      id: 'painel-admin',
-      title: t('proj04Title'),
-      description: t('proj04Desc'),
-      year: '2026',
-      liveUrl:
-        'https://www.linkedin.com/feed/update/urn:li:activity:7393610706035654656/',
-      technologies: ['Angular', 'TypeScript', 'Angular Material'],
-      theme: {
-        surface: '#0b1220',
-        accent: '#1e40af',
-        glow: 'rgba(30, 64, 175, 0.35)',
-      },
-      pages: [
-        'assets/images/projects/painel-admin/foto1.jpg',
-        'assets/images/projects/painel-admin/foto2.jpg',
-        'assets/images/projects/painel-admin/foto3.jpg',
-        'assets/images/projects/painel-admin/foto4.jpg',
-      ],
-    },
-    {
-      id: 'schulles',
-      title: t('proj05Title'),
-      description: t('proj05Desc'),
-      year: '2026',
-      liveUrl: 'https://www.schulles.com.br/',
-      technologies: ['Angular', 'TypeScript', 'Angular Material'],
-      theme: {
-        surface: '#0b1220',
-        accent: '#1e40af',
-        glow: 'rgba(30, 64, 175, 0.35)',
-      },
-      pages: [
-        'assets/images/projects/schulles/hero.jpg',
-        'assets/images/projects/schulles/mobile.jpg',
-        'assets/images/projects/schulles/plans.jpg',
-      ],
-    },
     ];
     return result;
   }

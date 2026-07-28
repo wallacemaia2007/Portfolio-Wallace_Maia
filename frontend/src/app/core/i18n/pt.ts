@@ -51,32 +51,39 @@ export const pt = {
     terminalLine20: '    Tailwind CSS aplicado + componentes Material/PrimeNG',
     terminalLine21: '  ✔  Frontend pronto para deploy!',
     terminalLine24: '    Testes: JUnit + Mockito executados',
-    terminalLine27: '    Spring Security: autenticação/autorização configuradas',
+    terminalLine27:
+      '    Spring Security: autenticação/autorização configuradas',
     terminalLine28: '    Persistência: Spring Data JPA + Hibernate',
-    terminalLine29: '    Banco conectado: MySQL (experiência também com PostgreSQL/MongoDB)',
+    terminalLine29:
+      '    Banco conectado: MySQL (experiência também com PostgreSQL/MongoDB)',
     terminalLine32: '    Swagger disponível para documentação da API',
     terminalLine34: '    Coleção Postman executada (validação de endpoints)',
-    terminalLine38: '  - Portfólio Pessoal (Angular, Tailwind, Node.js, Express, JSON Server)',
+    terminalLine38:
+      '  - Portfólio Pessoal (Angular, Tailwind, Node.js, Express, JSON Server)',
     terminalLine41: '    Versionamento com Git + publicação no GitHub',
-    terminalLine43: ' Sempre aprendendo: arquitetura, testes, UI/UX e boas práticas',
+    terminalLine43:
+      ' Sempre aprendendo: arquitetura, testes, UI/UX e boas práticas',
     terminalLine44: '📩 Contato: wallacemaia2007@gmail.com',
     devServices: 'Meus Serviços',
   },
   home: {
     sectionProjects: 'Projetos em Destaque',
-    projectsSubtitle: 'Confira alguns dos meus trabalhos mais recentes e impactantes',
+    projectsSubtitle:
+      'Confira alguns dos meus trabalhos mais recentes e impactantes',
     viewAllProjects: 'Ver Todos os Projetos',
     noProjects: 'Nenhum projeto em destaque ainda',
     sectionStack: 'Stack Principal',
     stackSubtitle: 'As tecnologias que impulsionam meus projetos',
     sectionTech: 'Tecnologias & Habilidades',
-    techSubtitle: 'Ferramentas e tecnologias que domino para criar soluções incríveis',
+    techSubtitle:
+      'Ferramentas e tecnologias que domino para criar soluções incríveis',
     skill: 'habilidade',
     skills: 'habilidades',
     explore: 'Explorar',
     viewAllSkills: 'Ver Todas as Skills',
     sectionJourney: 'Trajetória Profissional',
-    journeySubtitle: 'Minha jornada de crescimento e experiências ao longo dos anos',
+    journeySubtitle:
+      'Minha jornada de crescimento e experiências ao longo dos anos',
     current: 'Atual',
     present: 'Presente',
     viewFullExperience: 'Ver Experiência Completa',
@@ -85,7 +92,8 @@ export const pt = {
     techJava: 'Linguagem robusta para backends escaláveis',
     techSpringBoot: 'Framework para aplicações Java enterprise',
     ctaTitle: 'Vamos Trabalhar Juntos?',
-    ctaDescription: 'Estou sempre aberto a novos projetos e oportunidades interessantes. Entre em contato e vamos criar algo incrível!',
+    ctaDescription:
+      'Estou sempre aberto a novos projetos e oportunidades interessantes. Entre em contato e vamos criar algo incrível!',
     ctaButton: 'Entrar em Contato',
     ctaCvButton: 'Download CV',
     statsProjects: 'Projetos Concluídos',
@@ -114,14 +122,16 @@ export const pt = {
     hobbiesTitle: 'Hobbies & Interesses',
     hobbiesSubtitle: 'O que eu gosto de fazer no tempo livre',
     ctaTitle: 'Vamos Trabalhar Juntos?',
-    ctaDescription: 'Se você se identificou com minha história e quer trabalhar em um projeto incrível, estou aqui para ajudar!',
+    ctaDescription:
+      'Se você se identificou com minha história e quer trabalhar em um projeto incrível, estou aqui para ajudar!',
     ctaButton: 'Me Envie uma Mensagem',
     ctaProjectsButton: 'Ver Meus Projetos',
   },
   experience: {
     title: 'Experiência Profissional',
     subtitle: 'Minha jornada no desenvolvimento',
-    description: 'Explore minha trajetória profissional, desde estágios até posições seniores, e veja como evoluí minhas habilidades ao longo do tempo.',
+    description:
+      'Explore minha trajetória profissional, desde estágios até posições seniores, e veja como evoluí minhas habilidades ao longo do tempo.',
     loading: 'Carregando experiências...',
     notFound: 'Nenhuma experiência encontrada',
     notFoundMsg: 'Ainda não há experiências cadastradas.',
@@ -144,7 +154,8 @@ export const pt = {
   },
   skills: {
     title: 'Minhas Habilidades',
-    subtitle: 'Tecnologias e ferramentas que domino para criar soluções completas e eficientes para o mercado de trabalho.',
+    subtitle:
+      'Tecnologias e ferramentas que domino para criar soluções completas e eficientes para o mercado de trabalho.',
     all: 'Todas',
     searchPlaceholder: 'Buscar habilidade...',
     resultsFor: 'resultado(s) para',
@@ -183,13 +194,14 @@ export const pt = {
     viewDetails: 'Ver Detalhes',
     viewLive: 'Ver Live',
     allProjects: 'Todos os Projetos',
-    allProjectsSubtitle: 'Explore minha coleção completa de trabalhos organizados por categoria',
+    allProjectsSubtitle:
+      'Explore minha coleção completa de trabalhos organizados por categoria',
     loading: 'Carregando projetos...',
     notFound: 'Nenhum projeto encontrado',
     notFoundMsg: 'Tente ajustar os filtros ou buscar por outro termo',
     clearFilters: 'Limpar Filtros',
     highlight: 'Destaque',
-    open: 'Abrir',
+    open: 'Detalhes',
     period: 'Período',
     start: 'Início:',
     end: 'Fim:',
@@ -202,7 +214,8 @@ export const pt = {
     challenges: 'Desafios Enfrentados',
     learnings: 'Aprendizados',
     contactPrompt: 'Quer ver mais detalhes? Ficou interessado?',
-    contactMsg: 'Entre em contato para saber mais detalhes sobre este projeto ou para discutir possíveis trabalhos!',
+    contactMsg:
+      'Entre em contato para saber mais detalhes sobre este projeto ou para discutir possíveis trabalhos!',
     contact: 'Contato',
     filterAll: 'Todos',
     filterPlaceholder: 'Buscar por nome, descrição ou tecnologia...',
@@ -221,10 +234,13 @@ export const pt = {
   contact: {
     title: 'Entre em Contato',
     subtitle: 'Vamos trabalhar juntos e criar algo incrível!',
-    intro: 'Estou sempre aberto a novos projetos, oportunidades e colaborações.',
-    introForm: 'Preencha o formulário abaixo ou entre em contato diretamente pelos canais disponíveis.',
+    intro:
+      'Estou sempre aberto a novos projetos, oportunidades e colaborações.',
+    introForm:
+      'Preencha o formulário abaixo ou entre em contato diretamente pelos canais disponíveis.',
     formTitle: 'Envie sua Mensagem',
-    formDesc: 'Preencha o formulário abaixo e responderei o mais breve possível.',
+    formDesc:
+      'Preencha o formulário abaixo e responderei o mais breve possível.',
     namePlaceholder: 'Nome Completo*',
     emailPlaceholder: 'Email*',
     phonePlaceholder: 'Telefone (Opcional)',
@@ -236,19 +252,23 @@ export const pt = {
     sendEmail: 'Enviar Email Diretamente',
     whatsapp: 'WhatsApp',
     socialTitle: 'Redes Sociais',
-    socialDesc: 'Conecte-se comigo nas redes sociais para acompanhar meu trabalho e novidades:',
+    socialDesc:
+      'Conecte-se comigo nas redes sociais para acompanhar meu trabalho e novidades:',
     availableTitle: 'Disponível para Projetos',
-    availableDesc: 'Atualmente aceitando novos projetos e oportunidades de colaboração. Respondo normalmente em até 24 horas.',
+    availableDesc:
+      'Atualmente aceitando novos projetos e oportunidades de colaboração. Respondo normalmente em até 24 horas.',
     faqTitle: 'Perguntas Frequentes',
     ctaTitle: 'Ainda não ficou convencido?',
-    ctaDescription: 'Dê mais uma olhada em meus projetos ou então meu currículo! Tenho certeza que vai achar algo que te interesse!',
+    ctaDescription:
+      'Dê mais uma olhada em meus projetos ou então meu currículo! Tenho certeza que vai achar algo que te interesse!',
     ctaProjectsButton: 'Ver Projetos',
     ctaCvButton: 'Download CV',
     validationRequired: 'Este campo é obrigatório',
     validationEmail: 'Email inválido',
     validationMinLength: 'Mínimo de {min} caracteres',
     toastWarningFields: 'Por favor, preencha todos os campos obrigatórios.',
-    toastWarningCooldown: 'Por favor, aguarde {seconds} segundos antes de enviar outra mensagem.',
+    toastWarningCooldown:
+      'Por favor, aguarde {seconds} segundos antes de enviar outra mensagem.',
     toastSuccess: 'Mensagem enviada com sucesso! Em breve entrarei em contato.',
     toastError: 'Erro ao enviar mensagem. Tente novamente mais tarde.',
     toastEmailNotLoaded: 'Email de destino não carregou.',
@@ -269,7 +289,8 @@ export const pt = {
   },
   whatsapp: {
     generic: 'Olá! Gostaria de saber sobre os projetos e seu trabalho!',
-    project: 'Olá! Quero saber mais sobre {project} e como posso contratar seus serviços!',
+    project:
+      'Olá! Quero saber mais sobre {project} e como posso contratar seus serviços!',
     work: 'Olá! Quero saber mais sobre como funciona {work} e como posso contratar seus serviços!',
   },
   common: {
@@ -294,7 +315,8 @@ export const pt = {
     role: 'Desenvolvedor Web Full Stack',
     tag: 'Dev Web Full Stack',
     title: 'Sites modernos e rápidos que ajudam negócios a vender mais',
-    subtitle: 'Para empresas e negócios digitais que precisam de autoridade e conversão',
+    subtitle:
+      'Para empresas e negócios digitais que precisam de autoridade e conversão',
     description: 'Mais confiança, mais vendas, mais autoridade',
     ctaOrcamento: 'Solicitar Orçamento',
     ctaServicos: 'Ver Serviços',
@@ -309,10 +331,12 @@ export const pt = {
   },
   devWorks: {
     title: 'Soluções que transformam ideias em produtos digitais',
-    subtitle: 'Clique em um serviço para explorar o que posso construir para você',
+    subtitle:
+      'Clique em um serviço para explorar o que posso construir para você',
     ctaSolicitar: 'Solicitar este serviço',
     emptyTitle: 'Explore os serviços',
-    emptyMsg: 'Clique em um prédio para descobrir o que posso construir para você',
+    emptyMsg:
+      'Clique em um prédio para descobrir o que posso construir para você',
     cat01Name: 'Sistemas & SaaS',
     cat01Phrase: 'Sistemas web completos, multi-usuário, prontos para escalar.',
     cat01Svc01: 'Painéis administrativos com dashboards interativos',
@@ -378,27 +402,38 @@ export const pt = {
     pages: 'Páginas do projeto',
     cta: 'Saiba Mais! →',
     proj01Title: 'Portfolio Pessoal',
-    proj01Desc: 'Meu portfólio pessoal construído com Angular 19, apresentando meus projetos, habilidades e experiências em um formato moderno e interativo com suporte a temas claro e escuro.',
+    proj01Desc:
+      'Meu portfólio pessoal construído com Angular 19, apresentando meus projetos, habilidades e experiências em um formato moderno e interativo com suporte a temas claro e escuro.',
     proj02Title: 'Banda Aurah',
-    proj02Desc: 'Site institucional completo para a banda Aurah, incluindo integração com redes sociais, player de música incorporado, galeria de fotos, shows e área de contato.',
+    proj02Desc:
+      'Site institucional completo para a banda Aurah, incluindo integração com redes sociais, player de música incorporado, galeria de fotos, shows e área de contato.',
     proj03Title: 'Instituto Motiro',
-    proj03Desc: 'Plataforma institucional para o Instituto Motiro, organização sem fins lucrativos. O site conta com blog, área de doações, galeria de projetos e formulário de contato com integração de pagamentos.',
+    proj03Desc:
+      'Plataforma institucional para o Instituto Motiro, organização sem fins lucrativos. O site conta com blog, área de doações, galeria de projetos e formulário de contato com integração de pagamentos.',
     proj04Title: 'Painel Administrativo',
-    proj04Desc: 'Painel administrativo completo com autenticação segura, gestão de usuários CRUD, relatórios analíticos com gráficos em tempo real e sistema de notificações. Interface limpa e responsiva.',
+    proj04Desc:
+      'Painel administrativo completo com autenticação segura, gestão de usuários CRUD, relatórios analíticos com gráficos em tempo real e sistema de notificações. Interface limpa e responsiva.',
     proj05Title: 'Schulle Website',
-    proj05Desc: 'Site institucional moderno para a marca Schulle, com design sofisticado, catálogo de produtos, integração com e-commerce e blog de conteúdo.',
+    proj05Desc:
+      'Site institucional moderno para a marca Schulle, com design sofisticado, catálogo de produtos, integração com e-commerce e blog de conteúdo.',
+    proj06Title: 'Portfólio Márcio Carvalho',
+    proj06Desc:
+      'Site institucional em Next.js para apresentar a trajetória, formação, projetos culturais, produção acadêmica, música, mídia e canais de contato de Márcio Carvalho.',
   },
   devStack: {
     title: 'Minha Stack',
-    subtitle: 'As tecnologias que uso para construir produtos reais — do front ao back, do protótipo ao deploy',
+    subtitle:
+      'As tecnologias que uso para construir produtos reais — do front ao back, do protótipo ao deploy',
     tabFrontend: 'Frontend',
     tabBackend: 'Backend',
     tabDatabase: 'Banco',
     tabTools: 'Ferramentas',
     frontendLabel: 'Interface & Experiência',
-    frontendDesc: 'Interfaces modernas, rápidas e acessíveis. Do design ao componente final, com reatividade e performance de primeira.',
+    frontendDesc:
+      'Interfaces modernas, rápidas e acessíveis. Do design ao componente final, com reatividade e performance de primeira.',
     backendLabel: 'Lógica & Dados',
-    backendDesc: 'APIs robustas, seguras e escaláveis. Java + Spring para produção real, com Node.js para soluções ágeis e flexíveis.',
+    backendDesc:
+      'APIs robustas, seguras e escaláveis. Java + Spring para produção real, com Node.js para soluções ágeis e flexíveis.',
     allTechs: 'Todas as tecnologias',
     traitReactive: 'Reativo',
     traitComponent: 'Componentizado',
@@ -417,13 +452,15 @@ export const pt = {
   devCta: {
     tag: 'Disponível para projetos',
     title: 'Pronto para trabalhar',
-    subtitle: 'Transformo suas ideias em produtos digitais reais. Vamos criar algo incrível.',
+    subtitle:
+      'Transformo suas ideias em produtos digitais reais. Vamos criar algo incrível.',
     projectsBtn: 'Ver Projetos',
     whatsappBtn: 'Fale no WhatsApp',
   },
   devContact: {
     title: 'Vamos Conversar?',
-    subtitle: 'Estou sempre aberto a novas oportunidades e projetos interessantes',
+    subtitle:
+      'Estou sempre aberto a novas oportunidades e projetos interessantes',
     formTitle: 'Envie uma mensagem',
     nameLabel: 'Nome *',
     namePlaceholder: 'Seu nome completo',
@@ -450,11 +487,13 @@ export const pt = {
   devProblemSolution: {
     badge: 'TRANSFORMO SITES EM RESULTADOS',
     title: 'Seu site hoje X Meu serviço',
-    description: 'A diferença entre apenas existir online e realmente gerar resultados.',
+    description:
+      'A diferença entre apenas existir online e realmente gerar resultados.',
     currentSiteLabel: 'SEU SITE HOJE',
     deliveredLabel: 'MEU SERVIÇO',
     servicesLabel: 'SERVIÇOS QUE EU IMPLEMENTO',
-    servicesDesc: 'Soluções pensadas para quem precisa vender, organizar e escalar com tecnologia.',
+    servicesDesc:
+      'Soluções pensadas para quem precisa vender, organizar e escalar com tecnologia.',
     current01: 'Um site parado no tempo, sem contar sua história',
     current02: 'Sem controle de clientes e vendas',
     current03: 'Processos manuais que tomam seu tempo',

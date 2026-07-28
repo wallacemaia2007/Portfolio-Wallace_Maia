@@ -102,7 +102,9 @@ export class ProjectCardComponent {
   }
 
   getAccentSoftBgClass(): string {
-    return this.variant === 'dev' ? 'bg-dev/10 dark:bg-dev/20' : 'bg-primary/10 dark:bg-primary/20';
+    return this.variant === 'dev'
+      ? 'bg-dev/10 dark:bg-dev/20'
+      : 'bg-primary/10 dark:bg-primary/20';
   }
 
   getAccentBadgeClass(): string {
@@ -121,6 +123,12 @@ export class ProjectCardComponent {
       : 'bg-primary/10 text-primary border border-primary/30';
   }
 
+  getLiveUrlButtonClass(): string {
+    return this.variant === 'dev'
+      ? 'border-dev bg-dev text-white hover:bg-dev-dark dark:border-dev dark:bg-dev'
+      : 'border-primary bg-primary text-white hover:bg-primary-dark';
+  }
+
   getStatusClass(status: ProjectStatus): string {
     const statusClasses = {
       completed: 'bg-accent text-white',
@@ -132,11 +140,15 @@ export class ProjectCardComponent {
   }
 
   getStatusLabel(status: ProjectStatus): string {
-    return this.translate.isEn() ? PROJECT_STATUS_NAMES_EN[status] : PROJECT_STATUS_NAMES[status];
+    return this.translate.isEn()
+      ? PROJECT_STATUS_NAMES_EN[status]
+      : PROJECT_STATUS_NAMES[status];
   }
 
   getCategoryLabel(category: ProjectCategory): string {
-    return this.translate.isEn() ? PROJECT_CATEGORY_NAMES_EN[category] : PROJECT_CATEGORY_NAMES[category];
+    return this.translate.isEn()
+      ? PROJECT_CATEGORY_NAMES_EN[category]
+      : PROJECT_CATEGORY_NAMES[category];
   }
 
   getCategoryIcon(category: ProjectCategory): string {

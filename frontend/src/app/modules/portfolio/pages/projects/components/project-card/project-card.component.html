@@ -1,79 +1,159 @@
-<article (click)="handleOpen()"
-  (mouseenter)="handleEnter()" (mouseleave)="handleLeave()"
-  class="project-card group rounded-2xl overflow-hidden transition-all duration-500 cursor-pointer"
-  [ngClass]="getCardClass()">
-
-  <div class="relative aspect-video w-full overflow-hidden" [ngClass]="getMediaWrapperClass()">
-    <img [src]="project.thumbnail" [alt]="project.title"
+<article
+  (click)="handleOpen()"
+  (mouseenter)="handleEnter()"
+  (mouseleave)="handleLeave()"
+  class="project-card group h-full flex flex-col rounded-2xl overflow-hidden transition-all duration-500 cursor-pointer"
+  [ngClass]="getCardClass()"
+>
+  <div
+    class="relative aspect-video w-full overflow-hidden"
+    [ngClass]="getMediaWrapperClass()"
+  >
+    <img
+      [src]="project.thumbnail"
+      [alt]="project.title"
       class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
-      [class.opacity-0]="isPreviewPlaying">
-    <video #previewVideo [src]="project.thumbVideo" [poster]="project.thumbnail" muted playsinline preload="auto"
-      (ended)="handlePreviewEnded()"
-      class="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-0 transition-opacity duration-300"
-      [class.opacity-100]="isPreviewPlaying">
-    </video>
+      [class.opacity-0]="isPreviewPlaying"
+    />
+    @if (project.thumbVideo) {
+      <video
+        #previewVideo
+        [src]="project.thumbVideo"
+        [poster]="project.thumbnail"
+        muted
+        playsinline
+        preload="auto"
+        (ended)="handlePreviewEnded()"
+        class="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-0 transition-opacity duration-300"
+        [class.opacity-100]="isPreviewPlaying"
+      ></video>
+    }
 
-    <div class="absolute top-4 left-4 right-4 flex justify-between items-start z-10">
+    <div
+      class="absolute top-4 left-4 right-4 flex justify-between items-start z-10"
+    >
       @if (project.featured) {
-      <span class="px-3 py-1.5 text-white rounded-full text-xs font-bold flex items-center gap-1 shadow-lg"
-        [ngClass]="getAccentBadgeClass()">
-        <mat-icon class="text-sm">star</mat-icon>
-        {{ translate.translate('projects.highlight') }}
-      </span>
+        <span
+          class="px-3 py-1.5 text-white rounded-full text-xs font-bold flex items-center gap-1 shadow-lg"
+          [ngClass]="getAccentBadgeClass()"
+        >
+          <mat-icon class="text-sm">star</mat-icon>
+          {{ translate.translate("projects.highlight") }}
+        </span>
       }
       @if (!project.featured) {
-      <div></div>
+        <div></div>
       }
-      <span class="px-3 py-1.5 rounded-full text-xs font-bold shadow-lg" [ngClass]="getStatusClass(project.status)">
+      <span
+        class="px-3 py-1.5 rounded-full text-xs font-bold shadow-lg"
+        [ngClass]="getStatusClass(project.status)"
+      >
         {{ getStatusLabel(project.status) }}
       </span>
     </div>
   </div>
 
-  <div class="p-6">
+  <div class="p-6 flex flex-1 flex-col">
     <div class="flex items-center gap-2 mb-3">
-      <div class="w-7 h-7 rounded-lg flex items-center justify-center" [ngClass]="getAccentSoftBgClass()">
-        <mat-icon class="text-lg !leading-none !m-0 p-0 flex items-center justify-center"
+      <div
+        class="w-7 h-7 rounded-lg flex items-center justify-center"
+        [ngClass]="getAccentSoftBgClass()"
+      >
+        <mat-icon
+          class="text-lg !leading-none !m-0 p-0 flex items-center justify-center"
           [ngClass]="getAccentTextClass()"
-          style="display: flex; align-items: center; justify-content: center; height: 1.25rem; width: 1.25rem; line-height: 1;">{{
-          getCategoryIcon(project.category) }}</mat-icon>
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 1.25rem;
+            width: 1.25rem;
+            line-height: 1;
+          "
+          >{{ getCategoryIcon(project.category) }}</mat-icon
+        >
       </div>
-      <span class="text-sm font-bold uppercase tracking-wide flex items-center h-7" style="line-height: 1;"
-        [ngClass]="getAccentTextClass()">
+      <span
+        class="text-sm font-bold uppercase tracking-wide flex items-center h-7"
+        style="line-height: 1"
+        [ngClass]="getAccentTextClass()"
+      >
         {{ getCategoryLabel(project.category) }}
       </span>
     </div>
 
-    <h3 class="text-xl font-bold text-custom-black dark:text-white mb-3 line-clamp-2 leading-tight">
+    <h3
+      class="text-xl font-bold text-custom-black dark:text-white mb-3 line-clamp-2 leading-tight"
+    >
       {{ project.title }}
     </h3>
 
-    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2 min-h-[2.5rem]">
-      {{ project.shortDescription | langText:project.shortDescriptionEn }}
+    <p
+      class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2 min-h-[2.5rem]"
+    >
+      {{ project.shortDescription | langText: project.shortDescriptionEn }}
     </p>
 
-    <div class="flex flex-wrap gap-2 mb-5">
+    <div class="flex flex-nowrap gap-1.5 mb-5 min-h-[1.75rem] overflow-hidden">
       @for (tech of project.technologies.slice(0, 3); track tech) {
-      <span class="px-3 py-1 rounded-lg text-xs font-medium" [ngClass]="getTechChipClass()">
-        {{ tech }}
-      </span>
+        <span
+          class="shrink-0 whitespace-nowrap px-2.5 py-1 rounded-lg text-[11px] font-medium"
+          [ngClass]="getTechChipClass()"
+        >
+          {{ tech }}
+        </span>
       }
       @if (project.technologies.length > 3) {
-      <span class="px-3 py-1 rounded-lg text-xs font-bold" [ngClass]="getTechMoreClass()">
-        +{{ project.technologies.length - 3 }}
-      </span>
+        <span
+          class="shrink-0 whitespace-nowrap px-2.5 py-1 rounded-lg text-[11px] font-bold"
+          [ngClass]="getTechMoreClass()"
+        >
+          +{{ project.technologies.length - 3 }}
+        </span>
       }
     </div>
 
-    <div class="flex items-center justify-between pt-4 border-t-2 border-gray-200 dark:border-gray-700">
-      <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-        <mat-icon class="text-base">calendar_today</mat-icon>
-        <span>{{ formatDate(project.startDate) }}</span>
+    <div
+      class="mt-auto grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-3 pt-4 border-t-2 border-gray-200 dark:border-gray-700"
+    >
+      <div
+        class="flex min-w-0 items-center gap-2 text-sm text-gray-500 dark:text-gray-400"
+      >
+        <mat-icon class="text-base shrink-0">calendar_today</mat-icon>
+        <span class="truncate">{{ formatDate(project.startDate) }}</span>
       </div>
 
-      <div class="flex items-center gap-1 font-bold text-sm group-hover:gap-2 transition-all"
-        [ngClass]="getAccentTextClass()">
-        <span>{{ translate.translate('projects.open') }}</span>
+      @if (project.liveUrl) {
+        <a
+          [href]="project.liveUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          (click)="$event.stopPropagation()"
+          class="live-url-button inline-flex h-9 w-12 items-center justify-center rounded-lg border transition-all hover:scale-105"
+          [ngClass]="getLiveUrlButtonClass()"
+          [attr.aria-label]="translate.translate('projects.viewLive')"
+          [attr.title]="translate.translate('projects.viewLive')"
+        >
+          <svg
+            class="live-url-icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              d="M14 5h5v5M13 11l6-6M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4"
+            />
+          </svg>
+        </a>
+      } @else {
+        <span class="h-9 w-9"></span>
+      }
+
+      <div
+        class="flex min-w-0 items-center justify-end gap-1 font-bold text-sm group-hover:gap-2 transition-all"
+        [ngClass]="getAccentTextClass()"
+      >
+        <span>{{ translate.translate("projects.open") }}</span>
         <mat-icon class="text-base">arrow_forward</mat-icon>
       </div>
     </div>

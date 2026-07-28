@@ -51,14 +51,18 @@ export const en = {
     terminalLine20: '    Tailwind CSS applied + Material/PrimeNG components',
     terminalLine21: '  ✔  Frontend ready for deploy!',
     terminalLine24: '    Tests: JUnit + Mockito executed',
-    terminalLine27: '    Spring Security: authentication/authorization configured',
+    terminalLine27:
+      '    Spring Security: authentication/authorization configured',
     terminalLine28: '    Persistence: Spring Data JPA + Hibernate',
-    terminalLine29: '    Database connected: MySQL (also experienced with PostgreSQL/MongoDB)',
+    terminalLine29:
+      '    Database connected: MySQL (also experienced with PostgreSQL/MongoDB)',
     terminalLine32: '    Swagger available for API documentation',
     terminalLine34: '    Postman collection executed (endpoint validation)',
-    terminalLine38: '  - Personal Portfolio (Angular, Tailwind, Node.js, Express, JSON Server)',
+    terminalLine38:
+      '  - Personal Portfolio (Angular, Tailwind, Node.js, Express, JSON Server)',
     terminalLine41: '    Versioning with Git + publishing on GitHub',
-    terminalLine43: ' Always learning: architecture, testing, UI/UX and best practices',
+    terminalLine43:
+      ' Always learning: architecture, testing, UI/UX and best practices',
     terminalLine44: '📩 Contact: wallacemaia2007@gmail.com',
     devServices: 'Hire my Services',
   },
@@ -84,8 +88,9 @@ export const en = {
     techTypescript: 'Static typing for safer code',
     techJava: 'Robust language for scalable backends',
     techSpringBoot: 'Framework for enterprise Java applications',
-    ctaTitle: 'Let\'s Work Together?',
-    ctaDescription: 'I\'m always open to new projects and interesting opportunities. Get in touch and let\'s create something amazing!',
+    ctaTitle: "Let's Work Together?",
+    ctaDescription:
+      "I'm always open to new projects and interesting opportunities. Get in touch and let's create something amazing!",
     ctaButton: 'Get in Touch',
     ctaCvButton: 'Download CV',
     statsProjects: 'Completed Projects',
@@ -113,15 +118,17 @@ export const en = {
     valuesSubtitle: 'The principles that guide my work and life',
     hobbiesTitle: 'Hobbies & Interests',
     hobbiesSubtitle: 'What I like to do in my free time',
-    ctaTitle: 'Let\'s Work Together?',
-    ctaDescription: 'If you identified with my story and want to work on an amazing project, I\'m here to help!',
+    ctaTitle: "Let's Work Together?",
+    ctaDescription:
+      "If you identified with my story and want to work on an amazing project, I'm here to help!",
     ctaButton: 'Send Me a Message',
     ctaProjectsButton: 'View My Projects',
   },
   experience: {
     title: 'Professional Experience',
     subtitle: 'My journey in development',
-    description: 'Explore my professional trajectory, from internships to senior positions, and see how I evolved my skills over time.',
+    description:
+      'Explore my professional trajectory, from internships to senior positions, and see how I evolved my skills over time.',
     loading: 'Loading experiences...',
     notFound: 'No experience found',
     notFoundMsg: 'There are no experiences registered yet.',
@@ -133,7 +140,7 @@ export const en = {
     current: 'Current',
     highlightsTitle: 'Highlights & Impact',
     ctaTitle: 'Enjoyed my trajectory?',
-    ctaDescription: 'Let\'s work together and create something amazing!',
+    ctaDescription: "Let's work together and create something amazing!",
     ctaProjectsButton: 'View Projects',
     ctaContactButton: 'Get in Touch',
     durationMonth: 'month',
@@ -144,7 +151,8 @@ export const en = {
   },
   skills: {
     title: 'My Skills',
-    subtitle: 'Technologies and tools I master to create complete and efficient solutions for the job market.',
+    subtitle:
+      'Technologies and tools I master to create complete and efficient solutions for the job market.',
     all: 'All',
     searchPlaceholder: 'Search skill...',
     resultsFor: 'result(s) for',
@@ -164,7 +172,7 @@ export const en = {
     bubbleSubtitle: 'Drag the bubbles or click to see details',
     allSkills: 'All',
     ctaTitle: 'Enjoyed my skills?',
-    ctaDescription: 'Let\'s work together and create something amazing!',
+    ctaDescription: "Let's work together and create something amazing!",
     ctaProjectsButton: 'View Projects',
     ctaContactButton: 'Get in Touch',
     statsSkills: 'Skills',
@@ -183,13 +191,14 @@ export const en = {
     viewDetails: 'View Details',
     viewLive: 'View Live',
     allProjects: 'All Projects',
-    allProjectsSubtitle: 'Explore my complete collection of work organized by category',
+    allProjectsSubtitle:
+      'Explore my complete collection of work organized by category',
     loading: 'Loading projects...',
     notFound: 'No projects found',
     notFoundMsg: 'Try adjusting the filters or search for another term',
     clearFilters: 'Clear Filters',
     highlight: 'Highlight',
-    open: 'Open',
+    open: 'Details',
     period: 'Period',
     start: 'Start:',
     end: 'End:',
@@ -202,7 +211,8 @@ export const en = {
     challenges: 'Challenges',
     learnings: 'Learnings',
     contactPrompt: 'Want to see more details? Interested?',
-    contactMsg: 'Get in touch to learn more details about this project or to discuss potential work!',
+    contactMsg:
+      'Get in touch to learn more details about this project or to discuss potential work!',
     contact: 'Contact',
     filterAll: 'All',
     filterPlaceholder: 'Search by name, description or technology...',
@@ -220,9 +230,11 @@ export const en = {
   },
   contact: {
     title: 'Get in Touch',
-    subtitle: 'Let\'s work together and create something amazing!',
-    intro: 'I am always open to new projects, opportunities and collaborations.',
-    introForm: 'Fill out the form below or contact me directly through the available channels.',
+    subtitle: "Let's work together and create something amazing!",
+    intro:
+      'I am always open to new projects, opportunities and collaborations.',
+    introForm:
+      'Fill out the form below or contact me directly through the available channels.',
     formTitle: 'Send your Message',
     formDesc: 'Fill out the form below and I will respond as soon as possible.',
     namePlaceholder: 'Full Name*',
@@ -238,18 +250,21 @@ export const en = {
     socialTitle: 'Social Networks',
     socialDesc: 'Connect with me on social media to follow my work and news:',
     availableTitle: 'Available for Projects',
-    availableDesc: 'Currently accepting new projects and collaboration opportunities. I usually respond within 24 hours.',
+    availableDesc:
+      'Currently accepting new projects and collaboration opportunities. I usually respond within 24 hours.',
     faqTitle: 'Frequently Asked Questions',
     ctaTitle: 'Still not convinced?',
-    ctaDescription: 'Take another look at my projects or my resume! I\'m sure you\'ll find something that interests you!',
+    ctaDescription:
+      "Take another look at my projects or my resume! I'm sure you'll find something that interests you!",
     ctaProjectsButton: 'View Projects',
     ctaCvButton: 'Download CV',
     validationRequired: 'This field is required',
     validationEmail: 'Invalid email',
     validationMinLength: 'Minimum of {min} characters',
     toastWarningFields: 'Please fill in all required fields.',
-    toastWarningCooldown: 'Please wait {seconds} seconds before sending another message.',
-    toastSuccess: 'Message sent successfully! I\'ll get back to you soon.',
+    toastWarningCooldown:
+      'Please wait {seconds} seconds before sending another message.',
+    toastSuccess: "Message sent successfully! I'll get back to you soon.",
     toastError: 'Error sending message. Please try again later.',
     toastEmailNotLoaded: 'Destination email not loaded.',
     whatsappDefaultMsg: 'Hi! I saw your portfolio and would like to chat.',
@@ -269,7 +284,8 @@ export const en = {
   },
   whatsapp: {
     generic: 'Hi! I would like to know about your projects and work!',
-    project: 'Hi! I want to know more about {project} and how I can hire your services!',
+    project:
+      'Hi! I want to know more about {project} and how I can hire your services!',
     work: 'Hi! I want to know more about how {work} works and how I can hire your services!',
   },
   common: {
@@ -294,7 +310,8 @@ export const en = {
     role: 'Full Stack Web Developer',
     tag: 'Full Stack Web Dev',
     title: 'Modern, fast websites that help businesses sell more',
-    subtitle: 'For companies and digital businesses that need authority and conversion',
+    subtitle:
+      'For companies and digital businesses that need authority and conversion',
     description: 'More trust, more sales, more authority',
     ctaOrcamento: 'Request Quote',
     ctaServicos: 'View Services',
@@ -378,27 +395,38 @@ export const en = {
     pages: 'Project pages',
     cta: 'Learn More! →',
     proj01Title: 'Personal Portfolio',
-    proj01Desc: 'My personal portfolio built with Angular 19, showcasing my projects, skills and experiences in a modern interactive format with light and dark theme support.',
+    proj01Desc:
+      'My personal portfolio built with Angular 19, showcasing my projects, skills and experiences in a modern interactive format with light and dark theme support.',
     proj02Title: 'Aurah Band',
-    proj02Desc: 'Complete institutional website for the band Aurah, including social media integration, embedded music player, photo gallery, shows and contact area.',
+    proj02Desc:
+      'Complete institutional website for the band Aurah, including social media integration, embedded music player, photo gallery, shows and contact area.',
     proj03Title: 'Motiro Institute',
-    proj03Desc: 'Institutional platform for Instituto Motiro, a non-profit organization. The site features a blog, donations area, project gallery and contact form with payment integration.',
+    proj03Desc:
+      'Institutional platform for Instituto Motiro, a non-profit organization. The site features a blog, donations area, project gallery and contact form with payment integration.',
     proj04Title: 'Admin Panel',
-    proj04Desc: 'Complete admin panel with secure authentication, user management CRUD, analytical reports with real-time charts and notification system. Clean and responsive interface.',
+    proj04Desc:
+      'Complete admin panel with secure authentication, user management CRUD, analytical reports with real-time charts and notification system. Clean and responsive interface.',
     proj05Title: 'Schulle Website',
-    proj05Desc: 'Modern institutional website for the Schulle brand, with sophisticated design, product catalog, e-commerce integration and content blog.',
+    proj05Desc:
+      'Modern institutional website for the Schulle brand, with sophisticated design, product catalog, e-commerce integration and content blog.',
+    proj06Title: 'Márcio Carvalho Portfolio',
+    proj06Desc:
+      'Institutional Next.js website showcasing Márcio Carvalho’s career, education, cultural projects, academic production, music, media appearances and contact channels.',
   },
   devStack: {
     title: 'My Stack',
-    subtitle: 'The technologies I use to build real products — from front to back, from prototype to deploy',
+    subtitle:
+      'The technologies I use to build real products — from front to back, from prototype to deploy',
     tabFrontend: 'Frontend',
     tabBackend: 'Backend',
     tabDatabase: 'Database',
     tabTools: 'Tools',
     frontendLabel: 'Interface & Experience',
-    frontendDesc: 'Modern, fast and accessible interfaces. From design to final component, with reactivity and top-notch performance.',
+    frontendDesc:
+      'Modern, fast and accessible interfaces. From design to final component, with reactivity and top-notch performance.',
     backendLabel: 'Logic & Data',
-    backendDesc: 'Robust, secure and scalable APIs. Java + Spring for real production, with Node.js for agile and flexible solutions.',
+    backendDesc:
+      'Robust, secure and scalable APIs. Java + Spring for real production, with Node.js for agile and flexible solutions.',
     allTechs: 'All technologies',
     traitReactive: 'Reactive',
     traitComponent: 'Component-based',
@@ -417,12 +445,13 @@ export const en = {
   devCta: {
     tag: 'Available for projects',
     title: 'Ready to work',
-    subtitle: 'I turn your ideas into real digital products. Let\'s create something amazing.',
+    subtitle:
+      "I turn your ideas into real digital products. Let's create something amazing.",
     projectsBtn: 'View Projects',
     whatsappBtn: 'Chat on WhatsApp',
   },
   devContact: {
-    title: 'Let\'s Talk?',
+    title: "Let's Talk?",
     subtitle: 'I am always open to new opportunities and interesting projects',
     formTitle: 'Send a message',
     nameLabel: 'Name *',
@@ -450,11 +479,13 @@ export const en = {
   devProblemSolution: {
     badge: 'I TURN SITES INTO RESULTS',
     title: 'Your current site X My service',
-    description: 'The difference between just being online and actually generating results.',
+    description:
+      'The difference between just being online and actually generating results.',
     currentSiteLabel: 'YOUR CURRENT SITE',
     deliveredLabel: 'MY SERVICE',
     servicesLabel: 'SERVICES I IMPLEMENT',
-    servicesDesc: 'Solutions designed for those who need to sell, organize and scale with technology.',
+    servicesDesc:
+      'Solutions designed for those who need to sell, organize and scale with technology.',
     current01: 'A site stuck in time, not telling your story',
     current02: 'No customer or sales management',
     current03: 'Manual processes that take your time',
