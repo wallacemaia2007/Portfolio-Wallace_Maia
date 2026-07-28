@@ -8,7 +8,11 @@ export const globalErrorInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(req).pipe(
     catchError((error) => {
-      toastr.error(error.error.message);
+      const message =
+        error?.error?.message ||
+        error?.message ||
+        'Nao foi possivel conectar ao servidor.';
+      toastr.error(message);
       throw error;
     }),
   );

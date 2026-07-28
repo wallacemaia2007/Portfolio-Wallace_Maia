@@ -1,6 +1,8 @@
 const path = require("path");
 const fs = require("fs");
 
+require("dotenv").config({ path: path.join(__dirname, "..", ".env") });
+
 const jsonServer = require("json-server");
 const rateLimit = require("express-rate-limit");
 
@@ -33,12 +35,24 @@ function sanitize(str) {
     .replace(/[<>]/g, "");
 }
 
-async function sendEmailViaResend({ to, replyTo, subject, text }) {
-  const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.RESEND_FROM;
+function createContactError(message, code, command) {
+  const error = new Error(message);
+  error.code = code;
+  error.command = command;
+  return error;
+}
 
-  if (!apiKey || !from)
-    throw new Error("RESEND_API_KEY/RESEND_FROM não configurados.");
+function requireEnv(name) {
+  const value = process.env[name];
+  if (!value) {
+    throw createContactError(`${name} nao configurado.`, "EMAIL_CONFIG_MISSING", name);
+  }
+  return value;
+}
+
+async function sendEmailViaResend({ mailTo, email, subject, text }) {
+  const apiKey = requireEnv("RESEND_API_KEY");
+  const from = requireEnv("RESEND_FROM");
 
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -46,7 +60,7 @@ async function sendEmailViaResend({ to, replyTo, subject, text }) {
       Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ from, to: [to], reply_to: replyTo, subject, text }),
+    body: JSON.stringify({ from, to: [mailTo], reply_to: [email], subject, text }),
   });
 
   if (!response.ok) {
@@ -123,8 +137,7 @@ server.post("/api/contact", async (req, res) => {
     if (!contacts.value()) router.db.set("contacts", []).write();
     router.db.get("contacts").push(contactRecord).write();
 
-    const mailTo = process.env.MAIL_TO;
-    if (!mailTo) throw new Error("MAIL_TO não configurado.");
+    const mailTo = requireEnv("MAIL_TO");
 
     const formattedDate = new Date(contactRecord.createdAt).toLocaleString("pt-BR", {
       day: "2-digit",
@@ -135,8 +148,8 @@ server.post("/api/contact", async (req, res) => {
     });
 
     await sendEmailViaResend({
-      to: mailTo,
-      replyTo: email,
+      mailTo,
+      email,
       subject: `[Portfolio] ${subject}`,
       text:
         `Nome: ${name}\n` +
@@ -155,12 +168,14 @@ server.post("/api/contact", async (req, res) => {
   } catch (err) {
     const code = err?.code || "UNKNOWN";
     const command = err?.command || "UNKNOWN";
+    const isProduction = process.env.NODE_ENV === "production";
     console.error(`Erro /contact [${code}] [${command}]:`, err?.message);
     return res.status(500).jsonp({
       success: false,
       message: "Sua mensagem foi recebida, mas houve erro ao enviar o email.",
       errorCode: code,
       errorCommand: command,
+      ...(!isProduction && { errorMessage: err?.message }),
     });
   }
 });
