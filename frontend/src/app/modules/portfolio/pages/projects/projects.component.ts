@@ -61,6 +61,8 @@ export class ProjectsComponent implements OnInit {
       'portfolio-marcio-carvalho',
       'schulles-gastronomia-erp',
       'instituto-motiro',
+      'personal-portfolio',
+      'dev-landing-page',
     ].map((slug, index) => [slug, index]),
   );
 

@@ -576,6 +576,82 @@
         "SaaS product planning with Free, Plus, and Controle plans, usage limits, and differentiators focused on the Brazilian market."
       ],
       "clientType": "pessoal"
+    },
+    {
+      "id": "10",
+      "title": "Landing Page Dev",
+      "slug": "dev-landing-page",
+      "description": "Landing page comercial do meu portfólio, disponível na rota /dev, criada para apresentar meus serviços como desenvolvedor full stack. A página reúne hero animado com partículas, seções de problema e solução, vitrine de serviços, showcase de projetos, stack técnica, formulário de contato e CTA para WhatsApp em uma experiência responsiva com tema escuro dedicado.",
+      "descriptionEn": "Commercial landing page from my portfolio, available at /dev, built to present my services as a full-stack developer. The page combines an animated particle hero, problem and solution sections, service showcase, project showcase, technical stack, contact form, and WhatsApp CTA in a responsive experience with a dedicated dark theme.",
+      "shortDescription": "Landing page comercial em Angular para apresentar serviços, projetos, stack e contato profissional.",
+      "shortDescriptionEn": "Commercial Angular landing page presenting services, projects, stack, and professional contact channels.",
+      "thumbnail": "assets/images/projects/dev-landing-page/thumbnail.png",
+      "images": [
+        "assets/images/projects/dev-landing-page/imagem-1.png",
+        "assets/images/projects/dev-landing-page/imagem-2.png",
+        "assets/images/projects/dev-landing-page/imagem-3.png"
+      ],
+      "thumbVideo": "",
+      "technologies": [
+        "Angular",
+        "TypeScript",
+        "Tailwind CSS",
+        "SCSS",
+        "Angular Material",
+        "GSAP",
+        "RxJS",
+        "Responsive Design",
+        "SEO",
+        "WhatsApp Integration"
+      ],
+      "category": "frontend",
+      "featured": false,
+      "githubUrl": "https://github.com/wallacemaia2007/Portfolio-Wallace_Maia",
+      "liveUrl": "https://maiawall.com/dev",
+      "startDate": "2026-05-14",
+      "endDate": "2026-07-29",
+      "status": "completed",
+      "tags": [
+        "landing page",
+        "portfolio",
+        "angular",
+        "typescript",
+        "tailwind",
+        "gsap",
+        "serviços",
+        "conversão",
+        "whatsapp",
+        "responsive design"
+      ],
+      "challenges": [
+        "Criar uma rota independente do portfólio principal com identidade visual e tema escuro próprios.",
+        "Construir um hero animado com partículas em canvas mantendo boa performance no navegador.",
+        "Organizar várias seções comerciais, serviços, projetos, stack e contato em uma narrativa fluida.",
+        "Aplicar animações com GSAP respeitando preferências de redução de movimento.",
+        "Integrar CTAs de contato e WhatsApp sem comprometer a experiência responsiva."
+      ],
+      "challengesEn": [
+        "Creating an independent route from the main portfolio with its own visual identity and dark theme.",
+        "Building an animated canvas particle hero while keeping browser performance solid.",
+        "Organizing multiple commercial sections, services, projects, stack, and contact into a fluid narrative.",
+        "Applying GSAP animations while respecting reduced-motion preferences.",
+        "Integrating contact and WhatsApp CTAs without compromising the responsive experience."
+      ],
+      "learnings": [
+        "Estruturação de uma landing page standalone dentro de uma aplicação Angular maior.",
+        "Uso de Renderer2 para alternar tema dedicado ao entrar e sair da rota /dev.",
+        "Criação de animações com GSAP e canvas para reforçar percepção de tecnologia.",
+        "Composição de seções reutilizando componentes compartilhados e conteúdo traduzível.",
+        "Aprimoramento de copy, hierarquia visual e CTAs para apresentação comercial de serviços."
+      ],
+      "learningsEn": [
+        "Structuring a standalone landing page inside a larger Angular application.",
+        "Using Renderer2 to switch a dedicated theme when entering and leaving the /dev route.",
+        "Creating GSAP and canvas animations to strengthen the technology-focused experience.",
+        "Composing sections with shared components and translatable content.",
+        "Improving copy, visual hierarchy, and CTAs for a commercial services presentation."
+      ],
+      "clientType": "pessoal"
     }
   ],
   "skills": [
