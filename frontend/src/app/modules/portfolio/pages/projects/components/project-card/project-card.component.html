@@ -97,7 +97,7 @@
     <div class="flex flex-nowrap gap-1.5 mb-5 min-h-[1.75rem] overflow-hidden">
       @for (tech of project.technologies.slice(0, 3); track tech) {
         <span
-          class="shrink-0 whitespace-nowrap px-2.5 py-1 rounded-lg text-[11px] font-medium"
+          class="inline-flex h-7 shrink-0 items-center justify-center whitespace-nowrap rounded-lg px-2.5 text-[11px] font-medium leading-none"
           [ngClass]="getTechChipClass()"
         >
           {{ tech }}
@@ -105,7 +105,7 @@
       }
       @if (project.technologies.length > 3) {
         <span
-          class="shrink-0 whitespace-nowrap px-2.5 py-1 rounded-lg text-[11px] font-bold"
+          class="inline-flex h-7 shrink-0 items-center justify-center whitespace-nowrap rounded-lg px-2.5 text-[11px] font-bold leading-none"
           [ngClass]="getTechMoreClass()"
         >
           +{{ project.technologies.length - 3 }}
