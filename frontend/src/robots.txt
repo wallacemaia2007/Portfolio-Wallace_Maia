@@ -16,4 +16,4 @@ Allow: /assets/brand/
 Allow: /assets/cv.pdf
 
 # Sitemap
-Sitemap: https://maiawall.com/sitemap.xml
+Sitemap: https://www.maiawall.com/sitemap.xml

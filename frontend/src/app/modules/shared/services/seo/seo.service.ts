@@ -14,7 +14,7 @@ export interface PageSeoData {
   canonical?: string;
 }
 
-const BASE_URL = 'https://maiawall.com';
+const BASE_URL = 'https://www.maiawall.com';
 const DEFAULT_OG_IMAGE = `${BASE_URL}/assets/images/og-image.jpg`;
 const SEO_MAP_PT: Record<string, PageSeoData> = {
   '/home': {

@@ -14,7 +14,7 @@
     "cvUrl": "assets/cv.pdf",
     "github": "https://github.com/wallacemaia2007",
     "linkedin": "https://www.linkedin.com/in/wallacemaia-dev/",
-    "website": "https://maiawall.com"
+    "website": "https://www.maiawall.com"
   },
   "projects": [
     {
@@ -211,7 +211,7 @@
       "category": "web",
       "featured": false,
       "githubUrl": "https://github.com/wallacemaia2007/Portfolio-Wallace_Maia",
-      "liveUrl": "https://maiawall.com",
+      "liveUrl": "https://www.maiawall.com",
       "startDate": "2025-12-20",
       "endDate": "",
       "status": "completed",
@@ -607,7 +607,7 @@
       "category": "frontend",
       "featured": false,
       "githubUrl": "https://github.com/wallacemaia2007/Portfolio-Wallace_Maia",
-      "liveUrl": "https://maiawall.com/dev",
+      "liveUrl": "https://www.maiawall.com/dev",
       "startDate": "2026-05-14",
       "endDate": "2026-07-29",
       "status": "completed",

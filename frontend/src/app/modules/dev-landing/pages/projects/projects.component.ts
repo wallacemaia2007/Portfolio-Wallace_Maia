@@ -77,7 +77,7 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
         title: t('proj01Title'),
         description: t('proj01Desc'),
         year: '2025',
-        liveUrl: 'https://maiawall.com',
+        liveUrl: 'https://www.maiawall.com',
         technologies: ['Angular', 'Tailwind CSS', 'RxJS', 'GSAP'],
         theme: {
           surface: '#0f172a',
