@@ -65,14 +65,6 @@ const SEO_MAP_PT: Record<string, PageSeoData> = {
       'contratar desenvolvedor, Wallace Maia contato, freelancer angular java, desenvolvedor web uberlândia contato',
     ogType: 'website',
   },
-  '/dev': {
-    title: 'Serviços — Wallace Maia | Desenvolvimento Web & Sistemas',
-    description:
-      'Serviços de desenvolvimento web de Wallace Maia: sites, sistemas SaaS, e-commerces, APIs, landing pages e manutenção. Angular + Java + Spring Boot.',
-    keywords:
-      'serviços desenvolvimento web, criar site, sistema web, SaaS desenvolvimento, API Rest desenvolvimento, landing page profissional',
-    ogType: 'website',
-  },
 };
 
 const SEO_MAP_EN: Record<string, PageSeoData> = {
@@ -122,14 +114,6 @@ const SEO_MAP_EN: Record<string, PageSeoData> = {
       'Get in touch with Wallace Maia: wallacemaia2007@gmail.com, WhatsApp (35) 91003-6806. Available for freelance projects and full-time opportunities.',
     keywords:
       'hire developer, Wallace Maia contact, angular java freelancer, web developer uberlândia contact',
-    ogType: 'website',
-  },
-  '/dev': {
-    title: 'Services — Wallace Maia | Web Development & Systems',
-    description:
-      'Web development services by Wallace Maia: websites, SaaS systems, e-commerce, APIs, landing pages and maintenance. Angular + Java + Spring Boot.',
-    keywords:
-      'web development services, create website, web system, SaaS development, REST API development, professional landing page',
     ogType: 'website',
   },
 };

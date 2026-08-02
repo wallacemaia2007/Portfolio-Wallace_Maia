@@ -73,7 +73,7 @@
           }
         </button>
 
-        <a [routerLink]="primaryAction.route" class="primary-action desktop-primary">
+        <a [href]="primaryAction.route" target="_blank" rel="noopener noreferrer" class="primary-action desktop-primary">
           <mat-icon aria-hidden="true">{{ primaryAction.icon }}</mat-icon>
           <span>{{ translate.translate('navbar.' + primaryAction.translateKey) }}</span>
         </a>
@@ -178,7 +178,7 @@
         </button>
       </div>
 
-      <a [routerLink]="primaryAction.route" class="primary-action mobile-primary" (click)="closeMenu()">
+      <a [href]="primaryAction.route" target="_blank" rel="noopener noreferrer" class="primary-action mobile-primary" (click)="closeMenu()">
         <mat-icon aria-hidden="true">{{ primaryAction.icon }}</mat-icon>
         <span>{{ translate.translate('navbar.' + primaryAction.translateKey) }}</span>
       </a>

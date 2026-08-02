@@ -581,8 +581,8 @@
       "id": "10",
       "title": "Landing Page Dev",
       "slug": "dev-landing-page",
-      "description": "Landing page comercial do meu portfólio, disponível na rota /dev, criada para apresentar meus serviços como desenvolvedor full stack. A página reúne hero animado com partículas, seções de problema e solução, vitrine de serviços, showcase de projetos, stack técnica, formulário de contato e CTA para WhatsApp em uma experiência responsiva com tema escuro dedicado.",
-      "descriptionEn": "Commercial landing page from my portfolio, available at /dev, built to present my services as a full-stack developer. The page combines an animated particle hero, problem and solution sections, service showcase, project showcase, technical stack, contact form, and WhatsApp CTA in a responsive experience with a dedicated dark theme.",
+      "description": "Landing page comercial do meu portfólio, agora publicada em https://servicos.maiawall.com, criada para apresentar meus serviços como desenvolvedor full stack. A página reúne hero animado com partículas, seções de problema e solução, vitrine de serviços, showcase de projetos, stack técnica, formulário de contato e CTA para WhatsApp em uma experiência responsiva com tema escuro dedicado.",
+      "descriptionEn": "Commercial landing page from my portfolio, now published at https://servicos.maiawall.com, built to present my services as a full-stack developer. The page combines an animated particle hero, problem and solution sections, service showcase, project showcase, technical stack, contact form, and WhatsApp CTA in a responsive experience with a dedicated dark theme.",
       "shortDescription": "Landing page comercial em Angular para apresentar serviços, projetos, stack e contato profissional.",
       "shortDescriptionEn": "Commercial Angular landing page presenting services, projects, stack, and professional contact channels.",
       "thumbnail": "assets/images/projects/dev-landing-page/thumbnail.png",
@@ -607,7 +607,7 @@
       "category": "frontend",
       "featured": false,
       "githubUrl": "https://github.com/wallacemaia2007/Portfolio-Wallace_Maia",
-      "liveUrl": "https://www.maiawall.com/dev",
+      "liveUrl": "https://servicos.maiawall.com",
       "startDate": "2026-05-14",
       "endDate": "2026-07-29",
       "status": "completed",
@@ -639,14 +639,14 @@
       ],
       "learnings": [
         "Estruturação de uma landing page standalone dentro de uma aplicação Angular maior.",
-        "Uso de Renderer2 para alternar tema dedicado ao entrar e sair da rota /dev.",
+        "Migração da antiga rota /dev para uma experiência dedicada em https://servicos.maiawall.com.",
         "Criação de animações com GSAP e canvas para reforçar percepção de tecnologia.",
         "Composição de seções reutilizando componentes compartilhados e conteúdo traduzível.",
         "Aprimoramento de copy, hierarquia visual e CTAs para apresentação comercial de serviços."
       ],
       "learningsEn": [
         "Structuring a standalone landing page inside a larger Angular application.",
-        "Using Renderer2 to switch a dedicated theme when entering and leaving the /dev route.",
+        "Migrating the old /dev route to a dedicated experience at https://servicos.maiawall.com.",
         "Creating GSAP and canvas animations to strengthen the technology-focused experience.",
         "Composing sections with shared components and translatable content.",
         "Improving copy, visual hierarchy, and CTAs for a commercial services presentation."
@@ -1194,8 +1194,8 @@
       "id": "4",
       "question": "Qual o valor dos seus serviços?",
       "questionEn": "How much do your services cost?",
-      "answer": "Os valores variam de acordo com a complexidade e escopo do projeto, para mais informações sobre eles veja alguns de meus serviços na página <a href=\"/dev\" class=\"text-primary hover:underline font-semibold\">Serviços</a>. Entre em contato para discutirmos seu projeto ou então e receber um orçamento personalizado.",
-      "answerEn": "Prices vary according to project complexity and scope, for more information about them see some of my services on the <a href=\"/dev\" class=\"text-primary hover:underline font-semibold\">Services</a> page. Get in touch to discuss your project or to receive a personalized quote.",
+      "answer": "Os valores variam de acordo com a complexidade e escopo do projeto, para mais informações sobre eles veja alguns de meus serviços na página <a href=\"https://servicos.maiawall.com\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-primary hover:underline font-semibold\">Serviços</a>. Entre em contato para discutirmos seu projeto ou então e receber um orçamento personalizado.",
+      "answerEn": "Prices vary according to project complexity and scope, for more information about them see some of my services on the <a href=\"https://servicos.maiawall.com\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-primary hover:underline font-semibold\">Services</a> page. Get in touch to discuss your project or to receive a personalized quote.",
       "category": "freelance",
       "order": 4,
       "icon": "payments"
@@ -1549,14 +1549,6 @@
       "pageTitle": "Wallace Maia | Desenvolvedor Full Stack Angular & Java",
       "timeSpentSeconds": 0,
       "timestamp": "2026-05-14T22:59:42.304Z"
-    },
-    {
-      "id": "49cd9b6c-9e4e-422f-9922-5be10efbb374",
-      "sessionId": "10dfbf44-2ac4-4476-95be-d47bdcd408c2",
-      "pagePath": "/dev",
-      "pageTitle": "Serviços — Wallace Maia | Desenvolvimento Web & Sistemas",
-      "timeSpentSeconds": 0,
-      "timestamp": "2026-05-15T00:00:41.049Z"
     }
   ],
   "analytics_events": [

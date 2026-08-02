@@ -8,11 +8,4 @@ export const routes: Routes = [
         (m) => m.PORTFOLIO_ROUTES,
       ),
   },
-  {
-    path: 'dev',
-    loadComponent: () =>
-      import('./modules/dev-landing/dev-landing.component').then(
-        (m) => m.DevLandingComponent,
-      ),
-  },
 ];

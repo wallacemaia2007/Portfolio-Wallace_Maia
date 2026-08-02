@@ -2,9 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- PÁGINA INICIAL — prioridade máxima                     -->
-  <!-- ═══════════════════════════════════════════════════════ -->
   <url>
     <loc>https://www.maiawall.com/home</loc>
     <lastmod>2026-07-28</lastmod>
@@ -12,9 +9,6 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- SOBRE — apresentação pessoal                            -->
-  <!-- ═══════════════════════════════════════════════════════ -->
   <url>
     <loc>https://www.maiawall.com/about</loc>
     <lastmod>2026-07-28</lastmod>
@@ -22,9 +16,6 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- PROJETOS — portfólio de trabalhos                       -->
-  <!-- ═══════════════════════════════════════════════════════ -->
   <url>
     <loc>https://www.maiawall.com/projects</loc>
     <lastmod>2026-07-28</lastmod>
@@ -32,9 +23,6 @@
     <priority>0.95</priority>
   </url>
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- SKILLS — habilidades técnicas                           -->
-  <!-- ═══════════════════════════════════════════════════════ -->
   <url>
     <loc>https://www.maiawall.com/skills</loc>
     <lastmod>2026-07-28</lastmod>
@@ -42,9 +30,6 @@
     <priority>0.85</priority>
   </url>
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- EXPERIÊNCIA — trajetória profissional                   -->
-  <!-- ═══════════════════════════════════════════════════════ -->
   <url>
     <loc>https://www.maiawall.com/experience</loc>
     <lastmod>2026-07-28</lastmod>
@@ -52,24 +37,11 @@
     <priority>0.85</priority>
   </url>
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- CONTATO                                                  -->
-  <!-- ═══════════════════════════════════════════════════════ -->
   <url>
     <loc>https://www.maiawall.com/contact</loc>
     <lastmod>2026-07-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
-  </url>
-
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- LANDING DEV (/dev)                                       -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <url>
-    <loc>https://www.maiawall.com/dev</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
 
 </urlset>

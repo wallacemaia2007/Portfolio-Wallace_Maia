@@ -10,6 +10,18 @@
             "includeFiles": "frontend/server/bd.json"
         }
     },
+    "redirects": [
+        {
+            "source": "/dev",
+            "destination": "https://servicos.maiawall.com",
+            "permanent": true
+        },
+        {
+            "source": "/dev/:path*",
+            "destination": "https://servicos.maiawall.com/:path*",
+            "permanent": true
+        }
+    ],
     "rewrites": [
         {
             "source": "/api/:path*",

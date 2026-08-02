@@ -24,7 +24,7 @@ export const portfolioNavItems: PortfolioNavItem[] = [
 ];
 
 export const portfolioPrimaryAction: PortfolioActionLink = {
-  route: '/dev',
+  route: 'https://servicos.maiawall.com',
   icon: 'rocket_launch',
   translateKey: 'hireMe',
 };
