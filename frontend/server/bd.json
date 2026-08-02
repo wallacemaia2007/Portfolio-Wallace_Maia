@@ -8,8 +8,8 @@
     "email": "wallacemaia2007@gmail.com",
     "phone": "+55 (35) 91003-6806",
     "location": "Uberlândia, MG - Brasil",
-    "bio": "Desenvolvedor Full Stack apaixonado por criar experiências web incríveis e soluções inovadoras. Especializado em Angular, Java e Spring Boot com mais de 1 ano de experiência no mercado.",
-    "bioEn": "Full Stack Developer passionate about creating amazing web experiences and innovative solutions. Specialized in Angular, Java and Spring Boot with over 1 year of market experience.",
+    "bio": "Desenvolvedor Full Stack apaixonado por criar experiências web incríveis e soluções inovadoras. Especializado em Angular, Java e Spring Boot com mais de 2 anos de experiência no mercado.",
+    "bioEn": "Full Stack Developer passionate about creating amazing web experiences and innovative solutions. Specialized in Angular, Java and Spring Boot with over 2 years of market experience.",
     "avatar": "assets/images/avatar.jpeg",
     "cvUrl": "assets/cv.pdf",
     "github": "https://github.com/wallacemaia2007",
@@ -714,7 +714,7 @@
       "name": "OAuth",
       "category": "backend",
       "level": 3,
-      "yearsOfExperience": 1,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/oauth.svg",
       "color": "#8A2BE2"
     },
@@ -723,7 +723,7 @@
       "name": "RxJS",
       "category": "frontend",
       "level": 4,
-      "yearsOfExperience": 1,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/rxjs.svg",
       "color": "#8A2BE2"
     },
@@ -750,7 +750,7 @@
       "name": "Vite",
       "category": "frontend",
       "level": 3,
-      "yearsOfExperience": 1,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/vite.svg",
       "color": "#8A2BE2"
     },
@@ -909,7 +909,7 @@
       "name": "Docker",
       "category": "tools",
       "level": 3,
-      "yearsOfExperience": 1,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/docker.svg",
       "color": "#2496ED"
     },
@@ -918,7 +918,7 @@
       "name": "AWS",
       "category": "tools",
       "level": 3,
-      "yearsOfExperience": 1,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/aws.svg",
       "color": "#FF9900"
     },
@@ -927,7 +927,7 @@
       "name": "Figma",
       "category": "tools",
       "level": 3,
-      "yearsOfExperience": 1,
+      "yearsOfExperience": 2,
       "icon": "assets/icons/figma.svg",
       "color": "#F24E1E"
     },
