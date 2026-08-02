@@ -60,7 +60,7 @@ Adicione estes scripts se ainda não tiver:
 {
   "scripts": {
     "start": "ng serve",
-    "api": "json-server --watch db.json --port 3000",
+    "api": "json-server --watch db.json --port 1000",
     "dev": "concurrently \"npm run start\" \"npm run api\""
   }
 }

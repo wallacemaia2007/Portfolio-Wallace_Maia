@@ -483,7 +483,7 @@ server.get("/api/analytics/stats/live", (_req, res) => {
 // ── Rotas automáticas do bd.json ──────────────────────────────────────────────
 server.use("/api", rewriter, router);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 1000;
 server.listen(PORT, () => {
   console.log(`[Mock Server] Running on http://localhost:${PORT}`);
   console.log(`[Mock Server] Analytics API at http://localhost:${PORT}/api/analytics`);

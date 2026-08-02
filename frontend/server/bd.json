@@ -665,15 +665,6 @@
       "color": "#DD0031"
     },
     {
-      "id": "2",
-      "name": "Java",
-      "category": "backend",
-      "level": 5,
-      "yearsOfExperience": 2,
-      "icon": "assets/icons/java.svg",
-      "color": "#61DAFB"
-    },
-    {
       "id": "3",
       "name": "TypeScript",
       "category": "frontend",
@@ -719,6 +710,88 @@
       "color": "#06B6D4"
     },
     {
+      "id": "21",
+      "name": "OAuth",
+      "category": "backend",
+      "level": 3,
+      "yearsOfExperience": 1,
+      "icon": "assets/icons/oauth.svg",
+      "color": "#8A2BE2"
+    },
+    {
+      "id": "22",
+      "name": "RxJS",
+      "category": "frontend",
+      "level": 4,
+      "yearsOfExperience": 1,
+      "icon": "assets/icons/rxjs.svg",
+      "color": "#8A2BE2"
+    },
+    {
+      "id": "28",
+      "name": "Angular Material",
+      "category": "frontend",
+      "level": 4,
+      "yearsOfExperience": 2,
+      "icon": "assets/icons/angularMaterial.svg",
+      "color": "#8A2BE2"
+    },
+    {
+      "id": "30",
+      "name": "PrimeNG",
+      "category": "frontend",
+      "level": 2,
+      "yearsOfExperience": 2,
+      "icon": "assets/icons/primeng.svg",
+      "color": "#8A2BE2"
+    },
+    {
+      "id": "31",
+      "name": "Vite",
+      "category": "frontend",
+      "level": 3,
+      "yearsOfExperience": 1,
+      "icon": "assets/icons/vite.svg",
+      "color": "#8A2BE2"
+    },
+    {
+      "id": "32",
+      "name": "React",
+      "category": "frontend",
+      "level": 4,
+      "icon": "assets/icons/react.svg"
+    },
+    {
+      "id": "46",
+      "name": "Next.js",
+      "category": "frontend",
+      "level": 4,
+      "icon": "assets/icons/nextjs.svg"
+    },
+    {
+      "id": "33",
+      "name": "Ionic",
+      "category": "frontend",
+      "level": 4,
+      "icon": "assets/icons/ionic.svg"
+    },
+    {
+      "id": "34",
+      "name": "SCSS",
+      "category": "frontend",
+      "level": 4,
+      "icon": "assets/icons/scss.svg"
+    },
+    {
+      "id": "2",
+      "name": "Java",
+      "category": "backend",
+      "level": 5,
+      "yearsOfExperience": 2,
+      "icon": "assets/icons/java.svg",
+      "color": "#61DAFB"
+    },
+    {
       "id": "8",
       "name": "Spring Boot",
       "category": "backend",
@@ -735,6 +808,58 @@
       "yearsOfExperience": 2,
       "icon": "assets/icons/springSecurity.svg",
       "color": "#6DB33F"
+    },
+    {
+      "id": "19",
+      "name": "JUnit",
+      "category": "backend",
+      "level": 4,
+      "yearsOfExperience": 2,
+      "icon": "assets/icons/junit.svg",
+      "color": "#25A162"
+    },
+    {
+      "id": "20",
+      "name": "Mockito",
+      "category": "backend",
+      "level": 4,
+      "yearsOfExperience": 2,
+      "icon": "assets/icons/mockito.svg",
+      "color": "#8A2BE2"
+    },
+    {
+      "id": "23",
+      "name": "Node.js",
+      "category": "backend",
+      "level": 5,
+      "yearsOfExperience": 2,
+      "icon": "assets/icons/nodejs.svg",
+      "color": "#8A2BE2"
+    },
+    {
+      "id": "24",
+      "name": "Express",
+      "category": "backend",
+      "level": 5,
+      "yearsOfExperience": 2,
+      "icon": "assets/icons/express.svg",
+      "color": "#8A2BE2"
+    },
+    {
+      "id": "26",
+      "name": "Spring Data JPA",
+      "category": "backend",
+      "level": 3,
+      "yearsOfExperience": 2,
+      "icon": "assets/icons/jpa.svg",
+      "color": "#8A2BE2"
+    },
+    {
+      "id": "43",
+      "name": "REST API",
+      "category": "backend",
+      "level": 5,
+      "icon": "assets/icons/api.svg"
     },
     {
       "id": "10",
@@ -762,6 +887,13 @@
       "yearsOfExperience": 2,
       "icon": "assets/icons/mysql.svg",
       "color": "#FFCA28"
+    },
+    {
+      "id": "35",
+      "name": "Firebase",
+      "category": "database",
+      "level": 4,
+      "icon": "assets/icons/firebase.svg"
     },
     {
       "id": "13",
@@ -818,75 +950,12 @@
       "color": "#85EA2D"
     },
     {
-      "id": "19",
-      "name": "JUnit",
-      "category": "backend",
-      "level": 4,
-      "yearsOfExperience": 2,
-      "icon": "assets/icons/junit.svg",
-      "color": "#25A162"
-    },
-    {
-      "id": "20",
-      "name": "Mockito",
-      "category": "backend",
-      "level": 4,
-      "yearsOfExperience": 2,
-      "icon": "assets/icons/mockito.svg",
-      "color": "#8A2BE2"
-    },
-    {
-      "id": "21",
-      "name": "OAuth",
-      "category": "frontend",
-      "level": 3,
-      "yearsOfExperience": 1,
-      "icon": "assets/icons/oauth.svg",
-      "color": "#8A2BE2"
-    },
-    {
-      "id": "22",
-      "name": "RxJS",
-      "category": "frontend",
-      "level": 4,
-      "yearsOfExperience": 1,
-      "icon": "assets/icons/rxjs.svg",
-      "color": "#8A2BE2"
-    },
-    {
-      "id": "23",
-      "name": "Node.js",
-      "category": "backend",
-      "level": 5,
-      "yearsOfExperience": 2,
-      "icon": "assets/icons/nodejs.svg",
-      "color": "#8A2BE2"
-    },
-    {
-      "id": "24",
-      "name": "Express",
-      "category": "backend",
-      "level": 5,
-      "yearsOfExperience": 2,
-      "icon": "assets/icons/express.svg",
-      "color": "#8A2BE2"
-    },
-    {
       "id": "25",
       "name": "Json-Server",
       "category": "tools",
       "level": 3,
       "yearsOfExperience": 2,
       "icon": "assets/icons/json.svg",
-      "color": "#8A2BE2"
-    },
-    {
-      "id": "26",
-      "name": "Spring Data JPA",
-      "category": "backend",
-      "level": 3,
-      "yearsOfExperience": 2,
-      "icon": "assets/icons/springDataJPA.svg",
       "color": "#8A2BE2"
     },
     {
@@ -899,15 +968,6 @@
       "color": "#8A2BE2"
     },
     {
-      "id": "28",
-      "name": "Angular Material",
-      "category": "frontend",
-      "level": 4,
-      "yearsOfExperience": 2,
-      "icon": "assets/icons/angularMaterial.svg",
-      "color": "#8A2BE2"
-    },
-    {
       "id": "29",
       "name": "Linux",
       "category": "tools",
@@ -917,22 +977,18 @@
       "color": "#8A2BE2"
     },
     {
-      "id": "30",
-      "name": "PrimeNG",
-      "category": "frontend",
-      "level": 2,
-      "yearsOfExperience": 2,
-      "icon": "assets/icons/primeng.svg",
-      "color": "#8A2BE2"
+      "id": "39",
+      "name": "Vercel",
+      "category": "tools",
+      "level": 5,
+      "icon": "assets/icons/vercel.svg"
     },
     {
-      "id": "31",
-      "name": "Vite",
-      "category": "frontend",
-      "level": 3,
-      "yearsOfExperience": 1,
-      "icon": "assets/icons/vite.svg",
-      "color": "#8A2BE2"
+      "id": "45",
+      "name": "Maven",
+      "category": "tools",
+      "level": 4,
+      "icon": "assets/icons/maven.svg"
     }
   ],
   "experience": [
