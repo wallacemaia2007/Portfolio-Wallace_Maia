@@ -9,6 +9,10 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { ScrollRevealDirective } from "../../directives/scroll-reveal.directive";
 import { TranslateService } from '../../../../core/services/translate.service';
 import { LangTextPipe } from '../../pipes/lang-text.pipe';
+import {
+  PortfolioActionLink,
+  portfolioPrimaryAction,
+} from '../../../portfolio/config/navigation.config';
 
 export interface footerTemplate {
   acronym: string;
@@ -41,6 +45,8 @@ export interface footerTemplate {
 export class FooterComponent implements OnInit {
   private portfolioService = inject(PortfolioService);
   translate = inject(TranslateService);
+  readonly servicesAction: PortfolioActionLink = portfolioPrimaryAction;
+
   footerData: footerTemplate = {
     acronym: '',
     fullName: '',

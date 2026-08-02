@@ -280,6 +280,7 @@ export const en = {
   footer: {
     quickLinks: 'Quick Links',
     contact: 'Contact',
+    servicesCta: 'Explore my services',
     rightsReserved: 'All rights reserved.',
     backToTop: 'Back to top',
   },

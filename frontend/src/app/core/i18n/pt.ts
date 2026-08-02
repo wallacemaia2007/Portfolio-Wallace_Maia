@@ -285,6 +285,7 @@ export const pt = {
   footer: {
     quickLinks: 'Links Rápidos',
     contact: 'Contato',
+    servicesCta: 'Conheça meus serviços',
     rightsReserved: 'Todos os direitos reservados.',
     backToTop: 'Voltar ao topo',
   },

@@ -17,6 +17,15 @@
           {{ footerData.bio | langText:footerData.bioEn }}
         </p>
         <app-social-links></app-social-links>
+        <a
+          [href]="servicesAction.route"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-services-action"
+        >
+          <mat-icon aria-hidden="true">{{ servicesAction.icon }}</mat-icon>
+          <span>{{ translate.translate('footer.servicesCta') }}</span>
+        </a>
       </div>
 
       <div class="space-y-4">
