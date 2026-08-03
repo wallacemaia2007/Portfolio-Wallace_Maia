@@ -21,10 +21,11 @@
         @if (hasThumbVideo()) {
         <div class="absolute inset-0 transition-opacity duration-700" [class.opacity-100]="isCurrentMediaVideo()"
           [class.opacity-0]="!isCurrentMediaVideo()">
-          <video #galleryVideo [src]="getImageUrl(project.thumbVideo)" [poster]="getImageUrl(project.thumbnail)" muted
-            playsinline autoplay preload="metadata" (canplay)="onVideoCanPlay()" (ended)="onVideoEnded()"
-            class="w-full h-full object-cover media-clickable" (click)="openExpandedMedia()">
-          </video>
+          <app-video-player #galleryVideo [src]="getVideoUrl(project)" [poster]="getImageUrl(project.thumbnail)"
+            [muted]="true" [playsInline]="true" [autoplay]="true" preload="metadata" [lazy]="false"
+            [active]="isCurrentMediaVideo()" className="w-full h-full object-cover media-clickable cursor-pointer"
+            (videoClick)="openExpandedMedia()" (videoReady)="onVideoCanPlay()" (videoEnded)="onVideoEnded()">
+          </app-video-player>
           <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50 pointer-events-none">
           </div>
         </div>
@@ -237,9 +238,10 @@
 
     <div class="w-full h-full flex items-center justify-center" (click)="$event.stopPropagation()">
       @if (isCurrentMediaVideo()) {
-      <video [src]="getCurrentExpandedMediaUrl()" [poster]="getImageUrl(project.thumbnail)" controls autoplay
-        playsinline preload="metadata" class="max-w-full max-h-full object-contain">
-      </video>
+      <app-video-player [src]="getCurrentExpandedMediaUrl()" [poster]="getImageUrl(project.thumbnail)" [controls]="true"
+        [autoplay]="true" [muted]="true" [playsInline]="true" preload="metadata" [lazy]="false" [active]="true"
+        className="max-w-full max-h-full object-contain">
+      </app-video-player>
       } @else {
       <img [src]="getCurrentExpandedMediaUrl()" [alt]="project.title + ' - mídia expandida'"
         class="max-w-full max-h-full object-contain">

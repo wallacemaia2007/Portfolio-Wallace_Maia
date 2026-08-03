@@ -1,6 +1,5 @@
 import {
   Component,
-  ElementRef,
   EventEmitter,
   Input,
   Output,
@@ -10,6 +9,8 @@ import {
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { ScrollRevealDirective } from '../../../../../shared/directives/scroll-reveal.directive';
+import { VideoPlayerComponent } from '../../../../../shared/components/video-player/video-player.component';
+import { getVideoUrl } from '../../../../config/cloudinary.config';
 import {
   Project,
   ProjectCategory,
@@ -24,13 +25,19 @@ import { TranslateService } from '../../../../../../core/services/translate.serv
 
 interface ProjectCardVideoEvent {
   project: Project;
-  video: HTMLVideoElement;
+  video?: HTMLVideoElement;
 }
 
 @Component({
   selector: 'app-project-card',
   standalone: true,
-  imports: [CommonModule, MatIconModule, LangTextPipe, ScrollRevealDirective],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    LangTextPipe,
+    ScrollRevealDirective,
+    VideoPlayerComponent,
+  ],
   templateUrl: './project-card.component.html',
   styleUrl: './project-card.component.scss',
 })
@@ -46,7 +53,11 @@ export class ProjectCardComponent {
   @Output() projectLeave = new EventEmitter<ProjectCardVideoEvent>();
   @Output() projectPreviewEnded = new EventEmitter<ProjectCardVideoEvent>();
 
-  @ViewChild('previewVideo') previewVideo?: ElementRef<HTMLVideoElement>;
+  @ViewChild('previewVideo') previewVideo?: VideoPlayerComponent;
+
+  get videoUrl(): string {
+    return getVideoUrl(this.project);
+  }
 
   handleOpen(): void {
     this.projectOpen.emit(this.project);
@@ -59,7 +70,7 @@ export class ProjectCardComponent {
 
     this.projectEnter.emit({
       project: this.project,
-      video: this.previewVideo.nativeElement,
+      video: this.previewVideo.videoElement,
     });
   }
 
@@ -70,7 +81,7 @@ export class ProjectCardComponent {
 
     this.projectLeave.emit({
       project: this.project,
-      video: this.previewVideo.nativeElement,
+      video: this.previewVideo.videoElement,
     });
   }
 
@@ -81,7 +92,7 @@ export class ProjectCardComponent {
 
     this.projectPreviewEnded.emit({
       project: this.project,
-      video: this.previewVideo.nativeElement,
+      video: this.previewVideo.videoElement,
     });
   }
 

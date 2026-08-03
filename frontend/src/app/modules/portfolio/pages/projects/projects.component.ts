@@ -7,7 +7,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { ProjectModalComponent } from './components/project-modal/project-modal.component';
 import { ProjectFilterComponent } from './components/project-filter/project-filter.component';
 import { ProjectCardComponent } from './components/project-card/project-card.component';
+import { VideoPlayerComponent } from '../../../shared/components/video-player/video-player.component';
 import { PortfolioService } from '../../services/portfolio.service';
+import { getVideoUrl as resolveProjectVideoUrl } from '../../config/cloudinary.config';
 import {
   Project,
   ProjectCategory,
@@ -42,6 +44,7 @@ interface CategoryInfo {
     ProjectModalComponent,
     ProjectFilterComponent,
     ProjectCardComponent,
+    VideoPlayerComponent,
     SectionHeaderComponent,
     ScrollRevealDirective,
     InformationBarComponent,
@@ -252,6 +255,10 @@ export class ProjectsComponent implements OnInit {
       : PROJECT_CATEGORY_NAMES[category];
   }
 
+  getVideoUrl(project: Project | null): string {
+    return resolveProjectVideoUrl(project);
+  }
+
   getCategoryIcon(category: ProjectCategory): string {
     const icons: Record<ProjectCategory, string> = {
       web: 'language',
@@ -296,8 +303,8 @@ export class ProjectsComponent implements OnInit {
     return this.playingPreviewIds.has(projectId);
   }
 
-  onProjectCardEnter(project: Project, video: HTMLVideoElement): void {
-    if (!project.thumbVideo) {
+  onProjectCardEnter(project: Project, video?: HTMLVideoElement): void {
+    if (!resolveProjectVideoUrl(project) || !video) {
       return;
     }
 
@@ -308,15 +315,19 @@ export class ProjectsComponent implements OnInit {
     });
   }
 
-  onProjectCardLeave(project: Project, video: HTMLVideoElement): void {
+  onProjectCardLeave(project: Project, video?: HTMLVideoElement): void {
     this.resetProjectPreview(project, video);
   }
 
-  onProjectPreviewEnded(project: Project, video: HTMLVideoElement): void {
+  onProjectPreviewEnded(project: Project, video?: HTMLVideoElement): void {
     this.resetProjectPreview(project, video);
   }
 
-  private resetProjectPreview(project: Project, video: HTMLVideoElement): void {
+  private resetProjectPreview(
+    project: Project,
+    video?: HTMLVideoElement,
+  ): void {
+    if (!video) return;
     this.playingPreviewIds.delete(project.id);
     video.pause();
     video.currentTime = 0;

@@ -15,18 +15,21 @@
       class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
       [class.opacity-0]="isPreviewPlaying"
     />
-    @if (project.thumbVideo) {
-      <video
-        #previewVideo
-        [src]="project.thumbVideo"
-        [poster]="project.thumbnail"
-        muted
-        playsinline
-        preload="auto"
-        (ended)="handlePreviewEnded()"
-        class="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-0 transition-opacity duration-300"
-        [class.opacity-100]="isPreviewPlaying"
-      ></video>
+    @if (videoUrl) {
+      <div class="absolute inset-0 overflow-hidden">
+        <app-video-player
+          #previewVideo
+          [src]="videoUrl"
+          [poster]="project.thumbnail"
+          [muted]="true"
+          [playsInline]="true"
+          preload="metadata"
+          [lazy]="true"
+          [active]="isPreviewPlaying"
+          className="w-full h-full object-cover pointer-events-none opacity-0 transition-opacity duration-300"
+          (videoEnded)="handlePreviewEnded()"
+        ></app-video-player>
+      </div>
     }
 
     <div

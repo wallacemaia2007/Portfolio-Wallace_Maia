@@ -1,0 +1,28 @@
+<video
+  #videoEl
+  [src]="source"
+  [attr.poster]="poster || null"
+  [autoplay]="autoplay"
+  [muted]="muted"
+  [controls]="controls"
+  [loop]="loop"
+  [playsInline]="playsInline"
+  [preload]="preload"
+  [class]="className"
+  [class.opacity-100]="active"
+  (click)="videoClick.emit($event)"
+  (canplay)="onCanPlay()"
+  (loadedmetadata)="onLoadedMetadata()"
+  (canplaythrough)="onCanPlayThrough()"
+  (waiting)="onWaiting()"
+  (stalled)="onStalled()"
+  (ended)="videoEnded.emit()"
+  (error)="onVideoError($event)"
+></video>
+
+@if (failed && active) {
+  <div class="video-player-fallback">
+    <mat-icon>videocam_off</mat-icon>
+    <span>{{ fallbackMessage }}</span>
+  </div>
+}

@@ -21,8 +21,8 @@
       <div
         class="relative rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-r from-white/5 to-white/[0.02] backdrop-blur-md transition-all duration-500 group cursor-pointer"
         (click)="openProjectModal(latestCompletedProject)"
-        (mouseenter)="onProjectCardEnter(latestCompletedProject, latestPreviewVideo)"
-        (mouseleave)="onProjectCardLeave(latestCompletedProject, latestPreviewVideo)">
+        (mouseenter)="onProjectCardEnter(latestCompletedProject, latestPreviewVideo.videoElement)"
+        (mouseleave)="onProjectCardLeave(latestCompletedProject, latestPreviewVideo.videoElement)">
 
         <div class="flex flex-col">
           <div class="relative h-[280px] lg:h-[360px] overflow-hidden">
@@ -31,12 +31,14 @@
               class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               [class.opacity-0]="isProjectPreviewPlaying(latestCompletedProject.id)" />
 
-            <video #latestPreviewVideo [attr.src]="latestCompletedProject.thumbVideo || null"
-              [poster]="latestCompletedProject.thumbnail" muted playsinline preload="metadata"
-              (ended)="onProjectPreviewEnded(latestCompletedProject, latestPreviewVideo)"
-              class="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-0 transition-opacity duration-300"
-              [class.opacity-100]="isProjectPreviewPlaying(latestCompletedProject.id)">
-            </video>
+            <div class="absolute inset-0 overflow-hidden">
+              <app-video-player #latestPreviewVideo [src]="getVideoUrl(latestCompletedProject)"
+                [poster]="latestCompletedProject.thumbnail" [muted]="true" [playsInline]="true" preload="metadata"
+                [lazy]="true" [active]="isProjectPreviewPlaying(latestCompletedProject.id)"
+                className="w-full h-full object-cover pointer-events-none opacity-0 transition-opacity duration-300"
+                (videoEnded)="onProjectPreviewEnded(latestCompletedProject, latestPreviewVideo.videoElement)">
+              </app-video-player>
+            </div>
 
             <div class="absolute inset-0 bg-gradient-to-t from-custom-black/40 via-transparent to-transparent"></div>
           </div>

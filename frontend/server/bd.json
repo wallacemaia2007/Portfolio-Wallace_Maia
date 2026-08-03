@@ -31,7 +31,7 @@
         "assets/images/projects/schulles/mobile.jpg",
         "assets/images/projects/schulles/plans.jpg"
       ],
-      "thumbVideo": "assets/images/projects/schulles/video.mp4",
+      "thumbVideo": "https://res.cloudinary.com/gnazw8x5/video/upload/v1785780253/video_qymixm.mp4",
       "technologies": [
         "Angular",
         "TypeScript",
@@ -104,7 +104,7 @@
         "assets/images/projects/instituto-motiro/motiro3.png",
         "assets/images/projects/instituto-motiro/motiro4.png"
       ],
-      "thumbVideo": "assets/images/projects/instituto-motiro/motiro_video.mp4",
+      "thumbVideo": "https://res.cloudinary.com/gnazw8x5/video/upload/v1785780289/motiro_video_xieiek.mp4",
       "technologies": [
         "Vite",
         "Tailwind CSS",
@@ -147,7 +147,7 @@
         "assets/images/projects/banda-aurah/banda-aurah2.png",
         "assets/images/projects/banda-aurah/banda-aurah3.png"
       ],
-      "thumbVideo": "assets/images/projects/banda-aurah/banda-aurah_video.mp4",
+      "thumbVideo": "https://res.cloudinary.com/SEU_CLOUD_NAME/video/upload/q_auto/videos/banda-aurah-portfolio.mp4",
       "technologies": [
         "Angular",
         "Tailwind CSS",
@@ -199,7 +199,7 @@
         "assets/images/projects/portfolio-pessoal/portfolio-pessoal-2.png",
         "assets/images/projects/portfolio-pessoal/portfolio-pessoal-3.png"
       ],
-      "thumbVideo": "assets/images/projects/portfolio-pessoal/portfolio-pessoal-video.mp4",
+      "thumbVideo": "https://res.cloudinary.com/SEU_CLOUD_NAME/video/upload/q_auto/videos/personal-portfolio.mp4",
       "technologies": [
         "Angular",
         "Tailwind CSS",
@@ -252,7 +252,7 @@
         "assets/images/projects/digital-bank/digital-bank-2.png",
         "assets/images/projects/digital-bank/digital-bank-3.png"
       ],
-      "thumbVideo": "assets/images/projects/digital-bank/digital-bank-video.mp4",
+      "thumbVideo": "https://res.cloudinary.com/SEU_CLOUD_NAME/video/upload/q_auto/videos/digital-bank-api.mp4",
       "technologies": [
         "Java",
         "Spring Boot",
@@ -313,7 +313,7 @@
         "assets/images/projects/traveler-website/traveler-website-2.png",
         "assets/images/projects/traveler-website/traveler-website-3.png"
       ],
-      "thumbVideo": "assets/images/projects/traveler-website/traveler-website-video.mp4",
+      "thumbVideo": "https://res.cloudinary.com/SEU_CLOUD_NAME/video/upload/q_auto/videos/traveler-website.mp4",
       "technologies": [
         "Angular",
         "Angular Material",
@@ -365,7 +365,7 @@
         "assets/images/projects/customer-register/customer-register-2.png",
         "assets/images/projects/customer-register/customer-register-3.png"
       ],
-      "thumbVideo": "assets/images/projects/customer-register/customer-register-video.mp4",
+      "thumbVideo": "https://res.cloudinary.com/SEU_CLOUD_NAME/video/upload/q_auto/videos/customer-register.mp4",
       "technologies": [
         "Angular",
         "Angular Material",
@@ -416,7 +416,7 @@
         "assets/images/projects/portfolio-marcio-carvalho/imagem-3.png",
         "assets/images/projects/portfolio-marcio-carvalho/imagem-4.png"
       ],
-      "thumbVideo": "assets/images/projects/portfolio-marcio-carvalho/video_marcio.mp4",
+      "thumbVideo": "https://res.cloudinary.com/gnazw8x5/video/upload/v1785780302/video_marcio_o39v4r.mp4",
       "technologies": [
         "Next.js 16",
         "React 19",

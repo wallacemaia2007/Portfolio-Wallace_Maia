@@ -11,7 +11,6 @@ import {
   PLATFORM_ID,
   inject,
   ViewChild,
-  ElementRef,
   HostListener,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
@@ -19,6 +18,8 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { VideoPlayerComponent } from '../../../../../shared/components/video-player/video-player.component';
+import { getVideoUrl as resolveProjectVideoUrl } from '../../../../config/cloudinary.config';
 import {
   Project,
   ProjectCategory,
@@ -33,7 +34,14 @@ import { TranslateService } from '../../../../../../core/services/translate.serv
 @Component({
   selector: 'app-project-modal',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule, RouterLink, LangTextPipe],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    MatButtonModule,
+    RouterLink,
+    LangTextPipe,
+    VideoPlayerComponent,
+  ],
   templateUrl: './project-modal.component.html',
   styleUrl: './project-modal.component.scss',
 })
@@ -48,7 +56,7 @@ export class ProjectModalComponent
   @Input() variant: 'primary' | 'dev' = 'primary';
   @Output() close = new EventEmitter<void>();
   @ViewChild('galleryVideo')
-  private galleryVideo?: ElementRef<HTMLVideoElement>;
+  private galleryVideo?: VideoPlayerComponent;
 
   currentMediaIndex = 0;
   expandedMediaOpen = false;
@@ -105,7 +113,7 @@ export class ProjectModalComponent
   }
 
   hasThumbVideo(): boolean {
-    return Boolean(this.project?.thumbVideo?.trim());
+    return Boolean(resolveProjectVideoUrl(this.project));
   }
 
   getGalleryItemsCount(): number {
@@ -218,13 +226,17 @@ export class ProjectModalComponent
     return path.startsWith('/') ? path : `/${path}`;
   }
 
+  getVideoUrl(project: Project | null): string {
+    return resolveProjectVideoUrl(project);
+  }
+
   getCurrentExpandedMediaUrl(): string {
     if (!this.project) {
       return '';
     }
 
     if (this.isCurrentMediaVideo()) {
-      return this.getImageUrl(this.project.thumbVideo || '');
+      return this.getVideoUrl(this.project);
     }
 
     const imageIndex = this.hasThumbVideo()
@@ -263,7 +275,7 @@ export class ProjectModalComponent
     }
 
     setTimeout(() => {
-      const video = this.galleryVideo?.nativeElement;
+      const video = this.galleryVideo?.videoElement;
       if (!video) {
         return;
       }
@@ -277,7 +289,7 @@ export class ProjectModalComponent
   }
 
   private resetCurrentVideo(): void {
-    const video = this.galleryVideo?.nativeElement;
+    const video = this.galleryVideo?.videoElement;
     if (!video) return;
     video.pause();
     video.currentTime = 0;
