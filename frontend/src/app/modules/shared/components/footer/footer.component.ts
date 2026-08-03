@@ -13,6 +13,7 @@ import {
   PortfolioActionLink,
   portfolioPrimaryAction,
 } from '../../../portfolio/config/navigation.config';
+import { createGmailComposeUrl } from '../../../portfolio/services/contact.service';
 
 export interface footerTemplate {
   acronym: string;
@@ -79,5 +80,9 @@ export class FooterComponent implements OnInit {
 
   scrollToTop(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  getEmailLink(): string {
+    return this.footerData.email ? createGmailComposeUrl(this.footerData.email) : '';
   }
 }

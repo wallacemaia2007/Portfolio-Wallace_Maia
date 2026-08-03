@@ -10,7 +10,10 @@ import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ToastrService } from 'ngx-toastr';
-import { ContactService } from '../../services/contact.service';
+import {
+  ContactService,
+  createGmailComposeUrl,
+} from '../../services/contact.service';
 import { PortfolioService } from '../../services/portfolio.service';
 import { SocialLinksComponent } from '../../../shared/components/social-links/social-links.component';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
@@ -58,7 +61,7 @@ export class ContactComponent implements OnInit {
       icon: 'assets/icons/gmail.svg',
       title: 'Email',
       content: '',
-      link: 'mailto:wallacemaia2007@gmail.com',
+      link: createGmailComposeUrl('wallacemaia2007@gmail.com'),
       color: 'primary',
     },
     {
@@ -129,7 +132,7 @@ export class ContactComponent implements OnInit {
   private updateContactInfoCards(): void {
     if (this.personalInfo) {
       this.contactInfoCards[0].content = this.personalInfo.email;
-      this.contactInfoCards[0].link = `mailto:${this.personalInfo.email}`;
+      this.contactInfoCards[0].link = createGmailComposeUrl(this.personalInfo.email);
 
       this.contactInfoCards[1].content = this.personalInfo.phone;
       let phoneNumber = this.personalInfo.phone;

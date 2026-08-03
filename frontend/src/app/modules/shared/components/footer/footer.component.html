@@ -50,7 +50,7 @@
           <span>{{ translate.translate('footer.contact') }}</span>
         </h3>
         <div class="space-y-3">
-          <a [href]="'mailto:' + footerData.email"
+          <a [href]="getEmailLink()" target="_blank" rel="noopener noreferrer"
             class="flex items-center space-x-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors text-sm group">
             <div
               class="w-8 h-8 bg-beige dark:bg-custom-black rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">

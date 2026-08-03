@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { PortfolioService } from '../../../portfolio/services/portfolio.service';
 import { SocialLink } from '../../../portfolio/models/social-link.model';
+import { normalizeEmailLink } from '../../../portfolio/services/contact.service';
 
 @Component({
   selector: 'app-social-links',
@@ -26,7 +27,10 @@ export class SocialLinksComponent implements OnInit {
 
   ngOnInit(): void {
     this.portfolioService.getSocialLinks().subscribe((links) => {
-      this.socialLinks = links;
+      this.socialLinks = links.map((link) => ({
+        ...link,
+        url: /^mailto:/i.test(link.url) ? normalizeEmailLink(link.url) : link.url,
+      }));
     });
   }
 

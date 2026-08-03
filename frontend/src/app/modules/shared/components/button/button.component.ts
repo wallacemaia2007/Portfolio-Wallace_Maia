@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
+import { normalizeEmailLink } from '../../../portfolio/services/contact.service';
 
 export interface ButtonModel {
   label: string;
@@ -59,6 +60,11 @@ export class ButtonComponent {
           ? link
           : `/${link}`;
       window.open(url, '_blank');
+      return;
+    }
+
+    if (/^mailto:/i.test(link)) {
+      window.open(normalizeEmailLink(link), '_blank', 'noopener,noreferrer');
       return;
     }
 

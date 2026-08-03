@@ -5,6 +5,38 @@ import { catchError } from 'rxjs/operators';
 import { ContactForm, ContactResponse } from '../models/contact.model';
 import { environment } from '../../../../environments/environment';
 
+const DEFAULT_EMAIL_SUBJECT = 'Contato via Portfolio';
+const DEFAULT_EMAIL_BODY = `Ola Wallace,
+
+Vi seu portfolio e gostaria de conversar sobre:
+
+( ) Projeto
+( ) Orcamento
+( ) Vaga
+( ) Parceria
+
+Detalhes:
+____________________________________________________
+
+
+Atenciosamente,`;
+
+export function createGmailComposeUrl(to: string, name?: string): string {
+  const subject = encodeURIComponent(DEFAULT_EMAIL_SUBJECT);
+  const signature = name?.trim() ? `\n${name.trim()}` : '';
+  const body = encodeURIComponent(`${DEFAULT_EMAIL_BODY}${signature}`);
+
+  return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${subject}&body=${body}`;
+}
+
+export function normalizeEmailLink(url: string): string {
+  if (!/^mailto:/i.test(url)) return url;
+
+  const email = url.replace(/^mailto:/i, '').split('?')[0].trim();
+
+  return email ? createGmailComposeUrl(email) : url;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -61,28 +93,7 @@ export class ContactService {
   }
 
   openEmailClient(to: string, name?: string): void {
-    const subject = encodeURIComponent('Contato via Portfólio');
-    const body = encodeURIComponent(
-      `Olá Wallace,
-
-      Vi seu portfólio e gostaria de conversar sobre:
-
-      ( ) Projeto
-      ( ) Orçamento
-      ( ) Vaga
-      ( ) Parceria
-
-      Detalhes:
-      ____________________________________________________
-
-
-      Atenciosamente,
-${name ?? ''}`,
-    );
-
-    const mailtoUrl = `mailto:${to}?subject=${subject}&body=${body}`;
-
-    window.open(mailtoUrl, '_self');
+    window.open(createGmailComposeUrl(to, name), '_blank', 'noopener,noreferrer');
   }
 
   openWhatsApp(phone: string, message?: string): void {
