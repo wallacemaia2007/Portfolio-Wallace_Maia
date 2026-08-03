@@ -415,7 +415,7 @@
         "assets/images/projects/portfolio-marcio-carvalho/imagem-2.png",
         "assets/images/projects/portfolio-marcio-carvalho/imagem-3.png"
       ],
-      "thumbVideo": "",
+      "thumbVideo": "assets/images/projects/portfolio-marcio-carvalho/video_marcio.mp4",
       "technologies": [
         "Next.js 16",
         "React 19",
