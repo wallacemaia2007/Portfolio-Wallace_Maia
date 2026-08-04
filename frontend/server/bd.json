@@ -55,7 +55,14 @@
       "startDate": "2026-04-10",
       "endDate": "2026-05-18",
       "status": "completed",
-      "tags": ["erp", "dashboard", "angular", "web", "gastronomia", "admin"],
+      "tags": [
+        "erp",
+        "dashboard",
+        "angular",
+        "web",
+        "gastronomia",
+        "admin"
+      ],
       "challenges": [
         "Desenvolver um sistema administrativo completo e escalável",
         "Criar dashboards modernos para visualização de métricas e pedidos",
@@ -106,12 +113,14 @@
       ],
       "thumbVideo": "https://res.cloudinary.com/gnazw8x5/video/upload/v1785780289/motiro_video_xieiek.mp4",
       "technologies": [
-        "Vite",
-        "Tailwind CSS",
+        "Next.js 16",
+        "React 19",
         "TypeScript",
-        "RxJS",
-        "UUID",
-        "LocalStorage"
+        "Tailwind CSS 3",
+        "GSAP",
+        "App Router",
+        "SEO/Metadata",
+        "Responsive UI"
       ],
       "category": "web",
       "featured": true,
@@ -119,19 +128,37 @@
       "startDate": "2026-03-25",
       "endDate": "2026-04-15",
       "status": "completed",
-      "tags": ["web", "vite", "blog"],
+      "tags": [
+        "web",
+        "nextjs",
+        "institucional",
+        "educacao",
+        "cultura"
+      ],
       "challenges": [
-        "Integração com domínio personalizado e hospedagem",
-        "Design responsivo para múltiplos dispositivos"
+        "Organizar um site com muito conteúdo institucional sem perder clareza e performance",
+        "Garantir navegação consistente entre páginas, eixos, projetos e notícias",
+        "Manter responsividade e acessibilidade em diferentes dispositivos",
+        "Integrar animações e efeitos visuais sem comprometer a experiência"
       ],
       "challengesEn": [
-        "Custom domain and hosting integration",
-        "Responsive design for multiple devices"
+        "Organizing a content-rich institutional website without losing clarity and performance",
+        "Keeping navigation consistent across pages, axes, projects and news",
+        "Ensuring responsiveness and accessibility across different devices",
+        "Integrating animations and visual effects without hurting the experience"
       ],
       "learnings": [
-        "Estudos de um novo framework (Vite) para desenvolvimento web"
+        "Uso do Next.js App Router para conteúdo institucional e SEO",
+        "Modelagem de conteúdo em arquivos data-driven para facilitar manutenção",
+        "Aplicação de GSAP e ScrollTrigger para animações de interface",
+        "Padronização de componentes reutilizáveis para escalar o site com consistência"
       ],
-      "learningsEn": ["Studies of a new framework (Vite) for web development"],
+      "learningsEn": [
+        "Using the Next.js App Router for institutional content and SEO",
+        "Modeling content in data-driven files to simplify maintenance",
+        "Applying GSAP and ScrollTrigger for interface animations",
+        "Standardizing reusable components to scale the site consistently"
+      ],
       "clientType": "freelance"
     },
     {
@@ -162,7 +189,11 @@
       "startDate": "2026-01-20",
       "endDate": "2026-02-10",
       "status": "completed",
-      "tags": ["portfolio", "web", "angular"],
+      "tags": [
+        "portfolio",
+        "web",
+        "angular"
+      ],
       "challenges": [
         "Design responsivo para múltiplos dispositivos",
         "Otimização de performance e SEO"
@@ -215,7 +246,11 @@
       "startDate": "2025-12-20",
       "endDate": "",
       "status": "completed",
-      "tags": ["portfolio", "web", "angular"],
+      "tags": [
+        "portfolio",
+        "web",
+        "angular"
+      ],
       "challenges": [
         "Design responsivo para múltiplos dispositivos",
         "Otimização de performance e SEO"
@@ -276,7 +311,11 @@
       "startDate": "2025-08-13",
       "endDate": "2025-09-21",
       "status": "completed",
-      "tags": ["backend", "banking", "api"],
+      "tags": [
+        "backend",
+        "banking",
+        "api"
+      ],
       "challenges": [
         "Implementação de transações financeiras seguras",
         "Validação robusta de dados de entrada",
@@ -330,7 +369,11 @@
       "startDate": "2025-10-20",
       "endDate": "2025-11-11",
       "status": "completed",
-      "tags": ["web", "angular", "gallery"],
+      "tags": [
+        "web",
+        "angular",
+        "gallery"
+      ],
       "challenges": [
         "Integração com Google OAuth",
         "Gerenciamento de estado com RxJS"
@@ -382,7 +425,11 @@
       "startDate": "2025-10-07",
       "endDate": "2025-10-17",
       "status": "completed",
-      "tags": ["web", "angular", "gallery"],
+      "tags": [
+        "web",
+        "angular",
+        "gallery"
+      ],
       "challenges": [
         "Uso do Angular Material para criar uma interface intuitiva",
         "Implementação de validação de reactive forms"
@@ -1153,7 +1200,11 @@
       "content": "Conteúdo completo do post...",
       "coverImage": "assets/images/blog/angular-structure.jpg",
       "category": "Angular",
-      "tags": ["angular", "arquitetura", "boas-práticas"],
+      "tags": [
+        "angular",
+        "arquitetura",
+        "boas-práticas"
+      ],
       "publishedAt": "2024-01-15",
       "readTime": 8,
       "views": 1543,
@@ -1168,7 +1219,11 @@
       "content": "Conteúdo completo do post...",
       "coverImage": "assets/images/blog/react-performance.jpg",
       "category": "React",
-      "tags": ["react", "performance", "otimização"],
+      "tags": [
+        "react",
+        "performance",
+        "otimização"
+      ],
       "publishedAt": "2024-01-10",
       "readTime": 6,
       "views": 2156,
@@ -1178,7 +1233,7 @@
   ],
   "statistics": {
     "totalProjects": 9,
-    "completedProjects":10,
+    "completedProjects": 10,
     "happyClients": 4,
     "yearsExperience": 2,
     "technologies": 30,
